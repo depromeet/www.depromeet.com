@@ -1,5 +1,3 @@
-module.exports = {
-    browserslist: [
-        "defaults"
-    ]
-}
+export const browserslist = [
+    "defaults"
+];

@@ -23,14 +23,16 @@ module.exports = {
     es6: true,
   },
   rules: {
+    'no-console': ['off'],
     'react/prefer-stateless-function': ['off'],
     'react/jsx-filename-extension': ['off'],
     'react/jsx-one-expression-per-line': ['off'],
     'react/react-in-jsx-scope': 0,
+    'react/prop-types': 0,
     'no-use-before-define': 'off',
     'no-nested-ternary': ['off'],
     'max-len': ['error', { code: 200 }],
-    // indent: ['error', 4],
+    indent: ['error', 2],
     'prefer-destructuring': ['error', { object: false, array: false }],
     'no-empty': ['error', { allowEmptyCatch: true }],
     'import/extensions': [
@@ -58,6 +60,7 @@ module.exports = {
     'no-new': ['off'],
     'prefer-template': ['error'],
     'no-plusplus': ['off'],
+    'react/jsx-props-no-spreading': ['off'],
     // typescript rules
     '@typescript-eslint/explicit-member-accessibility': [
       'error',

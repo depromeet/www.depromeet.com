@@ -28,6 +28,8 @@
     "styles",
     "pages",
     "public",
+    "**/*.scss",
+    "components"
   ],
   "exclude": [
     "node_modules",

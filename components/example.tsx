@@ -1,5 +1,3 @@
-const example = () => {
-  return <div>example</div>;
-};
+const Example = () => <div>Example</div>;
 
-export default example;
+export default Example;
