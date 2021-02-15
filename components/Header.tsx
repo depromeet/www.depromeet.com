@@ -9,7 +9,7 @@ const Header = () => (
       <RouterBtn routerName="about" path="/" />
       <RouterBtn routerName="project" path="/project" />
       <RouterBtn routerName="contact" path="/contact" />
-      <Button>9기에서 만나기</Button>
+      <Button role="button">9기에서 만나기</Button>
     </ButtonContainer>
   </Container>
 );
@@ -36,6 +36,7 @@ const RouterBtn = ({ routerName, path }) => {
 
 const Container = styled.div`
   position: fixed;
+  background-color: black;
   top: 0;
   left: 0;
   right: 0;
@@ -45,6 +46,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  z-index: 10;
 `;
 
 const ButtonContainer = styled.div`
@@ -53,7 +55,6 @@ const ButtonContainer = styled.div`
 `;
 
 const Button = styled.div`
-  cursor: pointer;
   width: auto;
   font-size: 1.5rem;
   font-weight: 800;
@@ -64,7 +65,6 @@ const Button = styled.div`
 `;
 
 const RouterButton = styled.div<{isSame: boolean}>`
-  cursor: pointer;
   position: relative;
   font-family: Montserrat;
   margin-right: 3.4rem;
@@ -73,6 +73,7 @@ const RouterButton = styled.div<{isSame: boolean}>`
 `;
 
 const Underline = styled.div`
+  cursor: default;
   position: absolute;
   width: 100%;
   height: 0.2rem;
