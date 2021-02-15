@@ -10,5 +10,6 @@ export const GlobalStyle = createGlobalStyle`
     body{
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
         font-family: Apple SD Gothic Neo;
+        background-color: black;
     }
 `;
