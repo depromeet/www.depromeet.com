@@ -1,3 +1,5 @@
-const Project = () => <div>프로젝트 페이지</div>;
+import { Header } from '../components';
+
+const Project = () => <div><Header /></div>;
 
 export default Project;

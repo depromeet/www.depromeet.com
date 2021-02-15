@@ -1,3 +1,5 @@
-const Index = () => <div>메인페이지</div>;
+import { Header } from '../components';
+
+const Index = () => <div><Header /></div>;
 
 export default Index;
