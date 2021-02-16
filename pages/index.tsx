@@ -89,7 +89,10 @@ const Container4 = () => (
       <div>Depromeet의</div>
       <span className="title__bold">아홉 번째 이야기</span>를
       <div>만들어가고 싶다면</div>
+      <div className="small">Depromeet 9기는 COVID-19확산으로 인해 온라인 모임을 지향하고 있습니다.</div>
     </div>
+    <div className="gradientBtn" role="button">9기에서 만나기</div>
+    <div className="greenBtn" role="button">지인에게 공유하기</div>
   </Cont4>
 );
 
@@ -184,6 +187,36 @@ const Cont4 = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  padding-bottom: 18.6rem;
+  .small {
+    font-size: 1.8rem;
+    font-weight: 700;
+  }
+  .gradientBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36.3rem;
+    height: 5.4rem;
+    background: ${({ theme }) => theme.color.gradient};
+    font-size: 1.6rem;
+    font-weight: 700;
+    border-radius: 1rem;
+    margin-top: 2.2rem;
+  }
+  .greenBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36.3rem;
+    height: 5.4rem;    text-align: center;
+    font-size: 1.6rem;
+    font-weight: 700;
+    border: ${({ theme }) => `0.1rem solid ${theme.color.green}`};
+    color: ${({ theme }) => theme.color.green};
+    border-radius: 1rem;
+    margin-top: 2.2rem;
+  }
 `;
 
 export default Index;
