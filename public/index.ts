@@ -5,3 +5,7 @@ export { default as GreenQuote1 } from './greenQuote1.svg';
 export { default as GreenQuote2 } from './greenQuote2.svg';
 export { default as BlueQuote1 } from './blueQuote1.svg';
 export { default as BlueQuote2 } from './blueQuote2.svg';
+export { default as FooterLogo } from './logo_footer.svg';
+export { default as FacebookLogo } from './ic_sns_facebook.svg';
+export { default as InstagramLogo } from './ic_sns_instagram.svg';
+export { default as MediumLogo } from './ic_sns_medium.svg';

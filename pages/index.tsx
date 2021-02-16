@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Header } from '../components';
+import { Header, Footer } from '../components';
 import SmallBox from '../components/SmallBox';
 import StoryBox from '../components/StoryBox';
 import { stories } from '../public/data';
@@ -13,6 +13,7 @@ const Index = () => (
       <Container3 />
       <Container4 />
     </Containers>
+    <Footer />
   </>
 );
 
