@@ -82,6 +82,19 @@ const Boxes = styled.div`
     display: flex;
     flex-direction:column;
     justify-content: space-between;
+    position: relative;
+    &__overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 17rem;
+      opacity: 0;
+      background-color: black;
+      :hover {
+        opacity: 0.2;
+      }
+    }
   }
   .project--title {
     font-family: Apple SD Gothic Neo;
@@ -108,6 +121,9 @@ const ProjectSection = styled.div`
     position: relative;
     display: flex;
     align-self: center;
+    :hover {
+      background-color: #001401;
+    }
     &__green {
       border: ${({ theme }) => `0.1rem solid ${theme.color.green}`};
       color: ${({ theme }) => theme.color.green};
@@ -137,15 +153,13 @@ const AllProjects = () => (
       모든 작업물<sup>30</sup>
     </Title>
     <Boxes>
-      {[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0].map((_, index) => {
-        console.log(index);
-        return (
-          <div className="project--item" key="project-$index">
-            <SmallBox />
-            <div className="project--title">프로젝트 명</div>
-          </div>
-        );
-      })}
+      {[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0].map(() => (
+        <div className="project--item" key="project-$index" role="button">
+          <SmallBox />
+          <div className="project--item__overlay" />
+          <div className="project--title">프로젝트 명</div>
+        </div>
+      ))}
     </Boxes>
     <div className="button button__green" role="button">
       더보기
