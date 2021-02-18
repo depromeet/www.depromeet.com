@@ -1,8 +1,12 @@
 import styled from 'styled-components';
 import Image from 'next/image';
+import React from 'react';
 import { Header, Footer } from '../components';
 import SmallBox from '../components/SmallBox';
 import ScheduleBox from '../components/ScheduleBox';
+import {
+  StepALottie, StepBLottie, StepCLottie, StepDLottie,
+} from '../public/lottie';
 
 const TopBackground = styled.div`
   z-index:-10;
@@ -174,6 +178,30 @@ const AllProjects = () => (
     </div>
   </ProjectSection>
 );
+
+const steps = [
+  {
+    duration: '1~4weeks',
+    desc: (<>팀 선별, 아이디어 도출,<br />MVP 도출, 스타일 가이드 제작</>),
+    lottie: StepALottie,
+  },
+  {
+    duration: '5~7weeks',
+    desc: (<>팀 선별, 아이디어 도출,<br />MVP 도출, 스타일 가이드 제작</>),
+    lottie: StepBLottie,
+  },
+  {
+    duration: '8~10weeks',
+    desc: (<>팀 선별, 아이디어 도출,<br />MVP 도출, 스타일 가이드 제작</>),
+    lottie: StepCLottie,
+  },
+  {
+    duration: '11~13weeks',
+    desc: (<>팀 선별, 아이디어 도출,<br />MVP 도출, 스타일 가이드 제작</>),
+    lottie: StepDLottie,
+  },
+];
+
 const AllSchedule = () => (
   <ScheduleSection>
     <Title>
@@ -181,9 +209,9 @@ const AllSchedule = () => (
       <span className="title--desc">Depromeet 9기는 매주 토요일 15주간 진행됩니다.</span>
     </Title>
     <Schedules>
-      <ScheduleBox />
-      <ScheduleBox />
-      <ScheduleBox />
+      {steps.map((v, idx) => (
+        <ScheduleBox detail={v} key="steps-$idx" index={idx} />
+      ))}
     </Schedules>
   </ScheduleSection>
 );
