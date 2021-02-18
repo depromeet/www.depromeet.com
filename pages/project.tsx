@@ -38,7 +38,6 @@ const AllProjects = () => (
       {[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0].map(() => (
         <div className="project--item" key="project-$index" role="button">
           <SmallBox />
-          <div className="project--item__overlay" />
           <div className="project--title">프로젝트 명</div>
         </div>
       ))}
@@ -150,19 +149,8 @@ const Boxes = styled.div`
     flex-direction:column;
     justify-content: space-between;
     position: relative;
-    &__overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 17rem;
-      opacity: 0;
-      background-color: black;
-      :hover {
-        opacity: 0.2;
-      }
-    }
   }
+
   .project--title {
     font-family: Apple SD Gothic Neo;
     font-style: normal;
