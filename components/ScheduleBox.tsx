@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import Image from 'next/image';
+import { ReactNode } from 'react';
+import Lottie from 'react-lottie';
 
 const Container = styled.div`
   width: 114rem;
@@ -45,6 +46,7 @@ const Container = styled.div`
     text-transform: uppercase;
     color: #FFFFFF;
     margin-top: 2.4rem;
+    max-width: 45.4rem;
   }
   .motion {
     position: absolute;
@@ -62,25 +64,39 @@ const Container = styled.div`
   }
 `;
 
-const ScheduleBox = () => (
-  <Container>
-    <div className="title">
-      <div className="title--step">STEP 1</div>
-      <div className="title--duration title--duration__green">1~4 weeks</div>
-    </div>
-    <div className="desc">
-      팀 선별, 아이디어 도출,<br />
-      MVP도출, 스타일 가이드 제작
-    </div>
-    <div className="motion">
-      <div className="motion--img">
-        <Image
-          src="/motion_example.svg"
-          layout="fill"
-          objectFit="contain"
-        />
+const ScheduleBox = ({ detail, index }:
+  {
+    detail: {
+      duration: string;
+      desc: ReactNode;
+      lottie;
+    };
+    index: number;
+  }) => {
+  const lottieOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: detail.lottie,
+  };
+  return (
+    <Container>
+      <div className="title">
+        <div className="title--step">STEP {index + 1}</div>
+        <div className="title--duration title--duration__green">{detail.duration}</div>
       </div>
-    </div>
-  </Container>
-);
+      <div className="desc">
+        {detail.desc}
+      </div>
+      <div className="motion">
+        <div className="motion--img">
+          <Lottie
+            ariaRole="img"
+            isClickToPauseDisabled
+            options={lottieOptions}
+          />
+        </div>
+      </div>
+    </Container>
+  );
+};
 export default ScheduleBox;
