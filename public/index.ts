@@ -9,3 +9,4 @@ export { default as FooterLogo } from './logo_footer.svg';
 export { default as FacebookLogo } from './ic_sns_facebook.svg';
 export { default as InstagramLogo } from './ic_sns_instagram.svg';
 export { default as MediumLogo } from './ic_sns_medium.svg';
+export { default as ProjectBackgroundImage } from './project_background_image.svg';
