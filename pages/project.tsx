@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Image from 'next/image';
 import React from 'react';
 import { Header, Footer } from '../components';
 import SmallBox from '../components/SmallBox';
@@ -20,6 +19,7 @@ const TopBackground = styled.div`
 
 const CenterAlignedContainer = styled.div`
   /* position: relative; */
+  background-color: transparent;
   width: 114rem;
   margin-left: auto;
   margin-right: auto;
@@ -168,12 +168,7 @@ const AllProjects = () => (
     <div className="button button__green" role="button">
       더보기
       <div className="button--img">
-        <Image
-          src="/arrow_down_green.svg"
-          layout="fill"
-          objectFit="contain"
-          quality={100}
-        />
+        <img src="/arrow_down_green.svg" alt="arrow down" />
       </div>
     </div>
   </ProjectSection>
@@ -220,11 +215,9 @@ const Project = () => (
   <>
     <Header />
     <TopBackground>
-      <Image
+      <img
         src="/project_background_image.svg"
-        layout="fill"
-        objectFit="cover"
-        quality={100}
+        alt="background"
       />
     </TopBackground>
     <CenterAlignedContainer>
