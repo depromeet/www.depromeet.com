@@ -9,11 +9,9 @@ const Project = () => (
   <>
     <Header />
     <TopBackground>
-      <Image
+      <img
         src="/project_background_image.svg"
-        layout="fill"
-        objectFit="cover"
-        quality={100}
+        alt="Background"
       />
     </TopBackground>
     <CenterAlignedContainer>
@@ -44,11 +42,9 @@ const AllProjects = () => (
     <div className="button button__green" role="button">
       더보기
       <div className="button--img">
-        <Image
+        <img
           src="/arrow_down_green.svg"
-          layout="fill"
-          objectFit="contain"
-          quality={100}
+          alt="arrow down"
         />
       </div>
     </div>
