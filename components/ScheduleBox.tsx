@@ -2,6 +2,42 @@ import styled from 'styled-components';
 import { ReactNode } from 'react';
 import Lottie from 'react-lottie';
 
+const ScheduleBox = ({ detail, index }:
+  {
+    detail: {
+      duration: string;
+      desc: ReactNode;
+      lottie;
+    };
+    index: number;
+  }) => {
+  const lottieOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: detail.lottie,
+  };
+  return (
+    <Container>
+      <div className="title">
+        <div className="title--step">STEP {index + 1}</div>
+        <div className="title--duration title--duration__green">{detail.duration}</div>
+      </div>
+      <div className="desc">
+        {detail.desc}
+      </div>
+      <div className="motion">
+        <div className="motion--img">
+          <Lottie
+            ariaRole="img"
+            isClickToPauseDisabled
+            options={lottieOptions}
+          />
+        </div>
+      </div>
+    </Container>
+  );
+};
+
 const Container = styled.div`
   width: 114rem;
   height: 26rem;
@@ -64,39 +100,4 @@ const Container = styled.div`
   }
 `;
 
-const ScheduleBox = ({ detail, index }:
-  {
-    detail: {
-      duration: string;
-      desc: ReactNode;
-      lottie;
-    };
-    index: number;
-  }) => {
-  const lottieOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: detail.lottie,
-  };
-  return (
-    <Container>
-      <div className="title">
-        <div className="title--step">STEP {index + 1}</div>
-        <div className="title--duration title--duration__green">{detail.duration}</div>
-      </div>
-      <div className="desc">
-        {detail.desc}
-      </div>
-      <div className="motion">
-        <div className="motion--img">
-          <Lottie
-            ariaRole="img"
-            isClickToPauseDisabled
-            options={lottieOptions}
-          />
-        </div>
-      </div>
-    </Container>
-  );
-};
 export default ScheduleBox;
