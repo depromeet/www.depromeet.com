@@ -12,6 +12,7 @@ const Project = () => (
       <img
         src="/project_background_image.svg"
         alt="Background"
+        loading="lazy"
       />
     </TopBackground>
     <CenterAlignedContainer>
@@ -45,6 +46,7 @@ const AllProjects = () => (
         <img
           src="/arrow_down_green.svg"
           alt="arrow down"
+          loading="lazy"
         />
       </div>
     </div>

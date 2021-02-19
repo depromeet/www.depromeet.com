@@ -1,42 +1,32 @@
 import styled from 'styled-components';
 import { ReactNode } from 'react';
-import Lottie from 'react-lottie';
+import StepLottie from './StepLottie';
 
-const ScheduleBox = ({ detail, index }:
-  {
-    detail: {
-      duration: string;
-      desc: ReactNode;
-      lottie;
-    };
-    index: number;
-  }) => {
-  const lottieOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: detail.lottie,
+interface ScheduleProps {
+  detail: {
+    duration: string;
+    desc: ReactNode;
+    lottie: string;
   };
-  return (
-    <Container>
-      <div className="title">
-        <div className="title--step">STEP {index + 1}</div>
-        <div className="title--duration title--duration__green">{detail.duration}</div>
+  index: number;
+}
+
+const ScheduleBox = ({ detail, index }: ScheduleProps) => (
+  <Container>
+    <div className="title">
+      <div className="title--step">STEP {index + 1}</div>
+      <div className="title--duration title--duration__green">{detail.duration}</div>
+    </div>
+    <div className="desc">
+      {detail.desc}
+    </div>
+    <div className="motion">
+      <div className="motion--img">
+        <StepLottie path={detail.lottie} />
       </div>
-      <div className="desc">
-        {detail.desc}
-      </div>
-      <div className="motion">
-        <div className="motion--img">
-          <Lottie
-            ariaRole="img"
-            isClickToPauseDisabled
-            options={lottieOptions}
-          />
-        </div>
-      </div>
-    </Container>
-  );
-};
+    </div>
+  </Container>
+);
 
 const Container = styled.div`
   width: 114rem;
