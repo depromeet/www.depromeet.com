@@ -75,6 +75,8 @@ const TopBackground = styled.div`
   bottom: 0;
   width: 100%;
   height: 43.4rem;
+  display: flex;
+  justify-content: center;
 `;
 
 const CenterAlignedContainer = styled.div`
