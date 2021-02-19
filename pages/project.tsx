@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Image from 'next/image';
 import React from 'react';
 import { Header, Footer } from '../components';
 import SmallBox from '../components/SmallBox';
@@ -82,6 +81,7 @@ const TopBackground = styled.div`
 
 const CenterAlignedContainer = styled.div`
   /* position: relative; */
+  background-color: transparent;
   width: 114rem;
   margin-left: auto;
   margin-right: auto;
