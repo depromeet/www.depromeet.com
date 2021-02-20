@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router';
+import dynamic from 'next/dynamic';
 import styled from 'styled-components';
-import { Logo } from '../public';
+
+const Logo = dynamic(() => import('../public/gnb_logo.svg'));
 
 const Header = () => (
   <Container>

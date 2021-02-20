@@ -9,7 +9,20 @@ module.exports = withBundleAnalyzer({
   webpack(conf) {
     conf.module.rules.push({
       test: /\.svg$/,
-      use: ['@svgr/webpack'],
+      use: [
+        {
+          loader: '@svgr/webpack',
+          options: {
+            svgoConfig: {
+              plugins: [{
+                removeRasterImages: false,
+                removeStyleElement: false,
+                removeUnknownsAndDefaults: false,
+              }],
+            },
+          },
+        },
+      ],
     });
 
     return conf;

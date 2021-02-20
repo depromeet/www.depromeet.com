@@ -1,19 +1,19 @@
 import styled from 'styled-components';
 import React from 'react';
+import dynamic from 'next/dynamic';
+
 import { Header, Footer } from '../components';
 import SmallBox from '../components/SmallBox';
 import ScheduleBox from '../components/ScheduleBox';
 import { steps } from '../public/schedule';
 
+const BackgroundImage = dynamic(() => import('../public/project_background_image.svg'));
+
 const Project = () => (
   <>
     <Header />
     <TopBackground>
-      <img
-        src="/project_background_image.svg"
-        alt="Background"
-        loading="lazy"
-      />
+      <BackgroundImage />
     </TopBackground>
     <CenterAlignedContainer>
       <Catchphrase>
