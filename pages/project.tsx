@@ -8,6 +8,7 @@ import ScheduleBox from '../components/ScheduleBox';
 import { steps } from '../public/schedule';
 
 const BackgroundImage = dynamic(() => import('../public/project_background_image.svg'));
+const ArrowDownGreen = dynamic(() => import('../public/arrow_down_green.svg'));
 
 const Project = () => (
   <>
@@ -43,11 +44,7 @@ const AllProjects = () => (
     <div className="button button__green" role="button">
       더보기
       <div className="button--img">
-        <img
-          src="/arrow_down_green.svg"
-          alt="arrow down"
-          loading="lazy"
-        />
+        <ArrowDownGreen />
       </div>
     </div>
   </ProjectSection>
