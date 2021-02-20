@@ -1,18 +1,19 @@
 import styled from 'styled-components';
 import React from 'react';
+import dynamic from 'next/dynamic';
 import { Header, Footer } from '../components';
 import SmallBox from '../components/SmallBox';
 import ScheduleBox from '../components/ScheduleBox';
 import { steps } from '../public/schedule';
 
+const ArrowDownGreen = dynamic(() => import('../public/arrow_down_green.svg'));
+const BackgroundImage = dynamic(() => import('../public/project_background_image.svg'));
+
 const Project = () => (
   <>
     <Header />
     <TopBackground>
-      <img
-        src="/project_background_image.svg"
-        alt="Background"
-      />
+      <BackgroundImage />
     </TopBackground>
     <CenterAlignedContainer>
       <Catchphrase>
@@ -42,10 +43,7 @@ const AllProjects = () => (
     <div className="button button__green" role="button">
       더보기
       <div className="button--img">
-        <img
-          src="/arrow_down_green.svg"
-          alt="arrow down"
-        />
+        <ArrowDownGreen />
       </div>
     </div>
   </ProjectSection>
@@ -73,6 +71,8 @@ const TopBackground = styled.div`
   bottom: 0;
   width: 100%;
   height: 43.4rem;
+  display: flex;
+  justify-content: center;
 `;
 
 const CenterAlignedContainer = styled.div`
