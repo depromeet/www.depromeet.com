@@ -4,7 +4,7 @@ import StepLottie from '../components/StepLottie';
 import {
   Gmail, Kakao, Meet, Memoji, T,
 } from '../public';
-import { stepA, stepC } from '../public/lottie';
+import { stepA, stepC } from '../resources/lottie';
 
 const Contact = () => (
   <div>
@@ -26,10 +26,10 @@ const Contact = () => (
             <Memoji />
           </div>
           <div className="svg__stepA">
-            <StepLottie path={stepA} />
+            <StepLottie lottie={stepA} />
           </div>
           <div className="svg__stepC">
-            <StepLottie path={stepC} />
+            <StepLottie lottie={stepC} />
           </div>
         </div>
         <div className="box">

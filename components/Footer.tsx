@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import dynamic from 'next/dynamic';
 
-const FooterLogo = dynamic(() => import('../public/logo_footer.svg'));
-const InstagramLogo = dynamic(() => import('../public/ic_sns_instagram.svg'));
-const FacebookLogo = dynamic(() => import('../public/ic_sns_facebook.svg'));
-const MediumLogo = dynamic(() => import('../public/ic_sns_medium.svg'));
+const FooterLogo = dynamic(() => import('../resources/images/logo_footer.svg'));
+const InstagramLogo = dynamic(() => import('../resources/images/ic_sns_instagram.svg'));
+const FacebookLogo = dynamic(() => import('../resources/images/ic_sns_facebook.svg'));
+const MediumLogo = dynamic(() => import('../resources/images/ic_sns_medium.svg'));
 
 const Container = styled.footer`
   background: #0C0C0C;

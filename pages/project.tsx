@@ -1,13 +1,14 @@
+/* eslint-disable react/no-array-index-key */
 import styled from 'styled-components';
 import React from 'react';
 import dynamic from 'next/dynamic';
 import { Header, Footer } from '../components';
 import SmallBox from '../components/SmallBox';
 import ScheduleBox from '../components/ScheduleBox';
-import { steps } from '../public/schedule';
+import { steps } from '../resources/schedule';
 
-const ArrowDownGreen = dynamic(() => import('../public/arrow_down_green.svg'));
-const BackgroundImage = dynamic(() => import('../public/project_background_image.svg'));
+const ArrowDownGreen = dynamic(() => import('../resources/images/arrow_down_green.svg'));
+const BackgroundImage = dynamic(() => import('../resources/images/project_background_image.svg'));
 
 const Project = () => (
   <>
@@ -33,8 +34,8 @@ const AllProjects = () => (
       모든 작업물<sup>30</sup>
     </Title>
     <Boxes>
-      {[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0].map(() => (
-        <div className="project--item" key="project-$index" role="button">
+      {[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0].map((v, index) => (
+        <div className="project--item" key={`project-${index}`} role="button">
           <SmallBox />
           <div className="project--title">프로젝트 명</div>
         </div>
@@ -57,7 +58,7 @@ const AllSchedule = () => (
     </Title>
     <Schedules>
       {steps.map((v, idx) => (
-        <ScheduleBox detail={v} key="steps-$idx" index={idx} />
+        <ScheduleBox detail={v} key={`steps-${idx}`} index={idx} />
       ))}
     </Schedules>
   </ScheduleSection>
