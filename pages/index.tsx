@@ -30,7 +30,8 @@ const Container1 = () => (
       서비스 런칭부터 개선까지 <span className="info__green">경험에 성장을 더하는 모임</span>입니다.
     </div>
     <div className="motion">
-      모션 들어갈 곳
+      <div>Programmer Designer</div>
+      <div style={{ marginTop: '6rem' }}>Depromeet 9th 2021 Meet</div>
     </div>
   </Cont1>
 );
@@ -126,9 +127,12 @@ const Cont1 = styled.div`
     }
   }
   .motion {
-    height: 30rem;
-    background-color: gray;
     margin-top: 17.6rem;
+    font-family: Montserrat;
+    font-weight: 900;
+    font-size: 12rem;
+    line-height: 14.6rem;
+    white-space: nowrap;
   }
 `;
 
