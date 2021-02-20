@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import {
-  GreenQuote1, GreenQuote2, BlueQuote1, BlueQuote2,
+  Programmer, Designer, GreenQuote1, GreenQuote2, BlueQuote1, BlueQuote2,
 } from '../public';
 
 const StoryBox = ({ story }) => (
   <Container>
-    {story.job === 'programmer' && <JobAvatar job={story.job} />}
+    {story.job === 'programmer' && <Programmer />}
     <Bubble job={story.job}>
       <div className="quote1">{story.job === 'programmer' ? <GreenQuote1 /> : <BlueQuote1 />}</div>
       <div className="quote2">{story.job === 'programmer' ? <GreenQuote2 /> : <BlueQuote2 />}</div>
@@ -13,15 +13,8 @@ const StoryBox = ({ story }) => (
         <div className="content__person">{story.person}</div>
       </div>
     </Bubble>
-    {story.job === 'designer' && <JobAvatar job={story.job} />}
+    {story.job === 'designer' && <Designer />}
   </Container>
-);
-
-const JobAvatar = ({ job }) => (
-  <img
-    src={job === 'designer' ? '/Group 290.svg' : '/Group 289.svg'}
-    alt="Job Avatar"
-  />
 );
 
 const Container = styled.div`
