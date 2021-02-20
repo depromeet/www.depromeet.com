@@ -1,18 +1,26 @@
-import { useEffect, useState } from 'react';
+import {
+  useEffect, useState, FC, ComponentType,
+} from 'react';
 import dynamic from 'next/dynamic';
 
 const Lottie = dynamic(() => import('react-lottie'));
 
-const StepLottie = ({ path }) => {
+export type LottieProps = {
+  file: Promise<unknown>,
+  fallback: ComponentType,
+};
+
+const StepLottie: FC<{lottie: LottieProps}> = ({ lottie }) => {
   const [lottieFile, setLottie] = useState(null);
+  const FallbackImage = lottie.fallback;
 
   useEffect(() => {
     async function fetchLottie() {
-      const fetchedLottie = await import(`../public${path}`);
-      setLottie(fetchedLottie.default);
+      const fetchedLottie = await lottie.file;
+      setLottie(fetchedLottie);
     }
     fetchLottie();
-  }, [path, setLottie]);
+  }, [lottie, setLottie]);
 
   const lottieOptions = {
     loop: true,
@@ -22,8 +30,7 @@ const StepLottie = ({ path }) => {
   return (
     <>
       {
-        lottieFile === null
-          ? <div />
+        lottieFile === null ? <FallbackImage />
           : (
             <Lottie
               ariaRole="img"

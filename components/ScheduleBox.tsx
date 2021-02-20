@@ -1,17 +1,17 @@
 import styled from 'styled-components';
-import { ReactNode } from 'react';
-import StepLottie from './StepLottie';
+import { ReactNode, FC } from 'react';
+import StepLottie, { LottieProps } from './StepLottie';
 
 interface ScheduleProps {
   detail: {
     duration: string;
     desc: ReactNode;
-    lottie: string;
+    lottie: LottieProps ;
   };
   index: number;
 }
 
-const ScheduleBox = ({ detail, index }: ScheduleProps) => (
+const ScheduleBox: FC<ScheduleProps> = ({ detail, index }) => (
   <Container>
     <div className="title">
       <div className="title--step">STEP {index + 1}</div>
@@ -22,7 +22,7 @@ const ScheduleBox = ({ detail, index }: ScheduleProps) => (
     </div>
     <div className="motion">
       <div className="motion--img">
-        <StepLottie path={detail.lottie} />
+        <StepLottie lottie={detail.lottie} />
       </div>
     </div>
   </Container>
