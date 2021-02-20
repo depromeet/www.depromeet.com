@@ -18,7 +18,9 @@ const Contact = () => (
       }}
       >
         <div className="svg">
-          <Meet />
+          <div className="svg__meet">
+            <Meet />
+          </div>
           <div className="svg__t">
             <T />
           </div>
@@ -73,16 +75,21 @@ const Container = styled.div`
   justify-content: center;
   .svg {
     position: relative;
+    &__meet {
+      position: relative;
+      z-index: 1;
+    }
     &__t {
       position: absolute;
       top: 0;
       right: 0;
-      z-index: 1;
+      z-index: 3;
     }
     &__memoji {
       position: absolute;
       bottom: 1.6rem;
       right: 1.8rem;
+      z-index: 2;
     }
     &__stepA {
       position: absolute;
@@ -95,6 +102,7 @@ const Container = styled.div`
       width: 15rem;
       top: -5rem;
       right: 2rem;
+      z-index: 2;
     }
   }
   .box {

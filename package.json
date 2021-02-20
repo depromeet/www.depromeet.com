@@ -21,6 +21,7 @@
     "next-on-netlify": "^2.8.7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "sass": "^1.32.7",
     "react-lottie": "^1.2.3",
     "styled-components": "^5.2.1",
     "styled-reset": "^4.3.4"
