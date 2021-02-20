@@ -37,8 +37,8 @@ const Container1 = () => (
 );
 
 const Container2 = () => (
-  <div style={{ display: 'flex', justifyContent: 'center' }}>
-    <Cont2>
+  <Cont2>
+    <div style={{ flex: '0.3', position: 'relative' }}>
       <div className="summary">
         <div className="summary__title">탄생한지</div>
         <div className="summary__value">5년</div>
@@ -47,32 +47,31 @@ const Container2 = () => (
         <div className="summary__title">런칭 앱</div>
         <div className="summary__value">N개 +</div>
       </div>
-      <div style={{ position: 'relative', marginLeft: '10rem' }}>
-        <div className="title">
-          <div>오직 디자이너와 프로그래머의</div>
-          <span className="title__bold">동반성장</span>을 위해서
+    </div>
+    <div style={{ flex: '0.7', position: 'relative', marginLeft: '10rem' }}>
+      <div className="title">
+        <div>오직 디자이너와 프로그래머의</div>
+        <span className="title__bold">동반성장</span>을 위해서
+      </div>
+      <div className="boxes">
+        <div className="boxes__wrapper">
+          <SmallBox />
+          <SmallBox />
+          <SmallBox />
+          <SmallBox />
+          <SmallBox />
+          <SmallBox />
+          <SmallBox />
+          <SmallBox />
+          <SmallBox />
+          <SmallBox />
         </div>
-        <div className="boxes">
-          <div className="boxes__wrapper">
-            <SmallBox />
-            <SmallBox />
-            <SmallBox />
-            <SmallBox />
-            <SmallBox />
-            <SmallBox />
-            <SmallBox />
-            <SmallBox />
-            <SmallBox />
-            <SmallBox />
-          </div>
-          <div className="boxes__button" role="button">
-            모든 프로젝트 구경하기 {'>'}
-          </div>
+        <div className="boxes__button" role="button">
+          모든 프로젝트 구경하기 {'>'}
         </div>
       </div>
-    </Cont2>
-  </div>
-
+    </div>
+  </Cont2>
 );
 
 const Container3 = () => (
@@ -137,11 +136,14 @@ const Cont1 = styled.div`
 `;
 
 const Cont2 = styled.div`
+  width: 100%;
   display: flex;
   margin-top: 31.6rem;
-  /* width: 100%; */
+  flex: 1;
   .summary {
     display: flex;
+    position: absolute;
+    right: 0;
     flex-direction: column;
     &__title {
       font-size: 1.6rem;
@@ -164,11 +166,14 @@ const Cont2 = styled.div`
     &__wrapper {
       position: absolute;
       display: flex;
+      overflow: scroll;
+      widtH: 100%;
     }
     &__button {
       position: absolute;
+      left: 0;
       bottom :0;
-      right: 0;
+      margin-left: 60rem;
       border-radius: 2.7rem;
       font-size: 1.5rem;
       padding: 1.2rem 2.4rem;
