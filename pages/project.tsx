@@ -1,11 +1,12 @@
 /* eslint-disable react/no-array-index-key */
 import styled from 'styled-components';
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import { Header, Footer } from '../components';
-import SmallBox from '../components/SmallBox';
 import ScheduleBox from '../components/ScheduleBox';
-import { steps } from '../resources/schedule';
+import { steps } from '../resources/data/schedule';
+import Projects from '../components/Projects';
+import projectsData from '../resources/data/projects';
 
 const ArrowDownGreen = dynamic(() => import('../resources/images/arrow_down_green.svg'));
 const BackgroundImage = dynamic(() => import('../resources/images/project_background_image.svg'));
@@ -28,27 +29,35 @@ const Project = () => (
   </>
 );
 
-const AllProjects = () => (
-  <ProjectSection>
-    <Title>
-      모든 작업물<sup>30</sup>
-    </Title>
-    <Boxes>
-      {[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0].map((v, index) => (
-        <div className="project--item" key={`project-${index}`} role="button">
-          <SmallBox />
-          <div className="project--title">프로젝트 명</div>
+const AllProjects = () => {
+  const [expanded, setExpanded] = useState(false);
+
+  const onClickExpandButton = useCallback(() => {
+    setExpanded(!expanded);
+  }, [expanded]);
+  return (
+    <ProjectSection>
+      <Title>
+        모든 작업물<sup>{projectsData.length}</sup>
+      </Title>
+      <Boxes>
+        <Projects expanded={expanded} />
+      </Boxes>
+      <div
+        className="button button__green"
+        role="button"
+        onClick={onClickExpandButton}
+        onKeyDown={() => {}}
+        tabIndex={0}
+      >
+        {expanded ? '접기' : '더보기'}
+        <div className={`button--img ${expanded ? 'button--img__usd' : ''}`}>
+          <ArrowDownGreen />
         </div>
-      ))}
-    </Boxes>
-    <div className="button button__green" role="button">
-      더보기
-      <div className="button--img">
-        <ArrowDownGreen />
       </div>
-    </div>
-  </ProjectSection>
-);
+    </ProjectSection>
+  );
+};
 
 const AllSchedule = () => (
   <ScheduleSection>
@@ -70,7 +79,6 @@ const TopBackground = styled.div`
   top: 0;
   left: 0;
   bottom: 0;
-  width: 100%;
   height: 43.4rem;
   display: flex;
   justify-content: center;
@@ -134,30 +142,7 @@ const Title = styled.h1`
 `;
 
 const Boxes = styled.div`
-  display: grid;
-  grid-auto-flow: row;
-  grid-template: repeat(2, 1fr) / repeat(6, 1fr);
-  gap: 3.2rem 2.4rem;
   margin-bottom: 5.6rem;
-  .project--item {
-    width: 17rem;
-    height: 21rem;
-    display: flex;
-    flex-direction:column;
-    justify-content: space-between;
-    position: relative;
-  }
-
-  .project--title {
-    font-family: Apple SD Gothic Neo;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 1.6rem;
-    line-height: 1.9rem;
-    text-align: center;
-    letter-spacing: -0.03em;
-    color: #FFFFFF;
-  }
 `;
 
 const ProjectSection = styled.div`
@@ -171,7 +156,7 @@ const ProjectSection = styled.div`
     padding: 1.2rem 3rem;
     width: fit-content;
     position: relative;
-    display: flex;
+    display: ${projectsData.length > 12 ? 'flex' : 'none'};
     align-self: center;
     :hover {
       background-color: #001401;
@@ -186,6 +171,10 @@ const ProjectSection = styled.div`
       margin-left: 0.8rem;
       position: relative;
       display:inline-block;
+
+      &__usd {
+        transform: rotate(180deg);
+      }
     }
   }
 `;

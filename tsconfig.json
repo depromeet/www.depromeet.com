@@ -29,7 +29,8 @@
     "pages",
     "public",
     "**/*.scss",
-    "components"
+    "components",
+    "resources/lottie",
   ],
   "exclude": [
     "node_modules",
