@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import Link from 'next/link';
 import { Header, Footer } from '../components';
-import SmallBox from '../components/SmallBox';
+import Projects from '../components/Projects';
 import StoryBox from '../components/StoryBox';
 import { stories } from '../public/data';
 
@@ -54,21 +55,12 @@ const Container2 = () => (
         <span className="title__bold">동반성장</span>을 위해서
       </div>
       <div className="boxes">
-        <div className="boxes__wrapper">
-          <SmallBox />
-          <SmallBox />
-          <SmallBox />
-          <SmallBox />
-          <SmallBox />
-          <SmallBox />
-          <SmallBox />
-          <SmallBox />
-          <SmallBox />
-          <SmallBox />
-        </div>
-        <div className="boxes__button" role="button">
-          모든 프로젝트 구경하기 {'>'}
-        </div>
+        <Projects isMainPage />
+        <Link href="/project">
+          <div className="boxes__button" role="button">
+            모든 프로젝트 구경하기 {'>'}
+          </div>
+        </Link>
       </div>
     </div>
   </Cont2>
@@ -166,8 +158,7 @@ const Cont2 = styled.div`
     &__wrapper {
       position: absolute;
       display: flex;
-      overflow: scroll;
-      widtH: 100%;
+      width: 100%;
     }
     &__button {
       position: absolute;

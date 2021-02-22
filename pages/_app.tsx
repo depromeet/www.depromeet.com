@@ -10,6 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Component {...pageProps} />
+        <div id="modal-root" />
       </ThemeProvider>
     </>
   );

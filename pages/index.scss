@@ -6,3 +6,8 @@
         transform: translateY(0);
     }
 }
+
+#modal-root {
+    position:fixed;
+    z-index: 1300;
+}
