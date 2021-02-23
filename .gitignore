@@ -16,6 +16,7 @@ node_modules/
 
 # Transpiled code
 dist
+out
 .out
 
 # Dev tools
