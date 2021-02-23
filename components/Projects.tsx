@@ -30,7 +30,7 @@ const Projects: FC<ProjectsProps> = ({ isMainPage = false, expanded = false }) =
               onClick={() => showProjectDialog(index)}
             >
               <div className="project--icon-wrapper">
-                <MemoizedIcon data={data} />
+                <Icon data={data} />
                 <Overlay />
               </div>
               <div className="project--title">{data.title}</div>
@@ -43,6 +43,22 @@ const Projects: FC<ProjectsProps> = ({ isMainPage = false, expanded = false }) =
   );
 };
 
+const Icon = ({ data }) => {
+  if (typeof data.icon === 'string') {
+    return (
+      <img
+        className="project--icon-wrapper project--icon"
+        src={data.icon}
+        loading="lazy"
+        alt={`${data.title}-icon`}
+        style={{
+          objectFit: 'scale-down',
+        }}
+      />
+    );
+  }
+  return <MemoizedIcon data={data} />;
+};
 const MemoizedIcon = ({ data }) => {
   const ProjectIcon = useMemo(() => data.icon(), [data]);
   return <ProjectIcon className="project--icon" />;
@@ -81,6 +97,7 @@ const ProjectSummary = styled.div<ProjectsProps>`
       border-radius: 2.4rem;
       margin-bottom: 2.4rem;
       position: relative;
+      overflow: hidden;
     }
     &--icon {
       width: 100%;

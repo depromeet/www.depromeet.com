@@ -1,6 +1,8 @@
 /* eslint-disable react/no-array-index-key */
 import {
-  FC, useEffect, useMemo, useState, useCallback, useRef, MutableRefObject, forwardRef,
+  FC, useEffect, useMemo, useState,
+  useCallback, useRef, MutableRefObject,
+  forwardRef, CSSProperties, useLayoutEffect,
 } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
@@ -35,7 +37,7 @@ const ProjectDialog: FC<ProjectDialogProps> = (props) => {
 
   return (
     <>
-      {isClientSide && visible.visible && <ProjectDialogContents {...props} />}
+      {isClientSide && visible.visible && <ProjectDialogList {...props} />}
     </>
   );
 };
@@ -48,20 +50,19 @@ const useCloseOnEsc = (onEscKeyDown) => {
         window.removeEventListener('keydown', onEscKeyDown);
       };
     }
+    return () => {};
   }, [onEscKeyDown]);
 };
 
-const ProjectDialogContents:FC<ProjectDialogProps> = ({ visible, setVisible }) => {
+const ProjectDialogList:FC<ProjectDialogProps> = ({ visible, setVisible }) => {
   const modalElement = useMemo(() => document.createElement('div'), []);
   const closeDialog = useCallback(() => setVisible({ visible: false, index: 0 }), [setVisible]);
-  const scrollRef = useRef<FixedSizeList>(null);
   const onEscKeyDown = useCallback((e) => {
     if (e.keyCode === 27) {
       closeDialog();
     }
   }, [closeDialog]);
 
-  useScrollToIndex(scrollRef, visible.index);
   usePortalSetup(modalElement);
   useCloseOnEsc(onEscKeyDown);
 
@@ -71,22 +72,8 @@ const ProjectDialogContents:FC<ProjectDialogProps> = ({ visible, setVisible }) =
         <Backdrop onClick={closeDialog} />
         <AutoSize>
           {({ width, height }) => (
-            <ProjectsListWrapper height={height} width={width}>
-              <FixedSizeList
-                itemCount={projectsData.length}
-                layout="horizontal"
-                height={`${contentHeight}rem`}
-                width={width}
-                itemSize={contentWidth * 10}
-                ref={scrollRef}
-                itemData={projectsData}
-                style={{
-                  overflowY: 'hidden',
-                }}
-                innerElementType={innerWrapper}
-              >
-                {ProjectItem}
-              </FixedSizeList>
+            <ProjectsListWrapper height={height} width={width} onClick={closeDialog}>
+              <ProjectsDialogContents width={width} index={visible.index} />
             </ProjectsListWrapper>
           )}
         </AutoSize>
@@ -95,50 +82,97 @@ const ProjectDialogContents:FC<ProjectDialogProps> = ({ visible, setVisible }) =
     modalElement,
   );
 };
+const ProjectsDialogContents: FC<{width: number, index: number}> = ({ width, index }) => {
+  const scrollRef = useRef<FixedSizeList>();
+  useScrollToIndex(scrollRef, index);
+  return (
+    <FixedSizeList
+      className="no-scroll-bar"
+      itemCount={projectsData.length}
+      layout="horizontal"
+      height={`${contentHeight}rem`}
+      width={width}
+      itemSize={contentWidth * 10}
+      ref={scrollRef}
+      itemData={projectsData}
+      style={{
+        overflowY: 'hidden',
+        msOverflowStyle: 'none',
+        scrollbarWidth: 'none',
+      }}
+      innerElementType={innerWrapper}
+    >
+      {ProjectItem}
+    </FixedSizeList>
+  );
+};
 
-const innerWrapper = forwardRef(({ style, ...rest }, ref) => (
+const innerWrapper = forwardRef<HTMLDivElement, {style: CSSProperties}>(({ style, ...rest }, ref) => (
   <div
+    className="no-scroll-bar"
     ref={ref}
     style={{
       ...style,
-      width: `${parseFloat(style.width) + 520 * 2}px`,
+      width: `${parseFloat(style.width.toString()) + contentPadding * 10 * 2 + contentGap * 10 * (projectsData.length - 1)}px`,
     }}
     {...rest}
   />
 ));
 
 const useScrollToIndex = (scrollRef: MutableRefObject<FixedSizeList>, index: number) => {
-  useEffect(() => {
-    if (scrollRef.current !== null) { scrollRef.current.scrollToItem(index, 'center'); }
+  useLayoutEffect(() => {
+    if (scrollRef.current) { scrollRef.current.scrollTo(contentPadding * 10 * (index > 0 ? 1 : 0) + index * 800); }
   }, [scrollRef, index]);
 };
 
-const usePortalSetup = (portal: HTMLElement, rootId = 'modal-root') => useEffect(() => {
-  const modalRoot = document.getElementById(rootId);
-  modalRoot.appendChild(portal);
-  return () => {
-    modalRoot.removeChild(portal);
-  };
-}, [portal, rootId]);
+const usePortalSetup = (portal: HTMLElement, rootId = 'modal-root') => useEffect(
+  () => {
+    const modalRoot = document.getElementById(rootId);
+    modalRoot.appendChild(portal);
+    return () => {
+      modalRoot.removeChild(portal);
+    };
+  }, [portal, rootId],
+);
 
 const RightBorder = rightBorderImg();
 interface ProjectDataProps extends ListChildComponentProps{
   data: ProjectData[];
 }
+const Image = ({ data }) => {
+  if (typeof data.icon === 'string') {
+    return (
+      <img
+        src={data.image}
+        loading="lazy"
+        alt={`${data.title}`}
+        style={{
+          objectFit: 'contain',
+          height: '37rem',
+        }}
+      />
+    );
+  }
+  return <MemoizedImage data={data} />;
+};
+const MemoizedImage = ({ data }) => {
+  const ProjectImage = useMemo(() => data.image(), [data]);
+  return <ProjectImage />;
+};
 const ProjectItem:FC<ProjectDataProps> = ({ data, index, style }) => {
   const projectData = data[index];
-  const Image = useMemo(() => projectData.image(), [projectData]);
 
   return (
     <ProjectDetail
       key={`project-detail-${index}`}
       style={{
         ...style,
-        left: `${parseFloat(style.left) + 560}px`,
+        left: `${parseFloat(style.left.toString()) + contentPadding * 10 + contentGap * 10 * (index)}px`,
       }}
+      onClick={(e) => e.stopPropagation()}
     >
       <div className="image">
-        <Image />
+        <Image data={projectData} />
         <div className="image-shadow" />
       </div>
       <div className="detail">
@@ -170,8 +204,8 @@ const ProjectItem:FC<ProjectDataProps> = ({ data, index, style }) => {
             </span>
           </div>
           <TeamMember job="designer" member={projectData.desingers?.join(' ∙ ')} />
-          <TeamMember job="backend" member={projectData.frontends?.join(' ∙ ')} />
-          <TeamMember job="frontend" member={projectData.backends?.join(' ∙ ')} />
+          <TeamMember job="backend" member={projectData.backends?.join(' ∙ ')} />
+          <TeamMember job="frontend" member={projectData.frontends?.join(' ∙ ')} />
         </div>
       </div>
     </ProjectDetail>
@@ -262,6 +296,8 @@ const LinkButton: FC<{link?: string, className: string}> = ({ link, className, c
 // rem
 const contentWidth = 80;
 const contentHeight = 84;
+const contentGap = 5.6;
+const contentPadding = 52;
 const Container = styled.div`
   position: fixed;
   top:0;
@@ -290,12 +326,12 @@ const ProjectDetail = styled.div`
   background-color: #212121;
   border-radius: 3.6rem;
   opacity: 1;
-  margin-left: 5.6rem;
+  margin-left: ${contentGap}rem;
   left: 52rem;
   z-index: 1;
-  :first-of-type {
+  /* :first-of-type {
     margin-left: 0;
-  }
+  } */
   .image {
     height: 42rem;
     width: 100%;

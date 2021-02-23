@@ -9,8 +9,8 @@ export interface ProjectData {
   desingers?: string[];
   backends?: string[];
   frontends?: string[];
-  image: LazyLoadableImage;
-  icon: LazyLoadableImage;
+  image: LazyLoadableImage | string;
+  icon: LazyLoadableImage | string;
   description?: string;
   ios?: string;
   android?: string;
