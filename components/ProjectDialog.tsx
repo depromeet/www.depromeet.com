@@ -105,9 +105,7 @@ const ProjectsDialogContents:FC<ProjectContentsProps> = ({ width, index, scrollR
         ref={scrollRef}
         itemData={projectsData}
         style={{
-          overflowY: 'hidden',
-          msOverflowStyle: 'none',
-          scrollbarWidth: 'none',
+          overflow: 'hidden',
         }}
         innerElementType={innerWrapper}
       >

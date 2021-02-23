@@ -14,7 +14,9 @@ const Project = () => {
     <>
       <Header />
       <TopBackground>
-        <BackgroundImage />
+        <div style={{ width: '192rem' }}>
+          <BackgroundImage />
+        </div>
       </TopBackground>
       <CenterAlignedContainer>
         <Catchphrase>
