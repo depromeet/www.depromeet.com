@@ -44,10 +44,13 @@ const Bubble = styled.div<{job: string}>`
     white-space: pre-line;
     text-align: start;
     margin-top: 6.1rem;
-    margin-left: 4rem;
+    margin: 4rem;
     &__person {
       margin-top: 1.6rem;
       font-size: 1.4rem;
+      color: ${({ theme, job }) => (job === 'programmer' ? theme.color.green : theme.color.blue)}
+    }
+    b {
       color: ${({ theme, job }) => (job === 'programmer' ? theme.color.green : theme.color.blue)}
     }
   }

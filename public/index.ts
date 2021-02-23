@@ -10,3 +10,5 @@ export { default as Gmail } from './ic_gmail.svg';
 export { default as Kakao } from './ic_kakao.svg';
 export { default as Memoji } from './Memoji.svg';
 export { default as T } from './T.svg';
+export { default as RightArrow } from './RightArrow.svg';
+export { default as LeftArrow } from './LeftArrow.svg';
