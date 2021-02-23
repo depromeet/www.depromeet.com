@@ -466,6 +466,9 @@ const ProjectDetail = styled.div`
         }
 
         &__link {
+          :hover {
+            background-color: #101010;
+          }
         }
         &__construction {
           background-color: #363636;
