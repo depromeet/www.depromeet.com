@@ -30,7 +30,7 @@
     "public",
     "**/*.scss",
     "components",
-    "resources/lottie",
+    "resources",
   ],
   "exclude": [
     "node_modules",

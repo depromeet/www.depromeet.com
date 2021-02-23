@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { Header, Footer } from '../components';
 import Projects from '../components/Projects';
 import StoryBox from '../components/StoryBox';
-import { stories } from '../public/data';
+import { stories } from '../resources/data/reviews';
+import TextAnimation from '../components/TextAnimation';
 
 const Index = () => (
   <>
@@ -28,11 +29,11 @@ const Container1 = () => (
     </div>
     <div className="info">
       <div>우리는 단순한 IT동아리가 아닙니다.</div>
-      서비스 런칭부터 개선까지 <span className="info__green">경험에 성장을 더하는 모임</span>입니다.
+      서비스 런칭부터 개선까지{' '}
+      <span className="info__green">경험에 성장을 더하는 모임</span>입니다.
     </div>
     <div className="motion">
-      <div>Programmer Designer</div>
-      <div style={{ marginTop: '6rem' }}>Depromeet 9th 2021 Meet</div>
+      <TextAnimation />
     </div>
   </Cont1>
 );
@@ -72,7 +73,9 @@ const Container3 = () => (
       <div>지금까지 우리들의</div>
       <span className="title__bold">프로덕트</span> 이야기
     </div>
-    {stories.map((story, idx) => <StoryBox key={idx.toString()} story={story} />)}
+    {stories.map((story, idx) => (
+      <StoryBox key={idx.toString()} story={story} />
+    ))}
   </Cont3>
 );
 
@@ -82,10 +85,16 @@ const Container4 = () => (
       <div>Depromeet의</div>
       <span className="title__bold">아홉 번째 이야기</span>를
       <div>만들어가고 싶다면</div>
-      <div className="small">Depromeet 9기는 COVID-19확산으로 인해 온라인 모임을 지향하고 있습니다.</div>
+      <div className="small">
+        Depromeet 9기는 COVID-19확산으로 인해 온라인 모임을 지향하고 있습니다.
+      </div>
     </div>
-    <div className="gradientBtn" role="button">9기에서 만나기</div>
-    <div className="greenBtn" role="button">지인에게 공유하기</div>
+    <div className="gradientBtn" role="button">
+      9기에서 만나기
+    </div>
+    <div className="greenBtn" role="button">
+      지인에게 공유하기
+    </div>
   </Cont4>
 );
 
@@ -119,11 +128,7 @@ const Cont1 = styled.div`
   }
   .motion {
     margin-top: 17.6rem;
-    font-family: Montserrat;
-    font-weight: 900;
-    font-size: 12rem;
-    line-height: 14.6rem;
-    white-space: nowrap;
+    display: relative;
   }
 `;
 
@@ -163,13 +168,13 @@ const Cont2 = styled.div`
     &__button {
       position: absolute;
       left: 0;
-      bottom :0;
+      bottom: 0;
       margin-left: 60rem;
       border-radius: 2.7rem;
       font-size: 1.5rem;
       padding: 1.2rem 2.4rem;
       border: ${({ theme }) => `0.1rem solid ${theme.color.green}`};
-      color: ${({ theme }) => theme.color.green}
+      color: ${({ theme }) => theme.color.green};
     }
   }
 `;
@@ -210,7 +215,8 @@ const Cont4 = styled.div`
     align-items: center;
     justify-content: center;
     width: 36.3rem;
-    height: 5.4rem;    text-align: center;
+    height: 5.4rem;
+    text-align: center;
     font-size: 1.6rem;
     font-weight: 700;
     border: ${({ theme }) => `0.1rem solid ${theme.color.green}`};
