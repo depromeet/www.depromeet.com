@@ -30,8 +30,10 @@ const Footer = () => {
 };
 const MediaButton = ({ href, children }) => (
   <Button
+    role="button"
     tabIndex={0}
     href={href}
+    target="_blank"
   >
     {children}
   </Button>

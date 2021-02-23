@@ -1,6 +1,8 @@
 /* eslint-disable react/no-array-index-key */
 import styled from 'styled-components';
-import { FC, useState, useCallback } from 'react';
+import {
+  FC, useState, useCallback, useMemo,
+} from 'react';
 import projectsData from '../resources/data/projects';
 import ProjectDialog from './ProjectDialog';
 import { calcRows, calcColumns, calcMaxHeight } from '../lib/projects_grid';
@@ -20,28 +22,30 @@ const Projects: FC<ProjectsProps> = ({ isMainPage = false, expanded = false }) =
     <>
       <Container isMainPage={isMainPage} expanded={expanded}>
         {
-          projectsData.map((data, index) => {
-            const ProjectIcon = data.icon();
-            return (
-              <ProjectSummary
-                role="button"
-                tabIndex={0}
-                key={`projects-item-${index}`}
-                onClick={() => showProjectDialog(index)}
-              >
-                <div className="project--icon-wrapper">
-                  <ProjectIcon className="project--icon" />
-                  <Overlay />
-                </div>
-                <div className="project--title">{data.title}</div>
-              </ProjectSummary>
-            );
-          })
+          projectsData.map((data, index) => (
+            <ProjectSummary
+              role="button"
+              tabIndex={0}
+              key={`projects-item-${index}`}
+              onClick={() => showProjectDialog(index)}
+            >
+              <div className="project--icon-wrapper">
+                <MemoizedIcon data={data} />
+                <Overlay />
+              </div>
+              <div className="project--title">{data.title}</div>
+            </ProjectSummary>
+          ))
         }
         <ProjectDialog visible={visible} setVisible={setVisible} />
       </Container>
     </>
   );
+};
+
+const MemoizedIcon = ({ data }) => {
+  const ProjectIcon = useMemo(() => data.icon(), [data]);
+  return <ProjectIcon className="project--icon" />;
 };
 
 const Container = styled.div<ProjectsProps>`

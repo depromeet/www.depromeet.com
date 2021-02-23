@@ -1,7 +1,9 @@
 import projectThreeDollars from './three-dollars';
 import projectHealthNewbie from './health-newbie';
 
-export default [
+const projectsData = [
   projectThreeDollars,
   projectHealthNewbie,
 ];
+
+export default projectsData;

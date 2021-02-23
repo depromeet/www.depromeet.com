@@ -1,6 +1,6 @@
-import { ComponentType } from 'react';
+import { ElementType } from 'react';
 
-type LazyLoadableImage = () => ComponentType<{className?: string }>;
+type LazyLoadableImage = () => ElementType<{className?: string }>;
 export interface ProjectData {
   title: string;
   catchphrase?: string;
@@ -9,8 +9,8 @@ export interface ProjectData {
   desingers?: string[];
   backends?: string[];
   frontends?: string[];
-  image?: LazyLoadableImage;
-  icon?: LazyLoadableImage;
+  image: LazyLoadableImage;
+  icon: LazyLoadableImage;
   description?: string;
   ios?: string;
   android?: string;
