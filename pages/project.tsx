@@ -83,6 +83,7 @@ const TopBackground = styled.div`
   left: 0;
   bottom: 0;
   height: 43.4rem;
+  width: 100%;
   display: flex;
   justify-content: center;
 `;
