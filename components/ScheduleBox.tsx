@@ -85,7 +85,10 @@ const Container = styled.div`
     padding-bottom: 4rem;
     &--img {
       position: relative;
-      height: 100%
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 `;

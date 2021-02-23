@@ -3,20 +3,22 @@ import {
 } from 'react';
 import dynamic from 'next/dynamic';
 
-const Lottie = dynamic(() => import('react-lottie'));
-
 export type LottieProps = {
-  file: Promise<unknown>,
-  fallback: ComponentType,
+  lottie: () => Promise<unknown>,
+  fallback: () => ComponentType,
 };
 
 const StepLottie: FC<{lottie: LottieProps}> = ({ lottie }) => {
   const [lottieFile, setLottie] = useState(null);
-  const FallbackImage = lottie.fallback;
+  const FallbackImage = lottie.fallback();
+  const Lottie = dynamic(() => import('react-lottie'),
+    {
+      loading: () => <FallbackImage />,
+    });
 
   useEffect(() => {
     async function fetchLottie() {
-      const fetchedLottie = await lottie.file;
+      const fetchedLottie = await lottie.lottie();
       setLottie(fetchedLottie);
     }
     fetchLottie();

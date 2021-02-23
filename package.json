@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "postbuild": "next-on-netlify",
+    "start": "next start",
+    "export": "next export",
     "type-check": "tsc",
     "eslint": "eslint .",
     "analyze": "ANALYZE=true next build"
@@ -18,11 +19,11 @@
     "css-loader": "^5.0.2",
     "file-loader": "^6.2.0",
     "next": "^10.0.5",
-    "next-on-netlify": "^2.8.7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "sass": "^1.32.7",
     "react-lottie": "^1.2.3",
+    "react-window": "^1.8.6",
+    "sass": "^1.32.7",
     "styled-components": "^5.2.1",
     "styled-reset": "^4.3.4"
   },

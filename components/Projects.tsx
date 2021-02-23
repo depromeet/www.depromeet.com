@@ -1,8 +1,9 @@
 /* eslint-disable react/no-array-index-key */
 import styled from 'styled-components';
 import { FC, useState, useCallback } from 'react';
-import projects from '../resources/data/projects';
+import projectsData from '../resources/data/projects';
 import ProjectDialog from './ProjectDialog';
+import { calcRows, calcColumns, calcMaxHeight } from '../lib/projects_grid';
 
 interface ProjectsProps {
   isMainPage?: boolean;
@@ -19,7 +20,7 @@ const Projects: FC<ProjectsProps> = ({ isMainPage = false, expanded = false }) =
     <>
       <Container isMainPage={isMainPage} expanded={expanded}>
         {
-          projects.map((data, index) => {
+          projectsData.map((data, index) => {
             const ProjectIcon = data.icon();
             return (
               <ProjectSummary
@@ -43,15 +44,14 @@ const Projects: FC<ProjectsProps> = ({ isMainPage = false, expanded = false }) =
   );
 };
 
-const maxColumns = 6;
 const Container = styled.div<ProjectsProps>`
   display: grid;
   grid-auto-flow: row;
-  grid-template-rows: repeat(${({ isMainPage }) => (isMainPage === true ? 1 : 'auto-fill')}, minmax(17rem, 21rem));
-  grid-template-columns: repeat(${({ isMainPage }) => (isMainPage === true ? 'auto-fill' : maxColumns)}, minmax(17rem, 17rem));
+  grid-template-rows: repeat(${({ isMainPage, expanded }) => calcRows(isMainPage, expanded)}, minmax(17rem, 21rem));
+  grid-template-columns: repeat(${({ isMainPage }) => calcColumns(isMainPage)}, minmax(17rem, 17rem));
   gap: 3.2rem 2.4rem;
   overflow: hidden;
-  max-height: ${({ isMainPage, expanded }) => (isMainPage === true ? '17rem' : (expanded === true ? '100%' : '45.2rem'))};
+  max-height: ${({ isMainPage, expanded }) => calcMaxHeight(isMainPage, expanded)};
 `;
 
 const ProjectSummary = styled.div<ProjectsProps>`

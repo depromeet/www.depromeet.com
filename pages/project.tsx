@@ -8,26 +8,26 @@ import { steps } from '../resources/data/schedule';
 import Projects from '../components/Projects';
 import projectsData from '../resources/data/projects';
 
-const ArrowDownGreen = dynamic(() => import('../resources/images/arrow_down_green.svg'));
-const BackgroundImage = dynamic(() => import('../resources/images/project_background_image.svg'));
-
-const Project = () => (
-  <>
-    <Header />
-    <TopBackground>
-      <BackgroundImage />
-    </TopBackground>
-    <CenterAlignedContainer>
-      <Catchphrase>
-        서비스 런칭부터 개선까지 <br />
-        <span className="catchphrase__bold"> 경험에 성장을 더합니다. </span>
-      </Catchphrase>
-      <AllProjects />
-      <AllSchedule />
-    </CenterAlignedContainer>
-    <Footer />
-  </>
-);
+const Project = () => {
+  const BackgroundImage = dynamic(() => import('../resources/images/project_background_image.svg'));
+  return (
+    <>
+      <Header />
+      <TopBackground>
+        <BackgroundImage />
+      </TopBackground>
+      <CenterAlignedContainer>
+        <Catchphrase>
+          서비스 런칭부터 개선까지 <br />
+          <span className="catchphrase__bold"> 경험에 성장을 더합니다. </span>
+        </Catchphrase>
+        <AllProjects />
+        <AllSchedule />
+      </CenterAlignedContainer>
+      <Footer />
+    </>
+  );
+};
 
 const AllProjects = () => {
   const [expanded, setExpanded] = useState(false);
@@ -35,6 +35,9 @@ const AllProjects = () => {
   const onClickExpandButton = useCallback(() => {
     setExpanded(!expanded);
   }, [expanded]);
+
+  const ArrowDownGreen = dynamic(() => import('../resources/images/arrow_down_green.svg'));
+
   return (
     <ProjectSection>
       <Title>
