@@ -3,9 +3,9 @@ import styled from 'styled-components';
 import {
   FC, useState, useCallback, useMemo,
 } from 'react';
-import projectsData from '../resources/data/projects';
 import ProjectDialog from './ProjectDialog';
 import { calcRows, calcColumns, calcMaxHeight } from '../lib/projects_grid';
+import projectsData from '../resources/data/projects';
 
 interface ProjectsProps {
   isMainPage?: boolean;

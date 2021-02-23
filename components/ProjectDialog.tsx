@@ -10,11 +10,11 @@ import {
   FixedSizeList, ListChildComponentProps,
 } from 'react-window';
 import AutoSize from 'react-virtualized-auto-sizer';
-import projectsData from '../resources/data/projects';
 import { ProjectData } from '../resources/data/interface';
 import {
   iconAppleStore, iconConstruction, iconGoogleStore, iconWebLink, rightBorderImg,
 } from '../resources/images';
+import projectsData from '../resources/data/projects';
 
 interface ProjectDialogVisibleArg {
     visible: boolean;
@@ -57,6 +57,7 @@ const useCloseOnEsc = (onEscKeyDown) => {
 const ProjectDialogList:FC<ProjectDialogProps> = ({ visible, setVisible }) => {
   const modalElement = useMemo(() => document.createElement('div'), []);
   const closeDialog = useCallback(() => setVisible({ visible: false, index: 0 }), [setVisible]);
+  const scrollRef = useRef<FixedSizeList>();
   const onEscKeyDown = useCallback((e) => {
     if (e.keyCode === 27) {
       closeDialog();
@@ -72,9 +73,11 @@ const ProjectDialogList:FC<ProjectDialogProps> = ({ visible, setVisible }) => {
         <Backdrop onClick={closeDialog} />
         <AutoSize>
           {({ width, height }) => (
-            <ProjectsListWrapper height={height} width={width} onClick={closeDialog}>
-              <ProjectsDialogContents width={width} index={visible.index} />
-            </ProjectsListWrapper>
+            <>
+              <ProjectsListWrapper height={height} width={width} onClick={closeDialog}>
+                <ProjectsDialogContents width={width} index={visible.index} scrollRef={scrollRef} />
+              </ProjectsListWrapper>
+            </>
           )}
         </AutoSize>
       </Container>
@@ -82,28 +85,40 @@ const ProjectDialogList:FC<ProjectDialogProps> = ({ visible, setVisible }) => {
     modalElement,
   );
 };
-const ProjectsDialogContents: FC<{width: number, index: number}> = ({ width, index }) => {
-  const scrollRef = useRef<FixedSizeList>();
-  useScrollToIndex(scrollRef, index);
+
+interface ProjectContentsProps {
+  width: number;
+  index: number;
+  scrollRef: MutableRefObject<FixedSizeList>;
+}
+const ProjectsDialogContents:FC<ProjectContentsProps> = ({ width, index, scrollRef }) => {
+  useScrollToIndex(scrollRef, index, width);
   return (
-    <FixedSizeList
-      className="no-scroll-bar"
-      itemCount={projectsData.length}
-      layout="horizontal"
-      height={`${contentHeight}rem`}
-      width={width}
-      itemSize={contentWidth * 10}
-      ref={scrollRef}
-      itemData={projectsData}
-      style={{
-        overflowY: 'hidden',
-        msOverflowStyle: 'none',
-        scrollbarWidth: 'none',
-      }}
-      innerElementType={innerWrapper}
-    >
-      {ProjectItem}
-    </FixedSizeList>
+    <>
+      <FixedSizeList
+        className="no-scroll-bar"
+        itemCount={projectsData.length}
+        layout="horizontal"
+        height={`${contentHeight}rem`}
+        width={width}
+        itemSize={contentWidth * 10}
+        ref={scrollRef}
+        itemData={projectsData}
+        style={{
+          overflowY: 'hidden',
+          msOverflowStyle: 'none',
+          scrollbarWidth: 'none',
+        }}
+        innerElementType={innerWrapper}
+      >
+        {ProjectItem}
+      </FixedSizeList>
+      <ScrollController
+        current={index}
+        scrollRef={scrollRef}
+        width={width}
+      />
+    </>
   );
 };
 
@@ -119,10 +134,11 @@ const innerWrapper = forwardRef<HTMLDivElement, {style: CSSProperties}>(({ style
   />
 ));
 
-const useScrollToIndex = (scrollRef: MutableRefObject<FixedSizeList>, index: number) => {
+const useScrollToIndex = (scrollRef: MutableRefObject<FixedSizeList>, index: number, width: number) => {
+  const left = (width - contentWidth * 10) / 2 - contentGap * 10;
   useLayoutEffect(() => {
-    if (scrollRef.current) { scrollRef.current.scrollTo(contentPadding * 10 * (index > 0 ? 1 : 0) + index * 800); }
-  }, [scrollRef, index]);
+    if (scrollRef.current) { scrollRef.current.scrollTo(contentPadding * 10 + index * 800 + contentGap * 10 * index - left); }
+  }, [scrollRef, index, left]);
 };
 
 const usePortalSetup = (portal: HTMLElement, rootId = 'modal-root') => useEffect(
@@ -222,8 +238,8 @@ const TeamMember:FC<{job: string, member?: string}> = ({ job, member }) => (
 );
 
 const AppLinkButtons: FC<{data: ProjectData}> = ({ data }) => {
+  const ConstructionIcon = useMemo(() => iconConstruction(), []);
   if (data.ios === undefined && data.android === undefined && data.web === undefined) {
-    const ConstructionIcon = iconConstruction();
     return (
       <LinkButton className="button button__construction" link="#">
         <div className="button--icon">
@@ -243,7 +259,7 @@ const AppLinkButtons: FC<{data: ProjectData}> = ({ data }) => {
 };
 
 const WeblinkButton : FC<{link?: string}> = ({ link }) => {
-  const WeblinkIcon = iconWebLink();
+  const WeblinkIcon = useMemo(() => iconWebLink(), []);
   return (
     <LinkButton className="button button__link" link={link}>
       <div className="button--icon">
@@ -254,7 +270,7 @@ const WeblinkButton : FC<{link?: string}> = ({ link }) => {
   );
 };
 const PlaystoreButton : FC<{link?: string}> = ({ link }) => {
-  const PlayStoreIcon = iconGoogleStore();
+  const PlayStoreIcon = useMemo(() => iconGoogleStore(), []);
   return (
     <LinkButton className="button button__link" link={link}>
       <div className="button--icon">
@@ -265,7 +281,7 @@ const PlaystoreButton : FC<{link?: string}> = ({ link }) => {
   );
 };
 const AppstoreButton: FC<{link?: string}> = ({ link }) => {
-  const AppleIcon = iconAppleStore();
+  const AppleIcon = useMemo(() => iconAppleStore(), []);
   return (
     <LinkButton className="button button__link" link={link}>
       <div className="button--icon">
@@ -293,6 +309,59 @@ const LinkButton: FC<{link?: string, className: string}> = ({ link, className, c
   return <> </>;
 };
 
+interface ScrollControllerProps {
+  scrollRef: MutableRefObject<FixedSizeList>;
+  current: number,
+  width: number,
+}
+
+const ScrollController: FC<ScrollControllerProps> = ({
+  scrollRef, current, width,
+}) => {
+  const [index, setIndex] = useState(current);
+
+  useScrollToIndex(scrollRef, index, width);
+
+  const scrollToNext = useCallback((e) => {
+    e.stopPropagation();
+    setIndex((prev) => (prev < projectsData.length - 1 ? prev + 1 : prev));
+  }, []);
+
+  const scrollToPrev = useCallback((e) => {
+    e.stopPropagation();
+    setIndex((prev) => (prev > 0 ? prev - 1 : prev));
+  }, []);
+
+  return (
+    <ForegroundIndicator
+      onClick={(e) => e.stopPropagation()}
+    >
+      <ScrollIndicator
+        role="button"
+        tabIndex={0}
+        onClick={scrollToPrev}
+        disabled={index === 0}
+      >
+        <img
+          src={`/ic_left_${index === 0 ? 'dis' : 'default'}.svg`}
+          alt="go to prev project"
+        />
+      </ScrollIndicator>
+      <span className="separator" />
+      <ScrollIndicator
+        role="button"
+        tabIndex={0}
+        onClick={scrollToNext}
+        disabled={index === projectsData.length - 1}
+      >
+        <img
+          src={`/ic_right_${index === projectsData.length - 1 ? 'dis' : 'default'}.svg`}
+          alt="go to next project"
+        />
+      </ScrollIndicator>
+    </ForegroundIndicator>
+  );
+};
 // rem
 const contentWidth = 80;
 const contentHeight = 84;
@@ -317,6 +386,7 @@ const ProjectsListWrapper = styled.div<{height: string, width:string}>`
   display: flex;
   height: ${({ height }) => height}px;
   width: ${({ width }) => width}px;
+  align-content: center;
   align-items: center;
 `;
 const ProjectDetail = styled.div`
@@ -443,6 +513,32 @@ const ProjectDetail = styled.div`
           line-height: 2.8rem;
       }
     }
+  }
+`;
+
+const ForegroundIndicator = styled.div`
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  height: 0;
+  width: 100%;
+  /* inset: 0; */
+  
+  .separator {
+    width: ${80 - 5.2}rem;
+    height: 0;
+  }
+`;
+
+const ScrollIndicator = styled.image<{disabled: boolean}>`
+  width: 5.2rem;
+  height: 5.2rem;
+  background-color: transparent;
+  border-radius: 50%;
+  :hover {
+    background-color: ${({ disabled }) => (disabled ? 'transparent' : '#222222')};
   }
 `;
 
