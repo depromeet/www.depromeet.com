@@ -4,7 +4,7 @@ import { gsap } from 'gsap/dist/gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { RightArrow, LeftArrow } from '../public';
 import StepLottie from './StepLottie';
-import { stepC, stepD } from '../resources/lottie';
+import { stepA, stepD } from '../resources/lottie';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -37,17 +37,19 @@ const TextAnimation = () => {
       <div className="svg__stepD">
         <StepLottie lottie={stepD} />
       </div>
-      <div className="svg__stepC">
-        <StepLottie lottie={stepC} />
+      <div className="svg__stepA">
+        <StepLottie lottie={stepA} />
       </div>
       <div className="text">
-        <div className="text__content" ref={text1}>Programmer
+        <div className="text__content" ref={text1}>
+          Programmer
           <div className="text__arrow"><RightArrow /></div>
           Designer
           <div className="text__arrow"><RightArrow /></div>
           Programmer
         </div>
-        <div className="text__content" ref={text2}>Depromeet 9th
+        <div className="text__content" ref={text2}>
+          Depromeet 9th
           <div className="text__arrow"><LeftArrow /></div>
           2020 Meet
           <div className="text__arrow"><LeftArrow /></div>
@@ -68,7 +70,7 @@ const Container = styled.div`
       top: -5rem;
       left: 40.7rem;
     }
-    &__stepC {
+    &__stepA {
       position: absolute;
       width: 17.7rem;
       bottom: -5rem;
@@ -78,7 +80,7 @@ const Container = styled.div`
   .text {
     font-family: Montserrat;
     font-weight: 900;
-    font-size: 120px;
+    font-size: 12rem;
     white-space: nowrap;
     &__content {
       display: flex;

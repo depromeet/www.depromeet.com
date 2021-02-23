@@ -27,11 +27,11 @@ const Contact = () => (
           <div className="svg__memoji">
             <Memoji />
           </div>
-          <div className="svg__stepA">
-            <StepLottie lottie={stepA} />
-          </div>
           <div className="svg__stepC">
             <StepLottie lottie={stepC} />
+          </div>
+          <div className="svg__stepA">
+            <StepLottie lottie={stepA} />
           </div>
         </div>
         <div className="box">
@@ -91,13 +91,13 @@ const Container = styled.div`
       right: 1.8rem;
       z-index: 2;
     }
-    &__stepA {
+    &__stepC {
       position: absolute;
       width: 15rem;
       top: 7.5rem;
       left: -11rem;
     }
-    &__stepC {
+    &__stepA {
       position: absolute;
       width: 15rem;
       top: -5rem;
