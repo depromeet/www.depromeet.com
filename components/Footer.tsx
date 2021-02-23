@@ -1,11 +1,43 @@
 import styled from 'styled-components';
 import dynamic from 'next/dynamic';
 
-const FooterLogo = dynamic(() => import('../resources/images/logo_footer.svg'));
-const InstagramLogo = dynamic(() => import('../resources/images/ic_sns_instagram.svg'));
-const FacebookLogo = dynamic(() => import('../resources/images/ic_sns_facebook.svg'));
-const MediumLogo = dynamic(() => import('../resources/images/ic_sns_medium.svg'));
-
+const Footer = () => {
+  const FooterLogo = dynamic(() => import('../resources/images/logo_footer.svg'));
+  const InstagramLogo = dynamic(() => import('../resources/images/ic_sns_instagram.svg'));
+  const FacebookLogo = dynamic(() => import('../resources/images/ic_sns_facebook.svg'));
+  const MediumLogo = dynamic(() => import('../resources/images/ic_sns_medium.svg'));
+  return (
+    <Container>
+      <Content>
+        <FooterLogo />
+        <ButtonContainer>
+          <MediaButton href="https://depromeet.medium.com/">
+            <MediumLogo />
+          </MediaButton>
+          <MediaButton href="https://www.facebook.com/depromeet/">
+            <FacebookLogo />
+          </MediaButton>
+          <MediaButton href="https://www.instagram.com/depromeet/">
+            <InstagramLogo />
+          </MediaButton>
+        </ButtonContainer>
+      </Content>
+      <Copyright>
+        <small>Depromeet. All rights reserved.</small>
+      </Copyright>
+    </Container>
+  );
+};
+const MediaButton = ({ href, children }) => (
+  <Button
+    role="button"
+    tabIndex={0}
+    href={href}
+    target="_blank"
+  >
+    {children}
+  </Button>
+);
 const Container = styled.footer`
   background: #0C0C0C;
   border: 1px solid #000000;
@@ -51,35 +83,5 @@ const Copyright = styled.div`
   font-family: Montserrat;
   color: #757575;
 `;
-const MediaButton = ({ href, children }) => (
-  <Button
-    tabIndex={0}
-    href={href}
-  >
-    {children}
-  </Button>
-);
-
-const Footer = () => (
-  <Container>
-    <Content>
-      <FooterLogo />
-      <ButtonContainer>
-        <MediaButton href="https://depromeet.medium.com/">
-          <MediumLogo />
-        </MediaButton>
-        <MediaButton href="https://www.facebook.com/depromeet/">
-          <FacebookLogo />
-        </MediaButton>
-        <MediaButton href="https://www.instagram.com/depromeet/">
-          <InstagramLogo />
-        </MediaButton>
-      </ButtonContainer>
-    </Content>
-    <Copyright>
-      <small>Depromeet. All rights reserved.</small>
-    </Copyright>
-  </Container>
-);
 
 export default Footer;

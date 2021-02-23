@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "postbuild": "next-on-netlify",
+    "start": "next start",
+    "export": "next export",
     "type-check": "tsc",
     "eslint": "eslint .",
     "analyze": "ANALYZE=true next build"
@@ -18,11 +19,12 @@
     "css-loader": "^5.0.2",
     "file-loader": "^6.2.0",
     "next": "^10.0.5",
-    "next-on-netlify": "^2.8.7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "sass": "^1.32.7",
     "react-lottie": "^1.2.3",
+    "react-virtualized-auto-sizer": "^1.0.4",
+    "react-window": "^1.8.6",
+    "sass": "^1.32.7",
     "styled-components": "^5.2.1",
     "styled-reset": "^4.3.4"
   },
@@ -34,6 +36,7 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-lottie": "^1.2.5",
+    "@types/react-window": "^1.8.2",
     "@types/styled-components": "^5.1.7",
     "@typescript-eslint/eslint-plugin": "^4.14.1",
     "@typescript-eslint/eslint-plugin-tslint": "^4.14.1",

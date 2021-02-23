@@ -16,4 +16,11 @@ export const GlobalStyle = createGlobalStyle`
         background-color: black;
         overflow-x: hidden;
     }
+    .no-scroll-bar::-webkit-scrollbar {
+    display: none;
+    }
+    .no-scroll-bar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    }
 `;

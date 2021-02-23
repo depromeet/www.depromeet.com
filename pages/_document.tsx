@@ -36,6 +36,7 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <meta charSet="utf-8" />
+          <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
         </Head>
         <body>
           <Main />

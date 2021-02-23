@@ -1,8 +1,11 @@
 /* eslint-disable react/no-array-index-key */
 import styled from 'styled-components';
-import { FC, useState, useCallback } from 'react';
-import projects from '../resources/data/projects';
+import {
+  FC, useState, useCallback, useMemo,
+} from 'react';
+import projectsData from '../resources/data/projects';
 import ProjectDialog from './ProjectDialog';
+import { calcRows, calcColumns, calcMaxHeight } from '../lib/projects_grid';
 
 interface ProjectsProps {
   isMainPage?: boolean;
@@ -19,23 +22,20 @@ const Projects: FC<ProjectsProps> = ({ isMainPage = false, expanded = false }) =
     <>
       <Container isMainPage={isMainPage} expanded={expanded}>
         {
-          projects.map((data, index) => {
-            const ProjectIcon = data.icon();
-            return (
-              <ProjectSummary
-                role="button"
-                tabIndex={0}
-                key={`projects-item-${index}`}
-                onClick={() => showProjectDialog(index)}
-              >
-                <div className="project--icon-wrapper">
-                  <ProjectIcon className="project--icon" />
-                  <Overlay />
-                </div>
-                <div className="project--title">{data.title}</div>
-              </ProjectSummary>
-            );
-          })
+          projectsData.map((data, index) => (
+            <ProjectSummary
+              role="button"
+              tabIndex={0}
+              key={`projects-item-${index}`}
+              onClick={() => showProjectDialog(index)}
+            >
+              <div className="project--icon-wrapper">
+                <Icon data={data} />
+                <Overlay />
+              </div>
+              <div className="project--title">{data.title}</div>
+            </ProjectSummary>
+          ))
         }
         <ProjectDialog visible={visible} setVisible={setVisible} />
       </Container>
@@ -43,15 +43,35 @@ const Projects: FC<ProjectsProps> = ({ isMainPage = false, expanded = false }) =
   );
 };
 
-const maxColumns = 6;
+const Icon = ({ data }) => {
+  if (typeof data.icon === 'string') {
+    return (
+      <img
+        className="project--icon-wrapper project--icon"
+        src={data.icon}
+        loading="lazy"
+        alt={`${data.title}-icon`}
+        style={{
+          objectFit: 'scale-down',
+        }}
+      />
+    );
+  }
+  return <MemoizedIcon data={data} />;
+};
+const MemoizedIcon = ({ data }) => {
+  const ProjectIcon = useMemo(() => data.icon(), [data]);
+  return <ProjectIcon className="project--icon" />;
+};
+
 const Container = styled.div<ProjectsProps>`
   display: grid;
   grid-auto-flow: row;
-  grid-template-rows: repeat(${({ isMainPage }) => (isMainPage === true ? 1 : 'auto-fill')}, minmax(17rem, 21rem));
-  grid-template-columns: repeat(${({ isMainPage }) => (isMainPage === true ? 'auto-fill' : maxColumns)}, minmax(17rem, 17rem));
+  grid-template-rows: repeat(${({ isMainPage, expanded }) => calcRows(isMainPage, expanded)}, minmax(17rem, 21rem));
+  grid-template-columns: repeat(${({ isMainPage }) => calcColumns(isMainPage)}, minmax(17rem, 17rem));
   gap: 3.2rem 2.4rem;
   overflow: hidden;
-  max-height: ${({ isMainPage, expanded }) => (isMainPage === true ? '17rem' : (expanded === true ? '100%' : '45.2rem'))};
+  max-height: ${({ isMainPage, expanded }) => calcMaxHeight(isMainPage, expanded)};
 `;
 
 const ProjectSummary = styled.div<ProjectsProps>`
@@ -77,6 +97,7 @@ const ProjectSummary = styled.div<ProjectsProps>`
       border-radius: 2.4rem;
       margin-bottom: 2.4rem;
       position: relative;
+      overflow: hidden;
     }
     &--icon {
       width: 100%;
