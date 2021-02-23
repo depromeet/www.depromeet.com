@@ -11,7 +11,7 @@ import projectsData from '../resources/data/projects';
 const Project = () => {
   const BackgroundImage = dynamic(() => import('../resources/images/project_background_image.svg'));
   return (
-    <>
+    <div className="no-scroll-bar" style={{ overflow: 'scroll' }}>
       <Header />
       <TopBackground>
         <div style={{ width: '192rem' }}>
@@ -27,7 +27,7 @@ const Project = () => {
         <AllSchedule />
       </CenterAlignedContainer>
       <Footer />
-    </>
+    </div>
   );
 };
 
