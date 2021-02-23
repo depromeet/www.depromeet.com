@@ -1,11 +1,15 @@
+import { FC } from 'react';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 import styled from 'styled-components';
 
 const Logo = dynamic(() => import('../public/gnb_logo.svg'));
 
-const Header = () => (
-  <Container>
+interface BackgroundTransparentProps {
+  isTransparent?: boolean;
+}
+const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => (
+  <Container isTransparent={isTransparent}>
     <div style={{ cursor: 'pointer' }}><Logo /></div>
     <ButtonContainer>
       <RouterBtn routerName="about" path="/" />
@@ -36,9 +40,9 @@ const RouterBtn = ({ routerName, path }) => {
   );
 };
 
-const Container = styled.div`
+const Container = styled.div<BackgroundTransparentProps>`
   position: fixed;
-  background-color: black;
+  background-color: ${({ isTransparent }) => (isTransparent ? 'transparent' : 'black')};
   top: 0;
   left: 0;
   right: 0;
@@ -64,6 +68,9 @@ const Button = styled.div`
   background-color: ${({ theme }) => theme.color.blue};
   border-radius: 2.7rem;
   margin-left: 0.7rem;
+  :hover {
+    background-color: #0013BA;
+  }
 `;
 
 const RouterButton = styled.div<{isSame: boolean}>`
@@ -72,6 +79,9 @@ const RouterButton = styled.div<{isSame: boolean}>`
   margin-right: 3.4rem;
   font-size: 1.4rem;
   font-weight: ${({ isSame }) => (isSame ? 800 : 500)};
+  :hover {
+    color: #c0c0c0;
+  }
 `;
 
 const Underline = styled.div`

@@ -1,6 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import styled from 'styled-components';
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { Header, Footer } from '../components';
 import ScheduleBox from '../components/ScheduleBox';
@@ -12,7 +12,7 @@ const Project = () => {
   const BackgroundImage = dynamic(() => import('../resources/images/project_background_image.svg'));
   return (
     <div className="no-scroll-bar" style={{ overflow: 'scroll' }}>
-      <Header />
+      <TransparentableHeader />
       <TopBackground>
         <div style={{ width: '192rem' }}>
           <BackgroundImage />
@@ -28,6 +28,30 @@ const Project = () => {
       </CenterAlignedContainer>
       <Footer />
     </div>
+  );
+};
+
+const TransparentableHeader = () => {
+  const [isTransparent, setTransparent] = useState(true);
+  const handleScroll = useCallback(() => {
+    const yOffset = window?.pageYOffset;
+    if (yOffset === 0) {
+      setTransparent(true);
+    } else if (isTransparent) {
+      setTransparent(false);
+    }
+  }, [isTransparent, setTransparent]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [handleScroll]);
+  return (
+    <Header
+      isTransparent={isTransparent}
+    />
   );
 };
 
