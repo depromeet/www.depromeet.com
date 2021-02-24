@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import styled from 'styled-components';
 
@@ -13,7 +14,11 @@ const applyFor9th = 'https://forms.gle/MVr4auDmerieZZR27?fbclid=IwAR3vamHZfGNvWt
 export const openApplySite = () => window.open(applyFor9th);
 const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => (
   <Container isTransparent={isTransparent}>
-    <div style={{ cursor: 'pointer' }}><Logo /></div>
+    <div style={{ cursor: 'pointer' }}>
+      <Link href="/">
+        <Logo />
+      </Link>
+    </div>
     <ButtonContainer>
       <RouterBtn routerName="about" path="/" />
       <RouterBtn routerName="project" path="/project" />
