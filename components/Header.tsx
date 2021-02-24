@@ -8,6 +8,9 @@ const Logo = dynamic(() => import('../public/gnb_logo.svg'));
 interface BackgroundTransparentProps {
   isTransparent?: boolean;
 }
+const applyFor9th = 'https://forms.gle/MVr4auDmerieZZR27?fbclid=IwAR3vamHZfGNvWtQ5bHKRE7swLKHFGsHeSy0wUde_bdoate-veAqlLJeM3kI';
+
+export const openApplySite = () => window.open(applyFor9th);
 const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => (
   <Container isTransparent={isTransparent}>
     <div style={{ cursor: 'pointer' }}><Logo /></div>
@@ -15,7 +18,13 @@ const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => (
       <RouterBtn routerName="about" path="/" />
       <RouterBtn routerName="project" path="/project" />
       <RouterBtn routerName="contact" path="/contact" />
-      <Button role="button">9기에서 만나기</Button>
+      <Button
+        role="button"
+        tabIndex={0}
+        onClick={openApplySite}
+      >
+        9기에서 만나기
+      </Button>
     </ButtonContainer>
   </Container>
 );
