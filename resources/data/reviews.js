@@ -1,6 +1,6 @@
 export const stories = [
   {
-    person: '(이정민, 개발 직군 취업준비생)',
+    person: '(이정민, frontend 개발자)',
     job: 'programmer',
     content:
   <div>
