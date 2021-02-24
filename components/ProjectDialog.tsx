@@ -2,7 +2,7 @@
 import {
   FC, useEffect, useMemo, useState,
   useCallback, useRef, MutableRefObject,
-  forwardRef, CSSProperties, useLayoutEffect,
+  forwardRef, CSSProperties, useLayoutEffect, SetStateAction, Dispatch,
 } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
@@ -92,7 +92,8 @@ interface ProjectContentsProps {
   scrollRef: MutableRefObject<FixedSizeList>;
 }
 const ProjectsDialogContents:FC<ProjectContentsProps> = ({ width, index, scrollRef }) => {
-  useScrollToIndex(scrollRef, index, width);
+  const [focusedIndex, setFocusedIndex] = useState(index);
+  useScrollToIndex(scrollRef, focusedIndex, width);
   return (
     <>
       <FixedSizeList
@@ -109,16 +110,19 @@ const ProjectsDialogContents:FC<ProjectContentsProps> = ({ width, index, scrollR
         }}
         innerElementType={innerWrapper}
       >
-        {ProjectItem}
+        {withScrollController(focusedIndex, setFocusedIndex)}
       </FixedSizeList>
-      <ScrollController
-        current={index}
-        scrollRef={scrollRef}
-        width={width}
-      />
     </>
   );
 };
+
+const withScrollController = (focusedIndex, setFocusedIndex) => (props: ProjectDataProps) => (
+  <ProjectItem
+    focusedIndex={focusedIndex}
+    setFocusedIndex={setFocusedIndex}
+    {...props}
+  />
+);
 
 const innerWrapper = forwardRef<HTMLDivElement, {style: CSSProperties}>(({ style, ...rest }, ref) => (
   <div
@@ -152,6 +156,8 @@ const usePortalSetup = (portal: HTMLElement, rootId = 'modal-root') => useEffect
 const RightBorder = rightBorderImg();
 interface ProjectDataProps extends ListChildComponentProps{
   data: ProjectData[];
+  focusedIndex: number;
+  setFocusedIndex: Dispatch<SetStateAction<number>>;
 }
 const Image = ({ data }) => {
   if (typeof data.icon === 'string') {
@@ -173,9 +179,12 @@ const MemoizedImage = ({ data }) => {
   const ProjectImage = useMemo(() => data.image(), [data]);
   return <ProjectImage />;
 };
-const ProjectItem:FC<ProjectDataProps> = ({ data, index, style }) => {
+const ProjectItem:FC<ProjectDataProps> = ({
+  data, index, style, focusedIndex, setFocusedIndex,
+}) => {
   const projectData = data[index];
 
+  console.log(`focused index is ${focusedIndex}`);
   return (
     <ProjectDetail
       key={`project-detail-${index}`}
@@ -185,6 +194,15 @@ const ProjectItem:FC<ProjectDataProps> = ({ data, index, style }) => {
       }}
       onClick={(e) => e.stopPropagation()}
     >
+      {
+        focusedIndex === index
+        && (
+          <ScrollController
+            index={focusedIndex}
+            setIndex={setFocusedIndex}
+          />
+        )
+      }
       <div className="image">
         <Image data={projectData} />
         <div className="image-shadow" />
@@ -308,27 +326,22 @@ const LinkButton: FC<{link?: string, className: string}> = ({ link, className, c
 };
 
 interface ScrollControllerProps {
-  scrollRef: MutableRefObject<FixedSizeList>;
-  current: number,
-  width: number,
+  index: number,
+  setIndex: Dispatch<SetStateAction<number>>,
 }
 
 const ScrollController: FC<ScrollControllerProps> = ({
-  scrollRef, current, width,
+  index, setIndex,
 }) => {
-  const [index, setIndex] = useState(current);
-
-  useScrollToIndex(scrollRef, index, width);
-
   const scrollToNext = useCallback((e) => {
     e.stopPropagation();
     setIndex((prev) => (prev < projectsData.length - 1 ? prev + 1 : prev));
-  }, []);
+  }, [setIndex]);
 
   const scrollToPrev = useCallback((e) => {
     e.stopPropagation();
     setIndex((prev) => (prev > 0 ? prev - 1 : prev));
-  }, []);
+  }, [setIndex]);
 
   return (
     <ForegroundIndicator
@@ -522,13 +535,15 @@ const ForegroundIndicator = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
-  height: 0;
-  width: 100%;
-  /* inset: 0; */
+  position: absolute;
+  height: 100%;
+  width: ${contentWidth + contentGap}rem;
+  left: -${contentGap / 2}rem;
   
+  overflow-x: visible;
+
   .separator {
-    width: ${80 - 5.2}rem;
+    width: ${80 - contentGap}rem;
     height: 0;
   }
 `;
