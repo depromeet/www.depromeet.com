@@ -5,9 +5,9 @@ import dynamic from 'next/dynamic';
 import { Header, Footer } from '../components';
 import ScheduleBox from '../components/ScheduleBox';
 import { steps } from '../resources/data/schedule';
-import Projects from '../components/Projects';
 import projectsData from '../resources/data/projects';
 import { media } from '../styles/theme';
+import Projects from '../components/Projects';
 
 const Project = () => (
   <div className="no-scroll-bar" style={{ overflow: 'scroll' }}>
