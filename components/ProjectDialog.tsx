@@ -3,6 +3,7 @@ import {
   FC, useEffect, useMemo, useState,
   useCallback, useRef, MutableRefObject,
   forwardRef, CSSProperties, useLayoutEffect, SetStateAction, Dispatch,
+  HTMLAttributes,
 } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
@@ -15,6 +16,13 @@ import {
   iconAppleStore, iconConstruction, iconGoogleStore, iconWebLink, rightBorderImg,
 } from '../resources/images';
 import projectsData from '../resources/data/projects';
+import { media } from '../styles/theme';
+import {
+  desktopContentWidth, getContentItemPosition,
+  isMobile, mobileContentHeight, mobileContentWidth,
+  getResponsiveContentWidth, getResponsiveContentHeight,
+  calcItemCenterPosition, calcRealListWidth, getContentGap,
+} from '../lib/project_detail';
 
 interface ProjectDialogVisibleArg {
     visible: boolean;
@@ -100,13 +108,14 @@ const ProjectsDialogContents:FC<ProjectContentsProps> = ({ width, index, scrollR
         className="no-scroll-bar"
         itemCount={projectsData.length}
         layout="horizontal"
-        height={`${contentHeight}rem`}
+        height={`${getResponsiveContentHeight(width)}rem`}
         width={width}
-        itemSize={contentWidth * 10}
+        itemSize={getResponsiveContentWidth(width) * 10}
         ref={scrollRef}
         itemData={projectsData}
         style={{
-          overflow: 'hidden',
+          overflowY: 'scroll',
+          overflowX: isMobile(width) ? 'scroll' : 'hidden',
         }}
         innerElementType={innerWrapper(width)}
       >
@@ -126,15 +135,14 @@ const withScrollController = (focusedIndex, setFocusedIndex, width) => (props: P
 );
 
 const innerWrapper = (width) => forwardRef<HTMLDivElement, {style: CSSProperties}>(({ style, ...rest }, ref) => {
-  const padding = calcCenterPadding(width) * 2;
-  const gap = contentGap * remBase * projectsData.length;
+  const realWidth = calcRealListWidth(width, style.width);
   return (
     <div
       className="no-scroll-bar"
       ref={ref}
       style={{
         ...style,
-        width: `${parseFloat(style.width.toString()) + padding + gap}px`,
+        width: `${realWidth}px`,
       }}
       {...rest}
     />
@@ -142,9 +150,7 @@ const innerWrapper = (width) => forwardRef<HTMLDivElement, {style: CSSProperties
 });
 
 const useScrollToIndex = (scrollRef: MutableRefObject<FixedSizeList>, index: number, width: number) => {
-  const left = (width - contentWidth * 10) / 2 - contentGap * 10;
-  const padding = calcCenterPadding(width);
-  const xOffset = padding + index * contentWidth * remBase + contentGap * remBase * index - left;
+  const xOffset = calcItemCenterPosition(index, width);
   useLayoutEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTo(xOffset);
@@ -169,11 +175,11 @@ interface ProjectDataProps extends ListChildComponentProps{
   setFocusedIndex: Dispatch<SetStateAction<number>>;
   windowWidth: number;
 }
-const Image = ({ data }) => {
-  if (typeof data.icon === 'string') {
+const Image:FC<{data:ProjectData, src?: string}> = ({ data, src }) => {
+  if (typeof data.image === 'string') {
     return (
       <img
-        src={data.image}
+        src={src || data.image}
         loading="lazy"
         alt={`${data.title}`}
         style={{
@@ -189,18 +195,34 @@ const MemoizedImage = ({ data }) => {
   const ProjectImage = useMemo(() => data.image(), [data]);
   return <ProjectImage />;
 };
+const Icon: FC<{data:ProjectData} & HTMLAttributes<HTMLDivElement>> = ({ data }) => {
+  const MemoizedIcon = useMemo(() => ((typeof data.icon === 'string')
+    ? () => (
+      <img
+        src={(typeof data.icon === 'string' && data.icon)}
+        loading="lazy"
+        alt={`${data.title}`}
+        style={{
+          objectFit: 'contain',
+          height: '7.2rem',
+        }}
+      />
+    ) : data.icon()), [data]);
+  return <MemoizedIcon />;
+};
 
 const ProjectItem:FC<ProjectDataProps> = ({
   data, index, style, focusedIndex, setFocusedIndex, windowWidth,
 }) => {
   const projectData = data[index];
-  const horizontalPadding = calcCenterPadding(windowWidth);
   return (
     <ProjectDetail
       key={`project-detail-${index}`}
+      width={windowWidth}
       style={{
         ...style,
-        left: `${parseFloat(style.left.toString()) + horizontalPadding + contentGap * 10 * (index)}px`,
+        left: `${getContentItemPosition(windowWidth, index, style.left)}px`,
+        width: `${getResponsiveContentWidth(windowWidth)}rem`,
       }}
       onClick={(e) => e.stopPropagation()}
     >
@@ -214,23 +236,37 @@ const ProjectItem:FC<ProjectDataProps> = ({
           />
         )
       }
-      <div className="image">
-        <Image data={projectData} />
-        <div className="image-shadow" />
-      </div>
+      {
+        isMobile(windowWidth) || (
+          <div className="image">
+            <Image data={projectData} />
+            <div className="image-shadow" />
+          </div>
+        )
+      }
       <div className="detail">
-        <div className="detail--desktop-left">
+        <div className="detail-left">
           <div className="title">
             {projectData.title}
           </div>
           <div className="catchphrase">
-            {projectData.catchphrase}
+            <div className="catchphrase--icon">
+              <Icon data={projectData} />
+            </div>
+            <div className="catchphrase--data">
+              {projectData.catchphrase}
+            </div>
           </div>
-          <div className="buttons">
-            <AppLinkButtons data={projectData} />
-          </div>
+          {
+            isMobile(windowWidth)
+            || (
+              <div className="buttons">
+                <AppLinkButtons data={projectData} />
+              </div>
+            )
+          }
         </div>
-        <div className="detail--desktop-right">
+        <div className="detail-right">
           <div className="detail--subject">
             프로젝트 소개
             <span className="detail--right-border">
@@ -246,10 +282,20 @@ const ProjectItem:FC<ProjectDataProps> = ({
               <RightBorder />
             </span>
           </div>
-          <TeamMember job="designer" member={projectData.desingers?.join(' ∙ ')} />
-          <TeamMember job="backend" member={projectData.backends?.join(' ∙ ')} />
-          <TeamMember job="frontend" member={projectData.frontends?.join(' ∙ ')} />
+          <div className="detail--team-intro">
+            <TeamMember job="designer" member={projectData.desingers?.join(' ∙ ')} />
+            <TeamMember job="backend" member={projectData.backends?.join(' ∙ ')} />
+            <TeamMember job="frontend" member={projectData.frontends?.join(' ∙ ')} />
+          </div>
         </div>
+        {
+          isMobile(windowWidth)
+            && (
+              <div className="buttons">
+                <AppLinkButtons data={projectData} />
+              </div>
+            )
+        }
       </div>
     </ProjectDetail>
   );
@@ -391,16 +437,9 @@ const remBase = 10;
 const contentWidth = 80;
 const contentHeight = 84;
 const contentGap = 5.6;
-const calcCenterPadding = (width) => {
-  const padding = (width - contentWidth * remBase) / 2;
-  return padding;
-};
 const Container = styled.div`
   position: fixed;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
+  inset: 0;
 `;
 const Backdrop = styled.div`
   position: fixed;
@@ -417,7 +456,8 @@ const ProjectsListWrapper = styled.div<{height: string, width:string}>`
   align-content: center;
   align-items: center;
 `;
-const ProjectDetail = styled.div`
+
+const ProjectDetail = styled.div<{width: number}>`
   position: relative;
   width: ${contentWidth}rem;
   height: ${contentHeight}rem;
@@ -427,9 +467,15 @@ const ProjectDetail = styled.div`
   margin-left: ${contentGap}rem;
   left: 52rem;
   z-index: 1;
-  /* :first-of-type {
-    margin-left: 0;
-  } */
+
+  ${media.mobile} {
+    width: ${mobileContentWidth}rem;
+    height: ${mobileContentHeight}rem;
+    margin-left: ${({ width }) => getContentGap(width)}rem;
+    box-sizing: border-box;
+    padding: 2.5rem 2rem;
+  }
+
   .image {
     height: 42rem;
     width: 100%;
@@ -437,6 +483,9 @@ const ProjectDetail = styled.div`
     justify-content: center;
     align-items: flex-end;
     position: relative;
+    ${media.mobile} {
+      display: none;
+    }
     .image-shadow {
       position: absolute;
       height: 19rem;
@@ -459,22 +508,67 @@ const ProjectDetail = styled.div`
     grid-template: 1fr / 17.2rem 46.8rem;
     gap: 0 5.7rem;
 
+    ${media.mobile} {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
     .title {
       margin-bottom: 1.6rem;
       font-weight: 800;
       font-size: 3rem;
       line-height: 3.5rem;
+
+      ${media.mobile} {
+        font-size: 2.4rem;
+        line-height: 4rem;
+      }
     }
     .catchphrase {
       margin-bottom: 3.2rem;
       font-weight: bold;
       font-size: 2rem;
       line-height: 3.2rem;
+      ${media.mobile} {
+        display: flex;
+        font-size: 1.8rem;
+        line-height: 2.8rem;
+        margin-bottom: 4rem;
+        overflow-y: scroll;
+      }
+      &--data {
+        ${media.mobile} {
+          width: 19rem;
+        }
+      }
+
+      &--icon {
+        display: none;
+        width: 7.2rem;
+        height: 7.2rem;
+        border-radius: 1.2rem;
+        overflow: hidden;
+        ${media.mobile} {
+          margin-right: 1.6rem;
+          display: inline-block;
+        }
+      }
     }
     .buttons {
       display: grid;
       grid-template: repeat(3, minmax(4.8rem, 4.8rem)) / 1fr;
       gap: 1.6rem 0;
+      
+      ${media.mobile} {
+        position: absolute;
+        bottom: 2.5rem;
+        right: 2rem;
+        left: 2rem;
+        display: flex;
+        justify-content: stretch;
+        gap: 1.2rem;
+      }
 
       .button {
         font-weight: 500;
@@ -482,12 +576,23 @@ const ProjectDetail = styled.div`
         line-height: 2rem;
         border-radius: 1.2rem;
         background-color: black;
-        width: 17.2rem;
+        /* width: 17.2rem; */
+        max-width: 17.2rem;
         height: 4.8rem;
         box-sizing: border-box;
         display: flex;
         align-items: center;
         justify-content: center;
+
+        ${media.mobile} {
+          flex: 1;
+          border-radius: 0.6rem;
+          min-width: 1rem;
+          max-width: 100%;
+          height: 4rem;
+          padding: 1.2rem 0;
+          box-sizing: border-box;
+        }
         
         &--icon {
           margin-right: 1rem;
@@ -506,12 +611,22 @@ const ProjectDetail = styled.div`
       }
     }
 
+
+    &-right {
+      ${media.mobile} {
+        margin-bottom: 2.3rem;
+      }
+    }
     &--subject {
       margin-right: 1rem;
       font-weight: 800;
       font-size: 1.4rem;
       line-height: 1.6rem;
       margin-bottom: 2rem;
+      ${media.mobile} {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+      }
     }
     &--right-border {
       margin-left: 1rem;
@@ -523,14 +638,31 @@ const ProjectDetail = styled.div`
       max-height: 11rem;
       overflow: hidden;
       margin-bottom: 4rem;
+      ${media.mobile} {
+        font-size: 1.4rem;
+        line-height: 2.6rem;
+        max-height: 12.7rem;
+        margin-bottom: 2.4rem;
+        overflow-y: scroll;
+      }
     }
 
+    &--team-intro {
+      max-height: 8.2rem;
+      ${media.mobile} {
+        overflow-y: scroll;
+      }
+    }
     &--team {
       display: grid;
       grid-template: repeat(auto-fill, 1fr) / 7rem 1fr;
       grid-auto-flow: column;
       justify-content: start;
       gap: 1.4rem 0.8rem;
+      ${media.mobile} {
+        /* grid-template-rows: repeat(3, 2.7rem); */
+        grid-template-columns: 4.5rem 1fr;
+      }
       &-job {
         font-style: italic;
         font-weight: 500;
@@ -538,10 +670,20 @@ const ProjectDetail = styled.div`
         line-height: 2.8rem;
         text-transform: lowercase;
         width: 7rem;
+        ${media.mobile} {
+          font-size: 1.2rem;
+          line-height: 2.6rem;
+          width: 5rem;
+        }
       }
       &-member {
-          font-size: 1.6rem;
-          line-height: 2.8rem;
+        font-size: 1.6rem;
+        line-height: 2.8rem;
+        ${media.mobile} {
+          font-weight: 400;
+          font-size: 1.4rem;
+          line-height: 2.6rem;
+        }
       }
     }
   }
@@ -551,15 +693,13 @@ const isWideEnough = (width) => width > (contentWidth + contentGap) * remBase;
 const calcScrollIndicatorWidth = ({ width }) => (
   isWideEnough(width) ? `${contentWidth + contentGap}rem` : `${width}px`
 );
-const calcLeftPadding = ({ width }) => {
+const calcIndicatorLeftPadding = ({ width }) => {
   const left = (isWideEnough(width) ? -(contentGap / 2) : (contentWidth * remBase - width) / 2 / 10);
-  console.log(`left padding: ${left}`);
   return left;
 };
 const calcSeparatorWidth = ({ width }) => {
   const smallWidth = width - indicatorWidth * 2;
   const largeWidth = contentWidth - indicatorWidth;
-  console.log(`separator: ${smallWidth}, ${largeWidth}`);
   return (isWideEnough(width) ? largeWidth : smallWidth);
 };
 const indicatorWidth = 5.2;
@@ -571,9 +711,12 @@ const ForegroundIndicator = styled.div<{width: number}>`
   position: absolute;
   height: 100%;
   width: ${calcScrollIndicatorWidth};
-  left: ${calcLeftPadding}rem;
-  
+  left: ${calcIndicatorLeftPadding}rem;
   overflow-x: visible;
+
+  ${media.mobile} {
+    display: none;
+  }
 
   .separator {
     width: ${calcSeparatorWidth}rem;
