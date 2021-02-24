@@ -99,8 +99,9 @@ const Container = styled.div<ProjectsProps>`
       grid-template-rows: repeat(${({ isMainPage, expanded }) => calcMobileRows(isMainPage, expanded)}, ${({ isMainPage }) => calcMobileRowHeight(isMainPage)});
       grid-template-columns: repeat(${() => calcMobileColumns()}, ${mobileIconSize});
       max-height: ${({ isMainPage, expanded }) => calcMobileMaxHeight(isMainPage, expanded)};
-      overflow-y: ${({ isMainPage }) => (isMainPage ? 'scroll' : 'hidden')};
+      overflow-x: ${({ isMainPage }) => (isMainPage ? 'scroll' : 'hidden')};
       grid-auto-flow: ${({ isMainPage }) => (isMainPage ? 'column' : 'row')};
+      padding-left: ${({ isMainPage }) => (isMainPage ? '2.4rem' : 0)};
     }
   }
 `;
