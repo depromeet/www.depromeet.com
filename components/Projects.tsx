@@ -17,11 +17,12 @@ interface ProjectsProps {
 }
 
 const Projects: FC<ProjectsProps> = ({ isMainPage = false, expanded = false }) => {
-  const [visible, setVisible] = useState({ visible: false, index: 0 });
+  const [dialogVisible, setDialogVisible] = useState({ visible: false, index: 0 });
   const showProjectDialog = useCallback((projectId: number) => {
-    setVisible({ visible: true, index: projectId });
-  }, [setVisible]);
+    setDialogVisible({ visible: true, index: projectId });
+  }, [setDialogVisible]);
 
+  console.log(`visible: ${dialogVisible.visible}`);
   return (
     <>
       <Container
@@ -40,13 +41,19 @@ const Projects: FC<ProjectsProps> = ({ isMainPage = false, expanded = false }) =
             >
               <div className="project--icon-wrapper">
                 <Icon data={data} />
-                <Overlay />
+                <Overlay
+                  role="button"
+                />
               </div>
-              <div className="project--title">{isMainPage || data.title}</div>
+              <div
+                className="project--title"
+              >
+                {isMainPage || data.title}
+              </div>
             </ProjectSummary>
           ))
         }
-        <ProjectDialog visible={visible} setVisible={setVisible} />
+        <ProjectDialog visible={dialogVisible} setVisible={setDialogVisible} />
       </Container>
     </>
   );
@@ -140,7 +147,10 @@ const ProjectSummary = styled.div<ProjectsProps>`
 
 const Overlay = styled.div`
   position: absolute;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background: black ;
   opacity: 0;
   ${ProjectSummary}:hover & {

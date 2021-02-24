@@ -18,7 +18,7 @@ import {
 import projectsData from '../resources/data/projects';
 import { media } from '../styles/theme';
 import {
-  desktopContentWidth, getContentItemPosition,
+  getContentItemPosition,
   isMobile, mobileContentHeight, mobileContentWidth,
   getResponsiveContentWidth, getResponsiveContentHeight,
   calcItemCenterPosition, calcRealListWidth, getContentGap,
@@ -162,6 +162,7 @@ const usePortalSetup = (portal: HTMLElement, rootId = 'modal-root') => useEffect
   () => {
     const modalRoot = document.getElementById(rootId);
     modalRoot.appendChild(portal);
+    console.log('create portal');
     return () => {
       modalRoot.removeChild(portal);
     };
@@ -439,11 +440,17 @@ const contentHeight = 84;
 const contentGap = 5.6;
 const Container = styled.div`
   position: fixed;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 `;
 const Backdrop = styled.div`
   position: fixed;
-  inset: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
   background-color: black;
   opacity: 0.8;
   z-index: -1;
