@@ -499,7 +499,6 @@ const ProjectDetail = styled.div<{width: number}>`
   .detail {
     height: 42rem;
     width: 100%;
-    font-family: Apple SD Gothic Neo;
     color: white;
     word-break: keep-all;
     padding:4.8rem 5.6rem 0;
