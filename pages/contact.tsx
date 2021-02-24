@@ -44,12 +44,25 @@ const Contact = () => (
             언제든지 환영합니다.
           </div>
           <div className="box__sns">
-            <WhiteBox>
+            <WhiteBox
+              role="button"
+              tabIndex={0}
+              onClick={
+                () => window.open('mailto:depromeet@gmail.com?subject=[홈페이지 문의] ')
+              }
+            >
               <div className="box__sns__logo"><Gmail /></div>
               <div className="box__sns__name">gmail</div>
               <div className="box__sns__content">depromeet@gmail.com</div>
             </WhiteBox>
-            <WhiteBox style={{ marginTop: '1.6rem' }}>
+            <WhiteBox
+              style={{ marginTop: '1.6rem' }}
+              role="button"
+              tabIndex={0}
+              onClick={
+                () => window.open('http://pf.kakao.com/_xoxmcxed/chat')
+              }
+            >
               <div className="box__sns__logo"><Kakao /></div>
               <div className="box__sns__name">Kakao plus friend</div>
               <div className="box__sns__content">depromeet</div>
