@@ -1,8 +1,10 @@
-import { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import styled from 'styled-components';
+import { media } from '../styles/theme';
+import { socials } from '../resources/data/socials';
 
 const Logo = dynamic(() => import('../public/gnb_logo.svg'));
 
@@ -12,33 +14,55 @@ interface BackgroundTransparentProps {
 const applyFor9th = 'https://forms.gle/MVr4auDmerieZZR27?fbclid=IwAR3vamHZfGNvWtQ5bHKRE7swLKHFGsHeSy0wUde_bdoate-veAqlLJeM3kI';
 
 export const openApplySite = () => window.open(applyFor9th);
-const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => (
-  <Container isTransparent={isTransparent}>
-    <div style={{ cursor: 'pointer' }}>
-      <Link href="/">
-        <Logo />
-      </Link>
-    </div>
-    <ButtonContainer>
-      <RouterBtn routerName="about" path="/" />
-      <RouterBtn routerName="project" path="/project" />
-      <RouterBtn routerName="contact" path="/contact" />
-      <Button
-        role="button"
-        tabIndex={0}
-        onClick={openApplySite}
-      >
-        9기에서 만나기
-      </Button>
-    </ButtonContainer>
-  </Container>
-);
+const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
+  const [visible, setVisible] = useState(false);
+  return (
+    <Container isTransparent={isTransparent}>
+      <div role="button" tabIndex={0} className="logo">
+        <Link href="/">
+          <Logo />
+        </Link>
+      </div>
+      <div className="mobile__only menu-icon">
+        <MenuButton isVisible={visible} setVisible={setVisible} />
+      </div>
+      <ButtonContainer visible={visible} className="no-scroll-bar">
+        <RouterBtn routerName="about" path="/" setVisible={setVisible} />
+        <RouterBtn routerName="project" path="/project" setVisible={setVisible} />
+        <RouterBtn routerName="contact" path="/contact" setVisible={setVisible} />
+        <div className="mobile__only invitation">
+          Depromeet에서 같이 성장... 어때요?
+        </div>
+        <Button
+          role="button"
+          tabIndex={0}
+          onClick={openApplySite}
+        >
+          9기에서 만나기
+        </Button>
+        <div className="mobile__only socials">
+          {
+            socials.map((v) => (
+              <SocialButton
+                href={v.href}
+                name={v.name}
+              />
+            ))
+          }
+        </div>
+      </ButtonContainer>
+    </Container>
+  );
+};
 
-const RouterBtn = ({ routerName, path }) => {
+const RouterBtn = ({ routerName, path, setVisible }) => {
   const router = useRouter();
   const pathname = useRouter().pathname;
 
-  const handleRouting = () => router.push(path);
+  const handleRouting = () => {
+    setVisible(false);
+    router.push(path);
+  };
 
   return (
     <RouterButton
@@ -54,6 +78,39 @@ const RouterBtn = ({ routerName, path }) => {
   );
 };
 
+const SocialButton = ({ name, href }) => {
+  const openSocial = () => { window.open(href); };
+  return (
+    <Social
+      role="button"
+      onClick={openSocial}
+      tabIndex={0}
+    >
+      {name}
+    </Social>
+  );
+};
+
+const MenuButton = ({ isVisible, setVisible }) => {
+  const changeMenuState = () => {
+    setVisible((visible) => !visible);
+  };
+
+  return (
+    <MenuIcon
+      role="button"
+      tabIndex={0}
+      onClick={changeMenuState}
+    >
+      <img
+        src={isVisible ? '/ic_x.svg' : 'ic_menu.svg'}
+        alt="menu button"
+        loading="lazy"
+      />
+    </MenuIcon>
+  );
+};
+
 const Container = styled.div<BackgroundTransparentProps>`
   position: fixed;
   background-color: ${({ isTransparent }) => (isTransparent ? 'transparent' : 'black')};
@@ -66,12 +123,77 @@ const Container = styled.div<BackgroundTransparentProps>`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  box-sizing: border-box;
   z-index: 10;
+
+  ${media.mobile} {
+    padding: 2.8rem 2.4rem;
+    height: 7.2rem;
+    justify-content: space-between;
+  }
+
+  .logo {
+    ${media.mobile} {
+      z-index: 1;
+      svg { 
+        width: 8rem;
+        height: 4rem;
+      }
+    }
+  }
+
+  .menu-icon {
+    ${media.mobile} {
+      z-index: 1;
+    }
+  }
+
+  .mobile__only {
+    display: none;
+    ${media.mobile} {
+      display: block;
+    }
+  }
+
+  .invitation {
+    ${media.mobile} {
+      font-size: 1.4rem;
+      line-height: 2rem;
+      font-weight: 500;
+      margin: 14.7rem 0 1rem;
+    }
+  }
 `;
 
-const ButtonContainer = styled.div`
+const ButtonContainer = styled.div<{visible: boolean}>`
   display: flex;
   align-items: center;
+  ${media.mobile} {
+    display: ${({ visible }) => (visible ? 'flex' : 'none')};
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #0038ff;
+    opacity: 0.97;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 7rem 2.4rem 0;
+    overflow-y: scroll;
+  }
+
+  .socials {
+    display: none;
+    ${media.mobile} {
+      width: 100%;
+      margin-top: 4rem;
+      display: flex;
+      justify-content: space-around;
+    }
+  }
 `;
 
 const Button = styled.div`
@@ -85,6 +207,23 @@ const Button = styled.div`
   :hover {
     background-color: #0013BA;
   }
+
+  ${media.mobile} {
+    background-color: white;
+    border-radius: 1rem;
+    width: 100%;
+    height: 4.8rem;
+    padding: 0;
+    margin: 0 2.4rem;
+    color: #0038ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    :hover {
+      background-color: #c0c0c0;
+    }
+  }
 `;
 
 const RouterButton = styled.div<{isSame: boolean}>`
@@ -96,6 +235,21 @@ const RouterButton = styled.div<{isSame: boolean}>`
   :hover {
     color: #c0c0c0;
   }
+
+
+  ${media.mobile} {
+    font-size: 4rem;
+    line-height: 4rem;
+    font-weight: bold;
+    margin-right: 0;
+    margin-top: 6.7rem;
+    :first-child {
+      margin-top: 0;
+    }
+    :hover {
+      color: white;
+    }
+  }
 `;
 
 const Underline = styled.div`
@@ -105,6 +259,27 @@ const Underline = styled.div`
   height: 0.2rem;
   background-color: white;
   margin-top: 0.8rem;
+
+  ${media.mobile} {
+    display: none;
+  }
+`;
+
+const Social = styled.div`
+  font-family: Montserrat;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  font-weight: bold;
+  text-align: center;
+`;
+
+const MenuIcon = styled.div`
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
 `;
 
 export default Header;
