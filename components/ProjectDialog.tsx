@@ -162,7 +162,6 @@ const usePortalSetup = (portal: HTMLElement, rootId = 'modal-root') => useEffect
   () => {
     const modalRoot = document.getElementById(rootId);
     modalRoot.appendChild(portal);
-    console.log('create portal');
     return () => {
       modalRoot.removeChild(portal);
     };

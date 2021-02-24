@@ -22,7 +22,6 @@ const Projects: FC<ProjectsProps> = ({ isMainPage = false, expanded = false }) =
     setDialogVisible({ visible: true, index: projectId });
   }, [setDialogVisible]);
 
-  console.log(`visible: ${dialogVisible.visible}`);
   return (
     <>
       <Container

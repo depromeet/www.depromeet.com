@@ -35,7 +35,5 @@ export const calcRealListWidth = (windowWidth: number, originalWidth) => {
   const contentGap = getContentGap(windowWidth);
   const gap = contentGap * remBase * (projectsData.length - 1);
   const original = parseFloat(originalWidth);
-  console.log(padding);
-  console.log(contentGap);
   return original + gap + padding;
 };

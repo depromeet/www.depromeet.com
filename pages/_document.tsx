@@ -36,6 +36,11 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <meta charSet="utf-8" />
+          <link rel="shortcut icon" href="/favicon.svg" type="image/svg" />
+          <meta property="og:title" content="Depromeet" />
+          <meta property="og:image" content="/og-main.png" />
+          <meta property="og:description" content="오직 디자이너와 프로그래머의 동반성장을 위해서" />
+          <meta property="og:url" content="//depromeet.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
           <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet" />
