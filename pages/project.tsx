@@ -7,29 +7,29 @@ import ScheduleBox from '../components/ScheduleBox';
 import { steps } from '../resources/data/schedule';
 import Projects from '../components/Projects';
 import projectsData from '../resources/data/projects';
+import { media } from '../styles/theme';
 
-const Project = () => {
-  const BackgroundImage = dynamic(() => import('../resources/images/project_background_image.svg'));
-  return (
-    <div className="no-scroll-bar" style={{ overflow: 'scroll' }}>
-      <TransparentableHeader />
-      <TopBackground>
-        <div style={{ width: '192rem' }}>
-          <BackgroundImage />
-        </div>
-      </TopBackground>
-      <CenterAlignedContainer>
-        <Catchphrase>
-          서비스 런칭부터 개선까지 <br />
-          <span className="catchphrase__bold"> 경험에 성장을 더합니다. </span>
-        </Catchphrase>
-        <AllProjects />
-        <AllSchedule />
-      </CenterAlignedContainer>
-      <Footer />
-    </div>
-  );
-};
+const Project = () => (
+  <div className="no-scroll-bar" style={{ overflow: 'scroll' }}>
+    <TransparentableHeader />
+    <TopBackground>
+      <img
+        src="/project_background_image.svg"
+        alt="project page background"
+        loading="lazy"
+      />
+    </TopBackground>
+    <CenterAlignedContainer>
+      <Catchphrase>
+        서비스 런칭부터 개선까지 <br />
+        <span className="catchphrase__bold"> 경험에 성장을 더합니다. </span>
+      </Catchphrase>
+      <AllProjects />
+      <AllSchedule />
+    </CenterAlignedContainer>
+    <Footer />
+  </div>
+);
 
 const TransparentableHeader = () => {
   const [isTransparent, setTransparent] = useState(true);
@@ -91,8 +91,8 @@ const AllProjects = () => {
 const AllSchedule = () => (
   <ScheduleSection>
     <Title>
-      15주간 여정
-      <span className="title--desc">Depromeet 9기는 매주 토요일 15주간 진행됩니다.</span>
+      13주간 여정
+      <span className="title--desc">Depromeet 9기는 매주 토요일 13주간 진행됩니다.</span>
     </Title>
     <Schedules>
       {steps.map((v, idx) => (
@@ -107,11 +107,19 @@ const TopBackground = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  bottom: 0;
   height: 43.4rem;
   width: 100%;
   display: flex;
   justify-content: center;
+
+  img { 
+    object-fit: cover;
+    width: 100%;
+  }
+
+  ${media.mobile} {
+    height: 30rem;
+  }
 `;
 
 const CenterAlignedContainer = styled.div`
@@ -123,25 +131,39 @@ const CenterAlignedContainer = styled.div`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  padding: 0 2.4rem;
+  margin-top: 30rem;
+  margin-bottom: 16rem;
+  ${media.mobile} {
+    width: 37.5rem;
+    margin-top: 24rem;
+    box-sizing: border-box;
+    margin-bottom: 7rem;
+  }
 `;
 
 const Catchphrase = styled.div`
-  font-family: Apple SD Gothic Neo;
   font-style: normal;
   font-weight: normal;
   font-size: 3.6rem;
   line-height: 5.6rem;
   letter-spacing: -0.03em;
   color: #FFFFFF;
-  margin-top: 30rem;
   margin-bottom: 7.8rem;
+  ${media.mobile} {
+    font-weight: 300;
+    font-size: 2.8rem;
+    line-height: 4rem;
+  }
   .catchphrase__bold {
     font-weight: bold;
+    ${media.mobile} {
+      font-weight: 800;
+    }
   }
 `;
 
 const Title = styled.h1`
-  font-family: Apple SD Gothic Neo;
   font-style: normal;
   font-weight: 800;
   font-size: 2.2rem;
@@ -149,6 +171,9 @@ const Title = styled.h1`
   letter-spacing: -0.03em;
   color: #FFFFFF;
   margin-bottom: 4rem;
+  ${media.mobile} {
+    font-size: 1.6rem;
+  }
   sup { 
     font-family: Montserrat;
     font-style: normal;
@@ -157,9 +182,11 @@ const Title = styled.h1`
     line-height: 1.2rem;
     margin-left: 1rem;
     vertical-align: super;
+    ${media.mobile} {
+      font-size: 1rem;
+    }
   }
   .title--desc {
-    font-family: Apple SD Gothic Neo;
     font-style: normal;
     font-weight: normal;
     font-size: 1.4rem;
@@ -168,6 +195,9 @@ const Title = styled.h1`
     color: #FFFFFF;
     margin-left: 2.4rem;
     vertical-align: center;
+    ${media.mobile} {
+      display: none;
+    }
   }
 `;
 
@@ -210,7 +240,6 @@ const ProjectSection = styled.div`
 `;
 
 const ScheduleSection = styled.div`
-  margin-bottom: 16rem;
 `;
 
 const Schedules = styled.div`

@@ -1,15 +1,20 @@
 import styled from 'styled-components';
 import dynamic from 'next/dynamic';
+import { media } from '../styles/theme';
 
 const Footer = () => {
-  const FooterLogo = dynamic(() => import('../resources/images/logo_footer.svg'));
   const InstagramLogo = dynamic(() => import('../resources/images/ic_sns_instagram.svg'));
   const FacebookLogo = dynamic(() => import('../resources/images/ic_sns_facebook.svg'));
   const MediumLogo = dynamic(() => import('../resources/images/ic_sns_medium.svg'));
   return (
     <Container>
       <Content>
-        <FooterLogo />
+        <img
+          className="logo-container"
+          src="/logo_footer.svg"
+          alt="footer logo"
+          loading="lazy"
+        />
         <ButtonContainer>
           <MediaButton href="https://depromeet.medium.com/">
             <MediumLogo />
@@ -52,6 +57,19 @@ const Content = styled.div`
   height: 16rem;
   padding-left: 20vw;
   padding-right: 20vw;
+  box-sizing: border-box;
+
+  ${media.mobile} {
+    padding: 2.8rem 2.4rem;
+    height: 9.6rem;
+
+  }
+  .logo-container {
+    ${media.mobile} {
+      width: 6.4rem;
+      height: 4rem;
+    }
+  }
 `;
 
 const ButtonContainer = styled.div`
@@ -67,6 +85,12 @@ const Button = styled.a`
   margin-left: 2.4rem;
   align-items: center;
   justify-content: center;
+
+  ${media.mobile} {
+    width: 4rem;
+    height: 4rem;
+    margin-left: 1.6rem;
+  }
 `;
 
 const Copyright = styled.div`
@@ -82,6 +106,10 @@ const Copyright = styled.div`
   line-height: 1.5rem;
   font-family: Montserrat;
   color: #757575;
+  ${media.mobile} {
+    font-size: 1rem;
+    line-height: 1.2rem;
+  }
 `;
 
 export default Footer;

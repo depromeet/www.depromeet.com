@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { ReactNode, FC } from 'react';
 import StepLottie, { LottieProps } from './StepLottie';
+import { media } from '../styles/theme';
 
 interface ScheduleProps {
   detail: {
@@ -17,12 +18,14 @@ const ScheduleBox: FC<ScheduleProps> = ({ detail, index }) => (
       <div className="title--step">STEP {index + 1}</div>
       <div className="title--duration title--duration__green">{detail.duration}</div>
     </div>
-    <div className="desc">
-      {detail.desc}
-    </div>
-    <div className="motion">
-      <div className="motion--img">
-        <StepLottie lottie={detail.lottie} />
+    <div className="detail">
+      <div className="desc">
+        {detail.desc}
+      </div>
+      <div className="motion">
+        <div className="motion--img">
+          <StepLottie lottie={detail.lottie} />
+        </div>
       </div>
     </div>
   </Container>
@@ -33,13 +36,22 @@ const Container = styled.div`
   height: 26rem;
   background: #131313;
   border-radius: 3.2rem;
-  font-family: Apple SD Gothic Neo;
   padding: 4rem 4.8rem;
   box-sizing: border-box;
   position: relative;
+
+  ${media.mobile} {
+    width: 32.7rem;
+    height: 18rem;
+    padding: 2.2rem 1.6rem;
+  }
+
   .title {
     display: flex;
     align-items: center;
+    ${media.mobile} {
+      justify-content: space-between;
+    }
     &--step {
       font-family: Montserrat;
       font-weight: 800;
@@ -49,6 +61,11 @@ const Container = styled.div`
       text-transform: uppercase;
       color: #FFFFFF;
       display: inline-block;
+
+      ${media.mobile} {
+        font-size: 2rem;
+        line-height: 2.4rem;
+      }
     }
     &--duration {
       font-weight: bold;
@@ -63,31 +80,55 @@ const Container = styled.div`
       &__blue {
         color: ${({ theme }) => theme.color.blue};
       }
+      ${media.mobile} {
+        font-size: 1.2rem;
+        line-height: 1.4rem;
+      }
     }
   }
-  .desc {
-    font-weight: bold;
-    font-size: 3.6rem;
-    line-height: 4.8rem;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    margin-top: 2.4rem;
-  }
-  .motion {
-    position: absolute;
-    right: 10rem;
-    top: 0;
-    height: 100%;
-    box-sizing: border-box;
-    aspect-ratio: 1/1;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    &--img {
-      position: relative;
-      height: 100%;
+  .detail {
+    ${media.mobile} {
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
+    }
+    .desc {
+      font-weight: bold;
+      font-size: 3.6rem;
+      line-height: 4.8rem;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      margin-top: 2.4rem;
+      ${media.mobile} {
+        flex: 2;
+        font-size: 2rem;
+        line-height: 2.8rem;
+        padding-right: 2rem;
+        align-self: flex-start;
+      }
+    }
+    .motion {
+      position: absolute;
+      right: 10rem;
+      top: 0;
+      right: 0;
+      height: 100%;
+      box-sizing: border-box;
+      aspect-ratio: 1/1;
+      padding-top: 4rem;
+      padding-bottom: 4rem;
+      ${media.mobile} {
+        position: relative;
+        padding: 0;
+        flex: 1;
+      }
+      &--img {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
     }
   }
 `;
