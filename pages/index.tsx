@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Link from 'next/link';
 import { Header, Footer } from '../components';
+import { openApplySite } from '../components/Header';
 import Projects from '../components/Projects';
 import StoryBox from '../components/StoryBox';
 import { stories } from '../resources/data/reviews';
@@ -89,7 +90,13 @@ const Container4 = () => (
         Depromeet 9기는 COVID-19확산으로 인해 온라인 모임을 지향하고 있습니다.
       </div>
     </div>
-    <div className="gradientBtn" role="button">
+    <div
+      className="gradientBtn"
+      role="button"
+      tabIndex={0}
+      onClick={openApplySite}
+      onKeyDown={() => {}}
+    >
       9기에서 만나기
     </div>
     <div className="greenBtn" role="button">
