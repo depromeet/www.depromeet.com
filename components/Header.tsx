@@ -26,7 +26,7 @@ const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
       <div className="mobile__only menu-icon">
         <MenuButton isVisible={visible} setVisible={setVisible} />
       </div>
-      <ButtonContainer visible={visible}>
+      <ButtonContainer visible={visible} className="no-scroll-bar">
         <RouterBtn routerName="about" path="/" setVisible={setVisible} />
         <RouterBtn routerName="project" path="/project" setVisible={setVisible} />
         <RouterBtn routerName="contact" path="/contact" setVisible={setVisible} />
@@ -123,7 +123,7 @@ const Container = styled.div<BackgroundTransparentProps>`
   display: flex;
   align-items: center;
   justify-content: space-around;
-    box-sizing: border-box;
+  box-sizing: border-box;
   z-index: 10;
 
   ${media.mobile} {
@@ -181,7 +181,8 @@ const ButtonContainer = styled.div<{visible: boolean}>`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 2.4rem;
+    padding: 7rem 2.4rem 0;
+    overflow-y: scroll;
   }
 
   .socials {
