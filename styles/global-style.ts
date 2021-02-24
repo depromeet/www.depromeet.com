@@ -17,10 +17,10 @@ export const GlobalStyle = createGlobalStyle`
         overflow-x: hidden;
     }
     .no-scroll-bar::-webkit-scrollbar {
-    display: none;
+        display: none;
     }
     .no-scroll-bar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
 `;
