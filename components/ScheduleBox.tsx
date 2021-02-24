@@ -72,7 +72,6 @@ const Container = styled.div`
     text-transform: uppercase;
     color: #FFFFFF;
     margin-top: 2.4rem;
-    max-width: 45.4rem;
   }
   .motion {
     position: absolute;

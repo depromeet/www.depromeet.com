@@ -12,15 +12,15 @@ export const GlobalStyle = createGlobalStyle`
     }
     html{
         font-size: 10px;
-        font-family: Apple SD Gothic Neo;
+        font-family: Apple SD Gothic Neo, Noto Sans KR;
         background-color: black;
         overflow-x: hidden;
     }
     .no-scroll-bar::-webkit-scrollbar {
-    display: none;
+        display: none;
     }
     .no-scroll-bar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
     }
 `;
