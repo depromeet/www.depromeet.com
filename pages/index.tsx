@@ -80,6 +80,7 @@ const Container3 = () => (
   </Cont3>
 );
 
+const emptyCallback = () => {};
 const Container4 = () => (
   <Cont4>
     <div className="title">
@@ -95,15 +96,34 @@ const Container4 = () => (
       role="button"
       tabIndex={0}
       onClick={openApplySite}
-      onKeyDown={() => {}}
+      onKeyDown={emptyCallback}
     >
       9기에서 만나기
     </div>
-    <div className="greenBtn" role="button">
+    <div
+      className="greenBtn"
+      role="button"
+      tabIndex={0}
+      onKeyDown={emptyCallback}
+      onClick={shareDepromeet}
+    >
       지인에게 공유하기
     </div>
   </Cont4>
 );
+
+const shareData = {
+  title: '디프만',
+  text: 'Depromeet의 아홉 번째 이야기',
+  url: 'https://depromeet.com',
+};
+const shareDepromeet = async () => {
+  try {
+    await navigator.share(shareData);
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 const Containers = styled.div`
   color: white;
