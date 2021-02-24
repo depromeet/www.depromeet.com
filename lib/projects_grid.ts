@@ -21,7 +21,9 @@ const calcProjectPageMultipleRows = (expanded: boolean): string | number => {
 };
 
 const maxColumns = 6;
+const maxHeight = 22;
+const maxRowGap = 3.2;
 const calcColumns = (isMainPage: boolean): string | number => (isMainPage === true ? 'auto-fill' : maxColumns);
-const calcMaxHeight = (isMainPage: boolean, expanded: boolean): string => (isMainPage === true ? '17rem' : (expanded === true ? '100%' : '45.2rem'));
+const calcMaxHeight = (isMainPage: boolean, expanded: boolean): string => (isMainPage === true ? '17rem' : (expanded === true ? '100%' : `${maxHeight * 2 + maxRowGap}rem`));
 
 export { calcRows, calcColumns, calcMaxHeight };

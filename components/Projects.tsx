@@ -38,7 +38,7 @@ const Projects: FC<ProjectsProps> = ({ isMainPage = false, expanded = false }) =
                 <Icon data={data} />
                 <Overlay />
               </div>
-              <div className="project--title">{isMainPage ?? data.title}</div>
+              <div className="project--title">{isMainPage || data.title}</div>
             </ProjectSummary>
           ))
         }
@@ -72,7 +72,7 @@ const MemoizedIcon = ({ data }) => {
 const Container = styled.div<ProjectsProps>`
   display: grid;
   grid-auto-flow: row;
-  grid-template-rows: repeat(${({ isMainPage, expanded }) => calcRows(isMainPage, expanded)}, minmax(17rem, ${({ isMainPage }) => (isMainPage ? '17rem' : '21rem')}));
+  grid-template-rows: repeat(${({ isMainPage, expanded }) => calcRows(isMainPage, expanded)}, minmax(17rem, ${({ isMainPage }) => (isMainPage ? '17rem' : '22rem')}));
   grid-template-columns: repeat(${({ isMainPage }) => calcColumns(isMainPage)}, minmax(17rem, 17rem));
   gap: 3.2rem 2.4rem;
   overflow-x: hidden;
@@ -83,20 +83,19 @@ const Container = styled.div<ProjectsProps>`
 
 const ProjectSummary = styled.div<ProjectsProps>`
   width: 17rem;
-  height: ${({ isMainPage }) => (isMainPage ? '17rem' : '21rem')};
+  height: ${({ isMainPage }) => (isMainPage ? '17rem' : '22rem')};
   display: grid;
   overflow: hidden;
   .project {
     &--title {
-      font-family: Apple SD Gothic Neo;
       font-style: normal;
-      font-weight: 800;
+      font-weight: bold;
       font-size: 1.6rem;
-      line-height: 1.9rem;
+      line-height: 2.3rem;
       text-align: center;
       letter-spacing: -0.03em;
       color: #FFFFFF;
-      display: ${({ isMainPage }) => (isMainPage === true ? 'none' : 'block')}
+      display: ${({ isMainPage }) => (isMainPage ? 'none' : 'block')}
     }
     &--icon-wrapper {
       width: 17rem;
