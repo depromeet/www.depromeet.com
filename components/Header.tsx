@@ -28,7 +28,11 @@ const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
           src="/invitation.svg"
           alt="9th invitation"
           loading="lazy"
-          style={{ width: '8.8rem', height: '2.6rem' }}
+          style={{
+            width: '8.8rem',
+            height: '2.6rem',
+            display: visible ? 'none' : 'block',
+          }}
         />
         <MenuButton isVisible={visible} setVisible={setVisible} />
       </div>
