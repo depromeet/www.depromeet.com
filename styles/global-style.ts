@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     }
     html{
         font-size: 10px;
-        font-family: Apple SD Gothic Neo;
+        font-family: Apple SD Gothic Neo, Noto Sans KR;
         background-color: black;
         overflow-x: hidden;
     }
