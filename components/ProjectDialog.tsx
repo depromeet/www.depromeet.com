@@ -2,7 +2,7 @@
 import {
   FC, useEffect, useMemo, useState,
   useCallback, useRef, MutableRefObject,
-  forwardRef, CSSProperties, useLayoutEffect,
+  forwardRef, CSSProperties, useLayoutEffect, SetStateAction, Dispatch,
 } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
@@ -92,7 +92,8 @@ interface ProjectContentsProps {
   scrollRef: MutableRefObject<FixedSizeList>;
 }
 const ProjectsDialogContents:FC<ProjectContentsProps> = ({ width, index, scrollRef }) => {
-  useScrollToIndex(scrollRef, index, width);
+  const [focusedIndex, setFocusedIndex] = useState(index);
+  useScrollToIndex(scrollRef, focusedIndex, width);
   return (
     <>
       <FixedSizeList
@@ -107,36 +108,48 @@ const ProjectsDialogContents:FC<ProjectContentsProps> = ({ width, index, scrollR
         style={{
           overflow: 'hidden',
         }}
-        innerElementType={innerWrapper}
+        innerElementType={innerWrapper(width)}
       >
-        {ProjectItem}
+        {withScrollController(focusedIndex, setFocusedIndex, width)}
       </FixedSizeList>
-      <ScrollController
-        current={index}
-        scrollRef={scrollRef}
-        width={width}
-      />
     </>
   );
 };
 
-const innerWrapper = forwardRef<HTMLDivElement, {style: CSSProperties}>(({ style, ...rest }, ref) => (
-  <div
-    className="no-scroll-bar"
-    ref={ref}
-    style={{
-      ...style,
-      width: `${parseFloat(style.width.toString()) + contentPadding * 10 * 2 + contentGap * 10 * (projectsData.length - 1)}px`,
-    }}
-    {...rest}
+const withScrollController = (focusedIndex, setFocusedIndex, width) => (props: ProjectDataProps) => (
+  <ProjectItem
+    focusedIndex={focusedIndex}
+    setFocusedIndex={setFocusedIndex}
+    windowWidth={width}
+    {...props}
   />
-));
+);
+
+const innerWrapper = (width) => forwardRef<HTMLDivElement, {style: CSSProperties}>(({ style, ...rest }, ref) => {
+  const padding = calcCenterPadding(width) * 2;
+  const gap = contentGap * remBase * projectsData.length;
+  return (
+    <div
+      className="no-scroll-bar"
+      ref={ref}
+      style={{
+        ...style,
+        width: `${parseFloat(style.width.toString()) + padding + gap}px`,
+      }}
+      {...rest}
+    />
+  );
+});
 
 const useScrollToIndex = (scrollRef: MutableRefObject<FixedSizeList>, index: number, width: number) => {
   const left = (width - contentWidth * 10) / 2 - contentGap * 10;
+  const padding = calcCenterPadding(width);
+  const xOffset = padding + index * contentWidth * remBase + contentGap * remBase * index - left;
   useLayoutEffect(() => {
-    if (scrollRef.current) { scrollRef.current.scrollTo(contentPadding * 10 + index * 800 + contentGap * 10 * index - left); }
-  }, [scrollRef, index, left]);
+    if (scrollRef.current) {
+      scrollRef.current.scrollTo(xOffset);
+    }
+  }, [scrollRef, xOffset]);
 };
 
 const usePortalSetup = (portal: HTMLElement, rootId = 'modal-root') => useEffect(
@@ -152,6 +165,9 @@ const usePortalSetup = (portal: HTMLElement, rootId = 'modal-root') => useEffect
 const RightBorder = rightBorderImg();
 interface ProjectDataProps extends ListChildComponentProps{
   data: ProjectData[];
+  focusedIndex: number;
+  setFocusedIndex: Dispatch<SetStateAction<number>>;
+  windowWidth: number;
 }
 const Image = ({ data }) => {
   if (typeof data.icon === 'string') {
@@ -173,18 +189,31 @@ const MemoizedImage = ({ data }) => {
   const ProjectImage = useMemo(() => data.image(), [data]);
   return <ProjectImage />;
 };
-const ProjectItem:FC<ProjectDataProps> = ({ data, index, style }) => {
-  const projectData = data[index];
 
+const ProjectItem:FC<ProjectDataProps> = ({
+  data, index, style, focusedIndex, setFocusedIndex, windowWidth,
+}) => {
+  const projectData = data[index];
+  const horizontalPadding = calcCenterPadding(windowWidth);
   return (
     <ProjectDetail
       key={`project-detail-${index}`}
       style={{
         ...style,
-        left: `${parseFloat(style.left.toString()) + contentPadding * 10 + contentGap * 10 * (index)}px`,
+        left: `${parseFloat(style.left.toString()) + horizontalPadding + contentGap * 10 * (index)}px`,
       }}
       onClick={(e) => e.stopPropagation()}
     >
+      {
+        focusedIndex === index
+        && (
+          <ScrollController
+            index={focusedIndex}
+            setIndex={setFocusedIndex}
+            width={windowWidth}
+          />
+        )
+      }
       <div className="image">
         <Image data={projectData} />
         <div className="image-shadow" />
@@ -308,31 +337,28 @@ const LinkButton: FC<{link?: string, className: string}> = ({ link, className, c
 };
 
 interface ScrollControllerProps {
-  scrollRef: MutableRefObject<FixedSizeList>;
-  current: number,
-  width: number,
+  index: number;
+  setIndex: Dispatch<SetStateAction<number>>;
+  width: number;
 }
 
 const ScrollController: FC<ScrollControllerProps> = ({
-  scrollRef, current, width,
+  index, setIndex, width,
 }) => {
-  const [index, setIndex] = useState(current);
-
-  useScrollToIndex(scrollRef, index, width);
-
   const scrollToNext = useCallback((e) => {
     e.stopPropagation();
     setIndex((prev) => (prev < projectsData.length - 1 ? prev + 1 : prev));
-  }, []);
+  }, [setIndex]);
 
   const scrollToPrev = useCallback((e) => {
     e.stopPropagation();
     setIndex((prev) => (prev > 0 ? prev - 1 : prev));
-  }, []);
+  }, [setIndex]);
 
   return (
     <ForegroundIndicator
       onClick={(e) => e.stopPropagation()}
+      width={width}
     >
       <ScrollIndicator
         role="button"
@@ -361,10 +387,14 @@ const ScrollController: FC<ScrollControllerProps> = ({
   );
 };
 // rem
+const remBase = 10;
 const contentWidth = 80;
 const contentHeight = 84;
 const contentGap = 5.6;
-const contentPadding = 52;
+const calcCenterPadding = (width) => {
+  const padding = (width - contentWidth * remBase) / 2;
+  return padding;
+};
 const Container = styled.div`
   position: fixed;
   top:0;
@@ -517,25 +547,43 @@ const ProjectDetail = styled.div`
   }
 `;
 
-const ForegroundIndicator = styled.div`
+const isWideEnough = (width) => width > (contentWidth + contentGap) * remBase;
+const calcScrollIndicatorWidth = ({ width }) => (
+  isWideEnough(width) ? `${contentWidth + contentGap}rem` : `${width}px`
+);
+const calcLeftPadding = ({ width }) => {
+  const left = (isWideEnough(width) ? -(contentGap / 2) : (contentWidth * remBase - width) / 2 / 10);
+  console.log(`left padding: ${left}`);
+  return left;
+};
+const calcSeparatorWidth = ({ width }) => {
+  const smallWidth = width - indicatorWidth * 2;
+  const largeWidth = contentWidth - indicatorWidth;
+  console.log(`separator: ${smallWidth}, ${largeWidth}`);
+  return (isWideEnough(width) ? largeWidth : smallWidth);
+};
+const indicatorWidth = 5.2;
+const ForegroundIndicator = styled.div<{width: number}>`
   z-index: 2000;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: fixed;
-  height: 0;
-  width: 100%;
-  /* inset: 0; */
+  position: absolute;
+  height: 100%;
+  width: ${calcScrollIndicatorWidth};
+  left: ${calcLeftPadding}rem;
   
+  overflow-x: visible;
+
   .separator {
-    width: ${80 - 5.2}rem;
+    width: ${calcSeparatorWidth}rem;
     height: 0;
   }
 `;
 
 const ScrollIndicator = styled.image<{disabled: boolean}>`
-  width: 5.2rem;
-  height: 5.2rem;
+  width: ${indicatorWidth}rem;
+  height: ${indicatorWidth}rem;
   background-color: transparent;
   border-radius: 50%;
   :hover {
