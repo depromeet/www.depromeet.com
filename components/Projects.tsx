@@ -81,18 +81,18 @@ const MemoizedIcon = ({ data }) => {
 };
 
 const Container = styled.div<ProjectsProps>`
-  display: grid;
+  display: ${({ isMainPage }) => (isMainPage ? 'flex' : 'grid')};
   grid-auto-flow: row;
   grid-template-rows: repeat(${({ isMainPage, expanded }) => calcRows(isMainPage, expanded)}, minmax(17rem, ${({ isMainPage }) => (isMainPage ? '17rem' : '22rem')}));
   grid-template-columns: repeat(${({ isMainPage }) => calcColumns(isMainPage)}, minmax(17rem, 17rem));
-  gap: 3.2rem 2.4rem;
-  overflow-x: hidden;
-  overflow-y: ${({ isMainPage }) => (isMainPage ? 'scroll' : 'hidden')};
+  overflow-y: hidden;
+  overflow-x: ${({ isMainPage }) => (isMainPage ? 'scroll' : 'hidden')};
   max-height: ${({ isMainPage, expanded }) => calcMaxHeight(isMainPage, expanded)};
   width: 100%;
+  gap: ${({ isMainPage }) => (isMainPage ? 0 : '3.2rem 2.4rem')};
 
   ${media.mobile} {
-    gap: 2.4rem 2rem;
+    gap: ${({ isMainPage }) => (isMainPage ? 0 : '2.4rem 2.4rem')};
     grid-template-rows: repeat(${({ isMainPage, expanded }) => calcMobileRows(isMainPage, expanded)}, ${({ isMainPage }) => calcMobileRowHeight(isMainPage)});
     grid-template-columns: repeat(${() => calcMobileColumns()}, ${mobileIconSize});
   }
@@ -103,9 +103,20 @@ const ProjectSummary = styled.div<ProjectsProps>`
   height: ${({ isMainPage }) => (isMainPage ? '17rem' : '22rem')};
   display: grid;
   overflow: hidden;
+  margin-right: 2.4rem;
+  margin-bottom: 3.2rem;
+  :last-child {
+    margin-right: 0;
+  }
   ${media.mobile} {
     width: ${mobileIconSize};
-    height: ${({ isMainPage }) => calcMobileRowHeight(isMainPage)}
+    height: ${({ isMainPage }) => calcMobileRowHeight(isMainPage)};
+    margin-right: 2rem;
+    margin-bottom: 2.4rem;
+    :last-child {
+      margin-right: 0;
+      margin-bottom: 0;
+    }
   }
   .project {
     &--title {

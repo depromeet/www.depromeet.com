@@ -114,7 +114,7 @@ const ProjectsDialogContents:FC<ProjectContentsProps> = ({ width, index, scrollR
         ref={scrollRef}
         itemData={projectsData}
         style={{
-          overflowY: 'scroll',
+          overflowY: 'hidden',
           overflowX: isMobile(width) ? 'scroll' : 'hidden',
         }}
         innerElementType={innerWrapper(width)}
@@ -254,7 +254,7 @@ const ProjectItem:FC<ProjectDataProps> = ({
             <div className="catchphrase--icon">
               <Icon data={projectData} />
             </div>
-            <div className="catchphrase--data">
+            <div className="catchphrase--data no-scroll-bar">
               {projectData.catchphrase}
             </div>
           </div>
@@ -274,7 +274,7 @@ const ProjectItem:FC<ProjectDataProps> = ({
               <RightBorder />
             </span>
           </div>
-          <div className="detail--description">
+          <div className="detail--description no-scroll-bar">
             {projectData.description}
           </div>
           <div className="detail--subject">
@@ -283,7 +283,7 @@ const ProjectItem:FC<ProjectDataProps> = ({
               <RightBorder />
             </span>
           </div>
-          <div className="detail--team-intro">
+          <div className="detail--team-intro no-scroll-bar">
             <TeamMember job="designer" member={projectData.desingers?.join(' ∙ ')} />
             <TeamMember job="backend" member={projectData.backends?.join(' ∙ ')} />
             <TeamMember job="frontend" member={projectData.frontends?.join(' ∙ ')} />
@@ -541,11 +541,11 @@ const ProjectDetail = styled.div<{width: number}>`
         font-size: 1.8rem;
         line-height: 2.8rem;
         margin-bottom: 4rem;
-        overflow-y: scroll;
       }
       &--data {
         ${media.mobile} {
           width: 19rem;
+          overflow-y: scroll;
         }
       }
 
@@ -573,7 +573,7 @@ const ProjectDetail = styled.div<{width: number}>`
         left: 2rem;
         display: flex;
         justify-content: stretch;
-        gap: 1.2rem;
+        gap: 0rem;
       }
 
       .button {
@@ -598,6 +598,10 @@ const ProjectDetail = styled.div<{width: number}>`
           height: 4rem;
           padding: 1.2rem 0;
           box-sizing: border-box;
+          margin-right: 1.2rem;
+          :last-child {
+            margin-right: 0;
+          }
         }
         
         &--icon {
