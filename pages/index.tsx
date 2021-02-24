@@ -119,7 +119,18 @@ const shareData = {
 };
 const shareDepromeet = async () => {
   try {
-    await navigator.share(shareData);
+    if (navigator.share) {
+      await navigator.share(shareData);
+    } else {
+      const result = await navigator.permissions.query({ name: 'clipboard-write' as PermissionName });
+      if (result.state === 'granted' || result.state === 'prompt') {
+        navigator.clipboard.writeText('디프만 9번째 이야기 - www.depromeet.com').then(() => {
+          alert('클립보드로 주소가 복사되었습니다.');
+        }, () => {
+          console.log('Failed to copy to clipboard');
+        });
+      }
+    }
   } catch (err) {
     console.log(err);
   }
@@ -128,6 +139,7 @@ const shareDepromeet = async () => {
 const Containers = styled.div`
   color: white;
   margin-top: 8rem;
+  width: 114rem;
   .title {
     font-size: 6rem;
     line-height: 8.8rem;
