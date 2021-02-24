@@ -24,6 +24,12 @@ const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
         </Link>
       </div>
       <div className="mobile__only menu-icon">
+        <img
+          src="/invitation.svg"
+          alt="9th invitation"
+          loading="lazy"
+          style={{ width: '8.8rem', height: '2.6rem' }}
+        />
         <MenuButton isVisible={visible} setVisible={setVisible} />
       </div>
       <ButtonContainer visible={visible} className="no-scroll-bar">
@@ -131,6 +137,12 @@ const Container = styled.div<BackgroundTransparentProps>`
     height: 7.2rem;
     justify-content: space-between;
   }
+  .mobile__only {
+    display: none;
+    ${media.mobile} {
+      display: block;
+    }
+  }
 
   .logo {
     ${media.mobile} {
@@ -145,15 +157,11 @@ const Container = styled.div<BackgroundTransparentProps>`
   .menu-icon {
     ${media.mobile} {
       z-index: 1;
+      display: flex;
+      align-items: center;
     }
   }
 
-  .mobile__only {
-    display: none;
-    ${media.mobile} {
-      display: block;
-    }
-  }
 
   .invitation {
     ${media.mobile} {
