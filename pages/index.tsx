@@ -6,6 +6,7 @@ import Projects from '../components/Projects';
 import StoryBox from '../components/StoryBox';
 import { stories } from '../resources/data/reviews';
 import TextAnimation from '../components/TextAnimation';
+import { media } from '../styles/theme';
 
 const Index = () => (
   <div
@@ -27,13 +28,15 @@ const Container1 = () => (
   <Cont1>
     <div className="title">
       <div>그리던 프로덕트를 만들 시간</div>
-      <span className="title__bold">디자이너</span>와{' '}
-      <span className="title__bold">프로그래머</span>가{' '}
-      <span className="title__bold">만났을 때</span>
+      <div className="title--main">
+        <span className="title__bold">디자이너</span>와{' '}
+        <span className="title__bold">프로그래머</span>가{' '}
+        <span className="title__bold">만났을 때</span>
+      </div>
     </div>
     <div className="info">
       <div>우리는 단순한 IT동아리가 아닙니다.</div>
-      서비스 런칭부터 개선까지{' '}
+      서비스 런칭부터 개선까지{' '} <div className="info--line-break" />
       <span className="info__green">경험에 성장을 더하는 모임</span>입니다.
     </div>
     <div className="motion">
@@ -46,12 +49,18 @@ const Container2 = () => (
   <Cont2>
     <div className="column-left">
       <div className="summary">
-        <div className="summary__title">탄생한지</div>
-        <div className="summary__value">5년</div>
-        <div className="summary__title">누적 멤버 수</div>
-        <div className="summary__value">400명 +</div>
-        <div className="summary__title">런칭 앱</div>
-        <div className="summary__value">N개 +</div>
+        <div className="summary__title">
+          탄생한지
+          <div className="summary__value">5년</div>
+        </div>
+        <div className="summary__title">
+          누적 멤버 수
+          <div className="summary__value">400명 +</div>
+        </div>
+        <div className="summary__title">
+          런칭 앱
+          <div className="summary__value">N개 +</div>
+        </div>
       </div>
     </div>
     <div className="column-right">
@@ -77,9 +86,11 @@ const Container3 = () => (
       <div>지금까지 우리들의</div>
       <span className="title__bold">프로덕트</span> 이야기
     </div>
-    {stories.map((story, idx) => (
-      <StoryBox key={idx.toString()} story={story} />
-    ))}
+    <div className="story-boxes no-scroll-bar">
+      {stories.map((story, idx) => (
+        <StoryBox key={idx.toString()} story={story} />
+      ))}
+    </div>
   </Cont3>
 );
 
@@ -144,11 +155,29 @@ const shareDepromeet = async () => {
 const Containers = styled.div`
   color: white;
   margin: 8rem auto 0;
-  /* width: 114rem; */
+  width: 100%;
+  overflow-x: hidden;
   .title {
     font-size: 6rem;
     line-height: 8.8rem;
     font-weight: 300;
+    
+    ${media.mobile} {
+      width: 22rem;
+      word-break: keep-all;
+      font-weight: 500;
+      font-size: 1.6rem;
+      line-height: 3.4rem;
+    }
+
+    &--main {
+      ${media.mobile} {
+        font-weight: 300;
+        font-size: 4.2rem;
+        line-height: 5.8rem;
+      }
+    }
+
     &__bold {
       font-weight: 800;
     }
@@ -166,14 +195,33 @@ const Cont1 = styled.div`
     font-size: 2.4rem;
     line-height: 4.4rem;
     font-weight: 400;
+    ${media.mobile} {
+      width: 28.0rem;
+      margin-top: 3rem;
+      font-weight: 400;
+      font-size: 1.8rem;
+      line-height: 3.15rem;
+    }
+    &--line-break {
+      display: none;
+      ${media.mobile} {
+        display: block;
+      }
+    }
     &__green {
       color: ${({ theme }) => theme.color.green};
       font-weight: 700;
+      ${media.mobile} {
+        font-size: 1.9rem;
+      }
     }
   }
   .motion {
     margin-top: 17.6rem;
     display: relative;
+    ${media.mobile} {
+      margin-top: 8.2rem;
+    }
   }
 `;
 
@@ -184,16 +232,32 @@ const Cont2 = styled.div`
   align-items: stretch;
   position: relative;
 
+  ${media.mobile} {
+    flex-direction: column;
+    height: 49.4rem;
+    margin-top: 13.2rem;
+  }
 
   .column-left {
     flex: 1;
     display: flex;
     justify-content: flex-end;
+    ${media.mobile} {
+      justify-content: flex-start;
+    }
   }
   .summary {
     display: flex;
     flex-direction: column;
-    /* flex-shrink: 0; */
+    flex-shrink: 0;
+    ${media.mobile} {
+      width: 100%;
+      position: absolute;
+      top: 10rem;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: space-evenly;
+    }
     &__title {
       font-size: 1.6rem;
       font-weight: 500;
@@ -202,11 +266,27 @@ const Cont2 = styled.div`
       :not(:first-child) {
         margin-top: 9rem;
       }
+      ${media.mobile} {
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 0;
+        text-align: center;
+        font-size: 1.4rem;
+        line-height: 1.6rem;
+        :not(:first-child) {
+          margin-top: 0;
+        }
+      }
     }
     &__value {
       font-size: 5rem;
       font-weight: 800;
       line-height: 6rem;
+      ${media.mobile} {
+        font-size: 2.8rem;
+        line-height: 3.8rem;
+        margin-bottom: 0.8rem;
+      }
     }
   }
   .column-right {
@@ -218,6 +298,26 @@ const Cont2 = styled.div`
     overflow-x: hidden;
     /* margin-left: 11rem; */
     padding-left: 11rem;
+    ${media.mobile} {
+      padding-left: 0;
+      position: static;
+    }
+    .title {
+      width: 100%;
+      text-align: center;
+      ${media.mobile} {
+        font-size: 2.8rem;
+        line-height: 4rem;
+        font-weight: 300;
+        position: absolute;
+        top: 0;
+      }
+      &__bold {
+        ${media.mobile} {
+          font-weight: 800;
+        }
+      }
+    }
   }
 
   .boxes {
@@ -227,6 +327,11 @@ const Cont2 = styled.div`
     align-items: center;
     align-self: stretch;
     width: 100%;
+    ${media.mobile} {
+      position: absolute;
+      top: 21.2rem;
+      margin-top: 0;
+    }
     &__button {
       width: 20rem;
       height: 4.2rem;
@@ -248,6 +353,26 @@ const Cont3 = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  ${media.mobile} {
+    margin-top: 10rem;
+  }
+
+  .title {
+    ${media.mobile} {
+      font-size: 2.8rem;
+      font-weight: 300;
+      line-height: 4rem;
+    }
+  }
+
+  .story-boxes {
+    ${media.mobile} {
+      width: 100%;
+      display: flex;
+      overflow-x: scroll;
+      margin-right: 2.4rem;
+    }
+  }
 `;
 
 const Cont4 = styled.div`
@@ -257,9 +382,30 @@ const Cont4 = styled.div`
   align-items: center;
   text-align: center;
   padding-bottom: 18.6rem;
+
+  ${media.mobile} {
+    margin-top: 19rem;
+    padding-bottom: 7rem;
+  }
+
+  .title {
+    ${media.mobile} {
+      font-size: 2.8rem;
+      line-height: 4rem;
+      font-weight: 300;
+    }
+  }
+
   .small {
     font-size: 1.8rem;
     font-weight: 700;
+    ${media.mobile} {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+      line-height: 2rem;
+      font-weight: 400;
+      opacity: 0.8;
+    }
   }
   .gradientBtn {
     display: flex;
@@ -272,6 +418,11 @@ const Cont4 = styled.div`
     font-weight: 700;
     border-radius: 1rem;
     margin-top: 2.2rem;
+
+    ${media.mobile} {
+      margin-top: 4rem;
+      font-size:1.5rem;
+    }
   }
   .greenBtn {
     display: flex;
@@ -286,6 +437,11 @@ const Cont4 = styled.div`
     color: ${({ theme }) => theme.color.green};
     border-radius: 1rem;
     margin-top: 2.2rem;
+
+    ${media.mobile} {
+      margin-top: 1.6rem;
+      font-size:1.5rem;
+    }
   }
 `;
 
