@@ -4,8 +4,12 @@ import {
   FC, useState, useCallback, useMemo,
 } from 'react';
 import ProjectDialog from './ProjectDialog';
-import { calcRows, calcColumns, calcMaxHeight } from '../lib/projects_grid';
+import {
+  calcRows, calcColumns, calcMaxHeight,
+  calcMobileRows, calcMobileColumns, mobileIconSize, calcMobileRowHeight,
+} from '../lib/projects_grid';
 import projectsData from '../resources/data/projects';
+import { media } from '../styles/theme';
 
 interface ProjectsProps {
   isMainPage?: boolean;
@@ -79,6 +83,12 @@ const Container = styled.div<ProjectsProps>`
   overflow-y: ${({ isMainPage }) => (isMainPage ? 'scroll' : 'hidden')};
   max-height: ${({ isMainPage, expanded }) => calcMaxHeight(isMainPage, expanded)};
   width: 100%;
+
+  ${media.mobile} {
+    gap: 2.4rem 2rem;
+    grid-template-rows: repeat(${({ isMainPage, expanded }) => calcMobileRows(isMainPage, expanded)}, ${({ isMainPage }) => calcMobileRowHeight(isMainPage)});
+    grid-template-columns: repeat(${() => calcMobileColumns()}, ${mobileIconSize});
+  }
 `;
 
 const ProjectSummary = styled.div<ProjectsProps>`
@@ -86,6 +96,10 @@ const ProjectSummary = styled.div<ProjectsProps>`
   height: ${({ isMainPage }) => (isMainPage ? '17rem' : '22rem')};
   display: grid;
   overflow: hidden;
+  ${media.mobile} {
+    width: ${mobileIconSize};
+    height: ${({ isMainPage }) => calcMobileRowHeight(isMainPage)}
+  }
   .project {
     &--title {
       font-style: normal;
@@ -95,7 +109,13 @@ const ProjectSummary = styled.div<ProjectsProps>`
       text-align: center;
       letter-spacing: -0.03em;
       color: #FFFFFF;
-      display: ${({ isMainPage }) => (isMainPage ? 'none' : 'block')}
+      display: ${({ isMainPage }) => (isMainPage ? 'none' : 'block')};
+
+      ${media.mobile} {
+        font-size: 1.4rem;
+        line-height: 1.7rem;
+        font-weight: 600;
+      }
     }
     &--icon-wrapper {
       width: 17rem;
@@ -104,6 +124,12 @@ const ProjectSummary = styled.div<ProjectsProps>`
       margin-bottom: ${({ isMainPage }) => (isMainPage ? 0 : '2.4rem')};
       position: relative;
       overflow: hidden;
+      ${media.mobile} {
+        width: ${mobileIconSize};
+        height: ${mobileIconSize};
+        border-radius: 1.2rem;
+        margin-bottom: ${({ isMainPage }) => (isMainPage ? 0 : '1.2rem')};
+      }
     }
     &--icon {
       width: 100%;
@@ -114,10 +140,7 @@ const ProjectSummary = styled.div<ProjectsProps>`
 
 const Overlay = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: black ;
   opacity: 0;
   ${ProjectSummary}:hover & {
