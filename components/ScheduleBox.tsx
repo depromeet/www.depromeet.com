@@ -43,7 +43,7 @@ const Container = styled.div`
   ${media.mobile} {
     width: 32.7rem;
     height: 18rem;
-    padding: 2.2rem 1.6rem;
+    padding: 2.2rem 2.2rem;
   }
 
   .title {
@@ -99,8 +99,9 @@ const Container = styled.div`
       text-transform: uppercase;
       color: #FFFFFF;
       margin-top: 2.4rem;
+      word-break: keep-all;
       ${media.mobile} {
-        flex: 2;
+        width: 17rem;
         font-size: 2rem;
         line-height: 2.8rem;
         padding-right: 2rem;
@@ -111,15 +112,15 @@ const Container = styled.div`
       position: absolute;
       right: 10rem;
       top: 0;
-      right: 0;
       height: 100%;
+      width: 18rem;
       box-sizing: border-box;
       aspect-ratio: 1/1;
-      padding-top: 4rem;
-      padding-bottom: 4rem;
       ${media.mobile} {
-        position: relative;
-        padding: 0;
+        right: 1.6rem;
+        margin-top: 7rem;
+        width: 8rem;
+        height: 8rem;
         flex: 1;
       }
       &--img {
@@ -127,7 +128,7 @@ const Container = styled.div`
         height: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-end;
       }
     }
   }

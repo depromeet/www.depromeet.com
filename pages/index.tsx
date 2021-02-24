@@ -8,7 +8,10 @@ import { stories } from '../resources/data/reviews';
 import TextAnimation from '../components/TextAnimation';
 
 const Index = () => (
-  <>
+  <div
+    className="no-scroll-bar"
+    style={{ overflowX: 'scroll' }}
+  >
     <Header />
     <Containers>
       <Container1 />
@@ -17,7 +20,7 @@ const Index = () => (
       <Container4 />
     </Containers>
     <Footer />
-  </>
+  </div>
 );
 
 const Container1 = () => (
@@ -41,7 +44,7 @@ const Container1 = () => (
 
 const Container2 = () => (
   <Cont2>
-    <div style={{ flex: '0.3', position: 'relative' }}>
+    <div className="column-left">
       <div className="summary">
         <div className="summary__title">탄생한지</div>
         <div className="summary__value">5년</div>
@@ -51,7 +54,7 @@ const Container2 = () => (
         <div className="summary__value">N개 +</div>
       </div>
     </div>
-    <div style={{ flex: '0.7', position: 'relative', marginLeft: '10rem' }}>
+    <div className="column-right">
       <div className="title">
         <div>오직 디자이너와 프로그래머의</div>
         <span className="title__bold">동반성장</span>을 위해서
@@ -122,9 +125,11 @@ const shareDepromeet = async () => {
     if (navigator.share) {
       await navigator.share(shareData);
     } else {
+      // eslint-disable-next-line no-undef
       const result = await navigator.permissions.query({ name: 'clipboard-write' as PermissionName });
       if (result.state === 'granted' || result.state === 'prompt') {
         navigator.clipboard.writeText('디프만 9번째 이야기 - www.depromeet.com').then(() => {
+          // eslint-disable-next-line no-alert
           alert('클립보드로 주소가 복사되었습니다.');
         }, () => {
           console.log('Failed to copy to clipboard');
@@ -138,8 +143,8 @@ const shareDepromeet = async () => {
 
 const Containers = styled.div`
   color: white;
-  margin-top: 8rem;
-  width: 114rem;
+  margin: 8rem auto 0;
+  /* width: 114rem; */
   .title {
     font-size: 6rem;
     line-height: 8.8rem;
@@ -155,6 +160,7 @@ const Cont1 = styled.div`
   margin-top: 13.8rem;
   flex-direction: column;
   text-align: center;
+  align-items: center;
   .info {
     margin-top: 10rem;
     font-size: 2.4rem;
@@ -172,15 +178,22 @@ const Cont1 = styled.div`
 `;
 
 const Cont2 = styled.div`
-  width: 100%;
   display: flex;
   margin-top: 31.6rem;
-  flex: 1;
+  justify-content: center;
+  align-items: stretch;
+  position: relative;
+
+
+  .column-left {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
   .summary {
     display: flex;
-    position: absolute;
-    right: 0;
     flex-direction: column;
+    /* flex-shrink: 0; */
     &__title {
       font-size: 1.6rem;
       font-weight: 500;
@@ -196,22 +209,33 @@ const Cont2 = styled.div`
       line-height: 6rem;
     }
   }
+  .column-right {
+    flex: 1.8;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    overflow-x: hidden;
+    /* margin-left: 11rem; */
+    padding-left: 11rem;
+  }
+
   .boxes {
     margin-top: 9.7rem;
-    height: 25.4rem;
-    &__wrapper {
-      position: absolute;
-      display: flex;
-      width: 100%;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+    width: 100%;
     &__button {
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      margin-left: 60rem;
+      width: 20rem;
+      height: 4.2rem;
+      margin-top: 4.2rem;
       border-radius: 2.7rem;
       font-size: 1.5rem;
-      padding: 1.2rem 2.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: ${({ theme }) => `0.1rem solid ${theme.color.green}`};
       color: ${({ theme }) => theme.color.green};
     }
