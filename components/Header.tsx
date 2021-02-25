@@ -1,4 +1,4 @@
-import React, { FC, MutableRefObject, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
