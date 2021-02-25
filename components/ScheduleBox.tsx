@@ -22,6 +22,7 @@ const ScheduleBox: FC<ScheduleProps> = ({ detail, index }) => (
       <div className="desc">
         {detail.desc}
       </div>
+      <div className="spacer mobile__none" />
       <div className="motion">
         <div className="motion--img">
           <StepLottie lottie={detail.lottie} />
@@ -87,8 +88,8 @@ const Container = styled.div`
     }
   }
   .detail {
+    display: flex;
     ${media.mobile} {
-      display: flex;
       justify-content: space-between;
       align-items: center;
     }
@@ -100,13 +101,19 @@ const Container = styled.div`
       color: #FFFFFF;
       margin-top: 2.4rem;
       word-break: keep-all;
+      flex: 1;
       ${media.mobile} {
+        flex: none;
         width: 17rem;
         font-size: 2rem;
         line-height: 2.8rem;
         padding-right: 2rem;
         align-self: flex-start;
       }
+    }
+    .spacer {
+      flex: 1;
+      flex-shrink: 0;
     }
     .motion {
       position: absolute;
