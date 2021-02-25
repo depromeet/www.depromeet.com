@@ -13,7 +13,8 @@ export const GlobalStyle = createGlobalStyle`
     }
     html{
         font-size: 10px;
-        font-family: Noto Sans KR;
+        font-family: Noto Sans KR, Apple SD Gothic Neo, sans-serif;
+        font-display: fallback;
         background-color: black;
         overflow-x: hidden;
     }
