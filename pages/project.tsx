@@ -1,5 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import Head from 'next/head';
+import Image from 'next/image';
 import styled from 'styled-components';
 import React, { useState, useCallback, useEffect } from 'react';
 import dynamic from 'next/dynamic';
@@ -12,14 +13,12 @@ import Projects from '../components/Projects';
 
 const Project = () => (
   <div className="no-scroll-bar" style={{ overflow: 'scroll' }}>
-    <Head>
-      <link rel="preload" href="/project_background_image.svg" as="image" />
-    </Head>
     <TransparentableHeader />
     <TopBackground>
-      <img
+      <Image
         src="/project_background_image.svg"
         alt="project page background"
+        layout="fill"
         loading="lazy"
       />
     </TopBackground>
