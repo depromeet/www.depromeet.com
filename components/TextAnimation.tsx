@@ -101,8 +101,10 @@ const Container = styled.div`
     font-family: Montserrat;
     font-weight: 900;
     font-size: 12rem;
+    line-height: 14.6rem;
     white-space: nowrap;
     ${media.mobile} {
+      line-height: 4rem;
       font-size: 3.4rem;
     }
     &__content {

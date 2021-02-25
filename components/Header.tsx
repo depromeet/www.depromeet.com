@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, MutableRefObject, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
@@ -56,6 +56,7 @@ const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
               <SocialButton
                 href={v.href}
                 name={v.name}
+                key={`social-button-${v.name}`}
               />
             ))
           }
@@ -150,7 +151,7 @@ const Container = styled.div<BackgroundTransparentProps>`
 
   .logo {
     ${media.mobile} {
-      z-index: 1;
+      z-index: 1001;
       svg { 
         width: 8rem;
         height: 4rem;
@@ -160,7 +161,7 @@ const Container = styled.div<BackgroundTransparentProps>`
 
   .menu-icon {
     ${media.mobile} {
-      z-index: 1;
+      z-index: 1001;
       display: flex;
       align-items: center;
     }
@@ -180,6 +181,7 @@ const Container = styled.div<BackgroundTransparentProps>`
 const ButtonContainer = styled.div<{visible: boolean}>`
   display: flex;
   align-items: center;
+  z-index: 1;
   ${media.mobile} {
     display: ${({ visible }) => (visible ? 'flex' : 'none')};
     position: fixed;
@@ -195,6 +197,7 @@ const ButtonContainer = styled.div<{visible: boolean}>`
     align-items: center;
     padding: 7rem 2.4rem 0;
     overflow-y: scroll;
+    z-index: 1000;
   }
 
   .socials {
