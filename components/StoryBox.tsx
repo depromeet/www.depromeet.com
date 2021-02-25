@@ -34,7 +34,7 @@ const Container = styled.div`
     svg {
       position: absolute;
       top: -14rem;
-      z-index: 10;
+      z-index: 1;
       width: 13.8rem;
     }
   }
@@ -46,7 +46,8 @@ const Bubble = styled.div<{job: string}>`
   width: 83.5rem;
   height: 24.2rem;
   border-radius: 3.2rem;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
+  font-weight: 500;
   line-height: 3rem;
 
   ${media.mobile} {
@@ -94,14 +95,16 @@ const Bubble = styled.div<{job: string}>`
     &__person {
       margin-top: 1.6rem;
       font-size: 1.4rem;
-      color: ${({ theme, job }) => (job === 'programmer' ? theme.color.green : theme.color.blue)};
+      line-height: 1.rem;
+      color: ${({ theme, job }) => (job === 'programmer' ? theme.color.green : '#194cff')};
 
       ${media.mobile} {
         margin-bottom: 1rem;
       }
     }
     b {
-      color: ${({ theme, job }) => (job === 'programmer' ? theme.color.green : theme.color.blue)};
+      color: ${({ theme, job }) => (job === 'programmer' ? theme.color.green : '#1271ff')};
+      font-weight: 800;
     }
   }
 `;

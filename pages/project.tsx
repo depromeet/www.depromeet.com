@@ -20,12 +20,14 @@ const Project = () => (
       />
     </TopBackground>
     <CenterAlignedContainer>
-      <Catchphrase>
-        서비스 런칭부터 개선까지 <br />
-        <span className="catchphrase__bold"> 경험에 성장을 더합니다. </span>
-      </Catchphrase>
-      <AllProjects />
-      <AllSchedule />
+      <div className="wrapper">
+        <Catchphrase>
+          서비스 런칭부터 개선까지 <br />
+          <span className="catchphrase__bold"> 경험에 성장을 더합니다. </span>
+        </Catchphrase>
+        <AllProjects />
+        <AllSchedule />
+      </div>
     </CenterAlignedContainer>
     <Footer />
   </div>
@@ -129,13 +131,13 @@ const CenterAlignedContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
   padding: 0 2.4rem;
   margin-top: 30rem;
   margin-bottom: 16rem;
   ${media.mobile} {
-    width: 37.5rem;
+    width: 100%;
     margin-top: 24rem;
     box-sizing: border-box;
     margin-bottom: 7rem;

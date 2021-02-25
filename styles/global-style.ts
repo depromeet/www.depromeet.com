@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { reset } from 'styled-reset';
+import { media } from './theme';
 
 export const GlobalStyle = createGlobalStyle`
     ${reset}
@@ -12,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
     }
     html{
         font-size: 10px;
-        font-family: Apple SD Gothic Neo, Noto Sans KR;
+        font-family: Noto Sans KR;
         background-color: black;
         overflow-x: hidden;
     }
@@ -22,5 +23,16 @@ export const GlobalStyle = createGlobalStyle`
     .no-scroll-bar {
         -ms-overflow-style: none;
         scrollbar-width: none;
+    }
+    .mobile__only {
+        display: none;
+        ${media.mobile} {
+            display: block;
+        }
+    }
+    .mobile__none {
+        ${media.mobile} {
+            display: none;
+        }
     }
 `;

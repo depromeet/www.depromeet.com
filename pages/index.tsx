@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { Header, Footer } from '../components';
@@ -19,6 +20,11 @@ const Index = () => (
       <Container2 />
       <Container3 />
       <Container4 />
+      <Background>
+        <img className="mobile__non" src="/img_bg_main.svg" alt="9th background" loading="lazy" />
+        <img src="/img_bg_main.svg" alt="9th background" loading="lazy" />
+        <img className="mobile__non" src="/img_bg_main.svg" alt="9th background" loading="lazy" />
+      </Background>
     </Containers>
     <Footer />
   </div>
@@ -30,7 +36,9 @@ const Container1 = () => (
       <div>그리던 프로덕트를 만들 시간</div>
       <div className="title--main">
         <span className="title__bold">디자이너</span>와{' '}
+        <div className="mobile__only" />
         <span className="title__bold">프로그래머</span>가{' '}
+        <div className="mobile__only" />
         <span className="title__bold">만났을 때</span>
       </div>
     </div>
@@ -72,7 +80,7 @@ const Container2 = () => (
         <Projects isMainPage />
         <Link href="/project">
           <div className="boxes__button" role="button">
-            모든 프로젝트 구경하기 {'>'}
+            모든 프로젝트 구경하기 <span className="boxes__button--arrow">{'>'}</span>
           </div>
         </Link>
       </div>
@@ -157,13 +165,15 @@ const Containers = styled.div`
   margin: 8rem auto 0;
   width: 100%;
   overflow-x: hidden;
+  position: relative;
   .title {
     font-size: 6rem;
-    line-height: 8.8rem;
+    line-height: 7.6rem;
     font-weight: 300;
+    letter-spacing: -0.03em;
     
     ${media.mobile} {
-      width: 22rem;
+      /* width: 22rem; */
       word-break: keep-all;
       font-weight: 500;
       font-size: 1.6rem;
@@ -179,7 +189,7 @@ const Containers = styled.div`
     }
 
     &__bold {
-      font-weight: 800;
+      font-weight: 900;
     }
   }
 `;
@@ -191,9 +201,9 @@ const Cont1 = styled.div`
   text-align: center;
   align-items: center;
   .info {
-    margin-top: 10rem;
+    margin-top: 4.8rem;
     font-size: 2.4rem;
-    line-height: 4.4rem;
+    line-height: 4.1rem;
     font-weight: 400;
     ${media.mobile} {
       width: 28.0rem;
@@ -280,8 +290,8 @@ const Cont2 = styled.div`
     }
     &__value {
       font-size: 5rem;
-      font-weight: 800;
-      line-height: 6rem;
+      font-weight: 900;
+      line-height: 7.2rem;
       ${media.mobile} {
         font-size: 2.8rem;
         line-height: 3.8rem;
@@ -304,8 +314,12 @@ const Cont2 = styled.div`
     }
     .title {
       width: 100%;
-      text-align: center;
+      font-weight: 300;
+      line-height: 8rem;
+      font-size: 6rem;
+      letter-spacing: -0.03em;
       ${media.mobile} {
+        text-align: center;
         font-size: 2.8rem;
         line-height: 4rem;
         font-weight: 300;
@@ -336,13 +350,22 @@ const Cont2 = styled.div`
       width: 20rem;
       height: 4.2rem;
       margin-top: 4.2rem;
-      border-radius: 2.7rem;
-      font-size: 1.5rem;
+      border-radius: 2.1rem;
+      font-size: 1.4rem;
       display: flex;
       align-items: center;
       justify-content: center;
       border: ${({ theme }) => `0.1rem solid ${theme.color.green}`};
       color: ${({ theme }) => theme.color.green};
+
+      &--arrow {
+        margin-left: 1.1rem;
+      }
+
+      ${media.mobile} {
+        font-size: 1.2rem;
+        line-height: 1.4rem;
+      }
     }
   }
 `;
@@ -358,6 +381,11 @@ const Cont3 = styled.div`
   }
 
   .title {
+    font-size: 6rem;
+    line-height: 8rem;
+    letter-spacing: -0.03em;
+    &__bold {
+    }
     ${media.mobile} {
       font-size: 2.8rem;
       font-weight: 300;
@@ -389,16 +417,24 @@ const Cont4 = styled.div`
   }
 
   .title {
+    font-size: 6rem;
+    line-height: 8rem;
     ${media.mobile} {
       font-size: 2.8rem;
       line-height: 4rem;
       font-weight: 300;
     }
+    &__bold {
+      font-weight: 700;
+    }
   }
 
   .small {
     font-size: 1.8rem;
-    font-weight: 700;
+    line-height: 2.6rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-top: 3.2rem;
     ${media.mobile} {
       margin-top: 2rem;
       font-size: 1.2rem;
@@ -417,7 +453,7 @@ const Cont4 = styled.div`
     font-size: 1.6rem;
     font-weight: 700;
     border-radius: 1rem;
-    margin-top: 2.2rem;
+    margin-top: 5.6rem;
 
     ${media.mobile} {
       margin-top: 4rem;
@@ -441,6 +477,28 @@ const Cont4 = styled.div`
     ${media.mobile} {
       margin-top: 1.6rem;
       font-size:1.5rem;
+    }
+  }
+`;
+
+const Background = styled.div`
+  position: absolute;
+  bottom: 54rem;
+  left: 0;
+  right: 0;
+  height: 32rem;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  ${media.mobile} {
+    height: 14rem;
+    bottom: 35rem;
+  }
+  img {
+    flex-shrink: 0;
+    margin-left: 8rem;
+    :first-child {
+      margin-left: 0;
     }
   }
 `;
