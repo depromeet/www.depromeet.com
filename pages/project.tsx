@@ -1,5 +1,4 @@
 /* eslint-disable react/no-array-index-key */
-import Head from 'next/head';
 import Image from 'next/image';
 import styled from 'styled-components';
 import React, { useState, useCallback, useEffect } from 'react';
