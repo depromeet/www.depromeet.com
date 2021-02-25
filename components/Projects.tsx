@@ -1,5 +1,6 @@
 /* eslint-disable react/no-array-index-key */
 import styled from 'styled-components';
+import Image from 'next/image';
 import {
   FC, useState, useCallback, useMemo,
 } from 'react';
@@ -63,14 +64,12 @@ const Projects: FC<ProjectsProps> = ({ isMainPage = false, expanded = false }) =
 const Icon = ({ data }) => {
   if (typeof data.icon === 'string') {
     return (
-      <img
+      <Image
         className="project--icon-wrapper project--icon"
         src={data.icon}
         loading="lazy"
         alt={`${data.title}-icon`}
-        style={{
-          objectFit: 'scale-down',
-        }}
+        layout="fill"
       />
     );
   }

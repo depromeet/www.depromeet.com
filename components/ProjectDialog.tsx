@@ -5,6 +5,7 @@ import {
   forwardRef, CSSProperties, useLayoutEffect, SetStateAction, Dispatch,
   HTMLAttributes,
 } from 'react';
+import Image from 'next/image';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import {
@@ -175,18 +176,18 @@ interface ProjectDataProps extends ListChildComponentProps{
   setFocusedIndex: Dispatch<SetStateAction<number>>;
   windowWidth: number;
 }
-const Image:FC<{data:ProjectData, src?: string}> = ({ data, src }) => {
+const AppImage:FC<{data:ProjectData, src?: string}> = ({ data, src }) => {
   if (typeof data.image === 'string') {
     return (
-      <img
-        src={src || data.image}
-        loading="lazy"
-        alt={`${data.title}`}
-        style={{
-          objectFit: 'contain',
-          height: '37rem',
-        }}
-      />
+      <div className="app-image">
+        <Image
+          src={src || data.image}
+          loading="lazy"
+          alt={`${data.title}`}
+          layout="fill"
+          objectFit="scale-down"
+        />
+      </div>
     );
   }
   return <MemoizedImage data={data} />;
@@ -198,15 +199,15 @@ const MemoizedImage = ({ data }) => {
 const Icon: FC<{data:ProjectData} & HTMLAttributes<HTMLDivElement>> = ({ data }) => {
   const MemoizedIcon = useMemo(() => ((typeof data.icon === 'string')
     ? () => (
-      <img
-        src={(typeof data.icon === 'string' && data.icon)}
-        loading="lazy"
-        alt={`${data.title}`}
-        style={{
-          objectFit: 'contain',
-          height: '7.2rem',
-        }}
-      />
+      <div className="app-icon">
+        <Image
+          src={(typeof data.icon === 'string' && data.icon)}
+          loading="lazy"
+          alt={`${data.title}`}
+          layout="fill"
+          objectFit="scale-down"
+        />
+      </div>
     ) : data.icon()), [data]);
   return <MemoizedIcon />;
 };
@@ -238,8 +239,8 @@ const ProjectItem:FC<ProjectDataProps> = ({
       }
       {
         isMobile(windowWidth) || (
-          <div className="image">
-            <Image data={projectData} />
+          <div className="image ">
+            <AppImage data={projectData} />
             <div className="image-shadow" />
           </div>
         )
@@ -489,6 +490,11 @@ const ProjectDetail = styled.div<{width: number}>`
     justify-content: center;
     align-items: flex-end;
     position: relative;
+    .app-image{
+      position: relative;
+      height: 37rem;
+      width: 100%;
+    }
     ${media.mobile} {
       display: none;
     }
@@ -554,6 +560,7 @@ const ProjectDetail = styled.div<{width: number}>`
         height: 7.2rem;
         border-radius: 1.2rem;
         overflow: hidden;
+        position: relative;
         ${media.mobile} {
           margin-right: 1.6rem;
           display: inline-block;
