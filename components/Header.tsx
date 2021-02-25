@@ -7,7 +7,7 @@ import { media } from '../styles/theme';
 import { socials } from '../resources/data/socials';
 
 const Logo = dynamic(() => import('../public/gnb_logo.svg'));
-
+//
 interface BackgroundTransparentProps {
   isTransparent?: boolean;
 }
