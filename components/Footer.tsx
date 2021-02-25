@@ -39,6 +39,7 @@ const MediaButton = ({ href, children }) => (
     tabIndex={0}
     href={href}
     target="_blank"
+    rel="noreferrer"
   >
     {children}
   </Button>
