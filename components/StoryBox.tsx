@@ -1,12 +1,19 @@
 import styled from 'styled-components';
 import {
-  Programmer, Designer, GreenQuote1, GreenQuote2, BlueQuote1, BlueQuote2,
+  GreenQuote1, GreenQuote2, BlueQuote1, BlueQuote2,
 } from '../public';
 import { media } from '../styles/theme';
+import Mimoji from './mimoji';
+// import { stories } from '../resources/data/reviews';
 
 const StoryBox = ({ story }) => (
   <Container>
-    {story.job === 'programmer' && <Programmer />}
+    {
+      story.job === 'programmer'
+      && (
+        <Mimoji className="mimoji-wrapper" src={story.mimoji} job={story.job} />
+      )
+    }
     <Bubble job={story.job}>
       <div className="quote1">{story.job === 'programmer' ? <GreenQuote1 /> : <BlueQuote1 />}</div>
       <div className="quote2">{story.job === 'programmer' ? <GreenQuote2 /> : <BlueQuote2 />}</div>
@@ -14,28 +21,36 @@ const StoryBox = ({ story }) => (
         <div className="content__person">{story.person}</div>
       </div>
     </Bubble>
-    {story.job === 'designer' && <Designer />}
+    {
+      story.job === 'designer'
+      && (
+        <Mimoji className="mimoji-wrapper" src={story.mimoji} job={story.job} />
+      )
+    }
   </Container>
 );
 
 const Container = styled.div`
   display: flex;
   margin-top: 7.6rem;
+  align-items: center;
+  position: relative;
 
   ${media.mobile} {
     margin-top: 9rem;
-    position: relative;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    align-items: stretch;
     margin-left: 2.4rem;
     :last-child {
       margin-right: 2.4rem;
     }
-    svg {
+  }
+
+  .mimoji-wrapper {
+    ${media.mobile} {
+      z-index: 2;
       position: absolute;
-      top: -14rem;
-      z-index: 1;
-      width: 13.8rem;
+      top: -6rem;
     }
   }
 `;
@@ -49,15 +64,17 @@ const Bubble = styled.div<{job: string}>`
   font-size: 1.6rem;
   font-weight: 500;
   line-height: 3rem;
+  margin-left: ${({ job }) => (job === 'designer' ? 0 : '2.4rem')};
+  margin-right: ${({ job }) => (job === 'designer' ? '2.4rem' : 0)};
 
   ${media.mobile} {
     width: 26rem;
-    height: 30rem;
+    height: 100%;
     padding: 0 2rem 2rem;
     border-radius: 2.4rem;
     background-color: #212121;
     box-sizing: border-box;
-    display: flex;
+    margin: 0;
   }
 
 

@@ -37,9 +37,11 @@ const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
         <MenuButton isVisible={visible} setVisible={setVisible} />
       </div>
       <ButtonContainer visible={visible} className="no-scroll-bar">
-        <RouterBtn routerName="about" path="/" setVisible={setVisible} />
-        <RouterBtn routerName="project" path="/project" setVisible={setVisible} />
-        <RouterBtn routerName="contact" path="/contact" setVisible={setVisible} />
+        <div className="mobile-wrapper">
+          <RouterBtn routerName="about" path="/" setVisible={setVisible} />
+          <RouterBtn routerName="project" path="/project" setVisible={setVisible} />
+          <RouterBtn routerName="contact" path="/contact" setVisible={setVisible} />
+        </div>
         <div className="mobile__only invitation">
           Depromeet에서 같이 성장... 어때요?
         </div>
@@ -173,7 +175,7 @@ const Container = styled.div<BackgroundTransparentProps>`
       font-size: 1.4rem;
       line-height: 2rem;
       font-weight: 500;
-      margin: 14.7rem 0 1rem;
+      margin-bottom: 1rem;
     }
   }
 `;
@@ -200,20 +202,32 @@ const ButtonContainer = styled.div<{visible: boolean}>`
     z-index: 1000;
   }
 
+  .mobile-wrapper {
+    display: flex;
+    align-items: center;
+
+    ${media.mobile} {
+      flex-direction: column;
+      flex: 1;
+      justify-content: center;
+    }
+  }
+
   .socials {
     display: none;
     ${media.mobile} {
       width: 100%;
-      margin-top: 4rem;
+      margin-top: 3.2rem;
       display: flex;
       justify-content: space-around;
+      margin-bottom: 4rem;
     }
   }
 `;
 
 const Button = styled.div`
   width: auto;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 800;
   padding: 1.2rem 2.4rem;
   background-color: ${({ theme }) => theme.color.blue};

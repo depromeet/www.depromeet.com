@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Image from 'next/image';
 import Link from 'next/link';
 import { Header, Footer } from '../components';
 import { openApplySite } from '../components/Header';
@@ -20,9 +21,10 @@ const Index = () => (
       <Container3 />
       <Container4 />
       <Background>
-        <img className="mobile__non" src="/img_bg_main.svg" alt="9th background" loading="lazy" />
-        <img src="/img_bg_main.svg" alt="9th background" loading="lazy" />
-        <img className="mobile__non" src="/img_bg_main.svg" alt="9th background" loading="lazy" />
+        <BackgroundImage />
+        <BackgroundImage />
+        <BackgroundImage />
+        <BackgroundImage forMobile />
       </Background>
     </Containers>
     <Footer />
@@ -125,12 +127,25 @@ const Container4 = () => (
       className="greenBtn"
       role="button"
       tabIndex={0}
-      onKeyDown={emptyCallback}
       onClick={shareDepromeet}
+      onKeyDown={emptyCallback}
     >
       지인에게 공유하기
     </div>
   </Cont4>
+);
+
+const BackgroundImage = ({ forMobile = false }) => (
+  <div className={`bg-image ${forMobile ? 'mobile__only' : 'mobile__none'}`}>
+    <Image
+      className="bg-image--image"
+      src={forMobile ? '/mobile_9th.png' : '/web_9th.png'}
+      alt="9th background"
+      layout="fill"
+      objectFit="contain"
+      loading="lazy"
+    />
+  </div>
 );
 
 const shareData = {
@@ -199,6 +214,9 @@ const Cont1 = styled.div`
   flex-direction: column;
   text-align: center;
   align-items: center;
+  ${media.mobile} {
+    margin-top: 8rem;
+  }
   .info {
     margin-top: 4.8rem;
     font-size: 2.4rem;
@@ -397,7 +415,6 @@ const Cont3 = styled.div`
       width: 100%;
       display: flex;
       overflow-x: scroll;
-      margin-right: 2.4rem;
     }
   }
 `;
@@ -455,8 +472,13 @@ const Cont4 = styled.div`
     margin-top: 5.6rem;
 
     ${media.mobile} {
-      margin-top: 4rem;
+      margin: 4rem 4rem 0;
       font-size:1.5rem;
+      width: 100%;
+      max-width: 36.3rem;
+    }
+    :hover {
+      background: linear-gradient(322.5deg, #00DD80 -17.98%, #002DCE 89.21%);
     }
   }
   .greenBtn {
@@ -474,8 +496,14 @@ const Cont4 = styled.div`
     margin-top: 2.2rem;
 
     ${media.mobile} {
-      margin-top: 1.6rem;
+      margin: 1.6rem 4rem 0;
       font-size:1.5rem;
+      width: 100%;
+      max-width: 36.3rem;
+    }
+
+    :hover {
+      background: #001401;
     }
   }
 `;
@@ -493,10 +521,16 @@ const Background = styled.div`
     height: 14rem;
     bottom: 35rem;
   }
-  img {
-    flex-shrink: 0;
+  .bg-image{
+    position: relative;
+    width: 74.2rem;
     margin-left: 8rem;
+    flex-shrink: 0;
     :first-child {
+      margin-left: 0;
+    }
+
+    &.mobile__only {
       margin-left: 0;
     }
   }
