@@ -169,6 +169,9 @@ const WhiteBox = styled.div`
   align-items: center;
   color: black;
   font-family: Montserrat;
+  :hover {
+    background-color: #c0c0c0;
+  }
 `;
 
 export default Contact;

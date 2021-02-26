@@ -404,7 +404,7 @@ const ScrollController: FC<ScrollControllerProps> = ({
 
   return (
     <ForegroundIndicator
-      onClick={(e) => e.stopPropagation()}
+      // onClick={(e) => e.stopPropagation()}
       width={width}
     >
       <ScrollIndicator
@@ -474,6 +474,9 @@ const ProjectDetail = styled.div<{width: number}>`
   margin-left: ${contentGap}rem;
   left: 52rem;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   ${media.mobile} {
     width: ${mobileContentWidth}rem;
@@ -481,6 +484,8 @@ const ProjectDetail = styled.div<{width: number}>`
     margin-left: ${({ width }) => getContentGap(width)}rem;
     box-sizing: border-box;
     padding: 2.5rem 2rem;
+    border-radius: 2.4rem;
+    justify-content: flex-start;
   }
 
   .image {
@@ -725,7 +730,7 @@ const ForegroundIndicator = styled.div<{width: number}>`
   align-items: center;
   justify-content: center;
   position: absolute;
-  height: 100%;
+  /* height: 100%; */
   width: ${calcScrollIndicatorWidth};
   left: ${calcIndicatorLeftPadding}rem;
   overflow-x: visible;

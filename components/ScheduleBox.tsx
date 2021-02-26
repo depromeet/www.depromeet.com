@@ -45,6 +45,7 @@ const Container = styled.div`
     width: 32.7rem;
     height: 18rem;
     padding: 2.2rem 2.2rem;
+    border-radius: 2rem;
   }
 
   .title {
