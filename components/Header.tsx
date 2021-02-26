@@ -195,7 +195,7 @@ const ButtonContainer = styled.div<{visible: boolean}>`
     opacity: 0.97;
 
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     padding: 7rem 2.4rem 0;
     overflow-y: scroll;
@@ -248,6 +248,7 @@ const Button = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 4.8rem;
 
     :hover {
       background-color: #c0c0c0;
