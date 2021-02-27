@@ -43,7 +43,7 @@ const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
           <RouterBtn routerName="contact" path="/contact" setVisible={setVisible} />
         </div>
         <div className="mobile__only invitation">
-          Depromeet에서 같이 성장... 어때요?
+          디프만에 관심있으신가요?
         </div>
         <Button
           role="button"
