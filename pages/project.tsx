@@ -1,10 +1,11 @@
 /* eslint-disable react/no-array-index-key */
 import Image from 'next/image';
 import styled from 'styled-components';
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
-import { Header, Footer } from '../components';
 import ScheduleBox from '../components/ScheduleBox';
+import { Footer } from '../components';
+import Header from '../components/TransparentableHeader';
 import { steps } from '../resources/data/schedule';
 import projectsData from '../resources/data/projects';
 import { media } from '../styles/theme';
@@ -12,7 +13,7 @@ import Projects from '../components/Projects';
 
 const Project = () => (
   <div className="no-scroll-bar" style={{ overflow: 'scroll' }}>
-    <TransparentableHeader />
+    <Header />
     <TopBackground>
       <Image
         src="/project_background_image.svg"
@@ -34,30 +35,6 @@ const Project = () => (
     <Footer />
   </div>
 );
-
-const TransparentableHeader = () => {
-  const [isTransparent, setTransparent] = useState(true);
-  const handleScroll = useCallback(() => {
-    const yOffset = window?.pageYOffset;
-    if (yOffset === 0) {
-      setTransparent(true);
-    } else if (isTransparent) {
-      setTransparent(false);
-    }
-  }, [isTransparent, setTransparent]);
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [handleScroll]);
-  return (
-    <Header
-      isTransparent={isTransparent}
-    />
-  );
-};
 
 const AllProjects = () => {
   const [expanded, setExpanded] = useState(false);
