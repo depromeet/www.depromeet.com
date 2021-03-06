@@ -116,12 +116,8 @@ const Container4 = () => (
     </div>
     <div
       className="gradientBtn"
-      role="button"
-      tabIndex={0}
-      onClick={openApplySite}
-      onKeyDown={emptyCallback}
     >
-      9기에서 만나기
+      9기 모집 마감
     </div>
     <div
       className="greenBtn"

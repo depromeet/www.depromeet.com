@@ -24,16 +24,6 @@ const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
         </Link>
       </div>
       <div className="mobile__only menu-icon">
-        <img
-          src="/invitation.svg"
-          alt="9th invitation"
-          loading="lazy"
-          style={{
-            width: '8.8rem',
-            height: '2.6rem',
-            display: visible ? 'none' : 'block',
-          }}
-        />
         <MenuButton isVisible={visible} setVisible={setVisible} />
       </div>
       <ButtonContainer visible={visible} className="no-scroll-bar">
@@ -45,12 +35,8 @@ const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
         <div className="mobile__only invitation">
           디프만에 관심있으신가요?
         </div>
-        <Button
-          role="button"
-          tabIndex={0}
-          onClick={openApplySite}
-        >
-          9기에서 만나기
+        <Button>
+          9기 모집 마감
         </Button>
         <div className="mobile__only socials">
           {
