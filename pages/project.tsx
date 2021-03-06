@@ -3,9 +3,9 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import React, { useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
-import ScheduleBox from '../components/ScheduleBox';
 import { Footer } from '../components';
 import Header from '../components/TransparentableHeader';
+import ScheduleBox from '../components/ScheduleBox';
 import { steps } from '../resources/data/schedule';
 import projectsData from '../resources/data/projects';
 import { media } from '../styles/theme';
@@ -76,8 +76,8 @@ const AllSchedule = () => (
       <span className="title--desc">Depromeet 9기는 매주 토요일 13주간 진행됩니다.</span>
     </Title>
     <Schedules>
-      {steps.map((v, idx) => (
-        <ScheduleBox detail={v} key={`steps-${idx}`} index={idx} />
+      {steps.map((detail, idx) => (
+        <ScheduleBox detail={detail} key={`steps-${idx + 1}`} index={idx + 1} />
       ))}
     </Schedules>
   </ScheduleSection>

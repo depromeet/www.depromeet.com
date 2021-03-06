@@ -3,7 +3,7 @@ import {
 } from 'react';
 import { isBrowser } from './global_utils';
 
-export const useHandleHeaderTransparencyOnScroll = (): boolean => {
+export const useHandleHeaderTransparencyOnScroll = () => {
   const [isTransparent, setTransparent] = useState(true);
 
   const handleScroll = () => {

@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Header, Footer } from '../components';
-import { openApplySite } from '../components/Header';
 import Projects from '../components/Projects';
 import StoryBox from '../components/StoryBox';
 import { stories } from '../resources/data/reviews';
