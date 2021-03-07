@@ -2,9 +2,8 @@ import styled, { DefaultTheme, StyledComponentBase } from 'styled-components';
 import { media } from '../../styles/theme';
 import Logo from './Logo';
 
-interface ContactBlock extends StyledComponentBase<'div', DefaultTheme> {
-  Logo?: typeof Logo;
-}
+type ContactBlock =
+  StyledComponentBase<'div', DefaultTheme> & { Logo?: typeof Logo };
 
 const Contact:ContactBlock = styled.div`
   display: flex;

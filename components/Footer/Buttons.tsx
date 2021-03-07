@@ -1,14 +1,14 @@
 import styled, { DefaultTheme, StyledComponentBase } from 'styled-components';
 import { media } from '../../styles/theme';
 
-interface ButtonsBlock extends StyledComponentBase<'div', DefaultTheme> {
-  Button?: typeof Button;
-}
+type ButtonsBlock =
+  StyledComponentBase<'div', DefaultTheme> & { Button?: typeof Button };
+
 const Buttons: ButtonsBlock = styled.div`
   display: flex;
 `;
 
-const Button = styled.a.attrs<{href: string}>({
+const Button = styled.a.attrs({
   role: 'button',
   tabIndex: 0,
   target: '_blank',
