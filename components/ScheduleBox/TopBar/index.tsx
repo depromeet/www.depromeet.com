@@ -3,13 +3,12 @@ import { media } from '../../../styles/theme';
 import Period from './Period';
 import Step from './Step';
 
-interface ScheduleBoxTopBarProps {
-  className: string;
+type ScheduleBoxTopBarProps = {
   index: number;
   duration: string;
-}
+} & Partial<{className: string}>;
 
-const TopBar = ({ className, index, duration }: Partial<ScheduleBoxTopBarProps>) => (
+const TopBar = ({ className, index, duration }: ScheduleBoxTopBarProps) => (
   <div className={className}>
     <Step>STEP {index}</Step>
     <Period>{duration}</Period>

@@ -6,13 +6,12 @@ import Description from './Description';
 import Animation from './Animation';
 import Spacer from './Spacer';
 
-interface ScheduleBoxContentProps {
+type ScheduleBoxContentProps = {
   desc: ReactNode,
   lottie: LottieProps,
-  className: string,
-}
+} & Partial<{className: string}>;
 
-const Content = ({ className, desc, lottie }: Partial<ScheduleBoxContentProps>) => (
+const Content = ({ className, desc, lottie }: ScheduleBoxContentProps) => (
   <div className={className}>
     <Description>{desc}</Description>
     <Spacer className="mobile__none" />
