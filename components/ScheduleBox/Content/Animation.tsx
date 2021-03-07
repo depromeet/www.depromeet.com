@@ -16,13 +16,6 @@ const Animation = styled.div`
     height: 8rem;
     flex: 1;
   }
-  &--img {
-    position: relative;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-  }
 `;
 
 export default Animation;

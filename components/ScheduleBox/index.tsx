@@ -1,4 +1,4 @@
-import { ReactNode, FC } from 'react';
+import { ReactNode } from 'react';
 import { LottieProps } from '../StepLottie';
 import TopBar from './TopBar';
 import Content from './Content';
@@ -13,7 +13,7 @@ interface ScheduleProps {
   index: number;
 }
 
-const ScheduleBox: FC<ScheduleProps> = ({ detail, index }) => (
+const ScheduleBox = ({ detail, index }: ScheduleProps) => (
   <Box>
     <TopBar duration={detail.duration} index={index} />
     <Content desc={detail.desc} lottie={detail.lottie} />

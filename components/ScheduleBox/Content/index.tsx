@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FC, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { media } from '../../../styles/theme';
 import StepLottie, { LottieProps } from '../../StepLottie';
 import Description from './Description';
@@ -7,12 +7,12 @@ import Animation from './Animation';
 import Spacer from './Spacer';
 
 interface ScheduleBoxContentProps {
-  desc: ReactNode;
-  lottie: LottieProps;
-  className?: string;
+  desc: ReactNode,
+  lottie: LottieProps,
+  className: string,
 }
 
-const Content:FC<ScheduleBoxContentProps> = ({ className, desc, lottie }) => (
+const Content = ({ className, desc, lottie }: Partial<ScheduleBoxContentProps>) => (
   <div className={className}>
     <Description>{desc}</Description>
     <Spacer className="mobile__none" />
