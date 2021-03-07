@@ -5,12 +5,11 @@ import React, { useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import { Footer } from '../components';
 import Header from '../components/TransparentableHeader';
-import ScheduleBox from '../components/ScheduleBox';
-import { steps } from '../resources/data/schedule';
 import projectsData from '../resources/data/projects';
 import { media } from '../styles/theme';
 import Projects from '../components/Projects';
-import { ScheduleProvider } from '../components/ScheduleBox/ScheduleProvider';
+import ScheduleSection from '../components/ProjectPage/ScheduleSection';
+import Title from '../components/ProjectPage/Title';
 
 const Project = () => (
   <div className="no-scroll-bar" style={{ overflow: 'scroll' }}>
@@ -30,7 +29,7 @@ const Project = () => (
           <span className="catchphrase__bold"> 경험에 성장을 더합니다. </span>
         </Catchphrase>
         <AllProjects />
-        <AllSchedule />
+        <ScheduleSection />
       </div>
     </CenterAlignedContainer>
     <Footer />
@@ -49,7 +48,7 @@ const AllProjects = () => {
   return (
     <ProjectSection>
       <Title>
-        모든 작업물<sup>{projectsData.length}</sup>
+        모든 작업물<Title.Sup>{projectsData.length}</Title.Sup>
       </Title>
       <Boxes>
         <Projects expanded={expanded} />
@@ -69,22 +68,6 @@ const AllProjects = () => {
     </ProjectSection>
   );
 };
-
-const AllSchedule = () => (
-  <ScheduleSection>
-    <Title>
-      13주간 여정
-      <span className="title--desc">Depromeet 9기는 매주 토요일 13주간 진행됩니다.</span>
-    </Title>
-    <Schedules>
-      {steps.map((detail, index) => (
-        <ScheduleProvider value={{ ...detail, index }}>
-          <ScheduleBox key={`steps-${index + 1}`} />
-        </ScheduleProvider>
-      ))}
-    </Schedules>
-  </ScheduleSection>
-);
 
 const TopBackground = styled.div`
   z-index:-10;
@@ -147,44 +130,6 @@ const Catchphrase = styled.div`
   }
 `;
 
-const Title = styled.h1`
-  font-style: normal;
-  font-weight: 800;
-  font-size: 2.2rem;
-  line-height: 2.6rem;
-  letter-spacing: -0.03em;
-  color: #FFFFFF;
-  margin-bottom: 4rem;
-  ${media.mobile} {
-    font-size: 1.6rem;
-  }
-  sup { 
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 1.2rem;
-    line-height: 1.2rem;
-    margin-left: 1rem;
-    vertical-align: super;
-    ${media.mobile} {
-      font-size: 1rem;
-    }
-  }
-  .title--desc {
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1.4rem;
-    line-height: 2rem;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    margin-left: 2.4rem;
-    vertical-align: center;
-    ${media.mobile} {
-      display: none;
-    }
-  }
-`;
-
 const Boxes = styled.div`
   margin-bottom: 5.6rem;
 `;
@@ -221,15 +166,6 @@ const ProjectSection = styled.div`
       }
     }
   }
-`;
-
-const ScheduleSection = styled.div`
-`;
-
-const Schedules = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3.2rem 0;
 `;
 
 export default Project;
