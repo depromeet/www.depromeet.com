@@ -1,27 +1,25 @@
 import styled from 'styled-components';
-import { ReactNode } from 'react';
 import { media } from '../../../styles/theme';
-import StepLottie, { LottieProps } from '../../StepLottie';
+import StepLottie from '../../StepLottie';
 import Description from './Description';
 import Animation from './Animation';
 import Spacer from './Spacer';
+import { useScheuduleData } from '../ScheduleProvider';
 
-type ScheduleBoxContentProps = {
-  desc: ReactNode,
-  lottie: LottieProps,
-} & Partial<{className: string}>;
-
-const Content = ({ className, desc, lottie }: ScheduleBoxContentProps) => (
-  <div className={className}>
-    <Description>{desc}</Description>
-    <Spacer className="mobile__none" />
-    <Animation>
-      <div className="lottie-container">
-        <StepLottie lottie={lottie} />
-      </div>
-    </Animation>
-  </div>
-);
+const Content = ({ className = '' }) => {
+  const { desc, lottie } = useScheuduleData();
+  return (
+    <div className={className}>
+      <Description>{desc}</Description>
+      <Spacer className="mobile__none" />
+      <Animation>
+        <div className="lottie-container">
+          <StepLottie lottie={lottie} />
+        </div>
+      </Animation>
+    </div>
+  );
+};
 
 export default styled(Content)`
   display: flex;

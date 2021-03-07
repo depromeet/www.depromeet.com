@@ -10,6 +10,7 @@ import { steps } from '../resources/data/schedule';
 import projectsData from '../resources/data/projects';
 import { media } from '../styles/theme';
 import Projects from '../components/Projects';
+import { ScheduleProvider } from '../components/ScheduleBox/ScheduleProvider';
 
 const Project = () => (
   <div className="no-scroll-bar" style={{ overflow: 'scroll' }}>
@@ -76,8 +77,10 @@ const AllSchedule = () => (
       <span className="title--desc">Depromeet 9기는 매주 토요일 13주간 진행됩니다.</span>
     </Title>
     <Schedules>
-      {steps.map((detail, idx) => (
-        <ScheduleBox detail={detail} key={`steps-${idx + 1}`} index={idx + 1} />
+      {steps.map((detail, index) => (
+        <ScheduleProvider value={{ ...detail, index }}>
+          <ScheduleBox key={`steps-${index + 1}`} />
+        </ScheduleProvider>
       ))}
     </Schedules>
   </ScheduleSection>
