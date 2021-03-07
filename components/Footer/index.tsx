@@ -1,11 +1,10 @@
 import dynamic from 'next/dynamic';
-import { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 import Contact from './Contact';
 import Copyright from './Copyright';
 import Buttons from './Buttons';
 
-type FooterProps = PropsWithChildren<{className: string}>;
+type FooterProps = Partial<{className: string}>;
 
 const InstagramLogo = dynamic(() => import('../../resources/images/ic_sns_instagram.svg'));
 const FacebookLogo = dynamic(() => import('../../resources/images/ic_sns_facebook.svg'));
