@@ -13,7 +13,8 @@ module.exports = {
       typescript: {},
     },
   },
-  extends: ['eslint:recommended',
+  extends: [
+    'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
     'airbnb', 'airbnb/hooks',
@@ -84,5 +85,7 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': ['off'], // use eslint no-use-before-define rule
     '@typescript-eslint/ban-ts-ignore': ['off'],
     '@typescript-eslint/explicit-module-boundary-types': ['off'],
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error'],
   },
 };

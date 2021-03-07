@@ -24,7 +24,6 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-lottie": "^1.2.3",
-    "react-ripples": "^2.2.1",
     "react-virtualized-auto-sizer": "^1.0.4",
     "react-window": "^1.8.6",
     "sass": "^1.32.7",
