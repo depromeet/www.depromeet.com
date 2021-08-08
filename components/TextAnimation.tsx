@@ -9,7 +9,6 @@ import { media } from '../styles/theme';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// register ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
 const TextAnimation = () => {

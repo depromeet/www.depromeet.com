@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { GreenQuote1, GreenQuote2, BlueQuote1, BlueQuote2 } from '../public';
 import { media } from '../styles/theme';
 import Mimoji from './mimoji';
-// import { stories } from '../resources/data/reviews';
 
 const StoryBox = ({ story }) => (
   <Container>
