@@ -11,8 +11,7 @@ const Logo = dynamic(() => import('../public/gnb_logo.svg'));
 interface BackgroundTransparentProps {
   isTransparent?: boolean;
 }
-const applyFor10th =
-  'https://forms.gle/MVr4auDmerieZZR27?fbclid=IwAR3vamHZfGNvWtQ5bHKRE7swLKHFGsHeSy0wUde_bdoate-veAqlLJeM3kI';
+const applyFor10th = 'https://forms.gle/Qt43qphpMDTPJEhPA';
 
 export const openApplySite = () => window.open(applyFor10th);
 

@@ -7,6 +7,8 @@ import StoryBox from '../components/StoryBox';
 import { stories } from '../resources/data/reviews';
 import TextAnimation from '../components/TextAnimation';
 import { media } from '../styles/theme';
+import { ShortArrowGreen } from '../public';
+import { openApplySite } from '../components/Header';
 
 const Index = () => (
   <div className="no-scroll-bar" style={{ overflowX: 'scroll' }}>
@@ -17,8 +19,6 @@ const Index = () => (
       <Container3 />
       <Container4 />
       <Background>
-        <BackgroundImage />
-        <BackgroundImage />
         <BackgroundImage />
         <BackgroundImage forMobile />
       </Background>
@@ -78,8 +78,8 @@ const Container2 = () => (
         <Projects isMainPage />
         <Link href="/project">
           <div className="boxes__button" role="button">
-            모든 프로젝트 구경하기{' '}
-            <span className="boxes__button--arrow">{'>'}</span>
+            모든 프로젝트 구경하기
+            <ShortArrowGreen width="0.6rem" />
           </div>
         </Link>
       </div>
@@ -90,8 +90,8 @@ const Container2 = () => (
 const Container3 = () => (
   <Cont3>
     <div className="title">
-      <div>지금까지 우리들의</div>
-      <span className="title__bold">프로덕트</span> 이야기
+      <div>이전 기수들의</div>
+      <span className="title__bold">생생한</span> 활동 후기
     </div>
     <div className="story-boxes no-scroll-bar">
       {stories.map((story, idx) => (
@@ -105,14 +105,16 @@ const emptyCallback = () => {};
 const Container4 = () => (
   <Cont4>
     <div className="title">
-      <div>Depromeet의</div>
-      <span className="title__bold">아홉 번째 이야기</span>를
+      <div>디프만의</div>
+      <span className="title__bold">열 번째 이야기</span>를 함께
       <div>만들어가고 싶다면</div>
       <div className="small">
-        Depromeet 9기는 COVID-19확산으로 인해 온라인 모임을 지향하고 있습니다.
+        COVID-19확산으로 인해 온라인 모임을 지향하고 있습니다.
       </div>
     </div>
-    <div className="gradientBtn">9기 모집 마감</div>
+    <div onClick={openApplySite} className="gradientBtn">
+      10기에서 만나기
+    </div>
     <div
       className="greenBtn"
       role="button"
@@ -132,7 +134,7 @@ const BackgroundImage = ({ forMobile = false }) => (
       src={'/background.svg'}
       alt="9th background"
       layout="fill"
-      objectFit="contain"
+      objectFit="cover"
       loading="lazy"
     />
   </div>
@@ -154,7 +156,7 @@ const shareDepromeet = async () => {
       });
       if (result.state === 'granted' || result.state === 'prompt') {
         navigator.clipboard
-          .writeText('디프만 9번째 이야기 - www.depromeet.com')
+          .writeText('디프만 10번째 이야기 - www.depromeet.com')
           .then(
             () => {
               // eslint-disable-next-line no-alert
@@ -351,8 +353,8 @@ const Cont2 = styled.div`
     margin-top: 9.7rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
     align-self: stretch;
+    overflow: hidden;
     width: 100%;
     ${media.mobile} {
       position: absolute;
@@ -360,6 +362,8 @@ const Cont2 = styled.div`
       margin-top: 0;
     }
     &__button {
+      position: relative;
+      gap: 0.9rem;
       width: 20rem;
       height: 4.2rem;
       margin-top: 4.2rem;
@@ -370,9 +374,16 @@ const Cont2 = styled.div`
       justify-content: center;
       border: ${({ theme }) => `0.1rem solid ${theme.color.green}`};
       color: ${({ theme }) => theme.color.green};
-
-      &--arrow {
-        margin-left: 1.1rem;
+      &:hover {
+        &:after {
+          content: '';
+          position: absolute;
+          width: 20rem;
+          height: 4.2rem;
+          border-radius: 2.1rem;
+          background-color: ${({ theme }) => theme.color.green};
+          opacity: 0.3;
+        }
       }
 
       ${media.mobile} {
@@ -456,6 +467,7 @@ const Cont4 = styled.div`
     }
   }
   .gradientBtn {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -466,6 +478,7 @@ const Cont4 = styled.div`
     font-weight: 700;
     border-radius: 1rem;
     margin-top: 5.6rem;
+    color: ${({ theme }) => theme.color.black};
 
     ${media.mobile} {
       margin: 4rem 4rem 0;
@@ -499,7 +512,15 @@ const Cont4 = styled.div`
     }
 
     :hover {
-      background: #001401;
+      &:after {
+        content: '';
+        position: absolute;
+        width: 36.3rem;
+        height: 5.4rem;
+        border-radius: 1rem;
+        background-color: ${({ theme }) => theme.color.green};
+        opacity: 0.3;
+      }
     }
   }
 `;
@@ -519,7 +540,7 @@ const Background = styled.div`
   }
   .bg-image {
     position: relative;
-    width: 74.2rem;
+    width: 290rem;
     margin-left: 8rem;
     flex-shrink: 0;
     :first-child {
