@@ -94,9 +94,9 @@ const AllProjects = () => {
 const AllSchedule = () => (
   <ScheduleSection>
     <Title>
-      15주간 여정
+      14주간 여정
       <span className="title--desc">
-        Depromeet 10기는 매주 토요일 15주간 진행됩니다.
+        Depromeet 10기는 매주 토요일 14주간 진행됩니다.
       </span>
     </Title>
     <Schedules>
@@ -224,7 +224,7 @@ const ProjectSection = styled.div`
     display: ${projectsData.length > 12 ? 'flex' : 'none'};
     align-self: center;
     :hover {
-      background-color: #001401;
+      background-color: rgba(56, 227, 168, 0.3);
     }
     &__green {
       border: ${({ theme }) => `0.1rem solid ${theme.color.green}`};
