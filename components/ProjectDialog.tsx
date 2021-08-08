@@ -791,6 +791,7 @@ const ProjectDetail = styled.div<{ width: number }>`
         text-transform: uppercase;
         width: 9rem;
         ${media.mobile} {
+          margin-top: 0.2rem;
           font-size: 1.2rem;
           line-height: 2.6rem;
           width: 5rem;
@@ -800,6 +801,7 @@ const ProjectDetail = styled.div<{ width: number }>`
         font-size: 1.6rem;
         line-height: 2.8rem;
         ${media.mobile} {
+          margin-left: 2.3rem;
           font-weight: 400;
           font-size: 1.4rem;
           line-height: 2.6rem;
