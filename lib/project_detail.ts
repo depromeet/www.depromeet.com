@@ -6,22 +6,34 @@ export const desktopContentWidth = 80;
 export const desktopContentHeight = 84;
 export const isMobile = (width: number) => width <= 576;
 
-export const getResponsiveContentHeight = (width: number) => (isMobile(width) ? mobileContentHeight : desktopContentHeight);
-export const getResponsiveContentWidth = (width: number) => (isMobile(width) ? mobileContentWidth : desktopContentWidth);
+export const getResponsiveContentHeight = (width: number) =>
+  isMobile(width) ? mobileContentHeight : desktopContentHeight;
+export const getResponsiveContentWidth = (width: number) =>
+  isMobile(width) ? mobileContentWidth : desktopContentWidth;
 
-export const getContentItemPosition = (width: number, index: number, originalPos):number => {
+export const getContentItemPosition = (
+  width: number,
+  index: number,
+  originalPos
+): number => {
   const originalX = parseFloat(originalPos.toString());
   const horizontalPadding = getCenterPadding(width);
   const contentGap = getContentGap(width);
   return originalX + horizontalPadding + contentGap * remBase * index;
 };
-export const getContentGap = (width: number) => (isMobile(width) ? calcMobileContentGap() : calcDesktopContentGap());
-export const getCenterPadding = (width: number) => (isMobile(width) ? calcMobileCenterPadding(width) : calcDesktopCenterPadding(width));
+export const getContentGap = (width: number) =>
+  isMobile(width) ? calcMobileContentGap() : calcDesktopContentGap();
+export const getCenterPadding = (width: number) =>
+  isMobile(width)
+    ? calcMobileCenterPadding(width)
+    : calcDesktopCenterPadding(width);
 
 const remBase = 10;
-const calcMobileCenterPadding = (width) => (width - mobileContentWidth * remBase) / 2;
+const calcMobileCenterPadding = (width) =>
+  (width - mobileContentWidth * remBase) / 2;
 const calcMobileContentGap = () => 1.1;
-const calcDesktopCenterPadding = (width) => (width - desktopContentWidth * remBase) / 2;
+const calcDesktopCenterPadding = (width) =>
+  (width - desktopContentWidth * remBase) / 2;
 const calcDesktopContentGap = () => 5.6;
 
 export const calcItemCenterPosition = (index: number, windowWidth: number) => {

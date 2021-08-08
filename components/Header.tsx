@@ -11,7 +11,8 @@ const Logo = dynamic(() => import('../public/gnb_logo.svg'));
 interface BackgroundTransparentProps {
   isTransparent?: boolean;
 }
-const applyFor9th = 'https://forms.gle/MVr4auDmerieZZR27?fbclid=IwAR3vamHZfGNvWtQ5bHKRE7swLKHFGsHeSy0wUde_bdoate-veAqlLJeM3kI';
+const applyFor9th =
+  'https://forms.gle/MVr4auDmerieZZR27?fbclid=IwAR3vamHZfGNvWtQ5bHKRE7swLKHFGsHeSy0wUde_bdoate-veAqlLJeM3kI';
 
 export const openApplySite = () => window.open(applyFor9th);
 const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
@@ -29,25 +30,27 @@ const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
       <ButtonContainer visible={visible} className="no-scroll-bar">
         <div className="mobile-wrapper">
           <RouterBtn routerName="about" path="/" setVisible={setVisible} />
-          <RouterBtn routerName="project" path="/project" setVisible={setVisible} />
-          <RouterBtn routerName="contact" path="/contact" setVisible={setVisible} />
+          <RouterBtn
+            routerName="project"
+            path="/project"
+            setVisible={setVisible}
+          />
+          <RouterBtn
+            routerName="contact"
+            path="/contact"
+            setVisible={setVisible}
+          />
         </div>
-        <div className="mobile__only invitation">
-          디프만에 관심있으신가요?
-        </div>
-        <Button>
-          9기 모집 마감
-        </Button>
+        <div className="mobile__only invitation">디프만에 관심있으신가요?</div>
+        <Button>9기 모집 마감</Button>
         <div className="mobile__only socials">
-          {
-            socials.map((v) => (
-              <SocialButton
-                href={v.href}
-                name={v.name}
-                key={`social-button-${v.name}`}
-              />
-            ))
-          }
+          {socials.map((v) => (
+            <SocialButton
+              href={v.href}
+              name={v.name}
+              key={`social-button-${v.name}`}
+            />
+          ))}
         </div>
       </ButtonContainer>
     </Container>
@@ -78,13 +81,11 @@ const RouterBtn = ({ routerName, path, setVisible }) => {
 };
 
 const SocialButton = ({ name, href }) => {
-  const openSocial = () => { window.open(href); };
+  const openSocial = () => {
+    window.open(href);
+  };
   return (
-    <Social
-      role="button"
-      onClick={openSocial}
-      tabIndex={0}
-    >
+    <Social role="button" onClick={openSocial} tabIndex={0}>
       {name}
     </Social>
   );
@@ -96,11 +97,7 @@ const MenuButton = ({ isVisible, setVisible }) => {
   };
 
   return (
-    <MenuIcon
-      role="button"
-      tabIndex={0}
-      onClick={changeMenuState}
-    >
+    <MenuIcon role="button" tabIndex={0} onClick={changeMenuState}>
       <img
         src={isVisible ? '/ic_x.svg' : 'ic_menu.svg'}
         alt="menu button"
@@ -112,7 +109,8 @@ const MenuButton = ({ isVisible, setVisible }) => {
 
 const Container = styled.div<BackgroundTransparentProps>`
   position: fixed;
-  background-color: ${({ isTransparent }) => (isTransparent ? 'transparent' : 'black')};
+  background-color: ${({ isTransparent }) =>
+    isTransparent ? 'transparent' : 'black'};
   top: 0;
   left: 0;
   right: 0;
@@ -140,7 +138,7 @@ const Container = styled.div<BackgroundTransparentProps>`
   .logo {
     ${media.mobile} {
       z-index: 1001;
-      svg { 
+      svg {
         width: 8rem;
         height: 4rem;
       }
@@ -155,7 +153,6 @@ const Container = styled.div<BackgroundTransparentProps>`
     }
   }
 
-
   .invitation {
     ${media.mobile} {
       font-size: 1.4rem;
@@ -166,7 +163,7 @@ const Container = styled.div<BackgroundTransparentProps>`
   }
 `;
 
-const ButtonContainer = styled.div<{visible: boolean}>`
+const ButtonContainer = styled.div<{ visible: boolean }>`
   display: flex;
   align-items: center;
   z-index: 1;
@@ -220,7 +217,7 @@ const Button = styled.div`
   border-radius: 2.7rem;
   margin-left: 0.7rem;
   :hover {
-    background-color: #0013BA;
+    background-color: #0013ba;
   }
 
   ${media.mobile} {
@@ -242,7 +239,7 @@ const Button = styled.div`
   }
 `;
 
-const RouterButton = styled.div<{isSame: boolean}>`
+const RouterButton = styled.div<{ isSame: boolean }>`
   position: relative;
   font-family: Montserrat;
   margin-right: 3.4rem;
@@ -251,7 +248,6 @@ const RouterButton = styled.div<{isSame: boolean}>`
   :hover {
     color: #c0c0c0;
   }
-
 
   ${media.mobile} {
     font-size: 4rem;

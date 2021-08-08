@@ -23,13 +23,18 @@ const calcProjectPageMultipleRows = (expanded: boolean) => {
 const maxColumns = 6;
 const maxHeight = 22;
 const maxRowGap = 3.2;
-export const calcColumns = (isMainPage: boolean): string | number => (isMainPage === true ? 'auto-fill' : maxColumns);
-export const calcMaxHeight = (isMainPage: boolean, expanded: boolean): string => {
+export const calcColumns = (isMainPage: boolean): string | number =>
+  isMainPage === true ? 'auto-fill' : maxColumns;
+export const calcMaxHeight = (
+  isMainPage: boolean,
+  expanded: boolean
+): string => {
   const rows = calcRows(isMainPage, expanded);
   const height = isMainPage ? 17 : maxHeight;
-  const numRows = rows === 'auto-fill'
-    ? (projectsData.length + maxColumns - 1) / maxColumns
-    : rows;
+  const numRows =
+    rows === 'auto-fill'
+      ? (projectsData.length + maxColumns - 1) / maxColumns
+      : rows;
   return `${numRows * height + (numRows - 1) * maxRowGap}rem`;
 };
 
@@ -39,12 +44,13 @@ const mobileGapRem = 2.4;
 const mobileIconSizeRem = 9.6;
 export const mobileIconSize = '9.6rem';
 export const mobileMaxHeight = `${mobileMaxHeightRem}rem`;
-export const calcMobileMaxHeight = (isMainPage: boolean, expanded: boolean): string => {
+export const calcMobileMaxHeight = (
+  isMainPage: boolean,
+  expanded: boolean
+): string => {
   const rows = calcMobileRows(isMainPage, expanded);
   const height = isMainPage ? mobileIconSizeRem : mobileMaxHeightRem;
-  const numRows = rows === 'auto-fill'
-    ? (projectsData.length + 2) / 3
-    : rows;
+  const numRows = rows === 'auto-fill' ? (projectsData.length + 2) / 3 : rows;
   return `${numRows * height + (numRows - 1) * mobileGapRem}rem`;
 };
 

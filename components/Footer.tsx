@@ -3,9 +3,15 @@ import dynamic from 'next/dynamic';
 import { media } from '../styles/theme';
 
 const Footer = () => {
-  const InstagramLogo = dynamic(() => import('../resources/images/ic_sns_instagram.svg'));
-  const FacebookLogo = dynamic(() => import('../resources/images/ic_sns_facebook.svg'));
-  const MediumLogo = dynamic(() => import('../resources/images/ic_sns_medium.svg'));
+  const InstagramLogo = dynamic(
+    () => import('../resources/images/ic_sns_instagram.svg')
+  );
+  const FacebookLogo = dynamic(
+    () => import('../resources/images/ic_sns_facebook.svg')
+  );
+  const MediumLogo = dynamic(
+    () => import('../resources/images/ic_sns_medium.svg')
+  );
   return (
     <Container>
       <Content>
@@ -45,7 +51,7 @@ const MediaButton = ({ href, children }) => (
   </Button>
 );
 const Container = styled.footer`
-  background: #0C0C0C;
+  background: #0c0c0c;
   border: 1px solid #000000;
   box-sizing: border-box;
   width: 100%;
@@ -63,7 +69,6 @@ const Content = styled.div`
   ${media.mobile} {
     padding: 2.8rem 2.4rem;
     height: 9.6rem;
-
   }
   .logo-container {
     ${media.mobile} {

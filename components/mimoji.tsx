@@ -3,7 +3,11 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import { media } from '../styles/theme';
 
-const Mimoji: FC<HTMLAttributes<unknown> & {src: string, job: string}> = ({ src, job, className }) => (
+const Mimoji: FC<HTMLAttributes<unknown> & { src: string; job: string }> = ({
+  src,
+  job,
+  className,
+}) => (
   <MimojiWrapper job={job} className={className}>
     <div className="mimoji--circle" />
     <div className="mimoji--job">{job}</div>
@@ -21,11 +25,12 @@ const Mimoji: FC<HTMLAttributes<unknown> & {src: string, job: string}> = ({ src,
   </MimojiWrapper>
 );
 
-const MimojiWrapper = styled.div<{job: string}>`
+const MimojiWrapper = styled.div<{ job: string }>`
   position: relative;
   text-transform: uppercase;
   background: transparent;
-  color: ${({ job, theme }) => (job === 'designer' ? theme.color.blue : theme.color.green)};
+  color: ${({ job, theme }) =>
+    job === 'designer' ? theme.color.blue : theme.color.green};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,14 +63,15 @@ const MimojiWrapper = styled.div<{job: string}>`
         position: relative;
         width: 17.7rem;
         height: 17.7rem;
-        ${media.mobile}{ 
+        ${media.mobile} {
           width: 9.6rem;
           height: 9.6rem;
         }
       }
     }
     &--circle {
-      background-color: ${({ job, theme }) => (job === 'designer' ? theme.color.blue : theme.color.green)};
+      background-color: ${({ job, theme }) =>
+        job === 'designer' ? theme.color.blue : theme.color.green};
       width: 19rem;
       height: 19rem;
       border-radius: 50%;
@@ -74,7 +80,7 @@ const MimojiWrapper = styled.div<{job: string}>`
         height: 10.4rem;
       }
     }
-    &--job{
+    &--job {
       z-index: 1;
       position: absolute;
       left: ${({ job }) => (job === 'designer' ? '12.7rem' : '0.1rem')};
@@ -90,11 +96,13 @@ const MimojiWrapper = styled.div<{job: string}>`
       background-color: white;
       border-radius: 7.65rem;
       padding: 1.2rem 2.4rem;
-      transform: ${({ job }) => (job === 'designer' ? 'rotate(-4.63deg)' : 'rotate(2.3deg)')};
+      transform: ${({ job }) =>
+        job === 'designer' ? 'rotate(-4.63deg)' : 'rotate(2.3deg)'};
       ${media.mobile} {
         z-index: 3;
         padding: 0.74rem 1.65rem;
-        transform: ${({ job }) => (job === 'designer' ? 'rotate(5.16deg)' : 'rotate(-5.16deg)')};
+        transform: ${({ job }) =>
+          job === 'designer' ? 'rotate(5.16deg)' : 'rotate(-5.16deg)'};
         left: unset;
         top: unset;
         bottom: 0.3rem;

@@ -12,6 +12,7 @@ const projectCoolpiece: ProjectData = {
   알 수 있습니다. 또한 지난 과거에 나온 전기 요금도 알 수 있습니다.`,
   image: '/img-coolpiece.png',
   icon: '/icon-coolpiece.png',
-  android: 'https://play.google.com/store/apps/details?id=com.depromeet.tmj.cool_fees',
+  android:
+    'https://play.google.com/store/apps/details?id=com.depromeet.tmj.cool_fees',
 };
 export default projectCoolpiece;

@@ -1,3 +1,1 @@
-export const browserslist = [
-    "defaults"
-];
+export const browserslist = ['defaults'];

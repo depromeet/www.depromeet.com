@@ -46,23 +46,35 @@ const TextAnimation = () => {
       <div className="text">
         <div className="text__content" ref={text1}>
           Programmer
-          <div className="text__arrow"><RightArrow /></div>
+          <div className="text__arrow">
+            <RightArrow />
+          </div>
           Designer
-          <div className="text__arrow"><RightArrow /></div>
+          <div className="text__arrow">
+            <RightArrow />
+          </div>
           Programmer
         </div>
         <div className="text__content" ref={text2}>
           Depromeet 9th
-          <div className="text__arrow"><LeftArrow /></div>
+          <div className="text__arrow">
+            <LeftArrow />
+          </div>
           2020 Meet
-          <div className="text__arrow"><LeftArrow /></div>
+          <div className="text__arrow">
+            <LeftArrow />
+          </div>
           Depromeet 9th
         </div>
         <div className="text__content text__content--mobile" ref={text3}>
           Depromeet
-          <div className="text__arrow"><RightArrow /></div>
+          <div className="text__arrow">
+            <RightArrow />
+          </div>
           Depromeet
-          <div className="text__arrow"><RightArrow /></div>
+          <div className="text__arrow">
+            <RightArrow />
+          </div>
           Depromeet
         </div>
       </div>

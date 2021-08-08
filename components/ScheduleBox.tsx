@@ -1,13 +1,13 @@
-import styled from 'styled-components';
-import { ReactNode, FC } from 'react';
-import StepLottie, { LottieProps } from './StepLottie';
-import { media } from '../styles/theme';
+import styled from "styled-components";
+import { ReactNode, FC } from "react";
+import StepLottie, { LottieProps } from "./StepLottie";
+import { media } from "../styles/theme";
 
 interface ScheduleProps {
   detail: {
     duration: string;
     desc: ReactNode;
-    lottie: LottieProps ;
+    lottie: LottieProps;
   };
   index: number;
 }
@@ -16,12 +16,12 @@ const ScheduleBox: FC<ScheduleProps> = ({ detail, index }) => (
   <Container>
     <div className="title">
       <div className="title--step">STEP {index + 1}</div>
-      <div className="title--duration title--duration__green">{detail.duration}</div>
+      <div className="title--duration title--duration__green">
+        {detail.duration}
+      </div>
     </div>
     <div className="detail">
-      <div className="desc">
-        {detail.desc}
-      </div>
+      <div className="desc">{detail.desc}</div>
       <div className="spacer mobile__none" />
       <div className="motion">
         <div className="motion--img">
@@ -61,7 +61,7 @@ const Container = styled.div`
       line-height: 3.2rem;
       letter-spacing: -0.02em;
       text-transform: uppercase;
-      color: #FFFFFF;
+      color: #ffffff;
       display: inline-block;
 
       ${media.mobile} {
@@ -99,7 +99,7 @@ const Container = styled.div`
       font-size: 3.6rem;
       line-height: 4.8rem;
       text-transform: uppercase;
-      color: #FFFFFF;
+      color: #ffffff;
       margin-top: 2.4rem;
       word-break: keep-all;
       flex: 1;

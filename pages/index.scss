@@ -1,14 +1,14 @@
 @keyframes animText {
-    from {
-        transform: translateX(0);
-    }
+  from {
+    transform: translateX(0);
+  }
 
-    to {
-        transform: translateX(100px);
-    }
+  to {
+    transform: translateX(100px);
+  }
 }
 
 #modal-root {
-    position: fixed;
-    z-index: 1300;
+  position: fixed;
+  z-index: 1300;
 }

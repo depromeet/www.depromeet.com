@@ -1,32 +1,29 @@
 import styled from 'styled-components';
-import {
-  GreenQuote1, GreenQuote2, BlueQuote1, BlueQuote2,
-} from '../public';
+import { GreenQuote1, GreenQuote2, BlueQuote1, BlueQuote2 } from '../public';
 import { media } from '../styles/theme';
 import Mimoji from './mimoji';
 // import { stories } from '../resources/data/reviews';
 
 const StoryBox = ({ story }) => (
   <Container>
-    {
-      story.job === 'programmer'
-      && (
-        <Mimoji className="mimoji-wrapper" src={story.mimoji} job={story.job} />
-      )
-    }
+    {story.job === 'programmer' && (
+      <Mimoji className="mimoji-wrapper" src={story.mimoji} job={story.job} />
+    )}
     <Bubble job={story.job}>
-      <div className="quote1">{story.job === 'programmer' ? <GreenQuote1 /> : <BlueQuote1 />}</div>
-      <div className="quote2">{story.job === 'programmer' ? <GreenQuote2 /> : <BlueQuote2 />}</div>
-      <div className="content no-scroll-bar">{story.content}
+      <div className="quote1">
+        {story.job === 'programmer' ? <GreenQuote1 /> : <BlueQuote1 />}
+      </div>
+      <div className="quote2">
+        {story.job === 'programmer' ? <GreenQuote2 /> : <BlueQuote2 />}
+      </div>
+      <div className="content no-scroll-bar">
+        {story.content}
         <div className="content__person">{story.person}</div>
       </div>
     </Bubble>
-    {
-      story.job === 'designer'
-      && (
-        <Mimoji className="mimoji-wrapper" src={story.mimoji} job={story.job} />
-      )
-    }
+    {story.job === 'designer' && (
+      <Mimoji className="mimoji-wrapper" src={story.mimoji} job={story.job} />
+    )}
   </Container>
 );
 
@@ -55,7 +52,7 @@ const Container = styled.div`
   }
 `;
 
-const Bubble = styled.div<{job: string}>`
+const Bubble = styled.div<{ job: string }>`
   position: relative;
   background: #101010;
   width: 83.5rem;
@@ -76,7 +73,6 @@ const Bubble = styled.div<{job: string}>`
     box-sizing: border-box;
     margin: 0;
   }
-
 
   .quote1 {
     position: absolute;
@@ -99,9 +95,9 @@ const Bubble = styled.div<{job: string}>`
     text-align: start;
     margin-top: 6.1rem;
     margin: 4rem;
-    ${media.mobile}{
+    ${media.mobile} {
       flex: 1;
-      margin: 9rem 0 0 ;
+      margin: 9rem 0 0;
       font-size: 1.4rem;
       line-height: 2.6rem;
       overflow-y: scroll;
@@ -112,15 +108,17 @@ const Bubble = styled.div<{job: string}>`
     &__person {
       margin-top: 1.6rem;
       font-size: 1.4rem;
-      line-height: 1.rem;
-      color: ${({ theme, job }) => (job === 'programmer' ? theme.color.green : '#194cff')};
+      line-height: 1rem;
+      color: ${({ theme, job }) =>
+        job === 'programmer' ? theme.color.green : '#194cff'};
 
       ${media.mobile} {
         margin-bottom: 1rem;
       }
     }
     b {
-      color: ${({ theme, job }) => (job === 'programmer' ? theme.color.green : '#1271ff')};
+      color: ${({ theme, job }) =>
+        job === 'programmer' ? theme.color.green : '#1271ff'};
       font-weight: 800;
     }
   }

@@ -52,11 +52,7 @@ const TransparentableHeader = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [handleScroll]);
-  return (
-    <Header
-      isTransparent={isTransparent}
-    />
-  );
+  return <Header isTransparent={isTransparent} />;
 };
 
 const AllProjects = () => {
@@ -66,7 +62,9 @@ const AllProjects = () => {
     setExpanded(!expanded);
   }, [expanded]);
 
-  const ArrowDownGreen = dynamic(() => import('../resources/images/arrow_down_green.svg'));
+  const ArrowDownGreen = dynamic(
+    () => import('../resources/images/arrow_down_green.svg')
+  );
 
   return (
     <ProjectSection>
@@ -96,7 +94,9 @@ const AllSchedule = () => (
   <ScheduleSection>
     <Title>
       13주간 여정
-      <span className="title--desc">Depromeet 9기는 매주 토요일 13주간 진행됩니다.</span>
+      <span className="title--desc">
+        Depromeet 9기는 매주 토요일 13주간 진행됩니다.
+      </span>
     </Title>
     <Schedules>
       {steps.map((v, idx) => (
@@ -107,7 +107,7 @@ const AllSchedule = () => (
 );
 
 const TopBackground = styled.div`
-  z-index:-10;
+  z-index: -10;
   position: absolute;
   top: 0;
   left: 0;
@@ -116,7 +116,7 @@ const TopBackground = styled.div`
   display: flex;
   justify-content: center;
 
-  img { 
+  img {
     object-fit: cover;
     width: 100%;
   }
@@ -152,7 +152,7 @@ const Catchphrase = styled.div`
   font-size: 3.6rem;
   line-height: 5.6rem;
   letter-spacing: -0.03em;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 7.8rem;
   ${media.mobile} {
     font-weight: 300;
@@ -173,12 +173,12 @@ const Title = styled.h1`
   font-size: 2.2rem;
   line-height: 2.6rem;
   letter-spacing: -0.03em;
-  color: #FFFFFF;
+  color: #ffffff;
   margin-bottom: 4rem;
   ${media.mobile} {
     font-size: 1.6rem;
   }
-  sup { 
+  sup {
     font-family: Montserrat;
     font-style: normal;
     font-weight: 500;
@@ -196,7 +196,7 @@ const Title = styled.h1`
     font-size: 1.4rem;
     line-height: 2rem;
     text-transform: uppercase;
-    color: #FFFFFF;
+    color: #ffffff;
     margin-left: 2.4rem;
     vertical-align: center;
     ${media.mobile} {
@@ -211,9 +211,9 @@ const Boxes = styled.div`
 
 const ProjectSection = styled.div`
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   margin-bottom: 11.8rem;
-  .button{
+  .button {
     border-radius: 2.7rem;
     font-size: 1.4rem;
     line-height: 1.7rem;
@@ -229,12 +229,12 @@ const ProjectSection = styled.div`
       border: ${({ theme }) => `0.1rem solid ${theme.color.green}`};
       color: ${({ theme }) => theme.color.green};
     }
-    &--img{ 
+    &--img {
       width: 1.4rem;
       height: 1.4rem;
       margin-left: 0.8rem;
       position: relative;
-      display:inline-block;
+      display: inline-block;
 
       &__usd {
         transform: rotate(180deg);
@@ -243,8 +243,7 @@ const ProjectSection = styled.div`
   }
 `;
 
-const ScheduleSection = styled.div`
-`;
+const ScheduleSection = styled.div``;
 
 const Schedules = styled.div`
   display: grid;

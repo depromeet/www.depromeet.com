@@ -1,36 +1,52 @@
 /* eslint-disable react/no-array-index-key */
 import {
-  FC, useEffect, useMemo, useState,
-  useCallback, useRef, MutableRefObject,
-  forwardRef, CSSProperties, useLayoutEffect, SetStateAction, Dispatch,
+  FC,
+  useEffect,
+  useMemo,
+  useState,
+  useCallback,
+  useRef,
+  MutableRefObject,
+  forwardRef,
+  CSSProperties,
+  useLayoutEffect,
+  SetStateAction,
+  Dispatch,
   HTMLAttributes,
 } from 'react';
 import Image from 'next/image';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
-import {
-  FixedSizeList, ListChildComponentProps,
-} from 'react-window';
+import { FixedSizeList, ListChildComponentProps } from 'react-window';
 import AutoSize from 'react-virtualized-auto-sizer';
 import { ProjectData } from '../resources/data/interface';
 import {
-  iconAppleStore, iconConstruction, iconGoogleStore, iconWebLink, rightBorderImg,
+  iconAppleStore,
+  iconConstruction,
+  iconGoogleStore,
+  iconWebLink,
+  rightBorderImg,
 } from '../resources/images';
 import projectsData from '../resources/data/projects';
 import { media } from '../styles/theme';
 import {
   getContentItemPosition,
-  isMobile, mobileContentHeight, mobileContentWidth,
-  getResponsiveContentWidth, getResponsiveContentHeight,
-  calcItemCenterPosition, calcRealListWidth, getContentGap,
+  isMobile,
+  mobileContentHeight,
+  mobileContentWidth,
+  getResponsiveContentWidth,
+  getResponsiveContentHeight,
+  calcItemCenterPosition,
+  calcRealListWidth,
+  getContentGap,
 } from '../lib/project_detail';
 
 interface ProjectDialogVisibleArg {
-    visible: boolean;
-    index: number;
+  visible: boolean;
+  index: number;
 }
 interface ProjectDialogProps {
-  visible: ProjectDialogVisibleArg,
+  visible: ProjectDialogVisibleArg;
   // eslint-disable-next-line no-unused-vars
   setVisible: (arg: ProjectDialogVisibleArg) => void;
 }
@@ -45,9 +61,7 @@ const ProjectDialog: FC<ProjectDialogProps> = (props) => {
   }, [setClientSide]);
 
   return (
-    <>
-      {isClientSide && visible.visible && <ProjectDialogList {...props} />}
-    </>
+    <>{isClientSide && visible.visible && <ProjectDialogList {...props} />}</>
   );
 };
 
@@ -63,35 +77,47 @@ const useCloseOnEsc = (onEscKeyDown) => {
   }, [onEscKeyDown]);
 };
 
-const ProjectDialogList:FC<ProjectDialogProps> = ({ visible, setVisible }) => {
+const ProjectDialogList: FC<ProjectDialogProps> = ({ visible, setVisible }) => {
   const modalElement = useMemo(() => document.createElement('div'), []);
-  const closeDialog = useCallback(() => setVisible({ visible: false, index: 0 }), [setVisible]);
+  const closeDialog = useCallback(
+    () => setVisible({ visible: false, index: 0 }),
+    [setVisible]
+  );
   const scrollRef = useRef<FixedSizeList>();
-  const onEscKeyDown = useCallback((e) => {
-    if (e.keyCode === 27) {
-      closeDialog();
-    }
-  }, [closeDialog]);
+  const onEscKeyDown = useCallback(
+    (e) => {
+      if (e.keyCode === 27) {
+        closeDialog();
+      }
+    },
+    [closeDialog]
+  );
 
   usePortalSetup(modalElement);
   useCloseOnEsc(onEscKeyDown);
 
   return ReactDOM.createPortal(
-    (
-      <Container>
-        <Backdrop onClick={closeDialog} />
-        <AutoSize>
-          {({ width, height }) => (
-            <>
-              <ProjectsListWrapper height={height} width={width} onClick={closeDialog}>
-                <ProjectsDialogContents width={width} index={visible.index} scrollRef={scrollRef} />
-              </ProjectsListWrapper>
-            </>
-          )}
-        </AutoSize>
-      </Container>
-    ),
-    modalElement,
+    <Container>
+      <Backdrop onClick={closeDialog} />
+      <AutoSize>
+        {({ width, height }) => (
+          <>
+            <ProjectsListWrapper
+              height={height}
+              width={width}
+              onClick={closeDialog}
+            >
+              <ProjectsDialogContents
+                width={width}
+                index={visible.index}
+                scrollRef={scrollRef}
+              />
+            </ProjectsListWrapper>
+          </>
+        )}
+      </AutoSize>
+    </Container>,
+    modalElement
   );
 };
 
@@ -100,7 +126,11 @@ interface ProjectContentsProps {
   index: number;
   scrollRef: MutableRefObject<FixedSizeList>;
 }
-const ProjectsDialogContents:FC<ProjectContentsProps> = ({ width, index, scrollRef }) => {
+const ProjectsDialogContents: FC<ProjectContentsProps> = ({
+  width,
+  index,
+  scrollRef,
+}) => {
   const [focusedIndex, setFocusedIndex] = useState(index);
   useScrollToIndex(scrollRef, focusedIndex, width);
   return (
@@ -126,31 +156,40 @@ const ProjectsDialogContents:FC<ProjectContentsProps> = ({ width, index, scrollR
   );
 };
 
-const withScrollController = (focusedIndex, setFocusedIndex, width) => (props: ProjectDataProps) => (
-  <ProjectItem
-    focusedIndex={focusedIndex}
-    setFocusedIndex={setFocusedIndex}
-    windowWidth={width}
-    {...props}
-  />
-);
+const withScrollController =
+  (focusedIndex, setFocusedIndex, width) => (props: ProjectDataProps) =>
+    (
+      <ProjectItem
+        focusedIndex={focusedIndex}
+        setFocusedIndex={setFocusedIndex}
+        windowWidth={width}
+        {...props}
+      />
+    );
 
-const innerWrapper = (width) => forwardRef<HTMLDivElement, {style: CSSProperties}>(({ style, ...rest }, ref) => {
-  const realWidth = calcRealListWidth(width, style.width);
-  return (
-    <div
-      className="no-scroll-bar"
-      ref={ref}
-      style={{
-        ...style,
-        width: `${realWidth}px`,
-      }}
-      {...rest}
-    />
+const innerWrapper = (width) =>
+  forwardRef<HTMLDivElement, { style: CSSProperties }>(
+    ({ style, ...rest }, ref) => {
+      const realWidth = calcRealListWidth(width, style.width);
+      return (
+        <div
+          className="no-scroll-bar"
+          ref={ref}
+          style={{
+            ...style,
+            width: `${realWidth}px`,
+          }}
+          {...rest}
+        />
+      );
+    }
   );
-});
 
-const useScrollToIndex = (scrollRef: MutableRefObject<FixedSizeList>, index: number, width: number) => {
+const useScrollToIndex = (
+  scrollRef: MutableRefObject<FixedSizeList>,
+  index: number,
+  width: number
+) => {
   const xOffset = calcItemCenterPosition(index, width);
   useLayoutEffect(() => {
     if (scrollRef.current) {
@@ -159,24 +198,23 @@ const useScrollToIndex = (scrollRef: MutableRefObject<FixedSizeList>, index: num
   }, [scrollRef, xOffset]);
 };
 
-const usePortalSetup = (portal: HTMLElement, rootId = 'modal-root') => useEffect(
-  () => {
+const usePortalSetup = (portal: HTMLElement, rootId = 'modal-root') =>
+  useEffect(() => {
     const modalRoot = document.getElementById(rootId);
     modalRoot.appendChild(portal);
     return () => {
       modalRoot.removeChild(portal);
     };
-  }, [portal, rootId],
-);
+  }, [portal, rootId]);
 
 const RightBorder = rightBorderImg();
-interface ProjectDataProps extends ListChildComponentProps{
+interface ProjectDataProps extends ListChildComponentProps {
   data: ProjectData[];
   focusedIndex: number;
   setFocusedIndex: Dispatch<SetStateAction<number>>;
   windowWidth: number;
 }
-const AppImage:FC<{data:ProjectData, src?: string}> = ({ data, src }) => {
+const AppImage: FC<{ data: ProjectData; src?: string }> = ({ data, src }) => {
   if (typeof data.image === 'string') {
     return (
       <div className="app-image">
@@ -196,24 +234,36 @@ const MemoizedImage = ({ data }) => {
   const ProjectImage = useMemo(() => data.image(), [data]);
   return <ProjectImage />;
 };
-const Icon: FC<{data:ProjectData} & HTMLAttributes<HTMLDivElement>> = ({ data }) => {
-  const MemoizedIcon = useMemo(() => ((typeof data.icon === 'string')
-    ? () => (
-      <div className="app-icon">
-        <Image
-          src={(typeof data.icon === 'string' && data.icon)}
-          loading="lazy"
-          alt={`${data.title}`}
-          layout="fill"
-          objectFit="scale-down"
-        />
-      </div>
-    ) : data.icon()), [data]);
+const Icon: FC<{ data: ProjectData } & HTMLAttributes<HTMLDivElement>> = ({
+  data,
+}) => {
+  const MemoizedIcon = useMemo(
+    () =>
+      typeof data.icon === 'string'
+        ? () => (
+            <div className="app-icon">
+              <Image
+                src={typeof data.icon === 'string' && data.icon}
+                loading="lazy"
+                alt={`${data.title}`}
+                layout="fill"
+                objectFit="scale-down"
+              />
+            </div>
+          )
+        : data.icon(),
+    [data]
+  );
   return <MemoizedIcon />;
 };
 
-const ProjectItem:FC<ProjectDataProps> = ({
-  data, index, style, focusedIndex, setFocusedIndex, windowWidth,
+const ProjectItem: FC<ProjectDataProps> = ({
+  data,
+  index,
+  style,
+  focusedIndex,
+  setFocusedIndex,
+  windowWidth,
 }) => {
   const projectData = data[index];
   return (
@@ -227,29 +277,22 @@ const ProjectItem:FC<ProjectDataProps> = ({
       }}
       onClick={(e) => e.stopPropagation()}
     >
-      {
-        focusedIndex === index
-        && (
-          <ScrollController
-            index={focusedIndex}
-            setIndex={setFocusedIndex}
-            width={windowWidth}
-          />
-        )
-      }
-      {
-        isMobile(windowWidth) || (
-          <div className="image ">
-            <AppImage data={projectData} />
-            <div className="image-shadow" />
-          </div>
-        )
-      }
+      {focusedIndex === index && (
+        <ScrollController
+          index={focusedIndex}
+          setIndex={setFocusedIndex}
+          width={windowWidth}
+        />
+      )}
+      {isMobile(windowWidth) || (
+        <div className="image ">
+          <AppImage data={projectData} />
+          <div className="image-shadow" />
+        </div>
+      )}
       <div className="detail">
         <div className="detail-left">
-          <div className="title">
-            {projectData.title}
-          </div>
+          <div className="title">{projectData.title}</div>
           <div className="catchphrase">
             <div className="catchphrase--icon">
               <Icon data={projectData} />
@@ -258,14 +301,11 @@ const ProjectItem:FC<ProjectDataProps> = ({
               {projectData.catchphrase}
             </div>
           </div>
-          {
-            isMobile(windowWidth)
-            || (
-              <div className="buttons">
-                <AppLinkButtons data={projectData} />
-              </div>
-            )
-          }
+          {isMobile(windowWidth) || (
+            <div className="buttons">
+              <AppLinkButtons data={projectData} />
+            </div>
+          )}
         </div>
         <div className="detail-right">
           <div className="detail--subject">
@@ -284,36 +324,47 @@ const ProjectItem:FC<ProjectDataProps> = ({
             </span>
           </div>
           <div className="detail--team-intro no-scroll-bar">
-            <TeamMember job="designer" member={projectData.desingers?.join(' ∙ ')} />
-            <TeamMember job="backend" member={projectData.backends?.join(' ∙ ')} />
-            <TeamMember job="frontend" member={projectData.frontends?.join(' ∙ ')} />
+            <TeamMember
+              job="designer"
+              member={projectData.desingers?.join(' ∙ ')}
+            />
+            <TeamMember
+              job="backend"
+              member={projectData.backends?.join(' ∙ ')}
+            />
+            <TeamMember
+              job="frontend"
+              member={projectData.frontends?.join(' ∙ ')}
+            />
           </div>
         </div>
-        {
-          isMobile(windowWidth)
-            && (
-              <div className="buttons">
-                <AppLinkButtons data={projectData} />
-              </div>
-            )
-        }
+        {isMobile(windowWidth) && (
+          <div className="buttons">
+            <AppLinkButtons data={projectData} />
+          </div>
+        )}
       </div>
     </ProjectDetail>
   );
 };
 
-const TeamMember:FC<{job: string, member?: string}> = ({ job, member }) => (
-  member === undefined || member === null ? <></> : (
+const TeamMember: FC<{ job: string; member?: string }> = ({ job, member }) =>
+  member === undefined || member === null ? (
+    <></>
+  ) : (
     <div className="detail--team">
       <span className="detail--team-job">{job}</span>
       <span className="detail--team-member">{member}</span>
     </div>
-  )
-);
+  );
 
-const AppLinkButtons: FC<{data: ProjectData}> = ({ data }) => {
+const AppLinkButtons: FC<{ data: ProjectData }> = ({ data }) => {
   const ConstructionIcon = useMemo(() => iconConstruction(), []);
-  if (data.ios === undefined && data.android === undefined && data.web === undefined) {
+  if (
+    data.ios === undefined &&
+    data.android === undefined &&
+    data.web === undefined
+  ) {
     return (
       <LinkButton className="button button__construction" link="#">
         <div className="button--icon">
@@ -332,7 +383,7 @@ const AppLinkButtons: FC<{data: ProjectData}> = ({ data }) => {
   );
 };
 
-const WeblinkButton : FC<{link?: string}> = ({ link }) => {
+const WeblinkButton: FC<{ link?: string }> = ({ link }) => {
   const WeblinkIcon = useMemo(() => iconWebLink(), []);
   return (
     <LinkButton className="button button__link" link={link}>
@@ -343,7 +394,7 @@ const WeblinkButton : FC<{link?: string}> = ({ link }) => {
     </LinkButton>
   );
 };
-const PlaystoreButton : FC<{link?: string}> = ({ link }) => {
+const PlaystoreButton: FC<{ link?: string }> = ({ link }) => {
   const PlayStoreIcon = useMemo(() => iconGoogleStore(), []);
   return (
     <LinkButton className="button button__link" link={link}>
@@ -354,7 +405,7 @@ const PlaystoreButton : FC<{link?: string}> = ({ link }) => {
     </LinkButton>
   );
 };
-const AppstoreButton: FC<{link?: string}> = ({ link }) => {
+const AppstoreButton: FC<{ link?: string }> = ({ link }) => {
   const AppleIcon = useMemo(() => iconAppleStore(), []);
   return (
     <LinkButton className="button button__link" link={link}>
@@ -366,7 +417,11 @@ const AppstoreButton: FC<{link?: string}> = ({ link }) => {
   );
 };
 
-const LinkButton: FC<{link?: string, className: string}> = ({ link, className, children }) => {
+const LinkButton: FC<{ link?: string; className: string }> = ({
+  link,
+  className,
+  children,
+}) => {
   if (link !== undefined) {
     return (
       // eslint-disable-next-line jsx-a11y/click-events-have-key-events
@@ -390,17 +445,25 @@ interface ScrollControllerProps {
 }
 
 const ScrollController: FC<ScrollControllerProps> = ({
-  index, setIndex, width,
+  index,
+  setIndex,
+  width,
 }) => {
-  const scrollToNext = useCallback((e) => {
-    e.stopPropagation();
-    setIndex((prev) => (prev < projectsData.length - 1 ? prev + 1 : prev));
-  }, [setIndex]);
+  const scrollToNext = useCallback(
+    (e) => {
+      e.stopPropagation();
+      setIndex((prev) => (prev < projectsData.length - 1 ? prev + 1 : prev));
+    },
+    [setIndex]
+  );
 
-  const scrollToPrev = useCallback((e) => {
-    e.stopPropagation();
-    setIndex((prev) => (prev > 0 ? prev - 1 : prev));
-  }, [setIndex]);
+  const scrollToPrev = useCallback(
+    (e) => {
+      e.stopPropagation();
+      setIndex((prev) => (prev > 0 ? prev - 1 : prev));
+    },
+    [setIndex]
+  );
 
   return (
     <ForegroundIndicator
@@ -426,7 +489,9 @@ const ScrollController: FC<ScrollControllerProps> = ({
         disabled={index === projectsData.length - 1}
       >
         <img
-          src={`/ic_right_${index === projectsData.length - 1 ? 'dis' : 'default'}.svg`}
+          src={`/ic_right_${
+            index === projectsData.length - 1 ? 'dis' : 'default'
+          }.svg`}
           alt="go to next project"
         />
       </ScrollIndicator>
@@ -456,7 +521,7 @@ const Backdrop = styled.div`
   z-index: -1;
 `;
 
-const ProjectsListWrapper = styled.div<{height: string, width:string}>`
+const ProjectsListWrapper = styled.div<{ height: string; width: string }>`
   display: flex;
   height: ${({ height }) => height}px;
   width: ${({ width }) => width}px;
@@ -464,7 +529,7 @@ const ProjectsListWrapper = styled.div<{height: string, width:string}>`
   align-items: center;
 `;
 
-const ProjectDetail = styled.div<{width: number}>`
+const ProjectDetail = styled.div<{ width: number }>`
   position: relative;
   width: ${contentWidth}rem;
   height: ${contentHeight}rem;
@@ -495,7 +560,7 @@ const ProjectDetail = styled.div<{width: number}>`
     justify-content: center;
     align-items: flex-end;
     position: relative;
-    .app-image{
+    .app-image {
       position: relative;
       height: 37rem;
       width: 100%;
@@ -509,7 +574,11 @@ const ProjectDetail = styled.div<{width: number}>`
       width: 100%;
       bottom: 0;
       z-index: -1;
-      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 12.63%, rgba(0, 0, 0, 0.9) 100%);
+      background: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0) 12.63%,
+        rgba(0, 0, 0, 0.9) 100%
+      );
     }
   }
 
@@ -518,7 +587,7 @@ const ProjectDetail = styled.div<{width: number}>`
     width: 100%;
     color: white;
     word-break: keep-all;
-    padding:4.8rem 5.6rem 0;
+    padding: 4.8rem 5.6rem 0;
     box-sizing: border-box;
     display: grid;
     grid-template: 1fr / 17.2rem 46.8rem;
@@ -576,7 +645,7 @@ const ProjectDetail = styled.div<{width: number}>`
       display: grid;
       grid-template: repeat(3, minmax(4.8rem, 4.8rem)) / 1fr;
       gap: 1.6rem 0;
-      
+
       ${media.mobile} {
         position: absolute;
         bottom: 2.5rem;
@@ -614,7 +683,7 @@ const ProjectDetail = styled.div<{width: number}>`
             margin-right: 0;
           }
         }
-        
+
         &--icon {
           margin-right: 1rem;
           width: 2rem;
@@ -631,7 +700,6 @@ const ProjectDetail = styled.div<{width: number}>`
         }
       }
     }
-
 
     &-right {
       ${media.mobile} {
@@ -711,20 +779,21 @@ const ProjectDetail = styled.div<{width: number}>`
 `;
 
 const isWideEnough = (width) => width > (contentWidth + contentGap) * remBase;
-const calcScrollIndicatorWidth = ({ width }) => (
-  isWideEnough(width) ? `${contentWidth + contentGap}rem` : `${width}px`
-);
+const calcScrollIndicatorWidth = ({ width }) =>
+  isWideEnough(width) ? `${contentWidth + contentGap}rem` : `${width}px`;
 const calcIndicatorLeftPadding = ({ width }) => {
-  const left = (isWideEnough(width) ? -(contentGap / 2) : (contentWidth * remBase - width) / 2 / 10);
+  const left = isWideEnough(width)
+    ? -(contentGap / 2)
+    : (contentWidth * remBase - width) / 2 / 10;
   return left;
 };
 const calcSeparatorWidth = ({ width }) => {
   const smallWidth = width - indicatorWidth * 2;
   const largeWidth = contentWidth - indicatorWidth;
-  return (isWideEnough(width) ? largeWidth : smallWidth);
+  return isWideEnough(width) ? largeWidth : smallWidth;
 };
 const indicatorWidth = 5.2;
-const ForegroundIndicator = styled.div<{width: number}>`
+const ForegroundIndicator = styled.div<{ width: number }>`
   z-index: 2000;
   display: flex;
   align-items: center;
@@ -745,13 +814,14 @@ const ForegroundIndicator = styled.div<{width: number}>`
   }
 `;
 
-const ScrollIndicator = styled.image<{disabled: boolean}>`
+const ScrollIndicator = styled.image<{ disabled: boolean }>`
   width: ${indicatorWidth}rem;
   height: ${indicatorWidth}rem;
   background-color: transparent;
   border-radius: 50%;
   :hover {
-    background-color: ${({ disabled }) => (disabled ? 'transparent' : '#222222')};
+    background-color: ${({ disabled }) =>
+      disabled ? 'transparent' : '#222222'};
   }
 `;
 

@@ -1,6 +1,6 @@
 import { ElementType } from 'react';
 
-type LazyLoadableImage = () => ElementType<{className?: string }>;
+type LazyLoadableImage = () => ElementType<{ className?: string }>;
 export interface ProjectData {
   title: string;
   catchphrase?: string;

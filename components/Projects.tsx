@@ -1,13 +1,16 @@
 /* eslint-disable react/no-array-index-key */
 import styled from 'styled-components';
 import Image from 'next/image';
-import {
-  FC, useState, useCallback, useMemo,
-} from 'react';
+import { FC, useState, useCallback, useMemo } from 'react';
 import ProjectDialog from './ProjectDialog';
 import {
-  calcRows, calcColumns, calcMaxHeight,
-  calcMobileRows, calcMobileColumns, mobileIconSize, calcMobileRowHeight,
+  calcRows,
+  calcColumns,
+  calcMaxHeight,
+  calcMobileRows,
+  calcMobileColumns,
+  mobileIconSize,
+  calcMobileRowHeight,
   calcMobileMaxHeight,
 } from '../lib/projects_grid';
 import projectsData from '../resources/data/projects';
@@ -18,42 +21,40 @@ interface ProjectsProps {
   expanded?: boolean;
 }
 
-const Projects: FC<ProjectsProps> = ({ isMainPage = false, expanded = false }) => {
-  const [dialogVisible, setDialogVisible] = useState({ visible: false, index: 0 });
-  const showProjectDialog = useCallback((projectId: number) => {
-    setDialogVisible({ visible: true, index: projectId });
-  }, [setDialogVisible]);
+const Projects: FC<ProjectsProps> = ({
+  isMainPage = false,
+  expanded = false,
+}) => {
+  const [dialogVisible, setDialogVisible] = useState({
+    visible: false,
+    index: 0,
+  });
+  const showProjectDialog = useCallback(
+    (projectId: number) => {
+      setDialogVisible({ visible: true, index: projectId });
+    },
+    [setDialogVisible]
+  );
 
   return (
     <>
-      <Container
-        isMainPage={isMainPage}
-        expanded={expanded}
-      >
+      <Container isMainPage={isMainPage} expanded={expanded}>
         <div className="wrapper no-scroll-bar">
-          {
-            projectsData.map((data, index) => (
-              <ProjectSummary
-                role="button"
-                tabIndex={0}
-                key={`projects-item-${index}`}
-                onClick={() => showProjectDialog(index)}
-                isMainPage={isMainPage}
-              >
-                <div className="project--icon-wrapper">
-                  <Icon data={data} />
-                  <Overlay
-                    role="button"
-                  />
-                </div>
-                <div
-                  className="project--title"
-                >
-                  {isMainPage || data.title}
-                </div>
-              </ProjectSummary>
-            ))
-          }
+          {projectsData.map((data, index) => (
+            <ProjectSummary
+              role="button"
+              tabIndex={0}
+              key={`projects-item-${index}`}
+              onClick={() => showProjectDialog(index)}
+              isMainPage={isMainPage}
+            >
+              <div className="project--icon-wrapper">
+                <Icon data={data} />
+                <Overlay role="button" />
+              </div>
+              <div className="project--title">{isMainPage || data.title}</div>
+            </ProjectSummary>
+          ))}
         </div>
         <ProjectDialog visible={dialogVisible} setVisible={setDialogVisible} />
       </Container>
@@ -85,19 +86,33 @@ const Container = styled.div<ProjectsProps>`
   .wrapper {
     display: ${({ isMainPage }) => (isMainPage ? 'flex' : 'grid')};
     grid-auto-flow: row;
-    grid-template-rows: repeat(${({ isMainPage, expanded }) => calcRows(isMainPage, expanded)}, minmax(17rem, ${({ isMainPage }) => (isMainPage ? '17rem' : '22rem')}));
-    grid-template-columns: repeat(${({ isMainPage }) => calcColumns(isMainPage)}, minmax(17rem, 17rem));
+    grid-template-rows: repeat(
+      ${({ isMainPage, expanded }) => calcRows(isMainPage, expanded)},
+      minmax(17rem, ${({ isMainPage }) => (isMainPage ? '17rem' : '22rem')})
+    );
+    grid-template-columns: repeat(
+      ${({ isMainPage }) => calcColumns(isMainPage)},
+      minmax(17rem, 17rem)
+    );
     overflow-y: hidden;
     overflow-x: ${({ isMainPage }) => (isMainPage ? 'scroll' : 'hidden')};
-    max-height: ${({ isMainPage, expanded }) => calcMaxHeight(isMainPage, expanded)};
+    max-height: ${({ isMainPage, expanded }) =>
+      calcMaxHeight(isMainPage, expanded)};
     gap: ${({ isMainPage }) => (isMainPage ? 0 : '3.2rem 2.4rem')};
 
     ${media.mobile} {
       display: grid;
       gap: 2.4rem 2.4rem;
-      grid-template-rows: repeat(${({ isMainPage, expanded }) => calcMobileRows(isMainPage, expanded)}, ${({ isMainPage }) => calcMobileRowHeight(isMainPage)});
-      grid-template-columns: repeat(${() => calcMobileColumns()}, ${mobileIconSize});
-      max-height: ${({ isMainPage, expanded }) => calcMobileMaxHeight(isMainPage, expanded)};
+      grid-template-rows: repeat(
+        ${({ isMainPage, expanded }) => calcMobileRows(isMainPage, expanded)},
+        ${({ isMainPage }) => calcMobileRowHeight(isMainPage)}
+      );
+      grid-template-columns: repeat(
+        ${() => calcMobileColumns()},
+        ${mobileIconSize}
+      );
+      max-height: ${({ isMainPage, expanded }) =>
+        calcMobileMaxHeight(isMainPage, expanded)};
       overflow-x: ${({ isMainPage }) => (isMainPage ? 'scroll' : 'hidden')};
       grid-auto-flow: ${({ isMainPage }) => (isMainPage ? 'column' : 'row')};
       padding-left: ${({ isMainPage }) => (isMainPage ? '2.4rem' : 0)};
@@ -135,7 +150,7 @@ const ProjectSummary = styled.div<ProjectsProps>`
       line-height: 2.3rem;
       text-align: center;
       letter-spacing: -0.03em;
-      color: #FFFFFF;
+      color: #ffffff;
       display: ${({ isMainPage }) => (isMainPage ? 'none' : 'block')};
 
       ${media.mobile} {
@@ -171,7 +186,7 @@ const Overlay = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background: black ;
+  background: black;
   opacity: 0;
   ${ProjectSummary}:hover & {
     opacity: 0.2;

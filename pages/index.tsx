@@ -10,10 +10,7 @@ import TextAnimation from '../components/TextAnimation';
 import { media } from '../styles/theme';
 
 const Index = () => (
-  <div
-    className="no-scroll-bar"
-    style={{ overflowX: 'scroll' }}
-  >
+  <div className="no-scroll-bar" style={{ overflowX: 'scroll' }}>
     <Header />
     <Containers>
       <Container1 />
@@ -45,7 +42,7 @@ const Container1 = () => (
     </div>
     <div className="info">
       <div>우리는 단순한 IT동아리가 아닙니다.</div>
-      서비스 런칭부터 개선까지{' '} <div className="info--line-break" />
+      서비스 런칭부터 개선까지 <div className="info--line-break" />
       <span className="info__green">경험에 성장을 더하는 모임</span>입니다.
     </div>
     <div className="motion">
@@ -63,12 +60,10 @@ const Container2 = () => (
           <div className="summary__value">5년</div>
         </div>
         <div className="summary__title">
-          누적 멤버 수
-          <div className="summary__value">400명 +</div>
+          누적 멤버 수<div className="summary__value">400명 +</div>
         </div>
         <div className="summary__title">
-          런칭 앱
-          <div className="summary__value">N개 +</div>
+          런칭 앱<div className="summary__value">N개 +</div>
         </div>
       </div>
     </div>
@@ -81,7 +76,8 @@ const Container2 = () => (
         <Projects isMainPage />
         <Link href="/project">
           <div className="boxes__button" role="button">
-            모든 프로젝트 구경하기 <span className="boxes__button--arrow">{'>'}</span>
+            모든 프로젝트 구경하기{' '}
+            <span className="boxes__button--arrow">{'>'}</span>
           </div>
         </Link>
       </div>
@@ -114,11 +110,7 @@ const Container4 = () => (
         Depromeet 9기는 COVID-19확산으로 인해 온라인 모임을 지향하고 있습니다.
       </div>
     </div>
-    <div
-      className="gradientBtn"
-    >
-      9기 모집 마감
-    </div>
+    <div className="gradientBtn">9기 모집 마감</div>
     <div
       className="greenBtn"
       role="button"
@@ -155,14 +147,21 @@ const shareDepromeet = async () => {
       await navigator.share(shareData);
     } else {
       // eslint-disable-next-line no-undef
-      const result = await navigator.permissions.query({ name: 'clipboard-write' as PermissionName });
+      const result = await navigator.permissions.query({
+        name: 'clipboard-write' as PermissionName,
+      });
       if (result.state === 'granted' || result.state === 'prompt') {
-        navigator.clipboard.writeText('디프만 9번째 이야기 - www.depromeet.com').then(() => {
-          // eslint-disable-next-line no-alert
-          alert('클립보드로 주소가 복사되었습니다.');
-        }, () => {
-          console.log('Failed to copy to clipboard');
-        });
+        navigator.clipboard
+          .writeText('디프만 9번째 이야기 - www.depromeet.com')
+          .then(
+            () => {
+              // eslint-disable-next-line no-alert
+              alert('클립보드로 주소가 복사되었습니다.');
+            },
+            () => {
+              console.log('Failed to copy to clipboard');
+            }
+          );
       }
     }
   } catch (err) {
@@ -181,7 +180,7 @@ const Containers = styled.div`
     line-height: 7.6rem;
     font-weight: 300;
     letter-spacing: -0.03em;
-    
+
     ${media.mobile} {
       /* width: 22rem; */
       word-break: keep-all;
@@ -219,7 +218,7 @@ const Cont1 = styled.div`
     line-height: 4.1rem;
     font-weight: 400;
     ${media.mobile} {
-      width: 28.0rem;
+      width: 28rem;
       margin-top: 3rem;
       font-weight: 400;
       font-size: 1.8rem;
@@ -469,12 +468,12 @@ const Cont4 = styled.div`
 
     ${media.mobile} {
       margin: 4rem 4rem 0;
-      font-size:1.5rem;
+      font-size: 1.5rem;
       width: 100%;
       max-width: 36.3rem;
     }
     :hover {
-      background: linear-gradient(322.5deg, #00DD80 -17.98%, #002DCE 89.21%);
+      background: linear-gradient(322.5deg, #00dd80 -17.98%, #002dce 89.21%);
     }
   }
   .greenBtn {
@@ -493,7 +492,7 @@ const Cont4 = styled.div`
 
     ${media.mobile} {
       margin: 1.6rem 4rem 0;
-      font-size:1.5rem;
+      font-size: 1.5rem;
       width: 100%;
       max-width: 36.3rem;
     }
@@ -517,7 +516,7 @@ const Background = styled.div`
     height: 14rem;
     bottom: 35rem;
   }
-  .bg-image{
+  .bg-image {
     position: relative;
     width: 74.2rem;
     margin-left: 8rem;

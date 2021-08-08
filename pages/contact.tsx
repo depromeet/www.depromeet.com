@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import { Header, Footer } from '../components';
 import StepLottie from '../components/StepLottie';
-import {
-  Gmail, Kakao, Meet, Memoji, T,
-} from '../public';
+import { Gmail, Kakao, Meet, Memoji, T } from '../public';
 import { stepA, stepC } from '../resources/lottie';
 import { media } from '../styles/theme';
 
@@ -41,11 +39,13 @@ const Contact = () => (
           <WhiteBox
             role="button"
             tabIndex={0}
-            onClick={
-              () => window.open('mailto:depromeet@gmail.com?subject=[홈페이지 문의] ')
+            onClick={() =>
+              window.open('mailto:depromeet@gmail.com?subject=[홈페이지 문의] ')
             }
           >
-            <div className="box__sns__logo"><Gmail /></div>
+            <div className="box__sns__logo">
+              <Gmail />
+            </div>
             <div className="box__sns__name">gmail</div>
             <div className="box__sns__content">depromeet@gmail.com</div>
           </WhiteBox>
@@ -53,11 +53,11 @@ const Contact = () => (
             style={{ marginTop: '1.6rem' }}
             role="button"
             tabIndex={0}
-            onClick={
-              () => window.open('http://pf.kakao.com/_xoxmcxed/chat')
-            }
+            onClick={() => window.open('http://pf.kakao.com/_xoxmcxed/chat')}
           >
-            <div className="box__sns__logo"><Kakao /></div>
+            <div className="box__sns__logo">
+              <Kakao />
+            </div>
             <div className="box__sns__name">Kakao plus friend</div>
             <div className="box__sns__content">depromeet</div>
           </WhiteBox>
@@ -85,7 +85,7 @@ const Container = styled.div`
     margin-top: 9rem;
     box-sizing: content-box;
     justify-content: flex-start;
-    
+
     .spacer {
       min-height: 9rem;
       width: 10rem;
