@@ -7,6 +7,8 @@ import StoryBox from '../components/StoryBox';
 import { stories } from '../resources/data/reviews';
 import TextAnimation from '../components/TextAnimation';
 import { media } from '../styles/theme';
+import { ShortArrowGreen } from '../public';
+import { openApplySite } from '../components/Header';
 
 const Index = () => (
   <div className="no-scroll-bar" style={{ overflowX: 'scroll' }}>
@@ -17,8 +19,6 @@ const Index = () => (
       <Container3 />
       <Container4 />
       <Background>
-        <BackgroundImage />
-        <BackgroundImage />
         <BackgroundImage />
         <BackgroundImage forMobile />
       </Background>
@@ -32,17 +32,20 @@ const Container1 = () => (
     <div className="title">
       <div>그리던 프로덕트를 만들 시간</div>
       <div className="title--main">
-        <span className="title__bold">디자이너</span>와{' '}
+        <span className="title__bold">디자이너와 </span>
         <div className="mobile__only" />
-        <span className="title__bold">프로그래머</span>가{' '}
+        <span className="title__bold">프로그래머가 </span>
         <div className="mobile__only" />
         <span className="title__bold">만났을 때</span>
       </div>
     </div>
     <div className="info">
-      <div>우리는 단순한 IT동아리가 아닙니다.</div>
-      서비스 런칭부터 개선까지 <div className="info--line-break" />
-      <span className="info__green">경험에 성장을 더하는 모임</span>입니다.
+      <div>
+        디프만은{' '}
+        <span className="info__green">학생, 취준생, 직장인의 동반 성장</span>을{' '}
+        <div className="info--line-break" />
+        추구하는 IT동아리입니다.
+      </div>
     </div>
     <div className="motion">
       <TextAnimation />
@@ -59,7 +62,7 @@ const Container2 = () => (
           <div className="summary__value">5년</div>
         </div>
         <div className="summary__title">
-          누적 멤버 수<div className="summary__value">400명 +</div>
+          누적 멤버 수<div className="summary__value">500명 +</div>
         </div>
         <div className="summary__title">
           런칭 앱<div className="summary__value">N개 +</div>
@@ -68,15 +71,15 @@ const Container2 = () => (
     </div>
     <div className="column-right">
       <div className="title">
-        <div>오직 디자이너와 프로그래머의</div>
-        <span className="title__bold">동반성장</span>을 위해서
+        <div className="title__bold">런칭 뿐만 아니라 개선까지</div>
+        <div>디프만은 특별한 경험을 제공합니다.</div>
       </div>
       <div className="boxes">
         <Projects isMainPage />
         <Link href="/project">
           <div className="boxes__button" role="button">
-            모든 프로젝트 구경하기{' '}
-            <span className="boxes__button--arrow">{'>'}</span>
+            모든 프로젝트 구경하기
+            <ShortArrowGreen width="0.6rem" />
           </div>
         </Link>
       </div>
@@ -87,8 +90,8 @@ const Container2 = () => (
 const Container3 = () => (
   <Cont3>
     <div className="title">
-      <div>지금까지 우리들의</div>
-      <span className="title__bold">프로덕트</span> 이야기
+      <div>이전 기수들의</div>
+      <span className="title__bold">생생한</span> 활동 후기
     </div>
     <div className="story-boxes no-scroll-bar">
       {stories.map((story, idx) => (
@@ -102,14 +105,16 @@ const emptyCallback = () => {};
 const Container4 = () => (
   <Cont4>
     <div className="title">
-      <div>Depromeet의</div>
-      <span className="title__bold">아홉 번째 이야기</span>를
+      <div>디프만의</div>
+      <span className="title__bold">열 번째 이야기</span>를 함께
       <div>만들어가고 싶다면</div>
       <div className="small">
-        Depromeet 9기는 COVID-19확산으로 인해 온라인 모임을 지향하고 있습니다.
+        COVID-19확산으로 인해 온라인 모임을 지향하고 있습니다.
       </div>
     </div>
-    <div className="gradientBtn">9기 모집 마감</div>
+    <div onClick={openApplySite} className="gradientBtn">
+      10기에서 만나기
+    </div>
     <div
       className="greenBtn"
       role="button"
@@ -126,10 +131,10 @@ const BackgroundImage = ({ forMobile = false }) => (
   <div className={`bg-image ${forMobile ? 'mobile__only' : 'mobile__none'}`}>
     <Image
       className="bg-image--image"
-      src={forMobile ? '/mobile_9th.png' : '/web_9th.png'}
+      src={'/background.svg'}
       alt="9th background"
       layout="fill"
-      objectFit="contain"
+      objectFit="cover"
       loading="lazy"
     />
   </div>
@@ -151,7 +156,7 @@ const shareDepromeet = async () => {
       });
       if (result.state === 'granted' || result.state === 'prompt') {
         navigator.clipboard
-          .writeText('디프만 9번째 이야기 - www.depromeet.com')
+          .writeText('디프만 10번째 이야기 - www.depromeet.com')
           .then(
             () => {
               // eslint-disable-next-line no-alert
@@ -197,7 +202,7 @@ const Containers = styled.div`
     }
 
     &__bold {
-      font-weight: 900;
+      font-weight: 700;
     }
   }
 `;
@@ -231,7 +236,6 @@ const Cont1 = styled.div`
     }
     &__green {
       color: ${({ theme }) => theme.color.green};
-      font-weight: 700;
       ${media.mobile} {
         font-size: 1.9rem;
       }
@@ -301,7 +305,7 @@ const Cont2 = styled.div`
     }
     &__value {
       font-size: 5rem;
-      font-weight: 900;
+      font-weight: 700;
       line-height: 7.2rem;
       ${media.mobile} {
         font-size: 2.8rem;
@@ -349,8 +353,8 @@ const Cont2 = styled.div`
     margin-top: 9.7rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
     align-self: stretch;
+    overflow: hidden;
     width: 100%;
     ${media.mobile} {
       position: absolute;
@@ -358,6 +362,8 @@ const Cont2 = styled.div`
       margin-top: 0;
     }
     &__button {
+      position: relative;
+      gap: 0.9rem;
       width: 20rem;
       height: 4.2rem;
       margin-top: 4.2rem;
@@ -368,9 +374,16 @@ const Cont2 = styled.div`
       justify-content: center;
       border: ${({ theme }) => `0.1rem solid ${theme.color.green}`};
       color: ${({ theme }) => theme.color.green};
-
-      &--arrow {
-        margin-left: 1.1rem;
+      &:hover {
+        &:after {
+          content: '';
+          position: absolute;
+          width: 20rem;
+          height: 4.2rem;
+          border-radius: 2.1rem;
+          background-color: ${({ theme }) => theme.color.green};
+          opacity: 0.3;
+        }
       }
 
       ${media.mobile} {
@@ -454,16 +467,18 @@ const Cont4 = styled.div`
     }
   }
   .gradientBtn {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 36.3rem;
     height: 5.4rem;
-    background: ${({ theme }) => theme.color.gradient};
+    background: ${({ theme }) => theme.color.green};
     font-size: 1.6rem;
     font-weight: 700;
     border-radius: 1rem;
     margin-top: 5.6rem;
+    color: ${({ theme }) => theme.color.black};
 
     ${media.mobile} {
       margin: 4rem 4rem 0;
@@ -472,7 +487,7 @@ const Cont4 = styled.div`
       max-width: 36.3rem;
     }
     :hover {
-      background: linear-gradient(322.5deg, #00dd80 -17.98%, #002dce 89.21%);
+      background: ${({ theme }) => theme.color.hover_green};
     }
   }
   .greenBtn {
@@ -497,7 +512,15 @@ const Cont4 = styled.div`
     }
 
     :hover {
-      background: #001401;
+      &:after {
+        content: '';
+        position: absolute;
+        width: 36.3rem;
+        height: 5.4rem;
+        border-radius: 1rem;
+        background-color: ${({ theme }) => theme.color.green};
+        opacity: 0.3;
+      }
     }
   }
 `;
@@ -517,7 +540,7 @@ const Background = styled.div`
   }
   .bg-image {
     position: relative;
-    width: 74.2rem;
+    width: 290rem;
     margin-left: 8rem;
     flex-shrink: 0;
     :first-child {

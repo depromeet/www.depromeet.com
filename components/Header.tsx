@@ -11,10 +11,11 @@ const Logo = dynamic(() => import('../public/gnb_logo.svg'));
 interface BackgroundTransparentProps {
   isTransparent?: boolean;
 }
-const applyFor9th =
-  'https://forms.gle/MVr4auDmerieZZR27?fbclid=IwAR3vamHZfGNvWtQ5bHKRE7swLKHFGsHeSy0wUde_bdoate-veAqlLJeM3kI';
+const applyFor10th = 'https://forms.gle/Qt43qphpMDTPJEhPA';
 
-export const openApplySite = () => window.open(applyFor9th);
+// export const openApplySite = () => window.open(applyFor10th);
+export const openApplySite = () => window.alert('조금만 기다려주세요!');
+
 const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
   const [visible, setVisible] = useState(false);
   return (
@@ -42,7 +43,7 @@ const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
           />
         </div>
         <div className="mobile__only invitation">디프만에 관심있으신가요?</div>
-        <Button>9기 모집 마감</Button>
+        <Button onClick={openApplySite}>10기에서 만나기</Button>
         <div className="mobile__only socials">
           {socials.map((v) => (
             <SocialButton
@@ -210,14 +211,16 @@ const ButtonContainer = styled.div<{ visible: boolean }>`
 
 const Button = styled.div`
   width: auto;
+  cursor: pointer;
   font-size: 1.4rem;
-  font-weight: 800;
+  font-weight: 700;
   padding: 1.2rem 2.4rem;
-  background-color: ${({ theme }) => theme.color.blue};
+  background-color: ${({ theme }) => theme.color.green};
   border-radius: 2.7rem;
   margin-left: 0.7rem;
+  color: ${({ theme }) => theme.color.black};
   :hover {
-    background-color: #0013ba;
+    background-color: ${({ theme }) => theme.color.hover_green};
   }
 
   ${media.mobile} {
@@ -244,7 +247,7 @@ const RouterButton = styled.div<{ isSame: boolean }>`
   font-family: Montserrat;
   margin-right: 3.4rem;
   font-size: 1.4rem;
-  font-weight: ${({ isSame }) => (isSame ? 800 : 500)};
+  font-weight: ${({ isSame }) => (isSame ? 700 : 500)};
   :hover {
     color: #c0c0c0;
   }

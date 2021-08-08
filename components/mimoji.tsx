@@ -6,9 +6,10 @@ import { media } from '../styles/theme';
 const Mimoji: FC<HTMLAttributes<unknown> & { src: string; job: string }> = ({
   src,
   job,
+  color,
   className,
 }) => (
-  <MimojiWrapper job={job} className={className}>
+  <MimojiWrapper job={job} color={color} className={className}>
     <div className="mimoji--circle" />
     <div className="mimoji--job">{job}</div>
     <div className="mimoji--image">
@@ -25,12 +26,11 @@ const Mimoji: FC<HTMLAttributes<unknown> & { src: string; job: string }> = ({
   </MimojiWrapper>
 );
 
-const MimojiWrapper = styled.div<{ job: string }>`
+const MimojiWrapper = styled.div<{ job: string; color: string }>`
   position: relative;
   text-transform: uppercase;
   background: transparent;
-  color: ${({ job, theme }) =>
-    job === 'designer' ? theme.color.blue : theme.color.green};
+  color: ${({ color }) => color};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -70,8 +70,7 @@ const MimojiWrapper = styled.div<{ job: string }>`
       }
     }
     &--circle {
-      background-color: ${({ job, theme }) =>
-        job === 'designer' ? theme.color.blue : theme.color.green};
+      background-color: ${({ color }) => color};
       width: 19rem;
       height: 19rem;
       border-radius: 50%;

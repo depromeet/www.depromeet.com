@@ -25,7 +25,6 @@ import {
   iconConstruction,
   iconGoogleStore,
   iconWebLink,
-  rightBorderImg,
 } from '../resources/images';
 import projectsData from '../resources/data/projects';
 import { media } from '../styles/theme';
@@ -40,6 +39,7 @@ import {
   calcRealListWidth,
   getContentGap,
 } from '../lib/project_detail';
+import dynamic from 'next/dynamic';
 
 interface ProjectDialogVisibleArg {
   visible: boolean;
@@ -207,7 +207,6 @@ const usePortalSetup = (portal: HTMLElement, rootId = 'modal-root') =>
     };
   }, [portal, rootId]);
 
-const RightBorder = rightBorderImg();
 interface ProjectDataProps extends ListChildComponentProps {
   data: ProjectData[];
   focusedIndex: number;
@@ -266,6 +265,11 @@ const ProjectItem: FC<ProjectDataProps> = ({
   windowWidth,
 }) => {
   const projectData = data[index];
+
+  const ArrowRightGreen = dynamic(
+    () => import('../resources/images/arrow_right_green.svg')
+  );
+
   return (
     <ProjectDetail
       key={`project-detail-${index}`}
@@ -308,20 +312,18 @@ const ProjectItem: FC<ProjectDataProps> = ({
           )}
         </div>
         <div className="detail-right">
-          <div className="detail--subject">
-            프로젝트 소개
-            <span className="detail--right-border">
-              <RightBorder />
-            </span>
-          </div>
+          <div className="detail--subject">프로젝트 소개</div>
           <div className="detail--description no-scroll-bar">
             {projectData.description}
           </div>
+          <div role="button" className="detail--link">
+            자세히 보기
+            <div className={'detail--link--img'}>
+              <ArrowRightGreen />
+            </div>
+          </div>
           <div className="detail--subject">
             {projectData.generation}기 {projectData.team || ''}
-            <span className="detail--right-border">
-              <RightBorder />
-            </span>
           </div>
           <div className="detail--team-intro no-scroll-bar">
             <TeamMember
@@ -465,6 +467,9 @@ const ScrollController: FC<ScrollControllerProps> = ({
     [setIndex]
   );
 
+  const [leftHover, setLeftHover] = useState(false);
+  const [rightHover, setRightHover] = useState(false);
+
   return (
     <ForegroundIndicator
       // onClick={(e) => e.stopPropagation()}
@@ -475,9 +480,11 @@ const ScrollController: FC<ScrollControllerProps> = ({
         tabIndex={0}
         onClick={scrollToPrev}
         disabled={index === 0}
+        onMouseOver={() => setLeftHover(true)}
+        onMouseOut={() => setLeftHover(false)}
       >
         <img
-          src={`/ic_left_${index === 0 ? 'dis' : 'default'}.svg`}
+          src={`/ic_left_${leftHover ? `hover` : `default`}.svg`}
           alt="go to prev project"
         />
       </ScrollIndicator>
@@ -487,11 +494,11 @@ const ScrollController: FC<ScrollControllerProps> = ({
         tabIndex={0}
         onClick={scrollToNext}
         disabled={index === projectsData.length - 1}
+        onMouseOver={() => setRightHover(true)}
+        onMouseOut={() => setRightHover(false)}
       >
         <img
-          src={`/ic_right_${
-            index === projectsData.length - 1 ? 'dis' : 'default'
-          }.svg`}
+          src={`/ic_right_${rightHover ? `hover` : `default`}.svg`}
           alt="go to next project"
         />
       </ScrollIndicator>
@@ -601,7 +608,7 @@ const ProjectDetail = styled.div<{ width: number }>`
 
     .title {
       margin-bottom: 1.6rem;
-      font-weight: 800;
+      font-weight: 700;
       font-size: 3rem;
       line-height: 3.5rem;
 
@@ -612,7 +619,7 @@ const ProjectDetail = styled.div<{ width: number }>`
     }
     .catchphrase {
       margin-bottom: 3.2rem;
-      font-weight: bold;
+      font-weight: 500;
       font-size: 2rem;
       line-height: 3.2rem;
       ${media.mobile} {
@@ -708,9 +715,9 @@ const ProjectDetail = styled.div<{ width: number }>`
     }
     &--subject {
       margin-right: 1rem;
-      font-weight: 800;
-      font-size: 1.4rem;
-      line-height: 1.6rem;
+      font-weight: 700;
+      font-size: 1.8rem;
+      line-height: 1.8rem;
       margin-bottom: 2rem;
       ${media.mobile} {
         font-size: 1.2rem;
@@ -726,13 +733,37 @@ const ProjectDetail = styled.div<{ width: number }>`
       line-height: 2.8rem;
       max-height: 11rem;
       overflow: hidden;
-      margin-bottom: 4rem;
+      margin-bottom: 1rem;
       ${media.mobile} {
         font-size: 1.4rem;
         line-height: 2.6rem;
         max-height: 12.7rem;
         margin-bottom: 2.4rem;
         overflow-y: scroll;
+      }
+    }
+
+    &--link {
+      color: ${({ theme }) => theme.color.green};
+      font-weight: 500;
+      font-size: 1.4rem;
+      line-height: 1.6rem;
+      margin-bottom: 4rem;
+      display: flex;
+      flex-direction: row;
+      ${media.mobile} {
+        font-size: 1.2rem;
+      }
+      &--img {
+        width: 1.4rem;
+        height: 1.4rem;
+        margin-left: 0.8rem;
+        margin-top: 0.1rem;
+        position: relative;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
       }
     }
 
@@ -753,13 +784,14 @@ const ProjectDetail = styled.div<{ width: number }>`
         grid-template-columns: 4.5rem 1fr;
       }
       &-job {
-        font-style: italic;
+        font-family: Montserrat;
         font-weight: 500;
         font-size: 1.4rem;
         line-height: 2.8rem;
-        text-transform: lowercase;
-        width: 7rem;
+        text-transform: uppercase;
+        width: 9rem;
         ${media.mobile} {
+          margin-top: 0.2rem;
           font-size: 1.2rem;
           line-height: 2.6rem;
           width: 5rem;
@@ -769,6 +801,7 @@ const ProjectDetail = styled.div<{ width: number }>`
         font-size: 1.6rem;
         line-height: 2.8rem;
         ${media.mobile} {
+          margin-left: 2.3rem;
           font-weight: 400;
           font-size: 1.4rem;
           line-height: 2.6rem;
@@ -819,10 +852,7 @@ const ScrollIndicator = styled.image<{ disabled: boolean }>`
   height: ${indicatorWidth}rem;
   background-color: transparent;
   border-radius: 50%;
-  :hover {
-    background-color: ${({ disabled }) =>
-      disabled ? 'transparent' : '#222222'};
-  }
+  visibility: ${({ disabled }) => (disabled ? 'hidden' : '')};
 `;
 
 export default ProjectDialog;

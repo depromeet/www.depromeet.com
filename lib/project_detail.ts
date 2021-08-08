@@ -1,7 +1,7 @@
 import projectsData from '../resources/data/projects';
 
 export const mobileContentWidth = 31.4;
-export const mobileContentHeight = 57.0;
+export const mobileContentHeight = 65.0;
 export const desktopContentWidth = 80;
 export const desktopContentHeight = 84;
 export const isMobile = (width: number) => width <= 576;
