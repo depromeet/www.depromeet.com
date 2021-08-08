@@ -8,6 +8,7 @@ import { stories } from '../resources/data/reviews';
 import TextAnimation from '../components/TextAnimation';
 import { media } from '../styles/theme';
 import { ShortArrowGreen } from '../public';
+import { openApplySite } from '../components/Header';
 
 const Index = () => (
   <div className="no-scroll-bar" style={{ overflowX: 'scroll' }}>
@@ -89,8 +90,8 @@ const Container2 = () => (
 const Container3 = () => (
   <Cont3>
     <div className="title">
-      <div>지금까지 우리들의</div>
-      <span className="title__bold">프로덕트</span> 이야기
+      <div>이전 기수들의</div>
+      <span className="title__bold">생생한</span> 활동 후기
     </div>
     <div className="story-boxes no-scroll-bar">
       {stories.map((story, idx) => (
@@ -111,7 +112,9 @@ const Container4 = () => (
         COVID-19확산으로 인해 온라인 모임을 지향하고 있습니다.
       </div>
     </div>
-    <div className="gradientBtn">10기에서 만나기</div>
+    <div onClick={openApplySite} className="gradientBtn">
+      10기에서 만나기
+    </div>
     <div
       className="greenBtn"
       role="button"
@@ -153,7 +156,7 @@ const shareDepromeet = async () => {
       });
       if (result.state === 'granted' || result.state === 'prompt') {
         navigator.clipboard
-          .writeText('디프만 9번째 이야기 - www.depromeet.com')
+          .writeText('디프만 10번째 이야기 - www.depromeet.com')
           .then(
             () => {
               // eslint-disable-next-line no-alert
@@ -464,6 +467,7 @@ const Cont4 = styled.div`
     }
   }
   .gradientBtn {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -508,7 +512,15 @@ const Cont4 = styled.div`
     }
 
     :hover {
-      background: #001401;
+      &:after {
+        content: '';
+        position: absolute;
+        width: 36.3rem;
+        height: 5.4rem;
+        border-radius: 1rem;
+        background-color: ${({ theme }) => theme.color.green};
+        opacity: 0.3;
+      }
     }
   }
 `;

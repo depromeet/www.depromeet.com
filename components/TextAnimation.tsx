@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { gsap } from 'gsap/dist/gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { RightArrow, LeftArrow } from '../public';
+import { LongArrow } from '../public';
 import StepLottie from './StepLottie';
 import { stepA, stepD } from '../resources/lottie';
 import { media } from '../styles/theme';
@@ -46,33 +46,33 @@ const TextAnimation = () => {
         <div className="text__content" ref={text1}>
           Programmer
           <div className="text__arrow">
-            <RightArrow />
+            <LongArrow />
           </div>
           Designer
           <div className="text__arrow">
-            <RightArrow />
+            <LongArrow />
           </div>
           Programmer
         </div>
         <div className="text__content" ref={text2}>
           Depromeet 10th
-          <div className="text__arrow">
-            <LeftArrow />
+          <div className="text__arrow left">
+            <LongArrow />
           </div>
           2021 Meet
-          <div className="text__arrow">
-            <LeftArrow />
+          <div className="text__arrow left">
+            <LongArrow />
           </div>
           Depromeet 10th
         </div>
         <div className="text__content text__content--mobile" ref={text3}>
           Depromeet
           <div className="text__arrow">
-            <RightArrow />
+            <LongArrow />
           </div>
           Depromeet
           <div className="text__arrow">
-            <RightArrow />
+            <LongArrow />
           </div>
           Depromeet
         </div>
@@ -140,6 +140,9 @@ const Container = styled.div`
     }
     &__arrow {
       margin: 0 4rem;
+      &.left {
+        transform: rotate(180deg);
+      }
       ${media.mobile} {
         width: 5rem;
         display: flex;
