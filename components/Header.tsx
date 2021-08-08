@@ -13,7 +13,8 @@ interface BackgroundTransparentProps {
 }
 const applyFor10th = 'https://forms.gle/Qt43qphpMDTPJEhPA';
 
-export const openApplySite = () => window.open(applyFor10th);
+// export const openApplySite = () => window.open(applyFor10th);
+export const openApplySite = () => window.alert('조금만 기다려주세요!');
 
 const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
   const [visible, setVisible] = useState(false);
