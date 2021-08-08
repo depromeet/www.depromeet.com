@@ -316,7 +316,15 @@ const ProjectItem: FC<ProjectDataProps> = ({
           <div className="detail--description no-scroll-bar">
             {projectData.description}
           </div>
-          <div role="button" className="detail--link">
+          <div
+            role="button"
+            className="detail--link"
+            onClick={() =>
+              window.open(
+                'https://depromeet.medium.com/%EB%94%94%ED%94%84%EB%A7%8C-9%EA%B8%B0-%ED%8C%8C%EC%9D%B4%EB%84%90-%EB%B0%9C%ED%91%9C-7c89e2cd426c'
+              )
+            }
+          >
             자세히 보기
             <div className={'detail--link--img'}>
               <ArrowRightGreen />
@@ -476,7 +484,6 @@ const ScrollController: FC<ScrollControllerProps> = ({
       width={width}
     >
       <ScrollIndicator
-        role="button"
         tabIndex={0}
         onClick={scrollToPrev}
         disabled={index === 0}
@@ -484,13 +491,13 @@ const ScrollController: FC<ScrollControllerProps> = ({
         onMouseOut={() => setLeftHover(false)}
       >
         <img
+          style={{ cursor: 'pointer' }}
           src={`/ic_left_${leftHover ? `hover` : `default`}.svg`}
           alt="go to prev project"
         />
       </ScrollIndicator>
       <span className="separator" />
       <ScrollIndicator
-        role="button"
         tabIndex={0}
         onClick={scrollToNext}
         disabled={index === projectsData.length - 1}
@@ -498,6 +505,7 @@ const ScrollController: FC<ScrollControllerProps> = ({
         onMouseOut={() => setRightHover(false)}
       >
         <img
+          style={{ cursor: 'pointer' }}
           src={`/ic_right_${rightHover ? `hover` : `default`}.svg`}
           alt="go to next project"
         />

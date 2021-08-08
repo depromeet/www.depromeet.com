@@ -122,6 +122,7 @@ const Container = styled.div`
   }
   .text {
     font-family: Montserrat;
+    text-transform: uppercase;
     font-weight: 800;
     font-size: 12rem;
     line-height: 14.6rem;
@@ -151,6 +152,8 @@ const Container = styled.div`
       }
     }
     &__arrow {
+      display: flex;
+      align-items: center;
       margin: 0 4rem;
       &.left {
         transform: rotate(180deg);
