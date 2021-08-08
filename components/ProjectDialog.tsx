@@ -601,7 +601,7 @@ const ProjectDetail = styled.div<{ width: number }>`
 
     .title {
       margin-bottom: 1.6rem;
-      font-weight: 800;
+      font-weight: 700;
       font-size: 3rem;
       line-height: 3.5rem;
 
@@ -708,7 +708,7 @@ const ProjectDetail = styled.div<{ width: number }>`
     }
     &--subject {
       margin-right: 1rem;
-      font-weight: 800;
+      font-weight: 700;
       font-size: 1.4rem;
       line-height: 1.6rem;
       margin-bottom: 2rem;

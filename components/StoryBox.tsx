@@ -8,20 +8,19 @@ const StoryBox = ({ story }) => (
     {story.job === 'programmer' && (
       <Mimoji className="mimoji-wrapper" src={story.mimoji} job={story.job} />
     )}
-    <Bubble job={story.job}>
-      <div className="quote1">
-        {story.job === 'programmer' ? <GreenQuote1 /> : <BlueQuote1 />}
-      </div>
-      <div className="quote2">
-        {story.job === 'programmer' ? <GreenQuote2 /> : <BlueQuote2 />}
-      </div>
+    <Bubble job={story.job} color={story.color}>
       <div className="content no-scroll-bar">
         {story.content}
         <div className="content__person">{story.person}</div>
       </div>
     </Bubble>
     {story.job === 'designer' && (
-      <Mimoji className="mimoji-wrapper" src={story.mimoji} job={story.job} />
+      <Mimoji
+        className="mimoji-wrapper"
+        src={story.mimoji}
+        job={story.job}
+        color={story.color}
+      />
     )}
   </Container>
 );
@@ -51,7 +50,7 @@ const Container = styled.div`
   }
 `;
 
-const Bubble = styled.div<{ job: string }>`
+const Bubble = styled.div<{ job: string; color: string }>`
   position: relative;
   background: #101010;
   width: 83.5rem;
@@ -108,17 +107,14 @@ const Bubble = styled.div<{ job: string }>`
       margin-top: 1.6rem;
       font-size: 1.4rem;
       line-height: 1rem;
-      color: ${({ theme, job }) =>
-        job === 'programmer' ? theme.color.green : '#194cff'};
+      color: ${({ color }) => color};
 
       ${media.mobile} {
         margin-bottom: 1rem;
       }
     }
     b {
-      color: ${({ theme, job }) =>
-        job === 'programmer' ? theme.color.green : '#1271ff'};
-      font-weight: 800;
+      color: ${({ color }) => color};
     }
   }
 `;
