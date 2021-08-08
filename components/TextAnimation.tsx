@@ -44,37 +44,49 @@ const TextAnimation = () => {
       </div>
       <div className="text">
         <div className="text__content" ref={text1}>
-          Programmer
+          mvp
           <div className="text__arrow">
             <LongArrow />
           </div>
-          Designer
+          launch
           <div className="text__arrow">
             <LongArrow />
           </div>
-          Programmer
+          data driven
+          <div className="text__arrow">
+            <LongArrow />
+          </div>
+          management
         </div>
         <div className="text__content" ref={text2}>
-          Depromeet 10th
+          growth
           <div className="text__arrow left">
             <LongArrow />
           </div>
-          2021 Meet
+          depromeet
           <div className="text__arrow left">
             <LongArrow />
           </div>
-          Depromeet 10th
+          programmer
+          <div className="text__arrow left">
+            <LongArrow />
+          </div>
+          designer
         </div>
         <div className="text__content text__content--mobile" ref={text3}>
-          Depromeet
+          mvp
           <div className="text__arrow">
             <LongArrow />
           </div>
-          Depromeet
+          launch
           <div className="text__arrow">
             <LongArrow />
           </div>
-          Depromeet
+          data driven
+          <div className="text__arrow">
+            <LongArrow />
+          </div>
+          management
         </div>
       </div>
     </Container>
@@ -110,7 +122,7 @@ const Container = styled.div`
   }
   .text {
     font-family: Montserrat;
-    font-weight: 900;
+    font-weight: 800;
     font-size: 12rem;
     line-height: 14.6rem;
     white-space: nowrap;
