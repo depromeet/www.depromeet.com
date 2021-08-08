@@ -1,12 +1,16 @@
 import styled from 'styled-components';
-import { GreenQuote1, GreenQuote2, BlueQuote1, BlueQuote2 } from '../public';
 import { media } from '../styles/theme';
 import Mimoji from './mimoji';
 
 const StoryBox = ({ story }) => (
   <Container>
     {story.job === 'programmer' && (
-      <Mimoji className="mimoji-wrapper" src={story.mimoji} job={story.job} />
+      <Mimoji
+        className="mimoji-wrapper"
+        src={story.mimoji}
+        job={story.job}
+        color={story.color}
+      />
     )}
     <Bubble job={story.job} color={story.color}>
       <div className="content no-scroll-bar">
