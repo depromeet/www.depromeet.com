@@ -24,8 +24,10 @@ const Project = () => (
     <CenterAlignedContainer>
       <div className="wrapper">
         <Catchphrase>
-          서비스 런칭부터 개선까지 <br />
-          <span className="catchphrase__bold"> 경험에 성장을 더합니다. </span>
+          <span className="catchphrase__bold">
+            런칭 뿐만 아니라 개선까지 <br />
+          </span>{' '}
+          디프만은 특별한 경험을 제공합니다.{' '}
         </Catchphrase>
         <AllProjects />
         <AllSchedule />
@@ -93,9 +95,9 @@ const AllProjects = () => {
 const AllSchedule = () => (
   <ScheduleSection>
     <Title>
-      13주간 여정
+      15주간 여정
       <span className="title--desc">
-        Depromeet 9기는 매주 토요일 13주간 진행됩니다.
+        Depromeet 10기는 매주 토요일 15주간 진행됩니다.
       </span>
     </Title>
     <Schedules>
@@ -233,8 +235,12 @@ const ProjectSection = styled.div`
       width: 1.4rem;
       height: 1.4rem;
       margin-left: 0.8rem;
+      margin-top: 0.1rem;
       position: relative;
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: center;
 
       &__usd {
         transform: rotate(180deg);

@@ -308,12 +308,7 @@ const ProjectItem: FC<ProjectDataProps> = ({
           )}
         </div>
         <div className="detail-right">
-          <div className="detail--subject">
-            프로젝트 소개
-            <span className="detail--right-border">
-              <RightBorder />
-            </span>
-          </div>
+          <div className="detail--subject">프로젝트 소개</div>
           <div className="detail--description no-scroll-bar">
             {projectData.description}
           </div>
@@ -708,9 +703,9 @@ const ProjectDetail = styled.div<{ width: number }>`
     }
     &--subject {
       margin-right: 1rem;
-      font-weight: 800;
-      font-size: 1.4rem;
-      line-height: 1.6rem;
+      font-weight: 700;
+      font-size: 1.8rem;
+      line-height: 1.8rem;
       margin-bottom: 2rem;
       ${media.mobile} {
         font-size: 1.2rem;
