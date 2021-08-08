@@ -12,3 +12,5 @@ export { default as Memoji } from './Memoji.svg';
 export { default as T } from './T.svg';
 export { default as RightArrow } from './RightArrow.svg';
 export { default as LeftArrow } from './LeftArrow.svg';
+export { default as ShortArrow } from './arrow-short.svg';
+export { default as ShortArrowGreen } from './arrow-short-green.svg';

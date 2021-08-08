@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import { media } from '../styles/theme';
 
 const Footer = () => {
+  const Logo = dynamic(() => import('../public/gnb_logo.svg'));
   const InstagramLogo = dynamic(
     () => import('../resources/images/ic_sns_instagram.svg')
   );
@@ -15,12 +16,7 @@ const Footer = () => {
   return (
     <Container>
       <Content>
-        <img
-          className="logo-container"
-          src="/logo_footer.svg"
-          alt="footer logo"
-          loading="lazy"
-        />
+        <Logo />
         <ButtonContainer>
           <MediaButton href="https://depromeet.medium.com/">
             <MediumLogo />
