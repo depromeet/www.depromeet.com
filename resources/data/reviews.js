@@ -12,6 +12,7 @@ export const stories = [
         못할 소중한 추억이 될 것 같습니다.
       </div>
     ),
+    color: '#34A7FC',
     mimoji: '/mimoji-jm.png',
   },
   {
@@ -29,6 +30,7 @@ export const stories = [
         디자이너에게 유의미한 활동이 될 것 같습니다.
       </div>
     ),
+    color: '#FF571C',
     mimoji: '/mimoji-jh.png',
   },
   {
@@ -48,6 +50,7 @@ export const stories = [
         참여하셔서 매너리즘을 파괴하세요! 디프만 짱짱맨👍
       </div>
     ),
+    color: '#38E3A8',
     mimoji: '/mimoji-kh.png',
   },
 ];

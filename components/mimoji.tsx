@@ -6,6 +6,7 @@ import { media } from '../styles/theme';
 const Mimoji: FC<HTMLAttributes<unknown> & { src: string; job: string }> = ({
   src,
   job,
+  color,
   className,
 }) => (
   <MimojiWrapper job={job} className={className}>

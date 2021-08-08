@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { ReactNode, FC } from "react";
-import StepLottie, { LottieProps } from "./StepLottie";
-import { media } from "../styles/theme";
+import styled from 'styled-components';
+import { ReactNode, FC } from 'react';
+import StepLottie, { LottieProps } from './StepLottie';
+import { media } from '../styles/theme';
 
 interface ScheduleProps {
   detail: {
@@ -56,7 +56,7 @@ const Container = styled.div`
     }
     &--step {
       font-family: Montserrat;
-      font-weight: 800;
+      font-weight: 700;
       font-size: 2.6rem;
       line-height: 3.2rem;
       letter-spacing: -0.02em;

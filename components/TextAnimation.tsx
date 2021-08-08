@@ -9,7 +9,6 @@ import { media } from '../styles/theme';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// register ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
 const TextAnimation = () => {
@@ -56,15 +55,15 @@ const TextAnimation = () => {
           Programmer
         </div>
         <div className="text__content" ref={text2}>
-          Depromeet 9th
+          Depromeet 10th
           <div className="text__arrow">
             <LeftArrow />
           </div>
-          2020 Meet
+          2021 Meet
           <div className="text__arrow">
             <LeftArrow />
           </div>
-          Depromeet 9th
+          Depromeet 10th
         </div>
         <div className="text__content text__content--mobile" ref={text3}>
           Depromeet

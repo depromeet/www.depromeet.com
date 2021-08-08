@@ -596,7 +596,7 @@ const ProjectDetail = styled.div<{ width: number }>`
 
     .title {
       margin-bottom: 1.6rem;
-      font-weight: 800;
+      font-weight: 700;
       font-size: 3rem;
       line-height: 3.5rem;
 

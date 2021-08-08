@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Header, Footer } from '../components';
-import { openApplySite } from '../components/Header';
 import Projects from '../components/Projects';
 import StoryBox from '../components/StoryBox';
 import { stories } from '../resources/data/reviews';
@@ -33,17 +32,20 @@ const Container1 = () => (
     <div className="title">
       <div>그리던 프로덕트를 만들 시간</div>
       <div className="title--main">
-        <span className="title__bold">디자이너</span>와{' '}
+        <span className="title__bold">디자이너와 </span>
         <div className="mobile__only" />
-        <span className="title__bold">프로그래머</span>가{' '}
+        <span className="title__bold">프로그래머가 </span>
         <div className="mobile__only" />
         <span className="title__bold">만났을 때</span>
       </div>
     </div>
     <div className="info">
-      <div>우리는 단순한 IT동아리가 아닙니다.</div>
-      서비스 런칭부터 개선까지 <div className="info--line-break" />
-      <span className="info__green">경험에 성장을 더하는 모임</span>입니다.
+      <div>
+        디프만은{' '}
+        <span className="info__green">학생, 취준생, 직장인의 동반 성장</span>을{' '}
+        <div className="info--line-break" />
+        추구하는 IT동아리입니다.
+      </div>
     </div>
     <div className="motion">
       <TextAnimation />
@@ -60,7 +62,7 @@ const Container2 = () => (
           <div className="summary__value">5년</div>
         </div>
         <div className="summary__title">
-          누적 멤버 수<div className="summary__value">400명 +</div>
+          누적 멤버 수<div className="summary__value">500명 +</div>
         </div>
         <div className="summary__title">
           런칭 앱<div className="summary__value">N개 +</div>
@@ -69,8 +71,8 @@ const Container2 = () => (
     </div>
     <div className="column-right">
       <div className="title">
-        <div>오직 디자이너와 프로그래머의</div>
-        <span className="title__bold">동반성장</span>을 위해서
+        <div className="title__bold">런칭 뿐만 아니라 개선까지</div>
+        <div>디프만은 특별한 경험을 제공합니다.</div>
       </div>
       <div className="boxes">
         <Projects isMainPage />
@@ -127,7 +129,7 @@ const BackgroundImage = ({ forMobile = false }) => (
   <div className={`bg-image ${forMobile ? 'mobile__only' : 'mobile__none'}`}>
     <Image
       className="bg-image--image"
-      src={forMobile ? '/mobile_9th.png' : '/web_9th.png'}
+      src={'/background.svg'}
       alt="9th background"
       layout="fill"
       objectFit="contain"
@@ -198,7 +200,7 @@ const Containers = styled.div`
     }
 
     &__bold {
-      font-weight: 900;
+      font-weight: 700;
     }
   }
 `;
@@ -232,7 +234,6 @@ const Cont1 = styled.div`
     }
     &__green {
       color: ${({ theme }) => theme.color.green};
-      font-weight: 700;
       ${media.mobile} {
         font-size: 1.9rem;
       }
@@ -302,7 +303,7 @@ const Cont2 = styled.div`
     }
     &__value {
       font-size: 5rem;
-      font-weight: 900;
+      font-weight: 700;
       line-height: 7.2rem;
       ${media.mobile} {
         font-size: 2.8rem;
@@ -460,7 +461,7 @@ const Cont4 = styled.div`
     justify-content: center;
     width: 36.3rem;
     height: 5.4rem;
-    background: ${({ theme }) => theme.color.gradient};
+    background: ${({ theme }) => theme.color.green};
     font-size: 1.6rem;
     font-weight: 700;
     border-radius: 1rem;
@@ -473,7 +474,7 @@ const Cont4 = styled.div`
       max-width: 36.3rem;
     }
     :hover {
-      background: linear-gradient(322.5deg, #00dd80 -17.98%, #002dce 89.21%);
+      background: ${({ theme }) => theme.color.hover_green};
     }
   }
   .greenBtn {
