@@ -18,6 +18,7 @@ const Footer = () => {
       <Content>
         <Logo />
         <ButtonContainer>
+          <Spacer />
           <MediaButton href="https://depromeet.medium.com/">
             <MediumLogo />
           </MediaButton>
@@ -56,10 +57,8 @@ const Container = styled.footer`
 const Content = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 16rem;
-  padding-left: 20vw;
-  padding-right: 20vw;
   box-sizing: border-box;
 
   ${media.mobile} {
@@ -76,6 +75,14 @@ const Content = styled.div`
 
 const ButtonContainer = styled.div`
   display: flex;
+`;
+
+const Spacer = styled.div`
+  display: flex;
+  width: 23.1rem;
+  ${media.mobile} {
+    width: 0rem;
+  }
 `;
 const Button = styled.a`
   display: flex;
