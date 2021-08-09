@@ -26,7 +26,7 @@ const Project = () => (
           <span className="catchphrase__bold">
             런칭 뿐만 아니라 개선까지 <br />
           </span>{' '}
-          디프만은 특별한 경험을 제공합니다.{' '}
+          특별한 경험을 제공합니다.{' '}
         </Catchphrase>
         <AllProjects />
         <AllSchedule />
@@ -170,7 +170,7 @@ const Catchphrase = styled.div`
 
 const Title = styled.h1`
   font-style: normal;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 2.2rem;
   line-height: 2.6rem;
   letter-spacing: -0.03em;

@@ -41,7 +41,6 @@ const Container1 = () => (
     </div>
     <div className="info">
       <div>
-        디프만은{' '}
         <span className="info__green">학생, 취준생, 직장인의 동반 성장</span>을{' '}
         <div className="info--line-break" />
         추구하는 IT동아리입니다.
@@ -72,7 +71,7 @@ const Container2 = () => (
     <div className="column-right">
       <div className="title">
         <div className="title__bold">런칭 뿐만 아니라 개선까지</div>
-        <div>디프만은 특별한 경험을 제공합니다.</div>
+        <div>특별한 경험을 제공합니다.</div>
       </div>
       <div className="boxes">
         <Projects isMainPage />
@@ -358,6 +357,8 @@ const Cont2 = styled.div`
     width: 100%;
     ${media.mobile} {
       position: absolute;
+      align-items: center;
+      justify-content: center;
       top: 21.2rem;
       margin-top: 0;
     }
