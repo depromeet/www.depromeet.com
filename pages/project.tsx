@@ -96,7 +96,7 @@ const AllSchedule = () => (
     <Title>
       14주간 여정
       <span className="title--desc">
-        Depromeet 10기는 매주 토요일 14주간 진행됩니다.
+        Depromeet 11기는 매주 토요일 14주간 진행됩니다.
       </span>
     </Title>
     <Schedules>
