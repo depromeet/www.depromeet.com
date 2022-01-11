@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Header, Footer } from '../components';
 import StepLottie from '../components/StepLottie';
-import { Gmail, Kakao, Meet, Memoji, T, Instagrame } from '../public';
+import { Gmail, Kakao, Meet, Memoji, T, Instagram } from '../public';
 import { stepA, stepC } from '../resources/lottie';
 import { media } from '../styles/theme';
 
@@ -68,7 +68,7 @@ const Contact = () => (
           >
             <div className="box__sns__logo">
               {/* TODO: 인스타그램 svg 파일 구해서 아이콘 변경 진행 */}
-              <Instagrame />
+              <Instagram />
             </div>
             <div className="box__sns__name">instagram</div>
             <div className="box__sns__content">@depromeet</div>
