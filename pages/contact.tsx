@@ -67,7 +67,6 @@ const Contact = () => (
             }
           >
             <div className="box__sns__logo">
-              {/* TODO: 인스타그램 svg 파일 구해서 아이콘 변경 진행 */}
               <Instagram />
             </div>
             <div className="box__sns__name">instagram</div>
