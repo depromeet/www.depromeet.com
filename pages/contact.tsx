@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Header, Footer } from '../components';
 import StepLottie from '../components/StepLottie';
-import { Gmail, Kakao, Meet, Memoji, T } from '../public';
+import { Gmail, Kakao, Meet, Memoji, T, Instagram } from '../public';
 import { stepA, stepC } from '../resources/lottie';
 import { media } from '../styles/theme';
 
@@ -57,6 +57,20 @@ const Contact = () => (
             </div>
             <div className="box__sns__name">Kakao plus friend</div>
             <div className="box__sns__content">depromeet</div>
+          </WhiteBox>
+          <WhiteBox
+            style={{ marginTop: '1.6rem' }}
+            role="button"
+            tabIndex={0}
+            onClick={() =>
+              window.open('https://www.instagram.com/depromeet/?hl=ko')
+            }
+          >
+            <div className="box__sns__logo">
+              <Instagram />
+            </div>
+            <div className="box__sns__name">instagram</div>
+            <div className="box__sns__content">@depromeet</div>
           </WhiteBox>
         </div>
       </div>

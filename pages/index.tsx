@@ -58,7 +58,7 @@ const Container2 = () => (
       <div className="summary">
         <div className="summary__title">
           탄생한지
-          <div className="summary__value">5년</div>
+          <div className="summary__value">6년</div>
         </div>
         <div className="summary__title">
           누적 멤버 수<div className="summary__value">500명 +</div>
@@ -105,14 +105,14 @@ const Container4 = () => (
   <Cont4>
     <div className="title">
       <div>디프만의</div>
-      <span className="title__bold">열 번째 이야기</span>를 함께
+      <span className="title__bold">열한 번째 이야기</span>를 함께
       <div>만들어가고 싶다면</div>
       <div className="small">
         COVID-19확산으로 인해 온라인 모임을 지향하고 있습니다.
       </div>
     </div>
     <div onClick={openApplySite} className="gradientBtn">
-      10기에서 만나기
+      11기에서 만나기
     </div>
     <div
       className="greenBtn"

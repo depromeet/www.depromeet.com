@@ -11,9 +11,12 @@ const Logo = dynamic(() => import('../public/gnb_logo.svg'));
 interface BackgroundTransparentProps {
   isTransparent?: boolean;
 }
+// 11기 신청서 오픈 시 링크 수정
 const applyFor10th = 'https://forms.gle/wmu19EPksMhe633h6';
 
-export const openApplySite = () => window.open(applyFor10th);
+export const openApplySite = () =>
+  alert('2022년 2월에 다시 돌아오겠습니다 😄😄');
+// export const openApplySite = () => window.open(applyFor10th);
 
 const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
   const [visible, setVisible] = useState(false);
@@ -42,7 +45,7 @@ const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
           />
         </div>
         <div className="mobile__only invitation">디프만에 관심있으신가요?</div>
-        <Button onClick={openApplySite}>10기에서 만나기</Button>
+        <Button onClick={openApplySite}>11기에서 만나기</Button>
         <div className="mobile__only socials">
           {socials.map((v) => (
             <SocialButton
