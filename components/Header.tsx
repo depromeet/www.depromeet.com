@@ -173,8 +173,12 @@ const ButtonContainer = styled.div<{ visible: boolean }>`
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #0038ff;
-    opacity: 0.97;
+    background: linear-gradient(
+      330.23deg,
+      rgba(49, 107, 255, 0.97) 20.68%,
+      rgba(0, 0, 0, 0.97) 71.37%
+    );
+    opacity: 0.98;
 
     flex-direction: column;
     justify-content: flex-start;
