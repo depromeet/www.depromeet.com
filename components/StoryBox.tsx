@@ -56,7 +56,7 @@ const Container = styled.div`
 
 const Bubble = styled.div<{ job: string; color: string }>`
   position: relative;
-  background: #101010;
+  background: #191919;
   width: 83.5rem;
   height: 24.2rem;
   border-radius: 3.2rem;
@@ -71,7 +71,7 @@ const Bubble = styled.div<{ job: string; color: string }>`
     height: 100%;
     padding: 0 2rem 2rem;
     border-radius: 2.4rem;
-    background-color: #212121;
+    background: linear-gradient(180deg, #212121 0%, rgba(33, 33, 33, 0) 100%);
     box-sizing: border-box;
     margin: 0;
   }
