@@ -11,10 +11,12 @@ import { media } from '../styles/theme';
 
 const Project = () => (
   <div className="no-scroll-bar" style={{ overflow: 'scroll' }}>
+    <Background />
+
     <TransparentHeader />
 
-    <CenterAlignedContainer>
-      <div className="wrapper">
+    <Container>
+      <div>
         <Catchphrase>
           <p>서비스 런칭부터 개선까지</p>
           <p>
@@ -24,27 +26,37 @@ const Project = () => (
         <ProjectList />
         <ScheduleList />
       </div>
-    </CenterAlignedContainer>
+    </Container>
     <Footer />
   </div>
 );
 
-const CenterAlignedContainer = styled.div`
-  background-color: transparent;
-  width: 114rem;
-  margin-left: auto;
-  margin-right: auto;
+const Background = styled.div`
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  background: linear-gradient(
+    150.23deg,
+    rgba(49, 107, 255, 0.97) 5.68%,
+    rgba(0, 0, 0, 0.97) 31.37%
+  );
+`;
+
+const Container = styled.div`
   display: flex;
-  align-items: center;
   flex-direction: column;
-  padding: 0 2.4rem;
-  margin-top: 30rem;
-  margin-bottom: 16rem;
+  align-items: center;
+
+  background-color: transparent;
+  margin: 300px 0 160px 0;
+  padding: 0 24px;
+
   ${media.mobile} {
-    width: 100%;
-    margin-top: 24rem;
     box-sizing: border-box;
-    margin-bottom: 7rem;
+    width: 100%;
+    margin: 240px 0 70px 0;
   }
 `;
 

@@ -33,6 +33,7 @@ export const GlobalStyle = createGlobalStyle`
     .no-scroll-bar {
         -ms-overflow-style: none;
         scrollbar-width: none;
+        position:relative;
     }
 
     .mobile__only {

@@ -27,7 +27,7 @@ const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
       <div className="mobile__only menu-icon">
         <MenuButton isVisible={visible} setVisible={setVisible} />
       </div>
-      <ButtonContainer visible={visible} className="no-scroll-bar">
+      <ButtonContainer visible={visible}>
         <div className="mobile-wrapper">
           <RouterBtn routerName="about" path="/" setVisible={setVisible} />
           <RouterBtn
