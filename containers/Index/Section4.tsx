@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { media } from '../styles/theme';
-import { shareDepromeet, openApplySite } from '../utils/misc';
+import { media } from '../../styles/theme';
+import { shareDepromeet, openApplySite } from '../../utils/misc';
 
 export default function Section4() {
   return (

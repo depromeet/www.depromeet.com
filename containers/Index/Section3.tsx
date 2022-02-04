@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import StoryBox from '../components/StoryBox';
-import { stories } from '../resources/data/reviews';
-import { media } from '../styles/theme';
+import StoryBox from '../../components/StoryBox';
+import { stories } from '../../resources/data/reviews';
+import { media } from '../../styles/theme';
 
 export default function Section3() {
   return (

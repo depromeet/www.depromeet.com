@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import styled from 'styled-components';
 
-import Projects from '../components/Projects';
-import { media } from '../styles/theme';
+import Projects from '../../components/Projects';
+import { media } from '../../styles/theme';
 
 export default function Section2() {
   const summary = [

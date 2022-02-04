@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import TextAnimation from '../components/TextAnimation';
-import { media } from '../styles/theme';
-import { useDeviceContext } from '../contexts/device';
+import TextAnimation from '../../components/TextAnimation';
+import { media } from '../../styles/theme';
+import { useDeviceContext } from '../../contexts/device';
 
 export default function Section1() {
   const device = useDeviceContext();

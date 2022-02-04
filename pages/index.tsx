@@ -3,10 +3,10 @@ import Image from 'next/image';
 
 import { Header, Footer } from '../components';
 
-import Section1 from '../containers/Section1';
-import Section2 from '../containers/Section2';
-import Section3 from '../containers/Section3';
-import Section4 from '../containers/Section4';
+import Section1 from '../containers/Index/Section1';
+import Section2 from '../containers/Index/Section2';
+import Section3 from '../containers/Index/Section3';
+import Section4 from '../containers/Index/Section4';
 import { DeviceContextProvider } from '../contexts/device';
 
 import { media } from '../styles/theme';
