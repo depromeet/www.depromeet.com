@@ -46,7 +46,7 @@ const Container = styled.div`
 `;
 
 const Logo = styled.p`
-  font-size: 8vw;
+  font-size: min(140px, 8vw);
   font-family: Gmarket Sans;
   line-height: 150%;
 
@@ -56,7 +56,7 @@ const Logo = styled.p`
 `;
 
 const Subtitle = styled.p`
-  font-size: 4vw;
+  font-size: min(70px, 4vw);
   line-height: 111px;
 
   ${media.mobile} {
