@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import styled from 'styled-components';
 import { media } from '../styles/theme';
 import { socials } from '../resources/data/socials';
+import { openApplySite } from '../utils/misc';
 
 const Logo = dynamic(() => import('../public/gnb_logo.svg'));
 
@@ -13,10 +14,6 @@ interface BackgroundTransparentProps {
 }
 // 11기 신청서 오픈 시 링크 수정
 const applyFor10th = 'https://forms.gle/wmu19EPksMhe633h6';
-
-export const openApplySite = () =>
-  alert('2022년 2월에 다시 돌아오겠습니다 😄😄');
-// export const openApplySite = () => window.open(applyFor10th);
 
 const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
   const [visible, setVisible] = useState(false);
