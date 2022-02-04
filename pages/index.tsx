@@ -3,10 +3,11 @@ import Image from 'next/image';
 
 import { Header, Footer } from '../components';
 import { openApplySite } from '../components/Header';
-import StoryBox from '../components/StoryBox';
+
 import Section1 from '../containers/Section1';
 import Section2 from '../containers/Section2';
-import { stories } from '../resources/data/reviews';
+import Section3 from '../containers/Section3';
+
 import { media } from '../styles/theme';
 
 const Index = () => (
@@ -15,7 +16,7 @@ const Index = () => (
     <Containers>
       <Section1 />
       <Section2 />
-      <Container3 />
+      <Section3 />
       <Container4 />
       <Background>
         <BackgroundImage />
@@ -24,20 +25,6 @@ const Index = () => (
     </Containers>
     <Footer />
   </div>
-);
-
-const Container3 = () => (
-  <Cont3>
-    <div className="title">
-      <div>이전 기수들의</div>
-      <span className="title__bold">생생한</span> 활동 후기
-    </div>
-    <div className="story-boxes no-scroll-bar">
-      {stories.map((story, idx) => (
-        <StoryBox key={idx.toString()} story={story} />
-      ))}
-    </div>
-  </Cont3>
 );
 
 const emptyCallback = () => {};
@@ -147,38 +134,6 @@ const Containers = styled.div`
 
     &__bold {
       font-weight: 700;
-    }
-  }
-`;
-
-const Cont3 = styled.div`
-  display: flex;
-  margin-top: 13.8rem;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  ${media.mobile} {
-    margin-top: 10rem;
-  }
-
-  .title {
-    font-size: 6rem;
-    line-height: 8rem;
-    letter-spacing: -0.03em;
-    &__bold {
-    }
-    ${media.mobile} {
-      font-size: 2.8rem;
-      font-weight: 300;
-      line-height: 4rem;
-    }
-  }
-
-  .story-boxes {
-    ${media.mobile} {
-      width: 100%;
-      display: flex;
-      overflow-x: scroll;
     }
   }
 `;
