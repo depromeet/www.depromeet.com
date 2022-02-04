@@ -1,22 +1,20 @@
 import styled from 'styled-components';
 import Image from 'next/image';
-import Link from 'next/link';
-import { Header, Footer } from '../components';
-import Projects from '../components/Projects';
-import StoryBox from '../components/StoryBox';
-import { stories } from '../resources/data/reviews';
 
-import { media } from '../styles/theme';
-import { ShortArrowGreen } from '../public';
+import { Header, Footer } from '../components';
 import { openApplySite } from '../components/Header';
+import StoryBox from '../components/StoryBox';
 import Section1 from '../containers/Section1';
+import Section2 from '../containers/Section2';
+import { stories } from '../resources/data/reviews';
+import { media } from '../styles/theme';
 
 const Index = () => (
   <div className="no-scroll-bar" style={{ overflowX: 'scroll' }}>
     <Header />
     <Containers>
       <Section1 />
-      <Container2 />
+      <Section2 />
       <Container3 />
       <Container4 />
       <Background>
@@ -26,40 +24,6 @@ const Index = () => (
     </Containers>
     <Footer />
   </div>
-);
-
-const Container2 = () => (
-  <Cont2>
-    <div className="column-left">
-      <div className="summary">
-        <div className="summary__title">
-          탄생한지
-          <div className="summary__value">6년</div>
-        </div>
-        <div className="summary__title">
-          누적 멤버 수<div className="summary__value">500명 +</div>
-        </div>
-        <div className="summary__title">
-          런칭 앱<div className="summary__value">N개 +</div>
-        </div>
-      </div>
-    </div>
-    <div className="column-right">
-      <div className="title">
-        <div className="title__bold">런칭 뿐만 아니라 개선까지</div>
-        <div>특별한 경험을 제공합니다.</div>
-      </div>
-      <div className="boxes">
-        <Projects isMainPage />
-        <Link href="/project">
-          <div className="boxes__button" role="button">
-            모든 프로젝트 구경하기
-            <ShortArrowGreen width="0.6rem" />
-          </div>
-        </Link>
-      </div>
-    </div>
-  </Cont2>
 );
 
 const Container3 = () => (
@@ -183,152 +147,6 @@ const Containers = styled.div`
 
     &__bold {
       font-weight: 700;
-    }
-  }
-`;
-
-const Cont2 = styled.div`
-  display: flex;
-  margin-top: 31.6rem;
-  justify-content: center;
-  align-items: stretch;
-  position: relative;
-
-  ${media.mobile} {
-    flex-direction: column;
-    height: 49.4rem;
-    margin-top: 13.2rem;
-  }
-
-  .column-left {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
-    ${media.mobile} {
-      justify-content: flex-start;
-    }
-  }
-  .summary {
-    display: flex;
-    flex-direction: column;
-    flex-shrink: 0;
-    ${media.mobile} {
-      width: 100%;
-      position: absolute;
-      top: 10rem;
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: space-evenly;
-    }
-    &__title {
-      font-size: 1.6rem;
-      font-weight: 500;
-      letter-spacing: -0.03em;
-      line-height: 3rem;
-      :not(:first-child) {
-        margin-top: 9rem;
-      }
-      ${media.mobile} {
-        display: flex;
-        flex-direction: column-reverse;
-        margin-top: 0;
-        text-align: center;
-        font-size: 1.4rem;
-        line-height: 1.6rem;
-        :not(:first-child) {
-          margin-top: 0;
-        }
-      }
-    }
-    &__value {
-      font-size: 5rem;
-      font-weight: 700;
-      line-height: 7.2rem;
-      ${media.mobile} {
-        font-size: 2.8rem;
-        line-height: 3.8rem;
-        margin-bottom: 0.8rem;
-      }
-    }
-  }
-  .column-right {
-    flex: 1.8;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    position: relative;
-    overflow-x: hidden;
-    /* margin-left: 11rem; */
-    padding-left: 11rem;
-    ${media.mobile} {
-      padding-left: 0;
-      position: static;
-    }
-    .title {
-      width: 100%;
-      font-weight: 300;
-      line-height: 8rem;
-      font-size: 6rem;
-      letter-spacing: -0.03em;
-      ${media.mobile} {
-        text-align: center;
-        font-size: 2.8rem;
-        line-height: 4rem;
-        font-weight: 300;
-        position: absolute;
-        top: 0;
-      }
-      &__bold {
-        ${media.mobile} {
-          font-weight: 800;
-        }
-      }
-    }
-  }
-
-  .boxes {
-    margin-top: 9.7rem;
-    display: flex;
-    flex-direction: column;
-    align-self: stretch;
-    overflow: hidden;
-    width: 100%;
-    ${media.mobile} {
-      position: absolute;
-      align-items: center;
-      justify-content: center;
-      top: 21.2rem;
-      margin-top: 0;
-    }
-    &__button {
-      position: relative;
-      gap: 0.9rem;
-      width: 20rem;
-      height: 4.2rem;
-      margin-top: 4.2rem;
-      border-radius: 2.1rem;
-      font-size: 1.4rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: ${({ theme }) => `0.1rem solid ${theme.color.green}`};
-      color: ${({ theme }) => theme.color.green};
-      &:hover {
-        &:after {
-          content: '';
-          position: absolute;
-          width: 20rem;
-          height: 4.2rem;
-          border-radius: 2.1rem;
-          background-color: ${({ theme }) => theme.color.green};
-          opacity: 0.3;
-        }
-      }
-
-      ${media.mobile} {
-        font-size: 1.2rem;
-        line-height: 1.4rem;
-      }
     }
   }
 `;

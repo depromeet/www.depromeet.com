@@ -40,7 +40,7 @@ const Container = styled.div`
   text-align: center;
 
   ${media.mobile} {
-    margin-top: 172px;
+    padding-top: 172px;
   }
 `;
 
