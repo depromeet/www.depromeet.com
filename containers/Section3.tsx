@@ -29,7 +29,7 @@ const Container = styled.div`
 
   text-align: center;
 
-  margin-top: 13.8rem;
+  margin-top: 178px;
 `;
 
 const Title = styled.div`

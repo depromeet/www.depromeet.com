@@ -219,7 +219,6 @@ const WhiteBox = styled.div`
   display: flex;
   align-items: center;
   color: black;
-  font-family: Montserrat;
   :hover {
     background-color: #c0c0c0;
   }

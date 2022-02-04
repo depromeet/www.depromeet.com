@@ -51,7 +51,6 @@ const Container = styled.div`
     flex-direction: column;
     height: 411px;
     margin-top: 153px;
-    margin-bottom: 170px;
   }
 `;
 

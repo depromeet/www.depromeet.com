@@ -82,7 +82,6 @@ const ApplyButton = styled.button`
   color: #fff;
 
   border: none;
-  cursor: pointer;
 
   ${media.mobile} {
     margin-top: 40px;
@@ -117,8 +116,6 @@ const ShareButton = styled.button`
   font-size: 1.6rem;
   font-weight: 700;
   color: #fff;
-
-  cursor: pointer;
 
   :hover {
     opacity: 0.9;

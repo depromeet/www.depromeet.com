@@ -115,7 +115,6 @@ const Copyright = styled.div`
   font-weight: normal;
   font-size: 1.2rem;
   line-height: 1.5rem;
-  font-family: Montserrat;
   color: #757575;
   ${media.mobile} {
     font-size: 1rem;

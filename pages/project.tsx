@@ -180,7 +180,6 @@ const Title = styled.h1`
     font-size: 1.6rem;
   }
   sup {
-    font-family: Montserrat;
     font-style: normal;
     font-weight: 500;
     font-size: 1.2rem;

@@ -178,7 +178,7 @@ const ButtonContainer = styled.div<{ visible: boolean }>`
       rgba(49, 107, 255, 0.97) 20.68%,
       rgba(0, 0, 0, 0.97) 71.37%
     );
-    opacity: 0.98;
+    opacity: 0.9;
 
     flex-direction: column;
     justify-content: flex-start;
@@ -246,7 +246,6 @@ const Button = styled.div`
 
 const RouterButton = styled.div<{ isSame: boolean }>`
   position: relative;
-  font-family: Montserrat;
   margin-right: 3.4rem;
   font-size: 1.4rem;
   font-weight: ${({ isSame }) => (isSame ? 700 : 500)};
@@ -283,7 +282,6 @@ const Underline = styled.div`
 `;
 
 const Social = styled.div`
-  font-family: Montserrat;
   font-size: 1.2rem;
   line-height: 2rem;
   font-weight: bold;

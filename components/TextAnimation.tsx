@@ -71,6 +71,8 @@ const TextAnimation = () => {
 const Container = styled.div`
   width: 100%;
   position: relative;
+  font-family: Gmarket Sans;
+
   .svg {
     &__stepD {
       position: absolute;
@@ -96,7 +98,6 @@ const Container = styled.div`
     }
   }
   .text {
-    font-family: Montserrat;
     text-transform: uppercase;
     font-weight: 800;
     font-size: 12rem;

@@ -84,7 +84,6 @@ const MimojiWrapper = styled.div<{ job: string; color: string }>`
       position: absolute;
       left: ${({ job }) => (job === 'designer' ? '12.7rem' : '0.1rem')};
       top: ${({ job }) => (job === 'designer' ? '7.5rem' : '7.9rem')};
-      font-family: Montserrat;
       font-style: normal;
       font-weight: bold;
       font-size: 16px;
