@@ -18,23 +18,54 @@ const Index = () => (
       <Section2 />
       <Section3 />
       <Section4 />
-      <Background>
+      {/* <Background>
         <BackgroundImage />
         <BackgroundImage forMobile />
-      </Background>
+      </Background> */}
     </Containers>
     <Footer />
   </div>
 );
 
+const Background = styled.div`
+  z-index: -1;
+
+  position: absolute;
+  bottom: 54rem;
+  left: 0;
+  right: 0;
+  height: 32rem;
+  display: flex;
+  justify-content: center;
+
+  ${media.mobile} {
+    height: 90vh;
+    bottom: 0;
+  }
+
+  .bg-image {
+    position: relative;
+    width: 290rem;
+    margin-left: 8rem;
+    flex-shrink: 0;
+    :first-child {
+      margin-left: 0;
+    }
+
+    &.mobile__only {
+      margin-left: 0;
+    }
+  }
+`;
+
 const BackgroundImage = ({ forMobile = false }) => (
   <div className={`bg-image ${forMobile ? 'mobile__only' : 'mobile__none'}`}>
     <Image
       className="bg-image--image"
-      src={'/background.svg'}
-      alt="9th background"
+      src={'/bottom-background.svg'}
+      alt="11th background"
       layout="fill"
-      objectFit="cover"
+      objectFit="contain"
       loading="lazy"
     />
   </div>
@@ -42,7 +73,7 @@ const BackgroundImage = ({ forMobile = false }) => (
 
 const Containers = styled.div`
   color: white;
-  
+
   width: 100%;
   overflow-x: hidden;
   position: relative;
@@ -75,34 +106,6 @@ const Containers = styled.div`
 
     &__bold {
       font-weight: 700;
-    }
-  }
-`;
-
-const Background = styled.div`
-  position: absolute;
-  bottom: 54rem;
-  left: 0;
-  right: 0;
-  height: 32rem;
-  z-index: -1;
-  display: flex;
-  justify-content: center;
-  ${media.mobile} {
-    height: 14rem;
-    bottom: 35rem;
-  }
-  .bg-image {
-    position: relative;
-    width: 290rem;
-    margin-left: 8rem;
-    flex-shrink: 0;
-    :first-child {
-      margin-left: 0;
-    }
-
-    &.mobile__only {
-      margin-left: 0;
     }
   }
 `;

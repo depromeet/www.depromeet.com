@@ -28,9 +28,11 @@ const Container = styled.div`
   text-align: center;
   padding-bottom: 18.6rem;
 
+  background: linear-gradient(180deg, rgba(61, 99, 241, 0) 0%, #3d63f2 100%);
+
   ${media.mobile} {
     margin-top: 19rem;
-    padding-bottom: 7rem;
+    padding-bottom: 200px;
   }
 `;
 

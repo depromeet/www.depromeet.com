@@ -36,6 +36,7 @@ const Footer = () => {
     </Container>
   );
 };
+
 const MediaButton = ({ href, children }) => (
   <Button
     role="button"
@@ -47,11 +48,12 @@ const MediaButton = ({ href, children }) => (
     {children}
   </Button>
 );
+
 const Container = styled.footer`
-  background: #0c0c0c;
-  border: 1px solid #000000;
   box-sizing: border-box;
   width: 100%;
+
+  background: transparent;
 `;
 
 const Content = styled.div`
