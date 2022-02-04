@@ -72,9 +72,15 @@ const ApplyButton = styled.button`
 
   width: 36.3rem;
   height: 5.4rem;
-  background: ${({ theme }) => theme.color.green};
+  background: linear-gradient(
+    126.6deg,
+    rgba(255, 255, 255, 0.16) 28.69%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  backdrop-filter: blur(120px);
+
   border-radius: 10px;
-  margin-top: 5.6rem;
+  margin-top: 56px;
 
   font-size: 16px;
   font-weight: 700;
@@ -85,17 +91,10 @@ const ApplyButton = styled.button`
 
   ${media.mobile} {
     margin-top: 40px;
-
-    backdrop-filter: blur(120px);
-    background: linear-gradient(
-      126.6deg,
-      rgba(255, 255, 255, 0.16) 28.69%,
-      rgba(255, 255, 255, 0) 100%
-    );
   }
 
   :hover {
-    background: ${({ theme }) => theme.color.hover_green};
+    opacity: 0.7;
   }
 `;
 
@@ -109,15 +108,15 @@ const ShareButton = styled.button`
 
   border: 1px solid #fff;
   border-radius: 10px;
-  margin-top: 2.2rem;
+  margin-top: 22px;
   background: none;
 
   text-align: center;
-  font-size: 1.6rem;
+  font-size: 16px;
   font-weight: 700;
   color: #fff;
 
   :hover {
-    opacity: 0.9;
+    opacity: 0.7;
   }
 `;
