@@ -15,7 +15,6 @@ const TextAnimation = () => {
   const startTrigger = useRef(null);
   const text1 = useRef(null);
   const text2 = useRef(null);
-  const text3 = useRef(null);
 
   useEffect(() => {
     const config = {
@@ -27,7 +26,6 @@ const TextAnimation = () => {
     };
 
     gsap.to(text1.current, config);
-    gsap.to(text3.current, config);
     gsap.to(text2.current, {
       ...config,
       x: -1000,
@@ -44,49 +42,26 @@ const TextAnimation = () => {
       </div>
       <div className="text">
         <div className="text__content" ref={text1}>
-          mvp
+          designer
           <div className="text__arrow">
-            <LongArrow />
-          </div>
-          launch
-          <div className="text__arrow">
-            <LongArrow />
-          </div>
-          data driven
-          <div className="text__arrow">
-            <LongArrow />
-          </div>
-          management
-        </div>
-        <div className="text__content" ref={text2}>
-          growth
-          <div className="text__arrow left">
-            <LongArrow />
-          </div>
-          depromeet
-          <div className="text__arrow left">
             <LongArrow />
           </div>
           programmer
-          <div className="text__arrow left">
+          <div className="text__arrow">
+            <LongArrow />
+          </div>
+          2022 meet
+        </div>
+        <div className="text__content" ref={text2}>
+          programmer
+          <div className="text__arrow">
+            <LongArrow />
+          </div>
+          2022 meet
+          <div className="text__arrow">
             <LongArrow />
           </div>
           designer
-        </div>
-        <div className="text__content text__content--mobile" ref={text3}>
-          mvp
-          <div className="text__arrow">
-            <LongArrow />
-          </div>
-          launch
-          <div className="text__arrow">
-            <LongArrow />
-          </div>
-          data driven
-          <div className="text__arrow">
-            <LongArrow />
-          </div>
-          management
         </div>
       </div>
     </Container>
