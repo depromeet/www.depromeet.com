@@ -7,12 +7,11 @@ import { useDeviceContext } from '../contexts/device';
 export default function Section1() {
   const device = useDeviceContext();
 
-  console.log(device);
   return (
     <>
       <RotateBackground />
       <Container>
-        <div className="title">
+        <div>
           <Logo>DEPROMEET</Logo>
           <Subtitle>디자이너와 프로그래머가 만났을 때</Subtitle>
         </div>
@@ -34,28 +33,20 @@ export default function Section1() {
 }
 
 const Container = styled.div`
+  position: relative;
   box-sizing: border-box;
   height: 100vh;
 
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 
   text-align: center;
-
-  padding-top: 395px;
-
-  ${media.mobile} {
-    padding-top: 172px;
-  }
-`;
-
-const Title = styled.div`
-  font-size: 100px;
 `;
 
 const Logo = styled.p`
-  font-size: 100px;
+  font-size: 8vw;
   font-family: Gmarket Sans;
   line-height: 150%;
 
@@ -65,7 +56,7 @@ const Logo = styled.p`
 `;
 
 const Subtitle = styled.p`
-  font-size: 50px;
+  font-size: 4vw;
   line-height: 111px;
 
   ${media.mobile} {
@@ -90,26 +81,18 @@ const RotateBackground = styled.div`
   );
 `;
 
-const Description = styled.div`
-  margin-top: 4.8rem;
-  font-size: 2.4rem;
-  line-height: 4.1rem;
-  font-weight: 400;
-
-  ${media.mobile} {
-    margin-top: 173px;
-    font-size: 18px;
-    line-height: 31px;
-  }
-`;
-
 const Highlight = styled.span`
   color: ${({ theme }) => theme.color.green};
 
   ${media.mobile} {
-    font-size: 1.9rem;
     font-weight: 700;
   }
+`;
+
+const Description = styled.div`
+  margin-top: 173px;
+  font-size: 18px;
+  line-height: 31px;
 `;
 
 const Line = styled.span<{
@@ -119,10 +102,10 @@ const Line = styled.span<{
 `;
 
 const Motion = styled.div`
-  display: relative;
-  margin-top: 17.6rem;
+  position: absolute;
+  bottom: -160px;
 
   ${media.mobile} {
-    margin-top: 173px;
+    bottom: -60px;
   }
 `;

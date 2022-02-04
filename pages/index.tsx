@@ -80,24 +80,6 @@ const Containers = styled.div`
   width: 100%;
   overflow-x: hidden;
   position: relative;
-
-  .title {
-    font-size: 6rem;
-    line-height: 7.6rem;
-    font-weight: 300;
-    letter-spacing: -0.03em;
-
-    ${media.mobile} {
-      word-break: keep-all;
-      font-weight: 500;
-      font-size: 1.6rem;
-      line-height: 3.4rem;
-    }
-
-    &__bold {
-      font-weight: 700;
-    }
-  }
 `;
 
 export default Index;
