@@ -4,6 +4,13 @@ import { media } from './theme';
 
 export const GlobalStyle = createGlobalStyle`
     ${reset}
+
+    @font-face{
+        font-family:"Gmarket Sans";
+        font-weight:400;
+        src: url("/fonts/GmarketSansTTFBold.ttf") format("truetype");
+    }
+
     :focus {
         outline: none;
         border: none;
@@ -13,7 +20,7 @@ export const GlobalStyle = createGlobalStyle`
     }
     html{
         font-size: 10px;
-        font-family: Noto Sans KR, Apple SD Gothic Neo, sans-serif;
+        font-family: Apple SD Gothic Neo, sans-serif;
         font-display: fallback;
         background-color: black;
         overflow-x: hidden;

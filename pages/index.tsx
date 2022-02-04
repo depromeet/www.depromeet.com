@@ -5,16 +5,17 @@ import { Header, Footer } from '../components';
 import Projects from '../components/Projects';
 import StoryBox from '../components/StoryBox';
 import { stories } from '../resources/data/reviews';
-import TextAnimation from '../components/TextAnimation';
+
 import { media } from '../styles/theme';
 import { ShortArrowGreen } from '../public';
 import { openApplySite } from '../components/Header';
+import Section1 from '../containers/Section1';
 
 const Index = () => (
   <div className="no-scroll-bar" style={{ overflowX: 'scroll' }}>
     <Header />
     <Containers>
-      <Container1 />
+      <Section1 />
       <Container2 />
       <Container3 />
       <Container4 />
@@ -25,31 +26,6 @@ const Index = () => (
     </Containers>
     <Footer />
   </div>
-);
-
-const Container1 = () => (
-  <Cont1>
-    <div className="title">
-      <div>그리던 프로덕트를 만들 시간</div>
-      <div className="title--main">
-        <span className="title__bold">디자이너와 </span>
-        <div className="mobile__only" />
-        <span className="title__bold">프로그래머가 </span>
-        <div className="mobile__only" />
-        <span className="title__bold">만났을 때</span>
-      </div>
-    </div>
-    <div className="info">
-      <div>
-        <span className="info__green">학생, 취준생, 직장인의 동반 성장</span>을{' '}
-        <div className="info--line-break" />
-        추구하는 IT동아리입니다.
-      </div>
-    </div>
-    <div className="motion">
-      <TextAnimation />
-    </div>
-  </Cont1>
 );
 
 const Container2 = () => (
@@ -174,10 +150,16 @@ const shareDepromeet = async () => {
 
 const Containers = styled.div`
   color: white;
-  margin: 8rem auto 0;
+  /* margin: 8rem auto 0; */
   width: 100%;
   overflow-x: hidden;
   position: relative;
+  .logo {
+    font-size: 32px;
+    font-family: Gmarket Sans;
+    line-height: 150%;
+  }
+
   .title {
     font-size: 6rem;
     line-height: 7.6rem;
@@ -185,7 +167,6 @@ const Containers = styled.div`
     letter-spacing: -0.03em;
 
     ${media.mobile} {
-      /* width: 22rem; */
       word-break: keep-all;
       font-weight: 500;
       font-size: 1.6rem;
@@ -194,57 +175,14 @@ const Containers = styled.div`
 
     &--main {
       ${media.mobile} {
-        font-weight: 300;
-        font-size: 4.2rem;
-        line-height: 5.8rem;
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 3rem;
       }
     }
 
     &__bold {
       font-weight: 700;
-    }
-  }
-`;
-
-const Cont1 = styled.div`
-  display: flex;
-  margin-top: 13.8rem;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  ${media.mobile} {
-    margin-top: 8rem;
-  }
-  .info {
-    margin-top: 4.8rem;
-    font-size: 2.4rem;
-    line-height: 4.1rem;
-    font-weight: 400;
-    ${media.mobile} {
-      width: 28rem;
-      margin-top: 3rem;
-      font-weight: 400;
-      font-size: 1.8rem;
-      line-height: 3.15rem;
-    }
-    &--line-break {
-      display: none;
-      ${media.mobile} {
-        display: block;
-      }
-    }
-    &__green {
-      color: ${({ theme }) => theme.color.green};
-      ${media.mobile} {
-        font-size: 1.9rem;
-      }
-    }
-  }
-  .motion {
-    margin-top: 17.6rem;
-    display: relative;
-    ${media.mobile} {
-      margin-top: 8.2rem;
     }
   }
 `;

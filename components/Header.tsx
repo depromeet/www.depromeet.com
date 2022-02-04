@@ -112,8 +112,7 @@ const MenuButton = ({ isVisible, setVisible }) => {
 
 const Container = styled.div<BackgroundTransparentProps>`
   position: fixed;
-  background-color: ${({ isTransparent }) =>
-    isTransparent ? 'transparent' : 'black'};
+  background-color: transparent;
   top: 0;
   left: 0;
   right: 0;
