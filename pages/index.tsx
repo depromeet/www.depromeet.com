@@ -7,24 +7,27 @@ import Section1 from '../containers/Section1';
 import Section2 from '../containers/Section2';
 import Section3 from '../containers/Section3';
 import Section4 from '../containers/Section4';
+import { DeviceContextProvider } from '../contexts/device';
 
 import { media } from '../styles/theme';
 
 const Index = () => (
-  <div className="no-scroll-bar" style={{ overflowX: 'scroll' }}>
-    <Header />
-    <Containers>
-      <Section1 />
-      <Section2 />
-      <Section3 />
-      <Section4 />
-      {/* <Background>
+  <DeviceContextProvider>
+    <div className="no-scroll-bar" style={{ overflowX: 'scroll' }}>
+      <Header />
+      <Containers>
+        <Section1 />
+        <Section2 />
+        <Section3 />
+        <Section4 />
+        {/* <Background>
         <BackgroundImage />
         <BackgroundImage forMobile />
       </Background> */}
-    </Containers>
-    <Footer />
-  </div>
+      </Containers>
+      <Footer />
+    </div>
+  </DeviceContextProvider>
 );
 
 const Background = styled.div`
@@ -77,11 +80,6 @@ const Containers = styled.div`
   width: 100%;
   overflow-x: hidden;
   position: relative;
-  .logo {
-    font-size: 32px;
-    font-family: Gmarket Sans;
-    line-height: 150%;
-  }
 
   .title {
     font-size: 6rem;
@@ -94,14 +92,6 @@ const Containers = styled.div`
       font-weight: 500;
       font-size: 1.6rem;
       line-height: 3.4rem;
-    }
-
-    &--main {
-      ${media.mobile} {
-        font-weight: 400;
-        font-size: 1.4rem;
-        line-height: 3rem;
-      }
     }
 
     &__bold {

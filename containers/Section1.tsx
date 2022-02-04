@@ -2,25 +2,29 @@ import styled from 'styled-components';
 
 import TextAnimation from '../components/TextAnimation';
 import { media } from '../styles/theme';
+import { useDeviceContext } from '../contexts/device';
 
 export default function Section1() {
+  const device = useDeviceContext();
+
+  console.log(device);
   return (
     <>
       <RotateBackground />
       <Container>
         <div className="title">
-          <div className="logo">DEPROMEET</div>
-          <div className="title--main">
-            <span>디자이너와 프로그래머가 만났을 때 </span>
-          </div>
+          <Logo>DEPROMEET</Logo>
+          <Subtitle>디자이너와 프로그래머가 만났을 때</Subtitle>
         </div>
-        <Description>
-          <Line break>우리는 단순한 IT동아리가 아닙니다.</Line>
-          <Line break>서비스 런칭부터 개선까지</Line>
-          <Line break>
-            <Highlight>경험에 성장을 더하는 모임</Highlight> 입니다.
-          </Line>
-        </Description>
+        {device === 'mobile' && (
+          <Description>
+            <Line break>우리는 단순한 IT동아리가 아닙니다.</Line>
+            <Line break>서비스 런칭부터 개선까지</Line>
+            <Line break>
+              <Highlight>경험에 성장을 더하는 모임</Highlight> 입니다.
+            </Line>
+          </Description>
+        )}
         <Motion>
           <TextAnimation />
         </Motion>
@@ -39,8 +43,34 @@ const Container = styled.div`
 
   text-align: center;
 
+  padding-top: 395px;
+
   ${media.mobile} {
     padding-top: 172px;
+  }
+`;
+
+const Title = styled.div`
+  font-size: 100px;
+`;
+
+const Logo = styled.p`
+  font-size: 100px;
+  font-family: Gmarket Sans;
+  line-height: 150%;
+
+  ${media.mobile} {
+    font-size: 32px;
+  }
+`;
+
+const Subtitle = styled.p`
+  font-size: 50px;
+  line-height: 111px;
+
+  ${media.mobile} {
+    font-size: 15px;
+    line-height: 58px;
   }
 `;
 
