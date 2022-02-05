@@ -13,7 +13,7 @@ export default function Box() {
         window.open('mailto:depromeet@gmail.com?subject=[홈페이지 문의] '),
     },
     {
-      name: 'Kakao plus friend',
+      name: 'kakao plus friend',
       content: 'depromeet',
       logo: <Kakao />,
       onClick: () => window.open('http://pf.kakao.com/_xoxmcxed/chat'),
@@ -23,12 +23,12 @@ export default function Box() {
   return (
     <Container>
       <Title>
-        궁금한 것이 있거나{'\n'}
-        문의 사항이 있으신가요?
+        <p>궁금한 것이 있거나</p>
+        <p>문의 사항이 있으신가요?</p>
       </Title>
       <SubTitle>
-        디자인과 개발 관련된 일상적인 대화도{'\n'}
-        언제든지 환영합니다.
+        <p>디자인과 개발 관련된 일상적인 대화도</p>
+        <p>언제든지 환영합니다.</p>
       </SubTitle>
       <SNS>
         {snsList.map(({ name, content, logo, onClick }) => (
@@ -44,13 +44,12 @@ export default function Box() {
 }
 
 const Container = styled.div`
-  white-space: pre-line;
-  color: #fff;
   width: min(100%, 461px);
   padding: 0 10%;
+  color: #fff;
 
-  ${media.mobile} {
-    margin: -5.5rem 0 0;
+  ${media.tablet} {
+    text-align: center;
   }
 `;
 
@@ -60,25 +59,23 @@ const Title = styled.div`
   line-height: 140%;
 
   ${media.mobile} {
-    font-size: 2.4rem;
-    line-height: 3.6rem;
     text-align: center;
-    margin-left: 0;
+    font-size: 24px;
+    line-height: 36px;
   }
 `;
 
 const SubTitle = styled.div`
-  font-size: 1.8rem;
+  margin-top: 16px;
+  font-size: 16px;
   font-weight: 400;
-  margin-top: 2.4rem;
-  line-height: 30px;
+  line-height: 26px;
 
   ${media.mobile} {
-    margin-top: 1rem;
-    margin-left: 0;
-    font-size: 1.4rem;
+    margin-top: 10px;
+    font-size: 14px;
     font-weight: 500;
-    line-height: 2.4rem;
+    line-height: 24px;
     text-align: center;
   }
 `;
@@ -119,7 +116,6 @@ const SNSButton = styled.button`
   ${media.mobile} {
     box-sizing: border-box;
     padding: 1.2rem 2rem;
-    max-width: 29rem;
   }
 
   :hover {

@@ -4,6 +4,8 @@ import { Header, Footer } from '../components';
 import Box from '../containers/Contact/Box';
 import Content from '../containers/Contact/Content';
 import { Device, DeviceContextProvider } from '../contexts/device';
+
+import { media } from '../styles/theme';
 import { DPM } from '../public';
 
 const Contact = () => (
@@ -14,8 +16,6 @@ const Contact = () => (
         {(device: Device) => (
           <>
             {device === 'desktop' && <Background />}
-            {console.log(device)}
-            {/* <DPM /> */}
             <RightSectionContainer>
               <Box />
             </RightSectionContainer>
@@ -50,6 +50,16 @@ const RightSectionContainer = styled.div`
 
   display: flex;
   align-items: center;
+
+  ${media.tablet} {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* ${media.mobile} {
+    width: 100%;
+    justify-content: center;
+  } */
 `;
 
 export default Contact;

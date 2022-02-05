@@ -19,11 +19,4 @@ const Container = styled.div`
 
   width: 100%;
   height: 100vh;
-
-  ${media.mobile} {
-    justify-content: flex-start;
-    flex-direction: column;
-
-    padding-top: 50%;
-  }
 `;
