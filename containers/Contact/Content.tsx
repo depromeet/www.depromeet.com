@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { Device, useDeviceContext } from '../../contexts/device';
 
-import { media } from '../../styles/theme';
-
 type Props = {
   children: (device: Device) => JSX.Element;
 };
