@@ -1,9 +1,9 @@
 {
   "name": "www.depromeet.com",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Official Website of Depromeet",
   "repository": "https://github.com/depromeet/www.depromeet.com.git",
-  "author": "leejeongmin ohgihwan",
+  "author": "leejeongmin ohgihwan jonghopark95",
   "license": "MIT",
   "scripts": {
     "dev": "next",
