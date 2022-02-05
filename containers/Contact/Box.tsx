@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 
 import { media } from '../../styles/theme';
-import { Gmail, Kakao, Instagram } from '../../public';
+import { Gmail, Kakao, DPM } from '../../public';
+import { Device } from '../../contexts/device';
 
-export default function Box() {
+type Props = {
+  device: Device;
+};
+
+export default function Box({ device }: Props) {
   const snsList = [
     {
       name: 'gmail',
@@ -22,6 +27,11 @@ export default function Box() {
 
   return (
     <Container>
+      {device !== 'desktop' && (
+        <DPMLogoWrapper>
+          <DPM />
+        </DPMLogoWrapper>
+      )}
       <Title>
         <p>궁금한 것이 있거나</p>
         <p>문의 사항이 있으신가요?</p>
@@ -44,6 +54,7 @@ export default function Box() {
 }
 
 const Container = styled.div`
+  position: relative;
   width: min(100%, 461px);
   padding: 0 10%;
   color: #fff;
@@ -51,6 +62,14 @@ const Container = styled.div`
   ${media.tablet} {
     text-align: center;
   }
+`;
+
+const DPMLogoWrapper = styled.div`
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
 `;
 
 const Title = styled.div`

@@ -4,9 +4,7 @@ import { Header, Footer } from '../components';
 import Box from '../containers/Contact/Box';
 import Content from '../containers/Contact/Content';
 import { Device, DeviceContextProvider } from '../contexts/device';
-
 import { media } from '../styles/theme';
-import { DPM } from '../public';
 
 const Contact = () => (
   <DeviceContextProvider>
@@ -17,7 +15,7 @@ const Contact = () => (
           <>
             {device === 'desktop' && <Background />}
             <RightSectionContainer>
-              <Box />
+              <Box device={device} />
             </RightSectionContainer>
             <Footer />
           </>
@@ -43,23 +41,18 @@ const Background = styled.div`
 `;
 
 const RightSectionContainer = styled.div`
+  display: flex;
+  align-items: center;
+
   position: absolute;
   right: 0;
   width: 50%;
   height: 100%;
 
-  display: flex;
-  align-items: center;
-
   ${media.tablet} {
     width: 100%;
     justify-content: center;
   }
-
-  /* ${media.mobile} {
-    width: 100%;
-    justify-content: center;
-  } */
 `;
 
 export default Contact;
