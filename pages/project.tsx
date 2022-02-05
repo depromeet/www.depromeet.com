@@ -50,13 +50,12 @@ const Container = styled.div`
   align-items: center;
 
   background-color: transparent;
-  margin: 300px 0 160px 0;
+  margin: 300px 0 240px 0;
   padding: 0 24px;
 
   ${media.mobile} {
     box-sizing: border-box;
     width: 100%;
-    margin: 240px 0 70px 0;
   }
 `;
 
