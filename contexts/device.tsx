@@ -6,7 +6,7 @@ import {
   useEffect,
 } from 'react';
 
-type Device = 'desktop' | 'tablet' | 'mobile';
+export type Device = 'desktop' | 'tablet' | 'mobile';
 
 const DeviceContext = createContext<Device>('desktop');
 

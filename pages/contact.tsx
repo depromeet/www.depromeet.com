@@ -1,38 +1,30 @@
 import styled from 'styled-components';
+
 import { Header, Footer } from '../components';
-import StepLottie from '../components/StepLottie';
 import Box from '../containers/Contact/Box';
+import Content from '../containers/Contact/Content';
+import { Device, DeviceContextProvider } from '../contexts/device';
 import { DPM } from '../public';
-import { media } from '../styles/theme';
 
 const Contact = () => (
-  <div>
-    <Header />
-    <Container>
-      <Background />
-      {/* <DPM /> */}
-      <RightSectionContainer>
-        <Box />
-      </RightSectionContainer>
-      <Footer />
-    </Container>
-  </div>
+  <DeviceContextProvider>
+    <div>
+      <Header />
+      <Content>
+        {(device: Device) => (
+          <>
+            {device === 'desktop' && <Background />}
+            {/* <DPM /> */}
+            <RightSectionContainer>
+              <Box />
+            </RightSectionContainer>
+            <Footer />
+          </>
+        )}
+      </Content>
+    </div>
+  </DeviceContextProvider>
 );
-
-const Container = styled.div`
-  box-sizing: border-box;
-  position: relative;
-
-  width: 100%;
-  height: 100vh;
-
-  ${media.mobile} {
-    justify-content: flex-start;
-    flex-direction: column;
-
-    padding-top: 50%;
-  }
-`;
 
 const Background = styled.div`
   z-index: -1;
