@@ -15,17 +15,22 @@ const TextAnimation = () => {
   const startTrigger = useRef(null);
   const text1 = useRef(null);
   const text2 = useRef(null);
+  const text3 = useRef(null);
 
   useEffect(() => {
     const config = {
-      x: 1000,
+      scrollTrigger: {
+        scrub: 1,
+      },
+      x: 700,
       duration: 1,
     };
 
     gsap.to(text1.current, config);
+    gsap.to(text3.current, config);
     gsap.to(text2.current, {
       ...config,
-      x: -1000,
+      x: -700,
     });
   }, []);
 
@@ -48,6 +53,14 @@ const TextAnimation = () => {
             <LongArrow />
           </div>
           2022 meet
+          <div className="text__arrow">
+            <LongArrow />
+          </div>
+          designer
+          <div className="text__arrow">
+            <LongArrow />
+          </div>
+          programmer
         </div>
         <div className="text__content" ref={text2}>
           programmer
@@ -59,6 +72,14 @@ const TextAnimation = () => {
             <LongArrow />
           </div>
           designer
+          <div className="text__arrow left">
+            <LongArrow />
+          </div>
+          programmer
+          <div className="text__arrow left">
+            <LongArrow />
+          </div>
+          2022 meet
         </div>
       </div>
     </Container>
@@ -68,8 +89,6 @@ const TextAnimation = () => {
 const Container = styled.div`
   width: 100%;
   position: relative;
-  font-family: Gmarket Sans;
-
   .svg {
     &__stepD {
       position: absolute;
@@ -95,21 +114,26 @@ const Container = styled.div`
     }
   }
   .text {
+    font-family: Montserrat;
     text-transform: uppercase;
     font-weight: 800;
     font-size: 60px;
     line-height: 14.6rem;
     white-space: nowrap;
+    position: relative;
 
     ${media.mobile} {
-      font-size: 40px;
       line-height: 4rem;
+      font-size: 30px;
     }
 
     &__content {
       display: flex;
+
       :last-child {
         margin-bottom: 0;
+        position: absolute;
+        right: 0;
       }
       ${media.mobile} {
         margin-bottom: 4rem;
@@ -128,15 +152,16 @@ const Container = styled.div`
     &__arrow {
       display: flex;
       align-items: center;
-      margin: 0 2rem;
-      width: 55px;
+      width: 60px;
 
+      margin: 0 4rem;
       &.left {
         transform: rotate(180deg);
       }
       ${media.mobile} {
+        width: 30px;
         display: flex;
-        width: 35px;
+        width: 5.3rem;
         height: 4.4rem;
         margin: 0 2rem;
         align-items: center;
