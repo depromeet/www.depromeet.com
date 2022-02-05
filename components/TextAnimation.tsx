@@ -18,9 +18,6 @@ const TextAnimation = () => {
 
   useEffect(() => {
     const config = {
-      scrollTrigger: {
-        scrub: 1,
-      },
       x: 1000,
       duration: 1,
     };
@@ -54,11 +51,11 @@ const TextAnimation = () => {
         </div>
         <div className="text__content" ref={text2}>
           programmer
-          <div className="text__arrow">
+          <div className="text__arrow left">
             <LongArrow />
           </div>
           2022 meet
-          <div className="text__arrow">
+          <div className="text__arrow left">
             <LongArrow />
           </div>
           designer
@@ -103,10 +100,12 @@ const Container = styled.div`
     font-size: 60px;
     line-height: 14.6rem;
     white-space: nowrap;
+
     ${media.mobile} {
+      font-size: 40px;
       line-height: 4rem;
-      font-size: 1.4rem;
     }
+
     &__content {
       display: flex;
       :last-child {
@@ -137,7 +136,7 @@ const Container = styled.div`
       }
       ${media.mobile} {
         display: flex;
-        width: 60px;
+        width: 35px;
         height: 4.4rem;
         margin: 0 2rem;
         align-items: center;

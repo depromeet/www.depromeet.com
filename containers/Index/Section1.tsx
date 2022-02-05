@@ -23,10 +23,20 @@ export default function Section1() {
             </Line>
           </Description>
         )}
+        <Gradient />
       </Container>
     </>
   );
 }
+
+const Gradient = styled.div`
+  position: absolute;
+  bottom: 0px;
+
+  width: 100%;
+  height: 50vh;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+`;
 
 const RotateBackground = styled.div`
   @property --a {
@@ -49,7 +59,7 @@ const RotateBackground = styled.div`
     #316bff 360deg
   );
 
-  animation: 25s rotate linear infinite;
+  animation: 20s rotate linear infinite;
   @keyframes rotate {
     from {
       --a: -270deg;
@@ -105,6 +115,7 @@ const Description = styled.div`
   margin-top: 173px;
   font-size: 18px;
   line-height: 31px;
+  z-index: 1;
 `;
 
 const Line = styled.span<{
