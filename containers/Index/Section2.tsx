@@ -1,42 +1,51 @@
-import Link from 'next/link';
 import styled from 'styled-components';
 
+import TextAnimation from '../../components/TextAnimation';
 import Projects from '../../components/Projects';
 import { media } from '../../styles/theme';
 
 export default function Section2() {
   const summary = [
-    { title: '탄생한지', value: '7년' },
-    { title: '누적 멤버 수', value: '600명 +' },
+    { title: '탄생한지', value: '6년' },
+    { title: '누적 멤버 수', value: '800명 +' },
     { title: '런칭 앱', value: 'N개 +' },
   ];
 
   return (
-    <Container>
-      <FirstColumn>
-        <Summary>
-          {summary.map(({ title, value }) => (
-            <SummaryTitle key={title}>
-              {title}
-              <SummaryValue>{value}</SummaryValue>
-            </SummaryTitle>
-          ))}
-        </Summary>
-      </FirstColumn>
-      <SecondColumn>
-        <CatchPhrase>
-          <p>오직 디자이너와 프로그래머의</p>
-          <p>
-            <b>동반성장</b>을 위해서
-          </p>
-        </CatchPhrase>
-        <Boxes>
-          <Projects isMainPage />
-        </Boxes>
-      </SecondColumn>
-    </Container>
+    <>
+      <Motion>
+        <TextAnimation />
+      </Motion>
+      <Container>
+        <FirstColumn>
+          <Summary>
+            {summary.map(({ title, value }) => (
+              <SummaryTitle key={title}>
+                {title}
+                <SummaryValue>{value}</SummaryValue>
+              </SummaryTitle>
+            ))}
+          </Summary>
+        </FirstColumn>
+        <SecondColumn>
+          <CatchPhrase>
+            <p>오직 디자이너와 프로그래머의</p>
+            <p>
+              <b>동반성장</b>을 위해서
+            </p>
+          </CatchPhrase>
+          <Boxes>
+            <Projects isMainPage />
+          </Boxes>
+        </SecondColumn>
+      </Container>
+    </>
   );
 }
+
+const Motion = styled.div`
+  margin-top: 100px;
+`;
 
 const Container = styled.div`
   position: relative;
@@ -45,7 +54,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: stretch;
 
-  margin-top: 31.6rem;
+  margin-top: 200px;
 
   ${media.mobile} {
     flex-direction: column;

@@ -100,16 +100,15 @@ const Container = styled.div`
   .text {
     text-transform: uppercase;
     font-weight: 800;
-    font-size: 12rem;
+    font-size: 60px;
     line-height: 14.6rem;
     white-space: nowrap;
     ${media.mobile} {
       line-height: 4rem;
-      font-size: 3.4rem;
+      font-size: 1.4rem;
     }
     &__content {
       display: flex;
-      margin-bottom: 6rem;
       :last-child {
         margin-bottom: 0;
       }
@@ -130,14 +129,15 @@ const Container = styled.div`
     &__arrow {
       display: flex;
       align-items: center;
-      margin: 0 4rem;
+      margin: 0 2rem;
+      width: 55px;
+
       &.left {
         transform: rotate(180deg);
       }
       ${media.mobile} {
-        width: 5rem;
         display: flex;
-        width: 5.3rem;
+        width: 60px;
         height: 4.4rem;
         margin: 0 2rem;
         align-items: center;

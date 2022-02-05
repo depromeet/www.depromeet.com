@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import TextAnimation from '../../components/TextAnimation';
 import { media } from '../../styles/theme';
 import { useDeviceContext } from '../../contexts/device';
 
@@ -24,9 +23,6 @@ export default function Section1() {
             </Line>
           </Description>
         )}
-        <Motion>
-          <TextAnimation />
-        </Motion>
       </Container>
     </>
   );
@@ -78,7 +74,7 @@ const Container = styled.div`
 `;
 
 const Logo = styled.p`
-  font-size: min(140px, 8vw);
+  font-size: min(200px, 3vw);
   font-family: Gmarket Sans;
   line-height: 150%;
 
@@ -88,7 +84,7 @@ const Logo = styled.p`
 `;
 
 const Subtitle = styled.p`
-  font-size: min(70px, 4vw);
+  font-size: min(100px, 1.5vw);
   line-height: 111px;
 
   ${media.mobile} {
@@ -115,13 +111,4 @@ const Line = styled.span<{
   break?: boolean;
 }>`
   display: ${(props) => (props.break ? 'block' : 'none')};
-`;
-
-const Motion = styled.div`
-  position: absolute;
-  bottom: -160px;
-
-  ${media.mobile} {
-    bottom: -60px;
-  }
 `;
