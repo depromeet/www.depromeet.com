@@ -14,6 +14,7 @@ const Contact = () => (
         {(device: Device) => (
           <>
             {device === 'desktop' && <Background />}
+            {console.log(device)}
             {/* <DPM /> */}
             <RightSectionContainer>
               <Box />

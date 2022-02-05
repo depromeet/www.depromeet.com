@@ -45,42 +45,18 @@ export default function Box() {
 
 const Container = styled.div`
   white-space: pre-line;
-  margin-left: 12.2rem;
   color: #fff;
+  width: min(100%, 461px);
+  padding: 0 10%;
 
   ${media.mobile} {
     margin: -5.5rem 0 0;
   }
 `;
 
-const SNSButton = styled.button`
-  position: relative;
-
-  display: flex;
-  align-items: center;
-
-  width: 40.1rem;
-  height: 4rem;
-  border-radius: 3.1rem;
-
-  color: #000;
-  background-color: #fff;
-
-  ${media.mobile} {
-    box-sizing: border-box;
-    padding: 1.2rem 2rem;
-    max-width: 29rem;
-  }
-
-  :hover {
-    background-color: #c0c0c0;
-  }
-`;
-
 const Title = styled.div`
-  font-size: 3.6rem;
-  font-weight: 800;
-  margin-left: 3rem;
+  font-size: 36px;
+  font-weight: 900;
   line-height: 140%;
 
   ${media.mobile} {
@@ -96,7 +72,6 @@ const SubTitle = styled.div`
   font-weight: 400;
   margin-top: 2.4rem;
   line-height: 30px;
-  margin-left: 3rem;
 
   ${media.mobile} {
     margin-top: 1rem;
@@ -124,6 +99,35 @@ const SNS = styled.div`
     margin-top: 20px;
     padding: 30px 20px;
     border-radius: 20px;
+  }
+`;
+
+const SNSButton = styled.button`
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  height: 40px;
+  border-radius: 31px;
+
+  color: #000;
+  border: none;
+  background-color: #fff;
+
+  ${media.mobile} {
+    box-sizing: border-box;
+    padding: 1.2rem 2rem;
+    max-width: 29rem;
+  }
+
+  :hover {
+    background-color: #c0c0c0;
+  }
+
+  & + & {
+    margin-top: 20px;
   }
 `;
 
