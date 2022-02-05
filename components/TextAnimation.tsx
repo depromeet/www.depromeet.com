@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import { gsap } from 'gsap/dist/gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { LongArrow } from '../public';
+import { LongArrow, MainPageIcon1, MainPageIcon2 } from '../public';
 import StepLottie from './StepLottie';
 import { stepA, stepD } from '../resources/lottie';
 import { media } from '../styles/theme';
@@ -37,10 +37,12 @@ const TextAnimation = () => {
   return (
     <Container ref={startTrigger}>
       <div className="svg__stepD">
-        <StepLottie lottie={stepD} />
+        {/* <StepLottie lottie={stepD} /> */}
+        <MainPageIcon1 />
       </div>
       <div className="svg__stepA">
-        <StepLottie lottie={stepA} />
+        <MainPageIcon2 />
+        {/* <StepLottie lottie={stepA} /> */}
       </div>
       <div className="text">
         <div className="text__content" ref={text1}>
@@ -94,22 +96,40 @@ const Container = styled.div`
       position: absolute;
       width: 17.7rem;
       top: -5rem;
-      left: 92.7rem;
+      left: 95.7rem;
+
+      ${media.tablet} {
+        width: 10rem;
+        top: -3.5rem;
+        left: 60%;
+      }
+
       ${media.mobile} {
-        width: 14rem;
-        top: 1.5rem;
-        left: 30rem;
+        top: -7.5rem;
+
+        svg {
+          width: 100px;
+        }
       }
     }
     &__stepA {
       position: absolute;
       width: 17.7rem;
-      bottom: -5rem;
+      bottom: -12rem;
       right: 103rem;
-      ${media.mobile} {
+
+      ${media.tablet} {
         width: 14rem;
-        right: 25rem;
-        bottom: -7.6rem;
+        right: 60%;
+        bottom: -14rem;
+      }
+
+      ${media.mobile} {
+        bottom: -13rem;
+        right: 40%;
+        svg {
+          width: 70px;
+        }
       }
     }
   }
