@@ -53,6 +53,9 @@ const Container = styled.footer`
   box-sizing: border-box;
   width: 100%;
 
+  position: absolute;
+  bottom: 0;
+
   background: transparent;
 `;
 

@@ -32,6 +32,38 @@ export default function Section1() {
   );
 }
 
+const RotateBackground = styled.div`
+  @property --a {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: -270deg;
+  }
+
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+
+  --a: 270deg;
+  background: conic-gradient(
+    from var(--a) at 50% 50%,
+    rgba(49, 107, 255, 0) 0deg,
+    rgba(49, 107, 255, 0.6) 179.07deg,
+    rgba(49, 107, 255, 0.8) 269.28deg,
+    #316bff 360deg
+  );
+
+  animation: 25s rotate linear infinite;
+  @keyframes rotate {
+    from {
+      --a: -270deg;
+    }
+    to {
+      --a: 90deg;
+    }
+  }
+`;
+
 const Container = styled.div`
   position: relative;
   box-sizing: border-box;
@@ -62,38 +94,6 @@ const Subtitle = styled.p`
   ${media.mobile} {
     font-size: 15px;
     line-height: 58px;
-  }
-`;
-
-const RotateBackground = styled.div`
-  @property --a {
-    syntax: '<angle>';
-    inherits: false;
-    initial-value: -270deg;
-  }
-
-  z-index: -1;
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-
-  --a: 270deg;
-  background: conic-gradient(
-    from var(--a) at 50% 50%,
-    rgba(49, 107, 255, 0) 0deg,
-    rgba(49, 107, 255, 0.6) 179.07deg,
-    rgba(49, 107, 255, 0.8) 269.28deg,
-    #316bff 360deg
-  );
-
-  animation: 25s rotate linear infinite;
-  @keyframes rotate {
-    from {
-      --a: -270deg;
-    }
-    to {
-      --a: 90deg;
-    }
   }
 `;
 

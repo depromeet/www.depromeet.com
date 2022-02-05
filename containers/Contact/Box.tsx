@@ -46,7 +46,7 @@ export default function Box() {
 const Container = styled.div`
   white-space: pre-line;
   margin-left: 12.2rem;
-  color: white;
+  color: #fff;
 
   ${media.mobile} {
     margin: -5.5rem 0 0;
@@ -149,6 +149,7 @@ const SNSName = styled.div`
 const SNSContent = styled.div`
   position: absolute;
   right: 0;
+
   margin-right: 2.4rem;
   font-size: 1.4rem;
   font-weight: 500;
