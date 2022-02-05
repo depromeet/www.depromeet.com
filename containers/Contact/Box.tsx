@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { media } from '../../styles/theme';
-import { DPM } from '../../public';
+import Image from 'next/image';
 import { Device } from '../../contexts/device';
 import SNSBox from './SNSBox';
 
@@ -14,7 +14,7 @@ export default function Box({ device }: Props) {
     <Container>
       {device !== 'desktop' && (
         <DPMLogoWrapper>
-          <DPM />
+          <Image src="/dpm.png" alt="dpm" width="217" height="69.5" />
         </DPMLogoWrapper>
       )}
       <Title>
