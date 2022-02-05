@@ -1,11 +1,20 @@
 import styled from 'styled-components';
 
+import { useDeviceContext } from '../../contexts/device';
+import { DimmerDPMLogo } from '../../public';
 import { media } from '../../styles/theme';
 import { shareDepromeet, openApplySite } from '../../utils/misc';
 
 export default function Section4() {
+  const device = useDeviceContext();
+
   return (
     <Container>
+      {device === 'mobile' && (
+        <LogoWrapper>
+          <DimmerDPMLogo />
+        </LogoWrapper>
+      )}
       <Title>
         <p>디프만의</p>
         <b>열한 번째 이야기</b>를 함께
@@ -20,7 +29,13 @@ export default function Section4() {
   );
 }
 
+const LogoWrapper = styled.div`
+  position: absolute;
+  top: 0;
+`;
+
 const Container = styled.div`
+  position: relative;
   display: flex;
   margin-top: 37.6rem;
   flex-direction: column;

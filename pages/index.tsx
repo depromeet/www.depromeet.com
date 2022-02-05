@@ -24,7 +24,7 @@ const Index = () => (
 );
 
 const Containers = styled.div`
-  color: white;
+  color: #fff;
 
   width: 100%;
   overflow-x: hidden;

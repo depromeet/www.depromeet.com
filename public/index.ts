@@ -9,6 +9,7 @@ export { default as DPM } from './dpm.svg';
 export { default as Meet } from './Group 1522.svg';
 export { default as Gmail } from './ic_gmail.svg';
 export { default as Kakao } from './ic_kakao.svg';
+export { default as DimmerDPMLogo } from './dpm-dimmer-logo.svg';
 export { default as Instagram } from './ic_instagram.svg';
 export { default as Memoji } from './Memoji.svg';
 export { default as T } from './T.svg';
