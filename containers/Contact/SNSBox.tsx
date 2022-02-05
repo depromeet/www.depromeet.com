@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Gmail, Kakao } from '../../public';
+import { Gmail, Kakao, Instagram } from '../../public';
 import { media } from '../../styles/theme';
 
 export default function SNSBox() {
@@ -17,6 +17,12 @@ export default function SNSBox() {
       content: 'depromeet',
       logo: <Kakao />,
       onClick: () => window.open('http://pf.kakao.com/_xoxmcxed/chat'),
+    },
+    {
+      name: 'instagram',
+      content: '@depromeet',
+      logo: <Instagram />,
+      onClick: () => window.open('https://www.instagram.com/depromeet/?hl=ko'),
     },
   ];
 
