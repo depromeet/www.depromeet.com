@@ -36,6 +36,7 @@ const Footer = () => {
     </Container>
   );
 };
+
 const MediaButton = ({ href, children }) => (
   <Button
     role="button"
@@ -47,11 +48,15 @@ const MediaButton = ({ href, children }) => (
     {children}
   </Button>
 );
+
 const Container = styled.footer`
-  background: #0c0c0c;
-  border: 1px solid #000000;
   box-sizing: border-box;
   width: 100%;
+
+  position: absolute;
+  bottom: 0;
+
+  background: transparent;
 `;
 
 const Content = styled.div`
@@ -113,7 +118,6 @@ const Copyright = styled.div`
   font-weight: normal;
   font-size: 1.2rem;
   line-height: 1.5rem;
-  font-family: Montserrat;
   color: #757575;
   ${media.mobile} {
     font-size: 1rem;

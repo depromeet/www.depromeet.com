@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 import styled from 'styled-components';
 import { media } from '../styles/theme';
 import { socials } from '../resources/data/socials';
+import { openApplySite } from '../utils/misc';
 
 const Logo = dynamic(() => import('../public/gnb_logo.svg'));
 
@@ -13,10 +14,6 @@ interface BackgroundTransparentProps {
 }
 // 11기 신청서 오픈 시 링크 수정
 const applyFor10th = 'https://forms.gle/wmu19EPksMhe633h6';
-
-export const openApplySite = () =>
-  alert('2022년 2월에 다시 돌아오겠습니다 😄😄');
-// export const openApplySite = () => window.open(applyFor10th);
 
 const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
   const [visible, setVisible] = useState(false);
@@ -30,7 +27,7 @@ const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
       <div className="mobile__only menu-icon">
         <MenuButton isVisible={visible} setVisible={setVisible} />
       </div>
-      <ButtonContainer visible={visible} className="no-scroll-bar">
+      <ButtonContainer visible={visible}>
         <div className="mobile-wrapper">
           <RouterBtn routerName="about" path="/" setVisible={setVisible} />
           <RouterBtn
@@ -112,8 +109,7 @@ const MenuButton = ({ isVisible, setVisible }) => {
 
 const Container = styled.div<BackgroundTransparentProps>`
   position: fixed;
-  background-color: ${({ isTransparent }) =>
-    isTransparent ? 'transparent' : 'black'};
+  background-color: transparent;
   top: 0;
   left: 0;
   right: 0;
@@ -177,8 +173,12 @@ const ButtonContainer = styled.div<{ visible: boolean }>`
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #0038ff;
-    opacity: 0.97;
+    background: linear-gradient(
+      330.23deg,
+      rgba(49, 107, 255, 0.97) 20.68%,
+      rgba(0, 0, 0, 0.97) 71.37%
+    );
+    opacity: 0.9;
 
     flex-direction: column;
     justify-content: flex-start;
@@ -246,7 +246,6 @@ const Button = styled.div`
 
 const RouterButton = styled.div<{ isSame: boolean }>`
   position: relative;
-  font-family: Montserrat;
   margin-right: 3.4rem;
   font-size: 1.4rem;
   font-weight: ${({ isSame }) => (isSame ? 700 : 500)};
@@ -283,7 +282,6 @@ const Underline = styled.div`
 `;
 
 const Social = styled.div`
-  font-family: Montserrat;
   font-size: 1.2rem;
   line-height: 2rem;
   font-weight: bold;

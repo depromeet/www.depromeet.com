@@ -55,7 +55,6 @@ const Container = styled.div`
       justify-content: space-between;
     }
     &--step {
-      font-family: Montserrat;
       font-weight: 700;
       font-size: 2.6rem;
       line-height: 3.2rem;

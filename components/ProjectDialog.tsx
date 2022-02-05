@@ -792,7 +792,6 @@ const ProjectDetail = styled.div<{ width: number }>`
         grid-template-columns: 4.5rem 1fr;
       }
       &-job {
-        font-family: Montserrat;
         font-weight: 500;
         font-size: 1.4rem;
         line-height: 2.8rem;

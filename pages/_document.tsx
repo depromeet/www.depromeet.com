@@ -39,6 +39,12 @@ class MyDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <link rel="shortcut icon" href="/favicon.svg" type="image/svg" />
+          <link
+            href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
+            rel="stylesheet"
+            type="text/css"
+          />
+
           <meta property="og:title" content="디프만 - Depromeet" />
           <meta property="og:image" content="/og-main.png" />
           <meta
