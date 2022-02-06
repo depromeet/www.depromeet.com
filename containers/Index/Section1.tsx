@@ -8,7 +8,9 @@ export default function Section1() {
 
   return (
     <>
-      <RotateBackground />
+      <Wrapper>
+        <RotateBackground />
+      </Wrapper>
       <Container>
         <div>
           <Logo>DEPROMEET</Logo>
@@ -38,21 +40,25 @@ const Gradient = styled.div`
   background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
 `;
 
-const RotateBackground = styled.div`
-  @property --a {
-    syntax: '<angle>';
-    inherits: false;
-    initial-value: -270deg;
-  }
-
-  z-index: -1;
+const Wrapper = styled.div`
   position: absolute;
+
+  overflow: hidden;
   width: 100%;
   height: 100vh;
 
-  --a: 270deg;
-  background: conic-gradient(
-    from var(--a) at 50% 50%,
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const RotateBackground = styled.div`
+  position: absolute;
+  width: 10000px;
+  height: 10000px;
+
+  background-image: conic-gradient(
+    from 90deg at 50% 50%,
     rgba(49, 107, 255, 0) 0deg,
     rgba(49, 107, 255, 0.6) 179.07deg,
     rgba(49, 107, 255, 0.8) 269.28deg,
@@ -62,10 +68,10 @@ const RotateBackground = styled.div`
   animation: 20s rotate linear infinite;
   @keyframes rotate {
     from {
-      --a: -270deg;
+      transform: rotate(0deg);
     }
     to {
-      --a: 90deg;
+      transform: rotate(360deg);
     }
   }
 `;
