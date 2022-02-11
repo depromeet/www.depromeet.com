@@ -4,8 +4,8 @@ import styled from 'styled-components';
 import { Footer } from '../components';
 
 import TransparentHeader from '../components/TransparentHeader';
-import ProjectList from '../containers/Project/ProjectList';
-import ScheduleList from '../containers/Project/ScheduleList';
+import ProjectList from '../page-components/Project/ProjectList';
+import ScheduleList from '../page-components/Project/ScheduleList';
 
 import { media } from '../styles/theme';
 

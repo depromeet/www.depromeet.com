@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 import { Header, Footer } from '../components';
-import Box from '../containers/Contact/Box';
-import Content from '../containers/Contact/Content';
+import Box from '../page-components/Contact/Box';
+import Content from '../page-components/Contact/Content';
 import { Device, DeviceContextProvider } from '../contexts/device';
 import { media } from '../styles/theme';
 

@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 import { Header, Footer } from '../components';
 
-import Section1 from '../containers/Index/Section1';
-import Section2 from '../containers/Index/Section2';
-import Section3 from '../containers/Index/Section3';
-import Section4 from '../containers/Index/Section4';
+import Section1 from '../page-components/Index/Section1';
+import Section2 from '../page-components/Index/Section2';
+import Section3 from '../page-components/Index/Section3';
+import Section4 from '../page-components/Index/Section4';
 import { DeviceContextProvider } from '../contexts/device';
 
 const Index = () => (
