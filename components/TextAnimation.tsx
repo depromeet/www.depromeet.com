@@ -15,34 +15,30 @@ const TextAnimation = () => {
   const startTrigger = useRef(null);
   const text1 = useRef(null);
   const text2 = useRef(null);
-  const text3 = useRef(null);
 
   useEffect(() => {
     const config = {
       scrollTrigger: {
         scrub: 1,
       },
-      x: 700,
+      x: 1000,
       duration: 1,
     };
 
     gsap.to(text1.current, config);
-    gsap.to(text3.current, config);
     gsap.to(text2.current, {
       ...config,
-      x: -700,
+      x: -1000,
     });
   }, []);
 
   return (
     <Container ref={startTrigger}>
       <div className="svg__stepD">
-        {/* <StepLottie lottie={stepD} /> */}
         <MainPageIcon1 />
       </div>
       <div className="svg__stepA">
         <MainPageIcon2 />
-        {/* <StepLottie lottie={stepA} /> */}
       </div>
       <div className="text">
         <div className="text__content" ref={text1}>
