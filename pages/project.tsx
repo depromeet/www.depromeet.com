@@ -1,35 +1,49 @@
 import React from 'react';
-
 import styled from 'styled-components';
-import { Footer } from '../components';
 
+import { Footer } from '../components';
 import TransparentHeader from '../components/TransparentHeader';
+import { DeviceContextProvider } from '../contexts/device';
+import DeviceSwitcher from '../page-components/Project/DeviceSwitcher';
 import ProjectList from '../page-components/Project/ProjectList';
 import ScheduleList from '../page-components/Project/ScheduleList';
 
 import { media } from '../styles/theme';
 
-const Project = () => (
-  <div className="no-scroll-bar" style={{ overflow: 'scroll' }}>
-    <Background />
+const Project = () => {
+  return (
+    <DeviceContextProvider>
+      <div className="no-scroll-bar" style={{ overflow: 'scroll' }}>
+        <Background />
 
-    <TransparentHeader />
+        <TransparentHeader />
 
-    <Container>
-      <div>
-        <Catchphrase>
-          <p>서비스 런칭부터 개선까지</p>
-          <p>
-            <b>경험에 성장을 더합니다.</b>
-          </p>
-        </Catchphrase>
-        <ProjectList />
-        <ScheduleList />
+        <Container>
+          <div>
+            <Catchphrase>
+              <p>서비스 런칭부터 개선까지</p>
+              <p>
+                <b>경험에 성장을 더합니다.</b>
+              </p>
+            </Catchphrase>
+            <DeviceSwitcher>
+              {({ device }) => (
+                <>
+                  {device === 'mobile' ? null : ( //
+                    <ProjectList />
+                  )}
+                </>
+              )}
+            </DeviceSwitcher>
+
+            <ScheduleList />
+          </div>
+        </Container>
+        <Footer />
       </div>
-    </Container>
-    <Footer />
-  </div>
-);
+    </DeviceContextProvider>
+  );
+};
 
 const Background = styled.div`
   z-index: -1;
