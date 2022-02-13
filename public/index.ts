@@ -20,3 +20,5 @@ export { default as ShortArrowGreen } from './arrow-short-green.svg';
 
 export { default as MainPageIcon1 } from './main-page-icon-1.svg';
 export { default as MainPageIcon2 } from './main-page-icon-2.svg';
+
+export { default as Below } from './below.svg';

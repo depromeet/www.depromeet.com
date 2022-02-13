@@ -8,7 +8,7 @@ export default function ScheduleList() {
   return (
     <div>
       <Title>
-        14주간 여정
+        15주간 여정
         <span className="title--desc">
           Depromeet 11기는 매주 토요일 14주간 진행됩니다.
         </span>

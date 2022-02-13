@@ -6,6 +6,7 @@ import TransparentHeader from '../components/TransparentHeader';
 import { DeviceContextProvider } from '../contexts/device';
 import DeviceSwitcher from '../page-components/Project/DeviceSwitcher';
 import ProjectList from '../page-components/Project/ProjectList';
+import ProjectListMobileView from '../page-components/Project/ProjectListMobileView';
 import ScheduleList from '../page-components/Project/ScheduleList';
 
 import { media } from '../styles/theme';
@@ -29,7 +30,9 @@ const Project = () => {
             <DeviceSwitcher>
               {({ device }) => (
                 <>
-                  {device === 'mobile' ? null : ( //
+                  {device === 'mobile' ? (
+                    <ProjectListMobileView />
+                  ) : (
                     <ProjectList />
                   )}
                 </>
@@ -64,13 +67,13 @@ const Container = styled.div`
   align-items: center;
 
   background-color: transparent;
-  margin: 300px 0 340px 0;
+  margin: 240px 0 340px 0;
   padding: 0 24px;
 
   ${media.mobile} {
     box-sizing: border-box;
 
-    margin: 300px 0 240px 0;
+    margin: 240px 0 240px 0;
     width: 100%;
   }
 `;
@@ -82,12 +85,13 @@ const Catchphrase = styled.div`
   line-height: 5.6rem;
   letter-spacing: -0.03em;
   color: #ffffff;
-  margin-bottom: 7.8rem;
+  margin-bottom: 78px;
 
   ${media.mobile} {
     font-weight: 300;
     font-size: 2.8rem;
     line-height: 4rem;
+    margin-bottom: 48px;
   }
 
   b {
