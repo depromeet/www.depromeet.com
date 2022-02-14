@@ -20,12 +20,9 @@ export default function ProjectListMobileView() {
     index: 0,
   });
 
-  const showProjectDialog = useCallback(
-    (projectId: number) => {
-      setDialogVisible({ visible: true, index: projectId });
-    },
-    [setDialogVisible]
-  );
+  const showProjectDialog = (projectId: number) => {
+    setDialogVisible({ visible: true, index: projectId });
+  };
 
   const PROJECT_AMOUNT = more ? projects.length : 9;
 
@@ -33,15 +30,15 @@ export default function ProjectListMobileView() {
     <Wrapper>
       <Title>
         모든 작업물
-        <small>30</small>
+        <small>{projects.length}</small>
       </Title>
       <ProjectContainer>
         {projects
           .slice(0, PROJECT_AMOUNT)
-          .map(({ order, 서비스명, imageFileName }) => (
+          .map(({ order, title: 서비스명, icon }) => (
             <Item key={order}>
               <Image
-                src={`/projects/icons/${imageFileName}`}
+                src={`/projects/${icon}`}
                 alt="service-icon"
                 width="100%"
                 height="100%"
