@@ -1,10 +1,8 @@
 import { useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import styled from 'styled-components';
-
 import Projects from '../../components/Projects';
 import { media } from '../../styles/theme';
-
 import { projects } from './projects';
 
 export default function ProjectList() {
@@ -24,20 +22,8 @@ export default function ProjectList() {
         모든 작업물<sup>{projects.length}</sup>
       </Title>
       <Boxes>
-        <Projects expanded={expanded} />
+        <Projects />
       </Boxes>
-      <div
-        className="button button__green"
-        role="button"
-        onClick={onClickExpandButton}
-        onKeyDown={() => {}}
-        tabIndex={0}
-      >
-        {expanded ? '접기' : '더보기'}
-        <div className={`button--img ${expanded ? 'button--img__usd' : ''}`}>
-          <ArrowDownGreen />
-        </div>
-      </div>
     </ProjectSection>
   );
 }
