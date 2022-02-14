@@ -94,7 +94,6 @@ const Container = styled.div`
       align-items: center;
     }
     .desc {
-      font-weight: bold;
       font-size: 3.6rem;
       line-height: 4.8rem;
       text-transform: uppercase;

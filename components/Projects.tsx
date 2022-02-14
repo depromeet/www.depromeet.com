@@ -24,6 +24,7 @@ const Projects: FC<ProjectsProps> = ({ isMainPage = false }) => {
     visible: false,
     index: 0,
   });
+
   const showProjectDialog = useCallback(
     (projectId: number) => {
       setDialogVisible({ visible: true, index: projectId });
