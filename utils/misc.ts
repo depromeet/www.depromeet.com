@@ -25,6 +25,8 @@ export const shareDepromeet = async () => {
   }
 };
 
+const applyFor11th = 'https://forms.gle/M41E7vSMdkpbHHKS6';
 export const openApplySite = () => {
-  alert('2022년 2월에 다시 돌아오겠습니다 😄😄');
+  // alert('2022년 2월에 다시 돌아오겠습니다 😄😄');
+  window.open(applyFor11th);
 };
