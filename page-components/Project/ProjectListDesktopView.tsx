@@ -1,46 +1,83 @@
-import { useState, useCallback } from 'react';
-import dynamic from 'next/dynamic';
+import { useState } from 'react';
 import styled from 'styled-components';
-
-import Projects from '../../components/Projects';
+import Image from 'next/image';
+import ProjectDialog from '../../components/ProjectDialog';
+import { PageMoveButton } from '../../public';
 import { media } from '../../styles/theme';
 
 import { projects } from './projects';
 
 export default function ProjectList() {
-  const [expanded, setExpanded] = useState(false);
+  const [page, setPage] = useState(0);
 
-  const onClickExpandButton = useCallback(() => {
-    setExpanded(!expanded);
-  }, [expanded]);
+  const PROJECTS_PER_PAGE = 6;
 
-  const ArrowDownGreen = dynamic(
-    () => import('../../resources/images/arrow_down_green.svg')
-  );
+  const [dialogVisible, setDialogVisible] = useState({
+    visible: false,
+    index: 0,
+  });
+
+  const showProjectDialog = (projectId: number) => {
+    setDialogVisible({ visible: true, index: projectId });
+  };
 
   return (
     <ProjectSection>
       <Title>
         모든 작업물<sup>{projects.length}</sup>
       </Title>
-      <Boxes>
-        <Projects expanded={expanded} />
-      </Boxes>
-      <div
-        className="button button__green"
-        role="button"
-        onClick={onClickExpandButton}
-        onKeyDown={() => {}}
-        tabIndex={0}
-      >
-        {expanded ? '접기' : '더보기'}
-        <div className={`button--img ${expanded ? 'button--img__usd' : ''}`}>
-          <ArrowDownGreen />
-        </div>
-      </div>
+
+      <ProjectImageWrapper>
+        {page > 0 && (
+          <LeftButton onClick={() => setPage((prev) => prev - 1)}>
+            <PageMoveButton />
+          </LeftButton>
+        )}
+        {page < projects.length / PROJECTS_PER_PAGE - 1 && (
+          <RightButton onClick={() => setPage((prev) => prev + 1)}>
+            <PageMoveButton />
+          </RightButton>
+        )}
+        {projects
+          .slice(PROJECTS_PER_PAGE * page, PROJECTS_PER_PAGE * (page + 1))
+          .map(({ order, thumbnail }) => (
+            <Image
+              key={thumbnail}
+              src={`/projects/${thumbnail}`}
+              width="100%"
+              height="218px"
+              loading="lazy"
+              onClick={() => showProjectDialog(order - 1)}
+            />
+          ))}
+      </ProjectImageWrapper>
+      <ProjectDialog visible={dialogVisible} setVisible={setDialogVisible} />
     </ProjectSection>
   );
 }
+
+const LeftButton = styled.div`
+  position: absolute;
+  top: 50%;
+  left: -70px;
+  transform: translateY(-50%);
+  cursor: pointer;
+`;
+
+const RightButton = styled(LeftButton)`
+  left: 0;
+
+  right: -70px;
+  transform: translateY(-50%) rotate(180deg);
+`;
+
+const ProjectImageWrapper = styled.div`
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 24px 29.5px;
+`;
 
 const ProjectSection = styled.div`
   display: flex;
@@ -78,10 +115,6 @@ const ProjectSection = styled.div`
       }
     }
   }
-`;
-
-const Boxes = styled.div`
-  margin-bottom: 5.6rem;
 `;
 
 const Title = styled.h1`

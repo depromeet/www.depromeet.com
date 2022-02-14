@@ -7,6 +7,7 @@ interface Project {
   description: string;
   image: string;
   icon: string;
+  thumbnail: string;
   ios?: string;
   android?: string;
   web?: string;
@@ -27,8 +28,9 @@ export const projects: readonly Project[] = [
       'https://play.google.com/store/apps/details?id=com.def.everybody_android',
     image: 'details/noonbody.svg',
     icon: 'icons/noonbody.svg',
+    thumbnail: 'thumbnails/noonbody.svg',
     designers: ['심준연', '박정연', '조혜림'],
-    frontends: ['윤예지', '안유경(IOS)'],
+    frontends: ['윤예지', '안유경(iOS)'],
     backends: ['유기태', '박진수', '안태건'],
   },
   {
@@ -43,6 +45,10 @@ export const projects: readonly Project[] = [
     android: 'https://play.google.com/store/apps/details?id=com.dpm.imgoing',
     image: 'details/imgoing.svg',
     icon: 'icons/imgoing.svg',
+    thumbnail: 'thumbnails/imgoing.svg',
+    backends: ['송정우', '이유진', '황종훈'],
+    designers: ['김고은', '곽진', '이여빈'],
+    frontends: ['이은성', '유경상', '안은결(iOS)'],
   },
   {
     order: 3,
@@ -58,6 +64,10 @@ export const projects: readonly Project[] = [
     ios: 'https://apps.apple.com/kr/app/%EB%B9%A1%EC%93%B0/id1597106306',
     image: 'details/bboxx.svg',
     icon: 'icons/bboxx.svg',
+    thumbnail: 'thumbnails/bboxx.svg',
+    backends: ['김수빈', '박중수', '이경석'],
+    designers: ['이지은', '김소연'],
+    frontends: ['김은우', '이근나(iOS)', '이중근', '구해린(Android)'],
   },
   {
     order: 4,
@@ -71,6 +81,10 @@ export const projects: readonly Project[] = [
 
     image: 'details/나나공.svg',
     icon: 'icons/나나공.svg',
+    thumbnail: 'thumbnails/나나공.svg',
+    backends: ['변구훈', '김율희', '신동빈'],
+    designers: ['임효연', '이종찬', '박준영'],
+    frontends: ['신한섭', '임승혁(iOS)', '최철훈', '이지훈(Android)'],
   },
   {
     order: 5,
@@ -83,6 +97,10 @@ export const projects: readonly Project[] = [
     ios: 'https://apps.apple.com/kr/app/archive/id1599941822',
     image: 'details/archive.svg',
     icon: 'icons/archive.svg',
+    thumbnail: 'thumbnails/archive.svg',
+    backends: ['김보배', '김준석', '배연주'],
+    designers: ['이경주', '이송민', '정미숙'],
+    frontends: ['이한위', '임승혁(iOS)'],
   },
   {
     order: 6,
@@ -94,9 +112,12 @@ export const projects: readonly Project[] = [
     여러분이 알고있는 빵집을 모두와 함께 공유하여 빵을 즐겨요!`,
     android:
       'https://play.google.com/store/apps/details?id=app.daedongbread.twa',
-
     image: 'details/대동빵지도.svg',
     icon: 'icons/대동빵지도.svg',
+    thumbnail: 'thumbnails/대동빵지도.svg',
+    backends: ['김보배', '김준석', '배연주'],
+    designers: ['이경주', '이송민', '정미숙'],
+    frontends: ['이한위', '임승혁(iOS)'],
   },
   {
     order: 7,
@@ -108,6 +129,10 @@ export const projects: readonly Project[] = [
     web: 'https://ohmebddeng.kr/',
     image: 'details/오맵땡.svg',
     icon: 'icons/오맵땡.svg',
+    thumbnail: 'thumbnails/오맵땡.svg',
+    backends: ['김성민', '공채원', '이혜연'],
+    designers: ['이가인', '정은주', '김영환'],
+    frontends: ['이성용', '홍영준', '김문희', '김은수(Web)'],
   },
   {
     order: 8,
@@ -121,6 +146,10 @@ export const projects: readonly Project[] = [
     ios: 'https://apps.apple.com/kr/app/bodymood/id1588818384',
     image: 'details/bodymood.svg',
     icon: 'icons/bodymood.svg',
+    thumbnail: 'thumbnails/bodymood.svg',
+    backends: ['이유진', '강승호', '전혜수'],
+    designers: ['권진혁', '남수진', '박서진'],
+    frontends: ['허예은', '조기현(iOS)', '오기환', '이민현(Android)'],
   },
   {
     order: 9,
@@ -134,6 +163,10 @@ export const projects: readonly Project[] = [
     web: 'https://omo-deployment.vercel.app/',
     image: 'details/omo.svg',
     icon: 'icons/omo.svg',
+    thumbnail: 'thumbnails/omo.svg',
+    backends: ['윤영', '이승윤'],
+    designers: ['이병호', '조어진', '구세빈'],
+    frontends: ['박종호', '이강열', '김효진(Web)'],
   },
   {
     order: 10,
@@ -147,6 +180,10 @@ export const projects: readonly Project[] = [
 
     image: 'details/영차.svg',
     icon: 'icons/영차.svg',
+    thumbnail: 'thumbnails/영차.svg',
+    backends: ['박영준', '강승호'],
+    designers: ['이병호', '이윤이', '민윤기'],
+    frontends: ['유현식', '이현호(iOS)', '장명준', '강승호(Android)'],
   },
   {
     order: 11,
@@ -160,6 +197,10 @@ export const projects: readonly Project[] = [
     android: 'https://play.google.com/store/apps/details?id=kr.tooni.tooni',
     image: 'details/tooni.svg',
     icon: 'icons/tooni.svg',
+    thumbnail: 'thumbnails/tooni.svg',
+    backends: ['박세종', '강승호'],
+    designers: ['여해주', '김나영'],
+    frontends: ['문지윤', '김승진(iOS)', '이오형', '이정민', '최현정(Android)'],
   },
   {
     order: 12,
@@ -173,6 +214,10 @@ export const projects: readonly Project[] = [
     ios: 'https://apps.apple.com/kr/app/%EB%A7%88%EC%9D%B4%EB%A0%88%EC%8B%9C%ED%94%BD/id1569961091?fbclid=IwAR2Bu-JPXUcUiCY6dUPv6kq2KwoD97p8jl2Rf2lqY_o59pyKQbHVccPweOE',
     image: 'details/마이레시픽.svg',
     icon: 'icons/마이레시픽.svg',
+    thumbnail: 'thumbnails/마이레시픽.svg',
+    backends: ['이기승', '이예린'],
+    designers: ['정진아', '부자영'],
+    frontends: ['정진용', '김서진(iOS)', '이한위', '김성민(Android)'],
   },
   {
     order: 13,
@@ -186,6 +231,10 @@ export const projects: readonly Project[] = [
     web: 'https://todaytest.netlify.app/',
     image: 'details/오늘의테스트.svg',
     icon: 'icons/오늘의테스트.svg',
+    thumbnail: 'thumbnails/오늘의테스트.svg',
+    backends: ['이규원', '백선혜', '장효택'],
+    designers: ['노은종', '이슬이'],
+    frontends: ['최재은', '천승아', '정현정(Web)'],
   },
   {
     order: 14,
@@ -200,6 +249,10 @@ export const projects: readonly Project[] = [
     web: 'www.hush-it.com',
     image: 'details/hush.svg',
     icon: 'icons/hush.svg',
+    thumbnail: 'thumbnails/hush.svg',
+    backends: ['이경석', '오민석', '최은석'],
+    designers: ['심준연', '임효연', '박소진'],
+    frontends: ['한영수', '정진리', '이윤현(Web)'],
   },
   {
     order: 15,
@@ -213,6 +266,10 @@ export const projects: readonly Project[] = [
     동기부여를 가질 수 있는 귀여운 문구들을 제공합니다.`,
     image: 'details/링크줍줍.svg',
     icon: 'icons/링크줍줍.svg',
+    thumbnail: 'thumbnails/링크줍줍.svg',
+    backends: ['최예진', '오준석'],
+    designers: ['박은지', '김영환'],
+    frontends: ['권지혜', '조수환(iOS)', '이민수', '김나경(Android)'],
   },
   {
     order: 16,
@@ -224,6 +281,10 @@ export const projects: readonly Project[] = [
     제로우쥬모두가 할 수 있지만 누구나 하지 않는 제로웨이스트,단순히 환경 윤리적 책임으로 수행하는 것이 아닌친 환경 활동을 게임처럼 즐기고 인증 뱃지를 모으는 서비스에요.`,
     image: 'details/제로우쥬.svg',
     icon: 'icons/제로우쥬.svg',
+    thumbnail: 'thumbnails/제로우쥬.svg',
+    backends: ['권주희', '이경희'],
+    designers: ['김민효', '방유진', '김종훈'],
+    frontends: ['국윤수', '한상진(iOS)', '황견주', '진승언(Android)'],
   },
   {
     order: 17,
@@ -235,6 +296,10 @@ export const projects: readonly Project[] = [
     내가 원하는 책으로 스터디 참여, 재미있고 효율적인 스터디 관리를 통해 크래커를 먹듯이 쉽고 재밌게 북 스터디에 빠져들 수 있습니다.`,
     image: 'details/크래커북.svg',
     icon: 'icons/크래커북.svg',
+    thumbnail: 'thumbnails/크래커북.svg',
+    backends: ['김민태', '이유진', '김준홍'],
+    designers: ['이경주', '손주리'],
+    frontends: ['유상원', '이성용', '지주연(Web)'],
   },
   {
     order: 18,
@@ -245,6 +310,7 @@ export const projects: readonly Project[] = [
     description: `'3대 얼마'는 보디빌딩 3대 종목인 벤치프레스, 데드리프트, 스쿼트의 총 합 무게를 증명하는 공간입니다. 점진적 과부화를 위해 꾸준한 3대 기록으로 근육을 성장시키고 서로 피드백을 받아 헬스 친구를 만들 수 있습니다.`,
     image: 'details/3대얼마.svg',
     icon: 'icons/3대얼마.svg',
+    thumbnail: 'thumbnails/3대얼마.svg',
   },
   {
     order: 19,
@@ -259,6 +325,7 @@ export const projects: readonly Project[] = [
 
     image: 'details/가슴속3천원.svg',
     icon: 'icons/가슴속3천원.svg',
+    thumbnail: 'thumbnails/가슴속3천원.svg',
   },
   {
     order: 20,
@@ -270,6 +337,7 @@ export const projects: readonly Project[] = [
 
     image: 'details/북쪽으로.svg',
     icon: 'icons/북쪽으로.svg',
+    thumbnail: 'thumbnails/북쪽으로.svg',
   },
   {
     order: 21,
@@ -282,6 +350,7 @@ export const projects: readonly Project[] = [
 
     image: 'details/avocado.svg',
     icon: 'icons/avocado.svg',
+    thumbnail: 'thumbnails/avocado.svg',
   },
   {
     order: 22,
@@ -294,6 +363,7 @@ export const projects: readonly Project[] = [
 
     image: 'details/therto.svg',
     icon: 'icons/therto.svg',
+    thumbnail: 'thumbnails/therto.svg',
   },
   {
     order: 23,
@@ -307,6 +377,7 @@ export const projects: readonly Project[] = [
 
     image: 'details/쿨피스.svg',
     icon: 'icons/쿨피스.svg',
+    thumbnail: 'thumbnails/쿨피스.svg',
   },
   {
     order: 24,
@@ -319,6 +390,7 @@ export const projects: readonly Project[] = [
 
     image: 'details/칼퇴요정.svg',
     icon: 'icons/칼퇴요정.svg',
+    thumbnail: 'thumbnails/칼퇴요정.svg',
   },
   {
     order: 25,
@@ -333,6 +405,7 @@ export const projects: readonly Project[] = [
     web: 'https://depromeet.github.io/8th-final-3team-front/',
     image: 'details/아무거나.svg',
     icon: 'icons/아무거나.svg',
+    thumbnail: 'thumbnails/아무거나.svg',
   },
   {
     order: 26,
@@ -343,5 +416,6 @@ export const projects: readonly Project[] = [
     description: `이모티콘 퀴즈를 통해 자신의 인싸력을 테스트해보세요. 다맞추면 진정한 인싸!`,
     image: 'details/뜻밖의퀴즈.svg',
     icon: 'icons/뜻밖의퀴즈.svg',
+    thumbnail: 'thumbnails/뜻밖의퀴즈.svg',
   },
 ];

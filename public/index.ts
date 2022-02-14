@@ -22,3 +22,5 @@ export { default as MainPageIcon1 } from './main-page-icon-1.svg';
 export { default as MainPageIcon2 } from './main-page-icon-2.svg';
 
 export { default as Below } from './below.svg';
+
+export { default as PageMoveButton } from './ic_left_default.svg';
