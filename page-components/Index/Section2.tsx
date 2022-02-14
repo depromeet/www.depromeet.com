@@ -77,12 +77,12 @@ const Container = styled.div`
   justify-content: center;
   align-items: stretch;
 
-  margin-top: 200px;
+  margin-top: 400px;
 
   ${media.mobile} {
     flex-direction: column;
     height: 411px;
-    margin-top: 153px;
+    margin-top: 300px;
   }
 `;
 
