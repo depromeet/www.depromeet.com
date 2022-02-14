@@ -31,26 +31,51 @@ const Projects: FC<ProjectsProps> = ({ isMainPage = false }) => {
     },
     [setDialogVisible]
   );
+  const [page, setPage] = useState(0);
+  const PROJECTS_PER_PAGE = 6;
 
   return (
     <>
       <Container isMainPage={isMainPage}>
-        <LeftArrow>{/* <img src="/left-arrow.svg" /> */}</LeftArrow>
+        {page > 0 && (
+          <LeftArrow
+            style={{ cursor: 'pointer' }}
+            src={`/ic_left_default.svg`}
+            alt="go to next project"
+            onClick={() => setPage((prev) => prev - 1)}
+          />
+        )}
+        {page < projects.length / PROJECTS_PER_PAGE - 1 && (
+          <RightArrow
+            style={{ cursor: 'pointer' }}
+            src={`/ic_right_default.svg`}
+            alt="go to next project"
+            onClick={() => setPage((prev) => prev + 1)}
+          />
+        )}
         <div className="wrapper no-scroll-bar">
-          {projects.map((data) => (
-            <ProjectSummary
-              role="button"
-              tabIndex={0}
-              key={`projects-item-${data.order}`}
-              onClick={() => showProjectDialog(data.order - 1)}
-              isMainPage={isMainPage}
-            >
-              <div className="project--icon-wrapper">
-                <Icon path={data.icon} />
-                <Overlay role="button" />
-              </div>
-            </ProjectSummary>
-          ))}
+          {projects
+            .slice(PROJECTS_PER_PAGE * page, PROJECTS_PER_PAGE * (page + 1))
+            .map(({ order, title, image }) => (
+              <ProjectSummary
+                role="button"
+                tabIndex={0}
+                key={`projects-item-${order}`}
+                onClick={() => showProjectDialog(order - 1)}
+                isMainPage={isMainPage}
+              >
+                <div className="project--icon-wrapper">
+                  <Image
+                    className="project--icon-wrapper project--icon"
+                    src={`/projects/${image}`}
+                    loading="lazy"
+                    alt={`${title}-icon`}
+                    layout="fill"
+                  />
+                  <Overlay role="button" />
+                </div>
+              </ProjectSummary>
+            ))}
         </div>
         <ProjectDialog visible={dialogVisible} setVisible={setDialogVisible} />
       </Container>
@@ -58,16 +83,20 @@ const Projects: FC<ProjectsProps> = ({ isMainPage = false }) => {
   );
 };
 
-const Icon = ({ path }) => {
+const Icon = ({ 서비스명, imageFileName }) => {
   return (
     <Image
       className="project--icon-wrapper project--icon"
-      src={`/projects/${path}`}
-      alt="service-icon"
-      width="170px"
-      height="170px"
+      src={`/projects/icons/${imageFileName}`}
+      loading="lazy"
+      alt={`${서비스명}-icon`}
+      layout="fill"
     />
   );
+};
+const MemoizedIcon = ({ data }) => {
+  const ProjectIcon = useMemo(() => data.icon(), [data]);
+  return <ProjectIcon className="project--icon" />;
 };
 
 const Container = styled.div<ProjectsProps>`
@@ -131,17 +160,20 @@ const Overlay = styled.div`
   }
 `;
 
-const LeftArrow = styled.button`
+const LeftArrow = styled.img`
   position: absolute;
-  top: 180px;
-  left: -60px;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background-color: #fff;
-  /* background: url('/left-arrow.svg') center no-repeat; */
-  opacity: 0.2;
-  border: none;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -70px;
+  cursor: pointer;
+`;
+
+const RightArrow = styled.img`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -70px;
+  cursor: pointer;
 `;
 
 export default Projects;
