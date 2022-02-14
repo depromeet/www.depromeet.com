@@ -3,8 +3,11 @@ import styled from 'styled-components';
 import TextAnimation from '../../components/TextAnimation';
 import Projects from '../../components/Projects';
 import { media } from '../../styles/theme';
+import { useRouter } from 'next/router';
 
 export default function Section2() {
+  const router = useRouter();
+
   const summary = [
     { title: '탄생한지', value: '6년' },
     { title: '누적 멤버 수', value: '800명 +' },
@@ -36,6 +39,9 @@ export default function Section2() {
           </CatchPhrase>
           <Boxes>
             <Projects isMainPage />
+            <모든프로젝트구경하기 onClick={() => router.push('/project')}>
+              {'모든 프로젝트 구경하기 >'}
+            </모든프로젝트구경하기>
           </Boxes>
         </SecondColumn>
       </Container>
@@ -45,6 +51,23 @@ export default function Section2() {
 
 const Motion = styled.div`
   margin-top: 100px;
+`;
+
+const 모든프로젝트구경하기 = styled.button`
+  width: 200px;
+  height: 43px;
+
+  color: #fff;
+  background: linear-gradient(
+    126.6deg,
+    rgba(255, 255, 255, 0.16) 28.69%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  backdrop-filter: blur(135.254px);
+  border-radius: 67.5px;
+
+  font-size: 14px;
+  margin-top: 42px;
 `;
 
 const Container = styled.div`
