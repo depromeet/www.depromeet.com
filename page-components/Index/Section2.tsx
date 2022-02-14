@@ -3,12 +3,16 @@ import styled from 'styled-components';
 import TextAnimation from '../../components/TextAnimation';
 import Projects from '../../components/Projects';
 import { media } from '../../styles/theme';
+import { useRouter } from 'next/router';
 
 export default function Section2() {
+  const router = useRouter();
+
   const summary = [
     { title: '탄생한지', value: '6년' },
     { title: '누적 멤버 수', value: '800명 +' },
     { title: '런칭 앱', value: 'N개 +' },
+    { title: '이전 기수 \n런칭 성공률', value: '100%' },
   ];
 
   return (
@@ -36,6 +40,9 @@ export default function Section2() {
           </CatchPhrase>
           <Boxes>
             <Projects isMainPage />
+            <모든프로젝트구경하기 onClick={() => router.push('/project')}>
+              {'모든 프로젝트 구경하기 >'}
+            </모든프로젝트구경하기>
           </Boxes>
         </SecondColumn>
       </Container>
@@ -47,6 +54,23 @@ const Motion = styled.div`
   margin-top: 100px;
 `;
 
+const 모든프로젝트구경하기 = styled.button`
+  width: 200px;
+  height: 43px;
+
+  color: #fff;
+  background: linear-gradient(
+    126.6deg,
+    rgba(255, 255, 255, 0.16) 28.69%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  backdrop-filter: blur(135.254px);
+  border-radius: 67.5px;
+
+  font-size: 14px;
+  margin-top: 42px;
+`;
+
 const Container = styled.div`
   position: relative;
 
@@ -54,12 +78,12 @@ const Container = styled.div`
   justify-content: center;
   align-items: stretch;
 
-  margin-top: 200px;
+  margin-top: 400px;
 
   ${media.mobile} {
     flex-direction: column;
     height: 411px;
-    margin-top: 153px;
+    margin-top: 300px;
   }
 `;
 
@@ -112,9 +136,10 @@ const SummaryTitle = styled.div`
   ${media.mobile} {
     display: flex;
     flex-direction: column-reverse;
+    white-space: pre-wrap;
 
     font-size: 14px;
-    line-height: 16px;
+    line-height: 18px;
     text-align: center;
 
     :not(:first-child) {

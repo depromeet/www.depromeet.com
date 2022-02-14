@@ -12,8 +12,8 @@ import {
   calcMobileRowHeight,
   calcMobileMaxHeight,
 } from '../lib/projects_grid';
-import projectsData from '../resources/data/projects';
 import { media } from '../styles/theme';
+import { projects } from '../page-components/Project/projects';
 
 interface ProjectsProps {
   isMainPage?: boolean;
@@ -28,6 +28,7 @@ const Projects: FC<ProjectsProps> = ({
     visible: false,
     index: 0,
   });
+
   const showProjectDialog = useCallback(
     (projectId: number) => {
       setDialogVisible({ visible: true, index: projectId });
@@ -39,16 +40,16 @@ const Projects: FC<ProjectsProps> = ({
     <>
       <Container isMainPage={isMainPage} expanded={expanded}>
         <div className="wrapper no-scroll-bar">
-          {projectsData.map((data, index) => (
+          {projects.map((data) => (
             <ProjectSummary
               role="button"
               tabIndex={0}
-              key={`projects-item-${index}`}
-              onClick={() => showProjectDialog(index)}
+              key={`projects-item-${data.order}`}
+              onClick={() => showProjectDialog(data.order - 1)}
               isMainPage={isMainPage}
             >
               <div className="project--icon-wrapper">
-                <Icon data={data} />
+                <Icon path={data.icon} />
                 <Overlay role="button" />
               </div>
               <div className="project--title">{isMainPage || data.title}</div>
@@ -61,23 +62,16 @@ const Projects: FC<ProjectsProps> = ({
   );
 };
 
-const Icon = ({ data }) => {
-  if (typeof data.icon === 'string') {
-    return (
-      <Image
-        className="project--icon-wrapper project--icon"
-        src={data.icon}
-        loading="lazy"
-        alt={`${data.title}-icon`}
-        layout="fill"
-      />
-    );
-  }
-  return <MemoizedIcon data={data} />;
-};
-const MemoizedIcon = ({ data }) => {
-  const ProjectIcon = useMemo(() => data.icon(), [data]);
-  return <ProjectIcon className="project--icon" />;
+const Icon = ({ path }) => {
+  return (
+    <Image
+      className="project--icon-wrapper project--icon"
+      src={`/projects/${path}`}
+      alt="service-icon"
+      width="170px"
+      height="170px"
+    />
+  );
 };
 
 const Container = styled.div<ProjectsProps>`

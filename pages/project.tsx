@@ -1,35 +1,52 @@
 import React from 'react';
-
 import styled from 'styled-components';
-import { Footer } from '../components';
 
+import { Footer } from '../components';
 import TransparentHeader from '../components/TransparentHeader';
-import ProjectList from '../page-components/Project/ProjectList';
+import { DeviceContextProvider } from '../contexts/device';
+import DeviceSwitcher from '../page-components/Project/DeviceSwitcher';
+import ProjectListDesktopView from '../page-components/Project/ProjectListDesktopView';
+import ProjectListMobileView from '../page-components/Project/ProjectListMobileView';
 import ScheduleList from '../page-components/Project/ScheduleList';
 
 import { media } from '../styles/theme';
 
-const Project = () => (
-  <div className="no-scroll-bar" style={{ overflow: 'scroll' }}>
-    <Background />
+const Project = () => {
+  return (
+    <DeviceContextProvider>
+      <div className="no-scroll-bar" style={{ overflow: 'scroll' }}>
+        <Background />
 
-    <TransparentHeader />
+        <TransparentHeader />
 
-    <Container>
-      <div>
-        <Catchphrase>
-          <p>서비스 런칭부터 개선까지</p>
-          <p>
-            <b>경험에 성장을 더합니다.</b>
-          </p>
-        </Catchphrase>
-        <ProjectList />
-        <ScheduleList />
+        <Container>
+          <div>
+            <Catchphrase>
+              <p>서비스 런칭부터 개선까지</p>
+              <p>
+                <b>경험에 성장을 더합니다.</b>
+              </p>
+            </Catchphrase>
+            <DeviceSwitcher>
+              {({ device }) => (
+                <>
+                  {device === 'mobile' ? (
+                    <ProjectListMobileView />
+                  ) : (
+                    <ProjectListDesktopView />
+                  )}
+                </>
+              )}
+            </DeviceSwitcher>
+
+            <ScheduleList />
+          </div>
+        </Container>
+        <Footer />
       </div>
-    </Container>
-    <Footer />
-  </div>
-);
+    </DeviceContextProvider>
+  );
+};
 
 const Background = styled.div`
   z-index: -1;
@@ -50,13 +67,13 @@ const Container = styled.div`
   align-items: center;
 
   background-color: transparent;
-  margin: 300px 0 340px 0;
+  margin: 240px 0 340px 0;
   padding: 0 24px;
 
   ${media.mobile} {
     box-sizing: border-box;
 
-    margin: 300px 0 240px 0;
+    margin: 240px 0 240px 0;
     width: 100%;
   }
 `;
@@ -68,12 +85,13 @@ const Catchphrase = styled.div`
   line-height: 5.6rem;
   letter-spacing: -0.03em;
   color: #ffffff;
-  margin-bottom: 7.8rem;
+  margin-bottom: 78px;
 
   ${media.mobile} {
     font-weight: 300;
     font-size: 2.8rem;
     line-height: 4rem;
+    margin-bottom: 48px;
   }
 
   b {

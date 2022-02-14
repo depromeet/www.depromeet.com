@@ -41,7 +41,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding-bottom: 18.6rem;
+  padding-bottom: 30rem;
 
   background: linear-gradient(180deg, rgba(61, 99, 241, 0) 0%, #3d63f2 100%);
 

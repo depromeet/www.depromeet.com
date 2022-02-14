@@ -6,7 +6,7 @@ export interface ProjectData {
   catchphrase?: string;
   generation: number;
   team?: string;
-  desingers?: string[];
+  designers?: string[];
   backends?: string[];
   frontends?: string[];
   image: LazyLoadableImage | string;

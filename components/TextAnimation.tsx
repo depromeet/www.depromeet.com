@@ -21,14 +21,14 @@ const TextAnimation = () => {
       scrollTrigger: {
         scrub: 1,
       },
-      x: 1000,
+      x: 400,
       duration: 1,
     };
 
     gsap.to(text1.current, config);
     gsap.to(text2.current, {
       ...config,
-      x: -1000,
+      x: -400,
     });
   }, []);
 
@@ -169,17 +169,17 @@ const Container = styled.div`
       display: flex;
       align-items: center;
       width: 60px;
-
       margin: 0 4rem;
+
       &.left {
         transform: rotate(180deg);
       }
+
       ${media.mobile} {
-        width: 30px;
         display: flex;
-        width: 5.3rem;
         height: 4.4rem;
-        margin: 0 2rem;
+        width: 30px;
+        margin: 0 1.2rem;
         align-items: center;
       }
     }

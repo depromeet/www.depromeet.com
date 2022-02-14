@@ -26,7 +26,6 @@ import {
   iconGoogleStore,
   iconWebLink,
 } from '../resources/images';
-import projectsData from '../resources/data/projects';
 import { media } from '../styles/theme';
 import {
   getContentItemPosition,
@@ -40,6 +39,7 @@ import {
   getContentGap,
 } from '../lib/project_detail';
 import dynamic from 'next/dynamic';
+import { projects } from '../page-components/Project/projects';
 
 interface ProjectDialogVisibleArg {
   visible: boolean;
@@ -47,9 +47,9 @@ interface ProjectDialogVisibleArg {
 }
 interface ProjectDialogProps {
   visible: ProjectDialogVisibleArg;
-  // eslint-disable-next-line no-unused-vars
   setVisible: (arg: ProjectDialogVisibleArg) => void;
 }
+
 const ProjectDialog: FC<ProjectDialogProps> = (props) => {
   const [isClientSide, setClientSide] = useState(false);
   const { visible } = props;
@@ -137,13 +137,13 @@ const ProjectsDialogContents: FC<ProjectContentsProps> = ({
     <>
       <FixedSizeList
         className="no-scroll-bar"
-        itemCount={projectsData.length}
+        itemCount={projects.length}
         layout="horizontal"
         height={`${getResponsiveContentHeight(width)}rem`}
         width={width}
         itemSize={getResponsiveContentWidth(width) * 10}
         ref={scrollRef}
-        itemData={projectsData}
+        itemData={projects}
         style={{
           overflowY: 'hidden',
           overflowX: isMobile(width) ? 'scroll' : 'hidden',
@@ -218,7 +218,7 @@ const AppImage: FC<{ data: ProjectData; src?: string }> = ({ data, src }) => {
     return (
       <div className="app-image">
         <Image
-          src={src || data.image}
+          src={src || `/projects/${data.image}`}
           loading="lazy"
           alt={`${data.title}`}
           layout="fill"
@@ -242,11 +242,10 @@ const Icon: FC<{ data: ProjectData } & HTMLAttributes<HTMLDivElement>> = ({
         ? () => (
             <div className="app-icon">
               <Image
-                src={typeof data.icon === 'string' && data.icon}
-                loading="lazy"
+                src={typeof data.icon === 'string' && `/projects/${data.icon}`}
                 alt={`${data.title}`}
-                layout="fill"
-                objectFit="scale-down"
+                width="100%"
+                height="100%"
               />
             </div>
           )
@@ -291,7 +290,6 @@ const ProjectItem: FC<ProjectDataProps> = ({
       {isMobile(windowWidth) || (
         <div className="image ">
           <AppImage data={projectData} />
-          <div className="image-shadow" />
         </div>
       )}
       <div className="detail">
@@ -336,7 +334,7 @@ const ProjectItem: FC<ProjectDataProps> = ({
           <div className="detail--team-intro no-scroll-bar">
             <TeamMember
               job="designer"
-              member={projectData.desingers?.join(' ∙ ')}
+              member={projectData.designers?.join(' ∙ ')}
             />
             <TeamMember
               job="backend"
@@ -440,6 +438,7 @@ const LinkButton: FC<{ link?: string; className: string }> = ({
         role="button"
         tabIndex={0}
         onClick={() => (link !== '#' ? window.open(link) : null)}
+        style={{ fontSize: '12px' }}
       >
         {children}
       </div>
@@ -462,7 +461,7 @@ const ScrollController: FC<ScrollControllerProps> = ({
   const scrollToNext = useCallback(
     (e) => {
       e.stopPropagation();
-      setIndex((prev) => (prev < projectsData.length - 1 ? prev + 1 : prev));
+      setIndex((prev) => (prev < projects.length - 1 ? prev + 1 : prev));
     },
     [setIndex]
   );
@@ -500,7 +499,7 @@ const ScrollController: FC<ScrollControllerProps> = ({
       <ScrollIndicator
         tabIndex={0}
         onClick={scrollToNext}
-        disabled={index === projectsData.length - 1}
+        disabled={index === projects.length - 1}
         onMouseOver={() => setRightHover(true)}
         onMouseOut={() => setRightHover(false)}
       >
@@ -576,24 +575,11 @@ const ProjectDetail = styled.div<{ width: number }>`
     align-items: flex-end;
     position: relative;
     .app-image {
-      position: relative;
-      height: 37rem;
       width: 100%;
+      height: 100%;
     }
     ${media.mobile} {
       display: none;
-    }
-    .image-shadow {
-      position: absolute;
-      height: 19rem;
-      width: 100%;
-      bottom: 0;
-      z-index: -1;
-      background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0) 12.63%,
-        rgba(0, 0, 0, 0.9) 100%
-      );
     }
   }
 

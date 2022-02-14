@@ -6,7 +6,7 @@ const projectHealthNewbie: ProjectData = {
   catchphrase: '헬린이 철 들기 프로젝트',
   generation: 8,
   team: '2조',
-  desingers: ['김민효', '김종훈', '추지효'],
+  designers: ['김민효', '김종훈', '추지효'],
   backends: ['조민국', '최문경'],
   frontends: ['오기환 (iOS)', '유영평 (Android)', '황견주 (Android)'],
   description:
