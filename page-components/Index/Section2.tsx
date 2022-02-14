@@ -12,6 +12,7 @@ export default function Section2() {
     { title: '탄생한지', value: '6년' },
     { title: '누적 멤버 수', value: '800명 +' },
     { title: '런칭 앱', value: 'N개 +' },
+    { title: '이전 기수 런칭 성공률', value: '100%' },
   ];
 
   return (

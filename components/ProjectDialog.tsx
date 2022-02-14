@@ -290,7 +290,6 @@ const ProjectItem: FC<ProjectDataProps> = ({
       {isMobile(windowWidth) || (
         <div className="image ">
           <AppImage data={projectData} />
-          <div className="image-shadow" />
         </div>
       )}
       <div className="detail">
@@ -576,24 +575,11 @@ const ProjectDetail = styled.div<{ width: number }>`
     align-items: flex-end;
     position: relative;
     .app-image {
-      position: relative;
-      height: 37rem;
       width: 100%;
+      height: 100%;
     }
     ${media.mobile} {
       display: none;
-    }
-    .image-shadow {
-      position: absolute;
-      height: 19rem;
-      width: 100%;
-      bottom: 0;
-      z-index: -1;
-      background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0) 12.63%,
-        rgba(0, 0, 0, 0.9) 100%
-      );
     }
   }
 
