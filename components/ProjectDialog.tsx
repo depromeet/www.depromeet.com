@@ -218,7 +218,7 @@ const AppImage: FC<{ data: ProjectData; src?: string }> = ({ data, src }) => {
     return (
       <div className="app-image">
         <Image
-          src={src || data.image}
+          src={src || `/projects/${data.image}`}
           loading="lazy"
           alt={`${data.title}`}
           layout="fill"

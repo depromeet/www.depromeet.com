@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import Image from 'next/image';
-import { useCallback, useState } from 'react';
 import styled from 'styled-components';
+
 import ProjectDialog from '../../components/ProjectDialog';
 import { Below } from '../../public';
 
@@ -9,12 +10,6 @@ import { projects } from './projects';
 export default function ProjectListMobileView() {
   const [more, setMore] = useState(false);
 
-  /**
-   * NOTE(@jonghopark95)
-   *
-   * 상세 정보 모달을 출력하는 로직은 components/Projects 에서 가져왔습니다.
-   * 이는 추후에 상세 정보 모달을 수정하며 로직을 분리할 예정입니다.
-   */
   const [dialogVisible, setDialogVisible] = useState({
     visible: false,
     index: 0,
@@ -44,7 +39,7 @@ export default function ProjectListMobileView() {
                 height="100%"
                 onClick={() => showProjectDialog(order - 1)}
               />
-              <span>{서비스명}</span>
+              D<span>{서비스명}</span>
             </Item>
           ))}
       </ProjectContainer>
