@@ -439,6 +439,7 @@ const LinkButton: FC<{ link?: string; className: string }> = ({
         role="button"
         tabIndex={0}
         onClick={() => (link !== '#' ? window.open(link) : null)}
+        style={{ fontSize: '12px' }}
       >
         {children}
       </div>

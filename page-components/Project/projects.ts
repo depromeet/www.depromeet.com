@@ -29,7 +29,7 @@ export const projects: readonly Project[] = [
     icon: 'icons/noonbody.svg',
     designers: ['심준연', '박정연', '조혜림'],
     frontends: ['윤예지', '안유경(IOS)'],
-    backends: ['유기테', '박진수', '안태건'],
+    backends: ['유기태', '박진수', '안태건'],
   },
   {
     order: 2,

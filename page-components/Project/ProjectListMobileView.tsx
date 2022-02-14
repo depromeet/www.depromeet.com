@@ -42,7 +42,7 @@ export default function ProjectListMobileView() {
                 alt="service-icon"
                 width="100%"
                 height="100%"
-                onClick={() => showProjectDialog(order)}
+                onClick={() => showProjectDialog(order - 1)}
               />
               <span>{서비스명}</span>
             </Item>
