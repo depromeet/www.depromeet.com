@@ -5,7 +5,7 @@ const projectInsiderGame: ProjectData = {
   catchphrase: '인싸력을 키워주는 이모티콘 퀴즈',
   generation: 5,
   team: '',
-  desingers: ['양지윤'],
+  designers: ['양지윤'],
   frontends: ['김민우', '김성진', '유현식 (Android)'],
   description:
     '이모티콘 퀴즈를 통해 자신의 인싸력을 테스트해보세요. 다맞추면 진정한 인싸!',

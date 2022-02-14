@@ -5,7 +5,7 @@ import { Footer } from '../components';
 import TransparentHeader from '../components/TransparentHeader';
 import { DeviceContextProvider } from '../contexts/device';
 import DeviceSwitcher from '../page-components/Project/DeviceSwitcher';
-import ProjectList from '../page-components/Project/ProjectList';
+import ProjectListDesktopView from '../page-components/Project/ProjectListDesktopView';
 import ProjectListMobileView from '../page-components/Project/ProjectListMobileView';
 import ScheduleList from '../page-components/Project/ScheduleList';
 
@@ -33,7 +33,7 @@ const Project = () => {
                   {device === 'mobile' ? (
                     <ProjectListMobileView />
                   ) : (
-                    <ProjectList />
+                    <ProjectListDesktopView />
                   )}
                 </>
               )}

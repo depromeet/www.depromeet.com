@@ -6,7 +6,7 @@ const projectThereto: ProjectData = {
   generation: 6,
   team: '',
   backends: ['유현식'],
-  desingers: ['박은지', '김민경', '한지윤'],
+  designers: ['박은지', '김민경', '한지윤'],
   frontends: ['유현식 (iOS)'],
   description: `지금 여기, 이 공간에서 친구, 연인에게 편지를 써보세요. 친구는 내가 편지를
   쓴 공간에 가야만 편지를 열어볼 수 있습니다. 편지를 작성할 때 작성자의 위치도 편지에

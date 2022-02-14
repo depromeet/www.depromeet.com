@@ -3,8 +3,9 @@ import dynamic from 'next/dynamic';
 import styled from 'styled-components';
 
 import Projects from '../../components/Projects';
-import projectsData from '../../resources/data/projects';
 import { media } from '../../styles/theme';
+
+import { projects } from './projects';
 
 export default function ProjectList() {
   const [expanded, setExpanded] = useState(false);
@@ -20,7 +21,7 @@ export default function ProjectList() {
   return (
     <ProjectSection>
       <Title>
-        모든 작업물<sup>{projectsData.length}</sup>
+        모든 작업물<sup>{projects.length}</sup>
       </Title>
       <Boxes>
         <Projects expanded={expanded} />
@@ -52,7 +53,7 @@ const ProjectSection = styled.div`
     padding: 1.2rem 3rem;
     width: fit-content;
     position: relative;
-    display: ${projectsData.length > 12 ? 'flex' : 'none'};
+    display: ${projects.length > 12 ? 'flex' : 'none'};
     align-self: center;
     :hover {
       background-color: rgba(56, 227, 168, 0.3);
