@@ -100,7 +100,7 @@ export const projects: readonly Project[] = [
     thumbnail: 'thumbnails/archive.svg',
     backends: ['김보배', '김준석', '배연주'],
     designers: ['이경주', '이송민', '정미숙'],
-    frontends: ['이한위', '임승혁(iOS)'],
+    frontends: ['이한위'],
   },
   {
     order: 6,
@@ -115,9 +115,9 @@ export const projects: readonly Project[] = [
     image: 'details/대동빵지도.svg',
     icon: 'icons/대동빵지도.svg',
     thumbnail: 'thumbnails/대동빵지도.svg',
-    backends: ['김보배', '김준석', '배연주'],
-    designers: ['이경주', '이송민', '정미숙'],
-    frontends: ['이한위', '임승혁(iOS)'],
+    backends: ['이지은', '황지수', '이해인'],
+    designers: ['민윤기', '지예나', '이정민'],
+    frontends: ['김유진', '소석진', '김한철', '이재욱'],
   },
   {
     order: 7,
@@ -311,6 +311,9 @@ export const projects: readonly Project[] = [
     image: 'details/3대얼마.svg',
     icon: 'icons/3대얼마.svg',
     thumbnail: 'thumbnails/3대얼마.svg',
+    designers: ['김민효', '김종훈', '추지효'],
+    backends: ['조민국', '최문경'],
+    frontends: ['오기환 (iOS)', '유영평 (Android)', '황견주 (Android)'],
   },
   {
     order: 19,
@@ -326,6 +329,9 @@ export const projects: readonly Project[] = [
     image: 'details/가슴속3천원.svg',
     icon: 'icons/가슴속3천원.svg',
     thumbnail: 'thumbnails/가슴속3천원.svg',
+    backends: ['전해성', '손지수', '이유리'],
+    designers: ['이윤이', '양효정'],
+    frontends: ['유현식 (iOS)', '이윤지 (Android)'],
   },
   {
     order: 20,
@@ -338,6 +344,9 @@ export const projects: readonly Project[] = [
     image: 'details/북쪽으로.svg',
     icon: 'icons/북쪽으로.svg',
     thumbnail: 'thumbnails/북쪽으로.svg',
+    backends: ['김예슬', '손지수'],
+    designers: ['황예리', '정보영', '양정안'],
+    frontends: ['김지은 (iOS)', '이규현 (iOS)'],
   },
   {
     order: 21,
@@ -351,6 +360,9 @@ export const projects: readonly Project[] = [
     image: 'details/avocado.svg',
     icon: 'icons/avocado.svg',
     thumbnail: 'thumbnails/avocado.svg',
+    backends: ['하재권'],
+    designers: ['윤정민', '황예리'],
+    frontends: ['심재철', '심문성', '이정민 (Web)'],
   },
   {
     order: 22,
@@ -364,6 +376,9 @@ export const projects: readonly Project[] = [
     image: 'details/therto.svg',
     icon: 'icons/therto.svg',
     thumbnail: 'thumbnails/therto.svg',
+    backends: ['유현식'],
+    designers: ['박은지', '김민경', '한지윤'],
+    frontends: ['유현식 (iOS)'],
   },
   {
     order: 23,
@@ -378,6 +393,8 @@ export const projects: readonly Project[] = [
     image: 'details/쿨피스.svg',
     icon: 'icons/쿨피스.svg',
     thumbnail: 'thumbnails/쿨피스.svg',
+    designers: ['노경래', '서수민'],
+    frontends: ['유현식 (Android)'],
   },
   {
     order: 24,
@@ -391,6 +408,8 @@ export const projects: readonly Project[] = [
     image: 'details/칼퇴요정.svg',
     icon: 'icons/칼퇴요정.svg',
     thumbnail: 'thumbnails/칼퇴요정.svg',
+    designers: ['박은지', '김혜리'],
+    frontends: ['유현식 (Android)', '유은비 (Android)', '오기환 (iOS)'],
   },
   {
     order: 25,
@@ -406,6 +425,9 @@ export const projects: readonly Project[] = [
     image: 'details/아무거나.svg',
     icon: 'icons/아무거나.svg',
     thumbnail: 'thumbnails/아무거나.svg',
+    designers: ['노은종', '이윤이'],
+    frontends: ['곽소영', '유영평 (Android)', '이규현 (iOS)'],
+    backends: ['조민국'],
   },
   {
     order: 26,
@@ -417,5 +439,7 @@ export const projects: readonly Project[] = [
     image: 'details/뜻밖의퀴즈.svg',
     icon: 'icons/뜻밖의퀴즈.svg',
     thumbnail: 'thumbnails/뜻밖의퀴즈.svg',
+    designers: ['양지윤'],
+    frontends: ['김민우', '김성진', '유현식 (Android)'],
   },
 ];
