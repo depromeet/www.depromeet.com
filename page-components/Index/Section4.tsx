@@ -87,11 +87,7 @@ const ApplyButton = styled.button`
 
   width: 36.3rem;
   height: 5.4rem;
-  background: linear-gradient(
-    126.6deg,
-    rgba(255, 255, 255, 0.16) 28.69%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: rgba(255, 255, 255, 0.14);
   backdrop-filter: blur(120px);
 
   border-radius: 10px;

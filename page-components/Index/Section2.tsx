@@ -59,13 +59,10 @@ const 모든프로젝트구경하기 = styled.button`
   height: 43px;
 
   color: #fff;
-  background: linear-gradient(
-    126.6deg,
-    rgba(255, 255, 255, 0.16) 28.69%,
-    rgba(255, 255, 255, 0) 100%
-  );
+  background: #191919;
   backdrop-filter: blur(135.254px);
   border-radius: 67.5px;
+  border: none;
 
   font-size: 14px;
   margin-top: 42px;
