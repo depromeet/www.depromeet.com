@@ -3,13 +3,16 @@ import Image from 'next/image';
 import styled from 'styled-components';
 import { media } from '../styles/theme';
 
-const Mimoji: FC<HTMLAttributes<unknown> & { src: string; job: string }> = ({
-  src,
-  job,
-  color,
-  className,
-}) => (
-  <MimojiWrapper job={job} color={color} className={className}>
+type Props = {
+  src: string;
+  job: string;
+  color: string;
+  order: number;
+  className: string;
+};
+
+const Mimoji = ({ src, job, color, order, className }: Props) => (
+  <MimojiWrapper order={order} color={color} className={className}>
     <div className="mimoji--circle" />
     <div className="mimoji--job">{job}</div>
     <div className="mimoji--image">
@@ -26,7 +29,9 @@ const Mimoji: FC<HTMLAttributes<unknown> & { src: string; job: string }> = ({
   </MimojiWrapper>
 );
 
-const MimojiWrapper = styled.div<{ job: string; color: string }>`
+const isEvenOrder = (order: number) => order % 2 !== 0;
+
+const MimojiWrapper = styled.div<{ order: number; color: string }>`
   position: relative;
   text-transform: uppercase;
   background: transparent;
@@ -46,8 +51,8 @@ const MimojiWrapper = styled.div<{ job: string; color: string }>`
     &--image {
       z-index: 2;
       position: absolute;
-      right: ${({ job }) => (job === 'designer' ? '7.6rem' : '1.7rem')};
-      bottom: 2rem;
+      right: ${({ order }) => (isEvenOrder(order) ? '7.6rem' : '1.7rem')};
+      bottom: 3rem;
 
       ${media.mobile} {
         left: 0;
@@ -82,8 +87,8 @@ const MimojiWrapper = styled.div<{ job: string; color: string }>`
     &--job {
       z-index: 1;
       position: absolute;
-      left: ${({ job }) => (job === 'designer' ? '12.7rem' : '0.1rem')};
-      top: ${({ job }) => (job === 'designer' ? '7.5rem' : '7.9rem')};
+      left: ${({ order }) => (isEvenOrder(order) ? '12.7rem' : '0.1rem')};
+      top: ${({ order }) => (isEvenOrder(order) ? '6.5rem' : '6.9rem')};
       font-style: normal;
       font-weight: bold;
       font-size: 16px;
@@ -94,13 +99,13 @@ const MimojiWrapper = styled.div<{ job: string; color: string }>`
       background-color: white;
       border-radius: 7.65rem;
       padding: 1.2rem 2.4rem;
-      transform: ${({ job }) =>
-        job === 'designer' ? 'rotate(-4.63deg)' : 'rotate(2.3deg)'};
+      transform: ${({ order }) =>
+        isEvenOrder(order) ? 'rotate(-4.63deg)' : 'rotate(2.3deg)'};
       ${media.mobile} {
         z-index: 3;
         padding: 0.74rem 1.65rem;
-        transform: ${({ job }) =>
-          job === 'designer' ? 'rotate(5.16deg)' : 'rotate(-5.16deg)'};
+        transform: ${({ order }) =>
+          isEvenOrder(order) ? 'rotate(5.16deg)' : 'rotate(-5.16deg)'};
         left: unset;
         top: unset;
         bottom: 0.3rem;

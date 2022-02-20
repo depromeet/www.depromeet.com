@@ -2,38 +2,33 @@ import styled from 'styled-components';
 import { media } from '../styles/theme';
 import Mimoji from './mimoji';
 
-const StoryBox = ({ story }) => (
-  <Container>
-    {story.job === 'programmer' && (
-      <Mimoji
-        className="mimoji-wrapper"
-        src={story.mimoji}
-        job={story.job}
-        color={story.color}
-      />
-    )}
+const StoryBox = ({ story, order }) => (
+  <Container order={order}>
+    <Mimoji
+      className="mimoji-wrapper"
+      src={story.mimoji}
+      job={story.job}
+      color={story.color}
+      order={order}
+    />
     <Bubble job={story.job} color={story.color}>
       <div className="content no-scroll-bar">
         {story.content}
         <div className="content__person">{story.person}</div>
       </div>
     </Bubble>
-    {story.job === 'designer' && (
-      <Mimoji
-        className="mimoji-wrapper"
-        src={story.mimoji}
-        job={story.job}
-        color={story.color}
-      />
-    )}
   </Container>
 );
 
-const Container = styled.div`
-  display: flex;
-  margin-top: 7.6rem;
-  align-items: center;
+const isEvenOrder = (order: number) => order % 2 !== 0;
+
+const Container = styled.div<{ order: number }>`
   position: relative;
+  margin-top: 7.6rem;
+
+  display: flex;
+  flex-direction: ${({ order }) => isEvenOrder(order) && 'row-reverse'};
+  align-items: center;
 
   ${media.mobile} {
     margin-top: 9rem;

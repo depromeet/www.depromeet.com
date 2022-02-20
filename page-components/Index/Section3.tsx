@@ -15,7 +15,7 @@ export default function Section3() {
       </Title>
       <Boxes>
         {stories.map((story, idx) => (
-          <StoryBox key={idx.toString()} story={story} />
+          <StoryBox key={idx} story={story} order={idx} />
         ))}
       </Boxes>
     </Container>
