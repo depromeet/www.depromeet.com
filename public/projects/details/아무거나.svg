@@ -1,27 +1,15 @@
-<svg width="809" height="429" viewBox="0 0 809 429" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g filter="url(#filter0_d_628_15093)">
-<path d="M4.05469 36.4687C4.05469 16.5865 20.1724 0.46875 40.0547 0.46875H768.055C787.937 0.46875 804.055 16.5865 804.055 36.4688V420.469H4.05469V36.4687Z" fill="#2E2E2E"/>
-<mask id="mask0_628_15093" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="4" y="0" width="801" height="421">
-<path d="M4.05469 36.4687C4.05469 16.5865 20.1724 0.46875 40.0547 0.46875H768.055C787.937 0.46875 804.055 16.5865 804.055 36.4688V420.469H4.05469V36.4687Z" fill="url(#pattern0)"/>
+<svg width="801" height="421" viewBox="0 0 801 421" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<path d="M0.835938 36.3359C0.835938 16.4537 16.9537 0.335938 36.8359 0.335938H764.836C784.718 0.335938 800.836 16.4537 800.836 36.3359V420.336H0.835938V36.3359Z" fill="#2E2E2E"/>
+<mask id="mask0_628_15093" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="801" height="421">
+<path d="M0.835938 36.3359C0.835938 16.4537 16.9537 0.335938 36.8359 0.335938H764.836C784.718 0.335938 800.836 16.4537 800.836 36.3359V420.336H0.835938V36.3359Z" fill="url(#pattern0)"/>
 </mask>
 <g mask="url(#mask0_628_15093)">
-<rect x="4.05469" y="64.4688" width="200" height="356" fill="url(#pattern1)"/>
-<rect x="204.055" y="64.4688" width="200" height="356" fill="url(#pattern2)"/>
-<rect x="404.055" y="64.4688" width="200" height="356" fill="url(#pattern3)"/>
-<rect x="604.055" y="64.4688" width="200" height="356" fill="url(#pattern4)"/>
-</g>
+<rect x="0.835938" y="64.3359" width="200" height="356" fill="url(#pattern1)"/>
+<rect x="200.836" y="64.3359" width="200" height="356" fill="url(#pattern2)"/>
+<rect x="400.836" y="64.3359" width="200" height="356" fill="url(#pattern3)"/>
+<rect x="600.836" y="64.3359" width="200" height="356" fill="url(#pattern4)"/>
 </g>
 <defs>
-<filter id="filter0_d_628_15093" x="0.0546875" y="0.46875" width="808" height="428" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_628_15093"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_628_15093" result="shape"/>
-</filter>
 <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0_628_15093" transform="translate(0 -1.19262) scale(0.00236967 0.00451365)"/>
 </pattern>
