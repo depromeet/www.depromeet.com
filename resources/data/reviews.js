@@ -16,7 +16,7 @@ export const stories = [
       </div>
     ),
     color: '#316BFF',
-    mimoji: '/mimoji-sm.png',
+    mimoji: '/mimoji-lsm.png',
   },
   {
     person: '(박종호, Frontend Developer)',

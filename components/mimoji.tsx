@@ -55,9 +55,10 @@ const MimojiWrapper = styled.div<{ order: number; color: string }>`
       bottom: 3rem;
 
       ${media.mobile} {
+        z-index: 1000;
         left: 0;
         right: 0;
-        top: 0;
+        top: ${({ order }) => (isEvenOrder(order) ? '-20px' : '-10px')};
         bottom: 0;
         display: flex;
         justify-content: center;
