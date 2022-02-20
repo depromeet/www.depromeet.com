@@ -54,8 +54,8 @@ const Wrapper = styled.div`
 
 const RotateBackground = styled.div`
   position: absolute;
-  width: 20000px;
-  height: 20000px;
+  width: 4200px;
+  height: 4200px;
 
   background-image: conic-gradient(
     from 90deg at 50% 50%,
