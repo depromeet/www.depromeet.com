@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
@@ -17,8 +17,26 @@ const applyFor10th = 'https://forms.gle/wmu19EPksMhe633h6';
 
 const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
   const [visible, setVisible] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const scrollEventListener = () => {
+      const scrollY = window.scrollY ?? window.pageYOffset;
+
+      if (scrollY > 0) {
+        setIsScrolled(true);
+      } else if (scrollY < 20) {
+        setIsScrolled(false);
+      }
+    };
+    window.addEventListener('scroll', scrollEventListener, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', scrollEventListener);
+    };
+  }, []);
+
   return (
-    <Container isTransparent={isTransparent}>
+    <Container isScrolled={isScrolled}>
       <div role="button" tabIndex={0} className="logo">
         <Link href="/">
           <Logo />
@@ -107,9 +125,13 @@ const MenuButton = ({ isVisible, setVisible }) => {
   );
 };
 
-const Container = styled.div<BackgroundTransparentProps>`
+const Container = styled.div<{
+  isScrolled: boolean;
+}>`
   position: fixed;
-  background-color: transparent;
+  background-color: ${(props) =>
+    props.isScrolled ? 'rgba(0,0,0,.2)' : 'transparent'};
+  backdrop-filter: ${(props) => (props.isScrolled ? 'blur(4rem)' : '')};
   top: 0;
   left: 0;
   right: 0;
