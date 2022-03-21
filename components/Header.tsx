@@ -129,9 +129,7 @@ const Container = styled.div<{
   isScrolled: boolean;
 }>`
   position: fixed;
-  background-color: ${(props) =>
-    props.isScrolled ? 'rgba(0,0,0,.2)' : 'transparent'};
-  backdrop-filter: ${(props) => (props.isScrolled ? 'blur(4rem)' : '')};
+  background-color: ${(props) => (props.isScrolled ? '#000' : 'transparent')};
   top: 0;
   left: 0;
   right: 0;
