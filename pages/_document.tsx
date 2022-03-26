@@ -38,7 +38,7 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <meta charSet="utf-8" />
-          <link rel="shortcut icon" href="/favicon.svg" type="image/svg" />
+          <link rel="shortcut icon" href="/favicon.png" type="image/png" />
           <link
             href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
             rel="stylesheet"
