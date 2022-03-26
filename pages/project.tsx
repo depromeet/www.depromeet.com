@@ -17,7 +17,7 @@ const Project = () => {
       <div className="no-scroll-bar" style={{ overflow: 'scroll' }}>
         <Background />
 
-        <TransparentHeader />
+        <TransparentHeader changeHeaderBgHeight={200} />
 
         <Container>
           <div>

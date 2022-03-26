@@ -2,25 +2,24 @@ import { useCallback, useEffect, useState } from 'react';
 
 import { Header } from '../components';
 
-export default function TransparentHeader() {
-  const [isTransparent, setTransparent] = useState(true);
+type Props = {
+  changeHeaderBgHeight: number;
+};
+
+export default function TransparentHeader({ changeHeaderBgHeight }: Props) {
+  const [showHeaderBg, setShowHeaderBg] = useState(false);
 
   const handleScroll = useCallback(() => {
-    const yOffset = window?.pageYOffset;
-
-    if (yOffset === 0) {
-      setTransparent(true);
-    } else if (isTransparent) {
-      setTransparent(false);
-    }
-  }, [isTransparent, setTransparent]);
+    const scrollY = window.scrollY ?? window.pageYOffset;
+    setShowHeaderBg(scrollY > changeHeaderBgHeight);
+  }, []);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [handleScroll]);
+  }, []);
 
-  return <Header isTransparent={isTransparent} />;
+  return <Header showHeaderBg={showHeaderBg} />;
 }

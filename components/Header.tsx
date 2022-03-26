@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
@@ -10,33 +10,14 @@ import { openApplySite } from '../utils/misc';
 const Logo = dynamic(() => import('../public/gnb_logo.svg'));
 
 interface BackgroundTransparentProps {
-  isTransparent?: boolean;
+  showHeaderBg?: boolean;
 }
-// 11기 신청서 오픈 시 링크 수정
-const applyFor10th = 'https://forms.gle/wmu19EPksMhe633h6';
 
-const Header: FC<BackgroundTransparentProps> = ({ isTransparent = false }) => {
+const Header: FC<BackgroundTransparentProps> = ({ showHeaderBg = false }) => {
   const [visible, setVisible] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const scrollEventListener = () => {
-      const scrollY = window.scrollY ?? window.pageYOffset;
-
-      if (scrollY > 0) {
-        setIsScrolled(true);
-      } else if (scrollY < 20) {
-        setIsScrolled(false);
-      }
-    };
-    window.addEventListener('scroll', scrollEventListener, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', scrollEventListener);
-    };
-  }, []);
 
   return (
-    <Container isScrolled={isScrolled}>
+    <Container showHeaderBg={showHeaderBg}>
       <div role="button" tabIndex={0} className="logo">
         <Link href="/">
           <Logo />
@@ -126,10 +107,10 @@ const MenuButton = ({ isVisible, setVisible }) => {
 };
 
 const Container = styled.div<{
-  isScrolled: boolean;
+  showHeaderBg: boolean;
 }>`
   position: fixed;
-  background-color: ${(props) => (props.isScrolled ? '#000' : 'transparent')};
+  background-color: ${(props) => (props.showHeaderBg ? '#000' : 'transparent')};
   top: 0;
   left: 0;
   right: 0;
@@ -141,6 +122,8 @@ const Container = styled.div<{
   justify-content: space-around;
   box-sizing: border-box;
   z-index: 10;
+
+  transition: background-color 0.3s ease-in-out;
 
   ${media.mobile} {
     padding: 2.8rem 2.4rem;
