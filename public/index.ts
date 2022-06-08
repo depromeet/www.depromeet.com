@@ -6,10 +6,9 @@ export { default as GreenQuote2 } from './greenQuote2.svg';
 export { default as BlueQuote1 } from './blueQuote1.svg';
 export { default as BlueQuote2 } from './blueQuote2.svg';
 export { default as Meet } from './Group 1522.svg';
-export { default as Gmail } from './ic_gmail.svg';
-export { default as Kakao } from './ic_kakao.svg';
+
 export { default as DimmerDPMLogo } from './dpm-dimmer-logo.svg';
-export { default as Instagram } from './ic_instagram.svg';
+
 export { default as Memoji } from './Memoji.svg';
 export { default as T } from './T.svg';
 export { default as RightArrow } from './RightArrow.svg';
