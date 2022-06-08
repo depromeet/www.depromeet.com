@@ -1,4 +1,15 @@
 {
   "presets": ["next/babel"],
-  "plugins": [["styled-components", { "ssr": true, "displayName": true }]]
+  "plugins": [
+    [
+      "@emotion",
+      {
+        "sourceMap": true,
+        "autoLabel": "dev-only",
+        "labelFormat": "[local]",
+        "cssPropOptimization": true
+      }
+    ],
+    ["styled-components", { "ssr": true, "displayName": true }]
+  ]
 }
