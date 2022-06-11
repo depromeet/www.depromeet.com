@@ -19,8 +19,8 @@ export default function AnimatedText() {
   useEffect(() => {
     const options = { duration: 1, scrollTrigger: { scrub: 1 } };
 
-    gsap.to(firstLineRef.current, { ...options, x: 150 });
-    gsap.to(secondLineRef.current, { ...options, x: -150 });
+    gsap.to(firstLineRef.current, { ...options, x: 400 });
+    gsap.to(secondLineRef.current, { ...options, x: -400 });
   }, []);
 
   return (

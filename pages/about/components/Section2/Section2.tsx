@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 
 import AnimatedText from './AnimatedText';
-import Projects from './Projects';
 import Summary from './Summary';
 
 import { useRouter } from 'next/router';

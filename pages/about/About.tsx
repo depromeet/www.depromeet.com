@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 import { Header, Layout, Footer } from 'common/components';
 import { usePassed } from 'hooks';

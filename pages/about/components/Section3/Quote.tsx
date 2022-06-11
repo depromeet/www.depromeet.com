@@ -15,9 +15,7 @@ export default function Quote({ quote, order }: Props) {
   const device = useDeviceContext();
 
   return (
-    <Container device={device} css={{ flexDirection: order % 2 === 0 ? undefined : 'row-reverse' }}>
-      <Mimoji job={quote.job} color={quote.color} order={order} src={quote.mimoji} />
-
+    <Container device={device} css={order % 2 === 0 && { flexDirection: 'row-reverse' }}>
       <Bubble color={quote.color} device={device}>
         <Story
           device={device}
@@ -33,6 +31,8 @@ export default function Quote({ quote, order }: Props) {
           </Author>
         </Story>
       </Bubble>
+
+      <Mimoji job={quote.job} color={quote.color} order={order} src={quote.mimoji} />
     </Container>
   );
 }
