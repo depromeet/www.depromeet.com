@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 
 import { Header, Layout, Footer } from 'common/components';
+import { usePassed } from 'hooks';
 
 import { Section1, Section2, Section3, Section4 } from './components';
 
-// import TransparentHeader from '../components/TransparentHeader';
-
 export default function About() {
+  const passed = usePassed({ y: 950 });
+
   return (
-    <Layout header={<Header />} footer={<Footer />}>
+    <Layout header={<Header showBackground={passed} />} footer={<Footer />}>
       {() => (
         <Containers>
           <Section1 />
@@ -18,9 +19,6 @@ export default function About() {
         </Containers>
       )}
     </Layout>
-    //   <div className="no-scroll-bar" style={{ overflowX: 'scroll' }}>
-    //     <TransparentHeader changeHeaderBgHeight={950} />
-    //       <Section4 />
   );
 }
 
