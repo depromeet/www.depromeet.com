@@ -4,7 +4,7 @@ export default function SocialLinkButtonList() {
   return (
     <Container>
       {socials.map(({ name, href }) => (
-        <SocialLinkButton role="button" onClick={() => window.open(href)} tabIndex={0}>
+        <SocialLinkButton role="button" key={name} onClick={() => window.open(href)} tabIndex={0}>
           {name}
         </SocialLinkButton>
       ))}

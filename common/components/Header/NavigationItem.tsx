@@ -66,7 +66,7 @@ const itemMobileStyles = css`
     color: #fff;
   }
 
-  :first-child {
+  :first-of-type {
     margin-top: 0;
   }
 `;

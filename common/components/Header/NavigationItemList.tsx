@@ -6,6 +6,8 @@ import { Device, useDeviceContext } from 'contexts/device';
 import SocialLinkButtonList from './SocialLinkButtonList';
 import NavigationItem from './NavigationItem';
 
+import { googleFormLink } from 'utils/misc';
+
 type NavigationItem = {
   href: string;
   label: string;
@@ -33,8 +35,6 @@ export default function NavigationItemList({ children, className }: Props) {
     </NavigationItemContainer>
   );
 }
-
-const googleFormLink = 'https://forms.gle/M41E7vSMdkpbHHKS6';
 
 const NavigationReferences: NavigationItem[] = [
   {
