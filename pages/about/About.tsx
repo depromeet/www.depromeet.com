@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { Header, Layout, Footer } from 'common/components';
 
-import { Section1, Section2 } from './components';
+import { Section1, Section2, Section3 } from './components';
 
 // import TransparentHeader from '../components/TransparentHeader';
 
@@ -13,7 +13,7 @@ export default function About() {
         <Containers>
           <Section1 />
           <Section2 />
-          {/* <Section3 /> */}
+          <Section3 />
           {/* <Section4 /> */}
         </Containers>
       )}
