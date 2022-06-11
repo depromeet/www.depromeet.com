@@ -9,6 +9,8 @@ import { Device, useDeviceContext } from 'contexts/device';
 import NavigationItem from './NavigationItem';
 import NavigationItemList from './NavigationItemList';
 
+import { Logo } from '../../images';
+
 type Props = {
   showBackground?: boolean;
 };
@@ -55,8 +57,6 @@ export default function Header({ showBackground = false }: Props) {
     </Container>
   );
 }
-
-const Logo = dynamic(() => import('public/gnb_logo.svg'));
 
 const LogoWrapper = styled.button<{ device: Device }>`
   all: unset;

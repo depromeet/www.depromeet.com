@@ -1,9 +1,9 @@
 import styled from '@emotion/styled';
-
-import dynamic from 'next/dynamic';
+import { css } from '@emotion/react';
 
 import { Device, useDeviceContext } from 'contexts/device';
-import { css } from '@emotion/react';
+
+import { Logo, FacebookLogo, InstagramLogo, MediumLogo } from '../../images';
 
 export default function Footer() {
   const device = useDeviceContext();
@@ -28,14 +28,6 @@ export default function Footer() {
     </Container>
   );
 }
-
-const Logo = dynamic(() => import('public/gnb_logo.svg'));
-
-const InstagramLogo = dynamic(() => import('resources/images/ic_sns_instagram.svg'));
-
-const FacebookLogo = dynamic(() => import('resources/images/ic_sns_facebook.svg'));
-
-const MediumLogo = dynamic(() => import('resources/images/ic_sns_medium.svg'));
 
 const socialMediaList = [
   {
