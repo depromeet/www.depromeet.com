@@ -1,7 +1,10 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import { Device, useDeviceContext } from 'contexts/device';
+
 import { useRouter } from 'next/router';
+
+import { Device } from 'common/contexts/device';
+import { useDeviceContext } from 'common/hooks';
 
 type Props = Omit<React.HTMLAttributes<HTMLDivElement>, keyof OwnProps> & OwnProps;
 

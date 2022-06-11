@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 import { Header, Layout, Footer } from 'common/components';
-import { usePassed } from 'hooks';
+import { usePassed } from 'common/hooks';
 
 import { Section1, Section2, Section3, Section4 } from './components';
 

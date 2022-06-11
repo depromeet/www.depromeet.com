@@ -1,9 +1,10 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-import { Device, useDeviceContext } from 'contexts/device';
+import { Device } from 'common/contexts/device';
+import { useDeviceContext } from 'common/hooks';
 
-import { Gmail, Instagram, Kakao } from '../images';
+import { Gmail, Instagram, Kakao } from '../assets';
 
 export default function SNSBox() {
   const device = useDeviceContext();

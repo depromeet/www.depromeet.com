@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { Device, useDeviceContext } from 'contexts/device';
+
+import { Device } from 'common/contexts/device';
+import { useDeviceContext } from 'common/hooks';
 
 import Quote from './Quote';
 import { quotes } from './quotes';

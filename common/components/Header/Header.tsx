@@ -4,11 +4,13 @@ import styled from '@emotion/styled';
 
 import Link from 'next/link';
 
-import { Device, useDeviceContext } from 'contexts/device';
+import { Device } from 'common/contexts/device';
+import { useDeviceContext } from 'common/hooks';
+
 import NavigationItem from './NavigationItem';
 import NavigationItemList from './NavigationItemList';
 
-import { Logo } from '../../images';
+import { Logo } from '../../assets';
 
 type Props = {
   showBackground?: boolean;
@@ -21,11 +23,11 @@ export default function Header({ showBackground = false }: Props) {
 
   return (
     <Container device={device} css={{ zIndex: 1001, backgroundColor: showBackground ? '#000' : 'transparent' }}>
-      <LogoWrapper device={device}>
-        <Link href="/">
+      <Link href="/">
+        <LogoWrapper device={device}>
           <Logo />
-        </Link>
-      </LogoWrapper>
+        </LogoWrapper>
+      </Link>
 
       {device === 'mobile' && (
         <MenuIconWraper>

@@ -1,12 +1,12 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-import { Device, useDeviceContext } from 'contexts/device';
+import { Device } from 'common/contexts/device';
+import { useDeviceContext } from 'common/hooks';
+import { googleFormLink } from 'common/utils/misc';
 
 import SocialLinkButtonList from './SocialLinkButtonList';
 import NavigationItem from './NavigationItem';
-
-import { googleFormLink } from 'utils/misc';
 
 type NavigationItem = {
   href: string;

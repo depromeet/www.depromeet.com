@@ -1,7 +1,8 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-import { Device, useDeviceContext } from 'contexts/device';
+import { Device } from 'common/contexts/device';
+import { useDeviceContext } from 'common/hooks';
 
 export default function Section1() {
   const device = useDeviceContext();

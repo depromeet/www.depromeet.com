@@ -1,8 +1,9 @@
+import Image from 'next/image';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-import Image from 'next/image';
 
-import { Device, useDeviceContext } from 'contexts/device';
+import { Device } from 'common/contexts/device';
+import { useDeviceContext } from 'common/hooks';
 
 import SNSBox from './SNSBox';
 

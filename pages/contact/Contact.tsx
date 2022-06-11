@@ -1,8 +1,7 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-import { Device } from 'contexts/device';
-
+import { Device } from 'common/contexts/device';
 import { Header, Layout, Footer } from 'common/components';
 
 import { Box } from './components';

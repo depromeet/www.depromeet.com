@@ -1,11 +1,12 @@
+import { useRouter } from 'next/router';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+
+import { Device } from 'common/contexts/device';
+import { useDeviceContext } from 'common/hooks';
 
 import AnimatedText from './AnimatedText';
 import Summary from './Summary';
-
-import { useRouter } from 'next/router';
-import { Device, useDeviceContext } from 'contexts/device';
-import { css } from '@emotion/react';
 
 export default function Section2() {
   const device = useDeviceContext();

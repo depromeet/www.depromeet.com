@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
-import { Device, DeviceContextProvider, useDeviceContext } from 'contexts/device';
+import { Device, DeviceContextProvider } from 'common/contexts/device';
+import { useDeviceContext } from 'common/hooks';
 
 type Props = {
   children: (device: Device) => React.ReactNode;

@@ -1,10 +1,11 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-import { Device, useDeviceContext } from 'contexts/device';
-import { googleFormLink } from 'utils/misc';
+import { Device } from 'common/contexts/device';
+import { useDeviceContext } from 'common/hooks';
+import { googleFormLink } from 'common/utils/misc';
 
-import { DimmerDPMLogo } from '../../images';
+import { DimmerDPMLogo } from '../../assets';
 
 export default function Section4() {
   const device = useDeviceContext();

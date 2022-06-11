@@ -1,12 +1,10 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect } from 'react';
 
 export type Device = 'desktop' | 'tablet' | 'mobile';
 
-type Props = {
-  children: React.ReactNode;
-};
+export const DeviceContext = createContext<Device>('desktop');
 
-export const DeviceContextProvider = ({ children }: Props) => {
+export const DeviceContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [device, setDevice] = useState<Device>('desktop');
 
   const handleResize = () =>
@@ -26,7 +24,3 @@ export const DeviceContextProvider = ({ children }: Props) => {
 
   return <DeviceContext.Provider value={device}>{children}</DeviceContext.Provider>;
 };
-
-const DeviceContext = createContext<Device>('desktop');
-
-export const useDeviceContext = () => useContext(DeviceContext);

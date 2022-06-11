@@ -1,12 +1,13 @@
 import { useRef, useEffect, Fragment } from 'react';
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
-
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 
-import { Arrow as Content, Circle, Glitter } from '../../images';
-import { Device, useDeviceContext } from 'contexts/device';
+import { Device } from 'common/contexts/device';
+import { useDeviceContext } from 'common/hooks';
+
+import { Arrow as Content, Circle, Glitter } from '../../assets';
 
 gsap.registerPlugin(ScrollTrigger);
 
