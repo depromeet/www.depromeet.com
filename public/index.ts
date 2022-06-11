@@ -13,12 +13,9 @@ export { default as Memoji } from './Memoji.svg';
 export { default as T } from './T.svg';
 export { default as RightArrow } from './RightArrow.svg';
 export { default as LeftArrow } from './LeftArrow.svg';
-export { default as LongArrow } from './arrow-long.svg';
+
 export { default as ShortArrow } from './arrow-short.svg';
 export { default as ShortArrowGreen } from './arrow-short-green.svg';
-
-export { default as MainPageIcon1 } from './main-page-icon-1.svg';
-export { default as MainPageIcon2 } from './main-page-icon-2.svg';
 
 export { default as Below } from './below.svg';
 
