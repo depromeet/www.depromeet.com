@@ -1,0 +1,18 @@
+import dynamic from 'next/dynamic';
+
+export const stepA = {
+  lottie: () => import('./lottie/step-A.json'),
+  fallback: dynamic(() => import('./images/step-A-fallback.svg')),
+};
+export const stepB = {
+  lottie: () => import('./lottie/step-B.json'),
+  fallback: dynamic(() => import('./images/step-B-fallback.svg')),
+};
+export const stepC = {
+  lottie: () => import('./lottie/step-C.json'),
+  fallback: dynamic(() => import('./images/step-C-fallback.svg')),
+};
+export const stepD = {
+  lottie: () => import('./lottie/step-D.json'),
+  fallback: dynamic(() => import('./images/step-D-fallback.svg')),
+};

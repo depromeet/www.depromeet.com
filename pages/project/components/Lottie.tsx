@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
-import Lottie from 'react-lottie';
+import ReactLottie from 'react-lottie';
 
 export type Props = {
   lottie: () => Promise<unknown>;
-  fallback: () => React.ReactElement;
+  fallback: React.ComponentType;
 };
 
-export default function StepLottie({ lottie, fallback: Fallback }: Props) {
+export default function Lottie({ lottie, fallback: Fallback }: Props) {
   const [animationData, setAnimationData] = useState<unknown>();
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function StepLottie({ lottie, fallback: Fallback }: Props) {
   return animationData == null ? (
     <Fallback />
   ) : (
-    <Lottie
+    <ReactLottie
       ariaRole="img"
       isClickToPauseDisabled
       options={{
