@@ -25,7 +25,7 @@ export default function Mimoji({ job, color, order, src }: Props) {
 
       <Positioner device={device} order={order}>
         <ImageWrapper device={device}>
-          <Image src={src} alt={src} layout="fill" loading="lazy" objectFit="contain" />
+          <Image src={src} alt={src} layout="fill" objectFit="contain" />
         </ImageWrapper>
       </Positioner>
     </Container>

@@ -17,5 +17,3 @@ export { default as ShortArrow } from './arrow-short.svg';
 export { default as ShortArrowGreen } from './arrow-short-green.svg';
 
 export { default as Below } from './below.svg';
-
-export { default as PageMoveButton } from './ic_left_default.svg';

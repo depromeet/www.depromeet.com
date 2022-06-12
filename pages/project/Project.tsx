@@ -5,9 +5,8 @@ import { Header, Layout, Footer } from 'common/components';
 import { Device } from 'common/contexts/device';
 import { usePassed } from 'common/hooks';
 
-import { Schedule } from './components';
+import { Schedule, ProjectListDesktopView } from './components';
 
-// import ProjectListDesktopView from '../page-components/Project/ProjectListDesktopView';
 // import ProjectListMobileView from '../page-components/Project/ProjectListMobileView';
 
 export default function Project() {
@@ -28,6 +27,7 @@ export default function Project() {
                 </p>
               </Catchphrase>
 
+              <ProjectListDesktopView />
               {/* <DeviceSwitcher>
                 {({ device }) => <>{device === 'mobile' ? <ProjectListMobileView /> : <ProjectListDesktopView />}</>}
               </DeviceSwitcher> */}

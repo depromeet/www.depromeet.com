@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { Device } from 'common/contexts/device';
 import { useDeviceContext } from 'common/hooks';
 
-import { stepA, stepB, stepC, stepD } from '../assets';
+import { stepA, stepB, stepC, stepD } from '../../assets';
 
 import Step from './Step';
 

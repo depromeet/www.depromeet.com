@@ -32,7 +32,7 @@ export default function Header({ showBackground = false }: Props) {
       {device === 'mobile' && (
         <MenuIconWraper>
           <MenuIcon onClick={() => setIsNavItemListOpen((prevState) => !prevState)}>
-            <img src={isNavItemListOpen ? '/ic_x.svg' : 'ic_menu.svg'} alt="menu button" loading="lazy" />
+            <img src={isNavItemListOpen ? '/ic_x.svg' : 'ic_menu.svg'} alt="menu button" />
           </MenuIcon>
         </MenuIconWraper>
       )}

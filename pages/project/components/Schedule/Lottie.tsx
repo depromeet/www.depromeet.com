@@ -10,10 +10,8 @@ export default function Lottie({ lottie, fallback: Fallback }: Props) {
   const [animationData, setAnimationData] = useState<unknown>();
 
   useEffect(() => {
-    (async function fetchLottie() {
-      const data = await lottie();
-
-      setAnimationData(data);
+    (async function () {
+      setAnimationData(await lottie());
     })();
   }, [lottie, setAnimationData]);
 
