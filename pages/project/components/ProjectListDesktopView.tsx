@@ -7,17 +7,16 @@ import { Device } from 'common/contexts/device';
 import { useDeviceContext } from 'common/hooks';
 
 import { Down } from '../assets';
-import ProjectProvider from '../context/project';
 import { projects } from '../utils/projects';
 
-import { ProjectDialog } from '.';
+import Carousel from './Carousel';
 
 export default function ProjectList() {
   const device = useDeviceContext();
 
   const [page, setPage] = useState(0);
-  const [currentOpenDialog, setCurrentOpenDialog] = useState(0);
-  const [dialogOpen, setDialogOpen] = useState(false);
+  const [currentProjectId, setCurrentProjectId] = useState(0);
+  const [carouselOpen, setCarouselOpen] = useState(false);
 
   return (
     <Container>
@@ -34,11 +33,11 @@ export default function ProjectList() {
               src={`/projects/${thumbnail}`}
               width="100%"
               height={218}
-              onClick={() => {
-                setDialogOpen(true);
-                setCurrentOpenDialog(index);
-              }}
               css={{ cursor: 'pointer' }}
+              onClick={() => {
+                setCarouselOpen(true);
+                setCurrentProjectId(index);
+              }}
             />
           ))}
 
@@ -55,15 +54,14 @@ export default function ProjectList() {
         )}
       </Grid>
 
-      <ProjectProvider id={currentOpenDialog} length={projects.length}>
-        {dialogOpen && (
-          <ProjectDialog
-            onClose={() => setDialogOpen(false)}
-            onPrev={() => setCurrentOpenDialog((prevState) => prevState - 1)}
-            onNext={() => setCurrentOpenDialog((prevState) => prevState + 1)}
-          />
-        )}
-      </ProjectProvider>
+      <Carousel
+        open={carouselOpen}
+        data={projects}
+        currentDataId={currentProjectId}
+        onPrev={() => setCurrentProjectId((prevState) => prevState - 1)}
+        onNext={() => setCurrentProjectId((prevState) => prevState + 1)}
+        onClose={() => setCarouselOpen(false)}
+      />
     </Container>
   );
 }

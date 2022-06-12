@@ -241,6 +241,7 @@ const Link = styled.a`
   line-height: 16px;
   margin-bottom: 40px;
   color: #38e3a8;
+  cursor: pointer;
 `;
 
 const TeamTitle = styled.div`

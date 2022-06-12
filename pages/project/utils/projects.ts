@@ -16,7 +16,7 @@ export type Project = {
   designers?: string[];
 };
 
-export const projects: readonly Project[] = [
+export const projects: Project[] = [
   {
     order: 1,
     generation: 10,

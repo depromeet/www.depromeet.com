@@ -1,58 +1,82 @@
-import React, { forwardRef, useLayoutEffect } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { FixedSizeList } from 'react-window';
-import { projects } from '../../utils/projects';
-import { calcItemCenterPosition, calcRealListWidth } from '../../utils/position';
+import AutoSize from 'react-virtualized-auto-sizer';
+import styled from '@emotion/styled';
 
-import { css } from '@emotion/react';
-import { useDeviceContext } from 'common/hooks';
-import { useProjectInfo } from 'pages/project/hooks';
-import Card from './Card';
+import ProjectProvider from '../../context/project';
 
-type Props = React.PropsWithRef<OwnProps>;
+import List from './List';
 
-type OwnProps = {
-  width: number;
+type Props<T> = {
+  open: boolean;
+  data: T[];
+  currentDataId: number;
   onPrev: () => void;
   onNext: () => void;
+  onClose: () => void;
 };
 
-function Carousel({ width, onPrev, onNext }: Props, ref: React.Ref<FixedSizeList>) {
-  const device = useDeviceContext();
-  const { id } = useProjectInfo();
+export default function Carousel<T>({ open, data, currentDataId, onClose, onPrev, onNext }: Props<T>) {
+  const scrollRef = useRef<FixedSizeList>(null);
 
-  useLayoutEffect(() => {
-    if (ref != null && 'current' in ref) {
-      ref.current?.scrollTo(calcItemCenterPosition(id, width));
+  const handleKeyDown = useCallback(({ keyCode }) => keyCode === ESC && onClose(), []);
+
+  useEffect(() => {
+    if (window != null) {
+      window.addEventListener('keydown', handleKeyDown);
+
+      return () => {
+        window.removeEventListener('keydown', handleKeyDown);
+      };
     }
-  }, [ref, id, width]);
+  }, []);
 
-  return (
-    <FixedSizeList
-      ref={ref}
-      layout="horizontal"
-      width={width}
-      height={device === 'mobile' ? 650 : 840}
-      itemSize={device === 'mobile' ? 314 : 800}
-      itemData={projects}
-      itemCount={projects.length}
-      innerElementType={forwardRef(({ style, ...rest }, ref) => (
-        <div
-          ref={ref}
-          css={css`
-            height: 100%;
-            width: ${calcRealListWidth(width, style.width)}px;
-          `}
-          {...rest}
-        />
-      ))}
-      style={{
-        overflowX: device === 'mobile' ? 'scroll' : 'hidden',
-        overflowY: 'hidden',
-      }}
-    >
-      {(props) => <Card project={projects[props.index]} width={width} onPrev={onPrev} onNext={onNext} {...props} />}
-    </FixedSizeList>
-  );
+  return !open || document == null
+    ? null
+    : createPortal(
+        <ProjectProvider id={currentDataId} length={data.length}>
+          <Container>
+            <Backdrop onClick={onClose} />
+
+            <AutoSize>
+              {({ width, height }) => (
+                <Background css={{ height, width }} onClick={onClose}>
+                  <List width={width} onPrev={onPrev} onNext={onNext} ref={scrollRef} />
+                </Background>
+              )}
+            </AutoSize>
+          </Container>
+        </ProjectProvider>,
+        document.getElementById('modal-root') ?? document.body,
+      );
 }
 
-export default forwardRef(Carousel);
+const ESC = 27;
+
+const Container = styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+`;
+
+const Backdrop = styled.div`
+  z-index: -1;
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  opacity: 0.8;
+  background-color: #000;
+`;
+
+const Background = styled.div`
+  display: flex;
+  align-content: center;
+  align-items: center;
+`;
