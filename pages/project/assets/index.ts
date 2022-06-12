@@ -16,3 +16,11 @@ export const stepD = {
   lottie: () => import('./lottie/step-D.json'),
   fallback: dynamic(() => import('./images/step-D-fallback.svg')),
 };
+
+export { default as Down } from './images/down.svg';
+export { default as RightArrow } from './images/right-arrow.svg';
+
+export { default as AppleStore } from './images/apple.svg';
+export { default as GooglePlay } from './images/google.svg';
+export { default as WebLink } from './images/web.svg';
+export { default as Construction } from './images/construction.svg';
