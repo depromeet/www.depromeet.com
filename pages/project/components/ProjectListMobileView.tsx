@@ -22,7 +22,7 @@ export default function ProjectList() {
       <Grid>
         {projects
           .slice(0, fold ? projects.length : 9) //
-          .map(({ order, title, icon }, index) => (
+          .map(({ order, title, icon }) => (
             <Item key={order}>
               <Image
                 alt={title}
@@ -31,7 +31,7 @@ export default function ProjectList() {
                 height="100%"
                 onClick={() => {
                   setCarouselOpen(true);
-                  setCurrentProjectId(index);
+                  setCurrentProjectId(order - 1);
                 }}
               />
               <span>{title}</span>

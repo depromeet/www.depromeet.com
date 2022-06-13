@@ -14,7 +14,7 @@ export default function Box() {
     <Container device={device}>
       {device !== 'desktop' && (
         <DPMLogoWrapper>
-          <Image src="/dpm.png" alt="dpm" width="217" height="69.5" />
+          <img src="/dpm.png" alt="dpm" width={217} height={70} />
         </DPMLogoWrapper>
       )}
 

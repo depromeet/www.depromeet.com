@@ -133,6 +133,7 @@ const ApplyButton = styled.button`
   color: #fff;
 
   border: none;
+  cursor: pointer;
 
   :hover {
     opacity: 0.7;
@@ -156,6 +157,7 @@ const ShareButton = styled.button`
   font-size: 16px;
   font-weight: 700;
   color: #fff;
+  cursor: pointer;
 
   :hover {
     opacity: 0.7;

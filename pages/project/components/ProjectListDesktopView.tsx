@@ -21,9 +21,9 @@ export default function ProjectList() {
       <Grid>
         {projects
           .slice(page * perPage, (page + 1) * perPage) //
-          .map(({ title, thumbnail }, index) => (
+          .map(({ title, thumbnail, order }) => (
             <Image
-              key={index}
+              key={order}
               alt={title}
               src={`/projects/${thumbnail}`}
               width="100%"
@@ -31,7 +31,7 @@ export default function ProjectList() {
               css={{ cursor: 'pointer' }}
               onClick={() => {
                 setCarouselOpen(true);
-                setCurrentProjectId(index);
+                setCurrentProjectId(order - 1);
               }}
             />
           ))}

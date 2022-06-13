@@ -42,7 +42,7 @@ export default function Layout({ children, header, footer }: Props) {
 
 const Container = styled.div`
   box-sizing: border-box;
-  overflow: scroll;
+  overflow: hidden scroll;
   position: relative;
 
   width: 100%;

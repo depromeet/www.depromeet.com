@@ -49,6 +49,7 @@ const Item = styled.div<{ device: Device }>`
   margin-right: 34px;
   font-size: 14px;
   font-weight: 500;
+  cursor: pointer;
 
   :hover {
     color: #c0c0c0;

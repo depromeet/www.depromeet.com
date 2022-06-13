@@ -6,6 +6,7 @@ import { Device } from 'common/contexts/device';
 import { useDeviceContext } from 'common/hooks';
 
 import AnimatedText from './AnimatedText';
+import ProjectList from './ProjectList';
 import Summary from './Summary';
 
 export default function Section2() {
@@ -33,8 +34,9 @@ export default function Section2() {
           </CatchPhrase>
 
           <Boxes device={device}>
-            {/* <Projects isMainPage /> */}
-            <Button onClick={() => push('/project')}>모든 프로젝트 구경하기</Button>
+            <ProjectList />
+
+            <Button onClick={() => push('/project')}>{'모든 프로젝트 구경하기 >'}</Button>
           </Boxes>
         </RightColumn>
       </Container>
@@ -116,11 +118,14 @@ const Boxes = styled.div<{ device: Device }>`
   ${({ device }) =>
     device === 'mobile' &&
     css`
+      box-sizing: border-box;
       position: absolute;
+      top: 212px;
+
       align-items: center;
       justify-content: center;
 
-      top: 21.2rem;
+      padding: 0 0 0 24px;
       margin-top: 0;
     `}
 `;
@@ -137,4 +142,9 @@ const Button = styled.button`
 
   font-size: 14px;
   margin-top: 42px;
+  cursor: pointer;
+
+  :hover {
+    opacity: 0.8;
+  }
 `;

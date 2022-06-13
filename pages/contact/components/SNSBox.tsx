@@ -73,6 +73,7 @@ const SNSButton = styled.button<{ device: Device }>`
   color: #000;
   border: none;
   background-color: #fff;
+  cursor: pointer;
 
   :hover {
     background-color: #c0c0c0;

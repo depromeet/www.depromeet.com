@@ -86,6 +86,10 @@ const Button = styled.a<{ device: Device }>`
   background-color: #2b2b2b;
   text-decoration: none;
 
+  :hover {
+    opacity: 0.8;
+  }
+
   ${({ device }) =>
     device === 'mobile' &&
     css`

@@ -2,7 +2,7 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from '../styles/global-style';
-import { theme } from '../styles/theme';
+
 import './index.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -13,10 +13,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>디프만 - Depromeet</title>
       </Head>
       <GlobalStyle />
-      <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
-        <div id="modal-root" />
-      </ThemeProvider>
+
+      <Component {...pageProps} />
+      <div id="modal-root" />
     </>
   );
 }
