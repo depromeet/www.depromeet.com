@@ -5,9 +5,7 @@ import { Header, Layout, Footer } from 'common/components';
 import { Device } from 'common/contexts/device';
 import { usePassed } from 'common/hooks';
 
-import { Schedule, ProjectListDesktopView } from './components';
-
-// import ProjectListMobileView from '../page-components/Project/ProjectListMobileView';
+import { Schedule, ProjectListDesktopView, ProjectListMobileView } from './components';
 
 export default function Project() {
   const passed = usePassed({ y: 200 });
@@ -27,10 +25,7 @@ export default function Project() {
                 </p>
               </Catchphrase>
 
-              <ProjectListDesktopView />
-              {/* <DeviceSwitcher>
-                {({ device }) => <>{device === 'mobile' ? <ProjectListMobileView /> : <ProjectListDesktopView />}</>}
-              </DeviceSwitcher> */}
+              {device === 'mobile' ? <ProjectListMobileView /> : <ProjectListDesktopView />}
 
               <Schedule />
             </div>

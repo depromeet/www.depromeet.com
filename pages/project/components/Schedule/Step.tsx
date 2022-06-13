@@ -60,7 +60,7 @@ const Container = styled.div<{ device: Device }>`
     `}
 `;
 
-const Title = styled.p`
+const Title = styled.div`
   display: flex;
   align-items: center;
 

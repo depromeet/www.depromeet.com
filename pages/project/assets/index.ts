@@ -19,6 +19,7 @@ export const stepD = {
 
 export { default as Down } from './images/down.svg';
 export { default as RightArrow } from './images/right-arrow.svg';
+export { default as BelowArrow } from './images/below-arrow.svg';
 
 export { default as AppleStore } from './images/apple.svg';
 export { default as GooglePlay } from './images/google.svg';

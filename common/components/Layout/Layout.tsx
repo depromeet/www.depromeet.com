@@ -1,3 +1,4 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 import { Device, DeviceContextProvider } from 'common/contexts/device';
@@ -18,7 +19,17 @@ function Content({ children }: Props) {
 export default function Layout({ children, header, footer }: Props) {
   return (
     <DeviceContextProvider>
-      <Container>
+      <Container
+        css={css`
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+          position: relative;
+
+          ::-webkit-scrollbar {
+            display: none;
+          }
+        `}
+      >
         {header}
 
         <Content children={children} />
@@ -31,16 +42,9 @@ export default function Layout({ children, header, footer }: Props) {
 
 const Container = styled.div`
   box-sizing: border-box;
+  overflow: scroll;
   position: relative;
 
   width: 100%;
   min-height: 100vh;
-
-  overflow: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-
-  ::-webkit-scrollbar {
-    display: none;
-  }
 `;

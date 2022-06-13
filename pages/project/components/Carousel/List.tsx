@@ -51,6 +51,15 @@ export default forwardRef(function List({ width, onPrev, onNext }: Props, ref: R
         overflowX: device === 'mobile' ? 'scroll' : 'hidden',
         overflowY: 'hidden',
       }}
+      css={css`
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        position: relative;
+
+        ::-webkit-scrollbar {
+          display: none;
+        }
+      `}
     >
       {(props) => <Card project={projects[props.index]} width={width} onPrev={onPrev} onNext={onNext} {...props} />}
     </FixedSizeList>

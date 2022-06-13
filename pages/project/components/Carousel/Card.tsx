@@ -29,7 +29,7 @@ export default function Card({ project, width, onPrev, onNext, index, style }: P
 
   const { id: currentIndex } = useProjectInfo();
 
-  const { ios, android, web, title, image, catchphrase, description, generation, team } = project;
+  const { ios, android, web, title, image, catchphrase, description, generation, team, icon } = project;
 
   return (
     <Container
@@ -56,8 +56,9 @@ export default function Card({ project, width, onPrev, onNext, index, style }: P
         <div>
           <Title device={device}>{title}</Title>
 
-          <CatchPhrase device={device}>
-            <div css={device === 'mobile' && { width: 190 }}>{catchphrase}</div>
+          <CatchPhrase device={device} css={device === 'mobile' && { display: 'flex' }}>
+            {device === 'mobile' && <Image src={`/projects/${icon}`} alt={`${title}`} width={72} height={72} />}
+            <div css={device === 'mobile' && { width: 190, marginLeft: 16 }}>{catchphrase}</div>
           </CatchPhrase>
 
           {device !== 'mobile' && <DeployLinkSection deployLink={{ ios, android, web }} />}
@@ -66,20 +67,33 @@ export default function Card({ project, width, onPrev, onNext, index, style }: P
         <div css={device === 'mobile' && { marginBottom: 23 }}>
           <Label device={device}>프로젝트 소개</Label>
 
-          <Description device={device}>{description}</Description>
+          <Description
+            device={device}
+            css={css`
+              -ms-overflow-style: none;
+              scrollbar-width: none;
+              position: relative;
 
-          <Link href={mediumLink} css={device === 'mobile' && { fontSize: 12 }}>
+              ::-webkit-scrollbar {
+                display: none;
+              }
+            `}
+          >
+            {description}
+          </Description>
+
+          <Link href={mediumLink} device={device}>
             자세히 보기
             <RightArrow
               css={css`
-                width: 14px;
-                height: 14px;
-                margin: 1px 0 0 8px;
+                width: ${device === 'mobile' ? '10px' : '14px'};
+                height: ${device === 'mobile' ? '10px' : '14px'};
+                margin: ${device === 'mobile' ? '0 0 1px 8px' : '1px 0 0 8px'};
               `}
             />
           </Link>
 
-          <TeamTitle>
+          <TeamTitle device={device}>
             {generation}기 {team}
           </TeamTitle>
 
@@ -223,15 +237,15 @@ const Description = styled.div<{ device: Device }>`
     device === 'mobile' &&
     css`
       overflow-y: scroll;
-      max-height: 12.7rem;
+      max-height: 127px;
 
-      font-size: 1.4rem;
-      line-height: 2.6rem;
-      margin-bottom: 2.4rem;
+      font-size: 14px;
+      line-height: 26px;
+      margin-bottom: 24px;
     `}
 `;
 
-const Link = styled.a`
+const Link = styled.a<{ device: Device }>`
   all: unset;
   display: flex;
   flex-direction: row;
@@ -242,18 +256,40 @@ const Link = styled.a`
   margin-bottom: 40px;
   color: #38e3a8;
   cursor: pointer;
+
+  ${({ device }) =>
+    device === 'mobile' &&
+    css`
+      font-size: 12px;
+      align-items: center;
+    `}
 `;
 
-const TeamTitle = styled.div`
+const TeamTitle = styled.div<{ device: Device }>`
   font-weight: 700;
   font-size: 18px;
   line-height: 18px;
 
   margin: 0 100px 20px 0;
+
+  ${({ device }) =>
+    device === 'mobile' &&
+    css`
+      font-size: 12px;
+      margin-bottom: 10px;
+    `}
 `;
 
 const TeamContainer = styled.div`
   max-height: 82px;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  position: relative;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const Team = styled.div<{ device: Device }>`

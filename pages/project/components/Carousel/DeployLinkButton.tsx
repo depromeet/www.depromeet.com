@@ -22,6 +22,7 @@ export default function DeployLinkButton({ label, content, link }: Props) {
 }
 
 const Button = styled.button<{ device: Device }>`
+  border: none;
   box-sizing: border-box;
   max-width: 172px;
   height: 48px;

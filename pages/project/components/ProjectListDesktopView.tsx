@@ -1,10 +1,6 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-
-import { Device } from 'common/contexts/device';
-import { useDeviceContext } from 'common/hooks';
 
 import { Down } from '../assets';
 import { projects } from '../utils/projects';
@@ -12,24 +8,23 @@ import { projects } from '../utils/projects';
 import Carousel from './Carousel';
 
 export default function ProjectList() {
-  const device = useDeviceContext();
-
   const [page, setPage] = useState(0);
   const [currentProjectId, setCurrentProjectId] = useState(0);
   const [carouselOpen, setCarouselOpen] = useState(false);
 
   return (
     <Container>
-      <Title device={device}>
+      <Title>
         모든 작업물<sup>{projects.length}</sup>
       </Title>
 
       <Grid>
         {projects
           .slice(page * perPage, (page + 1) * perPage) //
-          .map(({ thumbnail }, index) => (
+          .map(({ title, thumbnail }, index) => (
             <Image
               key={index}
+              alt={title}
               src={`/projects/${thumbnail}`}
               width="100%"
               height={218}
@@ -74,7 +69,7 @@ const Container = styled.section`
   margin-bottom: 118px;
 `;
 
-const Title = styled.h3<{ device: Device }>`
+const Title = styled.h3`
   font-style: normal;
   font-weight: 700;
   font-size: 22px;
@@ -84,12 +79,6 @@ const Title = styled.h3<{ device: Device }>`
   color: #fff;
   margin-bottom: 40px;
 
-  ${({ device }) =>
-    device === 'mobile' &&
-    css`
-      font-size: 16px;
-    `}
-
   sup {
     font-style: normal;
     font-weight: 500;
@@ -98,12 +87,6 @@ const Title = styled.h3<{ device: Device }>`
 
     vertical-align: super;
     margin-left: 10px;
-
-    ${({ device }) =>
-      device === 'mobile' &&
-      css`
-        font-size: 10px;
-      `}
   }
 `;
 
