@@ -1,56 +1,17 @@
-import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
-  DocumentContext,
-} from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
 
-class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
-    const sheet = new ServerStyleSheet();
-    const originalRenderPage = ctx.renderPage;
-    try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            sheet.collectStyles(<App {...props} />),
-        });
-
-      const initialProps = await Document.getInitialProps(ctx);
-      return {
-        ...initialProps,
-        styles: (
-          <>
-            {initialProps.styles}
-            {sheet.getStyleElement()}
-          </>
-        ),
-      };
-    } finally {
-      sheet.seal();
-    }
-  }
-
+export default class MyDocument extends Document {
   render() {
     return (
       <Html>
         <Head>
           <meta charSet="utf-8" />
           <link rel="shortcut icon" href="/favicon.png" type="image/png" />
-          <link
-            href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
-            rel="stylesheet"
-            type="text/css"
-          />
+          <link href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css" rel="stylesheet" type="text/css" />
 
           <meta property="og:title" content="디프만 - Depromeet" />
           <meta property="og:image" content="/og-main.png" />
-          <meta
-            property="og:description"
-            content="오직 디자이너와 프로그래머의 동반성장을 위해서"
-          />
+          <meta property="og:description" content="오직 디자이너와 프로그래머의 동반성장을 위해서" />
           <meta property="og:url" content="//depromeet.com" />
           <meta name="description" content="디프만 -Depromeet" />
           <meta
@@ -85,5 +46,3 @@ class MyDocument extends Document {
     );
   }
 }
-
-export default MyDocument;

@@ -9,7 +9,7 @@ export type Quote = {
 export const quotes: Quote[] = [
   {
     author: '(이송민, UX 디자이너)',
-    mimoji: '/mimoji-lsm.png',
+    mimoji: '/organizer/lsm.png',
     sentence: (
       <div>
         '디프만' 이름처럼 열정이 넘쳐나는 디자이너와 개발자분들을 만나 성장할 수 있는 공간이었습니다. 기획부터 디자인,
@@ -23,7 +23,7 @@ export const quotes: Quote[] = [
   },
   {
     author: '(박종호, Frontend Developer)',
-    mimoji: '/mimoji-pjh.png',
+    mimoji: '/organizer/pjh.png',
     sentence: (
       <div>
         개발자로서 원활한 협업 능력을 갖추는 것은 필수이지만 이 능력을 발전시킬 기회가 마땅치 않았습니다. 디프만을 통해
@@ -37,7 +37,7 @@ export const quotes: Quote[] = [
   },
   {
     author: '(김성민, Backend Developer)',
-    mimoji: '/mimoji-ksm.png',
+    mimoji: '/organizer/ksm.png',
     sentence: (
       <div>
         반복되는 일상이 지겨워 새로운 도전을 해보고 싶은 마음에 디프만을 시작하게 되었습니다.{' '}

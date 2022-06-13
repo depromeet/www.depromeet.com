@@ -1,15 +1,14 @@
 {
-  "presets": ["next/babel"],
-  "plugins": [
+  "presets": [
     [
-      "@emotion",
+      "next/babel",
       {
-        "sourceMap": true,
-        "autoLabel": "dev-only",
-        "labelFormat": "[local]",
-        "cssPropOptimization": true
+        "preset-react": {
+          "runtime": "automatic",
+          "importSource": "@emotion/react"
+        }
       }
-    ],
-    ["styled-components", { "ssr": true, "displayName": true }]
-  ]
+    ]
+  ],
+  "plugins": ["@emotion/babel-plugin"]
 }

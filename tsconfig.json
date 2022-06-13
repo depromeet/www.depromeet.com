@@ -19,19 +19,6 @@
       "*": ["./*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "next.config.ts",
-    "custom.d.ts",
-    "styled.d.ts",
-    "styles",
-    "pages",
-    "public",
-    "**/*.scss",
-    "components",
-    "resources"
-  ],
+  "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

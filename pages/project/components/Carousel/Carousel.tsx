@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { FixedSizeList } from 'react-window';
 import AutoSize from 'react-virtualized-auto-sizer';
@@ -20,7 +20,7 @@ type Props<T> = {
 export default function Carousel<T>({ open, data, currentDataId, onClose, onPrev, onNext }: Props<T>) {
   const scrollRef = useRef<FixedSizeList>(null);
 
-  const handleKeyDown = useCallback(({ keyCode }) => keyCode === ESC && onClose(), []);
+  const handleKeyDown = useCallback(({ keyCode }: KeyboardEvent) => keyCode === ESC && onClose(), []);
 
   useEffect(() => {
     if (window != null) {
