@@ -10,7 +10,7 @@ import { useDeviceContext } from 'common/hooks';
 import NavigationItem from './NavigationItem';
 import NavigationItemList from './NavigationItemList';
 
-import { Logo } from '../../assets';
+import { Logo, OpenMenuIcon, CloseMenuIcon } from '../../assets';
 
 type Props = {
   showBackground?: boolean;
@@ -32,7 +32,7 @@ export default function Header({ showBackground = false }: Props) {
       {device === 'mobile' && (
         <MenuIconWraper>
           <MenuIcon onClick={() => setIsNavItemListOpen((prevState) => !prevState)}>
-            <img src={isNavItemListOpen ? '/ic_x.svg' : 'ic_menu.svg'} alt="menu button" />
+            {isNavItemListOpen ? <CloseMenuIcon /> : <OpenMenuIcon />}
           </MenuIcon>
         </MenuIconWraper>
       )}
