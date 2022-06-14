@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 
 import { useDeviceContext } from 'common/hooks';
-import { getContentGap } from 'pages/project/utils/position';
+import { getContentGap } from 'modules/project/utils/position';
 
 import { useProjectInfo } from '../../hooks';
 

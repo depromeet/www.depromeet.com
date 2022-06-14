@@ -3,7 +3,7 @@ import { FixedSizeList } from 'react-window';
 import { css } from '@emotion/react';
 
 import { useDeviceContext } from 'common/hooks';
-import { useProjectInfo } from 'pages/project/hooks';
+import { useProjectInfo } from 'modules/project/hooks';
 
 import { projects } from '../../utils/projects';
 import { calcItemCenterPosition, calcRealListWidth } from '../../utils/position';

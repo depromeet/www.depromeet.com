@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import styled from '@emotion/styled';
 
+import { Device } from 'common/contexts/device';
 import { useDeviceContext } from 'common/hooks';
 
 /**
@@ -9,9 +10,9 @@ import { useDeviceContext } from 'common/hooks';
  * - 시간 관계 상 project 폴더에서 import 합니다.
  * - 추후 컴포넌트 hierarchy 를 위로 올려야 합니다.
  */
-import { projects } from '../../../../pages/project/utils/projects';
-import { Carousel } from '../../../../pages/project/components';
-import { Device } from 'common/contexts/device';
+import { Carousel } from 'modules/project/components';
+import { projects } from 'modules/project/utils/projects';
+
 import { css } from '@emotion/react';
 
 export default function ProjectList() {

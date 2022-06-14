@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 
 import { Device } from 'common/contexts/device';
 import { useDeviceContext } from 'common/hooks';
-import { useProjectInfo } from 'pages/project/hooks';
+import { useProjectInfo } from 'modules/project/hooks';
 
 import { RightArrow } from '../../assets';
 import { Project } from '../../utils/projects';
