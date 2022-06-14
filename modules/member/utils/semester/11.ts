@@ -4,7 +4,7 @@ const 김성민: Person = {
   name: '김성민',
   depromeetPosition: '회장',
   jobPosition: 'Backend Developer',
-  photoLink: '',
+  photoLink: '/member/11/test.png',
   link: {
     linkedIn: 'https://www.linkedin.com/in/devsungmin/',
     github: 'https://github.com/devsungmin',
@@ -16,7 +16,7 @@ const 이송민: Person = {
   name: '이송민',
   depromeetPosition: '부회장',
   jobPosition: 'Product designer',
-  photoLink: '',
+  photoLink: '/member/11/test.png',
   link: {
     linkedIn: 'https://www.linkedin.com/in/imean1030/',
     behance: 'https://www.behance.net/songminlee',
@@ -26,7 +26,7 @@ const 이송민: Person = {
 const 박준영: Person = {
   name: '박준영',
   jobPosition: 'UX Designer',
-  photoLink: '',
+  photoLink: '/member/11/test.png',
   link: {
     linkedIn: 'https://www.linkedin.com/in/jun-young-park',
     behance: 'https://www.behance.net/senki1009',
@@ -36,7 +36,7 @@ const 박준영: Person = {
 const 박종호: Person = {
   name: '박종호',
   jobPosition: 'Frontend Developer',
-  photoLink: '',
+  photoLink: '/member/11/test.png',
   link: {
     linkedIn: 'https://www.linkedin.com/in/jongho-park-164b59206/',
     github: 'https://github.com/jonghopark95',
@@ -47,7 +47,7 @@ const 박종호: Person = {
 const 정미숙: Person = {
   name: '정미숙',
   jobPosition: 'Product designer',
-  photoLink: '',
+  photoLink: '/member/11/test.png',
   link: {
     linkedIn: 'https://www.linkedin.com/in/misuk-jeong-2bba94224/',
     behance: 'https://www.behance.net/misukj12240ed5',
@@ -58,7 +58,7 @@ const 정미숙: Person = {
 const 신동빈: Person = {
   name: '신동빈',
   jobPosition: 'Server Developer',
-  photoLink: '',
+  photoLink: '/member/11/test.png',
   link: {
     linkedIn: 'https://www.linkedin.com/in/sdb016/',
     github: 'https://github.com/SDB016',
@@ -68,7 +68,7 @@ const 신동빈: Person = {
 const 김효진: Person = {
   name: '김효진',
   jobPosition: 'Frontend Developer',
-  photoLink: '',
+  photoLink: '/member/11/test.png',
   link: {
     linkedIn: 'https://www.linkedin.com/in/hyojin-kim-562188205',
     github: 'https://github.com/hy57in',
@@ -78,7 +78,7 @@ const 김효진: Person = {
 const 이병호: Person = {
   name: '이병호',
   jobPosition: 'Product designer',
-  photoLink: '',
+  photoLink: '/member/11/test.png',
   link: {
     behance: 'https://www.behance.net/lee1796ca3a',
   },

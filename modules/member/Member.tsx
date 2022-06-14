@@ -9,7 +9,7 @@ import { Grid, Person } from './components';
 import { members } from './utils/member';
 
 export default function Member() {
-  const passed = usePassed({ y: 500 });
+  const passed = usePassed({ y: 200 });
 
   return (
     <Layout header={<Header showBackground={passed} />} footer={<Footer />}>
@@ -37,7 +37,7 @@ export default function Member() {
                 columns={{ mobile: 2, desktop: 4 }}
                 gap={{ mobile: '20px 16px', desktop: '31px 47px' }}
                 label={
-                  <GridLabel css={{ marginBottom: 42 }}>
+                  <GridLabel css={{ marginBottom: 42 }} device={device}>
                     {semester}기 운영진 <sub>{people.length}</sub>
                   </GridLabel>
                 }
@@ -63,7 +63,7 @@ const Background = styled.div`
 `;
 
 const Container = styled.div<{ device: Device }>`
-  width: fit-content;
+  width: 1147px;
   padding-top: 256px;
   margin: 0 auto;
 
@@ -140,7 +140,7 @@ const SubText = styled.h2<{ device: Device }>`
     `}
 `;
 
-const GridLabel = styled.label`
+const GridLabel = styled.label<{ device: Device }>`
   position: relative;
   display: inline-block;
   font-size: 32px;
@@ -149,8 +149,20 @@ const GridLabel = styled.label`
 
   sub {
     position: absolute;
-    font-size: 16px;
-    right: -16px;
     top: -7px;
+    right: -20px;
+    font-size: 16px;
   }
+
+  ${({ device }) =>
+    device === 'mobile' &&
+    css`
+      font-size: 16px;
+
+      sub {
+        top: -4px;
+        right: -12px;
+        font-size: 10px;
+      }
+    `}
 `;
