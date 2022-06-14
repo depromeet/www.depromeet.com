@@ -13,14 +13,14 @@ export type Person = {
   };
 };
 
-export type Generation = {
+export type Members = {
   semester: number;
-  members: Person[];
+  people: Person[];
 };
 
-export const member: Generation[] = [
+export const members: Members[] = [
   {
     semester: 11,
-    members: 운영진_11기,
+    people: 운영진_11기,
   },
 ];

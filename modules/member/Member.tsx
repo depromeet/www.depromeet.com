@@ -5,8 +5,11 @@ import { Header, Layout, Footer } from 'common/components';
 import { Device } from 'common/contexts/device';
 import { usePassed } from 'common/hooks';
 
+import { Grid, Person } from './components';
+import { members } from './utils/member';
+
 export default function Member() {
-  const passed = usePassed({ y: 200 });
+  const passed = usePassed({ y: 500 });
 
   return (
     <Layout header={<Header showBackground={passed} />} footer={<Footer />}>
@@ -16,14 +19,32 @@ export default function Member() {
 
           <Container device={device}>
             <Label device={device}>Depromeet Member</Label>
+
             <Title css={{ marginTop: device === 'mobile' ? 12 : 46 }} device={device}>
               <b>계속해서 이어지는</b>
               {`\n성장의 경험들`}
             </Title>
-            <SubText css={{ marginTop: 20 }} device={device}>
+
+            <SubText css={{ marginTop: 20, marginBottom: 127 }} device={device}>
               디프만은 지속적인 성장의 순환을 추구합니다. 디프만에서 성장을 경험하고 다시 나누고자 하는 사람들이
               <mark> 운영진으로 모여 성장을 순환시킵니다.</mark>
             </SubText>
+
+            {members.map(({ semester, people }) => (
+              <Grid
+                key={semester}
+                items={people}
+                columns={{ mobile: 2, desktop: 4 }}
+                gap={{ mobile: '20px 16px', desktop: '31px 47px' }}
+                label={
+                  <GridLabel css={{ marginBottom: 42 }}>
+                    {semester}기 운영진 <sub>{people.length}</sub>
+                  </GridLabel>
+                }
+              >
+                {(person) => <Person key={person.name} {...person} />}
+              </Grid>
+            ))}
           </Container>
         </>
       )}
@@ -42,10 +63,16 @@ const Background = styled.div`
 `;
 
 const Container = styled.div<{ device: Device }>`
-  width: 1150px;
-  min-height: 100vh;
+  width: fit-content;
   padding-top: 256px;
   margin: 0 auto;
+
+  /**
+  * NOTE(@jonghopark95)
+  * - 미관을 위해 임시로 min-height 속성을 추가하였습니다.
+  * - 후임 maintainer 께서는 어느 정도 운영진이 데이터가 모이면 아래 속성을 제거해주시면 감사하겠습니다.
+  */
+  min-height: 2000px;
 
   ${({ device }) =>
     device === 'mobile' &&
@@ -109,7 +136,21 @@ const SubText = styled.h2<{ device: Device }>`
     device === 'mobile' &&
     css`
       width: 276px;
-
       font-size: 14px;
     `}
+`;
+
+const GridLabel = styled.label`
+  position: relative;
+  display: inline-block;
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+
+  sub {
+    position: absolute;
+    font-size: 16px;
+    right: -16px;
+    top: -7px;
+  }
 `;
