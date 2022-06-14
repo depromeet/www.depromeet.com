@@ -26,8 +26,7 @@
     "react-dom": "^17.0.2",
     "react-lottie": "^1.2.3",
     "react-virtualized-auto-sizer": "^1.0.4",
-    "react-window": "^1.8.6",
-    "typescript": "^4.7.3"
+    "react-window": "^1.8.6"
   },
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
@@ -36,7 +35,7 @@
     "@svgr/webpack": "^5.5.0",
     "@types/gsap": "^3.0.0",
     "@types/node": "^14.14.22",
-    "@types/react": "^18.0.1",
+    "@types/react": "18.0.1",
     "@types/react-dom": "^17.0.2",
     "@types/react-lottie": "^1.2.5",
     "@types/react-virtualized-auto-sizer": "^1.0.1",
@@ -49,6 +48,7 @@
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^4.2.0"
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "typescript": "^4.7.3"
   }
 }
