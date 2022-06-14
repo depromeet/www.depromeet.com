@@ -46,6 +46,10 @@ const NavigationReferences: NavigationItem[] = [
     label: 'project',
   },
   {
+    href: '/member',
+    label: 'member',
+  },
+  {
     href: '/contact',
     label: 'contact',
   },
