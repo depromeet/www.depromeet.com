@@ -105,9 +105,13 @@ const NotifyContainer = styled.div`
 `;
 
 const GoogleFormRedirectButton = styled.div<{ device: Device }>`
-  width: auto;
+  width: 145px;
+  height: 38px;
 
-  padding: 12px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   margin-left: 7px;
   border-radius: 27px;
 
