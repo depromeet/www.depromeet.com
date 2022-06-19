@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 import { Device } from 'common/contexts/device';
 import { useDeviceContext } from 'common/hooks';
 
-import { Github, Behance, LinkedIn } from '../assets';
+import { Github, Behance, LinkedIn, Homepage } from '../assets';
 import { Person as Props } from '../utils/member';
 
 export default function Person({ name, depromeetPosition, jobPosition, photoLink, link }: Props) {
@@ -14,7 +14,9 @@ export default function Person({ name, depromeetPosition, jobPosition, photoLink
 
   return (
     <Container onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
-      <Image src={photoLink} layout="responsive" height="100%" width="100%" />
+      <ImageWrapper device={device}>
+        <Image src={photoLink} layout="fill" objectFit="cover" css={{ borderRadius: '10px 10px 0 0' }} />
+      </ImageWrapper>
 
       <Info device={device}>
         <Name device={device}>
@@ -32,16 +34,30 @@ export default function Person({ name, depromeetPosition, jobPosition, photoLink
           {link?.behance != null && <Behance onClick={() => window.open(link.behance)} />}
           {link?.github != null && <Github onClick={() => window.open(link.github)} />}
           {link?.linkedIn != null && <LinkedIn onClick={() => window.open(link.linkedIn)} />}
+          {link?.homepage != null && <Homepage onClick={() => window.open(link.homepage)} />}
         </Backdrop>
       )}
     </Container>
   );
 }
 
+const ImageWrapper = styled.div<{ device: Device }>`
+  position: relative;
+  width: 100%;
+  height: 277px;
+  border-radius: 10px;
+
+  ${({ device }) =>
+    device === 'mobile' &&
+    css`
+      height: 156px;
+    `}
+`;
+
 const Container = styled.div`
   position: relative;
-  border-radius: 10px;
   background-color: #242424;
+  border-radius: 10px;
 `;
 
 const Info = styled.section<{ device: Device }>`

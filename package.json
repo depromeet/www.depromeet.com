@@ -7,12 +7,10 @@
   "homepage": "https://www.depromeet.com/",
   "license": "MIT",
   "scripts": {
-    "dev": "next",
+    "start": "next",
     "debug": "NODE_OPTIONS='--inspect' next dev",
     "build": "next build",
-    "start": "next start",
     "export": "next export",
-    "type-check": "tsc",
     "eslint": "eslint .",
     "analyze": "ANALYZE=true next build"
   },

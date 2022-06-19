@@ -72,7 +72,7 @@ const Container = styled.div<{ device: Device }>`
   * - 미관을 위해 임시로 min-height 속성을 추가하였습니다.
   * - 후임 maintainer 께서는 어느 정도 운영진이 데이터가 모이면 아래 속성을 제거해주시면 감사하겠습니다.
   */
-  min-height: 2000px;
+  min-height: 1800px;
 
   ${({ device }) =>
     device === 'mobile' &&

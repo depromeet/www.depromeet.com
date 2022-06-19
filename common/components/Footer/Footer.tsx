@@ -24,7 +24,7 @@ export default function Footer() {
       </ContentWrapper>
 
       <CopyrightWrapper device={device}>
-        <small>Depromeet. All rights reserved.</small>
+        <small>&copy; {new Date().getFullYear()} Depromeet. All rights reserved.</small>
       </CopyrightWrapper>
     </Container>
   );

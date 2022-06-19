@@ -20,7 +20,18 @@ export default function Section2() {
         <AnimatedText />
       </div>
 
-      <Container device={device}>
+      <Container
+        device={device}
+        css={css`
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+          position: relative;
+
+          ::-webkit-scrollbar {
+            display: none;
+          }
+        `}
+      >
         <LeftColumn>
           <Summary />
         </LeftColumn>
