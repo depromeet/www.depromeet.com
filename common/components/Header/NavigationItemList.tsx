@@ -72,6 +72,7 @@ const NavigationItemContainer = styled.div<{ device: Device }>`
   display: flex;
   align-items: center;
   z-index: 1;
+  font-family: Gmarket Sans;
 
   ${({ device }) =>
     device === 'mobile' &&
