@@ -79,8 +79,8 @@ const Catchphrase = styled.h1<{ device: Device }>`
     device === 'mobile' &&
     css`
       font-weight: 300;
-      font-size: 2.8rem;
-      line-height: 4rem;
+      font-size: 28px;
+      line-height: 40px;
       margin-bottom: 48px;
     `}
 `;
