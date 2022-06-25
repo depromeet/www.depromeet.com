@@ -20,6 +20,7 @@ const 이송민: Person = {
   link: {
     linkedIn: 'https://www.linkedin.com/in/imean1030/',
     behance: 'https://www.behance.net/songminlee',
+    homepage: 'https://imean.tistory.com/m',
   },
 };
 
