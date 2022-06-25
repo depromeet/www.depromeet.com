@@ -25,7 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
           @font-face {
             font-family: 'Noto Sans';
             font-weight: 400;
-            src: url('/fonts/NotoSansKR-Regular.otf') format('truetype');
+            src: url('/fonts/NotoSansKR-Medium.otf') format('truetype');
           }
 
           :focus {
