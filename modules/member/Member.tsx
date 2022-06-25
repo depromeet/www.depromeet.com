@@ -137,7 +137,7 @@ const SubText = styled.h2<{ device: Device }>`
   ${({ device }) =>
     device === 'mobile' &&
     css`
-      font-size: 12px;
+      font-size: 8px;
       width: 100%;
     `}
 `;
