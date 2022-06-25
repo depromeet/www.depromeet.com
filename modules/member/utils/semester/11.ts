@@ -24,13 +24,14 @@ const 이송민: Person = {
   },
 };
 
-const 박준영: Person = {
-  name: '박준영',
-  jobPosition: 'UX Designer',
-  photoLink: '/member/11/박준영.jpeg',
+const 정미숙: Person = {
+  name: '정미숙',
+  jobPosition: 'Product designer',
+  photoLink: '/member/11/정미숙.jpg',
   link: {
-    linkedIn: 'https://www.linkedin.com/in/jun-young-park',
-    behance: 'https://www.behance.net/senki1009',
+    linkedIn: 'https://www.linkedin.com/in/misuk-jeong-2bba94224/',
+    behance: 'https://www.behance.net/misukj12240ed5',
+    homepage: 'https://kusim.tistory.com/',
   },
 };
 
@@ -45,14 +46,23 @@ const 박종호: Person = {
   },
 };
 
-const 정미숙: Person = {
-  name: '정미숙',
+const 이병호: Person = {
+  name: '이병호',
   jobPosition: 'Product designer',
-  photoLink: '/member/11/정미숙.jpg',
+  photoLink: '/member/11/이병호.jpg',
   link: {
-    linkedIn: 'https://www.linkedin.com/in/misuk-jeong-2bba94224/',
-    behance: 'https://www.behance.net/misukj12240ed5',
-    homepage: 'https://kusim.tistory.com/',
+    behance: 'https://www.behance.net/lee1796ca3a',
+    linkedIn: 'https://www.linkedin.com/in/%EB%B3%91%ED%98%B8-%EC%9D%B4-312466235/',
+  },
+};
+
+const 박준영: Person = {
+  name: '박준영',
+  jobPosition: 'UX Designer',
+  photoLink: '/member/11/박준영.jpeg',
+  link: {
+    linkedIn: 'https://www.linkedin.com/in/jun-young-park',
+    behance: 'https://www.behance.net/senki1009',
   },
 };
 
@@ -76,13 +86,4 @@ const 김효진: Person = {
   },
 };
 
-const 이병호: Person = {
-  name: '이병호',
-  jobPosition: 'Product designer',
-  photoLink: '/member/11/이병호.jpg',
-  link: {
-    behance: 'https://www.behance.net/lee1796ca3a',
-  },
-};
-
-export default [김성민, 이송민, 박준영, 박종호, 정미숙, 신동빈, 김효진, 이병호];
+export default [김성민, 이송민, 정미숙, 박종호, 이병호, 박준영, 신동빈, 김효진];
