@@ -111,8 +111,6 @@ const GoogleFormRedirectButton = styled.div<{ device: Device }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: Noto Sans, Gmarket Sans, ---apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
   margin-left: 7px;
   border-radius: 27px;
@@ -147,6 +145,8 @@ const MobileButtonStyles = css`
 
   color: #0038ff;
   background-color: #fff;
+  font-family: Noto Sans, Gmarket Sans, ---apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
   :hover {
     background-color: #c0c0c0;

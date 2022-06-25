@@ -62,10 +62,10 @@ const itemMobileStyles = css`
   margin-right: 0;
   margin-top: 67px;
 
-  font-size: 40px;
+  font-size: 30px;
   font-weight: bold;
   font-family: Gmarket Sans;
-  line-height: 40px;
+  line-height: 30px;
 
   :hover {
     color: #fff;
