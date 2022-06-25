@@ -26,7 +26,9 @@ export default function Member() {
             </Title>
 
             <SubText css={{ marginTop: 20, marginBottom: 127 }} device={device}>
-              디프만은 지속적인 성장의 순환을 추구합니다. 디프만에서 성장을 경험하고 다시 나누고자 하는 사람들이
+              디프만은 지속적인 성장의 순환을 추구합니다.
+              <br />
+              디프만에서 성장을 경험하고 다시 나누고자 하는 사람들이
               <mark> 운영진으로 모여 성장을 순환시킵니다.</mark>
             </SubText>
 
@@ -135,9 +137,8 @@ const SubText = styled.h2<{ device: Device }>`
   ${({ device }) =>
     device === 'mobile' &&
     css`
-      font-size: 14px;
-      width: 276px;
-      font-size: 14px;
+      font-size: 12px;
+      width: 100%;
     `}
 `;
 
