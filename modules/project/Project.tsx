@@ -52,7 +52,7 @@ const Container = styled.div<{ device: Device }>`
   align-items: center;
 
   background-color: transparent;
-  margin: 240px 0 340px 0;
+  margin: 180px 0 340px 0;
   padding: 0 24px;
 
   ${({ device }) =>
@@ -79,8 +79,8 @@ const Catchphrase = styled.h1<{ device: Device }>`
     device === 'mobile' &&
     css`
       font-weight: 300;
-      font-size: 28px;
-      line-height: 40px;
+      font-size: 18px;
+      line-height: 30px;
       margin-bottom: 48px;
     `}
 `;

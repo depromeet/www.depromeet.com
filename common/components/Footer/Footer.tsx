@@ -12,7 +12,9 @@ export default function Footer() {
   return (
     <Container>
       <ContentWrapper device={device}>
-        <Logo />
+        <LogoWrapper device={device}>
+          <Logo layout="fill" objectFit="cover" />
+        </LogoWrapper>
 
         <div css={{ display: 'flex' }}>
           {socialMediaList.map(({ href, logo }) => (
@@ -69,7 +71,25 @@ const ContentWrapper = styled.div<{ device: Device }>`
   ${({ device }) =>
     device === 'mobile' &&
     css`
+      width: 95%;
       height: 96px;
+    `}
+`;
+
+const LogoWrapper = styled.div<{ device: Device }>`
+  display: flex;
+  justify-content: center;
+
+  svg {
+    width: 100%;
+  }
+
+  ${({ device }) =>
+    device === 'mobile' &&
+    css`
+      svg {
+        width: 80%;
+      }
     `}
 `;
 
