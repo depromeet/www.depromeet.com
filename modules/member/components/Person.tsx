@@ -13,7 +13,7 @@ export default function Person({ name, depromeetPosition, jobPosition, photoLink
   const [hover, setHover] = useState(false);
 
   return (
-    <Container onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
+    <Container onClick={() => setHover(true)} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}>
       <ImageWrapper device={device}>
         <Image src={photoLink} layout="fill" objectFit="cover" css={{ borderRadius: '10px 10px 0 0' }} />
       </ImageWrapper>
@@ -111,7 +111,7 @@ const Backdrop = styled.div<{ device: Device }>`
   column-gap: 14px;
 
   background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
 
   svg {
     cursor: pointer;

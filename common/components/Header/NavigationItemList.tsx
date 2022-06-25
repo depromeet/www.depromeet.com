@@ -105,9 +105,15 @@ const NotifyContainer = styled.div`
 `;
 
 const GoogleFormRedirectButton = styled.div<{ device: Device }>`
-  width: auto;
+  width: 145px;
+  height: 38px;
 
-  padding: 12px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Noto Sans, Gmarket Sans, ---apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
   margin-left: 7px;
   border-radius: 27px;
 

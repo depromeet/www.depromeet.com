@@ -22,6 +22,12 @@ export default function App({ Component, pageProps }: AppProps) {
             src: url('/fonts/GmarketSansTTFBold.ttf') format('truetype');
           }
 
+          @font-face {
+            font-family: 'Noto Sans';
+            font-weight: 400;
+            src: url('/fonts/NotoSansKR-Medium.otf') format('truetype');
+          }
+
           :focus {
             outline: none;
             border: none;
