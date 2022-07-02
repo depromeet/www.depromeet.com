@@ -15,7 +15,7 @@ const 김성민: Person = {
 const 이송민: Person = {
   name: '이송민',
   depromeetPosition: '부회장',
-  jobPosition: 'Product designer',
+  jobPosition: 'Product Designer',
   photoLink: '/member/11/이송민.png',
   link: {
     linkedIn: 'https://www.linkedin.com/in/imean1030/',
@@ -26,7 +26,7 @@ const 이송민: Person = {
 
 const 정미숙: Person = {
   name: '정미숙',
-  jobPosition: 'Product designer',
+  jobPosition: 'Product Designer',
   photoLink: '/member/11/정미숙.jpg',
   link: {
     linkedIn: 'https://www.linkedin.com/in/misuk-jeong-2bba94224/',
@@ -41,14 +41,14 @@ const 박종호: Person = {
   photoLink: '/member/11/박종호.jpeg',
   link: {
     linkedIn: 'https://www.linkedin.com/in/jongho-park-164b59206/',
-    github: 'https://github.com/jonghopark95',
-    homepage: 'https://jhpa.tistory.com/m',
+    github: 'https://github.com/pumpkiinbell',
+    homepage: 'https://www.pumpkiinbell.com/blog',
   },
 };
 
 const 이병호: Person = {
   name: '이병호',
-  jobPosition: 'Product designer',
+  jobPosition: 'Product Designer',
   photoLink: '/member/11/이병호.jpg',
   link: {
     behance: 'https://www.behance.net/lee1796ca3a',
