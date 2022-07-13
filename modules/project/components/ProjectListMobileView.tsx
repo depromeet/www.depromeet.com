@@ -58,7 +58,6 @@ export default function ProjectList() {
 
 const Container = styled.div`
   width: 100%;
-  margin-bottom: 56px;
 `;
 
 const Title = styled.p`

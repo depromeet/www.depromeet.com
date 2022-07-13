@@ -66,7 +66,6 @@ const perPage = 6;
 const Container = styled.section`
   display: flex;
   flex-direction: column;
-  margin-bottom: 118px;
 `;
 
 const Title = styled.h3`
