@@ -5,7 +5,7 @@ import { Header, Layout, Footer } from 'common/components';
 import { Device } from 'common/contexts/device';
 import { usePassed } from 'common/hooks';
 
-import { Schedule, ProjectListDesktopView, ProjectListMobileView } from './components';
+import { Schedule, Sponsor, ProjectListDesktopView, ProjectListMobileView } from './components';
 
 export default function Project() {
   const passed = usePassed({ y: 200 });
@@ -25,9 +25,13 @@ export default function Project() {
                 </p>
               </Catchphrase>
 
-              {device === 'mobile' ? <ProjectListMobileView /> : <ProjectListDesktopView />}
+              <Wrapper device={device}>
+                {device === 'mobile' ? <ProjectListMobileView /> : <ProjectListDesktopView />}
 
-              <Schedule />
+                <Schedule />
+
+                <Sponsor />
+              </Wrapper>
             </div>
           </Container>
         </>
@@ -50,6 +54,7 @@ const Container = styled.div<{ device: Device }>`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 118px;
 
   background-color: transparent;
   margin: 180px 0 340px 0;
@@ -62,6 +67,7 @@ const Container = styled.div<{ device: Device }>`
 
       margin: 240px 0 240px 0;
       width: 100%;
+      gap: 56px;
     `}
 `;
 
@@ -82,5 +88,17 @@ const Catchphrase = styled.h1<{ device: Device }>`
       font-size: 18px;
       line-height: 30px;
       margin-bottom: 48px;
+    `}
+`;
+
+const Wrapper = styled.div<{ device: Device }>`
+  display: flex;
+  flex-direction: column;
+  gap: 116px;
+
+  ${({ device }) =>
+    device === 'mobile' &&
+    css`
+      gap: 56px;
     `}
 `;
