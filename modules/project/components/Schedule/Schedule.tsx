@@ -1,6 +1,4 @@
-import styled from '@emotion/styled';
-
-import { Device } from 'common/contexts/device';
+import { Section } from 'common/components';
 import { useDeviceContext } from 'common/hooks';
 
 import { stepA, stepB, stepC, stepD } from '../../assets';
@@ -11,43 +9,20 @@ export default function Schedule() {
   const device = useDeviceContext();
 
   return (
-    <>
-      <Title device={device} css={device === 'mobile' && { fontSize: 16 }}>
+    <Section>
+      <Section.Title css={device === 'mobile' && { fontSize: 16 }}>
         14주간 여정
-        {device !== 'mobile' && <SubText>Depromeet 11기는 매주 토요일 14주간 진행됩니다.</SubText>}
-      </Title>
+        {device !== 'mobile' && <Section.SubText>DEPROMEET 11기는 매주 토요일 14주간 진행됩니다.</Section.SubText>}
+      </Section.Title>
 
-      <div css={{ display: 'grid', rowGap: 32 }}>
+      <Section.Content css={{ display: 'grid', rowGap: 32 }}>
         {steps.map((step, index) => (
           <Step key={`steps-${index}`} step={step} index={index} />
         ))}
-      </div>
-    </>
+      </Section.Content>
+    </Section>
   );
 }
-
-const Title = styled.h3<{ device: Device }>`
-  font-style: normal;
-  font-weight: 700;
-  font-size: 22px;
-  line-height: 26px;
-  letter-spacing: -0.3px;
-  color: #fff;
-
-  margin-bottom: 40px;
-`;
-
-const SubText = styled.sub`
-  font-style: normal;
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 2px;
-  text-transform: uppercase;
-
-  color: #fff;
-  vertical-align: center;
-  margin-left: 24px;
-`;
 
 const steps = [
   {
