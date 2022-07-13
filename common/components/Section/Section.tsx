@@ -6,7 +6,7 @@ type Props = {
 };
 
 function Section({ children }: Props) {
-  return <div>{children}</div>;
+  return <section>{children}</section>;
 }
 
 const Title = styled.h2`
