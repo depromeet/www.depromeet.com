@@ -1,8 +1,8 @@
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 
-import { Device } from 'common/contexts/device';
-import { useDeviceContext } from 'common/hooks';
+import { Device } from "common/contexts/device";
+import { useDeviceContext } from "common/hooks";
 
 export default function Section1() {
   const device = useDeviceContext();
@@ -15,15 +15,25 @@ export default function Section1() {
       </Background>
 
       <Content>
-        <Title device={device}>DEPROMEET</Title>
-        <Subtitle device={device}>디자이너와 프로그래머가 만났을 때</Subtitle>
+        <Title device={device}>
+          DEPROMEET
+          <br />
+          2022.08.22
+        </Title>
+        <Subtitle device={device}>
+          디프만 12기 멤버 모집이 시작됩니다.
+          <br />곧 만나요!
+        </Subtitle>
 
-        {device === 'mobile' && (
+        {device === "mobile" && (
           <Summary>
             <div>우리는 단순한 IT동아리가 아닙니다.</div>
             <div>서비스 런칭부터 개선까지</div>
             <div>
-              <strong css={{ color: '#38e3a8', fontWeight: 'bold' }}>경험에 성장을 더하는 모임</strong>입니다.
+              <strong css={{ color: "#38e3a8", fontWeight: "bold" }}>
+                경험에 성장을 더하는 모임
+              </strong>
+              입니다.
             </div>
           </Summary>
         )}
@@ -92,22 +102,25 @@ const Title = styled.h1<{ device: Device }>`
   line-height: 150%;
   font-size: min(200px, 3vw);
   font-family: Gmarket Sans;
+  text-align: center;
+  margin-bottom: 12px;
 
   ${({ device }) =>
-    device === 'mobile' &&
+    device === "mobile" &&
     css`
       font-size: 32px;
     `}
 `;
 
 const Subtitle = styled.h2<{ device: Device }>`
-  line-height: 111px;
+  text-align: center;
   font-size: min(100px, 1.5vw);
+  line-height: 150%;
 
   ${({ device }) =>
-    device === 'mobile' &&
+    device === "mobile" &&
     css`
-      line-height: 58px;
+      line-height: 28px;
       font-size: 15px;
     `}
 `;
