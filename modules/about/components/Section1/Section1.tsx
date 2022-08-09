@@ -100,7 +100,8 @@ const Content = styled.div`
 
 const Title = styled.h1<{ device: Device }>`
   line-height: 150%;
-  font-size: min(200px, 3vw);
+  font-size: max(3rem, 3vw);
+
   font-family: Gmarket Sans;
   text-align: center;
   margin-bottom: 12px;
@@ -108,20 +109,21 @@ const Title = styled.h1<{ device: Device }>`
   ${({ device }) =>
     device === "mobile" &&
     css`
-      font-size: 32px;
+      font-size: 2.25rem;
+      margin-bottom: 8px;
     `}
 `;
 
 const Subtitle = styled.h2<{ device: Device }>`
   text-align: center;
-  font-size: min(100px, 1.5vw);
+  font-size: max(1.5rem, 1.5vw);
   line-height: 150%;
 
   ${({ device }) =>
     device === "mobile" &&
     css`
-      line-height: 28px;
-      font-size: 15px;
+      line-height: 140%;
+      font-size: 1.125rem;
     `}
 `;
 
