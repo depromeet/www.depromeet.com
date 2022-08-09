@@ -1,12 +1,12 @@
-import { css } from '@emotion/react';
-import styled from '@emotion/styled';
+import { css } from "@emotion/react";
+import styled from "@emotion/styled";
 
-import { Device } from 'common/contexts/device';
-import { useDeviceContext } from 'common/hooks';
-import { googleFormLink } from 'common/utils/misc';
+import { Device } from "common/contexts/device";
+import { useDeviceContext } from "common/hooks";
+// import { googleFormLink } from "common/utils/misc";
 
-import SocialLinkButtonList from './SocialLinkButtonList';
-import NavigationItem from './NavigationItem';
+import SocialLinkButtonList from "./SocialLinkButtonList";
+import NavigationItem from "./NavigationItem";
 
 type NavigationItem = {
   href: string;
@@ -23,35 +23,39 @@ export default function NavigationItemList({ children, className }: Props) {
 
   return (
     <NavigationItemContainer device={device} className={className}>
-      <NavigationItemWrapper device={device}>{children?.({ items: NavigationReferences })}</NavigationItemWrapper>
+      <NavigationItemWrapper device={device}>
+        {children?.({ items: NavigationReferences })}
+      </NavigationItemWrapper>
 
-      {device === 'mobile' && <NotifyContainer>디프만에 관심있으신가요?</NotifyContainer>}
+      {/* {device === "mobile" && (
+        <NotifyContainer>디프만에 관심있으신가요?</NotifyContainer>
+      )} */}
 
-      <GoogleFormRedirectButton device={device} onClick={() => window.open(googleFormLink)}>
+      {/* <GoogleFormRedirectButton device={device} onClick={() => window.open(googleFormLink)}>
         11기에서 만나기
-      </GoogleFormRedirectButton>
+      </GoogleFormRedirectButton> */}
 
-      {device === 'mobile' && <SocialLinkButtonList />}
+      {device === "mobile" && <SocialLinkButtonList />}
     </NavigationItemContainer>
   );
 }
 
 const NavigationReferences: NavigationItem[] = [
   {
-    href: '/',
-    label: 'about',
+    href: "/",
+    label: "about",
   },
   {
-    href: '/project',
-    label: 'project',
+    href: "/project",
+    label: "project",
   },
   {
-    href: '/member',
-    label: 'member',
+    href: "/member",
+    label: "member",
   },
   {
-    href: '/contact',
-    label: 'contact',
+    href: "/contact",
+    label: "contact",
   },
 ];
 
@@ -60,7 +64,7 @@ const NavigationItemWrapper = styled.div<{ device: Device }>`
   align-items: center;
 
   ${({ device }) =>
-    device === 'mobile' &&
+    device === "mobile" &&
     css`
       flex: 1;
       flex-direction: column;
@@ -74,7 +78,7 @@ const NavigationItemContainer = styled.div<{ device: Device }>`
   z-index: 1;
 
   ${({ device }) =>
-    device === 'mobile' &&
+    device === "mobile" &&
     css`
       z-index: 1000;
       overflow-y: scroll;
@@ -85,7 +89,11 @@ const NavigationItemContainer = styled.div<{ device: Device }>`
       left: 0;
       right: 0;
 
-      background: linear-gradient(330.23deg, rgba(49, 107, 255, 0.97) 20.68%, rgba(0, 0, 0, 0.97) 71.37%);
+      background: linear-gradient(
+        330.23deg,
+        rgba(49, 107, 255, 0.97) 20.68%,
+        rgba(0, 0, 0, 0.97) 71.37%
+      );
       opacity: 0.9;
 
       flex-direction: column;
@@ -96,39 +104,39 @@ const NavigationItemContainer = styled.div<{ device: Device }>`
     `}
 `;
 
-const NotifyContainer = styled.div`
-  margin-bottom: 10px;
+// const NotifyContainer = styled.div`
+//   margin-bottom: 10px;
 
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 20px;
-`;
+//   font-size: 14px;
+//   font-weight: 500;
+//   line-height: 20px;
+// `;
 
-const GoogleFormRedirectButton = styled.div<{ device: Device }>`
-  width: 145px;
-  height: 38px;
+// const GoogleFormRedirectButton = styled.div<{ device: Device }>`
+//   width: 145px;
+//   height: 38px;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
 
-  margin-left: 7px;
-  border-radius: 27px;
+//   margin-left: 7px;
+//   border-radius: 27px;
 
-  font-size: 14px;
-  font-weight: 700;
+//   font-size: 14px;
+//   font-weight: 700;
 
-  background-color: #38e3a8;
-  color: #000;
+//   background-color: #38e3a8;
+//   color: #000;
 
-  cursor: pointer;
+//   cursor: pointer;
 
-  :hover {
-    background-color: #31b98a;
-  }
+//   :hover {
+//     background-color: #31b98a;
+//   }
 
-  ${({ device }) => device === 'mobile' && MobileButtonStyles}
-`;
+//   ${({ device }) => device === "mobile" && MobileButtonStyles}
+// `;
 
 const MobileButtonStyles = css`
   width: 100%;
@@ -145,8 +153,9 @@ const MobileButtonStyles = css`
 
   color: #0038ff;
   background-color: #fff;
-  font-family: Noto Sans, Gmarket Sans, ---apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: Noto Sans, Gmarket Sans, ---apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
 
   :hover {
     background-color: #c0c0c0;
