@@ -18,7 +18,7 @@ export default function Section1() {
         <Title device={device}>
           DEPROMEET
           <br />
-          2022.08.22
+          2022. 08. 22.
         </Title>
         <Subtitle device={device}>
           디프만 12기 멤버 모집이 시작됩니다.
