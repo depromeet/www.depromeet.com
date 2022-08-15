@@ -12,15 +12,15 @@ import {
 } from '~/constants/motions';
 import { colors, radius } from '~/styles/constants';
 
-const GROUPS = ['UIUX DESIGN', 'iOS', 'AOS', 'Frontend', 'Server'] as const;
+const TEAMS = ['UIUX DESIGN', 'iOS', 'AOS', 'Frontend', 'Server'] as const;
 
-type GroupType = typeof GROUPS[number];
+type TeamType = typeof TEAMS[number];
 
 type Contents = {
-  [group in GroupType]: { heading: string; paragraph: string };
+  [team in TeamType]: { heading: string; paragraph: string };
 };
 
-const CONTENTS_PER_GROUP: Contents = {
+const CONTENTS_PER_TEAM: Contents = {
   'UIUX DESIGN': {
     heading: '서비스의 디자인의 모든것을 담당하는 UIUX 디자이너',
     paragraph:
@@ -49,10 +49,10 @@ const CONTENTS_PER_GROUP: Contents = {
 };
 
 export default function TeamSection() {
-  const [currentGroup, setCurrentGroup] = useState<GroupType>('UIUX DESIGN');
+  const [currentTeam, setCurrentTeam] = useState<TeamType>('UIUX DESIGN');
 
-  function onClickGroup(group: GroupType) {
-    setCurrentGroup(group);
+  function onClickGroup(group: TeamType) {
+    setCurrentTeam(group);
   }
 
   return (
@@ -69,10 +69,10 @@ export default function TeamSection() {
       </motion.h2>
 
       <motion.div css={buttonWrapperCss} variants={staggerHalf}>
-        {GROUPS.map(group => (
-          <motion.div key={group} variants={defaultFadeInScaleVariants}>
-            <Button isActive={currentGroup === group} onClick={() => onClickGroup(group)}>
-              {group}
+        {TEAMS.map(team => (
+          <motion.div key={team} variants={defaultFadeInScaleVariants}>
+            <Button isActive={currentTeam === team} onClick={() => onClickGroup(team)}>
+              {team}
             </Button>
           </motion.div>
         ))}
@@ -81,7 +81,7 @@ export default function TeamSection() {
       <motion.div variants={defaultFadeInVariants}>
         <AnimatePresence exitBeforeEnter>
           <motion.div
-            key={currentGroup}
+            key={currentTeam}
             css={contentWrapperCss}
             variants={defaultFadeInUpVariants}
             initial="initial"
@@ -91,8 +91,8 @@ export default function TeamSection() {
             <div css={contentImageWrapperCss}>이미지영역</div>
 
             <div>
-              <h3 css={contentHeadingCss}>{CONTENTS_PER_GROUP[currentGroup].heading}</h3>
-              <p css={contentParagraphCss}>{CONTENTS_PER_GROUP[currentGroup].paragraph}</p>
+              <h3 css={contentHeadingCss}>{CONTENTS_PER_TEAM[currentTeam].heading}</h3>
+              <p css={contentParagraphCss}>{CONTENTS_PER_TEAM[currentTeam].paragraph}</p>
             </div>
           </motion.div>
         </AnimatePresence>
