@@ -23,6 +23,7 @@ const globalCss = css`
 
     * {
       font-family: inherit;
+      color: inherit;
 
       margin: 0;
       padding: 0;
