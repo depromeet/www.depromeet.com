@@ -1,3 +1,9 @@
+import HeaderSection from '~/components/home/HeaderSection';
+
 export default function Root() {
-  return <div>depromeet</div>;
+  return (
+    <main>
+      <HeaderSection />
+    </main>
+  );
 }
