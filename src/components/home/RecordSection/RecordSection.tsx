@@ -1,5 +1,7 @@
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
 
+import { defaultFadeInUpVariants, defaultFadeInVariants, staggerOne } from '~/constants/motions';
 import { colors, radius } from '~/styles/constants';
 
 const RECORDS: CardProps[] = [
@@ -11,12 +13,18 @@ const RECORDS: CardProps[] = [
 
 export default function RecordSection() {
   return (
-    <section css={sectionCss}>
-      <h2 css={headingCss}>
+    <motion.section
+      css={sectionCss}
+      initial="initial"
+      whileInView="animate"
+      exit="exit"
+      viewport={{ amount: 0.6 }}
+    >
+      <motion.h2 css={headingCss} variants={defaultFadeInVariants}>
         디프만은 서비스 기획부터 론칭, 그리고 개선까지 경험하며 성장하는 모임이에요.
-      </h2>
+      </motion.h2>
 
-      <div css={cardWrapperCss}>
+      <motion.div css={cardWrapperCss} variants={staggerOne}>
         {RECORDS.map(record => (
           <Card
             key={record.title}
@@ -25,8 +33,8 @@ export default function RecordSection() {
             description={record.description}
           />
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
 
@@ -56,11 +64,11 @@ interface CardProps {
 
 function Card({ title, value, description }: CardProps) {
   return (
-    <div css={cardCss}>
+    <motion.div css={cardCss} variants={defaultFadeInUpVariants}>
       <span css={titleCss}>{title}</span>
       <span css={valueCss}>{value}</span>
       {description && <small css={descriptionCss}>{description}</small>}
-    </div>
+    </motion.div>
   );
 }
 
