@@ -30,7 +30,7 @@ const buttonCss = (isActive: boolean) => css`
   transition: background-color 0.3s, color 0.3s;
 
   &:hover {
-    background-color: ${colors.gray8};
+    background-color: ${isActive ? colors.primaryDark : colors.gray8};
   }
 
   &:active {
