@@ -1,5 +1,8 @@
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
 
+import { defaultFadeInVariants, staggerHalf } from '~/constants/motions';
+import { defaultFadeInSlideToRightVariants, staggerOne } from '~/constants/motions/motions';
 import { colors, radius } from '~/styles/constants';
 
 interface Scehdule {
@@ -27,21 +30,36 @@ const SCHEDULES: Scehdule[] = [
 
 export default function ScheduleSection() {
   return (
-    <section css={sectionCss}>
-      <h2 css={headingCss}>디프만 12기는 다음과 같이 진행될 예정이에요!</h2>
-      <p css={descriptionCss}>디프만 12기는 매주 토요일, 총 17주간 진행됩니다.</p>
+    <motion.section
+      css={sectionCss}
+      variants={staggerHalf}
+      initial="initial"
+      whileInView="animate"
+      exit="exit"
+      viewport={{ amount: 0.4 }}
+    >
+      <motion.h2 css={headingCss} variants={defaultFadeInVariants}>
+        디프만 12기는 다음과 같이 진행될 예정이에요!
+      </motion.h2>
+      <motion.p css={descriptionCss} variants={defaultFadeInVariants}>
+        디프만 12기는 매주 토요일, 총 17주간 진행됩니다.
+      </motion.p>
 
-      <div css={articleWrapperCss}>
+      <motion.div css={articleWrapperCss} variants={staggerOne}>
         {SCHEDULES.map(schedule => (
-          <article key={schedule.week} css={articleCss}>
+          <motion.article
+            key={schedule.week}
+            css={articleCss}
+            variants={defaultFadeInSlideToRightVariants}
+          >
             <span css={articleWeekCss}>{schedule.week}</span>
             <h3 css={articleTitleCss}>{schedule.title}</h3>
 
             <div css={articleImageWrapperCss}>그래픽 공간</div>
-          </article>
+          </motion.article>
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
 
