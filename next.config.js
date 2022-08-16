@@ -16,7 +16,6 @@ const nextConfig = {
 /**
  *
  * @link https://github.com/cyrilwanner/next-compose-plugins/issues/59#issuecomment-1209152211
- * warnning 해결 입니다. "next-compose-plugins"의 이슈로 defaultConfig를 모두 정의해줘야되는 wanning이 떠서 시원하게 없앴습니다.
  */
 module.exports = () => {
   const plugins = [withBundleAnalyzer];
