@@ -73,7 +73,7 @@ function LinkArticle({ href, heading, description }: LinkArticleProps) {
       <motion.a
         css={anchorCss}
         variants={defaultFadeInUpVariants}
-        whileHover={{ scale: 1.02 }}
+        whileHover={{ scale: 1.02, transformOrigin: 'center' }}
         whileTap={{ scale: 0.98 }}
       >
         <div css={imageWrapperCss}>이미지 구역</div>
@@ -90,9 +90,9 @@ function LinkArticle({ href, heading, description }: LinkArticleProps) {
 const anchorCss = css`
   width: 100%;
   height: 530px;
-  background-color: ${colors.gray9};
-  border-radius: ${radius.md};
   overflow: hidden;
+  border-radius: ${radius.md};
+  background-color: ${colors.gray9};
 `;
 
 const imageWrapperCss = css`

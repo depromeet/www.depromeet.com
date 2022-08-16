@@ -1,10 +1,9 @@
-import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-
+import styled from '@emotion/styled';
 import { Device } from 'common/contexts/device';
 import { useDeviceContext } from 'common/hooks';
 
-import { Logo, FacebookLogo, InstagramLogo, MediumLogo } from '../../assets';
+import { FacebookLogo, InstagramLogo, Logo, MediumLogo } from '../../assets';
 
 export default function Footer() {
   const device = useDeviceContext();
