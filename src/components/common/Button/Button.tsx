@@ -1,9 +1,9 @@
-import { ComponentPropsWithRef, forwardRef, Ref } from 'react';
+import { ComponentPropsWithoutRef, forwardRef, Ref } from 'react';
 import { css } from '@emotion/react';
 
 import { colors, radius } from '~/styles/constants';
 
-interface Props extends ComponentPropsWithRef<'button'> {
+interface Props extends ComponentPropsWithoutRef<'button'> {
   isActive?: boolean;
 }
 
