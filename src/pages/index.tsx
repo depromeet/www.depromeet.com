@@ -1,3 +1,4 @@
+import ApplySection from '~/components/home/ApplySection';
 import HeaderSection from '~/components/home/HeaderSection';
 import MoreInfoSection from '~/components/home/MoreInfoSection';
 import RecordSection from '~/components/home/RecordSection';
@@ -12,6 +13,7 @@ export default function Root() {
       <TeamSection />
       <ScheduleSection />
       <MoreInfoSection />
+      <ApplySection />
     </main>
   );
 }
