@@ -1,16 +1,21 @@
 import { css } from '@emotion/react';
-import { motion, Variants } from 'framer-motion';
+import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 
 import { ScrollBottomIcon } from '~/components/common/icons';
 import { defaultEasing } from '~/constants/motions';
 
 export default function HeaderSection() {
+  const { scrollY } = useScroll();
+  const scrollBottomOpacity = useTransform(scrollY, [0, 800], [1, 0]);
+  const scrollBottomScale = useTransform(scrollY, [0, 800], [1, 0.6]);
+
   return (
     <header css={headerCss}>
       <p>some text or image</p>
 
       <motion.div
         css={scrollBottomIconWrapperCss}
+        style={{ opacity: scrollBottomOpacity, scale: scrollBottomScale }}
         variants={scrollBottomVariants}
         initial="initial"
         animate="animate"
