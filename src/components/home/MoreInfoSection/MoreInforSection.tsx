@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
 import { DEPROMEET_MEDIUM } from '~/constants/common';
-import { defaultFadeInUpVariants, defaultFadeInVariants, staggerOne } from '~/constants/motions';
+import { defaultEasing, defaultFadeInVariants, staggerOne } from '~/constants/motions';
 import { colors, radius } from '~/styles/constants';
 
 export default function MoreInfoSection() {
@@ -72,8 +72,8 @@ function LinkArticle({ href, heading, description }: LinkArticleProps) {
     <Link href={href}>
       <motion.a
         css={anchorCss}
-        variants={defaultFadeInUpVariants}
-        whileHover={{ scale: 1.02 }}
+        variants={defaultFadeInVariants}
+        whileHover={{ y: -20, transition: { duration: 0.3, ease: defaultEasing } }}
         whileTap={{ scale: 0.98 }}
       >
         <div css={imageWrapperCss}>이미지 구역</div>
