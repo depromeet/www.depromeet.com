@@ -103,7 +103,7 @@ function MotionAnchor({ children, href }: PropsWithChildren<MotionAnchorProps>) 
   return (
     <motion.a
       css={motionAnchorCss}
-      whileHover={{ backgroundColor: colors.primary }}
+      whileHover={{ backgroundColor: colors.gray8 }}
       whileTap={{ scale: 0.9 }}
       href={href}
       rel="nofollow noreferrer"

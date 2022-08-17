@@ -36,7 +36,7 @@ export default function ScheduleSection() {
       initial="initial"
       whileInView="animate"
       exit="exit"
-      viewport={{ amount: 0.4 }}
+      viewport={{ amount: 0.4, once: true }}
     >
       <motion.h2 css={headingCss} variants={defaultFadeInVariants}>
         디프만 12기는 다음과 같이 진행될 예정이에요!
