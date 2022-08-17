@@ -51,8 +51,8 @@ const CONTENTS_PER_TEAM: Contents = {
 export default function TeamSection() {
   const [currentTeam, setCurrentTeam] = useState<TeamType>('UIUX DESIGN');
 
-  function onClickGroup(group: TeamType) {
-    setCurrentTeam(group);
+  function onClickTeamButton(team: TeamType) {
+    setCurrentTeam(team);
   }
 
   return (
@@ -71,7 +71,7 @@ export default function TeamSection() {
       <motion.div css={buttonWrapperCss} variants={staggerHalf}>
         {TEAMS.map(team => (
           <motion.div key={team} variants={defaultFadeInScaleVariants}>
-            <Button isActive={currentTeam === team} onClick={() => onClickGroup(team)}>
+            <Button isActive={currentTeam === team} onClick={() => onClickTeamButton(team)}>
               {team}
             </Button>
           </motion.div>
