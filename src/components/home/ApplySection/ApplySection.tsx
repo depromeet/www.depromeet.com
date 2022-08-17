@@ -18,7 +18,7 @@ export default function ApplySection() {
       initial="initial"
       whileInView="animate"
       exit="exit"
-      viewport={{ amount: 0.6 }}
+      viewport={{ amount: 0.6, once: true }}
     >
       <motion.span css={spanCss} variants={defaultFadeInVariants}>
         이제 여러분 차레예요!

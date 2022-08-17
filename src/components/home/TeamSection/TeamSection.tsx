@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { css } from '@emotion/react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, Variants } from 'framer-motion';
 
 import Button from '~/components/common/Button';
 import {
+  defaultEasing,
   defaultFadeInScaleVariants,
-  defaultFadeInUpVariants,
   defaultFadeInVariants,
   staggerHalf,
   staggerOne,
@@ -83,7 +83,7 @@ export default function TeamSection() {
           <motion.div
             key={currentTeam}
             css={contentWrapperCss}
-            variants={defaultFadeInUpVariants}
+            variants={cardSwitchVariants}
             initial="initial"
             animate="animate"
             exit="exit"
@@ -153,3 +153,24 @@ const contentParagraphCss = css`
   font-size: 1.375rem;
   line-height: 150%;
 `;
+
+const cardSwitchVariants: Variants = {
+  initial: {
+    opacity: 0,
+    y: 30,
+    transition: { duration: 0.5, ease: defaultEasing },
+    willChange: 'opacity, transform',
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: defaultEasing },
+    willChange: 'opacity, transform',
+  },
+  exit: {
+    opacity: 0,
+    y: 30,
+    transition: { duration: 0.4, ease: defaultEasing },
+    willChange: 'opacity, transform',
+  },
+};
