@@ -12,4 +12,5 @@ export const colors = {
   white: '#FFFFFF',
   primary: '#1B5BFF',
   primaryDark: '#1747C3',
+  secondaryBlue: '#5E8BFF',
 } as const;
