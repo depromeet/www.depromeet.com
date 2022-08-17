@@ -62,7 +62,7 @@ export default function TeamSection() {
       initial="initial"
       whileInView="animate"
       exit="exit"
-      viewport={{ amount: 0.6 }}
+      viewport={{ amount: 0.6, once: true }}
     >
       <motion.h2 css={headingCss} variants={defaultFadeInVariants}>
         디프만의 팀은 어떻게 구성되어 있을까요?

@@ -18,7 +18,7 @@ export default function RecordSection() {
       initial="initial"
       whileInView="animate"
       exit="exit"
-      viewport={{ amount: 0.6 }}
+      viewport={{ amount: 0.6, once: true }}
     >
       <motion.h2 css={headingCss} variants={defaultFadeInVariants}>
         디프만은 서비스 기획부터 론칭, 그리고 개선까지 경험하며 성장하는 모임이에요.
