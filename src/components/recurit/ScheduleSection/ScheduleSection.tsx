@@ -42,7 +42,8 @@ const blockContainerCss = css`
   max-width: 1000px;
   width: 100%;
   height: 42px;
-  margin: 50px 20px 0;
+  margin: 50px auto 0;
+  padding: 0 30px;
 `;
 
 const recuritBlockCss = css`
@@ -67,7 +68,7 @@ const activeBlockCss = css`
   align-items: center;
   justify-content: center;
 
-  width: calc(100% - 61.2% - 24px);
+  width: calc(100% - 61.2% - 2.4%);
   height: 100%;
 
   color: white;
@@ -87,5 +88,6 @@ const rangeContainerCss = css`
 
   max-width: 1000px;
   height: 150px;
-  margin: 40px 20px 0;
+  margin: 40px auto 0;
+  padding: 0 30px;
 `;
