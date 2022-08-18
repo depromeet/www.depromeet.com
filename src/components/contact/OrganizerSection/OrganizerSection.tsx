@@ -1,5 +1,12 @@
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
 
+import {
+  defaultFadeInUpVariants,
+  defaultFadeInVariants,
+  staggerHalf,
+  staggerOne,
+} from '~/constants/motions';
 import { colors } from '~/styles/constants';
 
 import OrganizerCard from './OrganizerCard';
@@ -7,27 +14,37 @@ import { ORGANIZERS } from './source';
 
 export default function OrganizerSection() {
   return (
-    <section css={sectionCss}>
-      <h2 css={headingCss}>디프만 운영진을 소개할게요</h2>
-      <p css={paragraphCss}>
+    <motion.section
+      css={sectionCss}
+      variants={staggerOne}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
+      <motion.h2 css={headingCss} variants={defaultFadeInUpVariants}>
+        디프만 운영진을 소개할게요
+      </motion.h2>
+      <motion.p css={paragraphCss} variants={defaultFadeInVariants}>
         여러분들께 특별한 디프만 경험을 전달하기 위해
         <br />
         열심히 일하고 있는 운영진들을 소개할게요!
-      </p>
+      </motion.p>
 
-      <div css={organizerHeadingWrapperCss}>
-        <h3 css={organizerHeadingCss}>12기 운영진</h3>
-        <small css={organizerDateCss}>
+      <motion.div css={organizerHeadingWrapperCss} variants={staggerOne}>
+        <motion.h3 css={organizerHeadingCss} variants={defaultFadeInVariants}>
+          12기 운영진
+        </motion.h3>
+        <motion.small css={organizerDateCss} variants={defaultFadeInVariants}>
           <time dateTime="2022-07">2022.07</time> ~
-        </small>
-      </div>
+        </motion.small>
+      </motion.div>
 
-      <div>
+      <motion.div css={organizerWrapperCss} variants={staggerHalf}>
         {ORGANIZERS.map(organizer => (
           <OrganizerCard key={organizer.name} {...organizer} />
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
 
@@ -69,4 +86,10 @@ const organizerDateCss = css`
   font-size: 1rem;
   line-height: 150%;
   color: ${colors.gray4};
+`;
+
+const organizerWrapperCss = css`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
 `;

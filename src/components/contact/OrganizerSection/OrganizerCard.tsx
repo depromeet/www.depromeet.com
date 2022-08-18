@@ -1,9 +1,11 @@
 import { PropsWithChildren } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
 
 import { BehanceIcon, GithubIcon, LinkedinIcon, WebIcon } from '~/components/common/icons';
 import { ORGANIZER_IMAGES } from '~/constants/images';
+import { defaultFadeInUpVariants } from '~/constants/motions';
 import { colors, radius } from '~/styles/constants';
 
 import type { Organizer } from './source';
@@ -20,7 +22,7 @@ export default function OrganizerCard({
   web,
 }: Props) {
   return (
-    <article css={articleCss}>
+    <motion.article css={articleCss} variants={defaultFadeInUpVariants}>
       <Image
         src={ORGANIZER_IMAGES[imageKey]}
         alt={name}
@@ -56,13 +58,15 @@ export default function OrganizerCard({
           </IconAnchor>
         )}
       </div>
-    </article>
+    </motion.article>
   );
 }
 
 const articleCss = css`
   position: relative;
-  width: 240px;
+  /* width: 240px; */
+  width: calc(25% - 2.5rem);
+
   height: 324px;
   border-radius: ${radius.md};
   overflow: hidden;
