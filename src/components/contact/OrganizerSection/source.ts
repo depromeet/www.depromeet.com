@@ -16,9 +16,9 @@ export const ORGANIZERS: Organizer[] = [
     imageKey: '윤병호',
     name: '박소현(회장)',
     position: 'UIUX Designer',
-    behance: '',
-    linkedin: '',
-    github: '',
-    web: '',
+    behance: 'as',
+    linkedin: 's',
+    github: 's',
+    web: 's',
   },
 ];

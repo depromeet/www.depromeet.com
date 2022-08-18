@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
 import ContactSection from '~/components/contact/ContactSection';
+import OrganizerSection from '~/components/contact/OrganizerSection';
 import { defaultFadeInVariants } from '~/constants/motions';
 import { colors } from '~/styles/constants';
 
@@ -16,6 +17,7 @@ export default function Contact() {
         animate="animate"
         exit="exit"
       />
+      <OrganizerSection />
     </main>
   );
 }
