@@ -90,3 +90,24 @@ export const defaultFadeInSlideToRightVariants: Variants = {
     willChange: 'opacity, transform',
   },
 };
+
+export const defaultFadeInSlideToLeftVariants: Variants = {
+  initial: {
+    opacity: 0,
+    x: 30,
+    transition: { duration: 0.6, ease: defaultEasing },
+    willChange: 'opacity, transform',
+  },
+  animate: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: defaultEasing },
+    willChange: 'opacity, transform',
+  },
+  exit: {
+    opacity: 0,
+    x: -30,
+    transition: { duration: 0.6, ease: defaultEasing },
+    willChange: 'opacity, transform',
+  },
+};

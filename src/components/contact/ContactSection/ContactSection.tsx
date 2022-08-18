@@ -1,24 +1,43 @@
 import Image from 'next/image';
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
 
 import { DEPROMEET_EMAIL, DEPROMEET_INSTAGRAM } from '~/constants/common/depromeet';
 import { CONTACT_IMAGES } from '~/constants/images';
+import { defaultFadeInUpVariants, defaultFadeInVariants, staggerOne } from '~/constants/motions';
+import { defaultFadeInSlideToLeftVariants, staggerHalf } from '~/constants/motions/motions';
 import { colors, radius } from '~/styles/constants';
 
 export default function ContactSection() {
   return (
     <section css={sectionCss}>
-      <div css={descriptionWrapperCss}>
-        <h2 css={descriptionHeadingCss}>
+      <motion.div
+        css={descriptionWrapperCss}
+        variants={staggerHalf}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
+        <motion.h2 css={descriptionHeadingCss} variants={defaultFadeInUpVariants}>
           궁금한 것이 있거나
           <br />
           문의 사항이 있으신가요?
-        </h2>
-        <span css={descriptionTimeCss}>운영 시간 : 9시 ~ 18시</span>
-        <small css={descriptionBusinessCss}>비즈니스 문의 depromeet@gmail.com</small>
-      </div>
+        </motion.h2>
+        <motion.span css={descriptionTimeCss} variants={defaultFadeInVariants}>
+          운영 시간 : 9시 ~ 18시
+        </motion.span>
+        <motion.small css={descriptionBusinessCss} variants={defaultFadeInVariants}>
+          비즈니스 문의 depromeet@gmail.com
+        </motion.small>
+      </motion.div>
 
-      <div css={buttonWrapperCss}>
+      <motion.div
+        css={buttonWrapperCss}
+        variants={staggerOne}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
         <ContactAnchor
           imageSrc="gmail"
           href={`mailto:${DEPROMEET_EMAIL}`}
@@ -38,7 +57,7 @@ export default function ContactSection() {
           text="instagram"
           value="@depromeet"
         />
-      </div>
+      </motion.div>
     </section>
   );
 }
@@ -47,6 +66,8 @@ const sectionCss = css`
   margin-top: 120px;
   width: 100%;
   display: flex;
+
+  margin-bottom: 160px;
 `;
 
 const descriptionWrapperCss = css`
@@ -93,14 +114,20 @@ interface ContactAnchorProps {
 
 function ContactAnchor({ imageSrc, href, text, value }: ContactAnchorProps) {
   return (
-    <a href={href} target="_blank" rel="noopener noreferrer" css={contactAnchorCss}>
+    <motion.a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      css={contactAnchorCss}
+      variants={defaultFadeInSlideToLeftVariants}
+    >
       <div css={contactInfoWrapperCss}>
         <Image src={CONTACT_IMAGES[imageSrc]} alt={`${text} icon`} width={32} height={32} />
         <span>{text}</span>
       </div>
 
       <span css={contactValueCss}>{value}</span>
-    </a>
+    </motion.a>
   );
 }
 
