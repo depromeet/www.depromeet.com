@@ -73,7 +73,7 @@ const anchorCss = (path: string, isActive: boolean) => css`
 
   padding: 10px 20px;
   border-radius: 8px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 
   &:hover {
     background-color: ${colors.gray9};
