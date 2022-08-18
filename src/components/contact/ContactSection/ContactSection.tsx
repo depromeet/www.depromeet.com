@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 
 import { DEPROMEET_EMAIL, DEPROMEET_INSTAGRAM } from '~/constants/common/depromeet';
 import { CONTACT_IMAGES } from '~/constants/images';
+import { ContactImagesKeyType } from '~/constants/images/images';
 import { defaultFadeInUpVariants, defaultFadeInVariants, staggerOne } from '~/constants/motions';
 import { defaultFadeInSlideToLeftVariants, staggerHalf } from '~/constants/motions/motions';
 import { colors, radius } from '~/styles/constants';
@@ -39,20 +40,20 @@ export default function ContactSection() {
         exit="exit"
       >
         <ContactAnchor
-          imageSrc="gmail"
+          imageKey="gmail"
           href={`mailto:${DEPROMEET_EMAIL}`}
           text="gmail"
           value="depromeet@gmail.com"
         />
         <ContactAnchor
-          imageSrc="kakaotalk"
+          imageKey="kakaotalk"
           // TODO: 여기 카카오톡 플러스 채널로
           href={'https://www.naver.com'}
           text="kakao plus friend"
           value="depromeet"
         />
         <ContactAnchor
-          imageSrc="instagram"
+          imageKey="instagram"
           href={DEPROMEET_INSTAGRAM}
           text="instagram"
           value="@depromeet"
@@ -106,13 +107,13 @@ const buttonWrapperCss = css`
 `;
 
 interface ContactAnchorProps {
-  imageSrc: keyof typeof CONTACT_IMAGES;
+  imageKey: ContactImagesKeyType;
   href: string;
   text: string;
   value: string;
 }
 
-function ContactAnchor({ imageSrc, href, text, value }: ContactAnchorProps) {
+function ContactAnchor({ imageKey, href, text, value }: ContactAnchorProps) {
   return (
     <motion.a
       href={href}
@@ -122,7 +123,7 @@ function ContactAnchor({ imageSrc, href, text, value }: ContactAnchorProps) {
       variants={defaultFadeInSlideToLeftVariants}
     >
       <div css={contactInfoWrapperCss}>
-        <Image src={CONTACT_IMAGES[imageSrc]} alt={`${text} icon`} width={32} height={32} />
+        <Image src={CONTACT_IMAGES[imageKey]} alt={`${text} icon`} width={32} height={32} />
         <span>{text}</span>
       </div>
 
