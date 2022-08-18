@@ -41,8 +41,14 @@ export default function NavigationBar() {
 }
 
 const navCss = css`
+  position: fixed;
+  top: 0;
+  left: 0;
+
   width: 100%;
   height: 60px;
+  background-color: ${colors.black};
+  z-index: 9999;
 `;
 
 const wrapperCss = css`
