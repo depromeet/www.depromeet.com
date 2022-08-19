@@ -74,6 +74,7 @@ const ANSWER_DESIGNER = [
   초반 아이데이션이나 디자인 컨셉 회의 때 마음껏 의견을 내세요!`,
 ];
 
+// TODO: 포지션과 포지션 타입을 국지적으로 사용하고 있는데, 상수로써 관리하는건 어떨지
 export const TEAMS = ['UIUX DESIGN', 'iOS', 'Android', 'Web', 'Backend'] as const;
 
 export type TeamType = typeof TEAMS[number];
