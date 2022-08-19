@@ -9,10 +9,10 @@ import { PositionType } from './PosiotionSection';
 
 const POSITION_LABEL = {
   DESIGN: 'UIUX Design',
-  AOS: 'AOS',
+  ANDROID: 'Android',
   IOS: 'iOS',
-  FRONTEND: 'Frontend',
-  SERVER: 'Server',
+  WEB: 'Web',
+  BACKEND: 'Backend',
 } as const;
 
 export function Card({ postionType }: { postionType: PositionType }) {

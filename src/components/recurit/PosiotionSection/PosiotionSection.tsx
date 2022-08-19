@@ -7,10 +7,10 @@ import { Card } from './Card';
 
 const POSITION_TYPE = {
   DESIGN: 'DESIGN',
-  AOS: 'AOS',
+  ANDROID: 'ANDROID',
   IOS: 'IOS',
-  FRONTEND: 'FRONTEND',
-  SERVER: 'SERVER',
+  WEB: 'WEB',
+  BACKEND: 'BACKEND',
 } as const;
 
 export type PositionType = keyof typeof POSITION_TYPE;
@@ -30,10 +30,10 @@ export default function PosiotionSection() {
       </motion.h2>
       <motion.div css={cardContainerCss} variants={staggerOne}>
         <Card postionType={POSITION_TYPE.DESIGN} />
-        <Card postionType={POSITION_TYPE.AOS} />
+        <Card postionType={POSITION_TYPE.ANDROID} />
         <Card postionType={POSITION_TYPE.IOS} />
-        <Card postionType={POSITION_TYPE.FRONTEND} />
-        <Card postionType={POSITION_TYPE.SERVER} />
+        <Card postionType={POSITION_TYPE.WEB} />
+        <Card postionType={POSITION_TYPE.BACKEND} />
       </motion.div>
     </motion.section>
   );
