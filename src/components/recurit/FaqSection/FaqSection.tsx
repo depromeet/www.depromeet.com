@@ -82,7 +82,7 @@ const sectionCss = css`
 
 const headingCss = css`
   font-weight: 700;
-  font-size: 42px;
+  font-size: 2.625rem;
   line-height: 140%;
 `;
 
@@ -90,7 +90,7 @@ const descriptionCss = css`
   margin-top: 12px;
 
   font-weight: 400;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 150%;
   color: #cbcad1;
 `;
@@ -116,13 +116,13 @@ const faqCss = css`
 
   dt {
     font-weight: 600;
-    font-size: 26px;
+    font-size: 1.625rem;
     line-height: 150%;
   }
 
   dd {
     font-weight: 400;
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 150%;
     color: #82818d;
   }

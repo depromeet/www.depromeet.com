@@ -44,7 +44,7 @@ const sectionCss = css`
 
 const headingCss = css`
   font-weight: 700;
-  font-size: 42px;
+  font-size: 2.625rem;
   line-height: 140%;
 `;
 
@@ -71,7 +71,7 @@ const recuritBlockCss = css`
   border-radius: 10px;
 
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 180%;
   color: #ffffff;
 `;
@@ -89,7 +89,7 @@ const activeBlockCss = css`
   border-radius: 10px;
 
   font-weight: 600;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 180%;
 
   color: #afaeb6;

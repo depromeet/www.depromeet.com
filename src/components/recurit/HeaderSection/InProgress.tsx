@@ -38,7 +38,7 @@ export default function InProgress({ remainTime }: { remainTime: number }) {
 
 const descriptionCss = css`
   font-weight: 700;
-  font-size: 32px;
+  font-size: 2rem;
   line-height: 140%;
   text-align: center;
 
@@ -49,8 +49,7 @@ const descriptionCss = css`
 
 const headingCss = css`
   font-weight: 600;
-  font-size: 128px;
-
+  font-size: 8rem;
   line-height: 120%;
   text-align: center;
 

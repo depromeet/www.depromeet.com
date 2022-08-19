@@ -16,7 +16,7 @@ export default function Previous() {
 
 const headingCss = css`
   font-weight: 600;
-  font-size: 72px;
+  font-size: 4.5rem;
   line-height: 120%;
   text-align: center;
 

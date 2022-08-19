@@ -44,7 +44,7 @@ const sectionCss = css`
 
 const headingCss = css`
   font-weight: 700;
-  font-size: 42px;
+  font-size: 2.625rem;
   line-height: 140%;
 `;
 
@@ -55,7 +55,7 @@ const requirementListCss = css`
   list-style: disc;
 
   font-weight: 400;
-  font-size: 22px;
+  font-size: 1.375rem;
   line-height: 180%;
   color: #cbcad1;
 `;

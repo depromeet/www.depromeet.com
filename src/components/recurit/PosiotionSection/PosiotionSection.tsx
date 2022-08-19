@@ -45,7 +45,7 @@ const sectionCss = css`
 `;
 const headingCss = css`
   font-weight: 700;
-  font-size: 42px;
+  font-size: 2.625rem;
   line-height: 140%;
 `;
 const cardContainerCss = css`

@@ -70,6 +70,6 @@ const eventCss = css`
 
   font-weight: 400;
   width: max-content;
-  font-size: 22px;
+  font-size: 1.375rem;
   line-height: 180%;
 `;

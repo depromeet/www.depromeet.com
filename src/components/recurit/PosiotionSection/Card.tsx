@@ -44,8 +44,8 @@ const cardCss = css`
 
 const cardTitleCss = css`
   font-weight: 600;
-  font-size: 32px;
-  line-height: 38px;
+  font-size: 2rem;
+  line-height: 120%;
   color: #ffffff;
 `;
 

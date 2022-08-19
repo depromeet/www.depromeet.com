@@ -128,7 +128,6 @@ const sectionCss = css`
   justify-content: center;
 `;
 
-// TODO: 여러곳에서 사용함으로 공통으로 사용하도록 변경필요
 const scrollBottomIconWrapperCss = css`
   position: absolute;
   bottom: 20px;
