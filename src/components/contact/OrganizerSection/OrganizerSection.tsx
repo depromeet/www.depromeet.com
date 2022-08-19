@@ -7,7 +7,7 @@ import {
   staggerHalf,
   staggerOne,
 } from '~/constants/motions';
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
 
 import OrganizerCard from './OrganizerCard';
 import { ORGANIZERS } from './source';
@@ -50,6 +50,10 @@ export default function OrganizerSection() {
 
 const sectionCss = css`
   margin-top: 80px;
+
+  ${mediaQuery('xs')} {
+    margin-top: 40px;
+  }
 `;
 
 const headingCss = css`
@@ -58,6 +62,12 @@ const headingCss = css`
   line-height: 140%;
 
   margin-bottom: 16px;
+
+  ${mediaQuery('xs')} {
+    font-size: 24px;
+
+    margin-bottom: 12px;
+  }
 `;
 
 const paragraphCss = css`
@@ -74,22 +84,39 @@ const organizerHeadingWrapperCss = css`
   align-items: flex-end;
 
   margin-bottom: 60px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 30px;
+  }
 `;
 
 const organizerHeadingCss = css`
   font-size: 1.625rem;
   font-weight: 700;
   line-height: 120%;
+
+  ${mediaQuery('xs')} {
+    font-size: 20px;
+    font-weight: 600;
+  }
 `;
 
 const organizerDateCss = css`
   font-size: 1rem;
   line-height: 150%;
   color: ${colors.gray4};
+
+  ${mediaQuery('xs')} {
+    font-size: 12px;
+  }
 `;
 
 const organizerWrapperCss = css`
   display: flex;
   flex-wrap: wrap;
   gap: 2.5rem;
+
+  ${mediaQuery('xs')} {
+    gap: 15px;
+  }
 `;
