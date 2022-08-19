@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
 import { defaultFadeInUpVariants, defaultFadeInVariants, staggerOne } from '~/constants/motions';
-import { colors, radius } from '~/styles/constants';
+import { colors, mediaQuery, radius } from '~/styles/constants';
 
 const RECORDS: CardProps[] = [
   { title: '탄생한지', value: '6년' },
@@ -47,13 +47,25 @@ const headingCss = css`
   text-align: center;
   font-size: 2.75rem;
   line-height: 150%;
+
+  ${mediaQuery('xs')} {
+    font-size: 24px;
+    font-weight: 500;
+  }
 `;
 
 const cardWrapperCss = css`
   margin-top: 60px;
+
   width: 100%;
   display: flex;
   justify-content: space-evenly;
+
+  ${mediaQuery('xs')} {
+    margin-top: 40px;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
 `;
 
 interface CardProps {
@@ -83,6 +95,12 @@ const cardCss = css`
 
   width: 23%;
   height: 255px;
+
+  ${mediaQuery('xs')} {
+    width: calc(50% - 7.5px);
+    aspect-ratio: 1 / 1;
+    height: auto;
+  }
 `;
 
 const titleCss = css`
@@ -90,12 +108,20 @@ const titleCss = css`
   font-size: 1.5rem;
   line-height: 112.5%;
   margin-bottom: 12px;
+
+  ${mediaQuery('xs')} {
+    font-size: 14px;
+  }
 `;
 
 const valueCss = css`
   font-size: 3.125rem;
   line-height: 112.5%;
   font-weight: 700;
+
+  ${mediaQuery('xs')} {
+    font-size: 30px;
+  }
 `;
 
 const descriptionCss = css`
@@ -103,4 +129,8 @@ const descriptionCss = css`
   bottom: 20px;
   color: ${colors.gray6};
   font-size: 1.125rem;
+
+  ${mediaQuery('xs')} {
+    font-size: 12px;
+  }
 `;

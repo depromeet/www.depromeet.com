@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, forwardRef, Ref } from 'react';
 import { css } from '@emotion/react';
 
-import { colors, radius } from '~/styles/constants';
+import { colors, mediaQuery, radius } from '~/styles/constants';
 
 interface Props extends ComponentPropsWithoutRef<'button'> {}
 
@@ -30,5 +30,10 @@ const buttonCss = css`
 
   &:hover {
     background-color: ${colors.primaryDark};
+  }
+
+  ${mediaQuery('xs')} {
+    padding: 16px 30px;
+    font-size: 16px;
   }
 `;

@@ -4,16 +4,19 @@ import { motion } from 'framer-motion';
 
 import { DEPROMEET_MEDIUM } from '~/constants/common';
 import { defaultFadeInUpVariants, defaultFadeInVariants, staggerOne } from '~/constants/motions';
-import { colors, radius } from '~/styles/constants';
+import useMediaQuery from '~/hooks/use-media-query';
+import { colors, mediaQuery, radius } from '~/styles/constants';
 
 export default function MoreInfoSection() {
+  const isMobile = useMediaQuery('xs');
+
   return (
     <motion.section
       css={sectionCss}
       initial="initial"
       whileInView="animate"
       exit="exit"
-      viewport={{ amount: 0.6, once: true }}
+      viewport={{ amount: isMobile ? 0.2 : 0.6, once: true }}
     >
       <motion.h2 css={headingCss} variants={defaultFadeInVariants}>
         디프만에 대해서
@@ -51,6 +54,13 @@ const headingCss = css`
   line-height: 150%;
 
   margin-bottom: 50px;
+
+  ${mediaQuery('xs')} {
+    font-size: 24px;
+    font-weight: 500;
+
+    margin-bottom: 30px;
+  }
 `;
 
 const articleWrapperCss = css`
@@ -58,6 +68,11 @@ const articleWrapperCss = css`
   display: flex;
   justify-content: space-evenly;
   gap: 2.625rem;
+
+  ${mediaQuery('xs')} {
+    flex-direction: column;
+    gap: 15px;
+  }
 `;
 
 interface LinkArticleProps {
@@ -93,16 +108,28 @@ const anchorCss = css`
   overflow: hidden;
   border-radius: ${radius.md};
   background-color: ${colors.gray9};
+
+  ${mediaQuery('xs')} {
+    height: 354px;
+  }
 `;
 
 const imageWrapperCss = css`
   width: 100%;
   height: 346px;
   background-color: ${colors.gray7};
+
+  ${mediaQuery('xs')} {
+    height: 233px;
+  }
 `;
 
 const contentWrapperCss = css`
   padding: 35px 2.5rem;
+
+  ${mediaQuery('xs')} {
+    padding: 20px;
+  }
 `;
 
 const contentHeadingCss = css`
@@ -112,6 +139,12 @@ const contentHeadingCss = css`
   line-height: 120%;
 
   margin-bottom: 12px;
+
+  ${mediaQuery('xs')} {
+    font-size: 14px;
+
+    margin-bottom: 6px;
+  }
 `;
 
 const contentParagraphCss = css`
@@ -119,4 +152,9 @@ const contentParagraphCss = css`
   font-size: 1.625rem;
   font-weight: 600;
   line-height: 150%;
+
+  ${mediaQuery('xs')} {
+    width: 60%;
+    font-size: 18px;
+  }
 `;

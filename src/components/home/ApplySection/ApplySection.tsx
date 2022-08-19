@@ -8,7 +8,7 @@ import {
   defaultFadeInVariants,
   staggerHalf,
 } from '~/constants/motions';
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
 
 export default function ApplySection() {
   return (
@@ -58,6 +58,13 @@ const spanCss = css`
   text-align: center;
 
   margin-bottom: 12px;
+
+  ${mediaQuery('xs')} {
+    font-size: 16px;
+    line-height: 150%;
+
+    margin-bottom: 8px;
+  }
 `;
 
 const headingCss = css`
@@ -68,4 +75,11 @@ const headingCss = css`
   text-align: center;
 
   margin-bottom: 60px;
+
+  ${mediaQuery('xs')} {
+    font-size: 24px;
+    line-height: 150%;
+
+    margin-bottom: 30px;
+  }
 `;

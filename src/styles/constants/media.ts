@@ -6,7 +6,7 @@ export const size = {
   xl: '1920px',
 } as const;
 
-type SizeKey = keyof typeof size;
+export type SizeKey = keyof typeof size;
 
 export function mediaQuery(maxWidth: number): string;
 

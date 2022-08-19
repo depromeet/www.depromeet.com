@@ -10,7 +10,7 @@ import {
   staggerHalf,
   staggerOne,
 } from '~/constants/motions';
-import { colors, radius } from '~/styles/constants';
+import { colors, mediaQuery, radius } from '~/styles/constants';
 
 const TEAMS = ['UIUX DESIGN', 'iOS', 'Android', 'Web', 'Backend'] as const;
 
@@ -111,6 +111,13 @@ const headingCss = css`
   line-height: 150%;
 
   margin-bottom: 60px;
+
+  ${mediaQuery('xs')} {
+    font-size: 24px;
+    font-weight: 500;
+
+    margin-bottom: 30px;
+  }
 `;
 
 const buttonWrapperCss = css`
@@ -120,6 +127,14 @@ const buttonWrapperCss = css`
   gap: 1.875rem;
 
   margin-bottom: 40px;
+
+  ${mediaQuery('xs')} {
+    overflow-x: scroll;
+    justify-content: flex-start;
+    gap: 14px;
+
+    margin-bottom: 24px;
+  }
 `;
 
 const contentWrapperCss = css`
@@ -131,6 +146,12 @@ const contentWrapperCss = css`
 
   display: flex;
   gap: 5rem;
+
+  ${mediaQuery('xs')} {
+    flex-direction: column;
+    padding: 30px 20px;
+    gap: 30px;
+  }
 `;
 
 const contentImageWrapperCss = css`
@@ -138,6 +159,13 @@ const contentImageWrapperCss = css`
   height: 100%;
   background-color: gray;
   flex-shrink: 0;
+
+  ${mediaQuery('xs')} {
+    flex-direction: column;
+    align-self: center;
+    width: 120px;
+    height: 120px;
+  }
 `;
 
 const contentHeadingCss = css`
@@ -146,12 +174,21 @@ const contentHeadingCss = css`
   font-weight: 700;
   line-height: 150%;
   margin-bottom: 10px;
+
+  ${mediaQuery('xs')} {
+    font-size: 18px;
+    text-align: center;
+  }
 `;
 
 const contentParagraphCss = css`
   color: ${colors.gray4};
   font-size: 1.375rem;
   line-height: 150%;
+
+  ${mediaQuery('xs')} {
+    font-size: 14px;
+  }
 `;
 
 const cardSwitchVariants: Variants = {

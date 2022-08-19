@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, forwardRef, Ref } from 'react';
 import { css } from '@emotion/react';
 
-import { colors, radius } from '~/styles/constants';
+import { colors, mediaQuery, radius } from '~/styles/constants';
 
 interface Props extends ComponentPropsWithoutRef<'button'> {
   isActive?: boolean;
@@ -38,6 +38,13 @@ const buttonCss = (isActive: boolean) => css`
   }
 
   ${isActive && activeCss}
+
+  ${mediaQuery('xs')} {
+    white-space: pre;
+
+    padding: 8px 16px;
+    font-size: 14px;
+  }
 `;
 
 const activeCss = css`
