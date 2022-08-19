@@ -1,6 +1,6 @@
 import { PropsWithChildren, SVGProps } from 'react';
 
-interface Props extends SVGProps<SVGSVGElement> {}
+export interface Props extends SVGProps<SVGSVGElement> {}
 
 export default function Svg({
   children,
