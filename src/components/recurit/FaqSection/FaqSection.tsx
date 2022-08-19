@@ -126,6 +126,7 @@ const faqCss = css`
     font-size: 1.25rem;
     line-height: 150%;
     color: ${colors.gray4};
+    white-space: pre-wrap;
   }
 `;
 
