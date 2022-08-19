@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 
 import { ScrollBottomIcon } from '~/components/common/icons';
 import { defaultEasing, defaultFadeInScaleVariants } from '~/constants/motions';
-import useEffectOnce from '~/hooks/useEffectOnce';
+import useEffectOnce from '~/hooks/useeffect-once';
 
 import Finish from './Finish';
 import InProgress from './InProgress';
