@@ -56,11 +56,13 @@ const headingCss = css`
 
 const cardWrapperCss = css`
   margin-top: 60px;
+
   width: 100%;
   display: flex;
   justify-content: space-evenly;
 
   ${mediaQuery('xs')} {
+    margin-top: 40px;
     gap: 15px;
     flex-wrap: wrap;
   }
