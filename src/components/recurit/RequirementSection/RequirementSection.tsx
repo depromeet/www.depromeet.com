@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 import { defaultFadeInVariants, staggerHalf } from '~/constants/motions';
 import { defaultFadeInUpVariants } from '~/constants/motions/motions';
+import { colors } from '~/styles/constants';
 
 const REQUIREMNENT_LIST = [
   '매주 토요일, 오후 2~5시에 진행되는 정규 세션에 참여할 수 있는 분',
@@ -57,5 +58,5 @@ const requirementListCss = css`
   font-weight: 400;
   font-size: 1.375rem;
   line-height: 180%;
-  color: #cbcad1;
+  color: ${colors.gray2};
 `;

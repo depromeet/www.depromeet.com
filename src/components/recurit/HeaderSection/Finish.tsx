@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 
 import CTAButton from '~/components/common/CTAButton';
+import { colors } from '~/styles/constants';
 
 export default function Finish() {
   return (
@@ -17,7 +18,7 @@ const descriptionCss = css`
   line-height: 140%;
   text-align: center;
 
-  color: #ffffff;
+  color: ${colors.white};
 
   margin-bottom: 30px;
 `;
@@ -28,7 +29,7 @@ const headingCss = css`
   line-height: 120%;
   text-align: center;
 
-  color: #ffffff;
+  color: ${colors.white};
 
   margin-bottom: 155px;
 `;

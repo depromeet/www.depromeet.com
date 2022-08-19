@@ -9,6 +9,7 @@ import {
   defaultFadeInUpVariants,
   staggerOne,
 } from '~/constants/motions/motions';
+import { colors } from '~/styles/constants';
 
 import { FAQ, FAQ_TYPE } from './constants';
 
@@ -92,7 +93,7 @@ const descriptionCss = css`
   font-weight: 400;
   font-size: 1.25rem;
   line-height: 150%;
-  color: #cbcad1;
+  color: ${colors.gray2};
 `;
 
 const tabContainerCss = css`
@@ -111,7 +112,7 @@ const faqCss = css`
 
   em {
     font-style: normal;
-    color: #5e8bff;
+    color: ${colors.secondaryBlue};
   }
 
   dt {
@@ -124,10 +125,10 @@ const faqCss = css`
     font-weight: 400;
     font-size: 1.25rem;
     line-height: 150%;
-    color: #82818d;
+    color: ${colors.gray4};
   }
 `;
 
 const kakaoLinkCss = css`
-  color: #5e8bff;
+  color: ${colors.secondaryBlue};
 `;

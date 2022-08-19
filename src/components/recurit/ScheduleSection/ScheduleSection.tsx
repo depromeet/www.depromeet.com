@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 import { defaultFadeInScaleVariants, staggerOne } from '~/constants/motions';
 import { defaultFadeInSlideToRightVariants } from '~/constants/motions/motions';
+import { colors } from '~/styles/constants';
 
 import { SCHEDULE_LIST } from './constants';
 import { ScheduleGraph } from './ScheduleGraph';
@@ -67,13 +68,13 @@ const recuritBlockCss = css`
   width: 61.2%;
   height: 100%;
 
-  background: #1b5bff;
+  background: ${colors.primary};
   border-radius: 10px;
 
   font-weight: 700;
   font-size: 1.25rem;
   line-height: 180%;
-  color: #ffffff;
+  color: ${colors.white};
 `;
 
 const activeBlockCss = css`
@@ -84,15 +85,15 @@ const activeBlockCss = css`
   width: calc(100% - 61.2% - 2.4%);
   height: 100%;
 
-  color: white;
-  background: #1b1a1e;
+  color: ${colors.white};
+  background: ${colors.gray9};
   border-radius: 10px;
 
   font-weight: 600;
   font-size: 1.25rem;
   line-height: 180%;
 
-  color: #afaeb6;
+  color: ${colors.gray3};
 `;
 
 const rangeContainerCss = css`

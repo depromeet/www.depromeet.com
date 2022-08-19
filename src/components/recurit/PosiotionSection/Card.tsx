@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
 import { defaultFadeInUpVariants } from '~/constants/motions';
+import { colors } from '~/styles/constants';
 
 import { PositionType } from './PosiotionSection';
 
@@ -34,11 +35,11 @@ const cardCss = css`
   padding: 30px;
   height: 220px;
   width: 332px;
-  background: #1b1a1e;
+  background: ${colors.gray9};
   border-radius: 16px;
 
   :hover {
-    background: #1b5bff;
+    background: ${colors.primary};
   }
 `;
 
@@ -46,7 +47,7 @@ const cardTitleCss = css`
   font-weight: 600;
   font-size: 2rem;
   line-height: 120%;
-  color: #ffffff;
+  color: ${colors.white};
 `;
 
 const cardLinkCss = css`

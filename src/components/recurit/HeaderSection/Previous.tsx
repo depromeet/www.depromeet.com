@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 
 import CTAButton from '~/components/common/CTAButton';
+import { colors } from '~/styles/constants';
 
 export default function Previous() {
   return (
@@ -20,7 +21,7 @@ const headingCss = css`
   line-height: 120%;
   text-align: center;
 
-  color: #ffffff;
+  color: ${colors.white};
 
   margin-bottom: 174px;
 `;
