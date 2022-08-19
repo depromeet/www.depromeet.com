@@ -12,7 +12,7 @@ import {
 } from '~/constants/motions';
 import { colors, radius } from '~/styles/constants';
 
-const TEAMS = ['UIUX DESIGN', 'iOS', 'AOS', 'Frontend', 'Server'] as const;
+const TEAMS = ['UIUX DESIGN', 'iOS', 'Android', 'Web', 'Backend'] as const;
 
 type TeamType = typeof TEAMS[number];
 
@@ -31,17 +31,17 @@ const CONTENTS_PER_TEAM: Contents = {
     paragraph:
       '개발자와의 협업을 통해 서비스를 만드는 경험을 할 수 있어요. 디자인을 디자인디자인 할 수 있고 디자인을 디자인디자인 할 수 있고 설명 설명 설명',
   },
-  AOS: {
+  Android: {
     heading: 'AOS는 어쩌구 저쩌구 ...',
     paragraph:
       '개발자와의 협업을 통해 서비스를 만드는 경험을 할 수 있어요. 디자인을 디자인디자인 할 수 있고 디자인을 디자인디자인 할 수 있고 설명 설명 설명',
   },
-  Frontend: {
+  Web: {
     heading: '프론트엔드는 어쩌구 저쩌구',
     paragraph:
       '개발자와의 협업을 통해 서비스를 만드는 경험을 할 수 있어요. 디자인을 디자인디자인 할 수 있고 디자인을 디자인디자인 할 수 있고 설명 설명 설명',
   },
-  Server: {
+  Backend: {
     heading: '서버는 어쩌구 저쩌구',
     paragraph:
       '개발자와의 협업을 통해 서비스를 만드는 경험을 할 수 있어요. 디자인을 디자인디자인 할 수 있고 디자인을 디자인디자인 할 수 있고 설명 설명 설명',

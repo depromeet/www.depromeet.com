@@ -7,7 +7,7 @@ const QUESTIONS = [
   '미래 디프만 12기 분들에게, 본인만의 디프만 꿀팁을 전수해주세요!',
 ];
 
-const ANSWER_SERVER = [
+const ANSWER_BACKEND = [
   `MVP 서비스 출시도 매력적이지만, 이외에도 스터디, 연사 초청 등 동아리 활동을 하며 다양한 직군과 소통을 할 수 있다는 점이 매력적으로 다가왔어요.`,
   `게더타운에서 다양한 사람들과 소통을 했던 경험이 가장 기억에 남아요.`,
   `새로운 사람들을 만다는 건 늘 설레는 것 같아요. 커리어에 대한 고민을 서로 공유하거나 같이 만나서 스터디를 진행하고, 다양한 사람들과 어울리면서 직무에 대한 견해가 넓어진 것 같아서 좋았어요.`,
@@ -19,7 +19,7 @@ const ANSWER_SERVER = [
   디프만의 또 다른 매력은 팀원과 의사소통을 통해 주제와 기술스택을 선정할 수 있는 것이라 생각해요.`,
 ];
 
-const ANSWER_FRONTEND = [
+const ANSWER_WEB = [
   `개발자와 디자이너의 공동 성장을 목표로 한다는 슬로건에 마음이 이끌렸어요.<br/>
 서비스를 개발하고 운영하는 활동은 많은 동아리에서 경험할 수 있지만,<br/>
 ’성장'이라는 공동의 목표를 가진 상태에서 활동에 임하면 더욱 보람찬 경험이 될 수 있을 것이라 생각했어요.`,
@@ -37,7 +37,7 @@ const ANSWER_FRONTEND = [
   코어 활동이 프로젝트 기반으로 진행되기 때문에 면접관의 입장에서 상대적으로 경험이 부족할 가능성이 있는 학생분들의 프로젝트 경험을 더 유의 깊게 볼 것 같아요. 그렇기 때문에 학생 입장에서도 충분한 경험이 있고 잘 해낼 수 있다는 것을 어필하신다면 긍정적인 인상을 주실 수 있을 것 같아요!`,
 ];
 
-const ANSWER_AOS = [
+const ANSWER_ANDROID = [
   `직장인들이 많이 참여하는 동아리라고 봤었고, 이전 기수나 홈페이지에도 런칭된 앱이 많아서 동아리가 끝나도 제가 참여한 앱이 런칭될것이라는 신뢰감이 있어 선택하게되었습니다.`,
   `활동하면서 팀원들이랑 친해지고자 쿵쿵따게임을 온라인으로 진행했던 적이 인상깊습니다. 뭔가 다들 수줍지만 친해지려고 노력하는 모습이 따수웠어요`,
   `가장 크게 얻은것은 앱런칭인것 같습니다. 동아리활동 동안 목표했던 방향대로 앱을 런칭한점이 좌충우돌 정신없었지만 재미있었어요. 그리고 다른 포지션에 계신 분들과 소통할때 효율적으로 소통하는법을 배울수 있었습니다.`,
@@ -74,7 +74,8 @@ const ANSWER_DESIGNER = [
   초반 아이데이션이나 디자인 컨셉 회의 때 마음껏 의견을 내세요!`,
 ];
 
-export const TEAMS = ['UIUX DESIGN', 'iOS', 'AOS', 'Frontend', 'Server'] as const;
+// TODO: 포지션과 포지션 타입을 국지적으로 사용하고 있는데, 상수로써 관리하는건 어떨지
+export const TEAMS = ['UIUX DESIGN', 'iOS', 'Android', 'Web', 'Backend'] as const;
 
 export type TeamType = typeof TEAMS[number];
 
@@ -96,16 +97,16 @@ export const INTERVIEW_SOURCES: InterviewSources = {
     name: 'iOS Developer 김록원 님',
     source: QUESTIONS.map((question, index) => ({ question, answer: ANSWER_IOS[index] })),
   },
-  AOS: {
-    name: 'AOS Developer 김수연 님',
-    source: QUESTIONS.map((question, index) => ({ question, answer: ANSWER_AOS[index] })),
+  Android: {
+    name: 'Android Developer 김수연 님',
+    source: QUESTIONS.map((question, index) => ({ question, answer: ANSWER_ANDROID[index] })),
   },
-  Frontend: {
-    name: 'Frontend Developer 오혜성 님',
-    source: QUESTIONS.map((question, index) => ({ question, answer: ANSWER_FRONTEND[index] })),
+  Web: {
+    name: 'Web Developer 오혜성 님',
+    source: QUESTIONS.map((question, index) => ({ question, answer: ANSWER_WEB[index] })),
   },
-  Server: {
-    name: 'Server Developer 김민수 님',
-    source: QUESTIONS.map((question, index) => ({ question, answer: ANSWER_SERVER[index] })),
+  Backend: {
+    name: 'Backend Developer 김민수 님',
+    source: QUESTIONS.map((question, index) => ({ question, answer: ANSWER_BACKEND[index] })),
   },
 };
