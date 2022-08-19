@@ -26,4 +26,5 @@ export default function App({ Component, pageProps }: AppProps) {
 const contentLayoutCss = css`
   ${layoutCss}
   padding-top: 60px; // NOTE: NavigationBar 높이
+  overflow-x: hidden;
 `;
