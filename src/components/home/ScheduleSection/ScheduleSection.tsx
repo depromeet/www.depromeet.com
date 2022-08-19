@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 import { defaultFadeInVariants, staggerHalf } from '~/constants/motions';
 import { defaultFadeInSlideToRightVariants, staggerOne } from '~/constants/motions/motions';
-import { colors, radius } from '~/styles/constants';
+import { colors, mediaQuery, radius } from '~/styles/constants';
 
 interface Scehdule {
   week: string;
@@ -73,6 +73,13 @@ const headingCss = css`
   line-height: 150%;
 
   margin-bottom: 10px;
+
+  ${mediaQuery('xs')} {
+    font-size: 24px;
+    font-weight: 500;
+
+    margin-bottom: 8px;
+  }
 `;
 
 const descriptionCss = css`
@@ -82,12 +89,22 @@ const descriptionCss = css`
   line-height: 140%;
 
   margin-bottom: 50px;
+
+  ${mediaQuery('xs')} {
+    font-size: 14px;
+
+    margin-bottom: 30px;
+  }
 `;
 
 const articleWrapperCss = css`
   display: flex;
   flex-direction: column;
   gap: 30px;
+
+  ${mediaQuery('xs')} {
+    gap: 14px;
+  }
 `;
 
 const articleCss = css`
@@ -99,6 +116,10 @@ const articleCss = css`
   padding: 40px;
 
   overflow: hidden;
+
+  ${mediaQuery('xs')} {
+    padding: 20px;
+  }
 `;
 
 const articleWeekCss = css`
@@ -107,6 +128,12 @@ const articleWeekCss = css`
   font-size: 1.25rem;
 
   margin-bottom: 12px;
+
+  ${mediaQuery('xs')} {
+    font-size: 14px;
+
+    margin-bottom: 6px;
+  }
 `;
 
 const articleTitleCss = css`
@@ -114,6 +141,12 @@ const articleTitleCss = css`
   font-size: 1.5rem;
   line-height: 150%;
   width: 50%;
+
+  ${mediaQuery('xs')} {
+    font-size: 16px;
+    font-weight: 500;
+    width: 100%;
+  }
 `;
 
 const articleImageWrapperCss = css`
@@ -124,4 +157,13 @@ const articleImageWrapperCss = css`
   width: 378px;
   height: 100%;
   background-color: ${colors.gray8};
+
+  ${mediaQuery('xs')} {
+    top: unset;
+    bottom: 20px;
+    right: 20px;
+
+    width: 70px;
+    height: 70px;
+  }
 `;
