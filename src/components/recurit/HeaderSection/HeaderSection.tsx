@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 
 import { ScrollBottomIcon } from '~/components/common/icons';
 import { defaultEasing, defaultFadeInScaleVariants } from '~/constants/motions';
+import useEffectOnce from '~/hooks/useEffectOnce';
 
 import Finish from './Finish';
 import InProgress from './InProgress';
@@ -30,12 +31,11 @@ export default function HeaderSection() {
   const startDate = new Date(START_DATE);
   const endDate = new Date(END_DATE);
 
-  // TODO: 여러곳에서 사용함으로 공통으로 사용하도록 변경필요
   const { scrollY } = useScroll();
   const scrollBottomOpacity = useTransform(scrollY, [0, 800], [1, 0]);
   const scrollBottomScale = useTransform(scrollY, [0, 800], [1, 0.6]);
 
-  useEffect(() => {
+  useEffectOnce(() => {
     const currentState = getCurrentState();
 
     if (STATE.FINISH !== currentState) {
@@ -48,7 +48,7 @@ export default function HeaderSection() {
     return () => {
       resetTimer();
     };
-  }, []);
+  });
 
   const getCurrentState = () => {
     const current = new Date();
