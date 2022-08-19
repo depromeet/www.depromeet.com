@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { css } from '@emotion/react';
 import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 
