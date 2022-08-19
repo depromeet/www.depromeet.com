@@ -1,4 +1,7 @@
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
+
+import { defaultFadeInVariants, staggerOne } from '~/constants/motions';
 
 import { Card } from './Card';
 
@@ -14,16 +17,25 @@ export type PositionType = keyof typeof POSITION_TYPE;
 
 export default function PosiotionSection() {
   return (
-    <section css={sectionCss}>
-      <h3 css={headingCss}>모집 직군</h3>
-      <div css={cardContainerCss}>
+    <motion.section
+      css={sectionCss}
+      initial="initial"
+      whileInView="animate"
+      exit="exit"
+      viewport={{ amount: 0.4, once: true }}
+    >
+      <h2 css={headingCss}></h2>
+      <motion.h2 css={headingCss} variants={defaultFadeInVariants}>
+        모집 직군
+      </motion.h2>
+      <motion.div css={cardContainerCss} variants={staggerOne}>
         <Card postionType={POSITION_TYPE.DESIGN} />
         <Card postionType={POSITION_TYPE.AOS} />
         <Card postionType={POSITION_TYPE.IOS} />
         <Card postionType={POSITION_TYPE.FRONTEND} />
         <Card postionType={POSITION_TYPE.SERVER} />
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
 

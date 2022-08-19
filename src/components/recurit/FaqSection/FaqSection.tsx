@@ -1,7 +1,14 @@
 import { useState } from 'react';
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
 
 import Button from '~/components/common/Button';
+import { defaultFadeInVariants, staggerHalf } from '~/constants/motions';
+import {
+  defaultFadeInSlideToRightVariants,
+  defaultFadeInUpVariants,
+  staggerOne,
+} from '~/constants/motions/motions';
 
 import { FAQ, FAQ_TYPE } from './constants';
 
@@ -9,14 +16,25 @@ export default function FaqSection() {
   const [currentTab, setCurrentTab] = useState<string>(FAQ_TYPE.REQUIREMENT);
 
   return (
-    <section css={sectionCss}>
-      <h3 css={headingCss}>자주 묻는 질문</h3>
-      <p css={descriptionCss}>
-        {/* TODO: 카카오 링크 걸기 */}
-        찾으시는 내용이 없다면 디프만 카카오톡 채널 (<a href="none">@depromeet</a>)으로 궁금한 점을
-        전달해 주세요.
-      </p>
-      <div css={tabContainerCss}>
+    <motion.section
+      css={sectionCss}
+      initial="initial"
+      whileInView="animate"
+      exit="exit"
+      variants={staggerHalf}
+      viewport={{ amount: 0.4, once: true }}
+    >
+      <motion.h2 css={headingCss} variants={defaultFadeInVariants}>
+        자주 묻는 질문
+      </motion.h2>
+      <motion.p css={descriptionCss} variants={defaultFadeInVariants}>
+        찾으시는 내용이 없다면 디프만 카카오톡 채널 (
+        <a css={kakaoLinkCss} href="http://pf.kakao.com/_xoxmcxed/chat" target="__blank">
+          @depromeet
+        </a>
+        )으로 궁금한 점을 전달해 주세요.
+      </motion.p>
+      <motion.div css={tabContainerCss} variants={defaultFadeInSlideToRightVariants}>
         <Button
           isActive={currentTab === FAQ_TYPE.REQUIREMENT}
           onClick={() => {
@@ -41,19 +59,19 @@ export default function FaqSection() {
         >
           활동 관련
         </Button>
-      </div>
-      <ul css={faqListCss}>
+      </motion.div>
+      <motion.ul css={faqListCss} variants={staggerOne}>
         {FAQ[currentTab].map((faq, index) => (
-          <li css={faqCss} key={`faq_${index}`}>
+          <motion.li css={faqCss} variants={defaultFadeInUpVariants} key={`faq_${index}`}>
             <dt>
               <em>Q. </em>
               {faq.title}
             </dt>
             <dd>{faq.description}</dd>
-          </li>
+          </motion.li>
         ))}
-      </ul>
-    </section>
+      </motion.ul>
+    </motion.section>
   );
 }
 
@@ -108,4 +126,8 @@ const faqCss = css`
     line-height: 150%;
     color: #82818d;
   }
+`;
+
+const kakaoLinkCss = css`
+  color: #5e8bff;
 `;

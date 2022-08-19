@@ -1,5 +1,8 @@
 import Link from 'next/link';
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
+
+import { defaultFadeInUpVariants } from '~/constants/motions';
 
 import { PositionType } from './PosiotionSection';
 
@@ -16,10 +19,10 @@ export function Card({ postionType }: { postionType: PositionType }) {
 
   return (
     <Link href={href}>
-      <section css={cardCss}>
-        <h4 css={cardTitleCss}>{POSITION_LABEL[postionType]}</h4>
+      <motion.section css={cardCss} variants={defaultFadeInUpVariants}>
+        <h3 css={cardTitleCss}>{POSITION_LABEL[postionType]}</h3>
         <div css={cardLinkCss}>자세히 보기 &gt;</div>
-      </section>
+      </motion.section>
     </Link>
   );
 }

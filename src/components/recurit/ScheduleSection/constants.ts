@@ -8,13 +8,13 @@ export interface RecuirtScheduleInterface {
 export const SCHEDULE_LIST: RecuirtScheduleInterface[] = [
   {
     month: 8,
-    date: 29,
+    date: 22,
     title: '서류 접수',
     isRecurit: true,
   },
   {
     month: 9,
-    date: 13,
+    date: 2,
     title: '서류 결과 발표',
     isRecurit: true,
   },

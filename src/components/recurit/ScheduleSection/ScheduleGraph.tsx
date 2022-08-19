@@ -1,4 +1,7 @@
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
+
+import { defaultFadeInSlideToRightVariants } from '~/constants/motions/motions';
 
 import { RecuirtScheduleInterface } from './constants';
 
@@ -9,7 +12,7 @@ interface ScheduleGraphProps {
 
 export function ScheduleGraph({ schedule, isLast }: ScheduleGraphProps) {
   return (
-    <div css={rangeCss}>
+    <motion.div css={rangeCss} variants={defaultFadeInSlideToRightVariants}>
       <div css={circleCss(schedule.isRecurit)}>
         <div css={eventCss}>
           <span>{`${schedule.month}.${schedule.date}`}</span>
@@ -17,7 +20,7 @@ export function ScheduleGraph({ schedule, isLast }: ScheduleGraphProps) {
         </div>
       </div>
       {!isLast && <div css={lineCss}></div>}
-    </div>
+    </motion.div>
   );
 }
 
