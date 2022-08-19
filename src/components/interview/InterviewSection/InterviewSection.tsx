@@ -8,7 +8,7 @@ import {
   defaultFadeInSlideToRightVariants,
   defaultFadeInUpVariants,
 } from '~/constants/motions/motions';
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
 
 import { INTERVIEW_SOURCES, TEAMS, TeamType } from './source';
 
@@ -73,6 +73,22 @@ const buttonWrapperCss = css`
   gap: 1.875rem;
 
   margin-bottom: 100px;
+
+  ${mediaQuery('xs')} {
+    margin-top: 18px;
+
+    background-color: ${colors.black};
+    justify-content: flex-start;
+    overflow-y: scroll;
+    padding: 12px 0;
+    gap: 14px;
+
+    margin-bottom: 40px;
+
+    position: sticky;
+    top: 60px; // NOTE: nav 높이
+    z-index: 1000;
+  }
 `;
 
 const interviewerNameCss = css`
@@ -80,10 +96,19 @@ const interviewerNameCss = css`
   font-weight: 600;
 
   margin-bottom: 60px;
+
+  ${mediaQuery('xs')} {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
 `;
 
 const questionWrapperCss = css`
   margin-bottom: 60px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 30px;
+  }
 `;
 
 const questionCss = css`
@@ -96,10 +121,21 @@ const questionCss = css`
   }
 
   margin-bottom: 16px;
+
+  ${mediaQuery('xs')} {
+    font-size: 16px;
+    line-height: 150%;
+
+    margin-bottom: 8px;
+  }
 `;
 
 const answerCss = css`
   color: ${colors.gray4};
   font-size: 1.25rem;
   line-height: 150%;
+
+  ${mediaQuery('xs')} {
+    font-size: 14px;
+  }
 `;
