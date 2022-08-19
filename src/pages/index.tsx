@@ -1,3 +1,4 @@
+import SEO from '~/components/common/SEO';
 import ApplySection from '~/components/home/ApplySection';
 import HeaderSection from '~/components/home/HeaderSection';
 import MoreInfoSection from '~/components/home/MoreInfoSection';
@@ -7,13 +8,16 @@ import TeamSection from '~/components/home/TeamSection';
 
 export default function Root() {
   return (
-    <main>
-      <HeaderSection />
-      <RecordSection />
-      <TeamSection />
-      <ScheduleSection />
-      <MoreInfoSection />
-      <ApplySection />
-    </main>
+    <>
+      <SEO />
+      <main>
+        <HeaderSection />
+        <RecordSection />
+        <TeamSection />
+        <ScheduleSection />
+        <MoreInfoSection />
+        <ApplySection />
+      </main>
+    </>
   );
 }

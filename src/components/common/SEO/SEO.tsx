@@ -1,19 +1,22 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-
-import { BASE_URL } from '~/constants/common/common';
 
 interface Props {
   /**
    * `title`, `og:title`, `twitter:title`에 사용됩니다.
+   *
+   * @default 디프만 - Depromeet
    */
   title?: string;
   /**
    * `description`, `og:description`, `twitter:description`에 사용됩니다.
+   *
+   * @default 오직 디자이너와 프로그래머의 동반성장을 위해서
    */
   description?: string;
   /**
    * `og:iamge`, `twitter:image`에 사용됩니다.
+   *
+   * @default 추가 필요
    */
   image?: string;
 }
@@ -27,10 +30,6 @@ export default function SEO({
   description = DEFAULT_DESCRIPTION,
   image = DEFAULT_IMAGE,
 }: Props) {
-  const router = useRouter();
-
-  const currentUrl = BASE_URL + router.route;
-
   return (
     <Head>
       <title>{title}</title>
@@ -43,9 +42,6 @@ export default function SEO({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
-
-      <link rel="canonical" href={currentUrl} />
-      <meta property="og:url" content={currentUrl} />
     </Head>
   );
 }
