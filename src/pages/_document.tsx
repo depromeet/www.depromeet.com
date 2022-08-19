@@ -1,5 +1,7 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 
+import { IS_PRODUCTION } from '~/constants/common';
+
 export default function Document() {
   return (
     <Html lang="kr">
@@ -29,7 +31,7 @@ export default function Document() {
         <meta name="twitter:image" content={IMAGE} /> */}
 
         {/* for google analytics */}
-        {/* {IS_PRODUCTION && (
+        {IS_PRODUCTION && (
           <>
             <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
             <script
@@ -41,8 +43,22 @@ export default function Document() {
               gtag('config', '${GA_ID}');`,
               }}
             />
+
+            {/* hotjar */}
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `(function(h,o,t,j,a,r){
+              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+              h._hjSettings={hjid:${HOTJAR_ID},hjsv:6};
+              a=o.getElementsByTagName('head')[0];
+              r=o.createElement('script');r.async=1;
+              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+              a.appendChild(r);
+          })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`,
+              }}
+            ></script>
           </>
-        )} */}
+        )}
       </Head>
 
       <body>
@@ -52,3 +68,6 @@ export default function Document() {
     </Html>
   );
 }
+
+const GA_ID = 'G-VZ0Q43XDPN';
+const HOTJAR_ID = '3115834';
