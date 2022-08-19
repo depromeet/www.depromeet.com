@@ -1,6 +1,6 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 
-import { IS_PRODUCTION } from '~/constants/common';
+import { GA_ID, HOTJAR_ID, IS_PRODUCTION } from '~/constants/common';
 
 export default function Document() {
   return (
@@ -68,6 +68,3 @@ export default function Document() {
     </Html>
   );
 }
-
-const GA_ID = 'G-VZ0Q43XDPN';
-const HOTJAR_ID = '3115834';
