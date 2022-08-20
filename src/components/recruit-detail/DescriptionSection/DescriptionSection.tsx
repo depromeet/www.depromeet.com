@@ -38,8 +38,8 @@ export default function DescriptionSection({ positionType }: { positionType: Pos
         </dt>
         <dd>
           <ul css={preferListCss}>
-            {POSTION_PERFER_LIST[positionType].map(item => (
-              <li>{item}</li>
+            {POSTION_PERFER_LIST[positionType].map((item, index) => (
+              <li key={`position-perfer-item-${index}`}>{item}</li>
             ))}
           </ul>
         </dd>
