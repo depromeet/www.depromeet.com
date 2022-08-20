@@ -9,7 +9,7 @@ import {
   defaultFadeInUpVariants,
   staggerOne,
 } from '~/constants/motions/motions';
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
 
 import { FAQ, FAQ_TYPE } from './constants';
 
@@ -61,7 +61,7 @@ export default function FaqSection() {
           활동 관련
         </Button>
       </motion.div>
-      <motion.ul css={faqListCss} variants={staggerOne}>
+      <motion.ul variants={staggerOne}>
         {FAQ[currentTab].map((faq, index) => (
           <motion.li css={faqCss} variants={defaultFadeInUpVariants} key={`faq_${index}`}>
             <dt>
@@ -79,32 +79,52 @@ export default function FaqSection() {
 const sectionCss = css`
   width: 100%;
   margin-bottom: 120px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 140px;
+  }
 `;
 
 const headingCss = css`
   font-weight: 700;
   font-size: 2.625rem;
   line-height: 140%;
+
+  margin-bottom: 12px;
+
+  ${mediaQuery('xs')} {
+    font-size: 1.714rem;
+    line-height: 150%;
+  }
 `;
 
 const descriptionCss = css`
-  margin-top: 12px;
-
   font-weight: 400;
   font-size: 1.25rem;
   line-height: 150%;
   color: ${colors.gray2};
+
+  margin-bottom: 60px;
+
+  ${mediaQuery('xs')} {
+    font-size: 1rem;
+    line-height: 150%;
+
+    margin-bottom: 40px;
+  }
 `;
 
 const tabContainerCss = css`
   display: flex;
   gap: 0 40px;
 
-  margin-top: 60px;
-`;
+  margin-bottom: 60px;
 
-const faqListCss = css`
-  margin-top: 60px;
+  ${mediaQuery('xs')} {
+    gap: 0 14px;
+
+    margin-bottom: 30px;
+  }
 `;
 
 const faqCss = css`
@@ -127,6 +147,21 @@ const faqCss = css`
     line-height: 150%;
     color: ${colors.gray4};
     white-space: pre-wrap;
+  }
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 30px;
+
+    dt {
+      font-size: 1.143rem;
+      line-height: 120%;
+
+      margin-bottom: 8px;
+    }
+
+    dd {
+      font-size: 1rem;
+    }
   }
 `;
 

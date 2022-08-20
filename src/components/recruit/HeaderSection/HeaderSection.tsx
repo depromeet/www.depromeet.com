@@ -3,8 +3,10 @@ import { css } from '@emotion/react';
 import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 
 import { ScrollBottomIcon } from '~/components/common/icons';
+import { NAV_HEIGHT } from '~/components/common/NavigationBar/NavigationBar';
 import { defaultEasing, defaultFadeInScaleVariants } from '~/constants/motions';
 import useEffectOnce from '~/hooks/useeffect-once';
+import { mediaQuery } from '~/styles/constants';
 
 import Finish from './Finish';
 import InProgress from './InProgress';
@@ -17,11 +19,11 @@ const STATE = {
 };
 const SECONDS_TO_MS = 1000;
 
-const START_DATE = '2022-08-21T15:00:00.000Z';
-const END_DATE = '2022-09-01T15:00:00.000Z';
+// const START_DATE = '2022-08-21T15:00:00.000Z';
+// const END_DATE = '2022-09-01T15:00:00.000Z';
 
-// const START_DATE = '2022-08-18T22:21:59.000Z'; // test
-// const END_DATE = '2022-08-19T20:00:00.000Z'; // test
+const START_DATE = '2022-08-18T22:21:59.000Z'; // test
+const END_DATE = '2022-08-20T20:00:00.000Z'; // test
 
 export default function HeaderSection() {
   const [state, setState] = useState('');
@@ -116,7 +118,7 @@ export default function HeaderSection() {
 
 const headerCss = css`
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - ${NAV_HEIGHT}px);
 `;
 
 const sectionCss = css`
@@ -126,6 +128,8 @@ const sectionCss = css`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  box-sizing: border-box;
 `;
 
 const scrollBottomIconWrapperCss = css`
@@ -134,6 +138,10 @@ const scrollBottomIconWrapperCss = css`
   left: 50%;
   transform: translateX(-50%);
   margin: 0 auto;
+
+  ${mediaQuery('xs')} {
+    bottom: 50px;
+  }
 `;
 
 const scrollBottomVariants: Variants = {

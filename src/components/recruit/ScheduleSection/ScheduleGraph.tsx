@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
 import { defaultFadeInSlideToRightVariants } from '~/constants/motions/motions';
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
 
 import { RecuirtScheduleInterface } from './constants';
 
@@ -16,8 +16,8 @@ export function ScheduleGraph({ schedule, isLast }: ScheduleGraphProps) {
     <motion.div css={rangeCss} variants={defaultFadeInSlideToRightVariants}>
       <div css={circleCss(schedule.isRecurit)}>
         <div css={eventCss}>
-          <span>{`${schedule.month}.${schedule.date}`}</span>
-          <span>{schedule.title}</span>
+          <span css={dateCss}>{`${schedule.month}.${schedule.date}`}</span>
+          <span css={titleCss}>{schedule.title}</span>
         </div>
       </div>
       {!isLast && <div css={lineCss}></div>}
@@ -34,6 +34,14 @@ const rangeCss = css`
   :last-child {
     width: 20px;
   }
+
+  ${mediaQuery('xs')} {
+    width: calc(50% - 10px / 2);
+
+    :last-child {
+      width: 10px;
+    }
+  }
 `;
 const circleCss = (isRecurit: boolean) => css`
   position: relative;
@@ -49,6 +57,13 @@ const circleCss = (isRecurit: boolean) => css`
 
   :last-child {
     margin-right: 0;
+  }
+
+  ${mediaQuery('xs')} {
+    flex-basis: 10px;
+
+    width: 10px;
+    height: 10px;
   }
 `;
 const lineCss = css`
@@ -69,8 +84,37 @@ const eventCss = css`
   justify-content: center;
   align-items: center;
 
-  font-weight: 400;
   width: max-content;
+
+  ${mediaQuery('xs')} {
+    font-size: 1.143rem;
+    line-height: 150%;
+  }
+
+  ${mediaQuery('xs')} {
+    transform: translate(-50%, 25px);
+  }
+`;
+
+const dateCss = css`
+  font-weight: 700;
+  font-size: 1.5;
+  line-height: 180%;
+
+  ${mediaQuery('xs')} {
+    font-weight: 600;
+    font-size: 1.143rem;
+    line-height: 150%;
+  }
+`;
+
+const titleCss = css`
+  font-weight: 400;
   font-size: 1.375rem;
   line-height: 180%;
+
+  ${mediaQuery('xs')} {
+    font-size: 1rem;
+    line-height: 150%;
+  }
 `;

@@ -1,12 +1,12 @@
 import { css } from '@emotion/react';
 
 import CTAButton from '~/components/common/CTAButton';
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
 
 export default function Finish() {
   return (
     <>
-      <span css={descriptionCss}>서류 접수 마감까지</span>
+      <span css={descriptionCss}>13기 때 만나요!</span>
       <h1 css={headingCss}>12기 모집이 마감되었습니다.</h1>
       <CTAButton>모집 알림 받기</CTAButton>
     </>
@@ -18,9 +18,15 @@ const descriptionCss = css`
   line-height: 140%;
   text-align: center;
 
-  color: ${colors.white};
+  color: ${colors.gray3};
 
   margin-bottom: 30px;
+
+  ${mediaQuery('xs')} {
+    font-size: 1.429rem;
+
+    margin-bottom: 8px;
+  }
 `;
 
 const headingCss = css`
@@ -32,4 +38,11 @@ const headingCss = css`
   color: ${colors.white};
 
   margin-bottom: 155px;
+
+  ${mediaQuery('xs')} {
+    font-size: 1.857rem;
+    line-height: 150%;
+
+    margin-bottom: 40px;
+  }
 `;

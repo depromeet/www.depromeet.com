@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 
 import CTAButton from '~/components/common/CTAButton';
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
 
 export default function Previous() {
   return (
@@ -24,4 +24,11 @@ const headingCss = css`
   color: ${colors.white};
 
   margin-bottom: 174px;
+
+  ${mediaQuery('xs')} {
+    font-size: 1.857rem;
+    line-height: 150%;
+
+    margin-bottom: 40px;
+  }
 `;

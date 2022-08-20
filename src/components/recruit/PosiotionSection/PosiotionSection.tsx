@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 
 import { POSITION_TYPE } from '~/components/recruit-detail/constants';
 import { defaultFadeInVariants, staggerOne } from '~/constants/motions';
+import { mediaQuery } from '~/styles/constants';
 
 import { Card } from './Card';
 
@@ -35,11 +36,24 @@ export default function PosiotionSection() {
 const sectionCss = css`
   width: 100%;
   margin-bottom: 180px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 130px;
+  }
 `;
 const headingCss = css`
   font-weight: 700;
   font-size: 2.625rem;
   line-height: 140%;
+
+  margin-bottom: 60px;
+
+  ${mediaQuery('xs')} {
+    font-size: 1.714rem;
+    line-height: 150%;
+
+    margin-bottom: 30px;
+  }
 `;
 const cardContainerCss = css`
   display: flex;
@@ -48,5 +62,7 @@ const cardContainerCss = css`
   flex-wrap: wrap;
   gap: 22px;
 
-  margin-top: 60px;
+  ${mediaQuery('xs')} {
+    gap: 12px;
+  }
 `;

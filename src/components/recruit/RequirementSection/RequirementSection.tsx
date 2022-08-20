@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 import { defaultFadeInVariants, staggerHalf } from '~/constants/motions';
 import { defaultFadeInUpVariants } from '~/constants/motions/motions';
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
 
 const REQUIREMNENT_LIST = [
   '매주 토요일, 오후 2~5시에 진행되는 정규 세션에 참여할 수 있는 분',
@@ -41,16 +41,28 @@ export default function RequirementSection() {
 const sectionCss = css`
   width: 100%;
   margin-bottom: 180px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 130px;
+  }
 `;
 
 const headingCss = css`
   font-weight: 700;
   font-size: 2.625rem;
   line-height: 140%;
+
+  margin-bottom: 30px;
+
+  ${mediaQuery('xs')} {
+    font-size: 1.714rem;
+    line-height: 150%;
+
+    margin-bottom: 15px;
+  }
 `;
 
 const requirementListCss = css`
-  margin-top: 30px;
   padding-left: 20px;
 
   list-style: disc;
@@ -59,4 +71,8 @@ const requirementListCss = css`
   font-size: 1.375rem;
   line-height: 180%;
   color: ${colors.gray2};
+
+  ${mediaQuery('xs')} {
+    font-size: 1rem;
+  }
 `;
