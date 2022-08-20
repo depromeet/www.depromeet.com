@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 
 import { defaultFadeInUpVariants } from '~/constants/motions';
 import useMediaQuery from '~/hooks/use-media-query';
-import { colors, mediaQuery } from '~/styles/constants';
+import { colors, mediaQuery, radius } from '~/styles/constants';
 
 import { ICON_POISION_PATH, PositionType, POSTION_DISPLAY_NAME } from '../constants';
 
@@ -48,7 +48,7 @@ const cardCss = (size: Size) => css`
   height: ${size === 'lg' ? '220px' : '120px'};
   width: ${size === 'lg' ? '332px' : '100%'};
   background: ${colors.gray9};
-  border-radius: 16px;
+  border-radius: ${radius.md};
 
   :hover {
     background: ${colors.primary};
@@ -56,6 +56,8 @@ const cardCss = (size: Size) => css`
 
   ${mediaQuery('xs')} {
     height: 67px;
+
+    border-radius: ${radius.sm};
   }
 `;
 

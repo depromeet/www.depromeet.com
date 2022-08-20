@@ -43,6 +43,7 @@ const buttonCss = (isActive: boolean) => css`
     white-space: pre;
 
     padding: 8px 16px;
+    border-radius: ${radius.xs};
     font-size: 14px;
   }
 `;

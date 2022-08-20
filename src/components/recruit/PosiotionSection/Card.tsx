@@ -10,7 +10,7 @@ import {
 } from '~/components/recruit-detail/constants';
 import { defaultFadeInUpVariants } from '~/constants/motions';
 import useMediaQuery from '~/hooks/use-media-query';
-import { colors, mediaQuery } from '~/styles/constants';
+import { colors, mediaQuery, radius } from '~/styles/constants';
 
 type Size = 'sm' | 'lg';
 
@@ -51,7 +51,7 @@ const cardCss = (size: Size) => css`
   height: ${size === 'lg' ? '220px' : '120px'};
   width: ${size === 'lg' ? '332px' : '100%'};
   background: ${colors.gray9};
-  border-radius: 16px;
+  border-radius: ${radius.md};
 
   :hover {
     background: ${colors.primary};
@@ -59,6 +59,8 @@ const cardCss = (size: Size) => css`
 
   ${mediaQuery('xs')} {
     height: 67px;
+
+    border-radius: ${radius.sm};
   }
 `;
 
@@ -74,6 +76,10 @@ const cardHeadingCss = css`
   font-size: 2rem;
   line-height: 120%;
   color: ${colors.white};
+
+  ${mediaQuery('xs')} {
+    font-size: 1.286rem;
+  }
 `;
 
 const cardLinkCss = css`

@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 
 import CTAButton from '~/components/common/CTAButton';
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
 import {
   DAY_TO_SECONDS,
   getDayByTimeSeconds,
@@ -46,6 +46,12 @@ const descriptionCss = css`
   color: ${colors.white};
 
   margin-bottom: 30px;
+
+  ${mediaQuery('xs')} {
+    font-size: 1.429rem;
+
+    margin-bottom: 8px;
+  }
 `;
 
 const headingCss = css`
@@ -57,4 +63,11 @@ const headingCss = css`
   color: ${colors.white};
 
   margin-bottom: 87px;
+
+  ${mediaQuery('xs')} {
+    font-size: 4.286rem;
+    line-height: 150%;
+
+    margin-bottom: 30px;
+  }
 `;
