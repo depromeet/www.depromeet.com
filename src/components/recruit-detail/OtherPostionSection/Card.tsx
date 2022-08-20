@@ -71,6 +71,10 @@ const cardHeadingCss = css`
   font-size: 2rem;
   line-height: 120%;
   color: ${colors.white};
+
+  ${mediaQuery('xs')} {
+    font-size: 1.286rem;
+  }
 `;
 
 const cardLinkCss = css`

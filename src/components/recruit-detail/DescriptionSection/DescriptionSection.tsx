@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 
 import CTAButton from '~/components/common/CTAButton';
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
 
 import {
   ICON_CATEGORY_PATH,
@@ -61,18 +61,23 @@ const headingCss = css`
   line-height: 120%;
 
   margin-bottom: 60px;
+
+  ${mediaQuery('xs')} {
+    font-size: 1.714rem;
+
+    margin-bottom: 30px;
+  }
 `;
 
 const descriptionCss = css`
   margin-bottom: 80px;
-
+  font-size: 1.5rem;
   dt {
     display: flex;
     align-items: center;
     gap: 6px;
 
     font-weight: 600;
-    font-size: 1.5rem;
     line-height: 29px;
 
     color: ${colors.gray1};
@@ -81,10 +86,16 @@ const descriptionCss = css`
   }
 
   dd {
-    font-size: 1.5rem;
     line-height: 150%;
+    word-break: break-all;
     white-space: pre-wrap;
     color: ${colors.gray3};
+  }
+
+  ${mediaQuery('xs')} {
+    font-size: 1.143rem;
+
+    margin-bottom: 30px;
   }
 `;
 
@@ -95,6 +106,13 @@ const preferListCss = css`
 
 const ctaBtnCss = css`
   margin-bottom: 120px;
+
+  ${mediaQuery('xs')} {
+    width: 100%;
+
+    margin-top: 20px;
+    margin-bottom: 100px;
+  }
 `;
 
 const dividerCss = css`
