@@ -3,14 +3,11 @@ import Link from 'next/link';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
-import {
-  ICON_POISION_PATH,
-  PositionType,
-  POSTION_DISPLAY_NAME,
-} from '~/components/recruit-detail/constants';
 import { defaultFadeInUpVariants } from '~/constants/motions';
 import useMediaQuery from '~/hooks/use-media-query';
 import { colors, mediaQuery } from '~/styles/constants';
+
+import { ICON_POISION_PATH, PositionType, POSTION_DISPLAY_NAME } from '../constants';
 
 type Size = 'sm' | 'lg';
 
