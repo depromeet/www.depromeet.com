@@ -4,7 +4,14 @@ import { css } from '@emotion/react';
 import CTAButton from '~/components/common/CTAButton';
 import { colors } from '~/styles/constants';
 
-import { ICON_CATEGORY_PATH, PositionType, POSTION_DISPLAY_NAME } from '../constants';
+import {
+  ICON_CATEGORY_PATH,
+  POSITION_DESCRIPTION,
+  PositionType,
+  POSTION_DISPLAY_NAME,
+  POSTION_PERFER_LIST,
+  POSTION_WITH_CATEGORY_NAME,
+} from '../constants';
 
 export default function DescriptionSection({ positionType }: { positionType: PositionType }) {
   const positionName = POSTION_DISPLAY_NAME[positionType];
@@ -20,11 +27,9 @@ export default function DescriptionSection({ positionType }: { positionType: Pos
             src={`${ICON_CATEGORY_PATH[positionType]}`}
             alt="category-icon"
           />
-          000 Developer 는 이런 일을 해요
+          {POSTION_WITH_CATEGORY_NAME[positionType]} 는 이런 일을 해요
         </dt>
-        <dd>
-          내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용
-        </dd>
+        <dd>{POSITION_DESCRIPTION[positionType]}</dd>
       </div>
       <div css={descriptionCss}>
         <dt>
@@ -33,9 +38,9 @@ export default function DescriptionSection({ positionType }: { positionType: Pos
         </dt>
         <dd>
           <ul css={preferListCss}>
-            <li>내용내용내용내용내용내용내용</li>
-            <li>내용내용내용내용내용내용내용내용내용</li>
-            <li>ㄴ용내욘ㅇ내용내용내용내용내용내용</li>
+            {POSTION_PERFER_LIST[positionType].map(item => (
+              <li>{item}</li>
+            ))}
           </ul>
         </dd>
       </div>
@@ -64,7 +69,6 @@ const descriptionCss = css`
   dt {
     display: flex;
     align-items: center;
-
     gap: 6px;
 
     font-weight: 600;
@@ -72,12 +76,14 @@ const descriptionCss = css`
     line-height: 29px;
 
     color: ${colors.gray1};
+
+    margin-bottom: 12px;
   }
 
   dd {
     font-size: 1.5rem;
     line-height: 150%;
-
+    white-space: pre-wrap;
     color: ${colors.gray3};
   }
 `;
