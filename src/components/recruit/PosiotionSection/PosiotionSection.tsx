@@ -1,17 +1,10 @@
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
+import { POSITION_TYPE } from '~/components/recurit-detail/constants';
 import { defaultFadeInVariants, staggerOne } from '~/constants/motions';
 
 import { Card } from './Card';
-
-const POSITION_TYPE = {
-  DESIGN: 'DESIGN',
-  ANDROID: 'ANDROID',
-  IOS: 'IOS',
-  WEB: 'WEB',
-  BACKEND: 'BACKEND',
-} as const;
 
 export type PositionType = keyof typeof POSITION_TYPE;
 
@@ -29,11 +22,11 @@ export default function PosiotionSection() {
         모집 직군
       </motion.h2>
       <motion.div css={cardContainerCss} variants={staggerOne}>
-        <Card postionType={POSITION_TYPE.DESIGN} />
-        <Card postionType={POSITION_TYPE.ANDROID} />
-        <Card postionType={POSITION_TYPE.IOS} />
-        <Card postionType={POSITION_TYPE.WEB} />
-        <Card postionType={POSITION_TYPE.BACKEND} />
+        <Card positionType={POSITION_TYPE.DESIGN} />
+        <Card positionType={POSITION_TYPE.ANDROID} />
+        <Card positionType={POSITION_TYPE.IOS} />
+        <Card positionType={POSITION_TYPE.WEB} />
+        <Card positionType={POSITION_TYPE.BACKEND} />
       </motion.div>
     </motion.section>
   );
