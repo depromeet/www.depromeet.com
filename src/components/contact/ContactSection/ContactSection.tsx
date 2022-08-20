@@ -7,7 +7,7 @@ import { CONTACT_IMAGES } from '~/constants/images';
 import { ContactImagesKeyType } from '~/constants/images/images';
 import { defaultFadeInUpVariants, defaultFadeInVariants, staggerOne } from '~/constants/motions';
 import { defaultFadeInSlideToLeftVariants, staggerHalf } from '~/constants/motions/motions';
-import { colors, radius } from '~/styles/constants';
+import { colors, mediaQuery, radius } from '~/styles/constants';
 
 export default function ContactSection() {
   return (
@@ -65,10 +65,20 @@ export default function ContactSection() {
 
 const sectionCss = css`
   margin-top: 120px;
+
   width: 100%;
   display: flex;
 
   margin-bottom: 160px;
+
+  ${mediaQuery('xs')} {
+    margin-top: 40px;
+
+    flex-direction: column;
+    gap: 60px;
+
+    margin-bottom: 100px;
+  }
 `;
 
 const descriptionWrapperCss = css`
@@ -81,6 +91,10 @@ const descriptionHeadingCss = css`
   line-height: 150%;
 
   margin-bottom: 16px;
+
+  ${mediaQuery('xs')} {
+    font-size: 24px;
+  }
 `;
 
 const descriptionTimeCss = css`
@@ -89,12 +103,20 @@ const descriptionTimeCss = css`
   line-height: 150%;
 
   margin-bottom: 4px;
+
+  ${mediaQuery('xs')} {
+    font-size: 16px;
+  }
 `;
 
 const descriptionBusinessCss = css`
   font-size: 1rem;
   line-height: 150%;
   color: ${colors.gray4};
+
+  ${mediaQuery('xs')} {
+    font-size: 14px;
+  }
 `;
 
 const buttonWrapperCss = css`
@@ -104,6 +126,11 @@ const buttonWrapperCss = css`
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  ${mediaQuery('xs')} {
+    width: 100%;
+    gap: 12px;
+  }
 `;
 
 interface ContactAnchorProps {

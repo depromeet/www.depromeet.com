@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { BehanceIcon, GithubIcon, LinkedinIcon, WebIcon } from '~/components/common/icons';
 import { ORGANIZER_IMAGES } from '~/constants/images';
 import { defaultFadeInUpVariants } from '~/constants/motions';
-import { colors, radius } from '~/styles/constants';
+import { colors, mediaQuery, radius } from '~/styles/constants';
 
 import type { Organizer } from './source';
 
@@ -70,6 +70,11 @@ const articleCss = css`
   height: 324px;
   border-radius: ${radius.md};
   overflow: hidden;
+
+  ${mediaQuery('xs')} {
+    width: calc(50% - 7.5px);
+    height: 243px;
+  }
 `;
 
 const infoWrapperCss = css`
@@ -89,7 +94,7 @@ const infoWrapperCss = css`
 `;
 
 const nameCss = css`
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: 600;
   line-height: 140%;
 
@@ -97,7 +102,7 @@ const nameCss = css`
 `;
 
 const positionCss = css`
-  font-size: 0.8125rem;
+  font-size: 13px;
   font-weight: 500;
   line-height: 140%;
 
@@ -124,6 +129,10 @@ const overlayWrapperCss = css`
 
   &:hover {
     opacity: 1;
+  }
+
+  ${mediaQuery('xs')} {
+    gap: 0.5rem;
   }
 `;
 
