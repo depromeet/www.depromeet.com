@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
+import { colors } from '~/styles/constants';
+
 import { BANNER_IMG_PATH, PositionType, POSTION_DISPLAY_NAME } from '../constants';
 
 export default function HeaderSection({ positionType }: { positionType: PositionType }) {
@@ -32,6 +34,7 @@ const backgroundCss = css`
 
   width: 100vw;
   height: calc(100vw * (400 / 1440));
+  background-color: ${colors.gray7};
 `;
 
 const headingCss = css`

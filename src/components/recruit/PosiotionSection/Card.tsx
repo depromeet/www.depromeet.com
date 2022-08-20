@@ -7,7 +7,7 @@ import {
   ICON_POISION_PATH,
   PositionType,
   POSTION_DISPLAY_NAME,
-} from '~/components/recurit-detail/constants';
+} from '~/components/recruit-detail/constants';
 import { defaultFadeInUpVariants } from '~/constants/motions';
 import useMediaQuery from '~/hooks/use-media-query';
 import { colors, mediaQuery } from '~/styles/constants';

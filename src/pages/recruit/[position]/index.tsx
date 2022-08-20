@@ -2,10 +2,10 @@ import Error from 'next/error';
 import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
 
-import { POSITION_TYPE, PositionType } from '~/components/recurit-detail/constants';
-import DescriptionSection from '~/components/recurit-detail/DescriptionSection';
-import HeaderSection from '~/components/recurit-detail/HeaderSection';
-import OtherPostionSection from '~/components/recurit-detail/OtherPostionSection';
+import { POSITION_TYPE, PositionType } from '~/components/recruit-detail/constants';
+import DescriptionSection from '~/components/recruit-detail/DescriptionSection';
+import HeaderSection from '~/components/recruit-detail/HeaderSection';
+import OtherPostionSection from '~/components/recruit-detail/OtherPostionSection';
 
 export default function RecruitDetail() {
   const router = useRouter();

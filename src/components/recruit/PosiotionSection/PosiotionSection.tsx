@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
-import { POSITION_TYPE } from '~/components/recurit-detail/constants';
+import { POSITION_TYPE } from '~/components/recruit-detail/constants';
 import { defaultFadeInVariants, staggerOne } from '~/constants/motions';
 
 import { Card } from './Card';
