@@ -60,13 +60,15 @@ export default function NavigationBar() {
   );
 }
 
+export const NAV_HEIGHT = 60;
+
 const navCss = css`
   position: fixed;
   top: 0;
   left: 0;
 
   width: 100%;
-  height: 60px;
+  height: ${NAV_HEIGHT}px;
   background-color: ${colors.black};
   z-index: 9999;
 `;

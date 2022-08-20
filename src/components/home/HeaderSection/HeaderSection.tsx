@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 
 import { ScrollBottomIcon } from '~/components/common/icons';
+import { NAV_HEIGHT } from '~/components/common/NavigationBar/NavigationBar';
 import { defaultEasing } from '~/constants/motions';
 
 export default function HeaderSection() {
@@ -30,7 +31,7 @@ export default function HeaderSection() {
 const headerCss = css`
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - ${NAV_HEIGHT}px);
 `;
 
 const scrollBottomIconWrapperCss = css`
