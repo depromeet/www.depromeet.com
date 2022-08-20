@@ -12,7 +12,7 @@ import {
 } from '~/constants/motions';
 import { colors, mediaQuery, radius } from '~/styles/constants';
 
-const TEAMS = ['UIUX DESIGN', 'iOS', 'Android', 'Web', 'Backend'] as const;
+const TEAMS = ['UIUX DESIGN', 'Web', 'iOS', 'Android', 'Backend'] as const;
 
 type TeamType = typeof TEAMS[number];
 

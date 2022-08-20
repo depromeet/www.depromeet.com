@@ -15,20 +15,15 @@ export default function Document() {
         <meta httpEquiv="Content-type" content="text/html; charset=utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
 
-        {/* <link rel="icon" href="/favicon.ico" />
-        <meta name="keywords" content="" />
-        <meta name="description" content={DESCRIPTION} />
+        <link rel="icon" href="/favicon.ico" />
 
+        <meta
+          name="keywords"
+          content="사이드 프로젝트, 디자이너, 프로그래머, 디프만, depromeet, side project, 동아리"
+        />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="ko_KR" />
-        <meta property="og:title" content={TITLE} />
-        <meta property="og:description" content={DESCRIPTION} />
-        <meta property="og:image" content={IMAGE} />
-
-        <meta name="twitter:creator" content="" />
-        <meta name="twitter:title" content={TITLE} />
-        <meta name="twitter:description" content={DESCRIPTION} />
-        <meta name="twitter:image" content={IMAGE} /> */}
+        <meta name="twitter:creator" content="디프만 - Depromeet" />
 
         {/* for google analytics */}
         {IS_PRODUCTION && (
