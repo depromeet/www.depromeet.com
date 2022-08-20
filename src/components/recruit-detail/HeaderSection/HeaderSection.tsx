@@ -1,8 +1,6 @@
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
-import { colors } from '~/styles/constants';
-
 import { BANNER_IMG_PATH, PositionType, POSTION_DISPLAY_NAME } from '../constants';
 
 export default function HeaderSection({ positionType }: { positionType: PositionType }) {
