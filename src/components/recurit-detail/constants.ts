@@ -31,3 +31,11 @@ export const ICON_CATEGORY_PATH = {
   WEB: '/svg/icon-developer.svg',
   BACKEND: '/svg/icon-developer.svg',
 };
+
+export const BANNER_IMG_PATH = {
+  DESIGN: '/images/position/banner-design.png',
+  IOS: '/images/position/banner-ios.png',
+  ANDROID: '/images/position/banner-android.png',
+  WEB: '/images/position/banner-web.png',
+  BACKEND: '/images/position/banner-backend.png',
+};
