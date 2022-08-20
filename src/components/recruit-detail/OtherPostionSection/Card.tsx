@@ -13,7 +13,7 @@ type Size = 'sm' | 'lg';
 
 export function Card({ positionType, size = 'lg' }: { positionType: PositionType; size?: Size }) {
   const isMobile = useMediaQuery('xs');
-  const href = `/recurit/${positionType.toLowerCase()}`;
+  const href = `/recruit/${positionType.toLowerCase()}`;
 
   const getSize = () => {
     return size === 'lg' && !isMobile ? 'lg' : 'sm';

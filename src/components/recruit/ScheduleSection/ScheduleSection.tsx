@@ -21,7 +21,7 @@ export default function ScheduleSection() {
         모집 일정
       </motion.h2>
       <motion.div css={blockContainerCss} variants={defaultFadeInSlideToRightVariants}>
-        <div css={recuritBlockCss}>맴버 모집 기간</div>
+        <div css={recruitBlockCss}>맴버 모집 기간</div>
         <div css={activeBlockCss}>정규 활동 기간</div>
       </motion.div>
 
@@ -60,7 +60,7 @@ const blockContainerCss = css`
   padding: 0 30px;
 `;
 
-const recuritBlockCss = css`
+const recruitBlockCss = css`
   display: flex;
   align-items: center;
   justify-content: center;
