@@ -19,11 +19,11 @@ const STATE = {
 };
 const SECONDS_TO_MS = 1000;
 
-// const START_DATE = '2022-08-21T15:00:00.000Z';
-// const END_DATE = '2022-09-01T15:00:00.000Z';
+const START_DATE = '2022-08-21T15:00:00.000Z';
+const END_DATE = '2022-09-01T15:00:00.000Z';
 
-const START_DATE = '2022-08-18T22:21:59.000Z'; // test
-const END_DATE = '2022-08-20T20:00:00.000Z'; // test
+// const START_DATE = '2022-08-18T22:21:59.000Z'; // test
+// const END_DATE = '2022-08-20T20:00:00.000Z'; // test
 
 export default function HeaderSection() {
   const [state, setState] = useState('');
