@@ -35,6 +35,12 @@ const headingCss = css`
   line-height: 140%;
 
   margin-bottom: 60px;
+
+  ${mediaQuery('xs')} {
+    font-size: 1.714rem;
+
+    margin-bottom: 30px;
+  }
 `;
 
 const cardListContainerCss = css`
