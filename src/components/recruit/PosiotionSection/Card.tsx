@@ -1,14 +1,18 @@
 import Link from 'next/link';
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
+
+import { defaultFadeInUpVariants } from '~/constants/motions';
+import { colors } from '~/styles/constants';
 
 import { PositionType } from './PosiotionSection';
 
 const POSITION_LABEL = {
   DESIGN: 'UIUX Design',
-  AOS: 'AOS',
+  ANDROID: 'Android',
   IOS: 'iOS',
-  FRONTEND: 'Frontend',
-  SERVER: 'Server',
+  WEB: 'Web',
+  BACKEND: 'Backend',
 } as const;
 
 export function Card({ postionType }: { postionType: PositionType }) {
@@ -16,10 +20,10 @@ export function Card({ postionType }: { postionType: PositionType }) {
 
   return (
     <Link href={href}>
-      <section css={cardCss}>
-        <h4 css={cardTitleCss}>{POSITION_LABEL[postionType]}</h4>
+      <motion.section css={cardCss} variants={defaultFadeInUpVariants}>
+        <h3 css={cardTitleCss}>{POSITION_LABEL[postionType]}</h3>
         <div css={cardLinkCss}>자세히 보기 &gt;</div>
-      </section>
+      </motion.section>
     </Link>
   );
 }
@@ -31,19 +35,19 @@ const cardCss = css`
   padding: 30px;
   height: 220px;
   width: 332px;
-  background: #1b1a1e;
+  background: ${colors.gray9};
   border-radius: 16px;
 
   :hover {
-    background: #1b5bff;
+    background: ${colors.primary};
   }
 `;
 
 const cardTitleCss = css`
   font-weight: 600;
-  font-size: 32px;
-  line-height: 38px;
-  color: #ffffff;
+  font-size: 2rem;
+  line-height: 120%;
+  color: ${colors.white};
 `;
 
 const cardLinkCss = css`

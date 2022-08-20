@@ -1,4 +1,8 @@
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
+
+import { defaultFadeInSlideToRightVariants } from '~/constants/motions/motions';
+import { colors } from '~/styles/constants';
 
 import { RecuirtScheduleInterface } from './constants';
 
@@ -9,7 +13,7 @@ interface ScheduleGraphProps {
 
 export function ScheduleGraph({ schedule, isLast }: ScheduleGraphProps) {
   return (
-    <div css={rangeCss}>
+    <motion.div css={rangeCss} variants={defaultFadeInSlideToRightVariants}>
       <div css={circleCss(schedule.isRecurit)}>
         <div css={eventCss}>
           <span>{`${schedule.month}.${schedule.date}`}</span>
@@ -17,7 +21,7 @@ export function ScheduleGraph({ schedule, isLast }: ScheduleGraphProps) {
         </div>
       </div>
       {!isLast && <div css={lineCss}></div>}
-    </div>
+    </motion.div>
   );
 }
 
@@ -41,7 +45,7 @@ const circleCss = (isRecurit: boolean) => css`
   margin-right: 10px;
   border-radius: 50%;
 
-  background-color: ${isRecurit ? 'blue' : 'white'};
+  background-color: ${isRecurit ? colors.primary : colors.white};
 
   :last-child {
     margin-right: 0;
@@ -52,7 +56,7 @@ const lineCss = css`
 
   margin-right: 10px;
 
-  border: 1px solid #82818d;
+  border: 1px solid ${colors.gray4};
 `;
 
 const eventCss = css`
@@ -67,6 +71,6 @@ const eventCss = css`
 
   font-weight: 400;
   width: max-content;
-  font-size: 22px;
+  font-size: 1.375rem;
   line-height: 180%;
 `;

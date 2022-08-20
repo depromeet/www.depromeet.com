@@ -32,6 +32,11 @@ const buttonCss = css`
     background-color: ${colors.primaryDark};
   }
 
+  &:disabled {
+    background-color: ${colors.gray6};
+    color: ${colors.gray9};
+  }
+
   ${mediaQuery('xs')} {
     padding: 16px 30px;
     font-size: 16px;

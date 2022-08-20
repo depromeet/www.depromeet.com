@@ -1,17 +1,31 @@
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
+
+import { defaultFadeInScaleVariants, staggerOne } from '~/constants/motions';
+import { defaultFadeInSlideToRightVariants } from '~/constants/motions/motions';
+import { colors } from '~/styles/constants';
 
 import { SCHEDULE_LIST } from './constants';
 import { ScheduleGraph } from './ScheduleGraph';
 
 export default function ScheduleSection() {
   return (
-    <section css={sectionCss}>
-      <h3 css={headingCss}>모집 일정</h3>
-      <div css={blockContainerCss}>
+    <motion.section
+      css={sectionCss}
+      initial="initial"
+      whileInView="animate"
+      exit="exit"
+      viewport={{ amount: 0.4, once: true }}
+    >
+      <motion.h2 css={headingCss} variants={defaultFadeInScaleVariants}>
+        모집 일정
+      </motion.h2>
+      <motion.div css={blockContainerCss} variants={defaultFadeInSlideToRightVariants}>
         <div css={recuritBlockCss}>맴버 모집 기간</div>
-        <div css={activeBlockCss}>정규 황동 기간</div>
-      </div>
-      <div css={rangeContainerCss}>
+        <div css={activeBlockCss}>정규 활동 기간</div>
+      </motion.div>
+
+      <motion.div css={rangeContainerCss} variants={staggerOne}>
         {SCHEDULE_LIST.map((schedule, index) => (
           <ScheduleGraph
             schedule={schedule}
@@ -19,8 +33,8 @@ export default function ScheduleSection() {
             key={`${schedule.title}-${index}`}
           />
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
 
@@ -31,7 +45,7 @@ const sectionCss = css`
 
 const headingCss = css`
   font-weight: 700;
-  font-size: 42px;
+  font-size: 2.625rem;
   line-height: 140%;
 `;
 
@@ -54,13 +68,13 @@ const recuritBlockCss = css`
   width: 61.2%;
   height: 100%;
 
-  background: #1b5bff;
+  background: ${colors.primary};
   border-radius: 10px;
 
   font-weight: 700;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 180%;
-  color: #ffffff;
+  color: ${colors.white};
 `;
 
 const activeBlockCss = css`
@@ -71,15 +85,15 @@ const activeBlockCss = css`
   width: calc(100% - 61.2% - 2.4%);
   height: 100%;
 
-  color: white;
-  background: #1b1a1e;
+  color: ${colors.white};
+  background: ${colors.gray9};
   border-radius: 10px;
 
   font-weight: 600;
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 180%;
 
-  color: #afaeb6;
+  color: ${colors.gray3};
 `;
 
 const rangeContainerCss = css`

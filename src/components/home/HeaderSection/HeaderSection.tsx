@@ -45,6 +45,7 @@ const scrollBottomVariants: Variants = {
   initial: {
     opacity: 0,
     scale: 0.5,
+    x: '-50%',
     y: -30,
     transition: { duration: 1.2, ease: defaultEasing },
     willChange: 'opacity, transform',

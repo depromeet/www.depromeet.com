@@ -1,4 +1,9 @@
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
+
+import { defaultFadeInVariants, staggerHalf } from '~/constants/motions';
+import { defaultFadeInUpVariants } from '~/constants/motions/motions';
+import { colors } from '~/styles/constants';
 
 const REQUIREMNENT_LIST = [
   '매주 토요일, 오후 2~5시에 진행되는 정규 세션에 참여할 수 있는 분',
@@ -11,14 +16,25 @@ const REQUIREMNENT_LIST = [
 
 export default function RequirementSection() {
   return (
-    <section css={sectionCss}>
-      <h3 css={headingCss}>공통 자격 요건</h3>
-      <ul css={requirementListCss}>
+    <motion.section
+      css={sectionCss}
+      variants={staggerHalf}
+      initial="initial"
+      whileInView="animate"
+      exit="exit"
+      viewport={{ amount: 0.8, once: true }}
+    >
+      <motion.h2 css={headingCss} variants={defaultFadeInVariants}>
+        공통 자격 요건
+      </motion.h2>
+      <motion.ul css={requirementListCss} variants={staggerHalf}>
         {REQUIREMNENT_LIST.map((requirement, index) => (
-          <li key={`common-requirement-${index}`}>{requirement}</li>
+          <motion.li variants={defaultFadeInUpVariants} key={`common-requirement-${index}`}>
+            {requirement}
+          </motion.li>
         ))}
-      </ul>
-    </section>
+      </motion.ul>
+    </motion.section>
   );
 }
 
@@ -29,7 +45,7 @@ const sectionCss = css`
 
 const headingCss = css`
   font-weight: 700;
-  font-size: 42px;
+  font-size: 2.625rem;
   line-height: 140%;
 `;
 
@@ -40,7 +56,7 @@ const requirementListCss = css`
   list-style: disc;
 
   font-weight: 400;
-  font-size: 22px;
+  font-size: 1.375rem;
   line-height: 180%;
-  color: #cbcad1;
+  color: ${colors.gray2};
 `;
