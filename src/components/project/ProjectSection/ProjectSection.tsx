@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
 import { css } from '@emotion/react';
 
-import { Project, projects } from '~/components/project/ProjectSection/constants';
-import { PROJECTS_IMAGE_BASE } from '~/constants/images/images';
+import { Project, projects } from '~/components/project/constants';
 import { colors } from '~/styles/constants';
 
+import ProjectContainer from '../ProjectContainer';
 import VerticalDivider from '../VerticalDivider';
 
 type Order = 'latest' | 'oldest';
@@ -25,7 +24,7 @@ const organizeProjects = projects.reduce<Record<number, Project[]>>((result, pro
   return result;
 }, {});
 
-export default function HeaderSection() {
+export default function ProjectSection() {
   const [order, setOrder] = useState<Order>('latest');
   const [sortedProjects, setSortedProjects] = useState(
     Object.entries(organizeProjects).sort(([a], [b]) => Number(b) - Number(a))
@@ -48,29 +47,11 @@ export default function HeaderSection() {
         <button onClick={() => setProjects('oldest')}>오래된순</button>
       </div>
       {sortedProjects.map((projects, generationIndex) => (
-        <div key={`generation-${generationIndex}`} css={projectsCss}>
+        <div key={`generation-${generationIndex}`} css={sortedProjectsContainerCss}>
           <div css={generationCss}>
             {Number(projects[0]) > oldGeneration ? `${projects[0]}기` : '이전기수'}
           </div>
-          <div css={cardContainerCss}>
-            {projects[1].map(({ title, catchphrase, thumbnail }, projectIndex) => (
-              <div key={`project-${projectIndex}`} css={cardCss}>
-                <div>
-                  <Image
-                    src={`${PROJECTS_IMAGE_BASE}/${thumbnail}`}
-                    alt={`${title} icon`}
-                    height="200"
-                    width="332"
-                    objectFit="cover"
-                  />
-                </div>
-                <div>
-                  <div css={cardNameCss}>{title}</div>
-                  <div css={cardDescriptionCss}>{catchphrase}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ProjectContainer projects={projects[1]} />
         </div>
       ))}
     </>
@@ -97,7 +78,7 @@ const orderContainerCss = (order: Order) => css`
   }
 `;
 
-const projectsCss = css`
+const sortedProjectsContainerCss = css`
   margin-bottom: 80px;
 `;
 
@@ -105,56 +86,4 @@ const generationCss = css`
   margin-bottom: 30px;
   font-size: 1.5rem;
   font-weight: 700;
-`;
-
-const cardContainerCss = css`
-  display: flex;
-  justify-content: start;
-  flex-wrap: wrap;
-  gap: 40px 42px;
-`;
-
-const cardCss = css`
-  width: 332px;
-  height: 296px;
-
-  > div {
-    transition: background-color 0.3s;
-  }
-
-  &:hover {
-    > div:last-child {
-      background-color: ${colors.gray8};
-    }
-  }
-
-  > div:first-child {
-    height: 200px;
-    border-radius: 16px 16px 0 0;
-    background-color: ${colors.gray7};
-    overflow: hidden;
-  }
-  > div:last-child {
-    height: 96px;
-    border-radius: 0 0 16px 16px;
-    background-color: ${colors.gray9};
-    padding: 20px 20px 20px;
-  }
-`;
-
-const cardNameCss = css`
-  color: ${colors.gray1};
-  font-size: 1.5rem;
-  padding-bottom: 8px;
-  line-height: 29px;
-  font-weight: 700;
-`;
-
-const cardDescriptionCss = css`
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  color: ${colors.gray4};
-  line-height: 19px;
-  font-weight: 500;
 `;

@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 
 import { colors } from '~/styles/constants';
 
-export default function HeaderSection() {
+export default function DescriptionSection() {
   return (
     <header css={headerCss}>
       <h2>
