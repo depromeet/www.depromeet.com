@@ -15,3 +15,5 @@ export const ORGANIZER_IMAGES = {
 } as const;
 
 export type OrganizerImagesKeyType = keyof typeof ORGANIZER_IMAGES;
+
+export const PROJECTS_IMAGE_BASE = '/images/projects';
