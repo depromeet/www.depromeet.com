@@ -37,5 +37,5 @@ export default function App({ Component, pageProps }: AppProps) {
 
 const contentLayoutCss = css`
   ${layoutCss}
-  padding-top: ${NAV_HEIGHT}px;
+  margin-top: ${NAV_HEIGHT}px;
 `;
