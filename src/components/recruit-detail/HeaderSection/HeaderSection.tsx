@@ -34,7 +34,6 @@ const backgroundCss = css`
 
   width: 100vw;
   height: calc(100vw * (400 / 1440));
-  background-color: ${colors.gray7};
 `;
 
 const headingCss = css`
