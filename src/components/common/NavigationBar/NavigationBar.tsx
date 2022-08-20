@@ -1,25 +1,47 @@
+import { useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
+import { AnimatePresence, motion, Variants } from 'framer-motion';
 
+import { defaultEasing } from '~/constants/motions';
+import useMediaQuery from '~/hooks/use-media-query';
 import { colors } from '~/styles/constants';
 import { layoutCss } from '~/styles/css';
 
-interface Route {
-  name: string;
-  path: string;
-}
-
-const ROUTES: Route[] = [
-  { name: '프로젝트', path: '/project' },
-  { name: '문의하기', path: '/contact' },
-  { name: '리쿠르트', path: '/recruit' },
-];
+import Anchor from './Anchor';
+import DimOverlay from './DimOverlay';
+import HamburgerButton from './HamburgerButton';
+import HamburgerContent from './HamburgerContent';
 
 export default function NavigationBar() {
-  const router = useRouter();
+  const isMobile = useMediaQuery('xs');
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  console.log(router.asPath);
+  function toggleIsOpen() {
+    setIsOpen(prev => !prev);
+  }
+
+  if (isMobile) {
+    return (
+      <>
+        <motion.nav css={navCss} animate={isOpen ? 'open' : 'closed'} variants={mobileNavVariants}>
+          <div css={wrapperCss}>
+            <div>
+              <Link href="/">디프만 로고</Link>
+            </div>
+
+            <HamburgerButton toggleIsOpen={toggleIsOpen} />
+          </div>
+
+          <AnimatePresence exitBeforeEnter>{isOpen && <HamburgerContent />}</AnimatePresence>
+        </motion.nav>
+
+        <AnimatePresence exitBeforeEnter>
+          {isOpen && <DimOverlay close={() => setIsOpen(false)} />}
+        </AnimatePresence>
+      </>
+    );
+  }
 
   return (
     <nav css={navCss}>
@@ -29,11 +51,9 @@ export default function NavigationBar() {
         </div>
 
         <div css={anchorWrapperCss}>
-          {ROUTES.map(route => (
-            <Link key={route.name} href={route.path}>
-              <a css={anchorCss(router.asPath, router.asPath.includes(route.path))}>{route.name}</a>
-            </Link>
-          ))}
+          <Anchor href="/project" name="프로젝트" />
+          <Anchor href="/contact" name="문의하기" />
+          <Anchor href="/recruit" name="리쿠르트" />
         </div>
       </div>
     </nav>
@@ -67,30 +87,13 @@ const anchorWrapperCss = css`
   gap: 2.5rem;
 `;
 
-const anchorCss = (path: string, isActive: boolean) => css`
-  font-size: 1rem;
-  line-height: 118.75%;
-
-  padding: 10px 20px;
-  border-radius: 8px;
-  transition: background-color 0.3s, color 0.3s;
-
-  &:hover {
-    background-color: ${colors.gray9};
-  }
-
-  ${isActive ? activeAnchorCss : inactiveAnchorCss}
-  ${(path === '/' || path === '/interview') && defaultAnchorCss}
-`;
-
-const defaultAnchorCss = css`
-  color: ${colors.white};
-`;
-
-const activeAnchorCss = css`
-  font-weight: 700;
-`;
-
-const inactiveAnchorCss = css`
-  color: ${colors.gray2};
-`;
+const mobileNavVariants: Variants = {
+  closed: {
+    backgroundColor: colors.black,
+    transition: { duration: 0.2, easings: defaultEasing, delay: 0.26 },
+  },
+  open: {
+    backgroundColor: colors.gray9,
+    transition: { duration: 0.2, easings: defaultEasing },
+  },
+};

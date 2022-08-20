@@ -10,7 +10,7 @@ import {
   DEPROMEET_INSTAGRAM,
   DEPROMEET_MEDIUM,
 } from '~/constants/common/depromeet';
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
 
 import {
   BehanceIcon,
@@ -23,33 +23,34 @@ import {
 
 export default function Footer() {
   const date = new Date();
+
   return (
     <footer>
       <section css={linkSectionCss}>
         <div css={logoWrapperCss}>디프만 로고</div>
         <div css={linkWrapperCss}>
           <MotionAnchor href={`mailto:${DEPROMEET_EMAIL}`}>
-            <MailIcon />
+            <MailIcon width={22} height={22} />
           </MotionAnchor>
 
           <MotionAnchor href={DEPROMEET_FACEBOOK}>
-            <FacebookIcon />
+            <FacebookIcon width={22} height={22} />
           </MotionAnchor>
 
           <MotionAnchor href={DEPROMEET_INSTAGRAM}>
-            <InstagramIcon />
+            <InstagramIcon width={20} height={20} />
           </MotionAnchor>
 
           <MotionAnchor href={DEPROMEET_GITHUB}>
-            <GithubIcon />
+            <GithubIcon width={22} height={22} />
           </MotionAnchor>
 
           <MotionAnchor href={DEPROMEET_BEHANCE}>
-            <BehanceIcon />
+            <BehanceIcon width={22} height={22} />
           </MotionAnchor>
 
           <MotionAnchor href={DEPROMEET_MEDIUM}>
-            <MediumIcon />
+            <MediumIcon width={19} height={19} />
           </MotionAnchor>
         </div>
       </section>
@@ -72,11 +73,21 @@ const linkSectionCss = css`
 
 const logoWrapperCss = css`
   margin-bottom: 30px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 28px;
+  }
 `;
 
 const linkWrapperCss = css`
   display: flex;
   gap: 1.25rem;
+
+  ${mediaQuery('xs')} {
+    width: 184px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `;
 
 const copyRightSectionCss = css`
@@ -106,7 +117,7 @@ function MotionAnchor({ children, href }: PropsWithChildren<MotionAnchorProps>) 
       whileHover={{ backgroundColor: colors.gray8 }}
       whileTap={{ scale: 0.9 }}
       href={href}
-      rel="nofollow noreferrer"
+      rel="noopener noreferrer"
       target="_blank"
     >
       {children}
