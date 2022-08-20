@@ -25,8 +25,8 @@ export function Card({ positionType, size = 'lg' }: { positionType: PositionType
         <div css={cardTitleCss}>
           {getSize() === 'sm' && (
             <Image
-              width={32}
-              height={32}
+              width={isMobile ? 22 : 32}
+              height={isMobile ? 22 : 32}
               src={ICON_POISION_PATH[positionType]}
               alt="category-icon"
             />
