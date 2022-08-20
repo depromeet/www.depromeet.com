@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 import Button from '~/components/common/Button';
+import { NAV_HEIGHT } from '~/components/common/NavigationBar/NavigationBar';
 import { defaultFadeInScaleVariants, staggerHalf } from '~/constants/motions';
 import {
   defaultFadeInSlideToRightVariants,
@@ -86,7 +87,7 @@ const buttonWrapperCss = css`
     margin-bottom: 40px;
 
     position: sticky;
-    top: 60px; // NOTE: nav 높이
+    top: ${NAV_HEIGHT}px;
     z-index: 1000;
   }
 `;
