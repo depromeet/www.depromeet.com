@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { css } from '@emotion/react';
 
 import { BANNER_IMG_PATH, PositionType, POSTION_DISPLAY_NAME } from '../constants';
@@ -7,7 +8,13 @@ export default function HeaderSection({ positionType }: { positionType: Position
 
   return (
     <header css={headerCss}>
-      <div css={backgroundCss(positionType)}></div>
+      <div css={backgroundCss}>
+        <Image
+          layout="fill"
+          src={BANNER_IMG_PATH[positionType]}
+          alt={`banner-image-${positionName}`}
+        />
+      </div>
       <h1 css={headingCss}>{positionName}</h1>
     </header>
   );
@@ -18,16 +25,13 @@ const headerCss = css`
   margin-bottom: 80px;
 `;
 
-const backgroundCss = (positionType: PositionType) => css`
+const backgroundCss = css`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
 
   width: 100vw;
   height: calc(100vw * (400 / 1440));
-
-  background-size: cover;
-  background-image: ${`url(${BANNER_IMG_PATH[positionType]})`};
 `;
 
 const headingCss = css`
