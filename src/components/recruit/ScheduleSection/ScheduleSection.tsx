@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { defaultFadeInScaleVariants, staggerOne } from '~/constants/motions';
 import { defaultFadeInSlideToRightVariants } from '~/constants/motions/motions';
 import useMediaQuery from '~/hooks/use-media-query';
-import { colors, mediaQuery } from '~/styles/constants';
+import { colors, mediaQuery, radius } from '~/styles/constants';
 
 import { SCHEDULE_LIST } from './constants';
 import { ScheduleGraph } from './ScheduleGraph';
@@ -137,6 +137,8 @@ const recruitBlockCss = css`
   ${mediaQuery('xs')} {
     flex: 1;
     font-size: 0.857rem;
+
+    border-radius: 6px;
   }
 `;
 
@@ -161,7 +163,10 @@ const activeBlockCss = css`
     flex-basis: 66%;
 
     margin-left: 12px;
+
     font-size: 0.857rem;
+
+    border-radius: ${radius.xs};
   }
 `;
 
