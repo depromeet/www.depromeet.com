@@ -167,7 +167,8 @@ export const projects: Project[] = [
     generation: 10,
     title: '영차',
     team: '무야호',
-    catchphrase: '영차는 투자 자산 모아보기 직접 입력한 정보를 기반으로 현재 투자 상황을 모아볼 수 있습니다.',
+    catchphrase:
+      '영차는 투자 자산 모아보기 직접 입력한 정보를 기반으로 현재 투자 상황을 모아볼 수 있습니다.',
     description: `수익률 계산기로 수익률을 예상하고 물타기 계산기로 목표 평단까지 낮추려면 얼마나 물타야 할지 알아보세요!`,
     ios: 'https://apps.apple.com/.../%EC%98%81%EC%B0%A8/id1571507288',
 

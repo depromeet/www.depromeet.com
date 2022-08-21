@@ -8,6 +8,14 @@ export const CONTACT_IMAGES = {
 
 export type ContactImagesKeyType = keyof typeof CONTACT_IMAGES;
 
+export const CONTACT_PROJECT_IMAGES = {
+  ios: `${CONTACT_IMAGE_BASE}/app-store.png`,
+  android: `${CONTACT_IMAGE_BASE}/google-play.png`,
+  web: `${CONTACT_IMAGE_BASE}/google-play.png`,
+} as const;
+
+export type ContactProjectImagesKeyType = keyof typeof CONTACT_PROJECT_IMAGES;
+
 const ORGANIZER_IMAGE_BASE = '/images/organizer';
 
 export const ORGANIZER_IMAGES = {
