@@ -7,14 +7,14 @@ import { mediaQuery } from '~/styles/constants';
 import {
   BANNER_IMG_PATH,
   MOBILE_BANNER_IMG_PATH,
+  POSITION_DISPLAY_NAME,
   PositionType,
-  POSTION_DISPLAY_NAME,
 } from '../constants';
 
 export default function HeaderSection({ positionType }: { positionType: PositionType }) {
   const isMobile = useMediaQuery('xs');
 
-  const positionName = POSTION_DISPLAY_NAME[positionType];
+  const positionName = POSITION_DISPLAY_NAME[positionType];
 
   return (
     <header css={headerCss}>
