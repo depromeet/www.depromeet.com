@@ -33,7 +33,10 @@ export function Card({ positionType, size = 'lg' }: { positionType: PositionType
           )}
           <h3 css={cardHeadingCss}>{POSITION_DISPLAY_NAME[positionType]}</h3>
         </div>
-        <div css={cardLinkCss}>{getSize() === 'lg' && '자세히 보기'}&gt;</div>
+        <div css={cardLinkCss}>
+          {getSize() === 'lg' && '자세히 보기'}
+          <Image width={32} height={32} src="/svg/icon-arrow.svg" alt="icon-arrow" />
+        </div>
       </motion.section>
     </Link>
   );
@@ -49,8 +52,10 @@ const cardCss = (size: Size) => css`
   width: ${size === 'lg' ? '332px' : '100%'};
   background: ${colors.gray9};
   border-radius: ${radius.md};
+  color: ${colors.gray2};
 
   :hover {
+    color: ${colors.white};
     background: ${colors.primary};
   }
 
@@ -72,7 +77,7 @@ const cardHeadingCss = css`
   font-weight: 600;
   font-size: 2rem;
   line-height: 120%;
-  color: ${colors.white};
+  color: ${colors.gray1};
 
   ${mediaQuery('xs')} {
     font-size: 1.286rem;
@@ -80,5 +85,11 @@ const cardHeadingCss = css`
 `;
 
 const cardLinkCss = css`
+  width: 100%;
+
   text-align: right;
+
+  ${mediaQuery('xs')} {
+    width: auto;
+  }
 `;
