@@ -115,6 +115,7 @@ const blockContainerCss = css`
 
   ${mediaQuery('xs')} {
     padding: 0 10px;
+    height: 28px;
   }
 `;
 

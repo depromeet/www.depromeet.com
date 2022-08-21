@@ -5,7 +5,7 @@ import { ParsedUrlQuery } from 'querystring';
 import { POSITION_TYPE, PositionType } from '~/components/recruit-detail/constants';
 import DescriptionSection from '~/components/recruit-detail/DescriptionSection';
 import HeaderSection from '~/components/recruit-detail/HeaderSection';
-import OtherPostionSection from '~/components/recruit-detail/OtherPostionSection';
+import OtherPositionSection from '~/components/recruit-detail/OtherPositionSection';
 
 export default function RecruitDetail() {
   const router = useRouter();
@@ -18,7 +18,7 @@ export default function RecruitDetail() {
     <main>
       <HeaderSection positionType={positionType} />
       <DescriptionSection positionType={positionType} />
-      <OtherPostionSection positionType={positionType} />
+      <OtherPositionSection positionType={positionType} />
     </main>
   );
 }

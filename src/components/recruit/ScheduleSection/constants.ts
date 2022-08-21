@@ -1,45 +1,38 @@
-export interface RecuirtScheduleInterface {
-  month: number;
-  date: number;
+export interface RecruitScheduleInterface {
+  date: string;
   title: string;
-  isRecurit: boolean;
+  isRecruit: boolean;
 }
 
-export const SCHEDULE_LIST: RecuirtScheduleInterface[] = [
+export const SCHEDULE_LIST: RecruitScheduleInterface[] = [
   {
-    month: 8,
-    date: 22,
+    date: '8.22 - 9.2',
     title: '서류 접수',
-    isRecurit: true,
+    isRecruit: true,
   },
   {
-    month: 9,
-    date: 2,
+    date: '9.12',
     title: '서류 결과 발표',
-    isRecurit: true,
+    isRecruit: true,
   },
   {
-    month: 9,
-    date: 17,
+    date: '9.17 - 9.18',
     title: '온라인 면접',
-    isRecurit: true,
+    isRecruit: true,
   },
   {
-    month: 9,
-    date: 21,
+    date: '9.21',
     title: '최종 합격 발표',
-    isRecurit: true,
+    isRecruit: true,
   },
   {
-    month: 9,
-    date: 24,
+    date: '9.24',
     title: '12기 OT',
-    isRecurit: false,
+    isRecruit: false,
   },
   {
-    month: 1,
-    date: 14,
+    date: '1.14',
     title: '활동 종료',
-    isRecurit: false,
+    isRecruit: false,
   },
 ];

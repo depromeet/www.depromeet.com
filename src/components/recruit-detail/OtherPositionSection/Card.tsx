@@ -7,7 +7,7 @@ import { defaultFadeInUpVariants } from '~/constants/motions';
 import useMediaQuery from '~/hooks/use-media-query';
 import { colors, mediaQuery, radius } from '~/styles/constants';
 
-import { ICON_POISION_PATH, PositionType, POSTION_DISPLAY_NAME } from '../constants';
+import { ICON_POSITION_PATH, POSITION_DISPLAY_NAME, PositionType } from '../constants';
 
 type Size = 'sm' | 'lg';
 
@@ -27,11 +27,11 @@ export function Card({ positionType, size = 'lg' }: { positionType: PositionType
             <Image
               width={isMobile ? 22 : 32}
               height={isMobile ? 22 : 32}
-              src={ICON_POISION_PATH[positionType]}
+              src={ICON_POSITION_PATH[positionType]}
               alt="category-icon"
             />
           )}
-          <h3 css={cardHeadingCss}>{POSTION_DISPLAY_NAME[positionType]}</h3>
+          <h3 css={cardHeadingCss}>{POSITION_DISPLAY_NAME[positionType]}</h3>
         </div>
         <div css={cardLinkCss}>{getSize() === 'lg' && '자세히 보기'}&gt;</div>
       </motion.section>

@@ -4,19 +4,19 @@ import { motion } from 'framer-motion';
 import { defaultFadeInSlideToRightVariants } from '~/constants/motions/motions';
 import { colors, mediaQuery } from '~/styles/constants';
 
-import { RecuirtScheduleInterface } from './constants';
+import { RecruitScheduleInterface } from './constants';
 
 interface ScheduleGraphProps {
-  schedule: RecuirtScheduleInterface;
+  schedule: RecruitScheduleInterface;
   isLast: boolean;
 }
 
 export function ScheduleGraph({ schedule, isLast }: ScheduleGraphProps) {
   return (
     <motion.div css={rangeCss} variants={defaultFadeInSlideToRightVariants}>
-      <div css={circleCss(schedule.isRecurit)}>
+      <div css={circleCss(schedule.isRecruit)}>
         <div css={eventCss}>
-          <span css={dateCss}>{`${schedule.month}.${schedule.date}`}</span>
+          <span css={dateCss}>{`${schedule.date}`}</span>
           <span css={titleCss}>{schedule.title}</span>
         </div>
       </div>

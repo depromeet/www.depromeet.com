@@ -7,14 +7,14 @@ import { colors, mediaQuery } from '~/styles/constants';
 import {
   ICON_CATEGORY_PATH,
   POSITION_DESCRIPTION,
+  POSITION_DISPLAY_NAME,
+  POSITION_PREFER_LIST,
+  POSITION_WITH_CATEGORY_NAME,
   PositionType,
-  POSTION_DISPLAY_NAME,
-  POSTION_PERFER_LIST,
-  POSTION_WITH_CATEGORY_NAME,
 } from '../constants';
 
 export default function DescriptionSection({ positionType }: { positionType: PositionType }) {
-  const positionName = POSTION_DISPLAY_NAME[positionType];
+  const positionName = POSITION_DISPLAY_NAME[positionType];
 
   return (
     <section css={sectionCss}>
@@ -27,7 +27,7 @@ export default function DescriptionSection({ positionType }: { positionType: Pos
             src={`${ICON_CATEGORY_PATH[positionType]}`}
             alt="category-icon"
           />
-          {POSTION_WITH_CATEGORY_NAME[positionType]} 는 이런 일을 해요
+          {POSITION_WITH_CATEGORY_NAME[positionType]}는 이런 일을 해요
         </dt>
         <dd>{POSITION_DESCRIPTION[positionType]}</dd>
       </div>
@@ -38,8 +38,10 @@ export default function DescriptionSection({ positionType }: { positionType: Pos
         </dt>
         <dd>
           <ul css={preferListCss}>
-            {POSTION_PERFER_LIST[positionType].map((item, index) => (
-              <li key={`position-perfer-item-${index}`}>{item}</li>
+            {POSITION_PREFER_LIST[positionType].map((item, index) => (
+              <li css={preferItemCss} key={`position-prefer-item-${index}`}>
+                {item}
+              </li>
             ))}
           </ul>
         </dd>
@@ -102,6 +104,10 @@ const descriptionCss = css`
 const preferListCss = css`
   list-style: disc;
   padding-left: 20px;
+`;
+
+const preferItemCss = css`
+  line-height: 150%;
 `;
 
 const ctaBtnCss = css`

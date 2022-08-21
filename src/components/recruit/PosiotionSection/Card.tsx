@@ -4,9 +4,9 @@ import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
 import {
-  ICON_POISION_PATH,
+  ICON_POSITION_PATH,
+  POSITION_DISPLAY_NAME,
   PositionType,
-  POSTION_DISPLAY_NAME,
 } from '~/components/recruit-detail/constants';
 import { defaultFadeInUpVariants } from '~/constants/motions';
 import useMediaQuery from '~/hooks/use-media-query';
@@ -30,11 +30,11 @@ export function Card({ positionType, size = 'lg' }: { positionType: PositionType
             <Image
               width={isMobile ? 22 : 32}
               height={isMobile ? 22 : 32}
-              src={ICON_POISION_PATH[positionType]}
+              src={ICON_POSITION_PATH[positionType]}
               alt="category-icon"
             />
           )}
-          <h3 css={cardHeadingCss}>{POSTION_DISPLAY_NAME[positionType]}</h3>
+          <h3 css={cardHeadingCss}>{POSITION_DISPLAY_NAME[positionType]}</h3>
         </div>
         <div css={cardLinkCss}>{getSize() === 'lg' && '자세히 보기'}&gt;</div>
       </motion.section>
