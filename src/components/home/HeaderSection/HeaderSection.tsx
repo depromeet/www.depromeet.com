@@ -1,18 +1,35 @@
+import Image from 'next/image';
 import { css } from '@emotion/react';
 import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 
 import { ScrollBottomIcon } from '~/components/common/icons';
 import { NAV_HEIGHT } from '~/components/common/NavigationBar/NavigationBar';
 import { defaultEasing } from '~/constants/motions';
+import useMediaQuery from '~/hooks/use-media-query';
+
+const HOME_HEADER_BASE = '/images/home';
+const HEADER_IMAGE = `${HOME_HEADER_BASE}/home_header.png`;
+const HEADER_IMAGE_MOBILE = `${HOME_HEADER_BASE}/home_header_mobile.png`;
 
 export default function HeaderSection() {
   const { scrollY } = useScroll();
   const scrollBottomOpacity = useTransform(scrollY, [0, 800], [1, 0]);
   const scrollBottomScale = useTransform(scrollY, [0, 800], [1, 0.6]);
 
+  const isMobile = useMediaQuery('xs');
+
   return (
     <header css={headerCss}>
-      <p>some text or image</p>
+      <Image
+        src={isMobile ? HEADER_IMAGE_MOBILE : HEADER_IMAGE}
+        alt="depromeet 12"
+        priority
+        unoptimized
+        placeholder="blur"
+        blurDataURL={isMobile ? HEADER_IMAGE_MOBILE : HEADER_IMAGE}
+        layout="fill"
+        objectFit="cover"
+      />
 
       <motion.div
         css={scrollBottomIconWrapperCss}
@@ -30,7 +47,9 @@ export default function HeaderSection() {
 
 const headerCss = css`
   position: relative;
-  width: 100%;
+  width: 100vw;
+  left: calc(-50vw + 50%);
+
   height: calc(100vh - ${NAV_HEIGHT}px);
 `;
 
