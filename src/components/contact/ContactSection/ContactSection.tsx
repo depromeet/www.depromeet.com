@@ -29,7 +29,7 @@ export default function ContactSection() {
           <br /> 운영 시간 : 19시 ~ 24시
         </motion.span>
         <motion.small css={descriptionBusinessCss} variants={defaultFadeInVariants}>
-          비즈니스 문의 depromeet@gmail.com
+          비즈니스 문의: depromeet@gmail.com
         </motion.small>
       </motion.div>
 
