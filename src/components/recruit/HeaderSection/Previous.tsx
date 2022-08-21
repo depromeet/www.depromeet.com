@@ -8,7 +8,7 @@ export default function Previous() {
     <>
       <h1 css={headingCss}>
         2022.08.22.
-        <br /> 모집이 시작 됩니다.
+        <br /> 모집이 시작됩니다.
       </h1>
       <CTAButton disabled>아직 모집 기간이 아닙니다.</CTAButton>
     </>

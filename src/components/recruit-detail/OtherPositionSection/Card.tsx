@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
+import { ArrowIcon } from '~/components/common/icons/ArrowIcon';
 import { defaultFadeInUpVariants } from '~/constants/motions';
 import useMediaQuery from '~/hooks/use-media-query';
 import { colors, mediaQuery, radius } from '~/styles/constants';
@@ -33,7 +34,10 @@ export function Card({ positionType, size = 'lg' }: { positionType: PositionType
           )}
           <h3 css={cardHeadingCss}>{POSITION_DISPLAY_NAME[positionType]}</h3>
         </div>
-        <div css={cardLinkCss}>{getSize() === 'lg' && '자세히 보기'}&gt;</div>
+        <div css={cardLinkCss}>
+          {getSize() === 'lg' && '자세히 보기'}
+          <ArrowIcon width={32} height={32} />
+        </div>
       </motion.section>
     </Link>
   );
@@ -49,9 +53,19 @@ const cardCss = (size: Size) => css`
   width: ${size === 'lg' ? '332px' : '100%'};
   background: ${colors.gray9};
   border-radius: ${radius.md};
+  color: ${colors.gray2};
+
+  svg > path {
+    fill: ${colors.gray3};
+  }
 
   :hover {
+    color: ${colors.white};
     background: ${colors.primary};
+
+    svg > path {
+      fill: ${colors.white};
+    }
   }
 
   ${mediaQuery('xs')} {
@@ -72,7 +86,7 @@ const cardHeadingCss = css`
   font-weight: 600;
   font-size: 2rem;
   line-height: 120%;
-  color: ${colors.white};
+  color: ${colors.gray1};
 
   ${mediaQuery('xs')} {
     font-size: 1.286rem;
@@ -80,5 +94,11 @@ const cardHeadingCss = css`
 `;
 
 const cardLinkCss = css`
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  ${mediaQuery('xs')} {
+    width: auto;
+  }
 `;
