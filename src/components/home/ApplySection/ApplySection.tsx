@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
 import CTAButton from '~/components/common/CTAButton';
+import { NOTION_RECRUIT_PATH } from '~/constants/common';
 import { APPLY_LINK } from '~/constants/common/depromeet';
 import {
   defaultFadeInScaleVariants,
@@ -34,7 +35,7 @@ export default function ApplySection() {
         rel="noreferrer"
         variants={defaultFadeInScaleVariants}
       >
-        <CTAButton>지금 지원하기</CTAButton>
+        <CTAButton onClick={() => window.open(NOTION_RECRUIT_PATH)}>지금 지원하기</CTAButton>
       </motion.a>
     </motion.section>
   );
