@@ -29,7 +29,10 @@ export default function ProjectDetailSection({ project }: Props) {
           src={`${PROJECTS_IMAGE_BASE}/${project.image}`}
           alt={'image'}
           layout="fill"
+          priority={true}
           objectFit="cover"
+          placeholder="blur"
+          blurDataURL={`${PROJECTS_IMAGE_BASE}/${project.image}`}
         />
         <div css={imageLinnerCss} />
       </motion.div>
@@ -65,14 +68,25 @@ export default function ProjectDetailSection({ project }: Props) {
           </motion.div>
         </motion.div>
         <motion.div css={iconContainerCss} variants={staggerOne}>
-          {project.ios && <LinkIcon src={CONTACT_PROJECT_IMAGES.ios} alt={'app-store icon'} />}
-          {project.android && (
-            <LinkIcon src={CONTACT_PROJECT_IMAGES.android} alt={'play-store icon'} />
+          {project.ios && (
+            <LinkIcon href={project.ios} src={CONTACT_PROJECT_IMAGES.ios} alt={'app-store icon'} />
           )}
-          {/* TODO: web 아이콘이 나오면 교체 필요 */}
-          {project.web && <LinkIcon src={CONTACT_PROJECT_IMAGES.android} alt={'web icon'} />}
+          {project.android && (
+            <LinkIcon
+              href={project.android}
+              src={CONTACT_PROJECT_IMAGES.android}
+              alt={'play-store icon'}
+            />
+          )}
+          {project.web && (
+            <LinkIcon href={project.web} src={CONTACT_PROJECT_IMAGES.web} alt={'web icon'} />
+          )}
           {project.behance && (
-            <LinkIcon src={CONTACT_PROJECT_IMAGES.behance} alt={'behance icon'} />
+            <LinkIcon
+              href={project.behance}
+              src={CONTACT_PROJECT_IMAGES.behance}
+              alt={'behance icon'}
+            />
           )}
         </motion.div>
       </motion.div>
