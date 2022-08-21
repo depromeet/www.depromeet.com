@@ -45,3 +45,11 @@ export const POSITION_ICON_IMAGES: PositionIcon = {
   Backend: `${POSITION_ICON_BASE}/backend.png`,
   Web: `${POSITION_ICON_BASE}/web.png`,
 };
+
+export const POSITION_ICON_MOBILE: PositionIcon = {
+  Android: `${POSITION_ICON_BASE}/android_mobile.png`,
+  'UIUX Design': `${POSITION_ICON_BASE}/design_mobile.png`,
+  iOS: `${POSITION_ICON_BASE}/ios_mobile.png`,
+  Backend: `${POSITION_ICON_BASE}/backend_mobile.png`,
+  Web: `${POSITION_ICON_BASE}/web_mobile.png`,
+};

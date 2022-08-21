@@ -11,11 +11,20 @@ import {
   staggerHalf,
   staggerOne,
 } from '~/constants/motions';
+import useMediaQuery from '~/hooks/use-media-query';
 import { colors, mediaQuery, radius } from '~/styles/constants';
 
-import { CONTENTS_PER_TEAM, POSITION_ICON_IMAGES, TEAMS, TeamType } from './source';
+import {
+  CONTENTS_PER_TEAM,
+  POSITION_ICON_IMAGES,
+  POSITION_ICON_MOBILE,
+  TEAMS,
+  TeamType,
+} from './source';
 
 export default function TeamSection() {
+  const isMobile = useMediaQuery('xs');
+
   const [currentTeam, setCurrentTeam] = useState<TeamType>('UIUX Design');
 
   function onClickTeamButton(team: TeamType) {
@@ -57,12 +66,16 @@ export default function TeamSection() {
           >
             <div css={contentImageWrapperCss}>
               <Image
-                src={POSITION_ICON_IMAGES[currentTeam]}
+                src={
+                  isMobile ? POSITION_ICON_MOBILE[currentTeam] : POSITION_ICON_IMAGES[currentTeam]
+                }
                 alt={currentTeam}
                 layout="fill"
                 objectFit="contain"
                 placeholder="blur"
-                blurDataURL={POSITION_ICON_IMAGES[currentTeam]}
+                blurDataURL={
+                  isMobile ? POSITION_ICON_MOBILE[currentTeam] : POSITION_ICON_IMAGES[currentTeam]
+                }
                 unoptimized
               />
             </div>
@@ -133,7 +146,9 @@ const contentWrapperCss = css`
     flex-direction: column;
     height: auto;
     min-height: 330px;
-    gap: 0;
+    gap: 30px;
+
+    padding: 30px 20px;
   }
 `;
 
@@ -146,8 +161,8 @@ const contentImageWrapperCss = css`
   ${mediaQuery('xs')} {
     flex-direction: column;
     align-self: center;
-    width: 180px;
-    height: 180px;
+    width: 120px;
+    height: 120px;
   }
 `;
 
@@ -160,9 +175,7 @@ const contentTextWrapperCss = css`
   justify-content: center;
 
   ${mediaQuery('xs')} {
-    padding-bottom: 30px;
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right: 0;
   }
 `;
 

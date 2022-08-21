@@ -20,6 +20,7 @@ import {
   MailIcon,
   MediumIcon,
 } from '../icons';
+import { DepromeetIcon } from '../icons/DepromeetIcon';
 
 export default function Footer() {
   const date = new Date();
@@ -27,7 +28,9 @@ export default function Footer() {
   return (
     <footer>
       <section css={linkSectionCss}>
-        <div css={logoWrapperCss}>디프만 로고</div>
+        <div css={logoWrapperCss}>
+          <DepromeetIcon />
+        </div>
         <div css={linkWrapperCss}>
           <MotionAnchor href={`mailto:${DEPROMEET_EMAIL}`}>
             <MailIcon width={22} height={22} />

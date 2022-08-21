@@ -12,6 +12,7 @@ import Anchor from './Anchor';
 import DimOverlay from './DimOverlay';
 import HamburgerButton from './HamburgerButton';
 import HamburgerContent from './HamburgerContent';
+import { DepromeetIcon } from '../icons/DepromeetIcon';
 
 export default function NavigationBar() {
   const isMobile = useMediaQuery('xs');
@@ -26,9 +27,11 @@ export default function NavigationBar() {
       <>
         <motion.nav css={navCss} animate={isOpen ? 'open' : 'closed'} variants={mobileNavVariants}>
           <div css={wrapperCss}>
-            <div>
-              <Link href="/">디프만 로고</Link>
-            </div>
+            <Link href="/">
+              <a>
+                <DepromeetIcon />
+              </a>
+            </Link>
 
             <HamburgerButton toggleIsOpen={toggleIsOpen} />
           </div>
@@ -46,9 +49,11 @@ export default function NavigationBar() {
   return (
     <nav css={navCss}>
       <div css={wrapperCss}>
-        <div>
-          <Link href="/">디프만 로고</Link>
-        </div>
+        <Link href="/">
+          <a>
+            <DepromeetIcon />
+          </a>
+        </Link>
 
         <div css={anchorWrapperCss}>
           <Anchor href="/project" name="프로젝트" />
