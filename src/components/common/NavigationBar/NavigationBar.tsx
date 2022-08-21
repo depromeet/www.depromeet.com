@@ -74,7 +74,7 @@ const navCss = css`
 `;
 
 const wrapperCss = css`
-  ${layoutCss}
+  ${layoutCss()}
   height: 100%;
 
   display: flex;

@@ -27,7 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <GlobalStyle />
 
       <NavigationBar />
-      <div css={contentLayoutCss}>
+      <div css={contentLayoutCss(router.route)}>
         <Component {...pageProps} />
       </div>
       <Footer />
@@ -35,7 +35,7 @@ export default function App({ Component, pageProps }: AppProps) {
   );
 }
 
-const contentLayoutCss = css`
-  ${layoutCss}
+const contentLayoutCss = (routerRoute: string) => css`
+  ${layoutCss(routerRoute)}
   margin-top: ${NAV_HEIGHT}px;
 `;

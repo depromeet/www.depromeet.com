@@ -8,7 +8,7 @@ export default function DescriptionSection() {
       <h2>
         디프만에서 탄생한 개성만점
         <br />
-        서비스들을 소개할게요
+        서비스들을 소개할게요!
       </h2>
     </header>
   );
