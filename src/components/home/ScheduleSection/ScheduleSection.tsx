@@ -12,6 +12,7 @@ interface Scehdule {
   week: string;
   title: string;
   image: string;
+  mobileImage: string;
 }
 
 const SCHEDULES: Scehdule[] = [
@@ -20,22 +21,26 @@ const SCHEDULES: Scehdule[] = [
     title:
       '12기를 함께할 멤버들을 만날 수 있는 OT와 멋진 서비스를 위한 아이디에이션, MVP 설정을 진행해요.',
     image: `${SCEDULE_IMAGE_BASE}/1to3.png`,
+    mobileImage: `${SCEDULE_IMAGE_BASE}/1to3_mobile.png`,
   },
   {
     week: '4~8주차',
     title:
       '연사들의 강연을 들으며 서비스 기획을 구체화하고, UT와 중간 공유로 유의미한 피드백을 받아요.',
     image: `${SCEDULE_IMAGE_BASE}/4to8.png`,
+    mobileImage: `${SCEDULE_IMAGE_BASE}/4to8_mobile.png`,
   },
   {
     week: '9~13주차',
     title: '론칭을 위해 열심히 팀 활동을 수행해요.',
     image: `${SCEDULE_IMAGE_BASE}/9to13.png`,
+    mobileImage: `${SCEDULE_IMAGE_BASE}/9to13_mobile.png`,
   },
   {
     week: '14~17주차',
     title: '드디어 최종 발표! 함께 모여 열심히 만든 서비스를 공유하고 우승팀을 선정해요.',
     image: `${SCEDULE_IMAGE_BASE}/14to17.png`,
+    mobileImage: `${SCEDULE_IMAGE_BASE}/14to17_mobile.png`,
   },
 ];
 
@@ -70,7 +75,7 @@ export default function ScheduleSection() {
 
             <div css={articleImageWrapperCss}>
               <Image
-                src={schedule.image}
+                src={isMobile ? schedule.mobileImage : schedule.image}
                 alt={schedule.title}
                 objectFit="cover"
                 layout="fill"
@@ -179,14 +184,13 @@ const articleImageWrapperCss = css`
 
   width: 378px;
   height: 100%;
-  background-color: ${colors.gray8};
 
   ${mediaQuery('xs')} {
     top: unset;
     bottom: 20px;
     right: 20px;
 
-    width: 70px;
+    width: 130px;
     height: 70px;
   }
 `;

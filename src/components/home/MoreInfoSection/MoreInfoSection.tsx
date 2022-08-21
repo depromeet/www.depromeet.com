@@ -101,7 +101,6 @@ interface LinkArticleProps {
 
 function LinkArticle({ href, heading, image, description, blank = false }: LinkArticleProps) {
   if (blank) {
-    console.log(href);
     return (
       <motion.a
         href={href}
