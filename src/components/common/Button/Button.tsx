@@ -26,6 +26,7 @@ const buttonCss = (isActive: boolean) => css`
   background-color: ${colors.gray9};
   color: ${colors.gray4};
   font-size: 1.5rem;
+  white-space: pre;
 
   transition: background-color 0.3s, color 0.3s;
 
@@ -40,8 +41,6 @@ const buttonCss = (isActive: boolean) => css`
   ${isActive && activeCss}
 
   ${mediaQuery('xs')} {
-    white-space: pre;
-
     padding: 8px 16px;
     border-radius: ${radius.xs};
     font-size: 14px;
