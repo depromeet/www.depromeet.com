@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { css } from '@emotion/react';
 
 import AnotherProjectSection from '~/components/project/AnotherProjectSection';
 import { Project, projects } from '~/components/project/constants';
@@ -30,7 +31,7 @@ export default function ProjectDetail() {
 
   if (!project) {
     // Add Loading
-    return <></>;
+    return <div css={loadingCss}></div>;
   }
 
   return (
@@ -40,3 +41,7 @@ export default function ProjectDetail() {
     </main>
   );
 }
+
+const loadingCss = css`
+  height: 2000px;
+`;

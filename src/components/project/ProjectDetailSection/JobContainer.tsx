@@ -1,6 +1,9 @@
 import React from 'react';
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
 
+import { defaultFadeInUpVariants } from '~/constants/motions';
+import { defaultFadeInSlideToLeftVariants } from '~/constants/motions/motions';
 import { colors, mediaQuery } from '~/styles/constants';
 
 const memberTextFilter = (members: string[]) => {
@@ -16,10 +19,14 @@ interface Props {
 
 export default function JobContainer({ job, member }: Props) {
   return (
-    <div css={JobContainerCss}>
-      <div css={jobCss}>{job}</div>
-      <div css={memberCss}>{memberTextFilter(member)}</div>
-    </div>
+    <motion.div css={JobContainerCss} variants={defaultFadeInUpVariants}>
+      <motion.div css={jobCss} variants={defaultFadeInSlideToLeftVariants}>
+        {job}
+      </motion.div>
+      <motion.div css={memberCss} variants={defaultFadeInSlideToLeftVariants}>
+        {memberTextFilter(member)}
+      </motion.div>
+    </motion.div>
   );
 }
 

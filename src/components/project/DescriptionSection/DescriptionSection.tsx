@@ -1,16 +1,18 @@
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
 
+import { defaultFadeInUpVariants } from '~/constants/motions';
 import { colors } from '~/styles/constants';
 
 export default function DescriptionSection() {
   return (
-    <header css={headerCss}>
-      <h2>
+    <motion.header css={headerCss} initial="initial" animate="animate" exit="exit">
+      <motion.h2 variants={defaultFadeInUpVariants}>
         디프만에서 탄생한 개성만점
         <br />
         서비스들을 소개할게요!
-      </h2>
-    </header>
+      </motion.h2>
+    </motion.header>
   );
 }
 
