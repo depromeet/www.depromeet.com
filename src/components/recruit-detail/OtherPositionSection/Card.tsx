@@ -55,13 +55,16 @@ const cardCss = (size: Size) => css`
   border-radius: ${radius.md};
   color: ${colors.gray2};
 
+  transition: all 0.3s;
+  cursor: pointer;
+
   svg > path {
     fill: ${colors.gray3};
   }
 
-  :hover {
+  &:hover {
     color: ${colors.white};
-    background: ${colors.primary};
+    background: ${colors.gray8};
 
     svg > path {
       fill: ${colors.white};
