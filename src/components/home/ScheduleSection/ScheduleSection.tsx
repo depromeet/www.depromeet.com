@@ -12,7 +12,11 @@ interface Scehdule {
 }
 
 const SCHEDULES: Scehdule[] = [
-  { week: '1~3주차', title: 'OT 후 서비스 기획을 위한 아이데이션, 그리고 MVP를 설정해요.' },
+  {
+    week: '1~3주차',
+    title:
+      '12기를 함께할 멤버들을 만날 수 있는 OT와 멋진 서비스를 위한 아이디에이션, MVP 설정을 진행해요.',
+  },
   {
     week: '4~8주차',
     title:
