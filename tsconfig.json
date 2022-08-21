@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
+    "baseUrl": "./src",
+    "paths": { "~/*": ["./*"] },
+    "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -13,12 +15,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "jsxImportSource": "@emotion/react",
-    "baseUrl": "./",
-    "paths": {
-      "*": ["./*"]
-    }
+    "incremental": true,
+    "types": ["@emotion/react/types/css-prop"]
   },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules", "former-assets"]
 }

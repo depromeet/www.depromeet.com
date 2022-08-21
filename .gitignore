@@ -1,29 +1,41 @@
-# Config
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
 
-!config/default.json
-!config/development.json.sample
-config/*.json
+# testing
+/coverage
 
+# next.js
+/.next/
+/out/
 
-# Next
-.next
-out
+# production
+/build
 
-# Logs
+# misc
+.DS_Store
+*.pem
+
+# debug
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
 
-# NPM
-node_modules/
+# local env files
+.env*.local
 
-# Transpiled code
-dist
-out
-.out
+# vercel
+.vercel
 
-# Dev tools
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# dev tools
 .DS_Store
 .idea
 *.swp
 *.bak
-
-node_modules.nosync/
+.vscode
