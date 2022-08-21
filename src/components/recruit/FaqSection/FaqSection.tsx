@@ -7,7 +7,6 @@ import { defaultFadeInVariants, staggerHalf } from '~/constants/motions';
 import {
   defaultFadeInSlideToRightVariants,
   defaultFadeInUpVariants,
-  staggerOne,
 } from '~/constants/motions/motions';
 import { colors, mediaQuery } from '~/styles/constants';
 
@@ -61,19 +60,15 @@ export default function FaqSection() {
           활동 관련
         </Button>
       </motion.div>
-      <motion.ul variants={staggerOne}>
+      <motion.ul variants={defaultFadeInUpVariants}>
         {FAQ[currentTab].map((faq, index) => (
-          <motion.li
-            css={faqCss}
-            variants={defaultFadeInUpVariants}
-            key={`faq_${currentTab}_${index}`}
-          >
+          <li css={faqCss} key={`faq-${currentTab}-${index}`}>
             <dt>
               <em>Q. </em>
               {faq.title}
             </dt>
             <dd>{faq.description}</dd>
-          </motion.li>
+          </li>
         ))}
       </motion.ul>
     </motion.section>
