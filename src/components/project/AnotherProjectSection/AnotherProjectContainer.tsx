@@ -82,7 +82,7 @@ const projectCss = css`
     height: 96px;
     border-radius: 0 0 16px 16px;
     background-color: ${colors.gray9};
-    padding: 20px 20px 0 20px;
+    padding: 20px 20px 0;
   }
 
   &:hover {
