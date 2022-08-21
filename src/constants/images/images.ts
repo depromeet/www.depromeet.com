@@ -20,7 +20,17 @@ export type ContactProjectImagesKeyType = keyof typeof CONTACT_PROJECT_IMAGES;
 const ORGANIZER_IMAGE_BASE = '/images/organizer';
 
 export const ORGANIZER_IMAGES = {
-  윤병호: `${ORGANIZER_IMAGE_BASE}/윤병호.png`,
+  김나영: `${ORGANIZER_IMAGE_BASE}/김나영.jpg`,
+  김동건: `${ORGANIZER_IMAGE_BASE}/김동건.png`,
+  김민수: `${ORGANIZER_IMAGE_BASE}/김민수.jpeg`,
+  박소현: `${ORGANIZER_IMAGE_BASE}/박소현.jpg`,
+  오혜성: `${ORGANIZER_IMAGE_BASE}/오혜성.jpeg`,
+  윤영: `${ORGANIZER_IMAGE_BASE}/윤영.jpg`,
+  이성용: `${ORGANIZER_IMAGE_BASE}/이성용.jpg`,
+  이승희: `${ORGANIZER_IMAGE_BASE}/이승희.jpg`,
+  임효연: `${ORGANIZER_IMAGE_BASE}/임효연.jpg`,
+  정대윤: `${ORGANIZER_IMAGE_BASE}/정대윤.jpg`,
+  홍서희: `${ORGANIZER_IMAGE_BASE}/홍서희.jpeg`,
 } as const;
 
 export type OrganizerImagesKeyType = keyof typeof ORGANIZER_IMAGES;

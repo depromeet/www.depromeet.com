@@ -31,6 +31,7 @@ export default function OrganizerCard({
         placeholder="blur"
         blurDataURL={ORGANIZER_IMAGES[imageKey]}
       />
+
       <div css={infoWrapperCss}>
         <h4 css={nameCss}>{name}</h4>
         <h5 css={positionCss}>{position}</h5>
