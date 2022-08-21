@@ -53,7 +53,7 @@ export default function NavigationBar() {
         <div css={anchorWrapperCss}>
           <Anchor href="/project" name="프로젝트" />
           <Anchor href="/contact" name="문의하기" />
-          <Anchor href="/recruit" name="리쿠르트" />
+          <Anchor href="/recruit" name="리쿠르팅" />
         </div>
       </div>
     </nav>
