@@ -9,15 +9,20 @@ import { mediaQuery } from '~/styles/constants';
 interface Props {
   src: string;
   alt: string;
+  href: string;
 }
 
-export default function LinkIcon({ src, alt }: Props) {
+export default function LinkIcon({ src, alt, href }: Props) {
   return (
-    <motion.div css={iconCss} variants={defaultFadeInSlideToLeftVariants}>
-      <button>
-        <Image src={src} alt={alt} height="64" width="64" objectFit="cover" />
-      </button>
-    </motion.div>
+    <motion.a
+      css={iconCss}
+      variants={defaultFadeInSlideToLeftVariants}
+      href={href}
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <Image src={src} alt={alt} height="64" width="64" objectFit="cover" />
+    </motion.a>
   );
 }
 
