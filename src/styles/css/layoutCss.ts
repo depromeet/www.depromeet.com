@@ -8,12 +8,12 @@ const layout = {
 
 const notApplyPadding = ['/project/[order]'];
 
-export const layoutCss = (routerRoute: string) => css`
+export const layoutCss = (routerRoute?: string) => css`
   width: 100%;
   max-width: ${layout.maxWidth};
   margin: 0 auto;
 
   ${mediaQuery('xs')} {
-    padding: ${notApplyPadding.includes(routerRoute) ? '0' : '0 20px'};
+    padding: ${routerRoute && notApplyPadding.includes(routerRoute) ? '0' : '0 20px'};
   }
 `;
