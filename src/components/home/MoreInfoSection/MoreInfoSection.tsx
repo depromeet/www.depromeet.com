@@ -112,7 +112,15 @@ function LinkArticle({ href, heading, image, description, blank = false }: LinkA
         whileTap={{ scale: 0.98 }}
       >
         <div css={imageWrapperCss}>
-          <Image src={image} alt={heading} layout="fill" objectFit="cover" />
+          <Image
+            src={image}
+            alt={heading}
+            layout="fill"
+            objectFit="cover"
+            unoptimized
+            placeholder="blur"
+            blurDataURL={image}
+          />
         </div>
 
         <div css={contentWrapperCss}>
