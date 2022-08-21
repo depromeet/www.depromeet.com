@@ -63,7 +63,11 @@ export default function FaqSection() {
       </motion.div>
       <motion.ul variants={staggerOne}>
         {FAQ[currentTab].map((faq, index) => (
-          <motion.li css={faqCss} variants={defaultFadeInUpVariants} key={`faq_${index}`}>
+          <motion.li
+            css={faqCss}
+            variants={defaultFadeInUpVariants}
+            key={`faq_${currentTab}_${index}`}
+          >
             <dt>
               <em>Q. </em>
               {faq.title}
