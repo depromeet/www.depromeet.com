@@ -105,6 +105,7 @@ export default function HeaderSection() {
           src={!isMobile ? BANNER : MOBILE_BANNER}
           alt="banner-recruit"
           layout="fill"
+          objectFit="cover"
           priority
           unoptimized
         />

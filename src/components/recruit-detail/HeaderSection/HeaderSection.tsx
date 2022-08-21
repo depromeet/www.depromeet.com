@@ -21,6 +21,7 @@ export default function HeaderSection({ positionType }: { positionType: Position
       <div css={backgroundCss}>
         <Image
           layout="fill"
+          objectFit="cover"
           priority
           unoptimized
           src={isMobile ? MOBILE_BANNER_IMG_PATH[positionType] : BANNER_IMG_PATH[positionType]}
