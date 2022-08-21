@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 
 import { defaultFadeInVariants, staggerHalf } from '~/constants/motions';
 import { defaultFadeInSlideToRightVariants, staggerOne } from '~/constants/motions/motions';
+import useMediaQuery from '~/hooks/use-media-query';
 import { colors, mediaQuery, radius } from '~/styles/constants';
 
 const SCEDULE_IMAGE_BASE = '/images/home/schedule';
@@ -39,6 +40,8 @@ const SCHEDULES: Scehdule[] = [
 ];
 
 export default function ScheduleSection() {
+  const isMobile = useMediaQuery('xs');
+
   return (
     <motion.section
       css={sectionCss}
@@ -49,7 +52,7 @@ export default function ScheduleSection() {
       viewport={{ amount: 0.4, once: true }}
     >
       <motion.h2 css={headingCss} variants={defaultFadeInVariants}>
-        디프만 12기는 다음과 같이 진행될 예정이에요!
+        디프만 12기는 {isMobile && <br />}다음과 같이 진행될 예정이에요!
       </motion.h2>
       <motion.p css={descriptionCss} variants={defaultFadeInVariants}>
         디프만 12기는 매주 토요일, 총 17주간 진행됩니다.
