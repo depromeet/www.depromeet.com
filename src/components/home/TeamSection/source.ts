@@ -12,7 +12,7 @@ export const CONTENTS_PER_TEAM: Contents = {
   'UIUX Design': {
     heading: '서비스 디자인의 모든 것을 담당하는<br/>UIUX 디자이너',
     paragraph:
-      '🐹 서비스 기획부터 UX/UI, 브랜딩, 마케팅까지 - 서비스 런칭에 필요한 메인 업무를 담당하게 되어요. ',
+      '서비스 기획부터 UX/UI, 브랜딩, 마케팅까지 -<br/> 서비스 런칭에 필요한 메인 업무를 담당하게 되어요. ',
   },
   iOS: {
     heading: 'iOS 유저를 위한 앱 개발을 담당하는<br/>iOS Developer',
