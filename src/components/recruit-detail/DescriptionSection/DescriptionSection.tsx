@@ -2,6 +2,8 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 
 import CTAButton from '~/components/common/CTAButton';
+import { RECRUIT_STATE } from '~/components/recruit/HeaderSection/HeaderSection';
+import { END_DATE, NOTION_RECRUIT_PATH, START_DATE } from '~/constants/common/common';
 import { colors, mediaQuery } from '~/styles/constants';
 
 import {
@@ -15,6 +17,22 @@ import {
 
 export default function DescriptionSection({ positionType }: { positionType: PositionType }) {
   const positionName = POSITION_DISPLAY_NAME[positionType];
+
+  const startDate = new Date(START_DATE);
+  const endDate = new Date(END_DATE);
+
+  const getCurrentState = () => {
+    const current = new Date();
+
+    if (startDate > current) return RECRUIT_STATE.PREVIOUS;
+    if (endDate < current) return RECRUIT_STATE.FINISH;
+
+    return RECRUIT_STATE.IN_PROGRESS;
+  };
+
+  const isInProgress = () => {
+    return getCurrentState() === RECRUIT_STATE.IN_PROGRESS;
+  };
 
   return (
     <section css={sectionCss}>
@@ -46,7 +64,15 @@ export default function DescriptionSection({ positionType }: { positionType: Pos
           </ul>
         </dd>
       </div>
-      <CTAButton css={ctaBtnCss}>지원하기</CTAButton>
+      <CTAButton
+        disabled={!isInProgress()}
+        css={ctaBtnCss}
+        onClick={() => {
+          window.open(NOTION_RECRUIT_PATH);
+        }}
+      >
+        {isInProgress() ? '지원하기' : '모집 기간이 아닙니다.'}
+      </CTAButton>
       <hr css={dividerCss} />
     </section>
   );
