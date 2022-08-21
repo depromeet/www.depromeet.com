@@ -21,7 +21,7 @@ export default function ApplySection() {
       viewport={{ amount: 0.6, once: true }}
     >
       <motion.span css={spanCss} variants={defaultFadeInVariants}>
-        이제 여러분 차레예요!
+        이제 여러분 차례예요!
       </motion.span>
 
       <motion.h2 css={headingCss} variants={defaultFadeInVariants}>

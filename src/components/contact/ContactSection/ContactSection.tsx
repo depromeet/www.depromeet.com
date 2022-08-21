@@ -22,10 +22,11 @@ export default function ContactSection() {
         <motion.h2 css={descriptionHeadingCss} variants={defaultFadeInUpVariants}>
           궁금한 것이 있거나
           <br />
-          문의 사항이 있으신가요?
+          문의사항이 있으신가요?
         </motion.h2>
         <motion.span css={descriptionTimeCss} variants={defaultFadeInVariants}>
-          운영 시간 : 9시 ~ 18시
+          카카오톡 @depromeet을 통해 궁금증을 해결하세요.
+          <br /> 운영 시간 : 19시 ~ 24시
         </motion.span>
         <motion.small css={descriptionBusinessCss} variants={defaultFadeInVariants}>
           비즈니스 문의 depromeet@gmail.com
