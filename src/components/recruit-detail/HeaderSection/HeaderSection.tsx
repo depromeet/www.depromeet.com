@@ -1,11 +1,19 @@
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
+import useMediaQuery from '~/hooks/use-media-query';
 import { mediaQuery } from '~/styles/constants';
 
-import { BANNER_IMG_PATH, PositionType, POSTION_DISPLAY_NAME } from '../constants';
+import {
+  BANNER_IMG_PATH,
+  MOBILE_BANNER_IMG_PATH,
+  PositionType,
+  POSTION_DISPLAY_NAME,
+} from '../constants';
 
 export default function HeaderSection({ positionType }: { positionType: PositionType }) {
+  const isMobile = useMediaQuery('xs');
+
   const positionName = POSTION_DISPLAY_NAME[positionType];
 
   return (
@@ -13,7 +21,7 @@ export default function HeaderSection({ positionType }: { positionType: Position
       <div css={backgroundCss}>
         <Image
           layout="fill"
-          src={BANNER_IMG_PATH[positionType]}
+          src={isMobile ? MOBILE_BANNER_IMG_PATH[positionType] : BANNER_IMG_PATH[positionType]}
           alt={`banner-image-${positionName}`}
         />
       </div>
