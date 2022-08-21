@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
+import { ArrowIcon } from '~/components/common/icons/ArrowIcon';
 import { defaultFadeInUpVariants } from '~/constants/motions';
 import useMediaQuery from '~/hooks/use-media-query';
 import { colors, mediaQuery, radius } from '~/styles/constants';
@@ -35,7 +36,7 @@ export function Card({ positionType, size = 'lg' }: { positionType: PositionType
         </div>
         <div css={cardLinkCss}>
           {getSize() === 'lg' && '자세히 보기'}
-          <Image width={32} height={32} src="/svg/icon-arrow.svg" alt="icon-arrow" />
+          <ArrowIcon width={32} height={32} />
         </div>
       </motion.section>
     </Link>
@@ -54,9 +55,17 @@ const cardCss = (size: Size) => css`
   border-radius: ${radius.md};
   color: ${colors.gray2};
 
+  svg > path {
+    fill: ${colors.gray3};
+  }
+
   :hover {
     color: ${colors.white};
     background: ${colors.primary};
+
+    svg > path {
+      fill: ${colors.white};
+    }
   }
 
   ${mediaQuery('xs')} {
@@ -85,9 +94,9 @@ const cardHeadingCss = css`
 `;
 
 const cardLinkCss = css`
-  width: 100%;
-
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 
   ${mediaQuery('xs')} {
     width: auto;
