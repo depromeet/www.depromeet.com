@@ -30,7 +30,7 @@ const dividerCss = css`
 `;
 
 const sectionCss = css`
-  margin: 60px 20px 120px;
+  margin: 60px 0 120px;
 
   ${mediaQuery('xs')} {
     margin: 40px 20px 120px;

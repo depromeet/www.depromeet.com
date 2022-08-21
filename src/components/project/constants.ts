@@ -11,6 +11,7 @@ export type Project = {
   ios?: string;
   android?: string;
   web?: string;
+  behance?: string;
   frontends?: string[];
   backends?: string[];
   designers?: string[];
@@ -18,7 +19,149 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    order: 1,
+    order: 34,
+    generation: 11,
+    title: '비어에어',
+    team: '술술이들',
+    catchphrase: '편의점 세계 맥주로 세계 여행도장깨기',
+    description: `해외여행 한 번 가기 쉽지 않은 시대,
+    저희 비어에어는 편의점 세계 맥주와 함께 여행을 떠나는 듯한 경험을 제공합니다.
+    원하는 맥주를 검색하고, 여행지를 고르듯 맥주를 골라보세요.
+    간단한 기록을 남기면 티켓으로 보관할 수 있어요. 다양한 나라와 맥주에 여러분의 발자취를 남겨보세요!`,
+    web: 'https://beerair.kr',
+    behance: 'https://www.behance.net/gallery/147281821/Beer-Air-UXUI-Design-Mobile-App-Service',
+    image: 'details/비어에어.png',
+    icon: 'icons/비어에어.png',
+    thumbnail: 'thumbnails/비어에어.png',
+    designers: ['김영서', '정선하', '전혜원'],
+    frontends: ['김효진', '조찬영', '고서영'],
+    backends: ['김태호', '류찬', '김소정', '김민수'],
+  },
+  {
+    order: 33,
+    generation: 11,
+    title: '영감탱',
+    team: '안쓸거면 나조',
+    catchphrase: '영감을 모아 통통튀는 아이디어로, 영감탱',
+    description: `어? 영감이다! 여기저기 흩어져있는 넘치는 영감.
+    세상의 모든 것은 영감이 될 수 있고, 영감탱에서 기억할 수 있어요.
+    글, 이미지(사진, 스크린샷), 웹링크를 첨부하여 나의 통통튀는 영감을 빠르게 태그, 메모와 함께 차곡차곡 아카이빙해봐요.`,
+    ios: 'https://apps.apple.com/kr/app/%EC%98%81%EA%B0%90%ED%83%B1/id1626598770',
+    android: 'https://play.google.com/store/apps/details?id=kr.ygtang',
+    behance: 'https://www.behance.net/gallery/147207859/TANG-Inspiration-Archiving-App',
+    image: 'details/영감탱.png',
+    icon: 'icons/영감탱.png',
+    thumbnail: 'thumbnails/영감탱.png',
+    designers: ['김자영', '박수연', '정미숙'],
+    frontends: ['고은정', '오혜성', '정대윤', '정도현'],
+    backends: ['김자연', '문인우', '정형일'],
+  },
+  {
+    order: 32,
+    generation: 11,
+    title: '바통',
+    team: '안쓸거면 나조',
+    catchphrase: '운동 회원권 양도 거래 서비스 , 바통',
+    description: `야심차게 등록한 헬스장, 야근, 학업, 출장 등의 이유로 장기 결석하시나요?
+    필라테스 다니고 싶은데 할인을 놓쳐 부담스러운 금액으로 고민이신가요? 
+    운동 회원권 양도 거래 플랫폼 바통에서 더 이상 사용하지 않는 회원권은 개인 거래로 빠르게 판매하고, 평소 눈여겨 보던 다양한 운동을 저렴한 가격에 구매해보세요!`,
+    android: 'https://play.google.com/store/apps/details?id=com.depromeet.baton',
+    behance: 'https://www.behance.net/gallery/147261349/Baton',
+    image: 'details/바통.png',
+    icon: 'icons/바통.png',
+    thumbnail: 'thumbnails/바통.png',
+    designers: ['강창모', '배희영', '이설희'],
+    frontends: ['신승민', '김다빈', '김효민'],
+    backends: ['최용호', '박민재', '임정섭'],
+  },
+  {
+    order: 31,
+    generation: 11,
+    title: '무드픽',
+    team: '5GZOO',
+    catchphrase: '부정적 감정의 기록, 퍼스널 아카이빙 서비스',
+    description: `나를 괴롭히는 부정적인 감정들을 회피하기보다는 정면으로 맞서 우리의 삶을 성장시킬 수 있는 지표로 볼 수 있다면 어떨까요?
+    무드픽은 부정적 감정을 기록하며 감정의 발자취를 따라가고 스스로 해결의 실마리를 찾는 주도적인 방법을 제공하고자 합니다.`,
+    web: 'https://www.moodpic.kr/',
+    behance: 'https://www.behance.net/gallery/147271219/Archiving-My-Personal-Emotions-Moodpic',
+    image: 'details/무드픽.png',
+    icon: 'icons/무드픽.png',
+    thumbnail: 'thumbnails/무드픽.png',
+    designers: ['임효연', '이승희', '박소현'],
+    frontends: ['박수진', '조기문', '박상범'],
+    backends: ['이건', '이솔', '양형욱', '박수호'],
+  },
+  {
+    order: 30,
+    generation: 11,
+    title: '티키타카',
+    team: '팀가치4조',
+    catchphrase: '위치 기반 실시간 채팅 서비스, 티키타카',
+    description: `👥 🗣장소에 대한 많은 기억과 이야기들, 나만 알기 아깝다구요?🗣👥
+    해당 장소에 있는 사람들과 그 곳에서 일어나는 다양한 일들을 티키타카에서 실시간으로 공유해요! 💬 실시간 위치 기반 채팅방 탐색🔎은 물론 카테고리별 장소 기반으로 개설된 채팅방에서 사람들과 대화를 나눠보세요!🐤`,
+    ios: 'https://apps.apple.com/kr/app/%ED%8B%B0%ED%82%A4%ED%83%80%EC%B9%B4-tikitaka/id1617831823?l=en',
+    behance:
+      'https://www.behance.net/gallery/145307681/Tikitaka-Location-based-real-time-chat-Q-A-app',
+    image: 'details/티키타카.png',
+    icon: 'icons/티키타카.png',
+    thumbnail: 'thumbnails/티키타카.png',
+    designers: ['고유진', '이병호', '홍서희'],
+    frontends: ['강민석', '김록원', '송하경'],
+    backends: ['김우진', '이찬진'],
+  },
+  {
+    order: 29,
+    generation: 11,
+    title: '몽실',
+    team: '벽력일삼',
+    catchphrase: '흐릿했던 꿈을 선명하게',
+    description: `아리송한 꿈을 꾸고 해몽을 검색해 본 적이 있나요?
+    몽실으로 궁금한 꿈에 대해 검색하고 보관할 수 있어요. 내가 꾼 꿈을 기록하고, 꿈의 키워드로 해몽을 바로 확인할 수도 있답니다. 귀여운 그래픽과 함께 제공되는 해몽을 지금 바로 확인해보세요!`,
+    ios: 'https://apps.apple.com/kr/app/%EB%AA%BD%EC%8B%A4-mong-seal/id1622154270?l=kr',
+    behance:
+      'https://www.behance.net/gallery/147282295/%28Mongseal%29Archive-Your-Dream?tracking_source=search_projects%7Cdream',
+    image: 'details/몽실.png',
+    icon: 'icons/몽실.png',
+    thumbnail: 'thumbnails/몽실.png',
+    designers: ['정진아', '김나영', '이영희'],
+    frontends: ['조찬우', '이승후'],
+    backends: ['이건웅', '이석호'],
+  },
+  {
+    order: 28,
+    generation: 11,
+    title: '페어러',
+    team: '도와조!홈즈',
+    catchphrase: '페어러와 함께 평화롭게 집안일 하기',
+    description: `여럿이서 함께 생활을 하다보면 집안일로 인해 갈등이 빚어지는 경우들이 생깁니다. 페어러는 이러한 집안일에 대한 어려움을 해소하고자 합니다. 집안일을 쉽게 관리하고 분담할 수 있도록 도와 모든 사람이 평화롭게 집안일을 하는 날까지 페어러가 함께합니다.`,
+    android: 'https://play.google.com/store/search?q=fairer&c=apps',
+    behance: 'https://www.behance.net/gallery/147276499/fairerPeacemaker-for-Houseworker',
+    image: 'details/페어러.png',
+    icon: 'icons/페어러.png',
+    thumbnail: 'thumbnails/페어러.png',
+    designers: ['권진혁', '최지혜', '고가혜'],
+    frontends: ['김수연', '박정준', '임수진'],
+    backends: ['김승윤', '김다슬', '신동빈', '곽다은'],
+  },
+  {
+    order: 27,
+    generation: 11,
+    title: '개미는 툰툰',
+    team: '디프만 1번 출구',
+    catchphrase: '주식 용어로 즐기는 웹툰의 새로운 덕질 문화, 개미는 툰툰',
+    description: `개미는 툰툰은 주식 컨셉을 바탕으로 웹툰의 새로운 덕질 문화를 만들고자 합니다.
+    평소 즐겨보는 웹툰의 재미있는 주제에 대한 투표, 웹툰 속 인물과 커플에 탑승과 하차, 다른 사람들과 소통할 수 있는 댓글 등 재미있게 즐길 수 있는 다양한 콘텐츠와 기능을 제공합니다.`,
+    android: 'https://antoon.fun/',
+    behance: 'https://www.behance.net/gallery/147262623/-ANTOON-l-Webtoon-Community-Service',
+    image: 'details/개미는툰툰.png',
+    icon: 'icons/개미는툰툰.png',
+    thumbnail: 'thumbnails/개미는툰툰.png',
+    designers: ['박정연', '이홍빈', '이혜린'],
+    frontends: ['이병현', '김민지', '최푸름'],
+    backends: ['윤영', '이하늘', '염지원', '김동건'],
+  },
+  {
+    order: 26,
     generation: 10,
     title: 'noonbody',
     team: '일조권 침해',
@@ -33,7 +176,7 @@ export const projects: Project[] = [
     backends: ['유기태', '박진수', '안태건'],
   },
   {
-    order: 2,
+    order: 25,
     generation: 10,
     title: 'IMGOING',
     team: '9조를 벌었조',
@@ -50,7 +193,7 @@ export const projects: Project[] = [
     frontends: ['이은성', '유경상', '안은결(iOS)'],
   },
   {
-    order: 3,
+    order: 24,
     generation: 10,
     title: 'BBOXX',
     team: '돈벌어야조',
@@ -68,7 +211,7 @@ export const projects: Project[] = [
     frontends: ['김은우', '이근나(iOS)', '이중근', '구해린(Android)'],
   },
   {
-    order: 4,
+    order: 23,
     generation: 10,
     title: '나나공',
     team: '신동빈센조',
@@ -84,7 +227,7 @@ export const projects: Project[] = [
     frontends: ['신한섭', '임승혁(iOS)', '최철훈', '이지훈(Android)'],
   },
   {
-    order: 5,
+    order: 22,
     generation: 10,
     title: 'Archive',
     team: '머선 12조',
@@ -100,7 +243,7 @@ export const projects: Project[] = [
     frontends: ['이한위'],
   },
   {
-    order: 6,
+    order: 21,
     generation: 10,
     title: '대동빵지도',
     team: '칠색조',
@@ -116,7 +259,7 @@ export const projects: Project[] = [
     frontends: ['김유진', '소석진', '김한철', '이재욱'],
   },
   {
-    order: 7,
+    order: 20,
     generation: 10,
     title: '오맵땡',
     team: '물좀조',
@@ -131,7 +274,7 @@ export const projects: Project[] = [
     frontends: ['이성용', '홍영준', '김문희', '김은수(Web)'],
   },
   {
-    order: 8,
+    order: 19,
     generation: 10,
     title: 'Bodymood',
     team: '잊지말아조',
@@ -147,7 +290,7 @@ export const projects: Project[] = [
     frontends: ['허예은', '조기현(iOS)', '오기환', '이민현(Android)'],
   },
   {
-    order: 9,
+    order: 18,
     generation: 10,
     title: 'OMO',
     team: '우리는 사랑과 행복을 팔조',
@@ -163,7 +306,7 @@ export const projects: Project[] = [
     frontends: ['박종호', '이강열', '김효진(Web)'],
   },
   {
-    order: 10,
+    order: 17,
     generation: 10,
     title: '영차',
     team: '무야호',
@@ -180,7 +323,7 @@ export const projects: Project[] = [
     frontends: ['유현식', '이현호(iOS)', '장명준', '강승호(Android)'],
   },
   {
-    order: 11,
+    order: 16,
     generation: 9,
     title: 'TOONI TOONI',
     team: '-',
@@ -197,7 +340,7 @@ export const projects: Project[] = [
     frontends: ['문지윤', '김승진(iOS)', '이오형', '이정민', '최현정(Android)'],
   },
   {
-    order: 12,
+    order: 15,
     generation: 9,
     title: '마이레시픽',
     team: '철이없었조',
@@ -214,7 +357,7 @@ export const projects: Project[] = [
     frontends: ['정진용', '김서진(iOS)', '이한위', '김성민(Android)'],
   },
   {
-    order: 13,
+    order: 14,
     generation: 9,
     title: '오늘의 테스트',
     team: '이그조',
@@ -231,7 +374,7 @@ export const projects: Project[] = [
     frontends: ['최재은', '천승아', '정현정(Web)'],
   },
   {
-    order: 14,
+    order: 13,
     generation: 9,
     title: 'Hush',
     team: '삼시세끼',
@@ -249,7 +392,7 @@ export const projects: Project[] = [
     frontends: ['한영수', '정진리', '이윤현(Web)'],
   },
   {
-    order: 15,
+    order: 12,
     generation: 9,
     title: '링크줍줍',
     team: '칠성파',
@@ -266,7 +409,7 @@ export const projects: Project[] = [
     frontends: ['권지혜', '조수환(iOS)', '이민수', '김나경(Android)'],
   },
   {
-    order: 16,
+    order: 11,
     generation: 9,
     title: '제로우쥬',
     team: '지구를 지켜조',
@@ -281,7 +424,7 @@ export const projects: Project[] = [
     frontends: ['국윤수', '한상진(iOS)', '황견주', '진승언(Android)'],
   },
   {
-    order: 17,
+    order: 10,
     generation: 9,
     title: '크래커북',
     team: '빈센조',
@@ -296,7 +439,7 @@ export const projects: Project[] = [
     frontends: ['유상원', '이성용', '지주연(Web)'],
   },
   {
-    order: 18,
+    order: 9,
     generation: 8,
     title: '3대 얼마',
     team: '-',
@@ -310,7 +453,7 @@ export const projects: Project[] = [
     frontends: ['오기환 (iOS)', '유영평 (Android)', '황견주 (Android)'],
   },
   {
-    order: 19,
+    order: 8,
     generation: 7,
     title: '가슴속 3천원',
     team: '청일점',
@@ -327,7 +470,7 @@ export const projects: Project[] = [
     frontends: ['유현식 (iOS)', '이윤지 (Android)'],
   },
   {
-    order: 20,
+    order: 7,
     generation: 8,
     title: '북쪽으로',
     team: '다해조',
@@ -342,7 +485,7 @@ export const projects: Project[] = [
     frontends: ['김지은 (iOS)', '이규현 (iOS)'],
   },
   {
-    order: 21,
+    order: 6,
     generation: 8,
     title: 'Avocado',
     team: '방탄채소단',
@@ -357,7 +500,7 @@ export const projects: Project[] = [
     frontends: ['심재철', '심문성', '이정민 (Web)'],
   },
   {
-    order: 22,
+    order: 5,
     generation: 6,
     title: 'Therto',
     team: '-',
@@ -373,7 +516,7 @@ export const projects: Project[] = [
     frontends: ['유현식 (iOS)'],
   },
   {
-    order: 23,
+    order: 4,
     generation: 6,
     title: '쿨피스',
     team: '-',
@@ -388,7 +531,7 @@ export const projects: Project[] = [
     frontends: ['유현식 (Android)'],
   },
   {
-    order: 24,
+    order: 3,
     generation: 6,
     title: '칼퇴요정',
     team: '-',
@@ -403,7 +546,7 @@ export const projects: Project[] = [
     frontends: ['유현식 (Android)', '유은비 (Android)', '오기환 (iOS)'],
   },
   {
-    order: 25,
+    order: 2,
     generation: 8,
     title: '아무거나',
     team: '불타오르네',
@@ -420,7 +563,7 @@ export const projects: Project[] = [
     backends: ['조민국'],
   },
   {
-    order: 26,
+    order: 1,
     generation: 5,
     title: '뜻밖의 퀴즈',
     team: '-',
