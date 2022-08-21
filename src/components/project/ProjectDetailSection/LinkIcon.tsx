@@ -1,7 +1,9 @@
 import React from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
 
+import { defaultFadeInSlideToLeftVariants } from '~/constants/motions/motions';
 import { mediaQuery } from '~/styles/constants';
 
 interface Props {
@@ -11,11 +13,11 @@ interface Props {
 
 export default function LinkIcon({ src, alt }: Props) {
   return (
-    <div css={iconCss}>
+    <motion.div css={iconCss} variants={defaultFadeInSlideToLeftVariants}>
       <button>
         <Image src={src} alt={alt} height="64" width="64" objectFit="cover" />
       </button>
-    </div>
+    </motion.div>
   );
 }
 

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
 
 import { Project, projects } from '~/components/project/constants';
+import { defaultFadeInVariants, staggerOne } from '~/constants/motions';
 import { colors, mediaQuery } from '~/styles/constants';
 
 import ProjectContainer from './ProjectContainer';
@@ -40,23 +42,27 @@ export default function ProjectSection() {
   };
 
   return (
-    <>
-      <div css={orderContainerCss(order)}>
+    <motion.section initial="initial" animate="animate" exit="exit">
+      <motion.div css={orderContainerCss(order)} variants={defaultFadeInVariants}>
         <button onClick={() => setProjects('latest')}>최신순</button>
         <VerticalDivider />
         <button onClick={() => setProjects('oldest')}>오래된순</button>
-      </div>
+      </motion.div>
       {sortedProjects.map((projects, generationIndex) => (
-        <div key={`generation-${generationIndex}`} css={sortedProjectsContainerCss}>
-          <div css={generationCss}>
+        <motion.div
+          key={`generation-${generationIndex}`}
+          css={sortedProjectsContainerCss}
+          variants={staggerOne}
+        >
+          <motion.div css={generationCss} variants={defaultFadeInVariants}>
             <div css={generationInnerCss}>
               {Number(projects[0]) > oldGeneration ? `${projects[0]}기` : '이전기수'}
             </div>
-          </div>
+          </motion.div>
           <ProjectContainer projects={projects[1]} />
-        </div>
+        </motion.div>
       ))}
-    </>
+    </motion.section>
   );
 }
 

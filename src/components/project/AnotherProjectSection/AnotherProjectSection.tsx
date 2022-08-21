@@ -1,7 +1,9 @@
 import React from 'react';
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
 
 import { projects } from '~/components/project/constants';
+import { defaultFadeInUpVariants, staggerOne } from '~/constants/motions';
 import { mediaQuery } from '~/styles/constants';
 
 import AnotherProjectContainer from './AnotherProjectContainer';
@@ -13,12 +15,20 @@ export default function AnotherProjectSection() {
       <div css={dividerCss}>
         <HorizontalDivider />
       </div>
-      <div css={sectionCss}>
-        <div css={anotherProjectCss}>다른 프로젝트</div>
+      <motion.div
+        css={sectionCss}
+        variants={staggerOne}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
+        <motion.div css={anotherProjectCss} variants={defaultFadeInUpVariants}>
+          다른 프로젝트
+        </motion.div>
         <AnotherProjectContainer
           projects={projects.sort(() => Math.random() - Math.random()).slice(0, 4)}
         />
-      </div>
+      </motion.div>
     </>
   );
 }

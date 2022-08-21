@@ -1,9 +1,11 @@
 import React from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
 
 import { Project } from '~/components/project/constants';
 import { CONTACT_PROJECT_IMAGES, PROJECTS_IMAGE_BASE } from '~/constants/images/images';
+import { defaultFadeInUpVariants, staggerOne } from '~/constants/motions';
 import { colors, mediaQuery } from '~/styles/constants';
 
 import JobContainer from './JobContainer';
@@ -15,8 +17,14 @@ interface Props {
 
 export default function ProjectDetailSection({ project }: Props) {
   return (
-    <div css={projectDetailCss}>
-      <div css={imageCss}>
+    <motion.div
+      css={projectDetailCss}
+      variants={staggerOne}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
+      <motion.div css={imageCss} variants={defaultFadeInUpVariants}>
         <Image
           src={`${PROJECTS_IMAGE_BASE}/${project.image}`}
           alt={'image'}
@@ -24,9 +32,9 @@ export default function ProjectDetailSection({ project }: Props) {
           objectFit="cover"
         />
         <div css={imageLinnerCss} />
-      </div>
-      <div css={explanationCss}>
-        <div css={imageThumbnailCss}>
+      </motion.div>
+      <motion.div css={explanationCss} variants={staggerOne}>
+        <motion.div css={imageThumbnailCss} variants={defaultFadeInUpVariants}>
           <Image
             src={`${PROJECTS_IMAGE_BASE}/${project.icon}`}
             alt={'image'}
@@ -34,23 +42,29 @@ export default function ProjectDetailSection({ project }: Props) {
             width="97"
             objectFit="cover"
           />
-        </div>
-        <div css={titleContainerCss}>
-          <div css={titleCss}>{project.title}</div>
-          <div css={catchphraseCss}>{project.catchphrase}</div>
-        </div>
-        <div css={generationCss}>
+        </motion.div>
+        <motion.div css={titleContainerCss} variants={defaultFadeInUpVariants}>
+          <motion.div css={titleCss} variants={defaultFadeInUpVariants}>
+            {project.title}
+          </motion.div>
+          <motion.div css={catchphraseCss} variants={defaultFadeInUpVariants}>
+            {project.catchphrase}
+          </motion.div>
+        </motion.div>
+        <motion.div css={generationCss} variants={defaultFadeInUpVariants}>
           {project.generation}기 · {project.team}
-        </div>
-        <div css={detailCss}>
-          <div css={teamContainerCss}>
+        </motion.div>
+        <motion.div css={detailCss} variants={defaultFadeInUpVariants}>
+          <motion.div css={teamContainerCss} variants={staggerOne}>
             {project.designers && <JobContainer job={'Design'} member={project.designers} />}
             {project.frontends && <JobContainer job={'FrontEnd'} member={project.frontends} />}
             {project.backends && <JobContainer job={'Backend'} member={project.backends} />}
-          </div>
-          <div css={descriptionCss}>{project.description}</div>
-        </div>
-        <div css={iconContainerCss}>
+          </motion.div>
+          <motion.div css={descriptionCss} variants={defaultFadeInUpVariants}>
+            {project.description}
+          </motion.div>
+        </motion.div>
+        <motion.div css={iconContainerCss} variants={staggerOne}>
           {project.ios && <LinkIcon src={CONTACT_PROJECT_IMAGES.ios} alt={'app-store icon'} />}
           {project.android && (
             <LinkIcon src={CONTACT_PROJECT_IMAGES.android} alt={'play-store icon'} />
@@ -60,9 +74,9 @@ export default function ProjectDetailSection({ project }: Props) {
           {project.behance && (
             <LinkIcon src={CONTACT_PROJECT_IMAGES.behance} alt={'behance icon'} />
           )}
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 }
 

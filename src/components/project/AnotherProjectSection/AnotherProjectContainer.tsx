@@ -2,9 +2,11 @@ import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
 
 import { Project } from '~/components/project/constants';
 import { PROJECTS_IMAGE_BASE } from '~/constants/images/images';
+import { defaultFadeInUpVariants, staggerHalf } from '~/constants/motions';
 import { colors, mediaQuery } from '~/styles/constants';
 
 interface Props {
@@ -15,12 +17,13 @@ export default function AnotherProjectContainer({ projects }: Props) {
   const { push } = useRouter();
 
   return (
-    <div css={projectsContainerCss}>
+    <motion.div css={projectsContainerCss} variants={staggerHalf}>
       {projects.map(({ order, title, catchphrase, thumbnail, icon }, projectIndex) => (
-        <button
+        <motion.button
           key={`project-${projectIndex}`}
           css={projectCss}
           onClick={() => push(`/project/${order}`)}
+          variants={defaultFadeInUpVariants}
         >
           <div css={imageCss}>
             <Image
@@ -42,9 +45,9 @@ export default function AnotherProjectContainer({ projects }: Props) {
             <div css={projectNameCss}>{title}</div>
             <div css={projectCatchphraseCss}>{catchphrase}</div>
           </div>
-        </button>
+        </motion.button>
       ))}
-    </div>
+    </motion.div>
   );
 }
 const projectsContainerCss = css`
