@@ -11,7 +11,8 @@ export type ContactImagesKeyType = keyof typeof CONTACT_IMAGES;
 export const CONTACT_PROJECT_IMAGES = {
   ios: `${CONTACT_IMAGE_BASE}/app-store.png`,
   android: `${CONTACT_IMAGE_BASE}/google-play.png`,
-  web: `${CONTACT_IMAGE_BASE}/google-play.png`,
+  web: `${CONTACT_IMAGE_BASE}/web.png`,
+  behance: `${CONTACT_IMAGE_BASE}/behance.png`,
 } as const;
 
 export type ContactProjectImagesKeyType = keyof typeof CONTACT_PROJECT_IMAGES;

@@ -57,6 +57,9 @@ export default function ProjectDetailSection({ project }: Props) {
           )}
           {/* TODO: web 아이콘이 나오면 교체 필요 */}
           {project.web && <LinkIcon src={CONTACT_PROJECT_IMAGES.android} alt={'web icon'} />}
+          {project.behance && (
+            <LinkIcon src={CONTACT_PROJECT_IMAGES.behance} alt={'behance icon'} />
+          )}
         </div>
       </div>
     </div>
