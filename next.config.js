@@ -11,6 +11,9 @@ const nextConfig = {
     config.plugins.push(new CompressionPlugin());
     return config;
   },
+  experimental: {
+    scrollRestoration: true,
+  },
 };
 
 /**
