@@ -78,6 +78,10 @@ const cardCss = (size: Size) => css`
     height: 67px;
 
     border-radius: ${radius.sm};
+
+    &:hover {
+      background: ${colors.gray8};
+    }
   }
 `;
 
