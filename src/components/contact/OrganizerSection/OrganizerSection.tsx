@@ -25,9 +25,9 @@ export default function OrganizerSection() {
         디프만 운영진을 소개할게요
       </motion.h2>
       <motion.p css={paragraphCss} variants={defaultFadeInVariants}>
-        여러분들께 특별한 디프만 경험을 전달하기 위해
+        여러분들께 특별한 디프만 12기 경험을 전달하기 위해
         <br />
-        열심히 일하고 있는 운영진들을 소개할게요!
+        오늘도 열심인 12기 운영진들을 소개합니다! 🥹
       </motion.p>
 
       <motion.div css={organizerHeadingWrapperCss} variants={staggerOne}>
