@@ -25,3 +25,5 @@ export const ORGANIZER_IMAGES = {
 export type OrganizerImagesKeyType = keyof typeof ORGANIZER_IMAGES;
 
 export const PROJECTS_IMAGE_BASE = '/images/projects';
+
+export const POSITION_ICON_BASE = '/images/position/icon';

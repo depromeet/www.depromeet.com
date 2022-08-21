@@ -28,6 +28,7 @@ export default function MoreInfoSection() {
           href={DEPROMEET_MEDIUM}
           heading="활동 내역"
           description="결과만큼 과정도 중요한 디프만의 활동 내역"
+          blank
         />
         <LinkArticle
           href="/interview"
@@ -80,9 +81,32 @@ interface LinkArticleProps {
   // TODO: 이미지 추가
   heading: string;
   description: string;
+  blank?: boolean;
 }
 
-function LinkArticle({ href, heading, description }: LinkArticleProps) {
+function LinkArticle({ href, heading, description, blank = false }: LinkArticleProps) {
+  if (blank) {
+    console.log(href);
+    return (
+      <motion.a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        css={anchorCss}
+        variants={defaultFadeInUpVariants}
+        whileHover={{ scale: 1.02, transformOrigin: 'center' }}
+        whileTap={{ scale: 0.98 }}
+      >
+        <div css={imageWrapperCss}>이미지 구역</div>
+
+        <div css={contentWrapperCss}>
+          <h2 css={contentHeadingCss}>{heading}</h2>
+          <p css={contentParagraphCss}>{description}</p>
+        </div>
+      </motion.a>
+    );
+  }
+
   return (
     <Link href={href}>
       <motion.a

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Image from 'next/image';
 import { css } from '@emotion/react';
 import { AnimatePresence, motion, Variants } from 'framer-motion';
 
@@ -12,44 +13,10 @@ import {
 } from '~/constants/motions';
 import { colors, mediaQuery, radius } from '~/styles/constants';
 
-const TEAMS = ['UIUX DESIGN', 'Web', 'iOS', 'Android', 'Backend'] as const;
-
-type TeamType = typeof TEAMS[number];
-
-type Contents = {
-  [team in TeamType]: { heading: string; paragraph: string };
-};
-
-const CONTENTS_PER_TEAM: Contents = {
-  'UIUX DESIGN': {
-    heading: '서비스의 디자인의 모든것을 담당하는 UIUX 디자이너',
-    paragraph:
-      '개발자와의 협업을 통해 서비스를 만드는 경험을 할 수 있어요. 디자인을 디자인디자인 할 수 있고 디자인을 디자인디자인 할 수 있고 설명 설명 설명',
-  },
-  iOS: {
-    heading: 'iOS는 어쩌구 저쩌구...',
-    paragraph:
-      '개발자와의 협업을 통해 서비스를 만드는 경험을 할 수 있어요. 디자인을 디자인디자인 할 수 있고 디자인을 디자인디자인 할 수 있고 설명 설명 설명',
-  },
-  Android: {
-    heading: 'AOS는 어쩌구 저쩌구 ...',
-    paragraph:
-      '개발자와의 협업을 통해 서비스를 만드는 경험을 할 수 있어요. 디자인을 디자인디자인 할 수 있고 디자인을 디자인디자인 할 수 있고 설명 설명 설명',
-  },
-  Web: {
-    heading: '프론트엔드는 어쩌구 저쩌구',
-    paragraph:
-      '개발자와의 협업을 통해 서비스를 만드는 경험을 할 수 있어요. 디자인을 디자인디자인 할 수 있고 디자인을 디자인디자인 할 수 있고 설명 설명 설명',
-  },
-  Backend: {
-    heading: '서버는 어쩌구 저쩌구',
-    paragraph:
-      '개발자와의 협업을 통해 서비스를 만드는 경험을 할 수 있어요. 디자인을 디자인디자인 할 수 있고 디자인을 디자인디자인 할 수 있고 설명 설명 설명',
-  },
-};
+import { CONTENTS_PER_TEAM, POSITION_ICON_IMAGES, TEAMS, TeamType } from './source';
 
 export default function TeamSection() {
-  const [currentTeam, setCurrentTeam] = useState<TeamType>('UIUX DESIGN');
+  const [currentTeam, setCurrentTeam] = useState<TeamType>('UIUX Design');
 
   function onClickTeamButton(team: TeamType) {
     setCurrentTeam(team);
@@ -88,11 +55,27 @@ export default function TeamSection() {
             animate="animate"
             exit="exit"
           >
-            <div css={contentImageWrapperCss}>이미지영역</div>
+            <div css={contentImageWrapperCss}>
+              <Image
+                src={POSITION_ICON_IMAGES[currentTeam]}
+                alt={currentTeam}
+                layout="fill"
+                objectFit="contain"
+                placeholder="blur"
+                blurDataURL={POSITION_ICON_IMAGES[currentTeam]}
+                unoptimized
+              />
+            </div>
 
-            <div>
-              <h3 css={contentHeadingCss}>{CONTENTS_PER_TEAM[currentTeam].heading}</h3>
-              <p css={contentParagraphCss}>{CONTENTS_PER_TEAM[currentTeam].paragraph}</p>
+            <div css={contentTextWrapperCss}>
+              <h3
+                css={contentHeadingCss}
+                dangerouslySetInnerHTML={{ __html: CONTENTS_PER_TEAM[currentTeam].heading }}
+              ></h3>
+              <p
+                css={contentParagraphCss}
+                dangerouslySetInnerHTML={{ __html: CONTENTS_PER_TEAM[currentTeam].paragraph }}
+              ></p>
             </div>
           </motion.div>
         </AnimatePresence>
@@ -140,7 +123,6 @@ const buttonWrapperCss = css`
 const contentWrapperCss = css`
   width: 100%;
   height: 330px;
-  padding: 4rem 5rem;
   background-color: ${colors.gray9};
   border-radius: ${radius.lg};
 
@@ -149,22 +131,38 @@ const contentWrapperCss = css`
 
   ${mediaQuery('xs')} {
     flex-direction: column;
-    padding: 30px 20px;
-    gap: 30px;
+    height: auto;
+    min-height: 330px;
+    gap: 0;
   }
 `;
 
 const contentImageWrapperCss = css`
-  width: 15rem;
+  position: relative;
+  width: 23.125rem;
   height: 100%;
-  background-color: gray;
   flex-shrink: 0;
 
   ${mediaQuery('xs')} {
     flex-direction: column;
     align-self: center;
-    width: 120px;
-    height: 120px;
+    width: 180px;
+    height: 180px;
+  }
+`;
+
+const contentTextWrapperCss = css`
+  width: 100%;
+  height: 100%;
+  padding-right: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  ${mediaQuery('xs')} {
+    padding-bottom: 30px;
+    padding-right: 20px;
+    padding-left: 20px;
   }
 `;
 
