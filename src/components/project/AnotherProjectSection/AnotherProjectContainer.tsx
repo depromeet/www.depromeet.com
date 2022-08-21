@@ -5,29 +5,36 @@ import { css } from '@emotion/react';
 
 import { Project } from '~/components/project/constants';
 import { PROJECTS_IMAGE_BASE } from '~/constants/images/images';
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
 
 interface Props {
   projects: Project[];
 }
 
-export default function ProjectContainer({ projects }: Props) {
+export default function AnotherProjectContainer({ projects }: Props) {
   const { push } = useRouter();
 
   return (
     <div css={projectsContainerCss}>
-      {projects.map(({ order, title, catchphrase, thumbnail }, projectIndex) => (
+      {projects.map(({ order, title, catchphrase, thumbnail, icon }, projectIndex) => (
         <button
           key={`project-${projectIndex}`}
           css={projectCss}
           onClick={() => push(`/project/${order}`)}
         >
-          <div>
+          <div css={imageCss}>
             <Image
               src={`${PROJECTS_IMAGE_BASE}/${thumbnail}`}
               alt={`${title} icon`}
-              height="200"
-              width="332"
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
+          <div css={imageMobileCss}>
+            <Image
+              src={`${PROJECTS_IMAGE_BASE}/${icon}`}
+              alt={`${title} icon`}
+              layout="fill"
               objectFit="cover"
             />
           </div>
@@ -42,9 +49,21 @@ export default function ProjectContainer({ projects }: Props) {
 }
 const projectsContainerCss = css`
   display: flex;
-  justify-content: start;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 40px 42px;
+
+  > button:nth-child(n + 4) {
+    display: none;
+  }
+
+  ${mediaQuery('xs')} {
+    gap: 20px 30px;
+
+    > button:nth-child(n + 4) {
+      display: block;
+    }
+  }
 `;
 
 const projectCss = css`
@@ -76,14 +95,62 @@ const projectCss = css`
       background-color: ${colors.gray8};
     }
   }
+
+  ${mediaQuery('xs')} {
+    width: 160px;
+    height: 221px;
+
+    > div:first-child {
+      width: 160px;
+      height: 160px;
+      border-radius: 16px;
+      background-color: ${colors.gray7};
+      overflow: hidden;
+    }
+    > div:last-child {
+      height: 51px;
+      border-radius: 0;
+      background-color: transparent;
+      padding: 10px 0 0;
+    }
+  }
+`;
+
+const imageCss = css`
+  position: relative;
+  width: 335px;
+  height: 200px;
+
+  ${mediaQuery('xs')} {
+    display: none;
+  }
+`;
+
+const imageMobileCss = css`
+  position: relative;
+  width: 160px;
+  height: 160px;
+  display: none;
+
+  ${mediaQuery('xs')} {
+    display: block;
+  }
 `;
 
 const projectNameCss = css`
   color: ${colors.gray1};
-  font-size: 1.5rem;
   padding-bottom: 8px;
+  font-size: 1.5rem;
   line-height: 29px;
   font-weight: 700;
+
+  ${mediaQuery('xs')} {
+    padding-bottom: 4px;
+    font-size: 1rem;
+    line-height: 19px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+  }
 `;
 
 const projectCatchphraseCss = css`
@@ -93,4 +160,11 @@ const projectCatchphraseCss = css`
   color: ${colors.gray4};
   line-height: 19px;
   font-weight: 500;
+
+  ${mediaQuery('xs')} {
+    font-size: 0.75rem;
+    line-height: 14px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
 `;

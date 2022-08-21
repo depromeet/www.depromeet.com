@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/react';
 
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
 
 const memberTextFilter = (members: string[]) => {
   return members.reduce((result, member) => {
@@ -35,7 +35,12 @@ const jobCss = css`
 `;
 
 const memberCss = css`
+  min-width: 200px;
   font-weight: 500;
   color: ${colors.gray4};
-  white-space: nowrap;
+  white-space: normal;
+
+  ${mediaQuery('xs')} {
+    white-space: normal;
+  }
 `;

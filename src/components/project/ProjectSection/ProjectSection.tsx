@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { css } from '@emotion/react';
 
 import { Project, projects } from '~/components/project/constants';
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
 
-import ProjectContainer from '../ProjectContainer';
+import ProjectContainer from './ProjectContainer';
 import VerticalDivider from '../VerticalDivider';
 
 type Order = 'latest' | 'oldest';
@@ -49,7 +49,9 @@ export default function ProjectSection() {
       {sortedProjects.map((projects, generationIndex) => (
         <div key={`generation-${generationIndex}`} css={sortedProjectsContainerCss}>
           <div css={generationCss}>
-            {Number(projects[0]) > oldGeneration ? `${projects[0]}기` : '이전기수'}
+            <div css={generationInnerCss}>
+              {Number(projects[0]) > oldGeneration ? `${projects[0]}기` : '이전기수'}
+            </div>
           </div>
           <ProjectContainer projects={projects[1]} />
         </div>
@@ -86,4 +88,15 @@ const generationCss = css`
   margin-bottom: 30px;
   font-size: 1.5rem;
   font-weight: 700;
+
+  ${mediaQuery('xs')} {
+    display: flex;
+    justify-content: center;
+  }
+`;
+
+const generationInnerCss = css`
+  ${mediaQuery('xs')} {
+    width: 332px;
+  }
 `;

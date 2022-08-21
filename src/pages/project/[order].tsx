@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 
 import AnotherProjectSection from '~/components/project/AnotherProjectSection';
 import { Project, projects } from '~/components/project/constants';
-import HorizontalDivider from '~/components/project/HorizontalDivider';
 import ProjectDetailSection from '~/components/project/ProjectDetailSection';
 
 export default function ProjectDetail() {
@@ -37,7 +36,6 @@ export default function ProjectDetail() {
   return (
     <main>
       <ProjectDetailSection project={project} />
-      <HorizontalDivider />
       <AnotherProjectSection />
     </main>
   );
