@@ -11,7 +11,7 @@ export const HOUR_TO_MINUTE = 60;
  * @return 받은 초를 통해서 day로 계산해서 반환합니다.
  */
 export function getDayByTimeSeconds(tiemSeconds: number) {
-  return Math.floor(tiemSeconds / DAY_TO_SECONDS);
+  return Math.round(tiemSeconds / DAY_TO_SECONDS);
 }
 
 /**
