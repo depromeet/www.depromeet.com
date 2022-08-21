@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 
 import { ScrollBottomIcon } from '~/components/common/icons';
 import { NAV_HEIGHT } from '~/components/common/NavigationBar/NavigationBar';
+import { END_DATE, START_DATE } from '~/constants/common';
 import { defaultEasing, defaultFadeInScaleVariants } from '~/constants/motions';
 import useEffectOnce from '~/hooks/useeffect-once';
 import { mediaQuery } from '~/styles/constants';
@@ -12,18 +13,15 @@ import Finish from './Finish';
 import InProgress from './InProgress';
 import Previous from './Previous';
 
-const STATE = {
+export const RECRUIT_STATE = {
   PREVIOUS: 'PREVIOUS',
   IN_PROGRESS: 'IN_PROGRESS',
-  FINISH: 'FINSH',
+  FINISH: 'FINISH',
 };
 const SECONDS_TO_MS = 1000;
 
-const START_DATE = '2022-08-21T15:00:00.000Z';
-const END_DATE = '2022-09-01T15:00:00.000Z';
-
-// const START_DATE = '2022-08-18T22:21:59.000Z'; // test
-// const END_DATE = '2022-08-20T20:00:00.000Z'; // test
+// export const START_DATE = '2022-08-18T22:21:59.000Z'; // test
+// export const END_DATE = '2022-08-20T20:00:00.000Z'; // test
 
 export default function HeaderSection() {
   const [state, setState] = useState('');
@@ -40,7 +38,7 @@ export default function HeaderSection() {
   useEffectOnce(() => {
     const currentState = getCurrentState();
 
-    if (STATE.FINISH !== currentState) {
+    if (RECRUIT_STATE.FINISH !== currentState) {
       setRemainTime(getRemainTime());
       playTimer();
     }
@@ -55,10 +53,10 @@ export default function HeaderSection() {
   const getCurrentState = () => {
     const current = new Date();
 
-    if (startDate > current) return STATE.PREVIOUS;
-    if (endDate < current) return STATE.FINISH;
+    if (startDate > current) return RECRUIT_STATE.PREVIOUS;
+    if (endDate < current) return RECRUIT_STATE.FINISH;
 
-    return STATE.IN_PROGRESS;
+    return RECRUIT_STATE.IN_PROGRESS;
   };
 
   const getRemainTime = () => {
@@ -79,7 +77,7 @@ export default function HeaderSection() {
     if (!timerId.current) return;
 
     const currentState = getCurrentState();
-    if (STATE.FINISH === currentState) {
+    if (RECRUIT_STATE.FINISH === currentState) {
       setState(currentState);
       return;
     }
@@ -87,7 +85,7 @@ export default function HeaderSection() {
     if (currentState !== state) setState(currentState);
 
     const _remainTime = getRemainTime();
-    if (STATE.IN_PROGRESS === currentState && _remainTime !== remainTime) {
+    if (RECRUIT_STATE.IN_PROGRESS === currentState && _remainTime !== remainTime) {
       setRemainTime(_remainTime);
     }
 
@@ -97,9 +95,9 @@ export default function HeaderSection() {
   return (
     <motion.header css={headerCss} initial="initial" animate="animate" exit="exit">
       <motion.section css={sectionCss} variants={defaultFadeInScaleVariants}>
-        {STATE.PREVIOUS === state && <Previous />}
-        {STATE.IN_PROGRESS === state && <InProgress remainTime={remainTime} />}
-        {STATE.FINISH === state && <Finish />}
+        {RECRUIT_STATE.PREVIOUS === state && <Previous />}
+        {RECRUIT_STATE.IN_PROGRESS === state && <InProgress remainTime={remainTime} />}
+        {RECRUIT_STATE.FINISH === state && <Finish />}
       </motion.section>
 
       <motion.div

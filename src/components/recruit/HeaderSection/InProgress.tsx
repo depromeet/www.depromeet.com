@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 
 import CTAButton from '~/components/common/CTAButton';
+import { NOTION_RECRUIT_PATH } from '~/constants/common/common';
 import { colors, mediaQuery } from '~/styles/constants';
 import {
   DAY_TO_SECONDS,
@@ -32,7 +33,14 @@ export default function InProgress({ remainTime }: { remainTime: number }) {
       <h1 css={headingCss}>
         {remainTime > DAY_TO_SECONDS ? `D-${getRemainDayString()}` : getRemainTimeString()}
       </h1>
-      <CTAButton onClick={() => {}}>지금 지원하러 가기 &gt;</CTAButton>
+
+      <CTAButton
+        onClick={() => {
+          window.open(NOTION_RECRUIT_PATH);
+        }}
+      >
+        지금 지원하러 가기 &gt;
+      </CTAButton>
     </>
   );
 }

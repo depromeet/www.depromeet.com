@@ -2,6 +2,8 @@ import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
 import CTAButton from '~/components/common/CTAButton';
+import { RECRUIT_STATE } from '~/components/recruit/HeaderSection/HeaderSection';
+import { END_DATE, NOTION_RECRUIT_PATH, START_DATE } from '~/constants/common';
 import { APPLY_LINK } from '~/constants/common/depromeet';
 import {
   defaultFadeInScaleVariants,
@@ -11,6 +13,22 @@ import {
 import { colors, mediaQuery } from '~/styles/constants';
 
 export default function ApplySection() {
+  const startDate = new Date(START_DATE);
+  const endDate = new Date(END_DATE);
+
+  const getCurrentState = () => {
+    const current = new Date();
+
+    if (startDate > current) return RECRUIT_STATE.PREVIOUS;
+    if (endDate < current) return RECRUIT_STATE.FINISH;
+
+    return RECRUIT_STATE.IN_PROGRESS;
+  };
+
+  const isInProgress = () => {
+    return getCurrentState() === RECRUIT_STATE.IN_PROGRESS;
+  };
+
   return (
     <motion.section
       css={sectionCss}
@@ -34,7 +52,14 @@ export default function ApplySection() {
         rel="noreferrer"
         variants={defaultFadeInScaleVariants}
       >
-        <CTAButton>지금 지원하기</CTAButton>
+        <CTAButton
+          disabled={!isInProgress()}
+          onClick={() => {
+            window.open(NOTION_RECRUIT_PATH);
+          }}
+        >
+          {isInProgress() ? '지금 지원하기' : '모집 기간이 아닙니다.'}
+        </CTAButton>
       </motion.a>
     </motion.section>
   );
