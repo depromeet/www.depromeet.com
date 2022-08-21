@@ -61,6 +61,8 @@ export default function TeamSection() {
                 alt={currentTeam}
                 layout="fill"
                 objectFit="contain"
+                placeholder="blur"
+                blurDataURL={POSITION_ICON_IMAGES[currentTeam]}
                 unoptimized
               />
             </div>
