@@ -16,26 +16,21 @@ export const CONTENTS_PER_TEAM: Contents = {
   },
   iOS: {
     heading: 'iOS 유저를 위한 앱 개발을 담당하는<br/>iOS Developer',
-    paragraph: `디프만에서 iOS Developer는 앱 개발을 담당해요.
-      프로젝트를 진행하면서 디자인 및 서버 개발 직군과의 협업을 경험할 수 있어요.
-      단순한 개발이 아닌 프로젝트 기획 단계 부터 모든 직군과 같이 참여해 유스 케이스 및 와이어 프레임 구축 등을 같이 해나가며 보다 좋은 사용성을 위해 고민할 수 있어요.`,
+    paragraph: `앱 개발을 담당해요. 디자인 및 서버 개발 직군과의 협업을 경험할 수 있으며, 보다 나은 사용성을 위해<br/>
+    Use Case 및 Wireframe을 구축하게 되어요.`,
   },
   Android: {
     heading:
       '모바일 환경에서 사용자 경험을 개선하는데 필요한 퍼포먼스를 담당하는 Android Developer',
-    paragraph: `디프만에서 Android Developer는 구글의 Material Design에 대한 이해를 바탕으로 최고의 모바일 서비스를 만들기 위한 아이디어를 내고 실행 해볼 수 있어요. 무엇보다 동료들과의 커뮤니케이션을 통해 좋은 UI/UX를 개발하고 사용자 경험을 개선하는 Android Developer로 성장할 수 있어요!`,
+    paragraph: `구글의 Material Design에 대한 이해를 바탕으로 최고의 모바일 서비스를 만들기 위한 아이디어를 실행해 볼 수 있는 Android Developer로 성장하게 되어요. `,
   },
   Web: {
     heading: '웹부터 앱까지 클라이언트 개발을 담당하는<br/>Web Developer',
-    paragraph: `디프만에서 Web Developer는 웹 혹은 웹뷰 형태의 앱 클라이언트 개발을 담당해요.
-      프로젝트를 진행하면서 다른 직군과의 협업 경험을 경험할 수 있어요.
-      개발만이 아니라 서비스의 아이디어 구상부터 배포와 운영까지 서비스 전반적인 Life Cycle에 참여할 수 있어요.`,
+    paragraph: `서비스의 Life Cycle에 전반적으로 참여하며 웹 혹은 웹뷰 형태의 앱 클라이언트 개발을 담당하게 되어요.`,
   },
   Backend: {
     heading: '시스템의 전반적인 흐름을 관리하는<br/>Backend Developer',
-    paragraph: `디프만에서 Backend Developer는 서비스의 전반적인 흐름을 구축해요.
-      시스템 설계부터 배포까지 모든 과정을 경험할 수 있어요.
-      서비스 및 데이터의 흐름을 관리하며, 서비스의 전반적인 Life Cycle을 경험할 수 있어요.`,
+    paragraph: `서비스의 전반적인 흐름을 구축해요. 시스템 설계부터 배포까지, 서비스 및 데이터의 흐름을 관리하며 서비스의 전반적인 Life Cycle을 경험하게 되어요.`,
   },
 };
 

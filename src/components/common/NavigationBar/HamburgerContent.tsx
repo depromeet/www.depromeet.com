@@ -21,7 +21,7 @@ export default function HamburgerContent() {
         <Anchor href="/contact" name="문의하기" />
 
         <div css={recruitAnchorWrapperCss}>
-          <Anchor href="/recruit" name="리쿠르트" />
+          <Anchor href="/recruit" name="리쿠르팅" />
           <RecruitBanner />
         </div>
       </div>

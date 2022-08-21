@@ -2,7 +2,11 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
-import { DEPROMEET_EMAIL, DEPROMEET_INSTAGRAM } from '~/constants/common/depromeet';
+import {
+  DEPROMEET_EMAIL,
+  DEPROMEET_INSTAGRAM,
+  KAKAO_PLUS_FRIEND,
+} from '~/constants/common/depromeet';
 import { CONTACT_IMAGES } from '~/constants/images';
 import { ContactImagesKeyType } from '~/constants/images/images';
 import { defaultFadeInUpVariants, defaultFadeInVariants, staggerOne } from '~/constants/motions';
@@ -48,8 +52,7 @@ export default function ContactSection() {
         />
         <ContactAnchor
           imageKey="kakaotalk"
-          // TODO: 여기 카카오톡 플러스 채널로
-          href={'https://www.naver.com'}
+          href={KAKAO_PLUS_FRIEND}
           text="kakao plus friend"
           value="depromeet"
         />
