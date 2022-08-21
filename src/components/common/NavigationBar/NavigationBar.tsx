@@ -28,7 +28,7 @@ export default function NavigationBar() {
         <motion.nav css={navCss} animate={isOpen ? 'open' : 'closed'} variants={mobileNavVariants}>
           <div css={wrapperCss}>
             <Link href="/">
-              <a>
+              <a css={anchorCss}>
                 <DepromeetIcon />
               </a>
             </Link>
@@ -50,7 +50,7 @@ export default function NavigationBar() {
     <nav css={navCss}>
       <div css={wrapperCss}>
         <Link href="/">
-          <a>
+          <a css={anchorCss}>
             <DepromeetIcon />
           </a>
         </Link>
@@ -85,6 +85,10 @@ const wrapperCss = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+const anchorCss = css`
+  width: 125px;
 `;
 
 const anchorWrapperCss = css`
