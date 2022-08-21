@@ -68,8 +68,14 @@ export default function TeamSection() {
             </div>
 
             <div css={contentTextWrapperCss}>
-              <h3 css={contentHeadingCss}>{CONTENTS_PER_TEAM[currentTeam].heading}</h3>
-              <p css={contentParagraphCss}>{CONTENTS_PER_TEAM[currentTeam].paragraph}</p>
+              <h3
+                css={contentHeadingCss}
+                dangerouslySetInnerHTML={{ __html: CONTENTS_PER_TEAM[currentTeam].heading }}
+              ></h3>
+              <p
+                css={contentParagraphCss}
+                dangerouslySetInnerHTML={{ __html: CONTENTS_PER_TEAM[currentTeam].paragraph }}
+              ></p>
             </div>
           </motion.div>
         </AnimatePresence>
@@ -125,8 +131,8 @@ const contentWrapperCss = css`
 
   ${mediaQuery('xs')} {
     flex-direction: column;
-    /* padding: 30px 20px; */
-    /* gap: 30px; */
+    height: auto;
+    min-height: 330px;
     gap: 0;
   }
 `;
