@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import Image from 'next/image';
 import { css } from '@emotion/react';
 import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 
@@ -6,6 +7,7 @@ import { ScrollBottomIcon } from '~/components/common/icons';
 import { NAV_HEIGHT } from '~/components/common/NavigationBar/NavigationBar';
 import { END_DATE, START_DATE } from '~/constants/common';
 import { defaultEasing, defaultFadeInScaleVariants } from '~/constants/motions';
+import useMediaQuery from '~/hooks/use-media-query';
 import useEffectOnce from '~/hooks/useeffect-once';
 import { mediaQuery } from '~/styles/constants';
 
@@ -13,6 +15,8 @@ import Finish from './Finish';
 import InProgress from './InProgress';
 import Previous from './Previous';
 
+const MOBILE_BANNER = '/images/position/mobile-banner-recruit.png';
+const BANNER = '/images/position/banner-recruit.png';
 export const RECRUIT_STATE = {
   PREVIOUS: 'PREVIOUS',
   IN_PROGRESS: 'IN_PROGRESS',
@@ -27,6 +31,8 @@ export default function HeaderSection() {
   const [state, setState] = useState('');
   const [remainTime, setRemainTime] = useState(0);
   const timerId = useRef<number | null>(null);
+
+  const isMobile = useMediaQuery('xs');
 
   const startDate = new Date(START_DATE);
   const endDate = new Date(END_DATE);
@@ -94,6 +100,16 @@ export default function HeaderSection() {
 
   return (
     <motion.header css={headerCss} initial="initial" animate="animate" exit="exit">
+      <div css={backgroundCss}>
+        <Image
+          src={!isMobile ? BANNER : MOBILE_BANNER}
+          alt="banner-recruit"
+          layout="fill"
+          priority
+          unoptimized
+        />
+      </div>
+
       <motion.section css={sectionCss} variants={defaultFadeInScaleVariants}>
         {RECRUIT_STATE.PREVIOUS === state && <Previous />}
         {RECRUIT_STATE.IN_PROGRESS === state && <InProgress remainTime={remainTime} />}
@@ -117,6 +133,13 @@ export default function HeaderSection() {
 const headerCss = css`
   width: 100%;
   height: calc(100vh - ${NAV_HEIGHT}px);
+`;
+
+const backgroundCss = css`
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  height: 100%;
 `;
 
 const sectionCss = css`
