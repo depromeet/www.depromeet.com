@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 
+import SEO from '~/components/common/SEO';
 import AnotherProjectSection from '~/components/project/AnotherProjectSection';
 import { Project, projects } from '~/components/project/constants';
 import ProjectDetailSection from '~/components/project/ProjectDetailSection';
@@ -35,10 +36,13 @@ export default function ProjectDetail() {
   }
 
   return (
-    <main>
-      <ProjectDetailSection project={project} />
-      <AnotherProjectSection />
-    </main>
+    <>
+      <SEO title={`디프만 - ${project.title}`} />
+      <main>
+        <ProjectDetailSection project={project} />
+        <AnotherProjectSection />
+      </main>
+    </>
   );
 }
 
