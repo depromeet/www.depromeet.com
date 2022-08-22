@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
@@ -30,11 +31,13 @@ export default function ApplySection() {
         디프만 12기 멤버가 되고싶다면
       </motion.h2>
 
-      <motion.a href={'/recruit'} variants={defaultFadeInScaleVariants}>
-        <CTAButton disabled={!isInProgress()}>
-          {isInProgress() ? '지금 지원하기' : '모집 기간이 아닙니다.'}
-        </CTAButton>
-      </motion.a>
+      <Link href="/recruit" passHref>
+        <motion.a variants={defaultFadeInScaleVariants}>
+          <CTAButton disabled={!isInProgress()}>
+            {isInProgress() ? '지금 지원하기' : '모집 기간이 아닙니다.'}
+          </CTAButton>
+        </motion.a>
+      </Link>
     </motion.section>
   );
 }
