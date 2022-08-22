@@ -25,6 +25,10 @@ export default function HeaderSection({ positionType }: { positionType: Position
           priority
           unoptimized
           src={isMobile ? MOBILE_BANNER_IMG_PATH[positionType] : BANNER_IMG_PATH[positionType]}
+          placeholder="blur"
+          blurDataURL={
+            isMobile ? MOBILE_BANNER_IMG_PATH[positionType] : BANNER_IMG_PATH[positionType]
+          }
           alt={`banner-image-${positionName}`}
         />
       </div>
