@@ -35,11 +35,13 @@ export default function RecruitBanner() {
   );
 }
 
+export const RECRUIT_BANNER_HEIGHT = 40;
+
 const bannerCss = css`
-  position: fixed;
+  position: sticky;
   top: ${NAV_HEIGHT}px;
   width: 100vw;
-  height: 40px;
+  height: ${RECRUIT_BANNER_HEIGHT}px;
   background-color: ${colors.primary};
   z-index: 8000;
   font-size: 16px;
