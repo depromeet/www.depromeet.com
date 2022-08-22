@@ -32,7 +32,6 @@ const headerCss = css`
   width: 100vw;
   left: calc(-50vw + 50%);
   height: 400px;
-  background-color: gray;
 
   ${mediaQuery('xs')} {
     height: 200px;
