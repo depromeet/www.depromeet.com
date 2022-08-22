@@ -78,19 +78,17 @@ interface CardProps {
 function Card({ title, value, description }: CardProps) {
   return (
     <motion.div css={cardCss} variants={defaultFadeInUpVariants}>
-      <span css={titleCss}>{title}</span>
-      <span css={valueCss}>{value}</span>
-      {description && <small css={descriptionCss}>{description}</small>}
+      <div css={supportAspectRatioWrapperCss}>
+        <span css={titleCss}>{title}</span>
+        <span css={valueCss}>{value}</span>
+        {description && <small css={descriptionCss}>{description}</small>}
+      </div>
     </motion.div>
   );
 }
 
 const cardCss = css`
   position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   border-radius: ${radius.md};
   background-color: ${colors.gray9};
 
@@ -101,6 +99,35 @@ const cardCss = css`
     width: calc(50% - 7.5px);
     aspect-ratio: 1 / 1;
     height: auto;
+
+    @supports not (aspect-ratio: 1 / 1) {
+      &::before {
+        content: '';
+        float: left;
+        padding-top: 100%;
+      }
+
+      &::after {
+        content: '';
+        display: block;
+        clear: both;
+      }
+    }
+  }
+`;
+
+const supportAspectRatioWrapperCss = css`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @supports not (aspect-ratio: 1 / 1) {
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 `;
 
