@@ -19,7 +19,7 @@ export default function RecruitBanner() {
   return (
     <AnimatePresence exitBeforeEnter>
       {router.asPath !== '/recruit' && (
-        <Link href="/recruit">
+        <Link href="/recruit" passHref>
           <motion.a
             css={bannerCss}
             variants={bannerDownVariants}
