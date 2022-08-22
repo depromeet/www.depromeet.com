@@ -203,6 +203,7 @@ const teamContainerCss = css`
 const descriptionCss = css`
   font-weight: 500;
   font-size: 1.25rem;
+  line-height: 150%;
   color: ${colors.gray2};
   margin: 0 0 40px 0;
 `;
