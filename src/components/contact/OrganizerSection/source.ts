@@ -19,7 +19,7 @@ export const ORGANIZERS: Organizer[] = [
     behance: 'https://www.behance.net/sohyunpark576e',
     linkedin: 'https://www.linkedin.com/in/sohyunpark0319/',
     github: '',
-    web: '',
+    web: 'https://brunch.co.kr/@tudandilion',
   },
   {
     imageKey: '김동건',
