@@ -1,3 +1,4 @@
+import SEO from '~/components/common/SEO';
 import FaqSection from '~/components/recruit/FaqSection';
 import HeaderSection from '~/components/recruit/HeaderSection';
 import PosiotionSection from '~/components/recruit/PosiotionSection';
@@ -6,12 +7,15 @@ import ScheduleSection from '~/components/recruit/ScheduleSection';
 
 export default function Recruit() {
   return (
-    <main>
-      <HeaderSection />
-      <ScheduleSection />
-      <RequirementSection />
-      <PosiotionSection />
-      <FaqSection />
-    </main>
+    <>
+      <SEO title="디프만 - Recruit" />
+      <main>
+        <HeaderSection />
+        <ScheduleSection />
+        <RequirementSection />
+        <PosiotionSection />
+        <FaqSection />
+      </main>
+    </>
   );
 }
