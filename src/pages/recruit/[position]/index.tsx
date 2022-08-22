@@ -2,6 +2,7 @@ import Error from 'next/error';
 import { useRouter } from 'next/router';
 import { ParsedUrlQuery } from 'querystring';
 
+import SEO from '~/components/common/SEO';
 import { POSITION_TYPE, PositionType } from '~/components/recruit-detail/constants';
 import DescriptionSection from '~/components/recruit-detail/DescriptionSection';
 import HeaderSection from '~/components/recruit-detail/HeaderSection';
@@ -15,10 +16,13 @@ export default function RecruitDetail() {
   if (!position && !positionType) return <Error statusCode={404} />;
 
   return (
-    <main>
-      <HeaderSection positionType={positionType} />
-      <DescriptionSection positionType={positionType} />
-      <OtherPositionSection positionType={positionType} />
-    </main>
+    <>
+      <SEO title={`디프만 - ${position}`} />
+      <main>
+        <HeaderSection positionType={positionType} />
+        <DescriptionSection positionType={positionType} />
+        <OtherPositionSection positionType={positionType} />
+      </main>
+    </>
   );
 }
