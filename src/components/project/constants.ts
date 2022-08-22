@@ -41,7 +41,7 @@ export const projects: Project[] = [
     order: 33,
     generation: 11,
     title: '영감탱',
-    team: '안쓸거면 나조',
+    team: '7ㅏ즈아',
     catchphrase: '영감을 모아 통통튀는 아이디어로, 영감탱',
     description: `어? 영감이다! 여기저기 흩어져있는 넘치는 영감.
     세상의 모든 것은 영감이 될 수 있고, 영감탱에서 기억할 수 있어요.
