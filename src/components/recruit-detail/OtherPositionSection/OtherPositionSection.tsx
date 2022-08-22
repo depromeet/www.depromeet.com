@@ -1,5 +1,7 @@
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
 
+import { staggerOne } from '~/constants/motions';
 import { mediaQuery } from '~/styles/constants';
 
 import { Card } from './Card';
@@ -11,16 +13,23 @@ export default function OtherPostionSection({ positionType }: { positionType: Po
   };
 
   return (
-    <section css={sectionCss}>
+    <motion.section
+      css={sectionCss}
+      initial="initial"
+      whileInView="animate"
+      exit="exit"
+      key={positionType}
+      viewport={{ amount: 0.4, once: true }}
+    >
       <h2 css={headingCss}>다른 직군 보기</h2>
-      <div css={cardListContainerCss}>
+      <motion.div css={cardListContainerCss} variants={staggerOne}>
         {getOtherPositionKeys().map((type: string) => (
           <div css={cardWrapperCss} key={type}>
             <Card positionType={type as PositionType} size={'sm'} />
           </div>
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
 
