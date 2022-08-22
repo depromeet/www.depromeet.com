@@ -5,6 +5,7 @@ import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 import { ScrollBottomIcon } from '~/components/common/icons';
 import { DepromeetIcon } from '~/components/common/icons/DepromeetIcon';
 import { NAV_HEIGHT } from '~/components/common/NavigationBar/NavigationBar';
+import { RECRUIT_BANNER_HEIGHT } from '~/components/common/RecruitBanner/RecruitBanner';
 import { defaultEasing } from '~/constants/motions';
 import useMediaQuery from '~/hooks/use-media-query';
 import { mediaQuery } from '~/styles/constants';
@@ -102,7 +103,8 @@ const heading1Css = css`
 
 const scrollBottomIconWrapperCss = css`
   position: absolute;
-  bottom: 20px;
+  /* TODO: 배너 내릴 때 변경 */
+  bottom: calc(20px + ${RECRUIT_BANNER_HEIGHT}px);
   left: 50%;
   transform: translateX(-50%);
   margin: 0 auto;

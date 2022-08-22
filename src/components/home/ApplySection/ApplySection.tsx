@@ -2,32 +2,16 @@ import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
 import CTAButton from '~/components/common/CTAButton';
-import { RECRUIT_STATE } from '~/components/recruit/HeaderSection/HeaderSection';
-import { END_DATE, NOTION_RECRUIT_PATH, START_DATE } from '~/constants/common';
-import { APPLY_LINK } from '~/constants/common/depromeet';
 import {
   defaultFadeInScaleVariants,
   defaultFadeInVariants,
   staggerHalf,
 } from '~/constants/motions';
+import useIsInProgress from '~/hooks/use-is-in-progress';
 import { colors, mediaQuery } from '~/styles/constants';
 
 export default function ApplySection() {
-  const startDate = new Date(START_DATE);
-  const endDate = new Date(END_DATE);
-
-  const getCurrentState = () => {
-    const current = new Date();
-
-    if (startDate > current) return RECRUIT_STATE.PREVIOUS;
-    if (endDate < current) return RECRUIT_STATE.FINISH;
-
-    return RECRUIT_STATE.IN_PROGRESS;
-  };
-
-  const isInProgress = () => {
-    return getCurrentState() === RECRUIT_STATE.IN_PROGRESS;
-  };
+  const isInProgress = useIsInProgress();
 
   return (
     <motion.section
@@ -46,18 +30,8 @@ export default function ApplySection() {
         디프만 12기 멤버가 되고싶다면
       </motion.h2>
 
-      <motion.a
-        href={APPLY_LINK}
-        target="_blank"
-        rel="noreferrer"
-        variants={defaultFadeInScaleVariants}
-      >
-        <CTAButton
-          disabled={!isInProgress()}
-          onClick={() => {
-            window.open(NOTION_RECRUIT_PATH);
-          }}
-        >
+      <motion.a href={'/recruit'} variants={defaultFadeInScaleVariants}>
+        <CTAButton disabled={!isInProgress()}>
           {isInProgress() ? '지금 지원하기' : '모집 기간이 아닙니다.'}
         </CTAButton>
       </motion.a>
