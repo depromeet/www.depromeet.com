@@ -6,7 +6,7 @@ import Svg from '../icons/Svg';
 
 export default function HamburgerButton({ toggleIsOpen }: { toggleIsOpen: VoidFunction }) {
   return (
-    <button onClick={toggleIsOpen}>
+    <button onClick={toggleIsOpen} aria-label="hamburger button">
       <Svg>
         <Path
           variants={{
