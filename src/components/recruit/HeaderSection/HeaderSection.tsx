@@ -106,6 +106,8 @@ export default function HeaderSection() {
           alt="banner-recruit"
           layout="fill"
           objectFit="cover"
+          placeholder="blur"
+          blurDataURL={!isMobile ? BANNER : MOBILE_BANNER}
           priority
           unoptimized
         />
