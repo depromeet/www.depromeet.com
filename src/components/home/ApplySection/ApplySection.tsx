@@ -2,8 +2,6 @@ import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
 import CTAButton from '~/components/common/CTAButton';
-import { NOTION_RECRUIT_PATH } from '~/constants/common';
-import { APPLY_LINK } from '~/constants/common/depromeet';
 import {
   defaultFadeInScaleVariants,
   defaultFadeInVariants,
@@ -32,18 +30,8 @@ export default function ApplySection() {
         디프만 12기 멤버가 되고싶다면
       </motion.h2>
 
-      <motion.a
-        href={APPLY_LINK}
-        target="_blank"
-        rel="noreferrer"
-        variants={defaultFadeInScaleVariants}
-      >
-        <CTAButton
-          disabled={!isInProgress()}
-          onClick={() => {
-            window.open(NOTION_RECRUIT_PATH);
-          }}
-        >
+      <motion.a href={'/recruit'} variants={defaultFadeInScaleVariants}>
+        <CTAButton disabled={!isInProgress()}>
           {isInProgress() ? '지금 지원하기' : '모집 기간이 아닙니다.'}
         </CTAButton>
       </motion.a>
