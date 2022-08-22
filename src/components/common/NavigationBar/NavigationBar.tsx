@@ -27,7 +27,7 @@ export default function NavigationBar() {
       <>
         <motion.nav css={navCss} animate={isOpen ? 'open' : 'closed'} variants={mobileNavVariants}>
           <div css={wrapperCss}>
-            <Link href="/">
+            <Link href="/" passHref>
               <a css={anchorCss}>
                 <DepromeetIcon />
               </a>
@@ -49,7 +49,7 @@ export default function NavigationBar() {
   return (
     <nav css={navCss}>
       <div css={wrapperCss}>
-        <Link href="/">
+        <Link href="/" passHref>
           <a css={anchorCss}>
             <DepromeetIcon />
           </a>
