@@ -1,6 +1,12 @@
+import { css } from '@emotion/react';
+
 import Svg, { Props } from './Svg';
 
-export function ArrowIcon(props: Props) {
+export interface ChevronIconProps extends Props {
+  direction?: 'up' | 'right' | 'down' | 'left';
+}
+
+export function ArrowIcon({ direction = 'right', ...props }: ChevronIconProps) {
   return (
     <Svg
       width="32"
@@ -8,6 +14,7 @@ export function ArrowIcon(props: Props) {
       viewBox="0 0 32 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      css={ArrowIconCss(DIRECTION_DEGREE[direction])}
       {...props}
     >
       <path
@@ -17,3 +24,14 @@ export function ArrowIcon(props: Props) {
     </Svg>
   );
 }
+
+const DIRECTION_DEGREE = {
+  up: 270,
+  right: 0,
+  down: 90,
+  left: 180,
+} as const;
+
+const ArrowIconCss = (degree: number) => css`
+  transform: rotate(${degree}deg);
+`;
