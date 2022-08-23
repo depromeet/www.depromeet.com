@@ -1,9 +1,12 @@
 import Image from 'next/image';
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
 
 import CTAButton from '~/components/common/CTAButton';
 import { RECRUIT_STATE } from '~/components/recruit/HeaderSection/HeaderSection';
 import { END_DATE, NOTION_RECRUIT_PATH, START_DATE } from '~/constants/common/common';
+import { defaultFadeInUpVariants, staggerOne } from '~/constants/motions';
+import { defaultFadeInSlideToRightVariants } from '~/constants/motions/motions';
 import { colors, mediaQuery } from '~/styles/constants';
 
 import {
@@ -35,10 +38,19 @@ export default function DescriptionSection({ positionType }: { positionType: Pos
   };
 
   return (
-    <section css={sectionCss}>
-      <h2 css={headingCss}>{positionName}</h2>
+    <motion.section
+      css={sectionCss}
+      variants={staggerOne}
+      key={positionType}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
+      <motion.h2 css={headingCss} variants={defaultFadeInUpVariants}>
+        {positionName}
+      </motion.h2>
       <div css={descriptionCss}>
-        <dt>
+        <motion.dt variants={defaultFadeInUpVariants}>
           <Image
             width={24}
             height={24}
@@ -46,15 +58,17 @@ export default function DescriptionSection({ positionType }: { positionType: Pos
             alt="category-icon"
           />
           {POSITION_WITH_CATEGORY_NAME[positionType]}는 이런 일을 해요
-        </dt>
-        <dd>{POSITION_DESCRIPTION[positionType]}</dd>
+        </motion.dt>
+        <motion.dd variants={defaultFadeInUpVariants}>
+          {POSITION_DESCRIPTION[positionType]}
+        </motion.dd>
       </div>
       <div css={descriptionCss}>
-        <dt>
+        <motion.dt variants={defaultFadeInUpVariants}>
           <Image width={24} height={24} src={'/svg/icon-hand-shake.svg'} alt="category-icon" />
           이런 분들과 함께하고 싶어요
-        </dt>
-        <dd>
+        </motion.dt>
+        <motion.dd variants={defaultFadeInUpVariants}>
           <ul css={preferListCss}>
             {POSITION_PREFER_LIST[positionType].map((item, index) => (
               <li css={preferItemCss} key={`position-prefer-item-${index}`}>
@@ -62,19 +76,21 @@ export default function DescriptionSection({ positionType }: { positionType: Pos
               </li>
             ))}
           </ul>
-        </dd>
+        </motion.dd>
       </div>
-      <CTAButton
-        disabled={!isInProgress()}
-        css={ctaBtnCss}
-        onClick={() => {
-          window.open(NOTION_RECRUIT_PATH);
-        }}
-      >
-        {isInProgress() ? '지원하기' : '모집 기간이 아닙니다.'}
-      </CTAButton>
+      <motion.div variants={defaultFadeInSlideToRightVariants}>
+        <CTAButton
+          disabled={!isInProgress()}
+          css={ctaBtnCss}
+          onClick={() => {
+            window.open(NOTION_RECRUIT_PATH);
+          }}
+        >
+          {isInProgress() ? '지원하기' : '모집 기간이 아닙니다.'}
+        </CTAButton>
+      </motion.div>
       <hr css={dividerCss} />
-    </section>
+    </motion.section>
   );
 }
 
