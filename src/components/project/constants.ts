@@ -335,7 +335,7 @@ export const projects: Project[] = [
     image: 'details/tooni.png',
     icon: 'icons/tooni.png',
     thumbnail: 'thumbnails/tooni.png',
-    backends: ['박세종', '강승호'],
+    backends: ['박세종', '김종호'],
     designers: ['여해주', '김나영'],
     frontends: ['문지윤', '김승진(iOS)', '이오형', '이정민', '최현정(Android)'],
   },
