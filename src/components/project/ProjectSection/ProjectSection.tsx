@@ -2,8 +2,13 @@ import React, { useState } from 'react';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
+import BottomSheet from '~/components/common/BottomSheet';
+import Button from '~/components/common/Button';
+import { ArrowIcon } from '~/components/common/icons/ArrowIcon';
+import { CheckIcon } from '~/components/common/icons/CheckIcon';
 import { Project, projects } from '~/components/project/constants';
 import { defaultFadeInVariants, staggerOne } from '~/constants/motions';
+import useMediaQuery from '~/hooks/use-media-query';
 import { colors, mediaQuery } from '~/styles/constants';
 
 import ProjectContainer from './ProjectContainer';
@@ -31,6 +36,8 @@ export default function ProjectSection() {
   const [sortedProjects, setSortedProjects] = useState(
     Object.entries(organizeProjects).sort(([a], [b]) => Number(b) - Number(a))
   );
+  const isMobile = useMediaQuery('xs');
+  const [isShowing, setIsShowing] = useState(false);
 
   const setProjects = (order: Order) => {
     setOrder(order);
@@ -42,29 +49,106 @@ export default function ProjectSection() {
   };
 
   return (
-    <motion.section initial="initial" animate="animate" exit="exit">
-      <motion.div css={orderContainerCss(order)} variants={defaultFadeInVariants}>
-        <button onClick={() => setProjects('latest')}>최신순</button>
-        <VerticalDivider />
-        <button onClick={() => setProjects('oldest')}>오래된순</button>
-      </motion.div>
-      {sortedProjects.map((projects, generationIndex) => (
-        <motion.div
-          key={`generation-${generationIndex}`}
-          css={sortedProjectsContainerCss}
-          variants={staggerOne}
-        >
-          <motion.div css={generationCss} variants={defaultFadeInVariants}>
-            <div css={generationInnerCss}>
-              {Number(projects[0]) > oldGeneration ? `${projects[0]}기` : '이전기수'}
-            </div>
+    <>
+      <motion.section initial="initial" animate="animate" exit="exit">
+        {isMobile && (
+          <motion.div css={mobilOrderContainerCss} variants={defaultFadeInVariants}>
+            <Button
+              onClick={() => {
+                setIsShowing(true);
+              }}
+            >
+              {order === 'latest' ? '최신순' : '오래된순'}
+              <ArrowIcon
+                direction={order === 'latest' ? 'down' : 'up'}
+                width={19}
+                height={19}
+              ></ArrowIcon>
+            </Button>
           </motion.div>
-          <ProjectContainer projects={projects[1]} />
+        )}
+        {!isMobile && (
+          <motion.div css={orderContainerCss(order)} variants={defaultFadeInVariants}>
+            <button onClick={() => setProjects('latest')}>최신순</button>
+            <VerticalDivider />
+            <button onClick={() => setProjects('oldest')}>오래된순</button>
+          </motion.div>
+        )}
+
+        {sortedProjects.map((projects, generationIndex) => (
+          <motion.div
+            key={`generation-${generationIndex}`}
+            css={sortedProjectsContainerCss}
+            variants={staggerOne}
+          >
+            <motion.div css={generationCss} variants={defaultFadeInVariants}>
+              <div css={generationInnerCss}>
+                {Number(projects[0]) > oldGeneration ? `${projects[0]}기` : '이전기수'}
+              </div>
+            </motion.div>
+            <ProjectContainer projects={projects[1]} />
+          </motion.div>
+        ))}
+      </motion.section>
+      <BottomSheet
+        isShowing={isShowing}
+        onClose={() => {
+          setIsShowing(false);
+        }}
+      >
+        <motion.div css={sortMenuListCss} variants={defaultFadeInVariants}>
+          <button
+            css={sortMenuCss(order === 'latest')}
+            onClick={() => {
+              setProjects('latest');
+              setIsShowing(false);
+            }}
+          >
+            최신순
+            {order === 'latest' && <CheckIcon width={24} height={24} />}
+          </button>
+          <hr css={sortMenuDivider} />
+          <button
+            css={sortMenuCss(order === 'oldest')}
+            onClick={() => {
+              setProjects('oldest');
+              setIsShowing(false);
+            }}
+          >
+            오래된순
+            {order === 'oldest' && <CheckIcon width={24} height={24} />}
+          </button>
         </motion.div>
-      ))}
-    </motion.section>
+      </BottomSheet>
+    </>
   );
 }
+
+const sortMenuListCss = css`
+  margin: 30px 30px 0;
+`;
+
+const sortMenuDivider = css`
+  margin-bottom: 24px;
+
+  border: 0px;
+  border-top: 1px solid ${colors.gray7};
+`;
+
+const sortMenuCss = (selected: boolean) => css`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+
+  font-size: 1.286rem;
+  line-height: 120%;
+  font-weight: ${selected ? 700 : 400};
+  color: ${selected ? colors.white : colors.gray3};
+
+  margin-bottom: 24px;
+`;
 
 const orderContainerCss = (order: Order) => css`
   display: flex;
@@ -83,6 +167,20 @@ const orderContainerCss = (order: Order) => css`
   }
   button:last-child {
     color: ${order === 'latest' ? colors.gray4 : colors.white};
+  }
+`;
+
+const mobilOrderContainerCss = css`
+  display: flex;
+  justify-content: end;
+  margin: 17px 0 23px;
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    color: ${colors.white};
   }
 `;
 
