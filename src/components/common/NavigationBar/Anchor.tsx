@@ -13,7 +13,7 @@ export default function Anchor({ href, name }: Props) {
   const router = useRouter();
 
   return (
-    <Link href={href}>
+    <Link href={href} passHref>
       <a css={anchorCss(router.asPath, router.asPath.includes(href))}>{name}</a>
     </Link>
   );

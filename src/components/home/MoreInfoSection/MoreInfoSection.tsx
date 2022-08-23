@@ -132,7 +132,7 @@ function LinkArticle({ href, heading, image, description, blank = false }: LinkA
   }
 
   return (
-    <Link href={href}>
+    <Link href={href} passHref>
       <motion.a
         css={anchorCss}
         variants={defaultFadeInUpVariants}
