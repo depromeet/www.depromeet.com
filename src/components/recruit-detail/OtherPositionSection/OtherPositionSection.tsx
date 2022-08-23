@@ -1,10 +1,10 @@
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
+import RecruitCard from '~/components/common/RecruitCard';
 import { staggerOne } from '~/constants/motions';
 import { mediaQuery } from '~/styles/constants';
 
-import { Card } from './Card';
 import { POSITION_TYPE, PositionType } from '../constants';
 
 export default function OtherPostionSection({ positionType }: { positionType: PositionType }) {
@@ -25,7 +25,7 @@ export default function OtherPostionSection({ positionType }: { positionType: Po
       <motion.div css={cardListContainerCss} variants={staggerOne}>
         {getOtherPositionKeys().map((type: string) => (
           <div css={cardWrapperCss} key={type}>
-            <Card positionType={type as PositionType} size={'sm'} />
+            <RecruitCard positionType={type as PositionType} size={'sm'} />
           </div>
         ))}
       </motion.div>
