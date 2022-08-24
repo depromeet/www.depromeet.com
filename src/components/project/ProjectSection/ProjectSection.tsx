@@ -59,11 +59,7 @@ export default function ProjectSection() {
               }}
             >
               {order === 'latest' ? '최신순' : '오래된순'}
-              <ArrowIcon
-                direction={order === 'latest' ? 'down' : 'up'}
-                width={19}
-                height={19}
-              ></ArrowIcon>
+              <ArrowIcon direction={isShowing ? 'up' : 'down'} width={19} height={19} />
             </Button>
           </motion.div>
         )}
@@ -152,7 +148,7 @@ const sortMenuCss = (selected: boolean) => css`
 
 const orderContainerCss = (order: Order) => css`
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   flex-wrap: wrap;
   margin: 24px 0 50px;
   gap: 12px;
@@ -181,6 +177,10 @@ const mobilOrderContainerCss = css`
     gap: 6px;
 
     color: ${colors.white};
+
+    &:hover {
+      background-color: ${colors.gray8};
+    }
   }
 `;
 
