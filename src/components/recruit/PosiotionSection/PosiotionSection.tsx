@@ -1,11 +1,10 @@
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
+import RecruitCard from '~/components/common/RecruitCard';
 import { POSITION_TYPE } from '~/components/recruit-detail/constants';
 import { defaultFadeInVariants, staggerOne } from '~/constants/motions';
 import { mediaQuery } from '~/styles/constants';
-
-import { Card } from './Card';
 
 export type PositionType = keyof typeof POSITION_TYPE;
 
@@ -23,11 +22,11 @@ export default function PosiotionSection() {
         모집 직군
       </motion.h2>
       <motion.div css={cardContainerCss} variants={staggerOne}>
-        <Card positionType={POSITION_TYPE.DESIGN} />
-        <Card positionType={POSITION_TYPE.ANDROID} />
-        <Card positionType={POSITION_TYPE.IOS} />
-        <Card positionType={POSITION_TYPE.WEB} />
-        <Card positionType={POSITION_TYPE.BACKEND} />
+        <RecruitCard positionType={POSITION_TYPE.DESIGN} />
+        <RecruitCard positionType={POSITION_TYPE.ANDROID} />
+        <RecruitCard positionType={POSITION_TYPE.IOS} />
+        <RecruitCard positionType={POSITION_TYPE.WEB} />
+        <RecruitCard positionType={POSITION_TYPE.BACKEND} />
       </motion.div>
     </motion.section>
   );

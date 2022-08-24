@@ -4,15 +4,24 @@ import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
 import { ArrowIcon } from '~/components/common/icons/ArrowIcon';
+import {
+  ICON_POSITION_PATH,
+  POSITION_DISPLAY_NAME,
+  PositionType,
+} from '~/components/recruit-detail/constants';
 import { defaultFadeInUpVariants } from '~/constants/motions';
 import useMediaQuery from '~/hooks/use-media-query';
 import { colors, mediaQuery, radius } from '~/styles/constants';
 
-import { ICON_POSITION_PATH, POSITION_DISPLAY_NAME, PositionType } from '../constants';
-
 type Size = 'sm' | 'lg';
 
-export function Card({ positionType, size = 'lg' }: { positionType: PositionType; size?: Size }) {
+export default function RecruitCard({
+  positionType,
+  size = 'lg',
+}: {
+  positionType: PositionType;
+  size?: Size;
+}) {
   const isMobile = useMediaQuery('xs');
   const href = `/recruit/${positionType.toLowerCase()}`;
 
@@ -34,7 +43,7 @@ export function Card({ positionType, size = 'lg' }: { positionType: PositionType
           )}
           <h3 css={cardHeadingCss}>{POSITION_DISPLAY_NAME[positionType]}</h3>
         </div>
-        <div css={cardLinkCss}>
+        <div css={cardLinkCss(size)}>
           {getSize() === 'lg' && '자세히 보기'}
           <ArrowIcon width={32} height={32} />
         </div>
@@ -64,7 +73,7 @@ const cardCss = (size: Size) => css`
 
   &:hover {
     color: ${colors.white};
-    background: ${colors.gray8};
+    background: ${size === 'lg' ? colors.primary : colors.gray8};
 
     svg > path {
       fill: ${colors.white};
@@ -75,6 +84,10 @@ const cardCss = (size: Size) => css`
     height: 67px;
 
     border-radius: ${radius.sm};
+
+    &:hover {
+      background: ${colors.gray8};
+    }
   }
 `;
 
@@ -96,10 +109,11 @@ const cardHeadingCss = css`
   }
 `;
 
-const cardLinkCss = css`
+const cardLinkCss = (size: Size) => css`
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  width: ${size === 'sm' ? 'auto' : '100%'};
 
   ${mediaQuery('xs')} {
     width: auto;
