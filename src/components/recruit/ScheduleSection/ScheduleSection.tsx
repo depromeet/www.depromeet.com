@@ -27,7 +27,7 @@ export default function ScheduleSection() {
       {isMobile && (
         <>
           <motion.div css={blockContainerCss} variants={defaultFadeInSlideToRightVariants}>
-            <div css={recruitBlockCss}>멤버버 모집 기간</div>
+            <div css={recruitBlockCss}>멤버 모집 기간</div>
           </motion.div>
 
           <motion.div css={rangeContainerCss} variants={staggerOne}>
