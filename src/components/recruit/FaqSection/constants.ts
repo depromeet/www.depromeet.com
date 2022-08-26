@@ -15,7 +15,7 @@ interface FaqMap {
 
 export const REQUIREMENT_LIST = [
   {
-    title: '지원 가능한 나이가 어떻게 되나요? or 지원시 나이 제한이 있나요?',
+    title: '지원 가능한 나이가 어떻게 되나요?',
     description: '20세 이상부터 가능해요!',
   },
   {
