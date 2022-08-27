@@ -23,7 +23,7 @@ interface Props {
 
 const DEFAULT_TITLE = '디프만 - Depromeet';
 const DEFAULT_DESCRIPTION = '오직 디자이너와 프로그래머의 동반성장을 위해서';
-const DEFAULT_IMAGE = '';
+const DEFAULT_IMAGE = '/og-main.png';
 
 export default function SEO({
   title = DEFAULT_TITLE,
