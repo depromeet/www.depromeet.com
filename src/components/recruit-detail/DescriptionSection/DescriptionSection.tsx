@@ -7,6 +7,7 @@ import { RECRUIT_STATE } from '~/components/recruit/HeaderSection/HeaderSection'
 import { END_DATE, NOTION_RECRUIT_PATH, START_DATE } from '~/constants/common/common';
 import { defaultFadeInUpVariants, staggerOne } from '~/constants/motions';
 import { defaultFadeInSlideToRightVariants } from '~/constants/motions/motions';
+import useGaEvent from '~/hooks/use-ga-event';
 import { colors, mediaQuery } from '~/styles/constants';
 
 import {
@@ -19,6 +20,8 @@ import {
 } from '../constants';
 
 export default function DescriptionSection({ positionType }: { positionType: PositionType }) {
+  const { recordApplyEvent } = useGaEvent();
+
   const positionName = POSITION_DISPLAY_NAME[positionType];
 
   const startDate = new Date(START_DATE);
@@ -83,6 +86,7 @@ export default function DescriptionSection({ positionType }: { positionType: Pos
           disabled={!isInProgress()}
           css={ctaBtnCss}
           onClick={() => {
+            recordApplyEvent();
             window.open(NOTION_RECRUIT_PATH);
           }}
         >

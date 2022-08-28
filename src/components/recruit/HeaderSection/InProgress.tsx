@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 
 import CTAButton from '~/components/common/CTAButton';
 import { NOTION_RECRUIT_PATH } from '~/constants/common/common';
+import useGaEvent from '~/hooks/use-ga-event';
 import { colors, mediaQuery } from '~/styles/constants';
 import {
   DAY_TO_SECONDS,
@@ -14,6 +15,7 @@ import {
 } from '~/utils/time';
 
 export default function InProgress({ remainTime }: { remainTime: number }) {
+  const { recordApplyEvent } = useGaEvent();
   const getRemainDayString = (): string => {
     const remainDay = getDayByTimeSeconds(remainTime);
     return getTimeStringFormater(remainDay);
@@ -36,6 +38,7 @@ export default function InProgress({ remainTime }: { remainTime: number }) {
 
       <CTAButton
         onClick={() => {
+          recordApplyEvent();
           window.open(NOTION_RECRUIT_PATH);
         }}
       >
