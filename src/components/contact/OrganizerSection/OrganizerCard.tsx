@@ -23,14 +23,16 @@ export default function OrganizerCard({
 }: Props) {
   return (
     <motion.article css={articleCss} variants={defaultFadeInUpVariants}>
-      <Image
-        src={ORGANIZER_IMAGES[imageKey]}
-        alt={name}
-        layout="fill"
-        objectFit="cover"
-        placeholder="blur"
-        blurDataURL={ORGANIZER_IMAGES[imageKey]}
-      />
+      <div css={imageWrapperCss}>
+        <Image
+          src={ORGANIZER_IMAGES[imageKey]}
+          alt={name}
+          layout="fill"
+          objectFit="cover"
+          placeholder="blur"
+          blurDataURL={ORGANIZER_IMAGES[imageKey]}
+        />
+      </div>
 
       <div css={infoWrapperCss}>
         <h4 css={nameCss}>{name}</h4>
@@ -65,9 +67,7 @@ export default function OrganizerCard({
 
 const articleCss = css`
   position: relative;
-  /* width: 240px; */
   width: calc(25% - 2.5rem);
-
   height: 324px;
   border-radius: ${radius.md};
   overflow: hidden;
@@ -78,11 +78,17 @@ const articleCss = css`
   }
 `;
 
-const infoWrapperCss = css`
-  position: absolute;
-  bottom: 0;
-  left: 0;
+const imageWrapperCss = css`
+  position: relative;
+  width: 100%;
+  height: calc(324px - 80px);
 
+  ${mediaQuery('xs')} {
+    height: calc(243px - 80px);
+  }
+`;
+
+const infoWrapperCss = css`
   width: 100%;
   height: 80px;
   padding: 0 1rem;
