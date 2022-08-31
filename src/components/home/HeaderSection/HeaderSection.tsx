@@ -36,7 +36,7 @@ export default function HeaderSection() {
 
       <div css={headingWrapperCss}>
         <div css={logoWrapperCss}>
-          <DepromeetIcon />
+          <DepromeetIcon width={isMobile ? 277 : 490} height={isMobile ? 51 : 90} />
         </div>
 
         <h1 css={heading1Css}>디자이너와 {isMobile && <br />}프로그래머가 만났을 때</h1>
@@ -58,9 +58,8 @@ export default function HeaderSection() {
 
 const headerCss = css`
   position: relative;
-  width: 100vw;
   left: calc(-50vw + 50%);
-
+  width: 100vw;
   height: calc(100vh - ${NAV_HEIGHT}px);
 `;
 
@@ -77,15 +76,9 @@ const headingWrapperCss = css`
 `;
 
 const logoWrapperCss = css`
-  max-width: 490px;
-  height: 90px;
-
   margin-bottom: 19px;
 
   ${mediaQuery('xs')} {
-    max-width: 277px;
-    height: 51px;
-
     margin-bottom: 15px;
   }
 `;
