@@ -96,8 +96,7 @@ const heading1Css = css`
 
 const scrollBottomIconWrapperCss = css`
   position: absolute;
-  /* TODO: 배너 내릴 때 변경 */
-  bottom: calc(20px + ${RECRUIT_BANNER_HEIGHT}px);
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   margin: 0 auto;
