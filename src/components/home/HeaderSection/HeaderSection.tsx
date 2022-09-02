@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 import { ScrollBottomIcon } from '~/components/common/icons';
 import { DepromeetIcon } from '~/components/common/icons/DepromeetIcon';
 import { NAV_HEIGHT } from '~/components/common/NavigationBar/NavigationBar';
-import { RECRUIT_BANNER_HEIGHT } from '~/components/common/RecruitBanner/RecruitBanner';
 import { defaultEasing } from '~/constants/motions';
 import useMediaQuery from '~/hooks/use-media-query';
 import { mediaQuery } from '~/styles/constants';

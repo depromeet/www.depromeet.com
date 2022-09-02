@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 import Button from '~/components/common/Button';
 import { NAV_HEIGHT } from '~/components/common/NavigationBar/NavigationBar';
-import { RECRUIT_BANNER_HEIGHT } from '~/components/common/RecruitBanner/RecruitBanner';
 import { defaultFadeInScaleVariants, staggerHalf } from '~/constants/motions';
 import {
   defaultFadeInSlideToRightVariants,
