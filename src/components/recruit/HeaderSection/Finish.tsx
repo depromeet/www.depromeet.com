@@ -8,7 +8,8 @@ export default function Finish() {
     <>
       <span css={descriptionCss}>13기 때 만나요!</span>
       <h1 css={headingCss}>12기 모집이 마감되었습니다.</h1>
-      <CTAButton>모집 알림 받기</CTAButton>
+      {/* TODO: 모집 알림 받기 기능 */}
+      <CTAButton disabled>모집 기간이 아닙니다.</CTAButton>
     </>
   );
 }
