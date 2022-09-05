@@ -64,21 +64,24 @@ const projectCss = css`
     border-radius: 16px 16px 0 0;
     background-color: ${colors.gray7};
     overflow: hidden;
+
+    & img {
+      transition: transform 0.3s;
+    }
   }
   > div:last-child {
     height: 96px;
     border-radius: 0 0 16px 16px;
     background-color: ${colors.gray9};
     padding: 20px 20px 0;
+    transition: background-color 0.3s;
   }
 
   &:hover {
     > div:first-child img {
-      transition: transform 0.5s;
       transform: scale(1.1);
     }
     > div:last-child {
-      transition: background-color 0.5s;
       background-color: ${colors.gray8};
     }
   }
