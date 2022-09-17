@@ -1,0 +1,70 @@
+import Image from 'next/image';
+import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
+
+import { defaultFadeInUpVariants, defaultFadeInVariants, staggerHalf } from '~/constants/motions';
+import { mediaQuery } from '~/styles/constants';
+
+const SPONSOR_IMAGE_BASE = '/images/sponsor';
+
+const SPONSOR_IMAGES = [
+  { name: 'openup', src: `${SPONSOR_IMAGE_BASE}/openup.png`, width: 235, height: 104 },
+  { name: 'notefolio', src: `${SPONSOR_IMAGE_BASE}/notefolio.png`, width: 288, height: 49 },
+  { name: 'surfit', src: `${SPONSOR_IMAGE_BASE}/surfit.png`, width: 208, height: 86 },
+] as const;
+
+export default function SponsorSection() {
+  return (
+    <motion.section
+      css={sectionCss}
+      variants={staggerHalf}
+      initial="initial"
+      whileInView="animate"
+      exit="exit"
+      viewport={{ amount: 0.6, once: true }}
+    >
+      <motion.h2 css={headingCss} variants={defaultFadeInVariants}>
+        디프만과 함께하는
+        <br />
+        후원사를 소개할게요
+      </motion.h2>
+      <motion.div css={imageWrapperCss} variants={staggerHalf}>
+        {SPONSOR_IMAGES.map(({ name, src, width, height }) => (
+          <motion.div key={name} variants={defaultFadeInUpVariants}>
+            <Image src={src} alt={name} width={width} height={height} objectFit="contain" />
+          </motion.div>
+        ))}
+      </motion.div>
+    </motion.section>
+  );
+}
+
+const sectionCss = css`
+  margin-top: 220px;
+  width: 100%;
+
+  ${mediaQuery('xs')} {
+    margin-top: 160px;
+  }
+`;
+
+const headingCss = css`
+  font-weight: 500;
+  font-size: 2.75rem;
+  line-height: 150%;
+  text-align: center;
+
+  ${mediaQuery('xs')} {
+    font-size: 24px;
+  }
+`;
+
+const imageWrapperCss = css`
+  margin-top: 90px;
+
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1rem;
+`;
