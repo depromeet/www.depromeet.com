@@ -31,7 +31,15 @@ export default function SponsorSection() {
       <motion.div css={imageWrapperCss} variants={staggerHalf}>
         {SPONSOR_IMAGES.map(({ name, src, width, height }) => (
           <motion.div key={name} variants={defaultFadeInUpVariants}>
-            <Image src={src} alt={name} width={width} height={height} objectFit="contain" />
+            <Image
+              src={src}
+              alt={name}
+              width={width}
+              height={height}
+              objectFit="contain"
+              placeholder="blur"
+              blurDataURL={src}
+            />
           </motion.div>
         ))}
       </motion.div>
