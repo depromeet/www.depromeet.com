@@ -151,7 +151,8 @@ export const projects: Project[] = [
     catchphrase: '주식 용어로 즐기는 웹툰의 새로운 덕질 문화, 개미는 툰툰',
     description: `개미는 툰툰은 주식 컨셉을 바탕으로 웹툰의 새로운 덕질 문화를 만들고자 합니다.
     평소 즐겨보는 웹툰의 재미있는 주제에 대한 투표, 웹툰 속 인물과 커플에 탑승과 하차, 다른 사람들과 소통할 수 있는 댓글 등 재미있게 즐길 수 있는 다양한 콘텐츠와 기능을 제공합니다.`,
-    android: 'https://antoon.fun/',
+    web: 'https://antoon.fun/',
+    android: 'https://play.google.com/store/apps/details?id=com.antoon_app',
     behance: 'https://www.behance.net/gallery/147262623/-ANTOON-l-Webtoon-Community-Service',
     image: 'details/개미는툰툰.png',
     icon: 'icons/개미는툰툰.png',
