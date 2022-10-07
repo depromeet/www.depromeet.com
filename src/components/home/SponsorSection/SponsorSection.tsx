@@ -40,6 +40,7 @@ export default function SponsorSection() {
               objectFit="contain"
               placeholder="blur"
               blurDataURL={src}
+              unoptimized
             />
           </motion.div>
         ))}
