@@ -8,9 +8,10 @@ import { mediaQuery } from '~/styles/constants';
 const SPONSOR_IMAGE_BASE = '/images/sponsor';
 
 const SPONSOR_IMAGES = [
-  { name: 'openup', src: `${SPONSOR_IMAGE_BASE}/openup.png`, width: 235, height: 104 },
-  { name: 'notefolio', src: `${SPONSOR_IMAGE_BASE}/notefolio.png`, width: 288, height: 49 },
-  { name: 'surfit', src: `${SPONSOR_IMAGE_BASE}/surfit.png`, width: 208, height: 86 },
+  { name: 'openup', src: `${SPONSOR_IMAGE_BASE}/openup.svg`, width: 170, height: 78 },
+  { name: 'notefolio', src: `${SPONSOR_IMAGE_BASE}/notefolio.svg`, width: 211, height: 35 },
+  { name: 'surfit', src: `${SPONSOR_IMAGE_BASE}/surfit.svg`, width: 153, height: 62 },
+  { name: 'dcamp', src: `${SPONSOR_IMAGE_BASE}/dcamp.svg`, width: 172, height: 40 },
 ] as const;
 
 export default function SponsorSection() {
@@ -75,4 +76,11 @@ const imageWrapperCss = css`
   justify-content: space-evenly;
   align-items: center;
   gap: 1rem;
+
+  ${mediaQuery('xs')} {
+    margin-top: 30px;
+
+    flex-direction: column;
+    gap: 60px;
+  }
 `;
