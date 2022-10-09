@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "next-sitemap --config next-sitemap.config.js",
     "start": "next start",
     "lint": "next lint",
     "analyze": "ANALYZE=true next build"
@@ -36,6 +37,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "next-compose-plugins": "^2.2.1",
+    "next-sitemap": "^3.1.24",
     "prettier": "^2.7.1",
     "typescript": "4.7.4"
   }
