@@ -1,4 +1,4 @@
-export type Project = {
+export interface Project {
   order: number;
   generation: number;
   title: string;
@@ -15,9 +15,9 @@ export type Project = {
   frontends?: string[];
   backends?: string[];
   designers?: string[];
-};
+}
 
-export const projects: Project[] = [
+export const projects: Array<Readonly<Project>> = [
   {
     order: 34,
     generation: 11,
