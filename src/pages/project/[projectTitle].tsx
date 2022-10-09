@@ -2,6 +2,7 @@ import SEO from '~/components/common/SEO';
 import AnotherProjectSection from '~/components/project/AnotherProjectSection';
 import { Project, projects } from '~/components/project/constants';
 import ProjectDetailSection from '~/components/project/ProjectDetailSection';
+import { PROJECTS_IMAGE_BASE } from '~/constants/images/images';
 
 interface Props {
   currentProject: Project;
@@ -10,7 +11,12 @@ interface Props {
 export default function ProjectDetail({ currentProject }: Props) {
   return (
     <>
-      <SEO title={`디프만 - ${currentProject.title}`} />
+      <SEO
+        title={`디프만 - ${currentProject.title}`}
+        description={currentProject.description}
+        image={`${PROJECTS_IMAGE_BASE}/${currentProject.image}`}
+      />
+
       <main>
         <ProjectDetailSection project={currentProject} />
         <AnotherProjectSection />
