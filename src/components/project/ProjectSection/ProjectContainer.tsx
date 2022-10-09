@@ -18,11 +18,11 @@ export default function ProjectContainer({ projects }: Props) {
 
   return (
     <motion.div css={projectsContainerCss} variants={staggerHalf}>
-      {projects.map(({ order, title, catchphrase, thumbnail }, projectIndex) => (
+      {projects.map(({ title, catchphrase, thumbnail }, projectIndex) => (
         <motion.button
           key={`project-${projectIndex}`}
           css={projectCss}
-          onClick={() => push(`/project/${order}`)}
+          onClick={() => push(`/project/${title}`)}
           variants={defaultFadeInUpVariants}
         >
           <div css={imageCss}>
@@ -59,7 +59,7 @@ const projectCss = css`
   overflow: hidden;
   text-align: left;
 
-  > div:first-child {
+  > div:first-of-type {
     height: 200px;
     border-radius: 16px 16px 0 0;
     background-color: ${colors.gray7};
@@ -78,7 +78,7 @@ const projectCss = css`
   }
 
   &:hover {
-    > div:first-child img {
+    > div:first-of-type img {
       transform: scale(1.1);
     }
     > div:last-child {
