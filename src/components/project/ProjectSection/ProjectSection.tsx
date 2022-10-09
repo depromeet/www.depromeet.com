@@ -158,7 +158,7 @@ const orderContainerCss = (order: Order) => css`
     font-size: 1rem;
     transition: color 0.3s;
   }
-  button:first-child {
+  button:first-of-type {
     color: ${order === 'latest' ? colors.white : colors.gray4};
   }
   button:last-child {

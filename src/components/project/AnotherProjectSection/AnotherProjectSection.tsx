@@ -1,4 +1,5 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
@@ -6,8 +7,9 @@ import { projects } from '~/components/project/constants';
 import { defaultFadeInUpVariants, staggerOne } from '~/constants/motions';
 import { mediaQuery } from '~/styles/constants';
 
-import AnotherProjectContainer from './AnotherProjectContainer';
 import HorizontalDivider from '../HorizontalDivider';
+
+const AnotherProjectContainer = dynamic(() => import('./AnotherProjectContainer'), { ssr: false });
 
 export default function AnotherProjectSection() {
   return (

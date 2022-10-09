@@ -18,11 +18,11 @@ export default function AnotherProjectContainer({ projects }: Props) {
 
   return (
     <motion.div css={projectsContainerCss} variants={staggerHalf}>
-      {projects.map(({ order, title, catchphrase, thumbnail, icon }, projectIndex) => (
+      {projects.map(({ title, catchphrase, thumbnail, icon }, projectIndex) => (
         <motion.button
           key={`project-${projectIndex}`}
           css={projectCss}
-          onClick={() => push(`/project/${order}`)}
+          onClick={() => push(`/project/${title}`)}
           variants={defaultFadeInUpVariants}
         >
           <div css={imageCss}>
@@ -56,14 +56,14 @@ const projectsContainerCss = css`
   flex-wrap: wrap;
   gap: 40px 42px;
 
-  > button:nth-child(n + 4) {
+  > button:nth-of-type(n + 4) {
     display: none;
   }
 
   ${mediaQuery('xs')} {
     gap: 20px 30px;
 
-    > button:nth-child(n + 4) {
+    > button:nth-of-type(n + 4) {
       display: block;
     }
   }
@@ -75,7 +75,7 @@ const projectCss = css`
   overflow: hidden;
   text-align: left;
 
-  > div:first-child {
+  > div:first-of-type {
     height: 200px;
     border-radius: 16px 16px 0 0;
     background-color: ${colors.gray7};
@@ -95,7 +95,7 @@ const projectCss = css`
   }
 
   &:hover {
-    > div:first-child img {
+    > div:first-of-type img {
       transform: scale(1.1);
     }
     > div:last-child {
@@ -107,7 +107,7 @@ const projectCss = css`
     width: 160px;
     height: 221px;
 
-    > div:first-child {
+    > div:first-of-type {
       width: 160px;
       height: 160px;
       border-radius: 16px;

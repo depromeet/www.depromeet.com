@@ -51,5 +51,6 @@ module.exports = {
 
     'import/default': 'off',
     'import/namespace': 'off',
+    'react/no-unknown-property': ['error', { ignore: ['css'] }],
   },
 };
