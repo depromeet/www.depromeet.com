@@ -1,6 +1,10 @@
 name: CI
 
-on: [pull_request]
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
 
 jobs:
   run-lint:
@@ -14,7 +18,7 @@ jobs:
 
       - name: Check lint
         run: yarn lint
-    
+
   run-bundle-analysis:
     runs-on: ubuntu-latest
     steps:
