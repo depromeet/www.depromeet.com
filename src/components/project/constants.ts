@@ -82,6 +82,8 @@ export const projects: Array<Readonly<Project>> = [
     catchphrase: '부정적 감정의 기록, 퍼스널 아카이빙 서비스',
     description: `나를 괴롭히는 부정적인 감정들을 회피하기보다는 정면으로 맞서 우리의 삶을 성장시킬 수 있는 지표로 볼 수 있다면 어떨까요?
     무드픽은 부정적 감정을 기록하며 감정의 발자취를 따라가고 스스로 해결의 실마리를 찾는 주도적인 방법을 제공하고자 합니다.`,
+    ios: 'https://apps.apple.com/kr/app/%EB%AC%B4%EB%93%9C%ED%94%BD/id1642343841',
+    android: 'https://play.google.com/store/apps/details?id=com.depromeet_5team.moodpicapp',
     web: 'https://www.moodpic.kr/',
     behance: 'https://www.behance.net/gallery/147271219/Archiving-My-Personal-Emotions-Moodpic',
     image: 'details/무드픽.png',
