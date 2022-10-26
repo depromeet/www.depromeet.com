@@ -12,6 +12,7 @@
     "postbuild": "next-sitemap --config next-sitemap.config.js",
     "start": "next start",
     "lint": "next lint",
+    "lint:fix": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix",
     "analyze": "ANALYZE=true next build",
     "prepare": "husky install"
   },
