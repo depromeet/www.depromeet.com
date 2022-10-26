@@ -1,0 +1,13 @@
+workflow:
+  - .github/workflows/*
+
+ci:
+  - .github/workflows/CI.yml
+
+documentation:
+  - '*.md'
+  - '**/*.md'
+
+style:
+  - src/styles/*
+  - src/styles/**/*
