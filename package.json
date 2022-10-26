@@ -12,7 +12,9 @@
     "postbuild": "next-sitemap --config next-sitemap.config.js",
     "start": "next start",
     "lint": "next lint",
-    "analyze": "ANALYZE=true next build"
+    "lint:fix": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix",
+    "analyze": "ANALYZE=true next build",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
@@ -23,6 +25,8 @@
     "sharp": "^0.31.1"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.1.2",
+    "@commitlint/config-conventional": "^17.1.0",
     "@next/bundle-analyzer": "^12.2.5",
     "@types/node": "18.7.2",
     "@types/react": "18.0.17",
@@ -36,6 +40,8 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-simple-import-sort": "^7.0.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "next-compose-plugins": "^2.2.1",
     "next-sitemap": "^3.1.24",
     "prettier": "^2.7.1",
