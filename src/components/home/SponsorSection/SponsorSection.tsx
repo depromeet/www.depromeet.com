@@ -11,6 +11,7 @@ const SPONSOR_IMAGES = [
   { name: 'openup', src: `${SPONSOR_IMAGE_BASE}/openup.png`, width: 170, height: 78 },
   { name: 'notefolio', src: `${SPONSOR_IMAGE_BASE}/notefolio.svg`, width: 211, height: 35 },
   { name: 'surfit', src: `${SPONSOR_IMAGE_BASE}/surfit.svg`, width: 153, height: 62 },
+  { name: 'inflearn', src: `${SPONSOR_IMAGE_BASE}/inflearn.svg`, width: 194, height: 36 },
   { name: 'dcamp', src: `${SPONSOR_IMAGE_BASE}/dcamp.svg`, width: 172, height: 40 },
 ] as const;
 
@@ -74,9 +75,11 @@ const imageWrapperCss = css`
 
   position: relative;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  gap: 1rem;
+  flex-wrap: wrap;
+  column-gap: 125px;
+  row-gap: 64px;
 
   ${mediaQuery('xs')} {
     margin-top: 30px;
