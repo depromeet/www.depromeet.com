@@ -8,11 +8,12 @@ import { mediaQuery } from '~/styles/constants';
 const SPONSOR_IMAGE_BASE = '/images/sponsor';
 
 const SPONSOR_IMAGES = [
-  { name: 'openup', src: `${SPONSOR_IMAGE_BASE}/openup.png`, width: 170, height: 78 },
+  { name: 'aws', src: `${SPONSOR_IMAGE_BASE}/aws.svg`, width: 101, height: 62 },
   { name: 'notefolio', src: `${SPONSOR_IMAGE_BASE}/notefolio.svg`, width: 211, height: 35 },
   { name: 'surfit', src: `${SPONSOR_IMAGE_BASE}/surfit.svg`, width: 153, height: 62 },
   { name: 'inflearn', src: `${SPONSOR_IMAGE_BASE}/inflearn.svg`, width: 194, height: 36 },
   { name: 'dcamp', src: `${SPONSOR_IMAGE_BASE}/dcamp.svg`, width: 172, height: 40 },
+  { name: 'openup', src: `${SPONSOR_IMAGE_BASE}/openup.png`, width: 170, height: 78 },
 ] as const;
 
 export default function SponsorSection() {
@@ -78,8 +79,9 @@ const imageWrapperCss = css`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  column-gap: 125px;
-  row-gap: 64px;
+  column-gap: 124px;
+  row-gap: 55px;
+  padding: 0 100px;
 
   ${mediaQuery('xs')} {
     margin-top: 30px;
