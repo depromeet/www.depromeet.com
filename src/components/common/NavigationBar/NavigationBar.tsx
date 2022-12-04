@@ -6,7 +6,7 @@ import { AnimatePresence, motion, Variants } from 'framer-motion';
 import { defaultEasing } from '~/constants/motions';
 import useMediaQuery from '~/hooks/use-media-query';
 import { colors } from '~/styles/constants';
-import { layoutCss } from '~/styles/css';
+import hideWhenMobile, { layoutCss } from '~/styles/css';
 
 import Anchor from './Anchor';
 import DimOverlay from './DimOverlay';
@@ -47,7 +47,7 @@ export default function NavigationBar() {
   }
 
   return (
-    <nav css={navCss}>
+    <nav css={[navCss, hideWhenMobile]}>
       <div css={wrapperCss}>
         <Link href="/" passHref>
           <a css={anchorCss}>
