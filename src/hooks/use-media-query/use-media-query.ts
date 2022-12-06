@@ -28,6 +28,8 @@ export default function useMediaQuery(width: number | SizeKey) {
 
     if (media.matches) {
       setTargetReached(true);
+    } else {
+      setTargetReached(false);
     }
 
     return () => media.removeEventListener('change', updateTarget);
