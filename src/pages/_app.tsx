@@ -12,7 +12,11 @@ import { UserAgentContext } from '~/hooks/use-user-agent';
 import { layoutCss } from '~/styles/css';
 import GlobalStyle from '~/styles/GlobalStyle';
 
-export default function App({ Component, pageProps, userAgent }: AppProps & { userAgent: string }) {
+interface InitialProps {
+  userAgent: string;
+}
+
+export default function App({ Component, pageProps, userAgent }: AppProps & InitialProps) {
   const router = useRouter();
   const currentUrl = BASE_URL + router.route;
 
