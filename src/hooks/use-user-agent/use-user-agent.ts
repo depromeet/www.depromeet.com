@@ -7,7 +7,7 @@ export const useUserAgent = () => {
   const isMobileAgent = /iPhone|iPod|Android/i.test(userAgent);
 
   if (userAgent === undefined) {
-    throw new Error('useUserAgent should be used within CounterProvider');
+    throw new Error('useUserAgent should be used within UserAgentContext.Provider');
   }
 
   return { userAgent, isMobileAgent };
