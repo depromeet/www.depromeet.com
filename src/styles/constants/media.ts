@@ -1,9 +1,17 @@
+export const SIZE = {
+  xs: 650,
+  sm: 960,
+  md: 1280,
+  lg: 1400,
+  xl: 1920,
+} as const;
+
 export const size = {
-  xs: '650px',
-  sm: '960px',
-  md: '1280px',
-  lg: '1400px',
-  xl: '1920px',
+  xs: `${SIZE.xs}px`,
+  sm: `${SIZE.sm}px`,
+  md: `${SIZE.md}px`,
+  lg: `${SIZE.lg}px`,
+  xl: `${SIZE.xl}px`,
 } as const;
 
 export type SizeKey = keyof typeof size;
