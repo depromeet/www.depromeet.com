@@ -6,8 +6,8 @@ import { colors, mediaQuery } from '~/styles/constants';
 export default function Finish() {
   return (
     <>
-      <span css={descriptionCss}>13기 때 만나요!</span>
-      <h1 css={headingCss}>12기 모집이 마감되었습니다.</h1>
+      <span css={descriptionCss}>13기 세부 일정은 2월 말 오픈 예정입니다</span>
+      <h1 css={headingCss}>13기 운영진은 겨울잠 중 🐻💤</h1>
       {/* TODO: 모집 알림 받기 기능 */}
       <CTAButton disabled>모집 기간이 아닙니다.</CTAButton>
     </>
