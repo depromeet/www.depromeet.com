@@ -1,13 +1,16 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { css } from '@emotion/react';
 import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 
 import { ScrollBottomIcon } from '~/components/common/icons';
-import { DepromeetIcon } from '~/components/common/icons/DepromeetIcon';
+// import { DepromeetIcon } from '~/components/common/icons/DepromeetIcon';
 import { NAV_HEIGHT } from '~/components/common/NavigationBar/NavigationBar';
+import { EMAIL_13TH_GOOGLE_FORM } from '~/constants/common/depromeet';
 import { defaultEasing } from '~/constants/motions';
 import useMediaQuery from '~/hooks/use-media-query';
-import { mediaQuery } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
+import { ctaCss } from '~/styles/css/cta';
 
 const HOME_HEADER_BASE = '/images/home';
 const HEADER_IMAGE = `${HOME_HEADER_BASE}/home_header.png`;
@@ -35,10 +38,16 @@ export default function HeaderSection() {
 
       <div css={headingWrapperCss}>
         <div css={logoWrapperCss}>
-          <DepromeetIcon width={isMobile ? 277 : 490} height={isMobile ? 51 : 90} />
+          {/* <DepromeetIcon width={isMobile ? 277 : 490} height={isMobile ? 51 : 90} /> */}
+          <h1 css={pendingHeadingCss}>13기 운영진은 겨울잠 중 🐻💤</h1>
         </div>
 
-        <h1 css={heading1Css}>디자이너와 {isMobile && <br />}프로그래머가 만났을 때</h1>
+        {/* <h1 css={heading1Css}>디자이너와 {isMobile && <br />}프로그래머가 만났을 때</h1> */}
+        <span css={notificationSpanCss}>아래 버튼 눌러 13기 모집 알람 받기</span>
+
+        <Link href={EMAIL_13TH_GOOGLE_FORM} passHref>
+          <a css={ctaCss}>알림 신청하기</a>
+        </Link>
       </div>
 
       <motion.div
@@ -82,14 +91,44 @@ const logoWrapperCss = css`
   }
 `;
 
-const heading1Css = css`
-  font-weight: 500;
-  font-size: 3.125rem;
-  line-height: 150%;
+// const heading1Css = css`
+//   font-weight: 500;
+//   font-size: 3.125rem;
+//   line-height: 150%;
+//   white-space: pre;
+
+//   ${mediaQuery('xs')} {
+//     font-size: 24px;
+//   }
+// `;
+
+const pendingHeadingCss = css`
+  font-weight: 600;
+  font-size: 4.5rem;
+  line-height: 120%;
   white-space: pre;
 
+  ${mediaQuery('sm')} {
+    font-size: 3.5rem;
+  }
+
   ${mediaQuery('xs')} {
-    font-size: 24px;
+    font-size: 1.875rem;
+    line-height: 150%;
+  }
+`;
+
+const notificationSpanCss = css`
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 140%;
+  white-space: pre;
+  color: ${colors.gray3};
+
+  margin-bottom: 80px;
+
+  ${mediaQuery('xs')} {
+    font-size: 1.25rem;
   }
 `;
 
