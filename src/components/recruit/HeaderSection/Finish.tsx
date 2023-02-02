@@ -1,15 +1,22 @@
+import Link from 'next/link';
 import { css } from '@emotion/react';
 
-import CTAButton from '~/components/common/CTAButton';
+import { EMAIL_13TH_GOOGLE_FORM } from '~/constants/common/depromeet';
 import { colors, mediaQuery } from '~/styles/constants';
+import { ctaCss } from '~/styles/css/cta';
 
 export default function Finish() {
   return (
     <>
       <span css={descriptionCss}>13기 세부 일정은 2월 말 오픈 예정입니다</span>
       <h1 css={headingCss}>13기 운영진은 겨울잠 중 🐻💤</h1>
-      {/* TODO: 모집 알림 받기 기능 */}
-      <CTAButton disabled>모집 기간이 아닙니다.</CTAButton>
+
+      {/* <CTAButton disabled>모집 기간이 아닙니다.</CTAButton> */}
+      <Link href={EMAIL_13TH_GOOGLE_FORM} passHref>
+        <a css={ctaCss} target="_blank" rel="noopener noreferrer">
+          13기 모집 알림 신청하기
+        </a>
+      </Link>
     </>
   );
 }
