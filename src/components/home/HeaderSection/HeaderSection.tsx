@@ -39,14 +39,14 @@ export default function HeaderSection() {
       <div css={headingWrapperCss}>
         <div css={logoWrapperCss}>
           {/* <DepromeetIcon width={isMobile ? 277 : 490} height={isMobile ? 51 : 90} /> */}
-          <h1 css={pendingHeadingCss}>13기 운영진은 겨울잠 중 🐻💤</h1>
+          <h1 css={pendingHeadingCss}>13기 운영진은 겨울잠 자는 중 🐻💤</h1>
         </div>
 
         {/* <h1 css={heading1Css}>디자이너와 {isMobile && <br />}프로그래머가 만났을 때</h1> */}
-        <span css={notificationSpanCss}>아래 버튼 눌러 13기 모집 알람 받기</span>
+        <span css={notificationSpanCss}>디프만 13기 리쿠르팅 기간을 놓치고 싶지 않다면?</span>
 
         <Link href={EMAIL_13TH_GOOGLE_FORM} passHref>
-          <a css={ctaCss}>알림 신청하기</a>
+          <a css={ctaCss}>리쿠르팅 기간 알림 신청</a>
         </Link>
       </div>
 
@@ -104,7 +104,7 @@ const logoWrapperCss = css`
 
 const pendingHeadingCss = css`
   font-weight: 600;
-  font-size: 4.5rem;
+  font-size: 4.375rem;
   line-height: 120%;
   white-space: pre;
 

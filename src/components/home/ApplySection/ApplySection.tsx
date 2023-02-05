@@ -22,11 +22,13 @@ export default function ApplySection() {
       viewport={{ amount: 0.6, once: true }}
     >
       <motion.span css={spanCss} variants={defaultFadeInVariants}>
-        디프만 13기 모집을 놓치고 싶지 않다면
+        알림 신청하고 이메일로 간편히 받아보세요
       </motion.span>
 
       <motion.h2 css={headingCss} variants={defaultFadeInVariants}>
-        알림 신청하기
+        디프만 13기 언제 시작하나..
+        <br />
+        오매불망 기다리고만 있었다면?
       </motion.h2>
 
       {/* <Link href="/recruit" passHref>
@@ -44,7 +46,7 @@ export default function ApplySection() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          13기 모집 알림 신청하기
+          리쿠르팅 기간 알림 신청
         </motion.a>
       </Link>
     </motion.section>

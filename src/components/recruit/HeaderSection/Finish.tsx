@@ -9,19 +9,19 @@ export default function Finish() {
   return (
     <>
       <span css={descriptionCss}>13기 세부 일정은 2월 말 오픈 예정입니다</span>
-      <h1 css={headingCss}>13기 운영진은 겨울잠 중 🐻💤</h1>
+      <h1 css={headingCss}>13기 운영진은 겨울잠 자는 중 🐻💤</h1>
 
       {/* <CTAButton disabled>모집 기간이 아닙니다.</CTAButton> */}
       <Link href={EMAIL_13TH_GOOGLE_FORM} passHref>
         <a css={ctaCss} target="_blank" rel="noopener noreferrer">
-          13기 모집 알림 신청하기
+          13기 리쿠르팅 기간 알림 신청하기
         </a>
       </Link>
     </>
   );
 }
 const descriptionCss = css`
-  font-weight: 700;
+  font-weight: 400;
   font-size: 2rem;
   line-height: 140%;
   text-align: center;
