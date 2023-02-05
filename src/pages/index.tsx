@@ -4,7 +4,7 @@ import HeaderSection from '~/components/home/HeaderSection';
 import MoreInfoSection from '~/components/home/MoreInfoSection';
 import RecordSection from '~/components/home/RecordSection';
 // import ScheduleSection from '~/components/home/ScheduleSection';
-import SponsorSection from '~/components/home/SponsorSection';
+// import SponsorSection from '~/components/home/SponsorSection';
 import TeamSection from '~/components/home/TeamSection';
 
 export default function Root() {
@@ -17,7 +17,7 @@ export default function Root() {
         <TeamSection />
         {/* <ScheduleSection /> */}
         <MoreInfoSection />
-        <SponsorSection />
+        {/* <SponsorSection /> */}
         <ApplySection />
       </main>
     </>

@@ -3,7 +3,7 @@ import FaqSection from '~/components/recruit/FaqSection';
 import HeaderSection from '~/components/recruit/HeaderSection';
 import PosiotionSection from '~/components/recruit/PosiotionSection';
 import RequirementSection from '~/components/recruit/RequirementSection';
-import ScheduleSection from '~/components/recruit/ScheduleSection';
+// import ScheduleSection from '~/components/recruit/ScheduleSection';
 
 export default function Recruit() {
   return (
@@ -11,7 +11,7 @@ export default function Recruit() {
       <SEO title="디프만 - Recruit" />
       <main>
         <HeaderSection />
-        <ScheduleSection />
+        {/* <ScheduleSection /> */}
         <RequirementSection />
         <PosiotionSection />
         <FaqSection />

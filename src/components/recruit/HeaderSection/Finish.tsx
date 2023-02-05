@@ -47,6 +47,10 @@ const headingCss = css`
 
   margin-bottom: 155px;
 
+  ${mediaQuery('sm')} {
+    font-size: 3.5rem;
+  }
+
   ${mediaQuery('xs')} {
     font-size: 1.857rem;
     line-height: 150%;
