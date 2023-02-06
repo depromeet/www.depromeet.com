@@ -46,7 +46,7 @@ export default function HeaderSection() {
         <span css={notificationSpanCss}>디프만 13기 리쿠르팅 기간을 놓치고 싶지 않다면?</span>
 
         <Link href={EMAIL_13TH_GOOGLE_FORM} passHref>
-          <a css={ctaCss}>리쿠르팅 기간 알림 신청</a>
+          <a css={ctaCss}>13기 모집 알림 신청하기</a>
         </Link>
       </div>
 

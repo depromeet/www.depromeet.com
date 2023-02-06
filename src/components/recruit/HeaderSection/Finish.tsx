@@ -14,7 +14,7 @@ export default function Finish() {
       {/* <CTAButton disabled>모집 기간이 아닙니다.</CTAButton> */}
       <Link href={EMAIL_13TH_GOOGLE_FORM} passHref>
         <a css={ctaCss} target="_blank" rel="noopener noreferrer">
-          13기 리쿠르팅 기간 알림 신청하기
+          13기 모집 알림 신청하기
         </a>
       </Link>
     </>

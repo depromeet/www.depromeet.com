@@ -46,7 +46,7 @@ export default function ApplySection() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          리쿠르팅 기간 알림 신청
+          13기 모집 알림 신청하기
         </motion.a>
       </Link>
     </motion.section>
