@@ -1,15 +1,13 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
-import { motion, useScroll, useTransform, Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 
-import { ScrollBottomIcon } from '~/components/common/icons';
 import { NAV_HEIGHT } from '~/components/common/NavigationBar/NavigationBar';
 import { END_DATE, START_DATE } from '~/constants/common';
-import { defaultEasing, defaultFadeInScaleVariants } from '~/constants/motions';
+import { defaultFadeInScaleVariants } from '~/constants/motions';
 import useMediaQuery from '~/hooks/use-media-query';
 import useEffectOnce from '~/hooks/useeffect-once';
-import { mediaQuery } from '~/styles/constants';
 
 import Finish from './Finish';
 import InProgress from './InProgress';
@@ -37,9 +35,9 @@ export default function HeaderSection() {
   const startDate = new Date(START_DATE);
   const endDate = new Date(END_DATE);
 
-  const { scrollY } = useScroll();
-  const scrollBottomOpacity = useTransform(scrollY, [0, 800], [1, 0]);
-  const scrollBottomScale = useTransform(scrollY, [0, 800], [1, 0.6]);
+  // const { scrollY } = useScroll();
+  // const scrollBottomOpacity = useTransform(scrollY, [0, 800], [1, 0]);
+  // const scrollBottomScale = useTransform(scrollY, [0, 800], [1, 0.6]);
 
   useEffectOnce(() => {
     const currentState = getCurrentState();
@@ -119,7 +117,7 @@ export default function HeaderSection() {
         {RECRUIT_STATE.FINISH === state && <Finish />}
       </motion.section>
 
-      <motion.div
+      {/* <motion.div
         css={scrollBottomIconWrapperCss}
         style={{ opacity: scrollBottomOpacity, scale: scrollBottomScale }}
         variants={scrollBottomVariants}
@@ -128,7 +126,7 @@ export default function HeaderSection() {
         exit="exit"
       >
         <ScrollBottomIcon />
-      </motion.div>
+      </motion.div> */}
     </motion.header>
   );
 }
@@ -156,39 +154,39 @@ const sectionCss = css`
   box-sizing: border-box;
 `;
 
-const scrollBottomIconWrapperCss = css`
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  margin: 0 auto;
+// const scrollBottomIconWrapperCss = css`
+//   position: absolute;
+//   bottom: 20px;
+//   left: 50%;
+//   transform: translateX(-50%);
+//   margin: 0 auto;
 
-  ${mediaQuery('xs')} {
-    bottom: 50px;
-  }
-`;
+//   ${mediaQuery('xs')} {
+//     bottom: 50px;
+//   }
+// `;
 
-const scrollBottomVariants: Variants = {
-  initial: {
-    opacity: 0,
-    scale: 0.5,
-    y: -30,
-    x: '-50%',
-    transition: { duration: 1.2, ease: defaultEasing },
-    willChange: 'opacity, transform',
-  },
-  animate: {
-    opacity: 1,
-    scale: 1,
-    y: 0,
-    transition: { duration: 1.2, ease: defaultEasing },
-    willChange: 'opacity, transform',
-  },
-  exit: {
-    opacity: 0,
-    scale: 0.85,
-    y: 0,
-    transition: { duration: 1.2, ease: defaultEasing },
-    willChange: 'opacity, transform',
-  },
-};
+// const scrollBottomVariants: Variants = {
+//   initial: {
+//     opacity: 0,
+//     scale: 0.5,
+//     y: -30,
+//     x: '-50%',
+//     transition: { duration: 1.2, ease: defaultEasing },
+//     willChange: 'opacity, transform',
+//   },
+//   animate: {
+//     opacity: 1,
+//     scale: 1,
+//     y: 0,
+//     transition: { duration: 1.2, ease: defaultEasing },
+//     willChange: 'opacity, transform',
+//   },
+//   exit: {
+//     opacity: 0,
+//     scale: 0.85,
+//     y: 0,
+//     transition: { duration: 1.2, ease: defaultEasing },
+//     willChange: 'opacity, transform',
+//   },
+// };

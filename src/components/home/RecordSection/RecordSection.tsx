@@ -40,7 +40,7 @@ export default function RecordSection() {
 }
 
 const sectionCss = css`
-  margin-top: 210px;
+  margin-top: 310px;
   width: 100%;
 `;
 
