@@ -1,11 +1,6 @@
 import SEO from '~/components/common/SEO';
-import ApplySection from '~/components/home/ApplySection';
 import HeaderSection from '~/components/home/HeaderSection';
-import MoreInfoSection from '~/components/home/MoreInfoSection';
-import RecordSection from '~/components/home/RecordSection';
-import ScheduleSection from '~/components/home/ScheduleSection';
-import SponsorSection from '~/components/home/SponsorSection';
-import TeamSection from '~/components/home/TeamSection';
+import RecruitNotiSection from '~/components/home/RecruitNotiSection';
 
 export default function Root() {
   return (
@@ -13,12 +8,13 @@ export default function Root() {
       <SEO />
       <main>
         <HeaderSection />
-        <RecordSection />
-        <TeamSection />
-        <ScheduleSection />
-        <MoreInfoSection />
-        <SponsorSection />
-        <ApplySection />
+        <RecruitNotiSection />
+        {/* <RecordSection /> */}
+        {/* <TeamSection /> */}
+        {/* <ScheduleSection /> */}
+        {/* <MoreInfoSection /> */}
+        {/* <SponsorSection /> */}
+        {/* <ApplySection /> */}
       </main>
     </>
   );

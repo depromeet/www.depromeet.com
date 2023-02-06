@@ -2,18 +2,16 @@ import Link from 'next/link';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
-import CTAButton from '~/components/common/CTAButton';
+import { EMAIL_13TH_GOOGLE_FORM } from '~/constants/common/depromeet';
 import {
   defaultFadeInScaleVariants,
   defaultFadeInVariants,
   staggerHalf,
 } from '~/constants/motions';
-import useIsInProgress from '~/hooks/use-is-in-progress';
 import { colors, mediaQuery } from '~/styles/constants';
+import { ctaCss } from '~/styles/css/cta';
 
 export default function ApplySection() {
-  const isInProgress = useIsInProgress();
-
   return (
     <motion.section
       css={sectionCss}
@@ -24,18 +22,31 @@ export default function ApplySection() {
       viewport={{ amount: 0.6, once: true }}
     >
       <motion.span css={spanCss} variants={defaultFadeInVariants}>
-        이제 여러분 차례예요!
+        알림 신청하고 이메일로 간편히 받아보세요
       </motion.span>
 
       <motion.h2 css={headingCss} variants={defaultFadeInVariants}>
-        디프만 12기 멤버가 되고싶다면
+        디프만 13기 언제 시작하나..
+        <br />
+        오매불망 기다리고만 있었다면?
       </motion.h2>
 
-      <Link href="/recruit" passHref>
+      {/* <Link href="/recruit" passHref>
         <motion.a variants={defaultFadeInScaleVariants}>
           <CTAButton disabled={!isInProgress()}>
             {isInProgress() ? '지금 지원하기' : '모집 기간이 아닙니다.'}
           </CTAButton>
+        </motion.a>
+      </Link> */}
+
+      <Link href={EMAIL_13TH_GOOGLE_FORM} passHref>
+        <motion.a
+          variants={defaultFadeInScaleVariants}
+          css={ctaCss}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          13기 모집 알림 신청하기
         </motion.a>
       </Link>
     </motion.section>
