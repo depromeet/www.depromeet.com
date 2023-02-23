@@ -6,8 +6,8 @@ import { motion } from 'framer-motion';
 import { NAV_HEIGHT } from '~/components/common/NavigationBar/NavigationBar';
 import { END_DATE, START_DATE } from '~/constants/common';
 import { defaultFadeInScaleVariants } from '~/constants/motions';
+import useEffectOnce from '~/hooks/use-effect-once';
 import useMediaQuery from '~/hooks/use-media-query';
-import useEffectOnce from '~/hooks/useeffect-once';
 
 import Finish from './Finish';
 import InProgress from './InProgress';
