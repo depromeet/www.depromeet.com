@@ -1,15 +1,8 @@
-import Link from 'next/link';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
-import { EMAIL_13TH_GOOGLE_FORM } from '~/constants/common/depromeet';
-import {
-  defaultFadeInScaleVariants,
-  defaultFadeInVariants,
-  staggerHalf,
-} from '~/constants/motions';
+import { defaultFadeInVariants, staggerHalf } from '~/constants/motions';
 import { colors, mediaQuery } from '~/styles/constants';
-import { ctaCss } from '~/styles/css/cta';
 
 export default function ApplySection() {
   return (
@@ -38,17 +31,6 @@ export default function ApplySection() {
           </CTAButton>
         </motion.a>
       </Link> */}
-
-      <Link href={EMAIL_13TH_GOOGLE_FORM} passHref>
-        <motion.a
-          variants={defaultFadeInScaleVariants}
-          css={ctaCss}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          13기 모집 알림 신청하기
-        </motion.a>
-      </Link>
     </motion.section>
   );
 }

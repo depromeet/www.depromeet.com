@@ -6,8 +6,8 @@ import { motion } from 'framer-motion';
 import { NAV_HEIGHT } from '~/components/common/NavigationBar/NavigationBar';
 import { END_DATE, START_DATE } from '~/constants/common';
 import { defaultFadeInScaleVariants } from '~/constants/motions';
+import useEffectOnce from '~/hooks/use-effect-once';
 import useMediaQuery from '~/hooks/use-media-query';
-import useEffectOnce from '~/hooks/useeffect-once';
 
 import Finish from './Finish';
 import InProgress from './InProgress';
@@ -15,86 +15,17 @@ import Previous from './Previous';
 
 const MOBILE_BANNER = '/images/position/mobile-banner-recruit.png';
 const BANNER = '/images/position/banner-recruit.png';
-export const RECRUIT_STATE = {
-  PREVIOUS: 'PREVIOUS',
-  IN_PROGRESS: 'IN_PROGRESS',
-  FINISH: 'FINISH',
-};
-const SECONDS_TO_MS = 1000;
 
 // export const START_DATE = '2022-08-18T22:21:59.000Z'; // test
 // export const END_DATE = '2022-08-20T20:00:00.000Z'; // test
 
 export default function HeaderSection() {
-  const [state, setState] = useState('');
-  const [remainTime, setRemainTime] = useState(0);
-  const timerId = useRef<number | null>(null);
-
   const isMobile = useMediaQuery('xs');
-
-  const startDate = new Date(START_DATE);
-  const endDate = new Date(END_DATE);
+  const { state, remainTime } = useRecruitState();
 
   // const { scrollY } = useScroll();
   // const scrollBottomOpacity = useTransform(scrollY, [0, 800], [1, 0]);
   // const scrollBottomScale = useTransform(scrollY, [0, 800], [1, 0.6]);
-
-  useEffectOnce(() => {
-    const currentState = getCurrentState();
-
-    if (RECRUIT_STATE.FINISH !== currentState) {
-      setRemainTime(getRemainTime());
-      playTimer();
-    }
-
-    setState(currentState);
-
-    return () => {
-      resetTimer();
-    };
-  });
-
-  const getCurrentState = () => {
-    const current = new Date();
-
-    if (startDate > current) return RECRUIT_STATE.PREVIOUS;
-    if (endDate < current) return RECRUIT_STATE.FINISH;
-
-    return RECRUIT_STATE.IN_PROGRESS;
-  };
-
-  const getRemainTime = () => {
-    const current = new Date();
-
-    return Math.floor((endDate.getTime() - current.getTime()) / SECONDS_TO_MS);
-  };
-
-  const playTimer = () => {
-    timerId.current = requestAnimationFrame(timer);
-  };
-
-  const resetTimer = () => {
-    timerId.current = null;
-  };
-
-  const timer = () => {
-    if (!timerId.current) return;
-
-    const currentState = getCurrentState();
-    if (RECRUIT_STATE.FINISH === currentState) {
-      setState(currentState);
-      return;
-    }
-
-    if (currentState !== state) setState(currentState);
-
-    const _remainTime = getRemainTime();
-    if (RECRUIT_STATE.IN_PROGRESS === currentState && _remainTime !== remainTime) {
-      setRemainTime(_remainTime);
-    }
-
-    playTimer();
-  };
 
   return (
     <motion.header css={headerCss} initial="initial" animate="animate" exit="exit">
@@ -190,3 +121,78 @@ const sectionCss = css`
 //     willChange: 'opacity, transform',
 //   },
 // };
+
+export const RECRUIT_STATE = {
+  PREVIOUS: 'PREVIOUS',
+  IN_PROGRESS: 'IN_PROGRESS',
+  FINISH: 'FINISH',
+};
+
+const SECONDS_TO_MS = 1000;
+
+function useRecruitState() {
+  const [state, setState] = useState('');
+  const [remainTime, setRemainTime] = useState(0);
+  const timerId = useRef<number | null>(null);
+  const startDate = new Date(START_DATE);
+  const endDate = new Date(END_DATE);
+
+  useEffectOnce(() => {
+    const currentState = getCurrentState();
+
+    if (RECRUIT_STATE.FINISH !== currentState) {
+      setRemainTime(getRemainTime());
+      playTimer();
+    }
+
+    setState(currentState);
+
+    return () => {
+      resetTimer();
+    };
+  });
+
+  const getCurrentState = () => {
+    const current = new Date();
+
+    if (startDate > current) return RECRUIT_STATE.PREVIOUS;
+    if (endDate < current) return RECRUIT_STATE.FINISH;
+
+    return RECRUIT_STATE.IN_PROGRESS;
+  };
+
+  const getRemainTime = () => {
+    const current = new Date();
+
+    return Math.floor((endDate.getTime() - current.getTime()) / SECONDS_TO_MS);
+  };
+
+  const playTimer = () => {
+    timerId.current = requestAnimationFrame(timer);
+  };
+
+  const resetTimer = () => {
+    timerId.current = null;
+  };
+
+  const timer = () => {
+    if (!timerId.current) return;
+
+    const currentState = getCurrentState();
+    if (RECRUIT_STATE.FINISH === currentState) {
+      setState(currentState);
+      return;
+    }
+
+    if (currentState !== state) setState(currentState);
+
+    const _remainTime = getRemainTime();
+    if (RECRUIT_STATE.IN_PROGRESS === currentState && _remainTime !== remainTime) {
+      setRemainTime(_remainTime);
+    }
+
+    playTimer();
+  };
+
+  return { state, remainTime };
+}

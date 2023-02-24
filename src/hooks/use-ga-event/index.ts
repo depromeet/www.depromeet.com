@@ -1,1 +1,1 @@
-export { default } from './useGaEvent';
+export { default } from './use-ga-event';
