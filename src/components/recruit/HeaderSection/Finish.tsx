@@ -7,7 +7,7 @@ export default function Finish() {
   return (
     <>
       <span css={descriptionCss}>13기 세부 일정은 2월 말 오픈 예정입니다</span>
-      <h1 css={headingCss}>13기 운영진은 겨울잠 자는 중 🐻💤</h1>
+      <h1 css={headingCss}>13기 모집 알람이 마감되었습니다</h1>
 
       <CTAButton disabled>13기 모집 알림 신청하기</CTAButton>
     </>

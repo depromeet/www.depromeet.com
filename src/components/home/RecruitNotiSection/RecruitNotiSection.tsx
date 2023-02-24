@@ -8,10 +8,10 @@ export default function RecruitNotiSection() {
     <section css={sectionCss}>
       <div css={headingWrapperCss}>
         <div css={logoWrapperCss}>
-          <h1 css={pendingHeadingCss}>13기 운영진은 겨울잠 자는 중 🐻💤</h1>
+          <h1 css={pendingHeadingCss}>13기 모집 알람이 마감되었습니다</h1>
         </div>
 
-        <span css={notificationSpanCss}>디프만 13기 리쿠르팅 기간을 놓치고 싶지 않다면?</span>
+        <span css={notificationSpanCss}>곧 만나요 !</span>
 
         <CTAButton disabled>13기 모집 알림 신청하기</CTAButton>
       </div>
