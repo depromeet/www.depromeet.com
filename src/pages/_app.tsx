@@ -1,7 +1,9 @@
 import type { AppContext, AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { Provider } from 'jotai';
 
+import CustomCursor from '~/components/common/CustomCursor';
 import { BASE_URL } from '~/constants/common';
 import useRecordPageview from '~/hooks/use-record-pageview';
 import { UserAgentContext } from '~/hooks/use-user-agent';
@@ -18,16 +20,19 @@ export default function App({ Component, pageProps, userAgent }: AppProps & Init
   useRecordPageview();
 
   return (
-    <UserAgentContext.Provider value={userAgent}>
-      <Head>
-        <link rel="canonical" href={currentUrl} />
-        <meta property="og:url" content={currentUrl} />
-      </Head>
+    <Provider>
+      <UserAgentContext.Provider value={userAgent}>
+        <Head>
+          <link rel="canonical" href={currentUrl} />
+          <meta property="og:url" content={currentUrl} />
+        </Head>
 
-      <GlobalStyle />
+        <GlobalStyle />
+        <CustomCursor />
 
-      <Component {...pageProps} />
-    </UserAgentContext.Provider>
+        <Component {...pageProps} />
+      </UserAgentContext.Provider>
+    </Provider>
   );
 }
 App.getInitialProps = async ({ ctx }: AppContext) => {
