@@ -7,4 +7,12 @@ export {
   NOTION_RECRUIT_PATH,
   START_DATE,
 } from './common';
-export { DEPROMEET_MEDIUM } from './depromeet';
+export {
+  DEPROMEET_BEHANCE,
+  DEPROMEET_EMAIL,
+  DEPROMEET_FACEBOOK,
+  DEPROMEET_GITHUB,
+  DEPROMEET_INSTAGRAM,
+  DEPROMEET_MEDIUM,
+  KAKAO_PLUS_FRIEND,
+} from './depromeet';
