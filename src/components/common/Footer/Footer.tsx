@@ -60,7 +60,7 @@ interface AnchorProps {
 
 function Anchor({ text, href }: AnchorProps) {
   return (
-    <Link href={href} css={anchorCss} target="_blank">
+    <Link href={href} css={anchorCss} target="_blank" rel="noopener noreferrer">
       {text}
     </Link>
   );
