@@ -2,6 +2,7 @@ import type { AppContext, AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
+import Footer from '~/components/common/Footer';
 import { BASE_URL } from '~/constants/common';
 import useRecordPageview from '~/hooks/use-record-pageview';
 import { UserAgentContext } from '~/hooks/use-user-agent';
@@ -27,6 +28,8 @@ export default function App({ Component, pageProps, userAgent }: AppProps & Init
       <GlobalStyle />
 
       <Component {...pageProps} />
+
+      <Footer />
     </UserAgentContext.Provider>
   );
 }
