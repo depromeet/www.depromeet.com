@@ -1,5 +1,10 @@
-import { RECRUIT_STATE } from '~/components/recruit/HeaderSection/HeaderSection';
 import { END_DATE, START_DATE } from '~/constants/common';
+
+const RECRUIT_STATE = {
+  PREVIOUS: 'PREVIOUS',
+  IN_PROGRESS: 'IN_PROGRESS',
+  FINISH: 'FINISH',
+};
 
 export default function useIsInProgress() {
   const startDate = new Date(START_DATE);

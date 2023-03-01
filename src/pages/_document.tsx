@@ -25,9 +25,9 @@ export default function Document() {
         <meta property="og:locale" content="ko_KR" />
         <meta name="twitter:creator" content="디프만 - Depromeet" />
 
-        {/* for google analytics */}
         {IS_PRODUCTION && (
           <>
+            {/* google analytics */}
             <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
             <script
               dangerouslySetInnerHTML={{

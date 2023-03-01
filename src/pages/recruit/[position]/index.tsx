@@ -1,8 +1,5 @@
 import SEO from '~/components/common/SEO';
 import { POSITION_TYPE, PositionType } from '~/components/recruit-detail/constants';
-import DescriptionSection from '~/components/recruit-detail/DescriptionSection';
-import HeaderSection from '~/components/recruit-detail/HeaderSection';
-import OtherPositionSection from '~/components/recruit-detail/OtherPositionSection';
 
 interface Props {
   position: (typeof POSITION_TYPE)[PositionType];
@@ -12,11 +9,7 @@ export default function RecruitDetail({ position }: Props) {
   return (
     <>
       <SEO title={`디프만 - ${position}`} />
-      <main>
-        <HeaderSection positionType={position} />
-        <DescriptionSection positionType={position} />
-        <OtherPositionSection positionType={position} />
-      </main>
+      <main>{position}</main>
     </>
   );
 }

@@ -1,1 +1,1 @@
-export { CONTACT_IMAGES, ORGANIZER_IMAGES } from './images';
+export { CONTACT_IMAGES } from './images';
