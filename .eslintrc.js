@@ -1,6 +1,36 @@
 module.exports = {
+  root: true,
+  env: {
+    browser: true,
+    es2021: true,
+    jest: true,
+  },
+  globals: {
+    context: 'readonly',
+    given: 'readonly',
+  },
+  ignorePatterns: [
+    '.next/',
+    'node_modules/',
+    '.pnp.cjs',
+    '.pnp.loader.mjs',
+    'public',
+    '.yarn',
+    '@types',
+  ],
+  settings: {
+    'import/resolver': {
+      typescript: {
+        project: './tsconfig.json',
+      },
+    },
+    'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+  },
   extends: ['next', 'prettier', 'plugin:import/recommended', 'plugin:import/typescript'],
-  plugins: ['prettier', 'import', '@typescript-eslint', 'simple-import-sort'],
+  plugins: ['prettier', 'import', '@typescript-eslint', 'simple-import-sort', 'unused-imports'],
   parser: '@typescript-eslint/parser',
   rules: {
     'prettier/prettier': 'error',
@@ -26,6 +56,17 @@ module.exports = {
       { ignoreRestSiblings: true, argsIgnorePattern: '_', varsIgnorePattern: '_' },
     ],
 
+    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-vars': [
+      'error',
+      {
+        vars: 'all',
+        varsIgnorePattern: '^_',
+        args: 'after-used',
+        argsIgnorePattern: '^_',
+      },
+    ],
+
     'react/jsx-no-target-blank': 'error',
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'error',
@@ -46,6 +87,13 @@ module.exports = {
           // Side effect imports
           ['^\\u0000'],
         ],
+      },
+    ],
+
+    'no-console': [
+      'warn',
+      {
+        allow: ['warn', 'error'],
       },
     ],
 
