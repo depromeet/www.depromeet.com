@@ -48,7 +48,6 @@ const contentLayoutCss = (routerRoute: string) => css`
 
 App.getInitialProps = async ({ ctx }: AppContext) => {
   const userAgent = ctx.req?.headers['user-agent'] || 'Desktop';
-  console.log(userAgent);
 
   return { userAgent };
 };
