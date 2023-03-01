@@ -27,19 +27,17 @@ export default function NavigationBar() {
       <>
         <motion.nav css={navCss} animate={isOpen ? 'open' : 'closed'} variants={mobileNavVariants}>
           <div css={wrapperCss}>
-            <Link href="/" passHref>
-              <a css={anchorCss}>
-                <DepromeetIcon />
-              </a>
+            <Link href="/" css={anchorCss}>
+              <DepromeetIcon />
             </Link>
 
             <HamburgerButton toggleIsOpen={toggleIsOpen} />
           </div>
 
-          <AnimatePresence exitBeforeEnter>{isOpen && <HamburgerContent />}</AnimatePresence>
+          <AnimatePresence mode="wait">{isOpen && <HamburgerContent />}</AnimatePresence>
         </motion.nav>
 
-        <AnimatePresence exitBeforeEnter>
+        <AnimatePresence mode="wait">
           {isOpen && <DimOverlay close={() => setIsOpen(false)} />}
         </AnimatePresence>
       </>
@@ -49,10 +47,8 @@ export default function NavigationBar() {
   return (
     <nav css={[navCss, hideWhenMobile]}>
       <div css={wrapperCss}>
-        <Link href="/" passHref>
-          <a css={anchorCss}>
-            <DepromeetIcon />
-          </a>
+        <Link href="/" css={anchorCss}>
+          <DepromeetIcon />
         </Link>
 
         <div css={anchorWrapperCss}>

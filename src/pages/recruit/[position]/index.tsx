@@ -5,7 +5,7 @@ import HeaderSection from '~/components/recruit-detail/HeaderSection';
 import OtherPositionSection from '~/components/recruit-detail/OtherPositionSection';
 
 interface Props {
-  position: typeof POSITION_TYPE[PositionType];
+  position: (typeof POSITION_TYPE)[PositionType];
 }
 
 export default function RecruitDetail({ position }: Props) {

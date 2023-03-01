@@ -27,7 +27,7 @@ export default function ProjectDetail({ currentProject }: Props) {
 
 interface Paths {
   params: {
-    projectTitle: typeof projects[number]['title'];
+    projectTitle: (typeof projects)[number]['title'];
   };
 }
 

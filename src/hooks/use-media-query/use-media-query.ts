@@ -11,6 +11,7 @@ export function useMediaQuery(sizeKey: SizeKey): boolean;
 export default function useMediaQuery(width: number | SizeKey) {
   const { isMobileAgent } = useUserAgent();
   const targetWidth = typeof width === 'number' ? `${width}px` : size[width];
+  // const isMobileSize = width <= SIZE.xs || targetWidth === size.xs;
   const isMobileSize = (width <= SIZE.xs || targetWidth === size.xs) && isMobileAgent;
 
   const [targetReached, setTargetReached] = useState<boolean>(isMobileSize);

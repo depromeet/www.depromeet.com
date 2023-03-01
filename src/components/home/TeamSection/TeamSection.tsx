@@ -55,7 +55,7 @@ export default function TeamSection() {
       </motion.div>
 
       <motion.div variants={defaultFadeInVariants}>
-        <AnimatePresence exitBeforeEnter>
+        <AnimatePresence mode="wait">
           <motion.div
             key={currentTeam}
             css={contentWrapperCss}

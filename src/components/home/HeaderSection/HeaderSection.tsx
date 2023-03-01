@@ -29,8 +29,7 @@ export default function HeaderSection() {
         unoptimized
         placeholder="blur"
         blurDataURL={isMobile ? HEADER_IMAGE_MOBILE : HEADER_IMAGE}
-        layout="fill"
-        objectFit="cover"
+        fill
       />
 
       <div css={headingWrapperCss}>

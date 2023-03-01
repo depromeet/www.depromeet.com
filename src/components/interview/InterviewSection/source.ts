@@ -105,7 +105,7 @@ const ANSWER_DESIGNER = [
 // TODO: 포지션과 포지션 타입을 국지적으로 사용하고 있는데, 상수로써 관리하는건 어떨지
 export const TEAMS = ['UIUX DESIGN', 'Web', 'iOS', 'Android', 'Backend'] as const;
 
-export type TeamType = typeof TEAMS[number];
+export type TeamType = (typeof TEAMS)[number];
 
 type InterviewSource = Array<{
   question: string;

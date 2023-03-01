@@ -17,7 +17,7 @@ export default function RecruitBanner() {
   if (!isInProgress) return <></>;
 
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence mode="wait">
       {router.asPath !== '/recruit' && (
         <Link href="/recruit" passHref>
           <motion.a

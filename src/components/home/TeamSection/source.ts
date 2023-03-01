@@ -2,7 +2,7 @@ import { POSITION_ICON_BASE } from '~/constants/images/images';
 
 export const TEAMS = ['UIUX Design', 'Web', 'iOS', 'Android', 'Backend'] as const;
 
-export type TeamType = typeof TEAMS[number];
+export type TeamType = (typeof TEAMS)[number];
 
 type Contents = {
   [team in TeamType]: { heading: string; paragraph: string };

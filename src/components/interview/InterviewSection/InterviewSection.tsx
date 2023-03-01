@@ -38,7 +38,7 @@ export default function InterviewSection() {
         ))}
       </motion.div>
 
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence mode="wait">
         <motion.div
           key={currentTeam}
           variants={staggerHalf}
