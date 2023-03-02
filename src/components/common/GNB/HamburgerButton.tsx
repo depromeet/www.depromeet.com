@@ -40,13 +40,5 @@ export default function HamburgerButton({ toggleIsOpen }: Props) {
 }
 
 function Path(props: SVGMotionProps<SVGPathElement>) {
-  return (
-    <motion.path
-      fill={colors.black}
-      strokeWidth="3"
-      stroke={colors.black}
-      strokeLinecap="round"
-      {...props}
-    />
-  );
+  return <motion.path fill={colors.black} strokeWidth="2.5" stroke={colors.black} {...props} />;
 }
