@@ -1,7 +1,7 @@
-import { useState } from 'react';
 import { css } from '@emotion/react';
 import { AnimatePresence, m } from 'framer-motion';
 
+import useToggle from '~/hooks/use-toggle';
 import { colors } from '~/styles/constants';
 import { layoutCss } from '~/styles/css';
 
@@ -24,11 +24,7 @@ const NAVIGATION_ROUTES: Route[] = [
 ];
 
 export default function MobileAnchorSection() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  function toggleIsOpen() {
-    setIsOpen(prev => !prev);
-  }
+  const [isOpen, toggleIsOpen] = useToggle();
 
   return (
     <>
