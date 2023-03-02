@@ -7,7 +7,7 @@ import useToggle from '~/hooks/use-toggle';
 import { colors } from '~/styles/constants';
 import { layoutCss } from '~/styles/css';
 
-import { ANCHORS_HEIGHT } from './constants';
+import { ANCHORS_HEIGHT, mobileRouteVariants } from './constants';
 import HamburgerButton from './HamburgerButton';
 import HamburgerContent from './HamburgerContent';
 import { Route } from './type';
@@ -21,7 +21,18 @@ export default function MobileAnchorSection() {
     <>
       <m.section css={sectionCss} animate={isOpen ? 'open' : 'closed'}>
         <div css={wrapperCss}>
-          <h1 css={titleCss}>{currentRoute.name}</h1>
+          <AnimatePresence initial={false} mode="wait">
+            <m.h1
+              css={titleCss}
+              key={currentRoute.path}
+              variants={mobileRouteVariants}
+              initial="initial"
+              animate="animate"
+            >
+              {currentRoute.name}
+            </m.h1>
+          </AnimatePresence>
+
           <HamburgerButton toggleIsOpen={toggleIsOpen} />
         </div>
       </m.section>

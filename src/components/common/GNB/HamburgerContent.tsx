@@ -5,7 +5,7 @@ import { m, Variants } from 'framer-motion';
 import { defaultEasing } from '~/constants/motions';
 import { colors } from '~/styles/constants';
 
-import { ANCHORS_HEIGHT } from './constants';
+import { ANCHORS_HEIGHT, mobileRouteVariants } from './constants';
 import { Route } from './type';
 
 interface Props {
@@ -21,9 +21,16 @@ export default function HamburgerContent({ routes }: Props) {
       animate="open"
       exit="closed"
     >
-      {routes.map(eachRoute => (
+      {routes.map((eachRoute, index) => (
         <Link key={eachRoute.path} href={eachRoute.path} css={anchorCss}>
-          {eachRoute.name}
+          <m.span
+            key={eachRoute.path + index}
+            variants={mobileRouteVariants}
+            initial="initial"
+            animate="animate"
+          >
+            {eachRoute.name}
+          </m.span>
         </Link>
       ))}
     </m.div>
