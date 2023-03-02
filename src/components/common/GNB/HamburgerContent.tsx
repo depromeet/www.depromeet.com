@@ -38,10 +38,12 @@ export default function HamburgerContent({ routes }: Props) {
 }
 
 const wrapperCss = css`
+  position: relative;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
   overflow: hidden;
+  z-index: 9998;
 `;
 
 const contentVariants: Variants = {

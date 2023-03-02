@@ -14,6 +14,7 @@ export default function RecrutingBanner() {
 }
 
 const wrapperCss = css`
+  position: relative;
   height: ${RECRUTING_BANNER_HEIGHT}px;
   background-color: ${colors.black};
   color: ${colors.white};
@@ -22,4 +23,5 @@ const wrapperCss = css`
   justify-content: center;
   align-items: center;
   gap: 9px;
+  z-index: 9998;
 `;

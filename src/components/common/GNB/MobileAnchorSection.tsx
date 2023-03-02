@@ -10,6 +10,7 @@ import { layoutCss } from '~/styles/css';
 import { ANCHORS_HEIGHT, mobileRouteVariants } from './constants';
 import HamburgerButton from './HamburgerButton';
 import HamburgerContent from './HamburgerContent';
+import Overlay from './Overlay';
 import { Route } from './type';
 
 export default function MobileAnchorSection() {
@@ -38,6 +39,8 @@ export default function MobileAnchorSection() {
       </m.section>
 
       <AnimatePresence>{isOpen && <HamburgerContent routes={restRoutes} />}</AnimatePresence>
+
+      {isOpen && <Overlay close={toggleIsOpen} />}
     </>
   );
 }
