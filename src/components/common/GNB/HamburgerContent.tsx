@@ -6,8 +6,13 @@ import { defaultEasing } from '~/constants/motions';
 import { colors } from '~/styles/constants';
 
 import { ANCHORS_HEIGHT } from './constants';
+import { Route } from './type';
 
-export default function HamburgerContent() {
+interface Props {
+  routes: Route[];
+}
+
+export default function HamburgerContent({ routes }: Props) {
   return (
     <m.div
       css={wrapperCss}
@@ -16,18 +21,11 @@ export default function HamburgerContent() {
       animate="open"
       exit="closed"
     >
-      <Link href="/" css={anchorCss}>
-        DEPROMEET
-      </Link>
-      <Link href="/" css={anchorCss}>
-        DEPROMEET
-      </Link>
-      <Link href="/" css={anchorCss}>
-        DEPROMEET
-      </Link>
-      <Link href="/" css={anchorCss}>
-        DEPROMEET
-      </Link>
+      {routes.map(eachRoute => (
+        <Link key={eachRoute.path} href={eachRoute.path} css={anchorCss}>
+          {eachRoute.name}
+        </Link>
+      ))}
     </m.div>
   );
 }
