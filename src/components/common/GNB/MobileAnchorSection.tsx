@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { css } from '@emotion/react';
 import { AnimatePresence, m } from 'framer-motion';
 
@@ -7,38 +6,27 @@ import useToggle from '~/hooks/use-toggle';
 import { colors } from '~/styles/constants';
 import { layoutCss } from '~/styles/css';
 
-import { ANCHORS_HEIGHT, mobileRouteVariants } from './constants';
+import { ANCHORS_HEIGHT } from './constants';
 import HamburgerButton from './HamburgerButton';
 import HamburgerContent from './HamburgerContent';
 import Overlay from './Overlay';
-import { Route } from './type';
 
 export default function MobileAnchorSection() {
   const [isOpen, toggleIsOpen] = useToggle();
 
-  const { currentRoute, restRoutes } = useCurrentRoute();
-
   return (
     <>
-      <m.section css={sectionCss} animate={isOpen ? 'open' : 'closed'}>
+      <m.section css={[sectionCss, isOpen && sectionOpenCss]} animate={isOpen ? 'open' : 'closed'}>
         <div css={wrapperCss}>
-          <AnimatePresence initial={false} mode="wait">
-            <m.h1
-              css={titleCss}
-              key={currentRoute.path}
-              variants={mobileRouteVariants}
-              initial="initial"
-              animate="animate"
-            >
-              {currentRoute.name}
-            </m.h1>
-          </AnimatePresence>
+          <Link href="/" css={titleCss}>
+            DEPROMEET
+          </Link>
 
           <HamburgerButton toggleIsOpen={toggleIsOpen} />
         </div>
       </m.section>
 
-      <AnimatePresence>{isOpen && <HamburgerContent routes={restRoutes} />}</AnimatePresence>
+      <AnimatePresence>{isOpen && <HamburgerContent />}</AnimatePresence>
 
       {isOpen && <Overlay close={toggleIsOpen} />}
     </>
@@ -46,9 +34,11 @@ export default function MobileAnchorSection() {
 }
 
 const sectionCss = css`
+  position: relative;
   height: ${ANCHORS_HEIGHT}px;
-  background: rgba(240, 240, 241, 0.6);
+  background-color: rgba(240, 240, 241, 0.6);
   backdrop-filter: blur(25px);
+  transition: background-color 0.3s;
 
   display: flex;
   flex-direction: column;
@@ -56,6 +46,11 @@ const sectionCss = css`
   align-items: center;
 
   border-bottom: 1px solid ${colors.black};
+  z-index: 9998;
+`;
+
+const sectionOpenCss = css`
+  background-color: ${colors.gray100};
 `;
 
 const wrapperCss = css`
@@ -69,46 +64,6 @@ const wrapperCss = css`
 `;
 
 const titleCss = css`
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.125rem;
 `;
-
-const NAVIGATION_ROUTES: readonly Route[] = [
-  { name: 'DEPROMEET', path: '/' },
-  { name: '디프만 A TO Z', path: '/about' },
-  { name: '지난 프로젝트', path: '/project' },
-  { name: '문의하기', path: '/contact' },
-  { name: '13기 모집 안내', path: '/recruit' },
-];
-
-function findRouteByPathname(pathname: string) {
-  const route =
-    NAVIGATION_ROUTES.find(eachRoute => eachRoute.path.startsWith(pathname)) ??
-    NAVIGATION_ROUTES[0];
-
-  return route;
-}
-
-function getExcludeRoutes(excludeRoute: Route) {
-  return NAVIGATION_ROUTES.filter(route => route.path !== excludeRoute.path);
-}
-
-function useCurrentRoute() {
-  const router = useRouter();
-  const [currentRoute, setCurrentRoute] = useState<Route>(findRouteByPathname(router.pathname));
-  const [restRoutes, setRestRoutes] = useState<Route[]>(getExcludeRoutes(currentRoute));
-
-  useEffect(() => {
-    function onRouteChange(path: string) {
-      const nextRoute = findRouteByPathname(path);
-      setCurrentRoute(nextRoute);
-      setRestRoutes(getExcludeRoutes(nextRoute));
-    }
-
-    router.events.on('routeChangeComplete', onRouteChange);
-
-    return () => router.events.off('routeChangeComplete', onRouteChange);
-  }, [router.events]);
-
-  return { currentRoute, restRoutes };
-}
