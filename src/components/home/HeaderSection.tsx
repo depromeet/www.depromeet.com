@@ -28,7 +28,7 @@ export default function HeaderSection() {
         placeholder="blur"
         blurDataURL={HEADER_BACK_IMAGE}
         priority
-        unoptimized
+        quality={100}
         fill
       />
       <m.span css={designerTextCss} style={{ x: springDesignerX }}>
@@ -44,7 +44,7 @@ export default function HeaderSection() {
         placeholder="blur"
         blurDataURL={HEADER_FRONT_IMAGE}
         priority
-        unoptimized
+        quality={100}
         fill
       />
     </section>

@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 
 import ApplySection from '~/components/common/ApplySection';
 import SEO from '~/components/common/SEO';
+import ContentsSection from '~/components/home/ContentsSection';
 import HeaderSection from '~/components/home/HeaderSection';
 import IntroductionSection from '~/components/home/IntroductionSection';
 import { mediaQuery } from '~/styles/constants';
@@ -13,6 +14,7 @@ export default function Root() {
       <main>
         <HeaderSection />
         <IntroductionSection />
+        <ContentsSection />
         <ApplySection wrapperCss={applySectionMarginCss} />
       </main>
     </>

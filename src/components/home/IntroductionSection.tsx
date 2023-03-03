@@ -10,7 +10,7 @@ export default function IntroductionSection() {
   return (
     <section css={sectionCss}>
       <article css={paragraphArticleCss}>
-        <small css={sectionSmallCss}>INTRODUCTION</small>
+        <small css={marginSectionSmallCss}>INTRODUCTION</small>
         <h2 css={section40HeadingCss}>
           디프만은 디자이너와 개발자가
           <br />
@@ -96,6 +96,11 @@ const paragraphArticleCss = css`
   ${mediaQuery('xs')} {
     margin-bottom: 60px;
   }
+`;
+
+const marginSectionSmallCss = css`
+  ${sectionSmallCss};
+  margin-bottom: 10px;
 `;
 
 const infoArticleCss = css`
