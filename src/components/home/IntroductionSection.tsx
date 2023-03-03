@@ -1,9 +1,12 @@
 import { css } from '@emotion/react';
 
-import { colors } from '~/styles/constants';
+import useMediaQuery from '~/hooks/use-media-query';
+import { colors, mediaQuery } from '~/styles/constants';
 import { layoutCss, section40HeadingCss, sectionSmallCss } from '~/styles/css';
 
 export default function IntroductionSection() {
+  const isMobile = useMediaQuery('xs');
+
   return (
     <section css={sectionCss}>
       <article css={paragraphArticleCss}>
@@ -21,7 +24,7 @@ export default function IntroductionSection() {
         <div css={infoBoxCss}>
           <span css={countSpanCss}>1</span>
 
-          <div css={descriptionBoxCss}>
+          <div css={[descriptionBoxCss, !isMobile && desktopFirstTopDividerCss]}>
             <h3 css={heading3Css}>800명</h3>
             <h4 css={heading4Css}>누적 멤버 수</h4>
           </div>
@@ -29,7 +32,7 @@ export default function IntroductionSection() {
         <div css={infoBoxCss}>
           <span css={countSpanCss}>2</span>
 
-          <div css={descriptionBoxCss}>
+          <div css={[descriptionBoxCss, isMobile && disableRightDividerCss]}>
             <h3 css={heading3Css}>6YEARS</h3>
             <h4 css={heading4Css}>탄생한지</h4>
           </div>
@@ -39,9 +42,10 @@ export default function IntroductionSection() {
 
           <div css={descriptionBoxCss}>
             <h3 css={heading3Css}>100%</h3>
-            <h4 css={heading4Css}>
-              론칭 성공률 <small css={smallCss}>10기, 11기 기준</small>
-            </h4>
+            <div css={heading4WrapperCss}>
+              <h4 css={heading4Css}>론칭 성공률</h4>
+              <small css={smallCss}>10기, 11기 기준</small>
+            </div>
           </div>
         </div>
         <div css={infoBoxCss}>
@@ -49,9 +53,10 @@ export default function IntroductionSection() {
 
           <div css={[descriptionBoxCss, disableRightDividerCss]}>
             <h3 css={heading3Css}>42개+</h3>
-            <h4 css={heading4Css}>
-              론칭 서비스 <small css={smallCss}>5~12기 기준</small>
-            </h4>
+            <div css={heading4WrapperCss}>
+              <h4 css={heading4Css}>론칭 서비스</h4>
+              <small css={smallCss}>5~12기 기준</small>
+            </div>
           </div>
         </div>
       </article>
@@ -69,6 +74,12 @@ const sectionCss = css`
   align-items: center;
 
   margin-bottom: 180px;
+
+  ${mediaQuery('xs')} {
+    padding-top: 100px;
+
+    margin-bottom: 100px;
+  }
 `;
 
 const paragraphArticleCss = css`
@@ -81,16 +92,33 @@ const paragraphArticleCss = css`
   text-align: center;
 
   margin-bottom: 90px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 60px;
+  }
 `;
 
 const infoArticleCss = css`
   width: 100%;
   display: flex;
+
+  ${mediaQuery('xs')} {
+    flex-wrap: wrap;
+  }
 `;
 
 const infoBoxCss = css`
   width: 25%;
   height: 265px;
+
+  ${mediaQuery('xs')} {
+    width: calc(50% - 3px);
+    height: 150px;
+
+    &:nth-child(even) {
+      margin-left: 6px;
+    }
+  }
 `;
 
 const countSpanCss = css`
@@ -110,6 +138,15 @@ const countSpanCss = css`
   color: ${colors.gray700};
 
   margin-bottom: 18px;
+
+  ${mediaQuery('xs')} {
+    width: 24px;
+    height: 17px;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+
+    margin-bottom: 8px;
+  }
 `;
 
 const descriptionBoxCss = css`
@@ -123,9 +160,9 @@ const descriptionBoxCss = css`
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
+    left: 20px;
 
-    width: calc(100% - 20px);
+    width: calc(100% - 40px);
     height: 1px;
     background-color: ${colors.black};
   }
@@ -140,6 +177,31 @@ const descriptionBoxCss = css`
     height: calc(100% - 20px);
     background-color: ${colors.black};
   }
+
+  ${mediaQuery('xs')} {
+    height: 100%;
+    padding-top: 16px;
+    padding-left: 16px;
+
+    &::before {
+      left: 0;
+      width: calc(100% - 6px);
+    }
+
+    &::after {
+      top: 6px;
+      height: calc(100% - 12px);
+    }
+  }
+`;
+
+const desktopFirstTopDividerCss = css`
+  &::before {
+    top: 0;
+    left: 0;
+
+    width: calc(100% - 20px);
+  }
 `;
 
 const disableRightDividerCss = css`
@@ -152,7 +214,23 @@ const heading3Css = css`
   font-weight: 600;
   font-size: 3rem;
   line-height: 2.6875rem;
+
   margin-bottom: 10px;
+
+  ${mediaQuery('xs')} {
+    font-size: 24px;
+    line-height: 25px;
+
+    margin-bottom: 4px;
+  }
+`;
+
+const heading4WrapperCss = css`
+  display: flex;
+
+  ${mediaQuery('xs')} {
+    flex-direction: column;
+  }
 `;
 
 const heading4Css = css`
@@ -162,13 +240,24 @@ const heading4Css = css`
   font-style: normal;
 
   color: ${colors.gray900};
+
+  ${mediaQuery('xs')} {
+    font-size: 14px;
+  }
 `;
 
 const smallCss = css`
   margin-left: 10px;
-  font-weight: 500;
+
   font-size: 1.125rem;
-  line-height: 1.375rem;
+  line-height: 140%;
+  font-weight: 500;
 
   color: ${colors.gray700};
+
+  ${mediaQuery('xs')} {
+    margin-left: 0;
+    margin-top: 4px;
+    font-size: 14px;
+  }
 `;
