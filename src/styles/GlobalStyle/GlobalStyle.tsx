@@ -30,6 +30,8 @@ const globalCss = css`
       box-sizing: border-box;
       word-break: keep-all;
       word-wrap: break-word;
+
+      cursor: none !important;
     }
   }
 
