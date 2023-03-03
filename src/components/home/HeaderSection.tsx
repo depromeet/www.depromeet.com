@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { css } from '@emotion/react';
-import { m, useScroll, useTransform } from 'framer-motion';
+import { m, useScroll, useSpring, useTransform } from 'framer-motion';
 
 import { HOME_IMAGE_BASE } from '~/constants/images/images';
 
@@ -14,6 +14,8 @@ export default function HeaderSection() {
   const { scrollY } = useScroll();
   const designerTextX = useTransform(scrollY, [0, 800], [400, -1000]);
   const programmerTextX = useTransform(scrollY, [0, 800], [0, -1000]);
+  const springDesignerX = useSpring(designerTextX, { stiffness: 200, damping: 40 });
+  const springProgrammerX = useSpring(programmerTextX, { stiffness: 200, damping: 40 });
 
   return (
     <section css={sectionCss}>
@@ -39,10 +41,10 @@ export default function HeaderSection() {
         unoptimized
         fill
       />
-      <m.span css={designerTextCss} style={{ x: designerTextX }}>
+      <m.span css={designerTextCss} style={{ x: springDesignerX }}>
         DESIGNER
       </m.span>
-      <m.span css={programmerTextCss} style={{ x: programmerTextX }}>
+      <m.span css={programmerTextCss} style={{ x: springProgrammerX }}>
         &PROGRAMMER
       </m.span>
       <Image
