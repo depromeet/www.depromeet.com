@@ -9,7 +9,7 @@ import {
   DEPROMEET_INSTAGRAM,
   DEPROMEET_MEDIUM,
 } from '~/constants/common';
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
 import { layoutCss } from '~/styles/css';
 
 export default function Footer() {
@@ -39,11 +39,28 @@ const footerCss = css`
   justify-content: center;
   align-items: center;
   gap: 32px;
+
+  ${mediaQuery('xs')} {
+    padding-top: 6px;
+    gap: 24px;
+    justify-content: start;
+  }
 `;
 
 const anchorSectionCss = css`
   display: flex;
   gap: 3.25rem;
+
+  ${mediaQuery('xs')} {
+    max-width: 348px;
+
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    row-gap: 14px;
+    column-gap: 32px;
+  }
 `;
 
 const copyRightCss = css`
