@@ -1,3 +1,4 @@
+export { ArrowIcon } from './ArrowIcon';
 export { BehanceIcon } from './BehanceIcon';
 export { FacebookIcon } from './FacebookIcon';
 export { GithubIcon } from './GithubIcon';

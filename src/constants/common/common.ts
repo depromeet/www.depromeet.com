@@ -5,6 +5,7 @@ export const HOTJAR_ID = '3115834';
 
 export const BASE_URL = 'https://www.depromeet.com';
 
+// TODO: 링크 최신화 해야 함
 export const NOTION_RECRUIT_PATH =
   'https://www.notion.so/depromeet/12-8e4fc4ef30fd4853a522258d117d3c33';
 
