@@ -8,5 +8,5 @@ export const layoutCss = css`
   width: 100%;
   max-width: ${layout.maxWidth};
   margin: 0 auto;
-  padding: '0 20px';
+  padding: 0 20px;
 `;
