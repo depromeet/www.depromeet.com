@@ -13,13 +13,21 @@ export default function CustomCursor() {
     if (cursorRef == null || cursorRef.current == null) return;
 
     function handleMouseMove(e: MouseEvent) {
-      cursorRef.current?.setAttribute('style', `top: ${e.pageY}px;` + `left: ${e.pageX}px;`);
+      cursorRef.current?.setAttribute(
+        'style',
+        `top: ${e.pageY}px;` + `left: ${e.pageX}px; display: inline`
+      );
     }
-
     document.addEventListener('mousemove', handleMouseMove);
+
+    function handleMouseOut() {
+      cursorRef.current?.setAttribute('style', `display: none`);
+    }
+    window.addEventListener('mouseout', handleMouseOut);
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseout', handleMouseOut);
     };
   }, []);
 
