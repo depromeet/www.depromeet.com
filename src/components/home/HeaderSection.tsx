@@ -2,11 +2,10 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 import { m, useScroll, useSpring, useTransform } from 'framer-motion';
 
-import { HOME_IMAGE_BASE } from '~/constants/images/images';
+import { HOME_IMAGE_BASE } from '~/constants/images';
 
 import { BigArrowIcon } from './BigArrowIcon';
 
-// const HEADER_IMAGE = `${HOME_IMAGE_BASE}/header.webp`;
 const HEADER_BACK_IMAGE = `${HOME_IMAGE_BASE}/header-back.webp`;
 const HEADER_FRONT_IMAGE = `${HOME_IMAGE_BASE}/header-front.png`;
 
@@ -21,16 +20,7 @@ export default function HeaderSection() {
     <section css={sectionCss}>
       <h1 css={headingCss}>디자이너와 프로그래머가 만났을 때</h1>
       <BigArrowIcon css={iconCss} />
-      {/* <Image
-        css={imageCss}
-        src={HEADER_IMAGE}
-        alt="디프만"
-        placeholder="blur"
-        blurDataURL={HEADER_IMAGE}
-        priority
-        unoptimized
-        fill
-      /> */}
+
       <Image
         css={imageCss}
         src={HEADER_BACK_IMAGE}
