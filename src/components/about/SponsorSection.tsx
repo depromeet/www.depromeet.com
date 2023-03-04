@@ -1,5 +1,7 @@
+import Image from 'next/image';
 import { css } from '@emotion/react';
 
+import { SPONSOR_IMAGE_BASE } from '~/constants/images';
 import { mediaQuery } from '~/styles/constants';
 import { layoutCss, section36HeadingCss, sectionSmallCss } from '~/styles/css';
 
@@ -13,13 +15,9 @@ export default function SponsorSection() {
         후원사를 소개합니다
       </h2>
       <article css={articleCss}>
-        <Sponsor />
-        <Sponsor />
-        <Sponsor />
-        <Sponsor />
-        <Sponsor />
-        <Sponsor />
-        <Sponsor />
+        {SPONSORS.map(sponsor => (
+          <Sponsor key={sponsor.name} {...sponsor} />
+        ))}
       </article>
     </section>
   );
@@ -63,8 +61,6 @@ const articleCss = css`
   column-gap: 52px;
 `;
 
-// TODO : 스폰서 확정 후 추가 및 사용
-// eslint-disable-next-line @typescript-eslint/no-unused-vars, unused-imports/no-unused-vars
 interface SponsorImage {
   name: string;
   src: string;
@@ -72,12 +68,10 @@ interface SponsorImage {
   height: number;
 }
 
-function Sponsor() {
-  return <div css={sponsorWrapperCss}>sponsor</div>;
-}
+const SPONSORS: SponsorImage[] = [
+  { name: '임팩트 캠퍼스', src: `${SPONSOR_IMAGE_BASE}/impact-campus.svg`, width: 211, height: 46 },
+];
 
-const sponsorWrapperCss = css`
-  width: 282px;
-  height: 62px;
-  background-color: gray;
-`;
+function Sponsor({ name, src, width, height }: SponsorImage) {
+  return <Image src={src} alt={name} width={width} height={height} />;
+}
