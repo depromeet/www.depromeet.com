@@ -4,7 +4,7 @@ import { m, Variants } from 'framer-motion';
 
 import { ABOUT_IMAGE_BASE } from '~/constants/images/images';
 import { defaultEasing } from '~/constants/motions';
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
 import { layoutCss, section36HeadingCss, sectionSmallCss } from '~/styles/css';
 
 export default function MoreExperienceSection() {
@@ -32,6 +32,12 @@ const sectionCss = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  margin-bottom: 180px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 100px;
+  }
 `;
 
 const smallCss = css`
@@ -45,6 +51,10 @@ const headingCss = css`
   text-align: center;
 
   margin-bottom: 80px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 60px;
+  }
 `;
 
 const cardWrapperCss = css`
@@ -52,6 +62,10 @@ const cardWrapperCss = css`
   justify-content: center;
   flex-wrap: wrap;
   gap: 24px;
+
+  ${mediaQuery('xs')} {
+    gap: 11px;
+  }
 `;
 
 interface Experience {
@@ -134,6 +148,12 @@ const articleCss = css`
     border-color: ${colors.point};
     background-color: ${colors.point};
   }
+
+  ${mediaQuery('sm')} {
+    width: calc(50% - 24px);
+    height: 224px;
+    padding: 20px;
+  }
 `;
 
 const imageCss = css`
@@ -157,6 +177,10 @@ const spanCss = css`
   z-index: 10;
 
   transition: color 0.3s;
+
+  ${mediaQuery('xs')} {
+    font-size: 16px;
+  }
 `;
 
 const iconSpanCss = css`
@@ -194,6 +218,10 @@ const hoverWrapperCss = css`
   opacity: 0;
 
   border-top: solid 1px ${colors.black};
+
+  ${mediaQuery('sm')} {
+    padding: 20px;
+  }
 `;
 
 const hoverWrapperVariants: Variants = {
@@ -217,6 +245,11 @@ const paragraphCss = css`
   font-weight: 600;
   font-size: 1.25rem;
   line-height: 140%;
+
+  ${mediaQuery('xs')} {
+    font-weight: 500;
+    font-size: 14px;
+  }
 `;
 
 const paragraphVariants: Variants = {
