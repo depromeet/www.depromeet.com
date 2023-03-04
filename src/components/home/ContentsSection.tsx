@@ -2,7 +2,8 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 
 import { HOME_IMAGE_BASE } from '~/constants/images';
-import { colors } from '~/styles/constants';
+import useMediaQuery from '~/hooks/use-media-query';
+import { colors, mediaQuery } from '~/styles/constants';
 import { layoutCss, section40HeadingCss, sectionSmallCss } from '~/styles/css';
 
 import { ClickableLink } from '../common/Clickable';
@@ -10,13 +11,18 @@ import { ClickableLink } from '../common/Clickable';
 const MEET_IMAGE = `${HOME_IMAGE_BASE}/meet.webp`;
 const HEART_IMAGE = `${HOME_IMAGE_BASE}/heart.webp`;
 const PROGRAMMER_IMAGE = `${HOME_IMAGE_BASE}/programmer.webp`;
+const MOBILE_MEET_IMAGE = `${HOME_IMAGE_BASE}/mobile-meet.webp`;
+const MOBILE_HEART_IMAGE = `${HOME_IMAGE_BASE}/mobile-heart.webp`;
+const MOBILE_PROGRAMMER_IMAGE = `${HOME_IMAGE_BASE}/mobile-programmer.webp`;
 
 export default function ContentsSection() {
+  const isMobile = useMediaQuery('xs');
+
   return (
     <section css={sectionCss}>
       <article css={paragraphArticleCss}>
         <small css={smallCss}>CONTENTS</small>
-        <h2 css={section40HeadingCss}>디프만에 한발짝 더 가까워질 수 있게</h2>
+        <h2 css={section40HeadingCss}>디프만에 한발짝 더{isMobile && <br />} 가까워질 수 있게</h2>
       </article>
 
       <article css={linkArticleCss}>
@@ -29,7 +35,13 @@ export default function ContentsSection() {
             `,
           ]}
         >
-          <Image css={linkImageCss} src={MEET_IMAGE} alt="디프만 a to z" fill quality={100} />
+          <Image
+            css={linkImageCss}
+            src={isMobile ? MOBILE_MEET_IMAGE : MEET_IMAGE}
+            alt="디프만 a to z"
+            fill
+            quality={100}
+          />
           <div css={linkContentWrapperCss}>
             <p css={linkParagraphCss}>디프만에 대한 모든 정보는 여기 쏙!</p>
             <span css={linkSpanCss}>디프만 A to Z</span>
@@ -46,7 +58,13 @@ export default function ContentsSection() {
           ]}
         >
           <div css={heartImageWrapperCss}>
-            <Image css={linkImageCss} src={HEART_IMAGE} alt="디프만 프로젝트" fill quality={100} />
+            <Image
+              css={linkImageCss}
+              src={isMobile ? MOBILE_HEART_IMAGE : HEART_IMAGE}
+              alt="디프만 프로젝트"
+              fill
+              quality={100}
+            />
           </div>
           <div css={linkContentWrapperCss}>
             <p css={linkParagraphCss}>디프만의 자랑거리인</p>
@@ -66,7 +84,7 @@ export default function ContentsSection() {
           <div css={programmerImageWrapperCss}>
             <Image
               css={linkImageCss}
-              src={PROGRAMMER_IMAGE}
+              src={isMobile ? MOBILE_PROGRAMMER_IMAGE : PROGRAMMER_IMAGE}
               fill
               alt="디프만 모집 안내"
               quality={100}
@@ -89,16 +107,25 @@ const sectionCss = css`
   align-items: center;
 
   margin-bottom: 180px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 100px;
+  }
 `;
 
 const paragraphArticleCss = css`
   text-align: center;
 
   margin-bottom: 90px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 60px;
+  }
 `;
 
 const smallCss = css`
   ${sectionSmallCss}
+  display: block;
   margin-bottom: 10px;
 `;
 
@@ -107,6 +134,11 @@ const linkArticleCss = css`
   display: flex;
   justify-content: center;
   gap: 24px;
+
+  ${mediaQuery('xs')} {
+    flex-direction: column;
+    gap: 30px;
+  }
 `;
 
 const linkCss = css`
@@ -115,6 +147,11 @@ const linkCss = css`
   height: 366px;
   border-top: 1px solid ${colors.black};
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 25%);
+
+  ${mediaQuery('xs')} {
+    width: 100%;
+    height: 200px;
+  }
 `;
 
 const linkContentWrapperCss = css`
@@ -126,16 +163,24 @@ const linkContentWrapperCss = css`
 
 const linkParagraphCss = css`
   font-weight: 600;
-  font-size: 18px;
+  font-size: 1.125rem;
   line-height: 140%;
 
   margin-bottom: 6px;
+
+  ${mediaQuery('xs')} {
+    font-size: 14px;
+  }
 `;
 
 const linkSpanCss = css`
   font-weight: 700;
   font-size: 1.75rem;
   line-height: 2.0625rem;
+
+  ${mediaQuery('xs')} {
+    font-size: 20px;
+  }
 `;
 
 const heartImageWrapperCss = css`
@@ -144,6 +189,10 @@ const heartImageWrapperCss = css`
   left: 0;
   width: 100%;
   height: calc(100% + 40px);
+
+  ${mediaQuery('xs')} {
+    height: 100%;
+  }
 `;
 
 const programmerImageWrapperCss = css`
@@ -152,6 +201,10 @@ const programmerImageWrapperCss = css`
   left: 0;
   width: calc(100% + 34px);
   height: 100%;
+
+  ${mediaQuery('xs')} {
+    width: 100%;
+  }
 `;
 
 const linkImageCss = css`
