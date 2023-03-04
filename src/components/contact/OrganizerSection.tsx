@@ -3,6 +3,9 @@ import { css } from '@emotion/react';
 import { colors } from '~/styles/constants';
 import { layoutCss, section36HeadingCss, sectionSmallCss } from '~/styles/css';
 
+import { ORGANIZERS } from './constants';
+import OrganizerCard from './OrganizerCard';
+
 export default function OrganizerSection() {
   return (
     <section css={sectionCss}>
@@ -24,12 +27,9 @@ export default function OrganizerSection() {
         </div>
 
         <div css={organizerCardWrapperCss}>
-          <article></article>
-          <article></article>
-          <article></article>
-          <article></article>
-          <article></article>
-          <article></article>
+          {ORGANIZERS.map(organizer => (
+            <OrganizerCard key={organizer.name} {...organizer} />
+          ))}
         </div>
       </div>
     </section>
@@ -100,4 +100,5 @@ const informBoxCss = css`
 const organizerCardWrapperCss = css`
   display: flex;
   flex-wrap: wrap;
+  gap: 24px;
 `;
