@@ -1,4 +1,4 @@
-type Prize = 'Grand' | 'Top' | 'Excellence' | 'Default';
+type Prize = '대상' | '최우수상' | '우수상' | 'Default';
 
 export interface Project {
   order: number;
@@ -15,6 +15,7 @@ export interface Project {
   android?: string;
   web?: string;
   behance?: string;
+  github?: string;
   frontends?: string[];
   backends?: string[];
   designers?: string[];
@@ -598,7 +599,7 @@ export const projects: Array<Readonly<Project>> = [
     image: 'details/아무거나.png',
     icon: 'icons/아무거나.png',
     thumbnail: 'thumbnails/아무거나.png',
-    prize: 'Default',
+    prize: '대상',
     designers: ['노은종', '이윤이'],
     frontends: ['곽소영', '유영평 (Android)', '이규현 (iOS)'],
     backends: ['조민국'],
