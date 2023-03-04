@@ -2,15 +2,18 @@ import { css } from '@emotion/react';
 
 import { colors } from '~/styles/constants';
 
+import { Generation } from '../ProjectListSection/ProjectListSection';
+
 interface Props {
-  selectGeneration: (clickedGeneration: any) => void;
+  selectGeneration: (clickedGeneration: null | Generation) => void;
+  selectedGeneration: null | Generation;
 }
 
-export default function SelectGeneration({ selectGeneration }: Props) {
+export default function SelectGeneration({ selectGeneration, selectedGeneration }: Props) {
   return (
     <div css={wrapperCss}>
       <button
-        css={buttonCss}
+        css={buttonCss(selectedGeneration === null)}
         onClick={() => {
           selectGeneration(null);
         }}
@@ -18,7 +21,7 @@ export default function SelectGeneration({ selectGeneration }: Props) {
         전체
       </button>
       <button
-        css={buttonCss}
+        css={buttonCss(selectedGeneration === 12)}
         onClick={() => {
           selectGeneration(12);
         }}
@@ -26,7 +29,7 @@ export default function SelectGeneration({ selectGeneration }: Props) {
         12기
       </button>
       <button
-        css={buttonCss}
+        css={buttonCss(selectedGeneration === 11)}
         onClick={() => {
           selectGeneration(11);
         }}
@@ -34,7 +37,7 @@ export default function SelectGeneration({ selectGeneration }: Props) {
         11기
       </button>
       <button
-        css={buttonCss}
+        css={buttonCss(selectedGeneration === 10)}
         onClick={() => {
           selectGeneration(10);
         }}
@@ -46,11 +49,23 @@ export default function SelectGeneration({ selectGeneration }: Props) {
 }
 
 const wrapperCss = css`
-  margin-bottom: 40px;
+  margin-bottom: 28px;
+  display: flex;
+  gap: 40px;
 `;
 
-const buttonCss = css`
+const buttonCss = (selected: boolean) => css`
+  &:hover {
+    background: ${selected ? colors.black : colors.gray200};
+  }
   width: 64px;
   height: 41px;
   border: 1px solid ${colors.black};
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 140%;
+  background-color: ${selected && colors.black};
+  border: ${!selected && `1px solid ${colors.black}`};
+  color: ${selected ? colors.white : colors.black};
 `;

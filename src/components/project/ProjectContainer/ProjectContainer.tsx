@@ -20,8 +20,8 @@ export default function ProjectContainer({ projects }: Props) {
 
 const wrapperCss = css`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 384px);
+  grid-template-rows: repeat(3, 300px);
   column-gap: 24px;
   row-gap: 24px;
 `;
