@@ -25,7 +25,7 @@ export default function IntroductionSection() {
           <span css={countSpanCss}>1</span>
 
           <div css={[descriptionBoxCss, !isMobile && desktopFirstTopDividerCss]}>
-            <h3 css={heading3Css}>800명</h3>
+            <h3 css={heading3Css}>800명+</h3>
             <h4 css={heading4Css}>누적 멤버 수</h4>
           </div>
         </div>
