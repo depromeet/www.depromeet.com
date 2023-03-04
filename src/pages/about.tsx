@@ -8,9 +8,12 @@ import SponsorSection from '~/components/about/SponsorSection';
 import ApplySection from '~/components/common/ApplySection';
 import { ArrowIcon } from '~/components/common/icons';
 import SEO from '~/components/common/SEO';
-import { colors } from '~/styles/constants';
+import useMediaQuery from '~/hooks/use-media-query';
+import { colors, mediaQuery } from '~/styles/constants';
 
 export default function Interview() {
+  const isMobile = useMediaQuery('xs');
+
   return (
     <>
       <SEO title="about 디프만" />
@@ -19,8 +22,8 @@ export default function Interview() {
         <ArrowIcon
           css={arrowIconCss}
           direction="down"
-          width={52}
-          height={52}
+          width={isMobile ? 36 : 52}
+          height={isMobile ? 36 : 52}
           color={colors.black}
         />
         <JobGroupSection />
@@ -43,6 +46,10 @@ const mainCss = css`
 const arrowIconCss = css`
   align-self: center;
   margin-bottom: 134px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 110px;
+  }
 `;
 
 const applySectionMarginCss = css`

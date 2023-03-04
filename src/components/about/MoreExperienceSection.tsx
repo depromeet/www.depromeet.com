@@ -116,7 +116,7 @@ const EXPERIENCES: Experience[] = [
 
 function Card({ icon, name, description, src }: Experience) {
   return (
-    <m.article css={articleCss} initial="default" whileHover="hover">
+    <m.article css={articleCss} initial="default" whileHover="hover" whileTap="hover">
       <Image css={imageCss} src={src} alt={name} fill quality={100} />
       <span css={spanCss} className="span">
         <span css={iconSpanCss} className="iconSpan">
@@ -153,6 +153,10 @@ const articleCss = css`
     width: calc(50% - 24px);
     height: 224px;
     padding: 20px;
+  }
+
+  ${mediaQuery('xs')} {
+    width: calc(50% - 6px);
   }
 `;
 
