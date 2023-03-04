@@ -6,6 +6,7 @@ import { section40HeadingCss, sectionSmallCss } from '~/styles/css';
 
 import { POSITION_TYPE_LABEL, PositionType } from './contstants';
 import { sectionCss, sectionHeadingCss } from './Recurit.style';
+import { ArrowIcon } from '../common/icons';
 
 const positionTypes = Object.keys(POSITION_TYPE_LABEL) as PositionType[];
 
@@ -13,7 +14,7 @@ export default function JobGroupSection() {
   return (
     <section css={sectionCss}>
       <div css={sectionHeadingCss}>
-        <p css={sectionSmallCss}>job group</p>
+        <p css={sectionSmallCss}>JOB GROUP</p>
         <h2 css={section40HeadingCss}>모집 직군</h2>
       </div>
       {/* TODO: clickAble 붙이기 */}
@@ -25,7 +26,9 @@ export default function JobGroupSection() {
           >
             <li css={jobGroupItem}>
               {POSITION_TYPE_LABEL[key]}
-              <span>자세히 보기 icon</span>
+              <span>
+                자세히 보기 <ArrowIcon width={20} height={20} />
+              </span>
             </li>
           </Link>
         ))}
@@ -66,9 +69,27 @@ const jobGroupItem = css`
   letter-spacing: -0.3px;
   color: ${colors.black};
 
+  span {
+    display: flex;
+    align-items: center;
+  }
+
+  svg {
+    margin-left: 8px;
+    & > * {
+      stroke: ${colors.black};
+    }
+  }
+
   &:hover {
     color: ${colors.gray100};
     background-color: ${colors.black};
+
+    svg {
+      & > * {
+        stroke: ${colors.gray100};
+      }
+    }
   }
 
   ${mediaQuery('xs')} {

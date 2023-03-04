@@ -7,6 +7,7 @@ import { section40HeadingCss, sectionSmallCss } from '~/styles/css';
 
 import { FAQ, FAQ_TYPE, FAQ_TYPE_LABEL, FaqType } from './contstants';
 import { sectionCss, sectionHeadingCss } from './Recurit.style';
+import { AnswerIcon, DropdownIcon, QuestionIcon } from '../common/icons';
 
 const faqTypes = Object.keys(FAQ_TYPE) as FaqType[];
 
@@ -48,10 +49,15 @@ export default function FAQSection() {
             >
               {/* TODO: clickAble 붙이기 */}
               <dt>
+                <QuestionIcon width={24} height={24} />
                 {item.title}
-                <div css={faqItemDrowpdownIcon(selectedFaqItem === index)}>icon</div>
+                <div css={faqItemDrowpdownIcon(selectedFaqItem === index)}>
+                  <DropdownIcon width={24} height={24} />
+                </div>
               </dt>
-              <dd>icon {item.description}</dd>
+              <dd>
+                <AnswerIcon width={24} height={24} /> {item.description}
+              </dd>
             </li>
           ))}
         </ul>
@@ -155,6 +161,9 @@ const faqItem = (selected = false) => css`
   min-height: 65px;
 
   dt {
+    display: flex;
+    align-items: center;
+
     padding-right: 38px;
     font-weight: 600;
     font-size: 18px;
@@ -164,13 +173,26 @@ const faqItem = (selected = false) => css`
   }
 
   dd {
-    display: ${selected ? 'block' : 'none'};
+    display: ${selected ? 'flex' : 'none'};
+    align-items: center;
+
     margin-top: 11px;
+
     font-weight: 600;
     font-size: 18px;
     line-height: 140%;
     letter-spacing: -0.3px;
     color: #71727a;
+  }
+
+  svg {
+    margin-right: 12px;
+  }
+
+  ${mediaQuery('xs')} {
+    dd {
+      margin-top: 22px;
+    }
   }
 `;
 
@@ -179,6 +201,10 @@ const faqItemDrowpdownIcon = (selected = false) => css`
   top: 20px;
   right: 10px;
   transform: rotate(${selected ? '180deg' : '0deg'});
+
+  svg {
+    margin: 0;
+  }
 `;
 
 const faqCategoryButtonCss = (selected = false) => css`
