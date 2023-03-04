@@ -10,7 +10,7 @@ export default function QualificationSection() {
   return (
     <section css={sectionCss}>
       <div css={sectionHeadingCss}>
-        <p css={sectionSmallCss}>Qualifications</p>
+        <p css={sectionSmallCss}>QUALIFICATIONS</p>
         <h2 css={section40HeadingCss}>공통 자격 요건</h2>
       </div>
       <ul css={qualificationGridBox}>

@@ -9,7 +9,7 @@ export default function ScheduleSection() {
   return (
     <section css={sectionCss}>
       <div css={sectionHeadingCss}>
-        <p css={sectionSmallCss}>recruitment schedule</p>
+        <p css={sectionSmallCss}>RECRUITMENT SCHEDULE</p>
         <h2 css={section40HeadingCss}>모집 일정</h2>
       </div>
       <section css={periodFlexBoxCss}>
