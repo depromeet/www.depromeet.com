@@ -31,7 +31,7 @@ const globalCss = css`
       word-break: keep-all;
       word-wrap: break-word;
 
-      cursor: none !important;
+      /* cursor: none !important; */
     }
   }
 
