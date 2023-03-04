@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import { ArrowIcon } from '~/components/common/icons';
 import SEO from '~/components/common/SEO';
 import ChannelSection from '~/components/contact/ChannelSection';
+import OrganizerSection from '~/components/contact/OrganizerSection';
 import useMediaQuery from '~/hooks/use-media-query';
 import { colors, mediaQuery } from '~/styles/constants';
 
@@ -21,6 +22,7 @@ export default function Contact() {
           height={isMobile ? 36 : 52}
           css={arrowIconCss}
         />
+        <OrganizerSection />
       </main>
     </>
   );
