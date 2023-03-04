@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 
+import { mediaQuery } from '~/styles/constants';
 import { layoutCss, section36HeadingCss, sectionSmallCss } from '~/styles/css';
 
 export default function SponsorSection() {
@@ -31,6 +32,10 @@ const sectionCss = css`
   align-items: center;
 
   margin-bottom: 180px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 100px;
+  }
 `;
 
 const smallCss = css`
@@ -43,6 +48,10 @@ const headingCss = css`
   text-align: center;
 
   margin-bottom: 80px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 40px;
+  }
 `;
 
 const articleCss = css`
