@@ -4,6 +4,8 @@ import { m, Variants } from 'framer-motion';
 
 import { ABOUT_IMAGE_BASE } from '~/constants/images';
 import { defaultEasing } from '~/constants/motions';
+import useMediaQuery from '~/hooks/use-media-query';
+import useToggle from '~/hooks/use-toggle';
 import { colors, mediaQuery } from '~/styles/constants';
 import { layoutCss, section36HeadingCss, sectionSmallCss } from '~/styles/css';
 
@@ -115,15 +117,31 @@ const EXPERIENCES: Experience[] = [
 ];
 
 function Card({ icon, name, description, src }: Experience) {
+  const isMobile = useMediaQuery('xs');
+
+  const [isOpen, toggleIsOpen] = useToggle(false);
+
+  const onMobileClick = () => {
+    if (!isMobile) return;
+    console.log(isOpen);
+    toggleIsOpen();
+  };
+
   return (
-    <m.article css={articleCss} initial="default" whileHover="hover" whileTap="hover">
+    <m.article
+      css={articleCss}
+      initial="default"
+      whileHover="hover"
+      onClick={onMobileClick}
+      animate={isMobile && isOpen ? 'hover' : 'default'}
+    >
       <Image css={imageCss} src={src} alt={name} fill quality={100} />
-      <span css={spanCss} className="span">
-        <span css={iconSpanCss} className="iconSpan">
+      <m.span css={spanCss} variants={spanVriants}>
+        <m.span css={iconSpanCss} variants={iconSpanVariants}>
           {icon}
-        </span>
+        </m.span>
         {name}
-      </span>
+      </m.span>
 
       <m.div css={hoverWrapperCss} variants={hoverWrapperVariants}>
         <m.p css={paragraphCss} variants={paragraphVariants}>
@@ -139,15 +157,6 @@ const articleCss = css`
   width: 384px;
   height: 300px;
   padding: 32px 40px;
-
-  &:hover .span {
-    color: ${colors.point};
-  }
-
-  &:hover .iconSpan {
-    border-color: ${colors.point};
-    background-color: ${colors.point};
-  }
 
   ${mediaQuery('sm')} {
     width: calc(50% - 24px);
@@ -180,12 +189,27 @@ const spanCss = css`
   color: ${colors.white};
   z-index: 10;
 
-  transition: color 0.3s;
-
   ${mediaQuery('xs')} {
     font-size: 16px;
   }
 `;
+
+const spanVriants: Variants = {
+  default: {
+    color: colors.white,
+    transition: {
+      duration: 0.3,
+      ease: defaultEasing,
+    },
+  },
+  hover: {
+    color: colors.point,
+    transition: {
+      duration: 0.3,
+      ease: defaultEasing,
+    },
+  },
+};
 
 const iconSpanCss = css`
   display: flex;
@@ -200,9 +224,25 @@ const iconSpanCss = css`
   font-size: 17px;
   letter-spacing: -1px;
   color: ${colors.white};
-
-  transition: background-color 0.3s, border-color 0.3s;
 `;
+
+const iconSpanVariants: Variants = {
+  default: {
+    borderColor: colors.white,
+    transition: {
+      duration: 0.3,
+      ease: defaultEasing,
+    },
+  },
+  hover: {
+    borderColor: colors.point,
+    backgroundColor: colors.point,
+    transition: {
+      duration: 0.3,
+      ease: defaultEasing,
+    },
+  },
+};
 
 const hoverWrapperCss = css`
   position: absolute;
