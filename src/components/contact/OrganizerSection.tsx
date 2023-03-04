@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
 import { layoutCss, section36HeadingCss, sectionSmallCss } from '~/styles/css';
 
 import { ORGANIZERS } from './constants';
@@ -40,6 +40,10 @@ const sectionCss = css`
   ${layoutCss};
 
   margin-bottom: 180px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 150px;
+  }
 `;
 
 const headingArticleCss = css`
@@ -49,6 +53,10 @@ const headingArticleCss = css`
   align-items: center;
 
   margin-bottom: 80px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 20px;
+  }
 `;
 
 const smallCss = css`
@@ -61,6 +69,10 @@ const headingCss = css`
   ${section36HeadingCss};
 
   margin-bottom: 40px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 20px;
+  }
 `;
 
 const asteriskSpanCss = css`
@@ -74,7 +86,7 @@ const paragraphCss = css`
   color: ${colors.black};
   opacity: 0.6;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 140%;
   text-align: center;
 `;
@@ -101,4 +113,8 @@ const organizerCardWrapperCss = css`
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
+
+  ${mediaQuery('xs')} {
+    gap: 12px;
+  }
 `;

@@ -6,7 +6,7 @@ import { m, Variants } from 'framer-motion';
 import { defaultEasing } from '~/constants/motions';
 import useMediaQuery from '~/hooks/use-media-query';
 import useToggle from '~/hooks/use-toggle';
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
 
 import { Organizer } from './constants';
 import { ClickableLink } from '../common/Clickable';
@@ -58,25 +58,25 @@ export default function OrganizerCard({
         <m.div css={linkWrapperCss} variants={linkStaggerVariants}>
           {behance && (
             <MotionClickableLink href={behance}>
-              <BehanceIcon />
+              <BehanceIcon width={isMobile ? 17 : 27} height={isMobile ? 17 : 27} />
             </MotionClickableLink>
           )}
 
           {linkedin && (
             <MotionClickableLink href={linkedin}>
-              <LinkedinIcon />
+              <LinkedinIcon width={isMobile ? 14 : 24} height={isMobile ? 14 : 24} />
             </MotionClickableLink>
           )}
 
           {github && (
             <MotionClickableLink href={github}>
-              <GithubIcon />
+              <GithubIcon width={isMobile ? 18 : 26} height={isMobile ? 18 : 26} />
             </MotionClickableLink>
           )}
 
           {web && (
             <MotionClickableLink href={web}>
-              <WebIcon />
+              <WebIcon width={isMobile ? 19 : 31} height={isMobile ? 19 : 31} />
             </MotionClickableLink>
           )}
         </m.div>
@@ -87,7 +87,9 @@ export default function OrganizerCard({
 
 const articleCss = css`
   position: relative;
-  width: 282px;
+  /* NOTE gap size * gap count / card */
+  width: calc(25% - (24px * 3 / 4));
+
   height: 348px;
   border-top: solid 1px ${colors.black};
   padding: 24px;
@@ -96,6 +98,16 @@ const articleCss = css`
   flex-direction: column;
   justify-content: flex-end;
   color: ${colors.white};
+
+  ${mediaQuery('sm')} {
+    width: calc(50% - (24px / 2));
+  }
+
+  ${mediaQuery('xs')} {
+    width: calc(50% - (12px / 2));
+    height: 200px;
+    padding: 12px;
+  }
 `;
 
 const imageCss = css`
@@ -108,12 +120,23 @@ const nameCss = css`
   font-size: 1.25rem;
   line-height: 1.75rem;
   margin-bottom: 4px;
+
+  ${mediaQuery('xs')} {
+    font-size: 14px;
+    line-height: 140%;
+  }
 `;
 
 const positionCss = css`
   font-weight: 500;
   font-size: 1rem;
   line-height: 140%;
+
+  ${mediaQuery('xs')} {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 140%;
+  }
 `;
 
 const overlayCss = css`
@@ -131,6 +154,10 @@ const overlayCss = css`
   flex-direction: column;
   justify-content: space-between;
   background-color: ${colors.black};
+
+  ${mediaQuery('xs')} {
+    padding: 12px;
+  }
 `;
 
 const overlayVariants: Variants = {
@@ -163,12 +190,24 @@ const asteriskSpanCss = css`
   color: ${colors.point};
 
   margin-bottom: 24px;
+
+  ${mediaQuery('xs')} {
+    font-size: 15px;
+    line-height: 18px;
+    margin-bottom: 12px;
+  }
 `;
 
 const paragraphCss = css`
   font-weight: 500;
   font-size: 1.25rem;
   line-height: 1.5rem;
+
+  ${mediaQuery('xs')} {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 140%;
+  }
 `;
 
 const paragraphVariants: Variants = {
@@ -185,12 +224,16 @@ const paragraphVariants: Variants = {
 const linkWrapperCss = css`
   display: flex;
   gap: 18px;
+
+  ${mediaQuery('xs')} {
+    gap: 10px;
+  }
 `;
 
 function MotionClickableLink({ href, children, ...props }: ComponentProps<typeof ClickableLink>) {
   return (
     <m.span variants={linkVariants}>
-      <ClickableLink css={linkCss} href={href} {...props}>
+      <ClickableLink css={linkCss} href={href} target="_blank" rel="noopener noreferrer" {...props}>
         {children}
       </ClickableLink>
     </m.span>
@@ -205,6 +248,11 @@ const linkCss = css`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${mediaQuery('xs')} {
+    width: 28px;
+    height: 28px;
+  }
 `;
 
 const linkVariants: Variants = {
