@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 
+import { DEPROMEET_EMAIL, KAKAO_PLUS_FRIEND } from '~/constants/common';
 import { colors, mediaQuery } from '~/styles/constants';
 import { layoutCss } from '~/styles/css';
 
@@ -21,14 +22,19 @@ export default function ChannelSection() {
         <p css={channelParagraphCss}>카카오톡 채널 @depromeet로 물어보세요!</p>
         <p css={[channelParagraphCss, lastChannelParagraphCss]}>
           비즈니스 문의는{' '}
-          <ClickableLink href="" css={businessAnchorCss}>
+          <ClickableLink href={`mailto:${DEPROMEET_EMAIL}`} css={businessAnchorCss}>
             여기로
           </ClickableLink>
         </p>
 
         <div css={channelWrapperCss}>
           <span>KAKAO PLUS FRIEND</span>
-          <ClickableLink href="" css={channelAnchorCss}>
+          <ClickableLink
+            href={KAKAO_PLUS_FRIEND}
+            target="_blank"
+            rel="noopener noreferrer"
+            css={channelAnchorCss}
+          >
             @depromeet
             <ArrowIcon
               direction="right"
@@ -42,7 +48,7 @@ export default function ChannelSection() {
 
         <div css={channelWrapperCss}>
           <span>GMAIL</span>
-          <ClickableLink href="" css={channelAnchorCss}>
+          <ClickableLink href={`mailto:${DEPROMEET_EMAIL}`} css={channelAnchorCss}>
             depromeet@gmail.com
             <ArrowIcon
               direction="right"
