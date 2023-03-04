@@ -5,13 +5,15 @@ import { AnimatePresence, m, Variants } from 'framer-motion';
 
 import { ABOUT_IMAGE_BASE } from '~/constants/images/images';
 import { defaultEasing } from '~/constants/motions';
-import { colors } from '~/styles/constants';
+import useMediaQuery from '~/hooks/use-media-query';
+import { colors, mediaQuery } from '~/styles/constants';
 import { section36HeadingCss, sectionSmallCss } from '~/styles/css';
 
 import { ClickableButton } from '../common/Clickable';
 import { SharpInCircleIcon } from '../common/icons/SharpInCircleIcon';
 
 export default function JobGroupSection() {
+  const isMobile = useMediaQuery('xs');
   const { currentJob, onJobClick, currentJobInform } = useJobInform();
 
   return (
@@ -62,8 +64,8 @@ export default function JobGroupSection() {
           </div>
           <div css={descriptionWrapperCss}>
             <SharpInCircleIcon
-              width={32}
-              height={32}
+              width={isMobile ? 24 : 32}
+              height={isMobile ? 24 : 32}
               color={colors.black}
               css={descriptionSharpIconCss}
             />
@@ -86,6 +88,10 @@ const sectionCss = css`
   align-items: center;
 
   margin-bottom: 180px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 100px;
+  }
 `;
 
 const smallCss = css`
@@ -98,12 +104,23 @@ const headingCss = css`
   ${section36HeadingCss};
 
   margin-bottom: 60px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 40px;
+  }
 `;
 
 const buttonWrapperCss = css`
   display: flex;
 
   margin-bottom: 56px;
+
+  ${mediaQuery('xs')} {
+    flex-wrap: wrap;
+    justify-content: center;
+
+    margin-bottom: 20px;
+  }
 `;
 
 const buttonCss = css`
@@ -112,6 +129,11 @@ const buttonCss = css`
   font-weight: 500;
   font-size: 1.125rem;
   line-height: 1.375rem;
+
+  ${mediaQuery('xs')} {
+    font-size: 16px;
+    line-height: 19px;
+  }
 `;
 
 const currentJobButtonCss = css`
@@ -158,6 +180,10 @@ const articleCss = css`
   border-bottom: solid 1px ${colors.black};
 
   display: flex;
+
+  ${mediaQuery('xs')} {
+    flex-direction: column;
+  }
 `;
 
 const articleVariants: Variants = {
@@ -193,6 +219,11 @@ const imageWrapperCss = css`
   & > img {
     object-fit: cover;
   }
+
+  ${mediaQuery('xs')} {
+    width: 100%;
+    height: 200px;
+  }
 `;
 
 const descriptionWrapperCss = css`
@@ -200,6 +231,12 @@ const descriptionWrapperCss = css`
   margin: 50px 100px;
   display: flex;
   flex-direction: column;
+
+  ${mediaQuery('xs')} {
+    height: 100%;
+    margin: 20px auto;
+    padding: 0 16px;
+  }
 `;
 
 const descriptionSharpIconCss = css`
@@ -219,6 +256,7 @@ const jobHeadingCss = css`
     font-family: 'Helvetica';
     font-style: italic;
     font-weight: 400;
+    margin: 0 10px;
   }
 `;
 
@@ -230,6 +268,12 @@ const jobParagraphCss = css`
   font-weight: 600;
   font-size: 1.25rem;
   line-height: 140%;
+
+  ${mediaQuery('xs')} {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22.4px;
+  }
 `;
 
 const JOBS = ['UIUX DESIGN', 'iOS', 'ANDROID', 'WEB', 'SERVER'] as const;
