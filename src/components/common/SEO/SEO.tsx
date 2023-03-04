@@ -14,7 +14,7 @@ interface Props {
    */
   description?: string;
   /**
-   * `og:iamge`, `twitter:image`에 사용됩니다.
+   * `og:image`, `twitter:image`에 사용됩니다.
    *
    * @default 추가 필요
    */
