@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 import { AnimatePresence, m, Variants } from 'framer-motion';
 
-import { ABOUT_IMAGE_BASE } from '~/constants/images/images';
+import { ABOUT_IMAGE_BASE } from '~/constants/images';
 import { defaultEasing } from '~/constants/motions';
 import useMediaQuery from '~/hooks/use-media-query';
 import { colors, mediaQuery } from '~/styles/constants';
