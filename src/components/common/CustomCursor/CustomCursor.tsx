@@ -20,14 +20,17 @@ export default function CustomCursor() {
     }
     document.addEventListener('mousemove', handleMouseMove);
 
-    function handleMouseOut() {
+    function handleMouseLeave() {
       cursorRef.current?.setAttribute('style', `display: none`);
     }
-    window.addEventListener('mouseout', handleMouseOut);
+    document.addEventListener('mouseleave', handleMouseLeave);
+    // NOTE: firefox 대응
+    document.documentElement.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseout', handleMouseOut);
+      document.removeEventListener('mouseleave', handleMouseLeave);
+      document.documentElement.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, []);
 
