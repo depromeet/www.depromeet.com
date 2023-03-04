@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 
 import HeaderSection from '~/components/about/HeaderSection';
 import JobGroupSection from '~/components/about/JobGroupSection';
+import SessionSection from '~/components/about/SessionSection';
 import { ArrowIcon } from '~/components/common/icons';
 import SEO from '~/components/common/SEO';
 import { colors } from '~/styles/constants';
@@ -20,6 +21,7 @@ export default function Interview() {
           color={colors.black}
         />
         <JobGroupSection />
+        <SessionSection />
       </main>
     </>
   );
