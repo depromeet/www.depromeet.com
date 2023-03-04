@@ -187,6 +187,7 @@ const faqItem = (selected = false) => css`
 
   svg {
     margin-right: 12px;
+    flex-shrink: 0;
   }
 
   ${mediaQuery('xs')} {
