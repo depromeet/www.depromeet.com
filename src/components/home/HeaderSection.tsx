@@ -69,6 +69,7 @@ const sectionCss = css`
   position: relative;
   width: 100%;
   height: 780px;
+  overflow: hidden;
 
   display: flex;
   flex-direction: column;
