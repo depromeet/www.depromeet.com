@@ -32,7 +32,7 @@ export default function JobGroupSection() {
             onClick={onJobClick(job)}
             css={[buttonCss, currentJob === job && currentJobButtonCss]}
           >
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="wait" initial={false}>
               {currentJob === job && (
                 <m.span
                   css={currentJobIconCss}
