@@ -202,6 +202,7 @@ const faqItemDrowpdownIcon = (selected = false) => css`
   top: 20px;
   right: 10px;
   transform: rotate(${selected ? '180deg' : '0deg'});
+  line-height: 0;
 
   svg {
     margin: 0;
