@@ -1,1 +1,1 @@
-export { CONTACT_IMAGES } from './images';
+export * from './images';
