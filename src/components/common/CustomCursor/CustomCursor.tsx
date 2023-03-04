@@ -1,11 +1,19 @@
 import { useEffect, useRef } from 'react';
 import { css } from '@emotion/react';
 
+import { useUserAgent } from '~/hooks/use-user-agent';
 import useCursorState from '~/store/cursor/useCursorState';
 
 const CURSOR_URL = '/common/cursor.webp';
 
-export default function CustomCursor() {
+export default function CustomCursorWrapper() {
+  const { isMobileAgent } = useUserAgent();
+
+  if (isMobileAgent) return <></>;
+  return <CustomCursor />;
+}
+
+function CustomCursor() {
   const cursorRef = useRef<HTMLSpanElement>(null);
   const { cursorState } = useCursorState();
 
