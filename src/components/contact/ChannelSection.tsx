@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
 import { layoutCss } from '~/styles/css';
 
 import { ClickableLink } from '../common/Clickable';
@@ -66,18 +66,37 @@ const sectionCss = css`
   display: flex;
 
   margin-bottom: 248px;
+
+  ${mediaQuery('xs')} {
+    padding-top: 80px;
+
+    flex-direction: column;
+
+    margin-bottom: 133px;
+  }
 `;
 
 const headingArticleCss = css`
   /* NOTE : 486 / 1200 */
   width: 40%;
   flex-shrink: 0;
+
+  ${mediaQuery('xs')} {
+    width: 100%;
+
+    margin-bottom: 20px;
+  }
 `;
 
 const headingCss = css`
   font-weight: 600;
   font-size: 2.25rem;
   line-height: 2.6875rem;
+
+  ${mediaQuery('xs')} {
+    font-size: 24px;
+    line-height: 29px;
+  }
 `;
 
 const channelArticleCss = css`
@@ -89,10 +108,15 @@ const channelParagraphCss = css`
   font-size: 1.5rem;
   line-height: 1.8125rem;
   margin-bottom: 13px;
+
+  ${mediaQuery('xs')} {
+    font-size: 16px;
+    line-height: 19px;
+  }
 `;
 
 const lastChannelParagraphCss = css`
-  margin-bottom: 87px;
+  margin-bottom: 80px;
 `;
 
 const businessAnchorCss = css`
@@ -136,6 +160,17 @@ const channelWrapperCss = css`
 
     & .icon * {
       stroke: ${colors.white};
+    }
+  }
+
+  ${mediaQuery('xs')} {
+    padding: 0;
+
+    font-size: 16px;
+    line-height: 140%;
+
+    &::before {
+      left: -20px;
     }
   }
 `;
