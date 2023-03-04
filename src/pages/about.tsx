@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 
 import HeaderSection from '~/components/about/HeaderSection';
 import JobGroupSection from '~/components/about/JobGroupSection';
+import MoreExperienceSection from '~/components/about/MoreExperienceSection';
 import SessionSection from '~/components/about/SessionSection';
 import { ArrowIcon } from '~/components/common/icons';
 import SEO from '~/components/common/SEO';
@@ -22,6 +23,7 @@ export default function Interview() {
         />
         <JobGroupSection />
         <SessionSection />
+        <MoreExperienceSection />
       </main>
     </>
   );

@@ -37,6 +37,10 @@ const sectionCss = css`
   width: 100%;
 
   margin-bottom: 240px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 100px;
+  }
 `;
 
 const headingArticleCss = css`
