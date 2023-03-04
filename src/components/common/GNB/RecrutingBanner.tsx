@@ -16,7 +16,7 @@ export default function RecrutingBanner() {
         rel="noopener noreferrer"
         css={linkCss}
       >
-        디프만 13기 바로 지원하기 <ArrowIcon />
+        디프만 13기 바로 지원하러 가기 <ArrowIcon />
       </ClickableLink>
     </section>
   );
