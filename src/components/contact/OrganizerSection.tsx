@@ -10,7 +10,7 @@ export default function OrganizerSection() {
   return (
     <section css={sectionCss}>
       <article css={headingArticleCss}>
-        <small css={smallCss}>INTRODUCTION</small>
+        <small css={smallCss}>INTRODUCING</small>
         <h2 css={headingCss}>디프만 13기 운영진을 소개합니다</h2>
         <span css={asteriskSpanCss}>*</span>
         <p css={paragraphCss}>
