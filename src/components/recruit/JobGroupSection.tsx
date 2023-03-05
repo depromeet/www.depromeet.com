@@ -19,10 +19,7 @@ export default function JobGroupSection() {
       </div>
       <ul css={jobGroupFlexBox}>
         {positionTypes.map(key => (
-          <ClickableLink
-            key={`job-group-${key}`}
-            href={`/recurit/${POSITION_TYPE_LABEL[key].toLowerCase()}`}
-          >
+          <ClickableLink key={`job-group-${key}`} href={`/recruit/${key.toLowerCase()}`}>
             <li css={jobGroupItem}>
               {POSITION_TYPE_LABEL[key]}
               <span>
