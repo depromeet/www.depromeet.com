@@ -11,12 +11,7 @@ export default function ProjectDetail({ currentProject }: Props) {
 
   return (
     <>
-      <SEO
-        title={`디프만 - ${title}`}
-        description={description}
-        // TODO: image base url 추가
-        image={image}
-      />
+      <SEO title={`디프만 - ${title}`} description={description} image={image} />
       <ProjectDetailSection currentProject={currentProject} />
     </>
   );
