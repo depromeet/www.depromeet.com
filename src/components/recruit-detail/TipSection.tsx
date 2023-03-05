@@ -18,7 +18,7 @@ export default function TipSection({ positionType }: { positionType: PositionTyp
     <section css={sectionCss}>
       <div css={sectionHeadingCss}>
         <small css={sectionSmallCss}>TIP</small>
-        <h2 css={section40HeadingCss}>디프만 전 멤버들의 지원 꿀팁 {`${isNeedController}`}</h2>
+        <h2 css={section40HeadingCss}>디프만 전 멤버들의 지원 꿀팁</h2>
       </div>
       <Carousel
         showArrows
