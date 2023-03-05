@@ -58,6 +58,7 @@ const sectionCss = css`
     padding-top: 24px;
     height: 514px;
     margin-bottom: 0;
+    overflow-x: hidden;
   }
 `;
 
