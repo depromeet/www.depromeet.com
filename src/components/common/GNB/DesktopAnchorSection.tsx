@@ -1,17 +1,20 @@
 import { PropsWithChildren } from 'react';
-import Link from 'next/link';
 import { css } from '@emotion/react';
 
 import { colors } from '~/styles/constants';
 import { layoutCss } from '~/styles/css';
 
 import { ANCHORS_HEIGHT } from './constants';
+import { ClickableLink } from '../Clickable';
+import { DepromeetIcon } from '../icons/DepromeetIcon';
 
 export default function DesktopAnchorSection() {
   return (
     <section css={anchorSectionCss}>
       <div css={anchorWrapperCss}>
-        <Anchor href="/">디프만 로고</Anchor>
+        <Anchor href="/">
+          <DepromeetIcon />
+        </Anchor>
         <Anchor href="/about">디프만 A TO Z</Anchor>
         <Anchor href="/project">지난 프로젝트</Anchor>
         <Anchor href="/contact">문의하기</Anchor>
@@ -47,13 +50,18 @@ interface AnchorProps {
 
 function Anchor({ href, children }: PropsWithChildren<AnchorProps>) {
   return (
-    <Link href={href} css={anchorCss}>
+    <ClickableLink href={href} css={anchorCss}>
       {children}
-    </Link>
+    </ClickableLink>
   );
 }
 
 const anchorCss = css`
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   font-weight: 600;
   font-size: 1.125rem;
 `;
