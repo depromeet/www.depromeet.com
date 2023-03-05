@@ -123,7 +123,6 @@ function Card({ icon, name, description, src }: Experience) {
 
   const onMobileClick = () => {
     if (!isMobile) return;
-    console.log(isOpen);
     toggleIsOpen();
   };
 
