@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 
 import { colors, mediaQuery } from '~/styles/constants';
 
+import { ClickableButton } from '../common/Clickable';
 import { ArrowIcon } from '../common/icons';
 
 export default function PreviousSection() {
@@ -10,14 +11,14 @@ export default function PreviousSection() {
 
   return (
     <div css={sectionCss}>
-      <button
+      <ClickableButton
         onClick={() => {
           router.back();
         }}
       >
         <ArrowIcon width={18} height={18} color="black" />
         이전
-      </button>
+      </ClickableButton>
     </div>
   );
 }
