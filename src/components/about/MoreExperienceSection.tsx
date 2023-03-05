@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { m, Variants } from 'framer-motion';
 
 import { ABOUT_IMAGE_BASE } from '~/constants/images';
-import { defaultEasing } from '~/constants/motions';
+import { defaultEasing, defaultFadeInUpVariants, staggerHalf } from '~/constants/motions';
 import useMediaQuery from '~/hooks/use-media-query';
 import useToggle from '~/hooks/use-toggle';
 import { colors, mediaQuery } from '~/styles/constants';
@@ -19,11 +19,17 @@ export default function MoreExperienceSection() {
         놀땐 노는 디프만
       </h2>
 
-      <div css={cardWrapperCss}>
+      <m.div
+        css={cardWrapperCss}
+        variants={staggerHalf}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ amount: 0.6, once: true }}
+      >
         {EXPERIENCES.map(experience => (
           <Card key={experience.name} {...experience} />
         ))}
-      </div>
+      </m.div>
     </section>
   );
 }
@@ -127,44 +133,55 @@ function Card({ icon, name, description, src }: Experience) {
   };
 
   return (
-    <m.article
-      css={articleCss}
-      initial="default"
-      whileHover="hover"
-      onClick={onMobileClick}
-      animate={isMobile && isOpen ? 'hover' : 'default'}
-    >
-      <Image css={imageCss} src={src} alt={name} fill quality={100} />
-      <m.span css={spanCss} variants={spanVriants}>
-        <m.span css={iconSpanCss} variants={iconSpanVariants}>
-          {icon}
+    <m.div css={animationWrapperCss} variants={defaultFadeInUpVariants}>
+      <m.article
+        css={articleCss}
+        initial="default"
+        whileHover="hover"
+        onClick={onMobileClick}
+        animate={isMobile && isOpen ? 'hover' : 'default'}
+      >
+        <Image css={imageCss} src={src} alt={name} fill quality={100} />
+        <m.span css={spanCss} variants={spanVriants}>
+          <m.span css={iconSpanCss} variants={iconSpanVariants}>
+            {icon}
+          </m.span>
+          {name}
         </m.span>
-        {name}
-      </m.span>
 
-      <m.div css={hoverWrapperCss} variants={hoverWrapperVariants}>
-        <m.p css={paragraphCss} variants={paragraphVariants}>
-          {description}
-        </m.p>
-      </m.div>
-    </m.article>
+        <m.div css={hoverWrapperCss} variants={hoverWrapperVariants}>
+          <m.p css={paragraphCss} variants={paragraphVariants}>
+            {description}
+          </m.p>
+        </m.div>
+      </m.article>
+    </m.div>
   );
 }
 
-const articleCss = css`
+const animationWrapperCss = css`
   position: relative;
   width: 384px;
   height: 300px;
-  padding: 32px 40px;
 
   ${mediaQuery('sm')} {
     width: calc(50% - 24px);
     height: 224px;
-    padding: 20px;
   }
 
   ${mediaQuery('xs')} {
     width: calc(50% - 6px);
+  }
+`;
+
+const articleCss = css`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 32px 40px;
+
+  ${mediaQuery('sm')} {
+    padding: 20px;
   }
 `;
 
