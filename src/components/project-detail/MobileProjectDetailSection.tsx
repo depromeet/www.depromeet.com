@@ -88,6 +88,7 @@ export default function MobileProjectDetailSection({
 }
 
 const sectionCss = css`
+  width: 100%;
   margin-bottom: 60px;
 `;
 
@@ -169,13 +170,16 @@ const teamHeadingCss = css`
 `;
 
 const tableCss = css`
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
 `;
 
 const trCss = css`
+  width: 100%;
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
 `;
 

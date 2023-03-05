@@ -29,6 +29,7 @@ const sectionCss = css`
   position: relative;
   width: 100%;
   height: 667px;
+  overflow: hidden;
 
   ${mediaQuery('md')} {
     height: 500px;
