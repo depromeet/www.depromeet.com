@@ -11,6 +11,7 @@ export default function HeaderSection({ positionType }: { positionType: Position
   return (
     <section css={sectionCss}>
       <Image
+        css={imageCss}
         src={`${RECRUIT_DETAIL_IMAGE_BASE}/header-${positionType.toLowerCase()}.webp`}
         alt={POSITION_DISPLAY_NAME[positionType]}
         priority
@@ -29,4 +30,12 @@ const sectionCss = css`
   ${mediaQuery('xs')} {
     height: 200px;
   }
+`;
+
+const imageCss = css`
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  z-index: -1;
 `;
