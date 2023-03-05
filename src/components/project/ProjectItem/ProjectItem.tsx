@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 
 import useMediaQuery from '~/hooks/use-media-query';
@@ -12,6 +13,11 @@ interface Props {
 }
 export default function ProjectItem({ project }: Props) {
   const isMobile = useMediaQuery('xs');
+  const router = useRouter();
+
+  const moveToDetailPage = () => {
+    router.push(`/project/${project.title}`);
+  };
   return (
     <div css={wrapperCss}>
       <Image
@@ -26,7 +32,7 @@ export default function ProjectItem({ project }: Props) {
         <span>{project.generation}기</span>
         <h3>{project.title}</h3>
         <p>{project.catchphrase}</p>
-        <button css={detailBtnCss}>
+        <button css={detailBtnCss} onClick={moveToDetailPage}>
           <Image src={'/project/detailBtn.webp'} alt="" width={24} height={24} />
         </button>
       </div>
