@@ -1,6 +1,8 @@
 import { useId } from 'react';
 import { css } from '@emotion/react';
 
+import { mediaQuery } from '~/styles/constants';
+
 import { Project } from '../constants';
 import ProjectItem from '../ProjectItem/ProjectItem';
 
@@ -24,4 +26,9 @@ const wrapperCss = css`
   grid-template-rows: repeat(3, 300px);
   column-gap: 24px;
   row-gap: 24px;
+  ${mediaQuery('xs')} {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
 `;

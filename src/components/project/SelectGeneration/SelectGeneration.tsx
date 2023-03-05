@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
+import { caption2Css } from '~/styles/css';
 
 import { Generation } from '../ProjectListSection/ProjectListSection';
 
@@ -52,20 +53,25 @@ const wrapperCss = css`
   margin-bottom: 28px;
   display: flex;
   gap: 40px;
+  ${mediaQuery('xs')} {
+    gap: 20px;
+    margin-bottom: 20px;
+  }
 `;
 
 const buttonCss = (selected: boolean) => css`
-  &:hover {
-    background: ${selected ? colors.black : colors.gray200};
-  }
+  ${caption2Css}
   width: 64px;
   height: 41px;
   border: 1px solid ${colors.black};
   border-radius: 50%;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 140%;
+
   background-color: ${selected && colors.black};
   border: ${!selected && `1px solid ${colors.black}`};
   color: ${selected ? colors.white : colors.black};
+
+  &:hover,
+  &:active {
+    background: ${selected ? colors.black : colors.gray200};
+  }
 `;
