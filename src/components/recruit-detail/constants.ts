@@ -10,18 +10,18 @@ export type PositionType = keyof typeof POSITION_TYPE;
 
 export const POSITION_DISPLAY_NAME = {
   IOS: 'iOS',
-  ANDROID: 'Android',
-  FRONTEND: 'FrontEnd',
-  SERVER: 'Server',
-  DESIGN: 'UIUX Design',
+  ANDROID: 'ANDROID',
+  FRONTEND: 'FRONTEND',
+  SERVER: 'SERVER',
+  DESIGN: 'UIUX',
 } as const;
 
 export const POSITION_WITH_CATEGORY_NAME = {
-  IOS: `${POSITION_DISPLAY_NAME.IOS} Developer`,
-  ANDROID: `${POSITION_DISPLAY_NAME.ANDROID} Developer`,
-  FRONTEND: `${POSITION_DISPLAY_NAME.FRONTEND} Developer`,
-  SERVER: `${POSITION_DISPLAY_NAME.SERVER} Developer`,
-  DESIGN: 'UIUX Designer',
+  IOS: `${POSITION_DISPLAY_NAME.IOS} DEVELOPER`,
+  ANDROID: `${POSITION_DISPLAY_NAME.ANDROID} DEVELOPER`,
+  FRONTEND: `${POSITION_DISPLAY_NAME.FRONTEND} DEVELOPER`,
+  SERVER: `${POSITION_DISPLAY_NAME.SERVER} DEVELOPER`,
+  DESIGN: `${POSITION_DISPLAY_NAME.DESIGN} DESIGNER`,
 } as const;
 
 export const ICON_POSITION_PATH = {
@@ -57,11 +57,11 @@ export const MOBILE_BANNER_IMG_PATH = {
 };
 
 export const POSITION_DESCRIPTION = {
-  DESIGN: `서비스 설계부터 UXUI 전반을 맡게 돼요.\n\n 디자이너들과 함께 의견을 나누며 하나의 멋진 서비스가 만들어지는 경험을 하고 싶다면? 디자인 외에도 마케팅, 브랜딩, 기획 등에도 관심이 있는 디자이너라면? 21세기 디자이너에게 가장 필요한 역량, 개발자와의 커뮤니케이션! 부족하다고 느낀다면?\n\n 디프만 13기 디자이너로 바로 지원하세요 !`,
-  IOS: `뛰어나고 열정이 많은 디자이너와 서버 개발자들과 함께 디프만 기간 동안\n치열하게 커뮤니케이션을 하며 iOS 앱 개발 역량은 물론이고 전체적인 시야를 넓힐 수 있어요.\n특히 iOS 포지션 상 디자인과 서버의 중간 다리 역할을 하게 됨으로 만들어가는 서비스에 대해\n모든 부분에 있어 주도적이고 핵심적인 참여를 할 수 있어요.\n또한 핫한 기술들에 대해 과감없이 도전하면서 쓸 수 있는 최적의 환경이 제공됩니다.`,
-  ANDROID: `열정과 능력을 함께 갖춘 동료들과 긴밀하게 협업하며 안드로이드 네이티브 애플리케이션을 개발해요.\n개발뿐만 아니라 동료들과 자유롭게 커뮤니케이션 하며 기획부터 런칭 및 운영까지\n모바일 서비스에 대한 A to Z를 얻어갈 수 있어요!\n다양한 직군의 사람들과 지식과 경험을 공유하며 \n완성도 높은 모바일 서비스를 만들어 볼 수 있는 최고의 환경이에요.`,
-  FRONTEND: `성장을 목표로 하는 디자이너분들과 서버 엔지니어분들과 함께\n플랫폼에 국한되지 않고 웹 그리고 웹뷰 형태의 클라이언트 애플리케이션을 개발해요.\n개발 역량은 물론, 타 직군과의 의사소통과 같은 소프트 스킬을 키울 수 있어요.\n또한 의욕이 넘치시는 다른 Frontend 엔지니어분들과 함께\n평소에 사용하거나 배워보고 싶었던 스택들을 사용하거나 스터디하기 최적의 환경이에요.`,
-  SERVER: `실제 서비스를 운영하기 위해 설계부터 운영까지 전반적인 시스템 인프라를 구축 및 관리해요.\n다양한 클라이언트 개발자분들과 협업을 진행하면서, 의사소통 능력을 키울 수 있어요.\n다른 Backend 엔지니어분들과 기술적으로 건강한 토론을 진행하면서,\n우리 서비스에 대한 기술적 고도화를 진행할 수 있어요.`,
+  DESIGN: `서비스 설계부터 UXUI 전반을 맡게 돼요.<br /> <br /> 디자이너들과 함께 의견을 나누며 하나의 멋진 서비스가 만들어지는 경험을 하고 싶다면?<br /> 디자인 외에도 마케팅, 브랜딩, 기획 등에도 관심이 있는 디자이너라면?<br /> 21세기 디자이너에게 가장 필요한 역량, 개발자와의 커뮤니케이션! 부족하다고 느낀다면?<br /><br /> 디프만 13기 디자이너로 바로 지원하세요 !`,
+  IOS: `뛰어나고 열정이 많은 디자이너와 서버 개발자들과 함께 디프만 기간 동안 치열하게 커뮤니케이션을 하며 iOS 앱 개발 역량은 물론이고 전체적인 시야를 넓힐 수 있어요.<br /> 특히 iOS 포지션 상 디자인과 서버의 중간 다리 역할을 하게 됨으로 만들어가는 서비스에 대해 모든 부분에 있어 주도적이고 핵심적인 참여를 할 수 있어요.<br /><br /> 완성도 높은 앱스토어 런칭 앱을 개발 할 수 있는 최적의 환경이 제공됩니다.`,
+  ANDROID: `열정과 능력을 함께 갖춘 동료들과 긴밀하게 협업하며 안드로이드 네이티브 애플리케이션을 개발해요. 개발뿐만 아니라 동료들과 자유롭게 커뮤니케이션 하며 기획부터 런칭 및 운영까지 모바일 서비스에 대한 A to Z를 얻어갈 수 있어요!<br /><br /> 다양한 직군의 사람들과 지식과 경험을 공유하며  완성도 높은 모바일 서비스를 만들어 볼 수 있는 최고의 환경이에요.`,
+  FRONTEND: `성장을 목표로 하는 디자이너분들과 서버 엔지니어분들과 함께 플랫폼에 국한되지 않고 웹 그리고 웹뷰 형태의 클라이언트 애플리케이션을 개발해요. 개발 역량은 물론, 타 직군과의 의사소통과 같은 소프트 스킬을 키울 수 있어요.<br /> <br /> 또한 의욕이 넘치시는 다른 Frontend 엔지니어분들과 함께 평소에 사용하거나 배워보고 싶었던 스택들을 사용하거나 스터디하기 최적의 환경이에요.`,
+  SERVER: `실제 서비스를 운영하기 위해 설계부터 운영까지 전반적인 시스템 인프라를 구축 및 관리해요. 다양한 클라이언트 개발자분들과 협업을 진행하면서, 의사소통 능력을 키울 수 있어요.<br /><br /> 다른 Backend 엔지니어분들과 기술적으로 건강한 토론을 진행하면서, 우리 서비스에 대한 기술적 고도화를 진행할 수 있어요.`,
 };
 
 export const POSITION_PREFER_LIST = {

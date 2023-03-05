@@ -2,19 +2,50 @@ import { css } from '@emotion/react';
 
 import { colors, mediaQuery } from '~/styles/constants';
 
+import {
+  POSITION_DESCRIPTION,
+  POSITION_PREFER_LIST,
+  POSITION_TYPE,
+  POSITION_WITH_CATEGORY_NAME,
+  PositionType,
+} from './constants';
 import { sectionCss } from './RecruitDetail.style';
+import { AndPersentCircleIcon } from '../common/icons/AndPersentCircleIcon';
+import { BraceCircleIcon } from '../common/icons/BraceCircleIcon';
+import { SharpInCircleIcon } from '../common/icons/SharpInCircleIcon';
 
-export default function DescriptionSection() {
+export default function DescriptionSection({ positionType }: { positionType: PositionType }) {
   return (
     <section css={sectionCss}>
       <div css={flexBoxCss}>
         <div css={flexRowCss}>
-          <dt>icon 제목</dt>
-          <dd>설명</dd>
+          <dt>
+            <span>
+              {positionType === POSITION_TYPE.DESIGN ? (
+                <SharpInCircleIcon color="black" />
+              ) : (
+                <BraceCircleIcon />
+              )}
+
+              {POSITION_WITH_CATEGORY_NAME[positionType]}
+            </span>
+          </dt>
+          <dd dangerouslySetInnerHTML={{ __html: POSITION_DESCRIPTION[positionType] }} />
         </div>
         <div css={flexRowCss}>
-          <dt>icon 제목</dt>
-          <dd>설명</dd>
+          <dt>
+            <span>
+              <AndPersentCircleIcon />
+              이런분들과 함께하고 싶어요
+            </span>
+          </dt>
+          <dd>
+            <ul>
+              {POSITION_PREFER_LIST[positionType].map((content, index) => (
+                <li key={index}>{content}</li>
+              ))}
+            </ul>
+          </dd>
         </div>
       </div>
     </section>
@@ -48,11 +79,27 @@ const flexRowCss = css`
     padding: 20px 0;
     width: 34%;
     border-right: solid 1px ${colors.black};
+
+    span {
+      display: flex;
+      align-items: center;
+    }
+
+    svg {
+      margin-right: 10px;
+    }
   }
 
   dd {
     padding: 20px 20px 0 80px;
     width: 76%;
+
+    ul {
+      list-style: disc;
+    }
+    li {
+      margin-bottom: 16px;
+    }
   }
 
   ${mediaQuery('xs')} {
@@ -75,6 +122,10 @@ const flexRowCss = css`
       font-weight: 500;
       font-size: 14px;
       line-height: 180%;
+
+      ul {
+        padding-left: 20px;
+      }
     }
   }
 `;
