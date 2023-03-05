@@ -48,8 +48,17 @@ const headingCss = css`
 `;
 
 const wrapperCss = css`
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
+  grid-template-rows: 300px;
   gap: 24px;
+
+  ${mediaQuery('sm')} {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  ${mediaQuery('xs')} {
+    grid-template-columns: 1fr;
+  }
 `;
