@@ -15,7 +15,15 @@ export default function HeaderSection() {
             <h1>D-7</h1>
           </em>
         </div>
-        <Image fill src="/images/recruit/home.png" alt={'리쿠르트 홈 아이콘 이미지'} />
+        <Image
+          fill
+          src="/images/recruit/home.webp"
+          alt={'리쿠르트 홈 아이콘 이미지'}
+          placeholder="blur"
+          blurDataURL="/images/recruit/home.webp"
+          priority
+          quality={100}
+        />
       </div>
       <BigArrowIcon css={iconCss} width={36} height={36} />
     </section>
