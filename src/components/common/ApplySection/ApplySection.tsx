@@ -1,9 +1,10 @@
-import Link from 'next/link';
 import { css, Interpolation, Theme } from '@emotion/react';
 
 import { NOTION_RECRUIT_PATH } from '~/constants/common';
 import { colors, mediaQuery } from '~/styles/constants';
 import { section36HeadingCss, sectionSmallCss } from '~/styles/css';
+
+import { ClickableLink } from '../Clickable';
 
 interface Props {
   wrapperCss?: Interpolation<Theme>;
@@ -18,9 +19,14 @@ export default function ApplySection({ wrapperCss }: Props) {
         <br />
         디프만 13기 멤버가 되고 싶다면
       </h2>
-      <Link css={linkCss} href={NOTION_RECRUIT_PATH} target="_blank" rel="noopener noreferrer">
+      <ClickableLink
+        css={linkCss}
+        href={NOTION_RECRUIT_PATH}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         바로 지원하기
-      </Link>
+      </ClickableLink>
     </section>
   );
 }

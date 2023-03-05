@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { css } from '@emotion/react';
 
 import {
@@ -11,6 +10,8 @@ import {
 } from '~/constants/common';
 import { colors, mediaQuery } from '~/styles/constants';
 import { layoutCss } from '~/styles/css';
+
+import { ClickableLink } from '../Clickable';
 
 export default function Footer() {
   const date = new Date();
@@ -77,9 +78,9 @@ interface AnchorProps {
 
 function Anchor({ text, href }: AnchorProps) {
   return (
-    <Link href={href} css={anchorCss} target="_blank" rel="noopener noreferrer">
+    <ClickableLink href={href} css={anchorCss} target="_blank" rel="noopener noreferrer">
       {text}
-    </Link>
+    </ClickableLink>
   );
 }
 
