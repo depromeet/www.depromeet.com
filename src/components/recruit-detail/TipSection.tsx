@@ -186,10 +186,13 @@ const baseArrowCss = css`
 
   &:hover {
     svg {
-      fill: ${colors.black};
-      & > line,
-      path {
+      border-radius: 50%;
+      background-color: ${colors.black};
+      & > * {
         stroke: ${colors.gray100};
+      }
+      & > circle {
+        stroke: ${colors.black};
       }
     }
   }
