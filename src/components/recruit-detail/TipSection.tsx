@@ -3,9 +3,10 @@ import { css } from '@emotion/react';
 import { Carousel } from 'react-responsive-carousel';
 
 import { colors, mediaQuery } from '~/styles/constants';
+import { section40HeadingCss, sectionSmallCss } from '~/styles/css';
 
 import { POSITION_TIPS, POSITION_TYPE, PositionType, TIP_BASE_IMAGE_URL } from './constants';
-import { sectionCss } from './RecruitDetail.style';
+import { sectionCss, sectionHeadingCss } from './RecruitDetail.style';
 import { ArrowIcon } from '../common/icons';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -13,6 +14,10 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 export default function TipSection({ positionType }: { positionType: PositionType }) {
   return (
     <section css={sectionCss}>
+      <div css={sectionHeadingCss}>
+        <small css={sectionSmallCss}>TIP</small>
+        <h2 css={section40HeadingCss}>디프만 전 멤버들의 지원 꿀팁</h2>
+      </div>
       <Carousel
         showArrows
         showStatus={false}

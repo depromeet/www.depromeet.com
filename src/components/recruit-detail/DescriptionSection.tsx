@@ -4,12 +4,13 @@ import { colors, mediaQuery } from '~/styles/constants';
 
 import {
   POSITION_DESCRIPTION,
+  POSITION_DISPLAY_NAME,
   POSITION_PREFER_LIST,
   POSITION_TYPE,
   POSITION_WITH_CATEGORY_NAME,
   PositionType,
 } from './constants';
-import { sectionCss } from './RecruitDetail.style';
+import { sectionCss, sectionHeadingCss } from './RecruitDetail.style';
 import { AndPersentCircleIcon } from '../common/icons/AndPersentCircleIcon';
 import { BraceCircleIcon } from '../common/icons/BraceCircleIcon';
 import { SharpInCircleIcon } from '../common/icons/SharpInCircleIcon';
@@ -17,6 +18,9 @@ import { SharpInCircleIcon } from '../common/icons/SharpInCircleIcon';
 export default function DescriptionSection({ positionType }: { positionType: PositionType }) {
   return (
     <section css={sectionCss}>
+      <div css={[sectionHeadingCss]}>
+        <h2 css={circleHeadingCss}>{POSITION_DISPLAY_NAME[positionType]}</h2>
+      </div>
       <div css={flexBoxCss}>
         <div css={flexRowCss}>
           <dt>
@@ -127,5 +131,34 @@ const flexRowCss = css`
         padding-left: 20px;
       }
     }
+  }
+`;
+
+const circleHeadingCss = css`
+  display: inline-block;
+  width: fit-content;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px 50px;
+  margin: 0 auto;
+
+  border: 1px solid #121212;
+  border-radius: 50%;
+
+  font-weight: 600;
+  font-size: 36px;
+  line-height: 43px;
+  color: ${colors.black};
+
+  ${mediaQuery('xs')} {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 43px;
+    letter-spacing: -1px;
+
+    padding: 10px 35px;
   }
 `;
