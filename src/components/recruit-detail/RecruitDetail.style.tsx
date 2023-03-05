@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { mediaQuery } from '~/styles/constants';
 
 const sectionCss = css`
-  margin: 0 auto 100px;
+  margin: 0 auto 180px;
   max-width: 1200px;
 
   ${mediaQuery('xs')} {
