@@ -1,15 +1,22 @@
+import dynamic from 'next/dynamic';
 import { css } from '@emotion/react';
 
 import { mediaQuery } from '~/styles/constants';
 
+import { projects } from '../project/constants';
+
+const ProjectItem = dynamic(() => import('../project/ProjectItem/ProjectItem'), { ssr: false });
+
 export default function OtherProjectSection() {
+  const randomProjects = projects.sort(() => Math.random() - Math.random()).slice(0, 3);
+
   return (
     <section css={projectDetailAnotherProjectCss}>
       <h2 css={headingCss}>다른 프로젝트도 궁금하다면?</h2>
-      <div>
-        <div></div>
-        <div></div>
-        <div></div>
+      <div css={wrapperCss}>
+        {randomProjects.map(project => (
+          <ProjectItem key={project.title} project={project} />
+        ))}
       </div>
     </section>
   );
@@ -38,4 +45,11 @@ const headingCss = css`
   ${mediaQuery('xs')} {
     margin-bottom: 30px;
   }
+`;
+
+const wrapperCss = css`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 24px;
 `;

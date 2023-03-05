@@ -43,6 +43,8 @@ export default function ProjectItem({ project }: Props) {
 const wrapperCss = css`
   background: black;
   position: relative;
+  overflow: hidden;
+
   ${mediaQuery('xs')} {
     width: 343px;
     height: 268px;
