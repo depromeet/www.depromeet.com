@@ -163,7 +163,8 @@ const faqItem = (selected = false) => css`
 
   dt {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    text-align: left;
 
     padding-right: 38px;
     font-weight: 600;
@@ -175,7 +176,8 @@ const faqItem = (selected = false) => css`
 
   dd {
     display: ${selected ? 'flex' : 'none'};
-    align-items: center;
+    align-items: flex-start;
+    text-align: left;
 
     margin-top: 11px;
 
