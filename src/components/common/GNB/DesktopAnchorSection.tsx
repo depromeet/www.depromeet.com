@@ -1,24 +1,46 @@
 import { PropsWithChildren } from 'react';
+import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
+import { AnimatePresence, m } from 'framer-motion';
 
 import { colors } from '~/styles/constants';
 import { layoutCss } from '~/styles/css';
 
-import { ANCHORS_HEIGHT } from './constants';
+import { ANCHORS_HEIGHT, aseteriskVariants, NAVIGATION_ROUTES } from './constants';
 import { ClickableLink } from '../Clickable';
+import { AsteriskIcon } from '../icons/AsteriskIcon';
 import { DepromeetIcon } from '../icons/DepromeetIcon';
 
 export default function DesktopAnchorSection() {
+  const { pathname } = useRouter();
+
   return (
     <section css={anchorSectionCss}>
       <div css={anchorWrapperCss}>
         <Anchor href="/">
           <DepromeetIcon />
         </Anchor>
-        <Anchor href="/about">디프만 A TO Z</Anchor>
-        <Anchor href="/project">지난 프로젝트</Anchor>
-        <Anchor href="/contact">문의하기</Anchor>
-        <Anchor href="/recruit">13기 모집 안내</Anchor>
+
+        {NAVIGATION_ROUTES.map(route => (
+          <Anchor key={route.path} href={route.path}>
+            <span css={anchorContentCss}>
+              <AnimatePresence initial={false}>
+                {pathname.startsWith(route.path) && (
+                  <m.span
+                    css={currentRouteIconCss}
+                    variants={aseteriskVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                  >
+                    <AsteriskIcon width={14} height={14} />
+                  </m.span>
+                )}
+              </AnimatePresence>
+              {route.name}
+            </span>
+          </Anchor>
+        ))}
       </div>
     </section>
   );
@@ -42,6 +64,18 @@ const anchorWrapperCss = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
+`;
+
+const anchorContentCss = css`
+  position: relative;
+  display: flex;
+  align-items: center;
+`;
+
+const currentRouteIconCss = css`
+  position: absolute;
+  /* width - gap */
+  left: calc(-14px - 4px);
 `;
 
 interface AnchorProps {
