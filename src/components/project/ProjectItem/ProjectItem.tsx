@@ -1,8 +1,10 @@
 import Image from 'next/image';
 import { css } from '@emotion/react';
+import { m } from 'framer-motion';
 
 import { ClickableLink } from '~/components/common/Clickable';
 import { ArrowIcon } from '~/components/common/icons';
+import { defaultFadeInUpVariants } from '~/constants/motions';
 import useMediaQuery from '~/hooks/use-media-query';
 import { colors, mediaQuery } from '~/styles/constants';
 import { body2Css, subtitle1Css } from '~/styles/css';
@@ -16,7 +18,7 @@ export default function ProjectItem({ project }: Props) {
   const isMobile = useMediaQuery('xs');
 
   return (
-    <div css={wrapperCss}>
+    <m.article css={wrapperCss} variants={defaultFadeInUpVariants}>
       <Image
         src={`/projects/${project.thumbnail}`}
         alt={project.title}
@@ -29,11 +31,11 @@ export default function ProjectItem({ project }: Props) {
         <span>{project.generation}기</span>
         <h3>{project.title}</h3>
         <p>{project.catchphrase}</p>
-        <ClickableLink href={`/project/${project.title}`} css={detailBtnCss}>
+        <ClickableLink href={`/project/${project.title}`} css={detailLinkCss}>
           <ArrowIcon width={24} height={24} direction="right" />
         </ClickableLink>
       </div>
-    </div>
+    </m.article>
   );
 }
 
@@ -127,7 +129,7 @@ const mobileContentsWrapperCss = css`
   }
 `;
 
-const detailBtnCss = css`
+const detailLinkCss = css`
   position: absolute;
   bottom: 40px;
   right: 40px;

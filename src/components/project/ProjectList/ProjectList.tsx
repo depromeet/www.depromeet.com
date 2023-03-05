@@ -23,6 +23,7 @@ export default function ProjectList({ projects }: Props) {
     () => sliceByPage(projects, currentPage),
     [projects, currentPage]
   );
+
   const onClickPage = (page: number) => {
     setCurrentPage(page);
   };

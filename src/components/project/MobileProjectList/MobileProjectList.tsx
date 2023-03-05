@@ -32,6 +32,7 @@ export default function MobileProjectList({ projects }: Props) {
   return (
     <>
       <ProjectContainer projects={showedProjects} />
+
       {showedProjectCount < projects.length && (
         <button onClick={showMoreProjects} css={buttonCss}>
           <span>더보기</span>
