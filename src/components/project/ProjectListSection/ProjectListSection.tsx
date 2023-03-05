@@ -126,7 +126,7 @@ const sectionCss = css`
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 1200px;
+  width: 100%;
   margin: auto;
   margin-bottom: 180px;
   margin-top: 130px;

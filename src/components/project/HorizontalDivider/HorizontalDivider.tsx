@@ -1,35 +1,32 @@
-import Image from 'next/image';
 import { css } from '@emotion/react';
 
-import { mediaQuery } from '~/styles/constants';
+import { ArrowIcon } from '~/components/common/icons';
+import useMediaQuery from '~/hooks/use-media-query';
+import { colors, mediaQuery } from '~/styles/constants';
 
 export function HorizontalDivider() {
+  const isMobile = useMediaQuery('xs');
+
   return (
     <div css={wrapperCss}>
-      <div css={imgWrapperCss}>
-        <Image src={'/project/downward_arrow.webp'} fill alt="" />
-      </div>
+      <ArrowIcon
+        direction="down"
+        width={isMobile ? 36 : 52}
+        height={isMobile ? 36 : 52}
+        color={colors.black}
+      />
     </div>
   );
 }
 
 const wrapperCss = css`
-  text-align: center;
-  width: 1200px;
-  margin: auto;
+  width: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
 
   ${mediaQuery('xs')} {
     width: 375px;
-  }
-`;
-
-const imgWrapperCss = css`
-  position: relative;
-  width: 52px;
-  height: 52px;
-  margin: auto;
-  ${mediaQuery('xs')} {
-    width: 36px;
-    height: 36px;
   }
 `;
