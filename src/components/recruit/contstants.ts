@@ -141,7 +141,7 @@ export const POSITION_TYPE_LABEL = {
   DESIGN: 'UIUX DESIGN',
   IOS: 'iOS',
   ANDROID: 'ANDROID',
-  FRONTEND: 'FRONTEND',
+  WEB: 'WEB',
   SERVER: 'SERVER',
 } as const;
 export type PositionType = keyof typeof POSITION_TYPE_LABEL;
