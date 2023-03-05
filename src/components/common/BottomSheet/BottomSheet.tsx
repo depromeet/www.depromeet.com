@@ -33,7 +33,7 @@ export default function BottomSheet({ isShowing, children, onClose }: BottomShee
 
 const dimBackdropCss = () => css`
   position: fixed;
-  z-index: 10000;
+  z-index: 9000;
   top: 0;
   left: 0;
 
@@ -62,17 +62,17 @@ const contentWrapperCss = () => css`
 export const bottomSheetVariants: Variants = {
   initial: {
     y: 0,
-    transition: { duration: 0.6, ease: defaultEasing },
+    transition: { duration: 0.4, ease: defaultEasing },
     willChange: 'transform',
   },
   animate: {
     y: '-100%',
-    transition: { duration: 0.6, ease: defaultEasing },
+    transition: { duration: 0.4, ease: defaultEasing },
     willChange: 'transform',
   },
   exit: {
     y: 0,
-    transition: { duration: 0.6, ease: defaultEasing },
+    transition: { duration: 0.4, ease: defaultEasing },
     willChange: 'transform',
   },
 };

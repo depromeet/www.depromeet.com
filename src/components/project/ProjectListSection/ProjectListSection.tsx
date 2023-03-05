@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
+import { ClickableButton } from '~/components/common/Clickable';
 import useMediaQuery from '~/hooks/use-media-query';
 import { colors, mediaQuery } from '~/styles/constants';
 import { section36HeadingCss, sectionSmallCss } from '~/styles/css';
@@ -71,6 +72,7 @@ export default function ProjectListSection() {
       <small css={smallCss}>PREVIOUS PROJECTS</small>
       <h2 css={headingCss}>지난 프로젝트</h2>
       <SelectGeneration selectGeneration={selectGeneration} selectedGeneration={generation} />
+
       <div css={sortBtnsAreaCss}>
         {!generation &&
           (isMobile ? (
@@ -87,16 +89,17 @@ export default function ProjectListSection() {
             </div>
           ) : (
             <div css={sortBtnsWrapperCss}>
-              <span onClick={sortByLatest} css={sortBtnCss(sortBy === 'latest')}>
+              <ClickableButton onClick={sortByLatest} css={sortBtnCss(sortBy === 'latest')}>
                 최신순
-              </span>
+              </ClickableButton>
               <div css={dividerCss} />
-              <span onClick={sortByOldest} css={sortBtnCss(sortBy === 'oldest')}>
+              <ClickableButton onClick={sortByOldest} css={sortBtnCss(sortBy === 'oldest')}>
                 오래된순
-              </span>
+              </ClickableButton>
             </div>
           ))}
       </div>
+
       {isMobile ? (
         <MobileProjectList
           projects={projectData}
@@ -107,6 +110,7 @@ export default function ProjectListSection() {
       ) : (
         <ProjectList projects={projectData} />
       )}
+
       {isMobile && (
         <SortBottomSheet
           isShowing={showBottomSheet}
@@ -126,24 +130,20 @@ const sectionCss = css`
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 1200px;
+  width: 100%;
   margin: auto;
-  margin-bottom: 180px;
   margin-top: 130px;
+  margin-bottom: 180px;
 
   ${mediaQuery('xs')} {
-    width: 100vw;
-    margin-bottom: 150px;
     margin-top: 106px;
+    margin-bottom: 150px;
   }
 `;
 
 const smallCss = css`
   ${sectionSmallCss}
   margin-bottom: 10px;
-  ${mediaQuery('xs')} {
-    margin-bottom: 10px;
-  }
 `;
 
 const headingCss = css`

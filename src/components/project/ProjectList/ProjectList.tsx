@@ -23,18 +23,19 @@ export default function ProjectList({ projects }: Props) {
     () => sliceByPage(projects, currentPage),
     [projects, currentPage]
   );
+
   const onClickPage = (page: number) => {
     setCurrentPage(page);
   };
 
   return (
-    <div>
+    <>
       <ProjectContainer projects={displayedProjects} />
       <Pagination
         numberOfPages={Math.ceil(projects.length / 9)}
         currentPage={currentPage}
         onClick={onClickPage}
       />
-    </div>
+    </>
   );
 }

@@ -30,15 +30,16 @@ export default function MobileProjectList({ projects }: Props) {
   }, [projects]);
 
   return (
-    <div>
+    <>
       <ProjectContainer projects={showedProjects} />
+
       {showedProjectCount < projects.length && (
         <button onClick={showMoreProjects} css={buttonCss}>
           <span>더보기</span>
           <Image src={'/project/dropdown.webp'} alt="" width={16} height={16} />
         </button>
       )}
-    </div>
+    </>
   );
 }
 

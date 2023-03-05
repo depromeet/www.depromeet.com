@@ -1,7 +1,10 @@
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
+import { m } from 'framer-motion';
 
+import { ClickableLink } from '~/components/common/Clickable';
+import { ArrowIcon } from '~/components/common/icons';
+import { defaultFadeInUpVariants } from '~/constants/motions';
 import useMediaQuery from '~/hooks/use-media-query';
 import { colors, mediaQuery } from '~/styles/constants';
 import { body2Css, subtitle1Css } from '~/styles/css';
@@ -13,30 +16,26 @@ interface Props {
 }
 export default function ProjectItem({ project }: Props) {
   const isMobile = useMediaQuery('xs');
-  const router = useRouter();
 
-  const moveToDetailPage = () => {
-    router.push(`/project/${project.title}`);
-  };
   return (
-    <div css={wrapperCss}>
+    <m.article css={wrapperCss} variants={defaultFadeInUpVariants}>
       <Image
         src={`/projects/${project.thumbnail}`}
-        alt="project image"
+        alt={project.title}
         fill
-        sizes={isMobile ? '343px' : '384px'}
         css={thumbnailCss}
+        quality={100}
       />
       <div css={gradientCss} />
       <div css={isMobile ? mobileContentsWrapperCss : contentsWrapperCss}>
         <span>{project.generation}기</span>
         <h3>{project.title}</h3>
         <p>{project.catchphrase}</p>
-        <button css={detailBtnCss} onClick={moveToDetailPage}>
-          <Image src={'/project/detailBtn.webp'} alt="" width={24} height={24} />
-        </button>
+        <ClickableLink href={`/project/${project.title}`} css={detailLinkCss}>
+          <ArrowIcon width={24} height={24} direction="right" />
+        </ClickableLink>
       </div>
-    </div>
+    </m.article>
   );
 }
 
@@ -46,7 +45,6 @@ const wrapperCss = css`
   overflow: hidden;
 
   ${mediaQuery('xs')} {
-    width: 343px;
     height: 268px;
   }
 `;
@@ -131,10 +129,11 @@ const mobileContentsWrapperCss = css`
   }
 `;
 
-const detailBtnCss = css`
+const detailLinkCss = css`
   position: absolute;
   bottom: 40px;
   right: 40px;
+
   ${mediaQuery('xs')} {
     bottom: 20px;
     right: 20px;

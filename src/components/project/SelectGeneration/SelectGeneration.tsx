@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 
+import { ClickableButton } from '~/components/common/Clickable';
 import { colors, mediaQuery } from '~/styles/constants';
 import { caption2Css } from '~/styles/css';
 
@@ -13,38 +14,38 @@ interface Props {
 export default function SelectGeneration({ selectGeneration, selectedGeneration }: Props) {
   return (
     <div css={wrapperCss}>
-      <button
+      <ClickableButton
         css={buttonCss(selectedGeneration === null)}
         onClick={() => {
           selectGeneration(null);
         }}
       >
         전체
-      </button>
-      <button
+      </ClickableButton>
+      <ClickableButton
         css={buttonCss(selectedGeneration === 12)}
         onClick={() => {
           selectGeneration(12);
         }}
       >
         12기
-      </button>
-      <button
+      </ClickableButton>
+      <ClickableButton
         css={buttonCss(selectedGeneration === 11)}
         onClick={() => {
           selectGeneration(11);
         }}
       >
         11기
-      </button>
-      <button
+      </ClickableButton>
+      <ClickableButton
         css={buttonCss(selectedGeneration === 10)}
         onClick={() => {
           selectGeneration(10);
         }}
       >
         -10기
-      </button>
+      </ClickableButton>
     </div>
   );
 }
