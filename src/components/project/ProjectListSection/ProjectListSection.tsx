@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
+import { ClickableButton } from '~/components/common/Clickable';
 import useMediaQuery from '~/hooks/use-media-query';
 import { colors, mediaQuery } from '~/styles/constants';
 import { section36HeadingCss, sectionSmallCss } from '~/styles/css';
@@ -88,13 +89,13 @@ export default function ProjectListSection() {
             </div>
           ) : (
             <div css={sortBtnsWrapperCss}>
-              <span onClick={sortByLatest} css={sortBtnCss(sortBy === 'latest')}>
+              <ClickableButton onClick={sortByLatest} css={sortBtnCss(sortBy === 'latest')}>
                 최신순
-              </span>
+              </ClickableButton>
               <div css={dividerCss} />
-              <span onClick={sortByOldest} css={sortBtnCss(sortBy === 'oldest')}>
+              <ClickableButton onClick={sortByOldest} css={sortBtnCss(sortBy === 'oldest')}>
                 오래된순
-              </span>
+              </ClickableButton>
             </div>
           ))}
       </div>
