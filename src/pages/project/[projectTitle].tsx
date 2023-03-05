@@ -1,21 +1,18 @@
 import SEO from '~/components/common/SEO';
 import { Project, projects } from '~/components/project/constants';
+import ProjectDetailSection from '~/components/project-detail/ProjectDetailSection/ProjectDetailSection';
 
 interface Props {
   currentProject: Project;
 }
 
 export default function ProjectDetail({ currentProject }: Props) {
+  const { title, description, image } = currentProject;
+
   return (
     <>
-      <SEO
-        title={`디프만 - ${currentProject.title}`}
-        description={currentProject.description}
-        // TODO: image base url 추가
-        image={`${currentProject.image}`}
-      />
-
-      <main>{currentProject.title}</main>
+      <SEO title={`디프만 - ${title}`} description={description} image={image} />
+      <ProjectDetailSection currentProject={currentProject} />
     </>
   );
 }
