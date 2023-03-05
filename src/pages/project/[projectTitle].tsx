@@ -19,7 +19,11 @@ export default function ProjectDetail({ currentProject }: Props) {
 
   return (
     <>
-      <SEO title={`디프만 - ${title}`} description={description} image={image} />
+      <SEO
+        title={`디프만 - ${title}`}
+        description={description}
+        image={`/images/projects/${image}`}
+      />
       <HeaderSection {...currentProject} />
       <main css={mainCss}>
         {isMobile ? (
