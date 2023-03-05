@@ -60,7 +60,13 @@ export default function JobGroupSection() {
           exit="exit"
         >
           <div css={imageWrapperCss}>
-            <Image src={currentJobInform.src} alt={currentJobInform.name} fill quality={100} />
+            <Image
+              src={currentJobInform.src}
+              alt={currentJobInform.name}
+              fill
+              quality={100}
+              priority
+            />
           </div>
           <div css={descriptionWrapperCss}>
             <SharpInCircleIcon
@@ -188,21 +194,21 @@ const articleCss = css`
 
 const articleVariants: Variants = {
   initial: {
-    x: '100%',
+    opacity: 0,
     transition: {
       duration: 0.5,
       ease: defaultEasing,
     },
   },
   animate: {
-    x: 0,
+    opacity: 1,
     transition: {
       duration: 0.5,
       ease: defaultEasing,
     },
   },
   exit: {
-    x: '-100%',
+    opacity: 0,
     transition: {
       duration: 0.5,
       ease: defaultEasing,

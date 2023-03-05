@@ -16,7 +16,7 @@ export default function Interview() {
 
   return (
     <>
-      <SEO title="about 디프만" />
+      <SEO title="All about 디프만" />
       <main css={mainCss}>
         <HeaderSection />
         <ArrowIcon
