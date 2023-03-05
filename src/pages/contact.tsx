@@ -1,34 +1,46 @@
 import { css } from '@emotion/react';
 
+import { ArrowIcon } from '~/components/common/icons';
 import SEO from '~/components/common/SEO';
-import ContactSection from '~/components/contact/ContactSection';
-// import OrganizerSection from '~/components/contact/OrganizerSection';
+import ChannelSection from '~/components/contact/ChannelSection';
+import OrganizerSection from '~/components/contact/OrganizerSection';
+import useMediaQuery from '~/hooks/use-media-query';
+import { colors, mediaQuery } from '~/styles/constants';
 
 export default function Contact() {
+  const isMobile = useMediaQuery('xs');
+
   return (
     <>
       <SEO title="디프만 - Contact" />
-      <main css={wrapperCss}>
-        <ContactSection />
-        {/* <motion.hr
-          css={hrCss}
-          variants={defaultFadeInVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-        /> */}
-        {/* <OrganizerSection /> */}
+      <main css={mainCss}>
+        <ChannelSection />
+        <ArrowIcon
+          direction="down"
+          color={colors.black}
+          width={isMobile ? 36 : 52}
+          height={isMobile ? 36 : 52}
+          css={arrowIconCss}
+        />
+        <OrganizerSection />
       </main>
     </>
   );
 }
 
-// const hrCss = css`
-//   width: 100%;
-//   height: 1px;
-//   color: ${colors.gray7};
-// `;
+const mainCss = css`
+  width: 100%;
+  overflow: hidden;
 
-const wrapperCss = css`
-  padding-bottom: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const arrowIconCss = css`
+  margin-bottom: 130px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 92px;
+  }
 `;

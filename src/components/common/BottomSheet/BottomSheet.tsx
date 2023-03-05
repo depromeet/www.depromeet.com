@@ -3,9 +3,8 @@ import { css } from '@emotion/react';
 import { motion, Variants } from 'framer-motion';
 
 import { defaultEasing, defaultFadeInVariants, staggerOne } from '~/constants/motions';
-import { colors, radius } from '~/styles/constants';
 
-import PortalWrapper from '../PortalWrapper/PortalWrapper';
+import PortalWrapper from '../PortalWrapper';
 
 export interface BottomSheetModalProps {
   isShowing: boolean;
@@ -34,7 +33,7 @@ export default function BottomSheet({ isShowing, children, onClose }: BottomShee
 
 const dimBackdropCss = () => css`
   position: fixed;
-  z-index: 10000;
+  z-index: 9000;
   top: 0;
   left: 0;
 
@@ -56,26 +55,24 @@ const contentWrapperCss = () => css`
   width: 100%;
   height: ${HIGHT}px;
 
-  background-color: ${colors.gray9};
-  border-radius: ${radius.lg} ${radius.lg} 0 0;
-
   overflow-y: scroll;
+  border-radius: 20px 20px 0 0;
 `;
 
 export const bottomSheetVariants: Variants = {
   initial: {
     y: 0,
-    transition: { duration: 0.6, ease: defaultEasing },
+    transition: { duration: 0.4, ease: defaultEasing },
     willChange: 'transform',
   },
   animate: {
     y: '-100%',
-    transition: { duration: 0.6, ease: defaultEasing },
+    transition: { duration: 0.4, ease: defaultEasing },
     willChange: 'transform',
   },
   exit: {
     y: 0,
-    transition: { duration: 0.6, ease: defaultEasing },
+    transition: { duration: 0.4, ease: defaultEasing },
     willChange: 'transform',
   },
 };

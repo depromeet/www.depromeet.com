@@ -14,7 +14,7 @@ interface Props {
    */
   description?: string;
   /**
-   * `og:iamge`, `twitter:image`에 사용됩니다.
+   * `og:image`, `twitter:image`에 사용됩니다.
    *
    * @default 추가 필요
    */
@@ -23,7 +23,7 @@ interface Props {
 
 const DEFAULT_TITLE = '디프만 - Depromeet';
 const DEFAULT_DESCRIPTION = '오직 디자이너와 프로그래머의 동반성장을 위해서';
-const DEFAULT_IMAGE = '/og-main.png';
+const DEFAULT_IMAGE = '/og-main.webp';
 
 export default function SEO({
   title = DEFAULT_TITLE,

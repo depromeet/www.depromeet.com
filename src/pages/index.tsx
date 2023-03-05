@@ -1,6 +1,11 @@
+import { css } from '@emotion/react';
+
+import ApplySection from '~/components/common/ApplySection';
 import SEO from '~/components/common/SEO';
+import ContentsSection from '~/components/home/ContentsSection';
 import HeaderSection from '~/components/home/HeaderSection';
-import RecruitNotiSection from '~/components/home/RecruitNotiSection';
+import IntroductionSection from '~/components/home/IntroductionSection';
+import { mediaQuery } from '~/styles/constants';
 
 export default function Root() {
   return (
@@ -8,14 +13,18 @@ export default function Root() {
       <SEO />
       <main>
         <HeaderSection />
-        <RecruitNotiSection />
-        {/* <RecordSection /> */}
-        {/* <TeamSection /> */}
-        {/* <ScheduleSection /> */}
-        {/* <MoreInfoSection /> */}
-        {/* <SponsorSection /> */}
-        {/* <ApplySection /> */}
+        <IntroductionSection />
+        <ContentsSection />
+        <ApplySection wrapperCss={applySectionMarginCss} />
       </main>
     </>
   );
 }
+
+const applySectionMarginCss = css`
+  margin-bottom: 240px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 150px;
+  }
+`;

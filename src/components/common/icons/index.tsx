@@ -1,9 +1,12 @@
+export { AnswerIcon } from './AnswerIcon';
+export { ArrowIcon } from './ArrowIcon';
 export { BehanceIcon } from './BehanceIcon';
+export { DropdownIcon } from './DropdownIcon';
 export { FacebookIcon } from './FacebookIcon';
 export { GithubIcon } from './GithubIcon';
 export { InstagramIcon } from './InstagramIcon';
 export { LinkedinIcon } from './LinkedinIcon';
 export { MailIcon } from './MailIcon';
 export { MediumIcon } from './MediumIcon';
-export { ScrollBottomIcon } from './ScrollBottomIcon';
+export { QuestionIcon } from './QuestionIcon';
 export { WebIcon } from './WebIcon';

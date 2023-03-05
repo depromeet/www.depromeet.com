@@ -7,7 +7,6 @@ export default function Svg({
   width,
   height,
   viewBox,
-  fill,
   ...rest
 }: PropsWithChildren<Props>) {
   return (

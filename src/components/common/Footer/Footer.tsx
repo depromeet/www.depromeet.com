@@ -1,6 +1,4 @@
-import { PropsWithChildren } from 'react';
 import { css } from '@emotion/react';
-import { motion } from 'framer-motion';
 
 import {
   DEPROMEET_BEHANCE,
@@ -9,133 +7,87 @@ import {
   DEPROMEET_GITHUB,
   DEPROMEET_INSTAGRAM,
   DEPROMEET_MEDIUM,
-} from '~/constants/common/depromeet';
+} from '~/constants/common';
 import { colors, mediaQuery } from '~/styles/constants';
+import { layoutCss } from '~/styles/css';
 
-import {
-  BehanceIcon,
-  FacebookIcon,
-  GithubIcon,
-  InstagramIcon,
-  MailIcon,
-  MediumIcon,
-} from '../icons';
-import { DepromeetIcon } from '../icons/DepromeetIcon';
+import { ClickableLink } from '../Clickable';
 
 export default function Footer() {
   const date = new Date();
 
   return (
-    <footer>
-      <section css={linkSectionCss}>
-        <div css={logoWrapperCss}>
-          <DepromeetIcon />
-        </div>
-        <div css={linkWrapperCss}>
-          <MotionAnchor href={`mailto:${DEPROMEET_EMAIL}`}>
-            <MailIcon width={22} height={22} />
-          </MotionAnchor>
-
-          <MotionAnchor href={DEPROMEET_FACEBOOK}>
-            <FacebookIcon width={22} height={22} />
-          </MotionAnchor>
-
-          <MotionAnchor href={DEPROMEET_INSTAGRAM}>
-            <InstagramIcon width={20} height={20} />
-          </MotionAnchor>
-
-          <MotionAnchor href={DEPROMEET_GITHUB}>
-            <GithubIcon width={22} height={22} />
-          </MotionAnchor>
-
-          <MotionAnchor href={DEPROMEET_BEHANCE}>
-            <BehanceIcon width={22} height={22} />
-          </MotionAnchor>
-
-          <MotionAnchor href={DEPROMEET_MEDIUM}>
-            <MediumIcon width={19} height={19} />
-          </MotionAnchor>
-        </div>
+    <footer css={footerCss}>
+      <section css={anchorSectionCss}>
+        <Anchor text="E-MAIL" href={`mailto:${DEPROMEET_EMAIL}`} />
+        <Anchor text="FACEBOOK" href={DEPROMEET_FACEBOOK} />
+        <Anchor text="INSTAGRAM" href={DEPROMEET_INSTAGRAM} />
+        <Anchor text="BEHANCE" href={DEPROMEET_BEHANCE} />
+        <Anchor text="GITHUB" href={DEPROMEET_GITHUB} />
+        <Anchor text="MEDIUM" href={DEPROMEET_MEDIUM} />
       </section>
-
-      <section css={copyRightSectionCss}>
-        <span css={copyRightCss}>&copy; {date.getFullYear()} Depromeet. All rights reserved.</span>
-      </section>
+      <span css={copyRightCss}>&copy; {date.getFullYear()} DEPROMEET. ALL RIGHTS RESERVED.</span>
     </footer>
   );
 }
 
-const linkSectionCss = css`
-  width: 100%;
-  height: 272px;
+const footerCss = css`
+  ${layoutCss}
+  height: 136px;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`;
-
-const logoWrapperCss = css`
-  margin-bottom: 30px;
+  gap: 32px;
 
   ${mediaQuery('xs')} {
-    margin-bottom: 28px;
+    padding-top: 6px;
+    gap: 24px;
+    justify-content: start;
   }
 `;
 
-const linkWrapperCss = css`
+const anchorSectionCss = css`
   display: flex;
-  gap: 1.25rem;
+  gap: 3.25rem;
 
   ${mediaQuery('xs')} {
-    width: 184px;
+    max-width: 348px;
+
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+
+    row-gap: 14px;
+    column-gap: 32px;
   }
-`;
-
-const copyRightSectionCss = css`
-  width: 100%;
-  height: 50px;
-  background-color: ${colors.gray9};
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 `;
 
 const copyRightCss = css`
-  display: block;
   font-size: 0.875rem;
-  color: ${colors.gray4};
+  font-weight: 500;
+  line-height: 140%;
+  color: ${colors.gray500};
 `;
 
-interface MotionAnchorProps {
+interface AnchorProps {
+  text: string;
   href: string;
 }
 
-function MotionAnchor({ children, href }: PropsWithChildren<MotionAnchorProps>) {
+function Anchor({ text, href }: AnchorProps) {
   return (
-    <motion.a
-      css={motionAnchorCss}
-      whileHover={{ backgroundColor: colors.gray8 }}
-      whileTap={{ scale: 0.9 }}
-      href={href}
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      {children}
-    </motion.a>
+    <ClickableLink href={href} css={anchorCss} target="_blank" rel="noopener noreferrer">
+      {text}
+    </ClickableLink>
   );
 }
 
-const motionAnchorCss = css`
-  width: 3rem;
-  height: 3rem;
+const anchorCss = css`
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 140%;
 
-  border-radius: 50%;
-  background-color: ${colors.gray9};
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  letter-spacing: -0.3px;
 `;

@@ -17,8 +17,8 @@ const globalCss = css`
     font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
       'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji',
       'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
-    color: ${colors.white};
-    background-color: ${colors.black};
+    color: ${colors.black};
+    background-color: ${colors.background};
     font-size: 16px;
 
     * {
@@ -30,6 +30,8 @@ const globalCss = css`
       box-sizing: border-box;
       word-break: keep-all;
       word-wrap: break-word;
+
+      cursor: none !important;
     }
   }
 

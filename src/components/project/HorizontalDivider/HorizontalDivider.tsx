@@ -1,21 +1,28 @@
 import { css } from '@emotion/react';
-import { motion } from 'framer-motion';
 
-import { defaultFadeInVariants } from '~/constants/motions';
+import { ArrowIcon } from '~/components/common/icons';
+import useMediaQuery from '~/hooks/use-media-query';
 import { colors } from '~/styles/constants';
 
-export default function HorizontalDivider() {
+export function HorizontalDivider() {
+  const isMobile = useMediaQuery('xs');
+
   return (
-    <motion.hr
-      css={horizontalDividerCss}
-      variants={defaultFadeInVariants}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-    />
+    <div css={wrapperCss}>
+      <ArrowIcon
+        direction="down"
+        width={isMobile ? 36 : 52}
+        height={isMobile ? 36 : 52}
+        color={colors.black}
+      />
+    </div>
   );
 }
 
-const horizontalDividerCss = css`
-  border: thin solid ${colors.gray7};
+const wrapperCss = css`
+  width: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
 `;

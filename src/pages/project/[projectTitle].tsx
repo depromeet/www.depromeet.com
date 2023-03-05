@@ -1,33 +1,49 @@
+import { css } from '@emotion/react';
+
 import SEO from '~/components/common/SEO';
-import AnotherProjectSection from '~/components/project/AnotherProjectSection';
 import { Project, projects } from '~/components/project/constants';
-import ProjectDetailSection from '~/components/project/ProjectDetailSection';
-import { PROJECTS_IMAGE_BASE } from '~/constants/images/images';
+import HeaderSection from '~/components/project-detail/HeaderSection';
+import MobileProjectDetailSection from '~/components/project-detail/MobileProjectDetailSection';
+import OtherProjectSection from '~/components/project-detail/OtherProjectSection';
+import ProjectDetailSection from '~/components/project-detail/ProjectDetailSection';
+import useMediaQuery from '~/hooks/use-media-query';
+import { layoutCss } from '~/styles/css';
 
 interface Props {
   currentProject: Project;
 }
 
 export default function ProjectDetail({ currentProject }: Props) {
+  const { title, description, image } = currentProject;
+  const isMobile = useMediaQuery('xs');
+
   return (
     <>
-      <SEO
-        title={`디프만 - ${currentProject.title}`}
-        description={currentProject.description}
-        image={`${PROJECTS_IMAGE_BASE}/${currentProject.image}`}
-      />
+      <SEO title={`디프만 - ${title}`} description={description} image={`/projects/${image}`} />
+      <HeaderSection {...currentProject} />
+      <main css={mainCss}>
+        {isMobile ? (
+          <MobileProjectDetailSection {...currentProject} />
+        ) : (
+          <ProjectDetailSection currentProject={currentProject} />
+        )}
 
-      <main>
-        <ProjectDetailSection project={currentProject} />
-        <AnotherProjectSection />
+        <OtherProjectSection />
       </main>
     </>
   );
 }
 
+const mainCss = css`
+  ${layoutCss};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 interface Paths {
   params: {
-    projectTitle: typeof projects[number]['title'];
+    projectTitle: (typeof projects)[number]['title'];
   };
 }
 
