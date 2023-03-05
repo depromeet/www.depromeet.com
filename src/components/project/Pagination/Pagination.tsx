@@ -9,7 +9,7 @@ export interface PaginationProps {
   currentPage: number;
 }
 
-export default function Pagination({ onClick, numberOfPages, currentPage }: Props) {
+export default function Pagination({ onClick, numberOfPages, currentPage }: PaginationProps) {
   const id = useId();
   return (
     <ul css={listCss}>
