@@ -71,6 +71,7 @@ export default function ProjectListSection() {
       <small css={smallCss}>PREVIOUS PROJECTS</small>
       <h2 css={headingCss}>지난 프로젝트</h2>
       <SelectGeneration selectGeneration={selectGeneration} selectedGeneration={generation} />
+
       <div css={sortBtnsAreaCss}>
         {!generation &&
           (isMobile ? (
@@ -97,6 +98,7 @@ export default function ProjectListSection() {
             </div>
           ))}
       </div>
+
       {isMobile ? (
         <MobileProjectList
           projects={projectData}
@@ -107,6 +109,7 @@ export default function ProjectListSection() {
       ) : (
         <ProjectList projects={projectData} />
       )}
+
       {isMobile && (
         <SortBottomSheet
           isShowing={showBottomSheet}
@@ -128,22 +131,18 @@ const sectionCss = css`
   text-align: center;
   width: 100%;
   margin: auto;
-  margin-bottom: 180px;
   margin-top: 130px;
+  margin-bottom: 180px;
 
   ${mediaQuery('xs')} {
-    width: 100vw;
-    margin-bottom: 150px;
     margin-top: 106px;
+    margin-bottom: 150px;
   }
 `;
 
 const smallCss = css`
   ${sectionSmallCss}
   margin-bottom: 10px;
-  ${mediaQuery('xs')} {
-    margin-bottom: 10px;
-  }
 `;
 
 const headingCss = css`
