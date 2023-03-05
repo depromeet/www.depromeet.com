@@ -98,7 +98,7 @@ export const projects: Array<Readonly<Project>> = [
     generation: 12,
     title: '코퀄리티',
     team: '시원스쿨',
-    catchphrase: '편의점 세계 맥주로 세계 여행도장깨기',
+    catchphrase: '지식을 공유하고, 후원하며 함께 성장하는 블로깅 플랫폼',
     description: `코컬리티는 IT 종사자가 글을 올리고 후원받을 수 있는 블로깅 플랫폼으로, 
     성장이 필수적인 IT 현직자들을 위해 새로운 블로깅 플랫폼을 제안합니다.`,
     web: 'coquality.vercel.app',
