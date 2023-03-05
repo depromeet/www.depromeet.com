@@ -25,7 +25,7 @@ export default function IntroductionSection() {
           <span css={countSpanCss}>1</span>
 
           <div css={[descriptionBoxCss, !isMobile && desktopFirstTopDividerCss]}>
-            <h3 css={heading3Css}>800명</h3>
+            <h3 css={heading3Css}>800명+</h3>
             <h4 css={heading4Css}>누적 멤버 수</h4>
           </div>
         </div>
@@ -44,7 +44,7 @@ export default function IntroductionSection() {
             <h3 css={heading3Css}>100%</h3>
             <div css={heading4WrapperCss}>
               <h4 css={heading4Css}>론칭 성공률</h4>
-              <small css={smallCss}>10기, 11기 기준</small>
+              <small css={smallCss}>10기~12기 기준</small>
             </div>
           </div>
         </div>

@@ -10,6 +10,7 @@ import { ANCHORS_HEIGHT } from './constants';
 import HamburgerButton from './HamburgerButton';
 import HamburgerContent from './HamburgerContent';
 import Overlay from './Overlay';
+import { DepromeetIcon } from '../icons/DepromeetIcon';
 
 export default function MobileAnchorSection() {
   const [isOpen, toggleIsOpen] = useToggle();
@@ -19,7 +20,7 @@ export default function MobileAnchorSection() {
       <m.section css={[sectionCss, isOpen && sectionOpenCss]} animate={isOpen ? 'open' : 'closed'}>
         <div css={wrapperCss}>
           <Link href="/" css={titleCss}>
-            DEPROMEET
+            <DepromeetIcon width={119} height={21} />
           </Link>
 
           <HamburgerButton toggleIsOpen={toggleIsOpen} />

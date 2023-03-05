@@ -6,14 +6,19 @@ export interface ChevronIconProps extends Props {
   direction?: 'up' | 'right' | 'down' | 'left';
 }
 
-export function ArrowIcon({ direction = 'right', color = 'white', ...props }: ChevronIconProps) {
+export function ArrowIcon({
+  direction = 'right',
+  color = 'white',
+  css,
+  ...props
+}: ChevronIconProps) {
   return (
     <Svg
       width="18"
       height="18"
       viewBox="0 0 18 18"
       fill="none"
-      css={ArrowIconCss(DIRECTION_DEGREE[direction])}
+      css={[css, ArrowIconCss(DIRECTION_DEGREE[direction])]}
       {...props}
     >
       <circle cx="9" cy="9" r="8.5" stroke={color} />
