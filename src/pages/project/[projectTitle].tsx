@@ -1,6 +1,11 @@
+import { css } from '@emotion/react';
+
 import SEO from '~/components/common/SEO';
 import { Project, projects } from '~/components/project/constants';
-import ProjectDetailSection from '~/components/project-detail/ProjectDetailSection/ProjectDetailSection';
+import HeaderSection from '~/components/project-detail/HeaderSection';
+import OtherProjectSection from '~/components/project-detail/OtherProjectSection';
+import ProjectDetailSection from '~/components/project-detail/ProjectDetailSection';
+import { layoutCss } from '~/styles/css';
 
 interface Props {
   currentProject: Project;
@@ -12,10 +17,21 @@ export default function ProjectDetail({ currentProject }: Props) {
   return (
     <>
       <SEO title={`디프만 - ${title}`} description={description} image={image} />
-      <ProjectDetailSection currentProject={currentProject} />
+      <main css={mainCss}>
+        <HeaderSection {...currentProject} />
+        <ProjectDetailSection currentProject={currentProject} />
+        <OtherProjectSection />
+      </main>
     </>
   );
 }
+
+const mainCss = css`
+  ${layoutCss};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 interface Paths {
   params: {

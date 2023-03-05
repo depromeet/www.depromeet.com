@@ -4,7 +4,7 @@ import { css } from '@emotion/react';
 
 import { ClickableLink } from '~/components/common/Clickable';
 import { Project } from '~/components/project/constants';
-import { POSITION_ICON_BASE, PROJECTS_IMAGE_BASE } from '~/constants/images/images';
+import { POSITION_ICON_BASE } from '~/constants/images/images';
 import { colors } from '~/styles/constants';
 
 interface Props {
@@ -58,33 +58,23 @@ function ProjectDetailLinks({
 }
 
 export default function ProjectDetailSection({ currentProject }: Props) {
-  const { generation, title, team, catchphrase, description, image, prize } = currentProject;
+  const { generation, title, team, catchphrase, description, prize } = currentProject;
 
   return (
-    <main css={projectDetailCss}>
-      <div css={projectDetailImageCss}>
-        <Image
-          style={{
-            objectFit: 'cover',
-          }}
-          src={`${PROJECTS_IMAGE_BASE}/${image}`}
-          alt={title}
-          fill
-          priority={true}
-          placeholder="blur"
-          blurDataURL={`${PROJECTS_IMAGE_BASE}/${image}`}
-        />
-      </div>
+    <>
       <ClickableLink href="/project" css={goBackCss}>
         <Image
           src={`${POSITION_ICON_BASE}/back.webp`}
           alt="뒤로가기"
           height="18"
           width="18"
-          objectFit="cover"
+          css={css`
+            object-fit: cover;
+          `}
         />
         <span>이전</span>
       </ClickableLink>
+
       <section css={projectDetailSectionCss}>
         <header className="project-meta-header">
           <div className="project-meta-header__left">
@@ -150,31 +140,9 @@ export default function ProjectDetailSection({ currentProject }: Props) {
         </div>
         <div className="separator" />
       </section>
-      <section css={projectDetailAnotherProjectCss}>
-        <h1>다른 프로젝트도 궁금하다면?</h1>
-        <div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </section>
-    </main>
+    </>
   );
 }
-
-const projectDetailCss = css`
-  max-width: 1200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: auto;
-`;
-
-const projectDetailImageCss = css`
-  position: relative;
-  width: 100%;
-  height: 667px;
-`;
 
 const goBackCss = css`
   margin: 30px 0 26px 0;
@@ -336,30 +304,5 @@ const projectDetailSectionCss = css`
     width: 100%;
     height: 1px;
     background-color: ${colors.black};
-  }
-`;
-
-const projectDetailAnotherProjectCss = css`
-  width: 100%;
-  margin-bottom: 209px;
-  h1 {
-    text-align: center;
-    font-weight: 600;
-    font-size: 2.25rem;
-    line-height: 43px;
-    letter-spacing: -1px;
-    color: ${colors.black};
-    margin: 184px 0 81px 0;
-  }
-  & > div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 24px;
-    div {
-      width: 384px;
-      height: 300px;
-      background-color: gray;
-    }
   }
 `;
