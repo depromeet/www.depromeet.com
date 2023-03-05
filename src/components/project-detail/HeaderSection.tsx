@@ -30,6 +30,14 @@ const sectionCss = css`
   width: 100%;
   height: 667px;
 
+  ${mediaQuery('md')} {
+    height: 500px;
+  }
+
+  ${mediaQuery('sm')} {
+    height: 400px;
+  }
+
   ${mediaQuery('xs')} {
     height: 174px;
   }
