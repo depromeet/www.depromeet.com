@@ -13,7 +13,7 @@ export default function ScheduleSection() {
         <h2 css={section40HeadingCss}>모집 일정</h2>
       </div>
       <section css={periodFlexBoxCss}>
-        <h4>맴버모집기간</h4>
+        <h4>맴버 모집 기간</h4>
         <div css={periodCss}>
           <em>3.6</em>
           <span>서류 접수 시작</span>
