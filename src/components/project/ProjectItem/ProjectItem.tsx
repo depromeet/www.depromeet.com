@@ -24,8 +24,8 @@ export default function ProjectItem({ project }: Props) {
         src={`/projects/${project.thumbnail}`}
         alt="project image"
         fill
-        sizes={isMobile ? '343px' : '384px'}
         css={thumbnailCss}
+        quality={100}
       />
       <div css={gradientCss} />
       <div css={isMobile ? mobileContentsWrapperCss : contentsWrapperCss}>
@@ -43,8 +43,9 @@ export default function ProjectItem({ project }: Props) {
 const wrapperCss = css`
   background: black;
   position: relative;
+
   ${mediaQuery('xs')} {
-    width: 343px;
+    /* width: 343px; */
     height: 268px;
   }
 `;

@@ -28,13 +28,13 @@ export default function ProjectList({ projects }: Props) {
   };
 
   return (
-    <div>
+    <>
       <ProjectContainer projects={displayedProjects} />
       <Pagination
         numberOfPages={Math.ceil(projects.length / 9)}
         currentPage={currentPage}
         onClick={onClickPage}
       />
-    </div>
+    </>
   );
 }
