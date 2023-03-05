@@ -1,28 +1,51 @@
+import Image from 'next/image';
 import { css } from '@emotion/react';
 import { Carousel } from 'react-responsive-carousel';
 
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
 
+import { POSITION_TIPS, POSITION_TYPE, PositionType, TIP_BASE_IMAGE_URL } from './constants';
 import { sectionCss } from './RecruitDetail.style';
+import { ArrowIcon } from '../common/icons';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
-export default function TipSection() {
+export default function TipSection({ positionType }: { positionType: PositionType }) {
   return (
     <section css={sectionCss}>
       <Carousel
-        css={CarouselCss}
         showArrows
         showStatus={false}
-        showThumbs={true}
+        showThumbs={false}
         infiniteLoop
         renderArrowPrev={RenderArrowPrev}
         renderArrowNext={RenderArrowNext}
         renderIndicator={RenderIndicator}
       >
-        <div css={CarouselBoxCss}>1</div>
-        <div css={CarouselBoxCss}>2</div>
-        <div css={CarouselBoxCss}>3</div>
+        {POSITION_TIPS[POSITION_TYPE[positionType]].map(item => (
+          <div key={item.name} css={CarouselCss}>
+            <div css={CarouselBoxCss}>
+              <div css={carouselImageCss}>
+                <Image
+                  src={`${TIP_BASE_IMAGE_URL}/${item.name}.webp`}
+                  width="80"
+                  height="80"
+                  alt={`${item.name}의 사진`}
+                  quality={100}
+                />
+              </div>
+              <h3>
+                {item.name} {item.position}
+              </h3>
+              <small>
+                {item.classList.map(classIndex => (
+                  <span key={classIndex}> {classIndex}기 </span>
+                ))}
+              </small>
+              <p dangerouslySetInnerHTML={{ __html: item.tip }} />
+            </div>
+          </div>
+        ))}
       </Carousel>
     </section>
   );
@@ -30,15 +53,15 @@ export default function TipSection() {
 
 const RenderArrowPrev = (clickHandler: () => void) => {
   return (
-    <div css={prevCss} onClick={clickHandler}>
-      이전
+    <div css={[baseArrowCss, prevCss]} onClick={clickHandler}>
+      <ArrowIcon width={32} height={32} color="black" />
     </div>
   );
 };
 const RenderArrowNext = (clickHandler: () => void) => {
   return (
-    <div css={nextCss} onClick={clickHandler}>
-      다음
+    <div css={[baseArrowCss, nextCss]} onClick={clickHandler}>
+      <ArrowIcon width={32} height={32} color="black" />
     </div>
   );
 };
@@ -55,30 +78,116 @@ const RenderIndicator = (
 
 const CarouselCss = css`
   position: relative;
-  height: 328px;
+  height: 380px;
   width: 100%;
+
+  ${mediaQuery('xs')} {
+    height: 460px;
+  }
 `;
 
 const CarouselBoxCss = css`
-  width: 100%;
+  padding-top: 42px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   margin: 0 auto;
+  width: 100%;
   min-height: 250px;
   max-width: 1080px;
+
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: -0.3px;
+  color: ${colors.black};
+
+  h3 {
+    margin-bottom: 6px;
+  }
+
+  small {
+    display: flex;
+
+    margin-bottom: 32px;
+
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: ${colors.gray600};
+
+    & > span {
+      display: flex;
+      align-items: center;
+      &::after {
+        display: inline-block;
+        margin: 0 8px;
+        content: '';
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        background-color: ${colors.gray600};
+      }
+
+      &:last-of-type {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  p {
+    max-width: 800px;
+  }
+
+  ${mediaQuery('xs')} {
+    h3 {
+      margin-bottom: 10px;
+    }
+    small {
+      margin-bottom: 30px;
+    }
+  }
+`;
+
+const carouselImageCss = css`
+  width: 80px;
+  margin-bottom: 24px;
+`;
+
+const baseArrowCss = css`
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  transform: translateY(-50%);
+
+  ${mediaQuery('xs')} {
+    display: none;
+  }
+
+  &:hover {
+    svg {
+      fill: ${colors.black};
+      & > line,
+      path {
+        stroke: ${colors.gray100};
+      }
+    }
+  }
+`;
+
+const prevCss = css`
+  left: 0;
+  transform: translateY(-50%) rotate(180deg);
+  ${mediaQuery('xs')} {
+    display: none;
+  }
 `;
 
 const nextCss = css`
-  position: absolute;
-  z-index: 10;
-  top: 50%;
   right: 0;
-  transform: translateY(-50%);
-`;
-const prevCss = css`
-  position: absolute;
-  z-index: 10;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
 `;
 
 const indicatorCss = (isSelected: boolean) => css`
