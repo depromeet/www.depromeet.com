@@ -129,10 +129,12 @@ const sectionCss = css`
   width: 1200px;
   margin: auto;
   margin-bottom: 180px;
+  margin-top: 130px;
 
   ${mediaQuery('xs')} {
     width: 100vw;
     margin-bottom: 150px;
+    margin-top: 106px;
   }
 `;
 
