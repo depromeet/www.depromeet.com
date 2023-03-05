@@ -7,6 +7,7 @@ import { section40HeadingCss, sectionSmallCss } from '~/styles/css';
 
 import { FAQ, FAQ_TYPE, FAQ_TYPE_LABEL, FaqType } from './contstants';
 import { sectionCss, sectionHeadingCss } from './Recurit.style';
+import { ClickableButton } from '../common/Clickable';
 import { AnswerIcon, DropdownIcon, QuestionIcon } from '../common/icons';
 
 const faqTypes = Object.keys(FAQ_TYPE) as FaqType[];
@@ -23,10 +24,9 @@ export default function FAQSection() {
       </div>
       <div css={faqLayoutBox}>
         <ul css={faqLayoutAside}>
-          {/* TODO: clickAble 붙이기 */}
           {faqTypes.map(key => (
             <li key={`faq-type-category-${key}`}>
-              <button
+              <ClickableButton
                 css={faqCategoryButtonCss(faqType === FAQ_TYPE[key])}
                 onClick={() => {
                   setFaqType(FAQ_TYPE[key]);
@@ -34,7 +34,7 @@ export default function FAQSection() {
                 }}
               >
                 {FAQ_TYPE_LABEL[key]}
-              </button>
+              </ClickableButton>
             </li>
           ))}
         </ul>
@@ -47,17 +47,18 @@ export default function FAQSection() {
                 setSelectedFaqItem(index);
               }}
             >
-              {/* TODO: clickAble 붙이기 */}
-              <dt>
-                <QuestionIcon width={24} height={24} />
-                {item.title}
-                <div css={faqItemDrowpdownIcon(selectedFaqItem === index)}>
-                  <DropdownIcon width={24} height={24} />
-                </div>
-              </dt>
-              <dd>
-                <AnswerIcon width={24} height={24} /> {item.description}
-              </dd>
+              <ClickableButton>
+                <dt>
+                  <QuestionIcon width={24} height={24} />
+                  {item.title}
+                  <div css={faqItemDrowpdownIcon(selectedFaqItem === index)}>
+                    <DropdownIcon width={24} height={24} />
+                  </div>
+                </dt>
+                <dd>
+                  <AnswerIcon width={24} height={24} /> {item.description}
+                </dd>
+              </ClickableButton>
             </li>
           ))}
         </ul>

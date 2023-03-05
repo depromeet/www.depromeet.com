@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { css } from '@emotion/react';
 
 import { colors, mediaQuery } from '~/styles/constants';
@@ -6,6 +5,7 @@ import { section40HeadingCss, sectionSmallCss } from '~/styles/css';
 
 import { POSITION_TYPE_LABEL, PositionType } from './contstants';
 import { sectionCss, sectionHeadingCss } from './Recurit.style';
+import { ClickableLink } from '../common/Clickable';
 import { ArrowIcon } from '../common/icons';
 
 const positionTypes = Object.keys(POSITION_TYPE_LABEL) as PositionType[];
@@ -17,10 +17,9 @@ export default function JobGroupSection() {
         <p css={sectionSmallCss}>JOB GROUP</p>
         <h2 css={section40HeadingCss}>모집 직군</h2>
       </div>
-      {/* TODO: clickAble 붙이기 */}
       <ul css={jobGroupFlexBox}>
         {positionTypes.map(key => (
-          <Link
+          <ClickableLink
             key={`job-group-${key}`}
             href={`/recurit/${POSITION_TYPE_LABEL[key].toLowerCase()}`}
           >
@@ -30,7 +29,7 @@ export default function JobGroupSection() {
                 자세히 보기 <ArrowIcon width={20} height={20} />
               </span>
             </li>
-          </Link>
+          </ClickableLink>
         ))}
       </ul>
     </section>
