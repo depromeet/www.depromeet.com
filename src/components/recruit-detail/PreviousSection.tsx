@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 
-import { colors } from '~/styles/constants';
+import { colors, mediaQuery } from '~/styles/constants';
 
 import { ArrowIcon } from '../common/icons';
 
@@ -39,5 +39,9 @@ const sectionCss = css`
   svg {
     transform: rotate(180deg);
     margin-right: 10px;
+  }
+
+  ${mediaQuery('xs')} {
+    display: none;
   }
 `;
