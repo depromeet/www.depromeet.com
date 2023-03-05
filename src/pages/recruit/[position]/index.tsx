@@ -1,5 +1,14 @@
+import { css } from '@emotion/react';
+
+import ApplySection from '~/components/common/ApplySection';
 import SEO from '~/components/common/SEO';
 import { POSITION_TYPE, PositionType } from '~/components/recruit-detail/constants';
+import DescriptionSection from '~/components/recruit-detail/DescriptionSection';
+import HeaderSection from '~/components/recruit-detail/HeaderSection';
+import PreviousSection from '~/components/recruit-detail/PreviousSection';
+import { sectionCss } from '~/components/recruit-detail/RecruitDetail.style';
+import TipSection from '~/components/recruit-detail/TipSection';
+import { mediaQuery } from '~/styles/constants';
 
 interface Props {
   position: (typeof POSITION_TYPE)[PositionType];
@@ -9,10 +18,24 @@ export default function RecruitDetail({ position }: Props) {
   return (
     <>
       <SEO title={`디프만 - ${position}`} />
-      <main>{position}</main>
+      <main>
+        <HeaderSection positionType={position} />
+        <PreviousSection />
+        <DescriptionSection positionType={position} />
+        <TipSection positionType={position} />
+        <ApplySection wrapperCss={[sectionCss, applySection]} />
+      </main>
     </>
   );
 }
+
+const applySection = css`
+  margin-bottom: 240px;
+
+  ${mediaQuery('xs')} {
+    margin-bottom: 150px;
+  }
+`;
 
 interface Paths {
   params: {
@@ -34,7 +57,6 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }: Paths) {
   const { position } = params;
   const upperCasePosition = position.toUpperCase();
-
   if (!POSITION_TYPE.hasOwnProperty(upperCasePosition)) {
     return { notFound: true };
   }
