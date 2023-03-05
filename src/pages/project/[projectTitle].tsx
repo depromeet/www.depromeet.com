@@ -1,6 +1,13 @@
+import { css } from '@emotion/react';
+
 import SEO from '~/components/common/SEO';
 import { Project, projects } from '~/components/project/constants';
-import ProjectDetailSection from '~/components/project-detail/ProjectDetailSection/ProjectDetailSection';
+import HeaderSection from '~/components/project-detail/HeaderSection';
+import MobileProjectDetailSection from '~/components/project-detail/MobileProjectDetailSection';
+import OtherProjectSection from '~/components/project-detail/OtherProjectSection';
+import ProjectDetailSection from '~/components/project-detail/ProjectDetailSection';
+import useMediaQuery from '~/hooks/use-media-query';
+import { layoutCss } from '~/styles/css';
 
 interface Props {
   currentProject: Project;
@@ -8,14 +15,31 @@ interface Props {
 
 export default function ProjectDetail({ currentProject }: Props) {
   const { title, description, image } = currentProject;
+  const isMobile = useMediaQuery('xs');
 
   return (
     <>
       <SEO title={`디프만 - ${title}`} description={description} image={image} />
-      <ProjectDetailSection currentProject={currentProject} />
+      <HeaderSection {...currentProject} />
+      <main css={mainCss}>
+        {isMobile ? (
+          <MobileProjectDetailSection {...currentProject} />
+        ) : (
+          <ProjectDetailSection currentProject={currentProject} />
+        )}
+
+        <OtherProjectSection />
+      </main>
     </>
   );
 }
+
+const mainCss = css`
+  ${layoutCss};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 interface Paths {
   params: {

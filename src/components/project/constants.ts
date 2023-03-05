@@ -27,7 +27,7 @@ export const projects: Array<Readonly<Project>> = [
     generation: 12,
     title: '짝심삼일',
     team: '막내온탑',
-    prize: 'Default',
+    prize: '최우수상',
     catchphrase: '나를 바꾸는 작은 습관의 힘, 습관 관리 서비스',
     description: `새해 목표나 다짐 등 결심으로만 끝났던 경험이 있나요? 3일 연속을 습관을 
     집중적으로 실천하고 짝심삼일의 박수를 받아보세요! 짝심삼일은 쉽고 재
@@ -85,7 +85,7 @@ export const projects: Array<Readonly<Project>> = [
     generation: 12,
     title: '똑스',
     team: '오개안말',
-    prize: 'Default',
+    prize: '우수상',
     catchphrase: '내가 만든 퀴즈로 스터디를 재미있게, 똑스',
     description: `덜컥 시작한 스터디, 점차 지쳐 마무리를 못한 적이 있으신가요? 똑스에서
     는 스터디원과 다같이 모여 퀴즈를 만들고 풀 수 있어요. 더 많은 퀴즈를 풀
@@ -647,7 +647,6 @@ export const projects: Array<Readonly<Project>> = [
     description: `가슴속 3천원"은 우리 가슴속에 지니고 다니는 3천원을 털어가는 붕어빵, 타꼬야끼, 계란빵, 호떡 등의 길거리 음식을 파는 곳을 알려드립니다. 가슴속 3천원은 사용자 참여형 서비스인 만큼 직접 가게를 제보하여 사용자들과 함께 가게 정보를 채워나갈 수 있습니다."`,
     android: 'https://play.google.com/store/apps/details?id=com.zion830.threedollars',
     ios: 'https://apps.apple.com/kr/app/%EA%B0%80%EC%8A%B4%EC%86%8D3%EC%B2%9C%EC%9B%90-%EB%82%98%EC%99%80-%EA%B0%80%EA%B9%8C%EC%9A%B4-%EB%B6%95%EC%96%B4%EB%B9%B5/id1496099467',
-
     image: 'details/가슴속3천원.png',
     icon: 'icons/가슴속3천원.png',
     thumbnail: 'thumbnails/가슴속3천원.png',

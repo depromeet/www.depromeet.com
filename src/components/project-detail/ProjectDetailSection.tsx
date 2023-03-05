@@ -1,11 +1,13 @@
-import { useState } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
 import { ClickableLink } from '~/components/common/Clickable';
 import { Project } from '~/components/project/constants';
-import { POSITION_ICON_BASE, PROJECTS_IMAGE_BASE } from '~/constants/images/images';
+import { POSITION_ICON_BASE } from '~/constants/images/images';
+import useMediaQuery from '~/hooks/use-media-query';
 import { colors } from '~/styles/constants';
+
+import ProjectDetailLink from './ProjectDetailLink';
 
 interface Props {
   currentProject: Project;
@@ -28,63 +30,28 @@ function ProjectDetailTeamMembers({
   );
 }
 
-function ProjectDetailLinks({
-  type,
-  link,
-}: {
-  type: '앱스토어' | '플레이스토어' | 'WEB' | '비핸스' | '깃허브';
-  link: string;
-}) {
-  const [isHover, setIsHover] = useState<boolean>(false);
-  const iconImage = isHover ? 'project-link--active.webp' : 'project-link--default.webp';
-  return (
-    <ClickableLink
-      href={link}
-      target="_blank"
-      className="project-detail__link"
-      onMouseOver={() => setIsHover(true)}
-      onMouseOut={() => setIsHover(false)}
-    >
-      <Image
-        src={`${POSITION_ICON_BASE}/${iconImage}`}
-        alt="바로가기"
-        height="20"
-        width="20"
-        objectFit="cover"
-      />
-      <span>{type}</span>
-    </ClickableLink>
-  );
-}
-
 export default function ProjectDetailSection({ currentProject }: Props) {
-  const { generation, title, team, catchphrase, description, image, prize } = currentProject;
+  const { generation, title, team, catchphrase, description, prize } = currentProject;
+
+  const isMobile = useMediaQuery('xs');
 
   return (
-    <main css={projectDetailCss}>
-      <div css={projectDetailImageCss}>
-        <Image
-          style={{
-            objectFit: 'cover',
-          }}
-          src={`${PROJECTS_IMAGE_BASE}/${image}`}
-          alt={title}
-          fill
-          priority={true}
-          placeholder="blur"
-          blurDataURL={`${PROJECTS_IMAGE_BASE}/${image}`}
-        />
-      </div>
-      <ClickableLink href="/project" css={goBackCss}>
-        <Image
-          src={`${POSITION_ICON_BASE}/back.webp`}
-          alt="뒤로가기"
-          height="18"
-          width="18"
-          objectFit="cover"
-        />
-        <span>이전</span>
-      </ClickableLink>
+    <>
+      {!isMobile && (
+        <ClickableLink href="/project" css={goBackCss}>
+          <Image
+            src={`${POSITION_ICON_BASE}/back.webp`}
+            alt="뒤로가기"
+            height="18"
+            width="18"
+            css={css`
+              object-fit: cover;
+            `}
+          />
+          <span>이전</span>
+        </ClickableLink>
+      )}
+
       <section css={projectDetailSectionCss}>
         <header className="project-meta-header">
           <div className="project-meta-header__left">
@@ -95,6 +62,7 @@ export default function ProjectDetailSection({ currentProject }: Props) {
               <p className="project-meta__prize">{catchphrase}</p>
             </div>
           </div>
+
           {prize !== 'Default' && (
             <div className="project-meta-header__right">
               <div
@@ -107,11 +75,12 @@ export default function ProjectDetailSection({ currentProject }: Props) {
                   backgroundRepeat: 'no-repeat',
                 }}
               >
-                <span>{prize}</span>
+                <span css={prizeSpanCss(prize === '최우수상')}>{prize}</span>
               </div>
             </div>
           )}
         </header>
+
         <div className="separator" />
         <div className="project-detail">
           <div className="project-detail__team">
@@ -133,48 +102,26 @@ export default function ProjectDetailSection({ currentProject }: Props) {
             <p>{description}</p>
             <div className="project-detail__links">
               {currentProject.ios && (
-                <ProjectDetailLinks type="앱스토어" link={currentProject.ios} />
+                <ProjectDetailLink type="앱스토어" link={currentProject.ios} />
               )}
               {currentProject.android && (
-                <ProjectDetailLinks type="플레이스토어" link={currentProject.android} />
+                <ProjectDetailLink type="플레이스토어" link={currentProject.android} />
               )}
-              {currentProject.web && <ProjectDetailLinks type="WEB" link={currentProject.web} />}
+              {currentProject.web && <ProjectDetailLink type="WEB" link={currentProject.web} />}
               {currentProject.behance && (
-                <ProjectDetailLinks type="비핸스" link={currentProject.behance} />
+                <ProjectDetailLink type="비핸스" link={currentProject.behance} />
               )}
               {currentProject.github && (
-                <ProjectDetailLinks type="깃허브" link={currentProject.github} />
+                <ProjectDetailLink type="깃허브" link={currentProject.github} />
               )}
             </div>
           </div>
         </div>
         <div className="separator" />
       </section>
-      <section css={projectDetailAnotherProjectCss}>
-        <h1>다른 프로젝트도 궁금하다면?</h1>
-        <div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
-      </section>
-    </main>
+    </>
   );
 }
-
-const projectDetailCss = css`
-  max-width: 1200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: auto;
-`;
-
-const projectDetailImageCss = css`
-  position: relative;
-  width: 100%;
-  height: 667px;
-`;
 
 const goBackCss = css`
   margin: 30px 0 26px 0;
@@ -239,17 +186,11 @@ const projectDetailSectionCss = css`
     .project-meta-header__right {
       width: 76px;
       height: 76px;
+
       div {
         display: flex;
         justify-content: center;
         align-items: center;
-        span {
-          font-weight: 600;
-          font-size: 1.125rem;
-          line-height: 122%;
-          letter-spacing: -0.003em;
-          color: ${colors.black};
-        }
       }
     }
   }
@@ -317,21 +258,10 @@ const projectDetailSectionCss = css`
         display: flex;
         gap: 32px;
         align-items: center;
-        .project-detail__link {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          span {
-            font-weight: 500;
-            font-size: 1rem;
-            line-height: 140%;
-            letter-spacing: -0.3px;
-            color: ${colors.point};
-          }
-        }
       }
     }
   }
+
   .separator {
     width: 100%;
     height: 1px;
@@ -339,27 +269,10 @@ const projectDetailSectionCss = css`
   }
 `;
 
-const projectDetailAnotherProjectCss = css`
-  width: 100%;
-  margin-bottom: 209px;
-  h1 {
-    text-align: center;
-    font-weight: 600;
-    font-size: 2.25rem;
-    line-height: 43px;
-    letter-spacing: -1px;
-    color: ${colors.black};
-    margin: 184px 0 81px 0;
-  }
-  & > div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 24px;
-    div {
-      width: 384px;
-      height: 300px;
-      background-color: gray;
-    }
-  }
+const prizeSpanCss = (is최우수상: boolean) => css`
+  font-weight: 600;
+  font-size: ${is최우수상 ? '0.875rem' : '1.125rem'};
+  line-height: 122%;
+  letter-spacing: -0.003em;
+  color: ${colors.black};
 `;
