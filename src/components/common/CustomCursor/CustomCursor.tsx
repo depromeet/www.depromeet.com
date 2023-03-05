@@ -1,11 +1,19 @@
 import { useEffect, useRef } from 'react';
 import { css } from '@emotion/react';
 
+import { useUserAgent } from '~/hooks/use-user-agent';
 import useCursorState from '~/store/cursor/useCursorState';
 
 const CURSOR_URL = '/common/cursor.webp';
 
-export default function CustomCursor() {
+export default function CustomCursorWrapper() {
+  const { isMobileAgent } = useUserAgent();
+
+  if (isMobileAgent) return <></>;
+  return <CustomCursor />;
+}
+
+function CustomCursor() {
   const cursorRef = useRef<HTMLSpanElement>(null);
   const { cursorState } = useCursorState();
 
@@ -20,14 +28,17 @@ export default function CustomCursor() {
     }
     document.addEventListener('mousemove', handleMouseMove);
 
-    function handleMouseOut() {
+    function handleMouseLeave() {
       cursorRef.current?.setAttribute('style', `display: none`);
     }
-    window.addEventListener('mouseout', handleMouseOut);
+    document.addEventListener('mouseleave', handleMouseLeave);
+    // NOTE: firefox 대응
+    document.documentElement.addEventListener('mouseleave', handleMouseLeave);
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseout', handleMouseOut);
+      document.removeEventListener('mouseleave', handleMouseLeave);
+      document.documentElement.removeEventListener('mouseleave', handleMouseLeave);
     };
   }, []);
 
