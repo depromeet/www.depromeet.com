@@ -7,6 +7,7 @@ import { POSITION_TYPE_LABEL, PositionType } from './contstants';
 import { sectionCss, sectionHeadingCss } from './Recurit.style';
 import { ClickableLink } from '../common/Clickable';
 import { ArrowIcon } from '../common/icons';
+import { POSITION_TYPE } from '../recruit-detail/constants';
 
 const positionTypes = Object.keys(POSITION_TYPE_LABEL) as PositionType[];
 
@@ -19,7 +20,7 @@ export default function JobGroupSection() {
       </div>
       <ul css={jobGroupFlexBox}>
         {positionTypes.map(key => (
-          <ClickableLink key={`job-group-${key}`} href={`/recruit/${key.toLowerCase()}`}>
+          <ClickableLink key={`job-group-${key}`} href={`/recruit/${POSITION_TYPE[key]}`}>
             <li css={jobGroupItem}>
               {POSITION_TYPE_LABEL[key]}
               <span>
