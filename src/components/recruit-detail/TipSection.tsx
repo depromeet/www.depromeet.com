@@ -50,7 +50,7 @@ export default function TipSection({ positionType }: { positionType: PositionTyp
                   <span key={classIndex}> {classIndex}기 </span>
                 ))}
               </small>
-              <p dangerouslySetInnerHTML={{ __html: item.tip }} />
+              <p>{item.tip}</p>
             </div>
           </div>
         ))}
@@ -156,6 +156,7 @@ const CarouselBoxCss = css`
 
   p {
     max-width: 800px;
+    white-space: pre-wrap;
   }
 
   ${mediaQuery('xs')} {

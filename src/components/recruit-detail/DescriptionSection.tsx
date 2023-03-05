@@ -39,7 +39,7 @@ export default function DescriptionSection({ positionType }: { positionType: Pos
           <dt>
             <span>
               <AndPersentCircleIcon />
-              이런분들과 함께하고 싶어요
+              이런 분들과 함께하고 싶어요
             </span>
           </dt>
           <dd>
