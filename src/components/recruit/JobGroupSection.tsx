@@ -14,7 +14,7 @@ export default function JobGroupSection() {
   return (
     <section css={sectionCss}>
       <div css={sectionHeadingCss}>
-        <p css={sectionSmallCss}>JOB GROUP</p>
+        <p css={sectionSmallCss}>POSITIONS</p>
         <h2 css={section40HeadingCss}>모집 직군</h2>
       </div>
       <ul css={jobGroupFlexBox}>
