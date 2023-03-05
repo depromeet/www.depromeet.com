@@ -1,15 +1,18 @@
 import { useMemo, useState } from 'react';
+import Image from 'next/image';
 import { css } from '@emotion/react';
 
-import { colors } from '~/styles/constants';
+import useMediaQuery from '~/hooks/use-media-query';
+import { colors, mediaQuery } from '~/styles/constants';
 import { section36HeadingCss, sectionSmallCss } from '~/styles/css';
 
 import { Project, projects } from '../constants';
-import Pagination from '../Pagination/Pagination';
-import ProjectContainer from '../ProjectContainer/ProjectContainer';
+import MobileProjectList from '../MobileProjectList';
+import ProjectList from '../ProjectList/ProjectList';
 import SelectGeneration from '../SelectGeneration';
+import SortBottomSheet from '../SortBottomSheet';
 
-type Order = 'latest' | 'oldest';
+export type Order = 'latest' | 'oldest';
 export type Generation = 10 | 11 | 12;
 
 // 10기 이상은 이전기수로 통칭한다.
@@ -28,35 +31,39 @@ const sortedByOldestProjects = [...projects].sort((a, b) => {
   return a.generation - b.generation;
 });
 
-const sliceByPage = (projects: Project[], page: number) => {
-  return projects.slice(9 * (page - 1), 9 * page);
-};
-
 export default function ProjectListSection() {
   const [generation, setGeneration] = useState<null | Generation>(null);
   const [sortBy, setSortBy] = useState<Order>('latest');
-  const [page, setPage] = useState(1);
+  const [showBottomSheet, setShowBottomSheet] = useState(false);
 
-  const displayedProjects = useMemo(() => {
+  const isMobile = useMediaQuery('xs');
+
+  const projectData = useMemo(() => {
     if (generation) {
-      return sliceByPage(organizedProjects[generation], page);
+      return organizedProjects[generation];
     } else if (sortBy === 'latest') {
-      return sliceByPage(sortedByLatestProjects, page);
+      return sortedByLatestProjects;
     } else {
-      return sliceByPage(sortedByOldestProjects, page);
+      return sortedByOldestProjects;
     }
-  }, [generation, page, sortBy]);
-
-  const onClickPage = (page: number) => {
-    setPage(page);
-  };
+  }, [generation, sortBy]);
 
   const selectGeneration = (generation: null | Generation) => {
     setGeneration(generation);
-    setPage(1);
     if (!generation) {
       setSortBy('latest');
     }
+  };
+  const closeBottomSheet = () => {
+    setShowBottomSheet(false);
+  };
+
+  const sortByLatest = () => {
+    setSortBy('latest');
+  };
+
+  const sortByOldest = () => {
+    setSortBy('oldest');
   };
 
   return (
@@ -64,39 +71,51 @@ export default function ProjectListSection() {
       <small css={smallCss}>PREVIOUS PROJECTS</small>
       <h2 css={headingCss}>지난 프로젝트</h2>
       <SelectGeneration selectGeneration={selectGeneration} selectedGeneration={generation} />
-      <div css={sortBtnsWrapperCss}>
-        {!generation && (
-          <>
-            <span
-              onClick={() => {
-                setSortBy('latest');
-                setPage(1);
-              }}
-              css={sortBtnCss(sortBy === 'latest')}
-            >
-              최신순
-            </span>
-            <div css={dividerCss} />
-            <span
-              onClick={() => {
-                setSortBy('oldest');
-                setPage(1);
-              }}
-              css={sortBtnCss(sortBy === 'oldest')}
-            >
-              오래된순
-            </span>
-          </>
-        )}
+      <div css={sortBtnsAreaCss}>
+        {!generation &&
+          (isMobile ? (
+            <div css={mobileSortBtnsWrapperCss}>
+              <div
+                css={mobileSortBtnCss}
+                onClick={() => {
+                  setShowBottomSheet(true);
+                }}
+              >
+                <span>{sortBy === 'latest' ? '최신순' : '오래된순'}</span>
+                <Image src={'/project/dropdown.webp'} alt="" width={20} height={20} />
+              </div>
+            </div>
+          ) : (
+            <div css={sortBtnsWrapperCss}>
+              <span onClick={sortByLatest} css={sortBtnCss(sortBy === 'latest')}>
+                최신순
+              </span>
+              <div css={dividerCss} />
+              <span onClick={sortByOldest} css={sortBtnCss(sortBy === 'oldest')}>
+                오래된순
+              </span>
+            </div>
+          ))}
       </div>
-      <ProjectContainer projects={displayedProjects} />
-      <Pagination
-        onClick={onClickPage}
-        numberOfPages={Math.ceil(
-          (generation ? organizedProjects[generation] : projects).length / 9
-        )}
-        currentPage={page}
-      />
+      {isMobile ? (
+        <MobileProjectList
+          projects={projectData}
+          sortBy={sortBy}
+          sortByLatest={sortByLatest}
+          sortByOldest={sortByOldest}
+        />
+      ) : (
+        <ProjectList projects={projectData} />
+      )}
+      {isMobile && (
+        <SortBottomSheet
+          isShowing={showBottomSheet}
+          onClose={closeBottomSheet}
+          sortBy={sortBy}
+          sortByLatest={sortByLatest}
+          sortByOldest={sortByOldest}
+        />
+      )}
     </section>
   );
 }
@@ -110,23 +129,52 @@ const sectionCss = css`
   width: 1200px;
   margin: auto;
   margin-bottom: 180px;
+
+  ${mediaQuery('xs')} {
+    width: 100vw;
+    margin-bottom: 150px;
+  }
 `;
 
 const smallCss = css`
   ${sectionSmallCss}
   margin-bottom: 10px;
+  ${mediaQuery('xs')} {
+    margin-bottom: 10px;
+  }
 `;
 
 const headingCss = css`
   ${section36HeadingCss}
   margin-bottom: 60px;
+  ${mediaQuery('xs')} {
+    margin-bottom: 20px;
+  }
 `;
 
-const sortBtnsWrapperCss = css`
-  height: 20px;
-  margin-top: 40px;
-  margin-bottom: 50px;
+const mobileSortBtnsWrapperCss = css`
+  padding: 0 16px;
+  position: relative;
 `;
+
+const mobileSortBtnCss = css`
+  display: flex;
+  align-items: center;
+  margin-right: 4px;
+  position: absolute;
+  right: 0;
+`;
+
+const sortBtnsAreaCss = css`
+  height: 20px;
+  margin-bottom: 50px;
+  ${mediaQuery('xs')} {
+    margin-bottom: 40px;
+    width: 343px;
+  }
+`;
+
+const sortBtnsWrapperCss = css``;
 
 const sortBtnCss = (selected: boolean) => css`
   color: ${selected ? colors.black : colors.gray500};

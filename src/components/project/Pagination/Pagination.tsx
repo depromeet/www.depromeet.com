@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 
 import { colors } from '~/styles/constants';
 
-interface Props {
+export interface PaginationProps {
   onClick: (clickedPage: number) => void;
   numberOfPages: number;
   currentPage: number;
@@ -12,7 +12,7 @@ interface Props {
 export default function Pagination({ onClick, numberOfPages, currentPage }: Props) {
   const id = useId();
   return (
-    <ul css={wrapperCss}>
+    <ul css={listCss}>
       {[...new Array(numberOfPages)].map((_, i) => {
         return (
           <li
@@ -30,15 +30,16 @@ export default function Pagination({ onClick, numberOfPages, currentPage }: Prop
   );
 }
 
-const wrapperCss = css`
+const listCss = css`
+  margin-top: 80px;
   display: flex;
   gap: 40px;
-  margin-top: 80px;
   font-family: 'Helvetica';
   font-style: italic;
   font-weight: 400;
   font-size: 20px;
   line-height: 23px;
+  justify-content: center;
 `;
 
 const listItemCss = (selected: boolean) => css`
