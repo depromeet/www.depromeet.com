@@ -13,8 +13,8 @@ export default function Project() {
   return (
     <>
       <SEO title="디프만 - Project" />
+      <HeaderSection />
       <main css={mainCss}>
-        <HeaderSection />
         <HorizontalDivider />
         <ProjectListSection />
         {!isMobile && <ApplySection wrapperCss={applySectionCss} />}
