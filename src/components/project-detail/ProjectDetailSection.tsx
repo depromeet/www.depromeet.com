@@ -97,7 +97,7 @@ export default function ProjectDetailSection({ currentProject }: Props) {
                   backgroundRepeat: 'no-repeat',
                 }}
               >
-                <span>{prize}</span>
+                <span css={prizeSpanCss(prize === '최우수상')}>{prize}</span>
               </div>
             </div>
           )}
@@ -207,17 +207,11 @@ const projectDetailSectionCss = css`
     .project-meta-header__right {
       width: 76px;
       height: 76px;
+
       div {
         display: flex;
         justify-content: center;
         align-items: center;
-        span {
-          font-weight: 600;
-          font-size: 1.125rem;
-          line-height: 122%;
-          letter-spacing: -0.003em;
-          color: ${colors.black};
-        }
       }
     }
   }
@@ -305,4 +299,12 @@ const projectDetailSectionCss = css`
     height: 1px;
     background-color: ${colors.black};
   }
+`;
+
+const prizeSpanCss = (is최우수상: boolean) => css`
+  font-weight: 600;
+  font-size: ${is최우수상 ? '0.875rem' : '1.125rem'};
+  line-height: 122%;
+  letter-spacing: -0.003em;
+  color: ${colors.black};
 `;
