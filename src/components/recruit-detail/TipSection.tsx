@@ -12,19 +12,22 @@ import { ArrowIcon } from '../common/icons';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 export default function TipSection({ positionType }: { positionType: PositionType }) {
+  const isNeedController = POSITION_TIPS[POSITION_TYPE[positionType]].length > 1;
+
   return (
     <section css={sectionCss}>
       <div css={sectionHeadingCss}>
         <small css={sectionSmallCss}>TIP</small>
-        <h2 css={section40HeadingCss}>디프만 전 멤버들의 지원 꿀팁</h2>
+        <h2 css={section40HeadingCss}>디프만 전 멤버들의 지원 꿀팁 {`${isNeedController}`}</h2>
       </div>
       <Carousel
         showArrows
         showStatus={false}
         showThumbs={false}
         infiniteLoop
-        renderArrowPrev={RenderArrowPrev}
-        renderArrowNext={RenderArrowNext}
+        showIndicators={isNeedController}
+        renderArrowPrev={clickHandler => RenderArrowPrev(clickHandler, isNeedController)}
+        renderArrowNext={clickHandler => RenderArrowNext(clickHandler, isNeedController)}
         renderIndicator={RenderIndicator}
       >
         {POSITION_TIPS[POSITION_TYPE[positionType]].map(item => (
@@ -56,18 +59,26 @@ export default function TipSection({ positionType }: { positionType: PositionTyp
   );
 }
 
-const RenderArrowPrev = (clickHandler: () => void) => {
+const RenderArrowPrev = (clickHandler: () => void, isNeedController: boolean) => {
   return (
-    <div css={[baseArrowCss, prevCss]} onClick={clickHandler}>
-      <ArrowIcon width={32} height={32} color="black" />
-    </div>
+    <>
+      {isNeedController && (
+        <div css={[baseArrowCss, prevCss]} onClick={clickHandler}>
+          <ArrowIcon width={32} height={32} color="black" />
+        </div>
+      )}
+    </>
   );
 };
-const RenderArrowNext = (clickHandler: () => void) => {
+const RenderArrowNext = (clickHandler: () => void, isNeedController: boolean) => {
   return (
-    <div css={[baseArrowCss, nextCss]} onClick={clickHandler}>
-      <ArrowIcon width={32} height={32} color="black" />
-    </div>
+    <>
+      {isNeedController && (
+        <div css={[baseArrowCss, nextCss]} onClick={clickHandler}>
+          <ArrowIcon width={32} height={32} color="black" />
+        </div>
+      )}
+    </>
   );
 };
 const RenderIndicator = (

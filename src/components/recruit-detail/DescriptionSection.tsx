@@ -30,8 +30,7 @@ export default function DescriptionSection({ positionType }: { positionType: Pos
               ) : (
                 <BraceCircleIcon />
               )}
-
-              {POSITION_WITH_CATEGORY_NAME[positionType]}
+              {POSITION_WITH_CATEGORY_NAME[positionType]}는 이런 일을 해요
             </span>
           </dt>
           <dd dangerouslySetInnerHTML={{ __html: POSITION_DESCRIPTION[positionType] }} />
@@ -67,7 +66,7 @@ const flexBoxCss = css`
 const flexRowCss = css`
   display: flex;
 
-  height: 390px;
+  min-height: 390px;
   width: 100%;
   padding: 20px 0;
   border-bottom: solid 1px ${colors.black};
@@ -79,9 +78,10 @@ const flexRowCss = css`
   color: ${colors.black};
 
   dt {
+    flex-shrink: 0;
     position: relative;
     padding: 20px 0;
-    width: 34%;
+    width: 408px;
     border-right: solid 1px ${colors.black};
 
     span {
@@ -96,7 +96,7 @@ const flexRowCss = css`
 
   dd {
     padding: 20px 20px 0 80px;
-    width: 76%;
+    width: 100%;
 
     ul {
       list-style: disc;
@@ -108,7 +108,7 @@ const flexRowCss = css`
 
   ${mediaQuery('xs')} {
     flex-direction: column;
-    height: fit-content;
+    min-height: fit-content;
     padding: 0;
 
     dt,
