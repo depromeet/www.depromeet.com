@@ -1,20 +1,30 @@
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
+import useIsInProgress from '~/hooks/use-is-in-progress';
 import { colors, mediaQuery } from '~/styles/constants';
 
 import { BigArrowIcon } from '../home/BigArrowIcon';
 
 export default function HeaderSection() {
+  const { remainDay, isInProgress } = useIsInProgress();
+
   return (
     <section css={headerCss}>
       <div css={headImageWrapperCss}>
-        <div css={headingCss}>
-          <h1>서류 접수 마감까지</h1>
-          <em>
-            <h1>D-7</h1>
-          </em>
-        </div>
+        {isInProgress ? (
+          <div css={headingCss}>
+            <h1>서류 접수 마감까지</h1>
+            <em>
+              <h2>D-{remainDay}</h2>
+            </em>
+          </div>
+        ) : (
+          <div css={headingCss}>
+            <h1>서류 접수 마감</h1>
+          </div>
+        )}
+
         <Image
           fill
           src="/images/recruit/home.webp"
