@@ -166,6 +166,12 @@ const CarouselBoxCss = css`
     small {
       margin-bottom: 30px;
     }
+
+    p {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 140%;
+    }
   }
 `;
 
