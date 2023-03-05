@@ -6,18 +6,164 @@ export interface Project {
   catchphrase: string;
   description: string;
   image: string;
-  icon: string;
+  icon?: string;
   thumbnail: string;
   ios?: string;
   android?: string;
   web?: string;
   behance?: string;
+  github?: string;
   frontends?: string[];
   backends?: string[];
   designers?: string[];
 }
 
 export const projects: Array<Readonly<Project>> = [
+  {
+    order: 42,
+    generation: 12,
+    title: '짝심삼일',
+    team: '막내온탑',
+    catchphrase: '나를 바꾸는 작은 습관의 힘, 습관 관리 서비스',
+    description: `새해 목표나 다짐 등 결심으로만 끝났던 경험이 있나요? 3일 연속을 습관을 
+    집중적으로 실천하고 짝심삼일의 박수를 받아보세요! 짝심삼일은 쉽고 재
+    밌게 습관을 형성할 수 있도록 돕는 서비스입니다. `,
+    android: 'https://c11.kr/19ln2',
+    behance: 'https://url.kr/pyhgze',
+    github: 'https://github.com/depromeet12th/three-days-android',
+    image: 'details/짝심삼일.png',
+    thumbnail: 'thumbnails/짝심삼일.png',
+    designers: ['맹지영', '이승희', '장지현'],
+    frontends: ['김주환(Android)', '김혜인(Android)', '전해성(Android)'],
+    backends: ['김주현', '정구아', '채상엽'],
+  },
+  {
+    order: 41,
+    generation: 12,
+    title: 'KNOCKNOCK',
+    team: '칠면조',
+    catchphrase: '내 친구가 보내는 생생한 푸시알림 서비스',
+    description: `🏃‍♀️ “목표 달성까지 얼마 안남았어요, 화이팅!" 이런 푸시 알림, 무시해본 적 
+    있나요? Knocknock에서 관심사 알림을 구독하고, 사람 냄새나는 푸
+    시 알림을 받아보세요. 의미있는 소통으로 동기부여 해드릴게요!`,
+    android: 'https://play.google.com/store/apps/details?id=com.depromeet.knockknock',
+    behance: 'https://www.behance.net/gallery/161848521/KNOCKNOCK-PUSH-NOTIFICATION-CUSTOM-SERVICE',
+    github: 'https://github.com/depromeet/12th-KnockKnock-Android',
+    image: 'details/KNOCKNOCK.png',
+    thumbnail: 'thumbnails/KNOCKNOCK.png',
+    designers: ['김나영', '박수연', '진승희'],
+    frontends: ['황규일(Android)', '이영준(Android)', '조준장(Android)', '최현정(Android)'],
+    backends: ['이찬진', '배정은', '이서준'],
+  },
+
+  {
+    order: 40,
+    generation: 12,
+    title: 'TICLEMOA',
+    team: '뇽뇽',
+    catchphrase: '아티클을 모아 지식을 태산처럼, 아티클 스크랩 서비스',
+    description: `쏟아지는 아티클 플랫폼과 읽을거리의 홍수에 살고 있는 우리, 아티클만을 
+    위한 편리한 저장고는 없을까요? 티클모아는 아티클을 저장하고 관리하여
+    지식을 쌓을 수 있도록 도와주는 앱 서비스입니다.`,
+    ios: 'https://apps.apple.com/kr/app/ticlemoa/id1659267166',
+    github: 'https://github.com/depromeet/ticlemoa-backend',
+    behance: 'https://www.behance.net/gallery/161983453/TICLEMOA-Article-clipping-service-',
+    image: 'details/TICLEMOA.png',
+    thumbnail: 'thumbnails/TICLEMOA.png',
+    designers: ['임효연', '허창민', '형성현'],
+    frontends: ['김용우(iOS)', '김우성(iOS)', '신재웅(iOS)', '차요셉(iOS)'],
+    backends: ['이성태', '송은우', '강시온'],
+  },
+  {
+    order: 39,
+    generation: 12,
+    title: '똑스',
+    team: '오개안말',
+    catchphrase: '내가 만든 퀴즈로 스터디를 재미있게, 똑스',
+    description: `덜컥 시작한 스터디, 점차 지쳐 마무리를 못한 적이 있으신가요? 똑스에서
+    는 스터디원과 다같이 모여 퀴즈를 만들고 풀 수 있어요. 더 많은 퀴즈를 풀
+    어가며 똑톡이의 방이 채워지는 모습도 확인할 수 있답니다. 마지막까지 즐
+    겁게 공부할 수 있는 똑스, 지금 바로 시작해보세요.`,
+    web: 'https://tokstudy.com/',
+    behance: 'https://www.behance.net/gallery/161231589/Toks-Quiz-Study-Service-',
+    github: 'https://github.com/depromeet/toks-web',
+    image: 'details/똑스.png',
+    thumbnail: 'thumbnails/똑스.png',
+    designers: ['김성념', '유정현', '이원희'],
+    frontends: ['강현구', '김채림', '윤두현', '최민석'],
+    backends: ['김동건', '김시은', '호선우'],
+  },
+  {
+    order: 38,
+    generation: 12,
+    title: '코퀄리티',
+    team: '시원스쿨',
+    catchphrase: '지식을 공유하고, 후원하며 함께 성장하는 블로깅 플랫폼',
+    description: `코컬리티는 IT 종사자가 글을 올리고 후원받을 수 있는 블로깅 플랫폼으로, 
+    성장이 필수적인 IT 현직자들을 위해 새로운 블로깅 플랫폼을 제안합니다.`,
+    web: 'coquality.vercel.app',
+    behance: 'https://www.behance.net/gallery/161841129/-Coquality-High-Quality-Blogging-Platform',
+    image: 'details/코퀄리티.png',
+    thumbnail: 'thumbnails/코퀄리티.png',
+    designers: ['김유리', '엄희수', '전수미'],
+    frontends: ['정시원', '김해나', '이상민'],
+    backends: ['지우영', '이제준'],
+  },
+  {
+    order: 37,
+    generation: 12,
+    title: '아맞다',
+    team: '삼겹살',
+    catchphrase: '대신 외쳐주는 소지품 리스트',
+    description: `오늘도 외출할 때 ‘아맞다!’를 외치진 않으셨나요?
+    아맞다는 오직 소지품에 집중한 체크리스트, 리마인드 알림,
+    소지품 추천으로 일상의 작은 고민을 덜어주는 서비스입니다.
+    매일 소지품을 깜빡해 스트레스 받는 당신을 위해,
+    아맞다가 완벽하게 챙길 수 있도록 도와드릴게요.`,
+    ios: 'https://apps.apple.com/kr/app/%EC%95%84%EB%A7%9E%EB%8B%A4/id1660192508',
+    android: 'https://play.google.com/store/apps/details?id=com.ahmatda&hl=ko',
+    web: 'https://ahmatda.notion.site/ahmatda/3202c2a4e2dd440eb95ae3345a130fc4',
+    behance: 'https://www.behance.net/gallery/161161601/-Ahmatda-Checklist-for-Your-Belongings',
+    image: 'details/아맞다.png',
+    thumbnail: 'thumbnails/아맞다.png',
+    designers: ['이영희', '이종원', '윤가빈'],
+    frontends: ['구민규', '오혜성', '이은지', '박한솔'],
+    backends: ['김민걸', '조성민', '명수찬'],
+  },
+  {
+    order: 36,
+    generation: 12,
+    title: 'PING-PONG!',
+    team: '말하는 감자들',
+    catchphrase: '재능을 교환하고 나누며 성장하는 플랫폼, 핑퐁',
+    description: `'핑퐁'은 재능 공유 플랫폼으로, 자신의 재능과 스킬을 공유하고 다른
+    사용자들과 재능 교환을 할 수 있도록 도와줍니다. 온라인 환경에서도
+    여러분이 서로 동반성장을 이룰 수 있도록 '핑퐁'이 도와드릴게요.`,
+    ios: 'https://apps.apple.com/kr/app/%ED%95%91%ED%90%81-pingpong/id1662351621',
+    behance: 'https://www.behance.net/gallery/161783411/Ping-Pong',
+    image: 'details/PING-PONG.png',
+    thumbnail: 'thumbnails/PING-PONG.png',
+    designers: ['안유진', '권수경', '박은진'],
+    frontends: ['이동현', '이도윤', '황예나'],
+    backends: ['최영권', '서명현', '이연희', '김민수'],
+  },
+  {
+    order: 35,
+    generation: 12,
+    title: '꼬깃',
+    team: '동규밭 과수원샷',
+    catchphrase: '진심을 표현하고 싶을 때, 꼬깃 접어 전해보세요',
+    description: `소중한 사람들에게 마음을 표현하고 싶을 때 꼬깃이 도와드릴게요. 쉽고
+    재미있게 편지를 작성하고, 주고 받은 편지를 아카이빙하며 색다른 추억을
+    남겨 보세요!`,
+    web: 'https://www.ggo-geet.com',
+    behance: 'https://url.kr/qd3ijo',
+    image: 'details/꼬깃.png',
+    thumbnail: 'thumbnails/꼬깃.png',
+    designers: ['김나영', '김혜진', '정지원'],
+    frontends: ['김가은', '김동규', '김민수', '최영광'],
+    backends: ['김문규', '유희수', '정성훈'],
+  },
   {
     order: 34,
     generation: 11,

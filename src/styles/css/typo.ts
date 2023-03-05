@@ -37,3 +37,38 @@ export const section40HeadingCss = css`
     line-height: 140%;
   }
 `;
+
+export const caption2Css = css`
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 140%;
+`;
+
+export const subtitle1Css = css`
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+`;
+
+export const subtitle2Css = css`
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+
+  ${mediaQuery('xs')} {
+    font-size: 18px;
+    line-height: 22px;
+  }
+`;
+
+export const body1Css = css`
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 140%;
+`;
+
+export const body2Css = css`
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 140%;
+`;
