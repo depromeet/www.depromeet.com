@@ -35,7 +35,7 @@ export default function OrganizerCard({
       onClick={onMobileClick}
       initial="default"
       whileHover="hover"
-      animate={isOpen ? 'hover' : 'default'}
+      animate={isMobile && isOpen ? 'hover' : 'default'}
     >
       <Image css={imageCss} src={src} alt={name} fill placeholder="blur" blurDataURL={src} />
       <h3 css={nameCss}>{name}</h3>
