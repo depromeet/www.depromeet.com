@@ -1,11 +1,13 @@
-import { useState } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
 import { ClickableLink } from '~/components/common/Clickable';
 import { Project } from '~/components/project/constants';
 import { POSITION_ICON_BASE } from '~/constants/images/images';
+import useMediaQuery from '~/hooks/use-media-query';
 import { colors } from '~/styles/constants';
+
+import ProjectDetailLink from './ProjectDetailLink';
 
 interface Props {
   currentProject: Project;
@@ -28,52 +30,27 @@ function ProjectDetailTeamMembers({
   );
 }
 
-function ProjectDetailLinks({
-  type,
-  link,
-}: {
-  type: '앱스토어' | '플레이스토어' | 'WEB' | '비핸스' | '깃허브';
-  link: string;
-}) {
-  const [isHover, setIsHover] = useState<boolean>(false);
-  const iconImage = isHover ? 'project-link--active.webp' : 'project-link--default.webp';
-  return (
-    <ClickableLink
-      href={link}
-      target="_blank"
-      className="project-detail__link"
-      onMouseOver={() => setIsHover(true)}
-      onMouseOut={() => setIsHover(false)}
-    >
-      <Image
-        src={`${POSITION_ICON_BASE}/${iconImage}`}
-        alt="바로가기"
-        height="20"
-        width="20"
-        objectFit="cover"
-      />
-      <span>{type}</span>
-    </ClickableLink>
-  );
-}
-
 export default function ProjectDetailSection({ currentProject }: Props) {
   const { generation, title, team, catchphrase, description, prize } = currentProject;
 
+  const isMobile = useMediaQuery('xs');
+
   return (
     <>
-      <ClickableLink href="/project" css={goBackCss}>
-        <Image
-          src={`${POSITION_ICON_BASE}/back.webp`}
-          alt="뒤로가기"
-          height="18"
-          width="18"
-          css={css`
-            object-fit: cover;
-          `}
-        />
-        <span>이전</span>
-      </ClickableLink>
+      {!isMobile && (
+        <ClickableLink href="/project" css={goBackCss}>
+          <Image
+            src={`${POSITION_ICON_BASE}/back.webp`}
+            alt="뒤로가기"
+            height="18"
+            width="18"
+            css={css`
+              object-fit: cover;
+            `}
+          />
+          <span>이전</span>
+        </ClickableLink>
+      )}
 
       <section css={projectDetailSectionCss}>
         <header className="project-meta-header">
@@ -85,6 +62,7 @@ export default function ProjectDetailSection({ currentProject }: Props) {
               <p className="project-meta__prize">{catchphrase}</p>
             </div>
           </div>
+
           {prize !== 'Default' && (
             <div className="project-meta-header__right">
               <div
@@ -102,6 +80,7 @@ export default function ProjectDetailSection({ currentProject }: Props) {
             </div>
           )}
         </header>
+
         <div className="separator" />
         <div className="project-detail">
           <div className="project-detail__team">
@@ -123,17 +102,17 @@ export default function ProjectDetailSection({ currentProject }: Props) {
             <p>{description}</p>
             <div className="project-detail__links">
               {currentProject.ios && (
-                <ProjectDetailLinks type="앱스토어" link={currentProject.ios} />
+                <ProjectDetailLink type="앱스토어" link={currentProject.ios} />
               )}
               {currentProject.android && (
-                <ProjectDetailLinks type="플레이스토어" link={currentProject.android} />
+                <ProjectDetailLink type="플레이스토어" link={currentProject.android} />
               )}
-              {currentProject.web && <ProjectDetailLinks type="WEB" link={currentProject.web} />}
+              {currentProject.web && <ProjectDetailLink type="WEB" link={currentProject.web} />}
               {currentProject.behance && (
-                <ProjectDetailLinks type="비핸스" link={currentProject.behance} />
+                <ProjectDetailLink type="비핸스" link={currentProject.behance} />
               )}
               {currentProject.github && (
-                <ProjectDetailLinks type="깃허브" link={currentProject.github} />
+                <ProjectDetailLink type="깃허브" link={currentProject.github} />
               )}
             </div>
           </div>
@@ -279,21 +258,10 @@ const projectDetailSectionCss = css`
         display: flex;
         gap: 32px;
         align-items: center;
-        .project-detail__link {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          span {
-            font-weight: 500;
-            font-size: 1rem;
-            line-height: 140%;
-            letter-spacing: -0.3px;
-            color: ${colors.point};
-          }
-        }
       }
     }
   }
+
   .separator {
     width: 100%;
     height: 1px;

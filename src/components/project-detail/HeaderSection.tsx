@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 
 import { PROJECTS_IMAGE_BASE } from '~/constants/images';
+import { mediaQuery } from '~/styles/constants';
 
 import { Project } from '../project/constants';
 
@@ -28,4 +29,8 @@ const sectionCss = css`
   position: relative;
   width: 100%;
   height: 667px;
+
+  ${mediaQuery('xs')} {
+    height: 174px;
+  }
 `;
