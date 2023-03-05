@@ -85,8 +85,9 @@ const contentsWrapperCss = css`
   p {
     ${body2Css}
     position: absolute;
-    bottom: 30px;
+    top: 226px;
     left: 30px;
+    width: 230px;
   }
 `;
 
@@ -118,6 +119,7 @@ const mobileContentsWrapperCss = css`
     position: absolute;
     left: 20px;
     top: 208px;
+    width: 267px;
   }
 `;
 
