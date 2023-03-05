@@ -7,6 +7,7 @@ import { section40HeadingCss, sectionSmallCss } from '~/styles/css';
 
 import { POSITION_TIPS, POSITION_TYPE, PositionType, TIP_BASE_IMAGE_URL } from './constants';
 import { sectionCss, sectionHeadingCss } from './RecruitDetail.style';
+import { ClickableButton } from '../common/Clickable';
 import { ArrowIcon } from '../common/icons';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -63,9 +64,9 @@ const RenderArrowPrev = (clickHandler: () => void, isNeedController: boolean) =>
   return (
     <>
       {isNeedController && (
-        <div css={[baseArrowCss, prevCss]} onClick={clickHandler}>
+        <ClickableButton css={[baseArrowCss, prevCss]} onClick={clickHandler}>
           <ArrowIcon width={32} height={32} color="black" />
-        </div>
+        </ClickableButton>
       )}
     </>
   );
@@ -74,9 +75,9 @@ const RenderArrowNext = (clickHandler: () => void, isNeedController: boolean) =>
   return (
     <>
       {isNeedController && (
-        <div css={[baseArrowCss, nextCss]} onClick={clickHandler}>
+        <ClickableButton css={[baseArrowCss, nextCss]} onClick={clickHandler}>
           <ArrowIcon width={32} height={32} color="black" />
-        </div>
+        </ClickableButton>
       )}
     </>
   );
@@ -86,9 +87,9 @@ const RenderIndicator = (
   isSelected: boolean
 ) => {
   return (
-    <div onClick={clickHandler} css={indicatorCss(isSelected)}>
+    <ClickableButton onClick={clickHandler} css={indicatorCss(isSelected)}>
       {isSelected}
-    </div>
+    </ClickableButton>
   );
 };
 
