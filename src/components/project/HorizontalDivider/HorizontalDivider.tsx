@@ -2,7 +2,7 @@ import { css } from '@emotion/react';
 
 import { ArrowIcon } from '~/components/common/icons';
 import useMediaQuery from '~/hooks/use-media-query';
-import { colors, mediaQuery } from '~/styles/constants';
+import { colors } from '~/styles/constants';
 
 export function HorizontalDivider() {
   const isMobile = useMediaQuery('xs');
@@ -25,8 +25,4 @@ const wrapperCss = css`
 
   display: flex;
   justify-content: center;
-
-  ${mediaQuery('xs')} {
-    width: 375px;
-  }
 `;
