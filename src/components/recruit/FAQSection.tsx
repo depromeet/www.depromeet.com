@@ -71,7 +71,7 @@ export default function FAQSection() {
             <Link target="_blank" rel="noopener noreferrer" href="https://pf.kakao.com/_xoxmcxed">
               &nbsp;@depromeet&nbsp;
             </Link>
-            으로 궁금한 점을 전달해 주세요.
+            으로 <br /> 궁금한 점을 전달해 주세요.
           </p>
           <small>(18시 이후 답변)</small>
         </div>
