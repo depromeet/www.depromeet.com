@@ -58,8 +58,14 @@ const qualificationGridItem = css`
     line-height: 140%;
     letter-spacing: -0.3px;
     color: ${colors.black};
+    white-space: pre-wrap;
   }
 
+  ${mediaQuery('sm')} {
+    strong {
+      white-space: normal;
+    }
+  }
   ${mediaQuery('xs')} {
     strong {
       font-size: 14px;
@@ -72,14 +78,14 @@ const qualificationGridItemResponsiveLayoutCss = css`
   padding-left: 40px;
   padding-right: 40px;
 
-  :nth-child(-n + 3) {
+  :nth-of-type(-n + 3) {
     padding-top: 9px;
   }
-  :nth-child(3n + 1) {
+  :nth-of-type(3n + 1) {
     padding-left: 0;
   }
 
-  :nth-child(2) {
+  :nth-of-type(2) {
     position: relative;
     &::before {
       display: block;
@@ -109,23 +115,23 @@ const qualificationGridItemResponsiveLayoutCss = css`
     padding-left: 20px;
     padding-right: 15px;
 
-    :nth-child(-n + 3) {
+    :nth-of-type(-n + 3) {
       padding-top: 20px;
     }
-    :nth-child(3n + 1) {
+    :nth-of-type(3n + 1) {
       padding-left: 20px;
     }
-    :nth-child(-n + 2) {
+    :nth-of-type(-n + 2) {
       padding-top: 0;
     }
-    &:nth-child(2) {
+    &:nth-of-type(2) {
       &::before,
       &::after {
         display: none;
       }
     }
 
-    :nth-child(4) {
+    :nth-of-type(4) {
       position: relative;
       &::before {
         display: block;
