@@ -19,22 +19,25 @@ export default function ProjectItem({ project }: Props) {
 
   return (
     <m.article css={wrapperCss} variants={defaultFadeInUpVariants}>
-      <Image
-        src={`/projects/${project.thumbnail}`}
-        alt={project.title}
-        fill
-        css={thumbnailCss}
-        quality={100}
-      />
-      <div css={gradientCss} />
-      <div css={isMobile ? mobileContentsWrapperCss : contentsWrapperCss}>
-        <span>{project.generation}기</span>
-        <h3>{project.title}</h3>
-        <p>{project.catchphrase}</p>
-        <ClickableLink href={`/project/${project.title}`} css={detailLinkCss}>
-          <ArrowIcon width={24} height={24} direction="right" />
-        </ClickableLink>
-      </div>
+      <ClickableLink href={`/project/${project.title}`}>
+        <Image
+          src={`/projects/${project.thumbnail}`}
+          alt={project.title}
+          fill
+          priority
+          css={thumbnailCss}
+          quality={100}
+          placeholder="blur"
+          blurDataURL={`/projects/${project.thumbnail}`}
+        />
+        <div css={gradientCss} />
+        <div css={isMobile ? mobileContentsWrapperCss : contentsWrapperCss}>
+          <span>{project.generation}기</span>
+          <h3>{project.title}</h3>
+          <p>{project.catchphrase}</p>
+          <ArrowIcon width={24} height={24} direction="right" css={detailLinkCss} />
+        </div>
+      </ClickableLink>
     </m.article>
   );
 }
