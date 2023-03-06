@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { css } from '@emotion/react';
 
 import { PROJECTS_IMAGE_BASE } from '~/constants/images';
@@ -6,21 +5,19 @@ import { mediaQuery } from '~/styles/constants';
 
 import { Project } from '../project/constants';
 
-export default function HeaderSection({ image, title }: Project) {
+export default function HeaderSection({ image }: Project) {
   return (
     <section css={sectionCss}>
-      <Image
-        src={`${PROJECTS_IMAGE_BASE}/${image}`}
-        alt={title}
-        fill
-        priority
-        quality={100}
-        placeholder="blur"
-        blurDataURL={`${PROJECTS_IMAGE_BASE}/${image}`}
-        css={css`
-          object-fit: cover;
-        `}
-      />
+      <div
+        style={{
+          width: '100%',
+          height: '100%',
+          backgroundImage: `url(${PROJECTS_IMAGE_BASE}/${image})`,
+          backgroundPosition: 'center center',
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
+        }}
+      ></div>
     </section>
   );
 }
