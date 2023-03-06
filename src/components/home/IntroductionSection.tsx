@@ -33,7 +33,7 @@ export default function IntroductionSection() {
           <span css={countSpanCss}>2</span>
 
           <div css={[descriptionBoxCss, isMobile && disableRightDividerCss]}>
-            <h3 css={heading3Css}>6YEARS</h3>
+            <h3 css={heading3Css}>7YEARS</h3>
             <h4 css={heading4Css}>탄생한지</h4>
           </div>
         </div>
