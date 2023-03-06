@@ -52,7 +52,6 @@ const wrapperCss = css`
 const gradientCss = css`
   position: absolute;
   bottom: 0;
-  background: linear-gradient(180deg, #121212 0%, rgba(18, 18, 18, 0) 100%);
   transform: rotate(-180deg);
   width: 100%;
   height: 172px;
@@ -66,6 +65,7 @@ const thumbnailCss = css`
 const contentsWrapperCss = css`
   opacity: 0;
   &:hover {
+    background: linear-gradient(180deg, #121212 0%, rgba(18, 18, 18, 0) 100%);
     opacity: 1;
   }
   width: 100%;
