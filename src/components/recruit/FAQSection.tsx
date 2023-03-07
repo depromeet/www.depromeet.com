@@ -224,6 +224,6 @@ const faqCategoryButtonCss = (selected = false) => css`
     font-weight: 500;
     font-size: 16px;
     line-height: 22px;
-    color: ${selected ? colors.point : '${colors.black}'};
+    color: ${selected ? colors.point : colors.black};
   }
 `;
