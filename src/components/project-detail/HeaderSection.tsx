@@ -10,6 +10,7 @@ export default function HeaderSection({ image, title }: Project) {
   return (
     <section css={sectionCss}>
       <Image
+        key={title}
         src={`${PROJECTS_IMAGE_BASE}/${image}`}
         alt={title}
         fill
