@@ -8,7 +8,7 @@ import { projects } from '../project/constants';
 const ProjectItem = dynamic(() => import('../project/ProjectItem/ProjectItem'), { ssr: false });
 
 export default function OtherProjectSection() {
-  const randomProjects = projects.sort(() => Math.random() - Math.random()).slice(0, 3);
+  const randomProjects = projects.sort(() => Math.random() - 0.5).slice(0, 3);
 
   return (
     <section css={projectDetailAnotherProjectCss}>
