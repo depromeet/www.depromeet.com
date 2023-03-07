@@ -17,7 +17,6 @@ module.exports = {
     'public',
     '.yarn',
     '@types',
-    'former',
   ],
   settings: {
     'import/resolver': {
