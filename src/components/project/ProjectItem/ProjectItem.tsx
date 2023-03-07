@@ -58,6 +58,10 @@ const gradientCss = css`
   transform: rotate(-180deg);
   width: 100%;
   height: 172px;
+
+  ${mediaQuery('xs')} {
+    background: linear-gradient(180deg, #121212 0%, rgba(18, 18, 18, 0) 100%);
+  }
 `;
 
 const thumbnailCss = css`
