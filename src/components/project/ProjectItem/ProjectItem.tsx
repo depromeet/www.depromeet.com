@@ -55,12 +55,11 @@ const wrapperCss = css`
 const gradientCss = css`
   position: absolute;
   bottom: 0;
-  transform: rotate(-180deg);
   width: 100%;
   height: 172px;
 
   ${mediaQuery('xs')} {
-    background: linear-gradient(180deg, #121212 0%, rgba(18, 18, 18, 0) 100%);
+    background: linear-gradient(0deg, #121212 0%, rgba(18, 18, 18, 0) 100%);
   }
 `;
 
@@ -72,7 +71,7 @@ const thumbnailCss = css`
 const contentsWrapperCss = css`
   opacity: 0;
   &:hover {
-    background: linear-gradient(180deg, #121212 0%, rgba(18, 18, 18, 0) 100%);
+    background: linear-gradient(0deg, #121212 0%, rgba(18, 18, 18, 0) 100%);
     opacity: 1;
   }
   width: 100%;
