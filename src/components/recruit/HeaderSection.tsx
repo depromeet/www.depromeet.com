@@ -12,18 +12,18 @@ export default function HeaderSection() {
   return (
     <section css={headerCss}>
       <div css={headImageWrapperCss}>
-        {isInProgress ? (
-          <div css={headingCss}>
-            <h1>서류 접수 마감까지</h1>
-            <em>
-              <h2>D-{remainDay}</h2>
-            </em>
-          </div>
-        ) : (
-          <div css={headingCss}>
+        <div css={headingCss}>
+          {isInProgress ? (
+            <>
+              <h1>서류 접수 마감까지</h1>
+              <em>
+                <h2>D-{remainDay === 0 ? 'Day' : remainDay}</h2>
+              </em>
+            </>
+          ) : (
             <h1>서류 접수 마감</h1>
-          </div>
-        )}
+          )}
+        </div>
 
         <Image
           fill

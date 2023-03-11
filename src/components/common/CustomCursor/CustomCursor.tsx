@@ -23,7 +23,7 @@ function CustomCursor() {
     function handleMouseMove(e: MouseEvent) {
       cursorRef.current?.setAttribute(
         'style',
-        `top: ${e.pageY}px;` + `left: ${e.pageX}px; display: inline`
+        `top: ${e.clientY}px;` + `left: ${e.clientX}px; display: inline`
       );
     }
     document.addEventListener('mousemove', handleMouseMove);
@@ -53,7 +53,7 @@ const cursorCss = css`
   background-size: contain;
   width: 32px;
   height: 32px;
-  position: absolute;
+  position: fixed;
   pointer-events: none;
   z-index: 9999;
 
