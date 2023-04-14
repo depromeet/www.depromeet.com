@@ -73,7 +73,7 @@ const SPONSORS: SponsorImage[] = [
   { name: '임팩트 캠퍼스', src: `${SPONSOR_IMAGE_BASE}/impact-campus.svg`, width: 211, height: 46 },
   { name: '네이버 클라우드', src: `${SPONSOR_IMAGE_BASE}/naver-cloud.svg`, width: 213, height: 23 },
   { name: '인프런', src: `${SPONSOR_IMAGE_BASE}/inflearn.svg`, width: 176, height: 33 },
-  { name: 'AWS', src: `${SPONSOR_IMAGE_BASE}/aws.svg`, width: 99, height: 61 },
+  { name: 'AWS', src: `${SPONSOR_IMAGE_BASE}/aws.svg`, width: 88, height: 54 },
   { name: 'dcamp', src: `${SPONSOR_IMAGE_BASE}/dcamp.svg`, width: 162, height: 38 },
 ];
 
