@@ -57,8 +57,9 @@ const articleCss = css`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   row-gap: 24px;
-  column-gap: 52px;
+  column-gap: 7rem;
 `;
 
 interface SponsorImage {
@@ -70,6 +71,7 @@ interface SponsorImage {
 
 const SPONSORS: SponsorImage[] = [
   { name: '임팩트 캠퍼스', src: `${SPONSOR_IMAGE_BASE}/impact-campus.svg`, width: 211, height: 46 },
+  { name: '네이버 클라우드', src: `${SPONSOR_IMAGE_BASE}/naver-cloud.svg`, width: 213, height: 23 },
 ];
 
 function Sponsor({ name, src, width, height }: SponsorImage) {
