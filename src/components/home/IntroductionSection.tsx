@@ -120,7 +120,7 @@ const infoBoxCss = css`
     width: calc(50% - 3px);
     height: 150px;
 
-    &:nth-child(even) {
+    &:nth-of-type(even) {
       margin-left: 6px;
     }
   }
