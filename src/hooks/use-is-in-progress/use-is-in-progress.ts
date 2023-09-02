@@ -25,7 +25,8 @@ export default function useIsInProgress() {
   };
 
   const isInProgress = getCurrentState() === 'IN_PROGRESS';
+  const progressState = getCurrentState();
   const remainDay = getRemainDay();
 
-  return { isInProgress, remainDay };
+  return { isInProgress, progressState, remainDay };
 }
