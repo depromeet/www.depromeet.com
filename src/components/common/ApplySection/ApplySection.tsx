@@ -2,6 +2,7 @@ import { css, Interpolation, Theme } from '@emotion/react';
 
 import { NOTION_RECRUIT_PATH } from '~/constants/common';
 import useIsInProgress from '~/hooks/use-is-in-progress';
+import { RecruitState } from '~/hooks/use-is-in-progress/use-is-in-progress';
 import { colors, mediaQuery } from '~/styles/constants';
 import { section36HeadingCss, sectionSmallCss } from '~/styles/css';
 
@@ -11,17 +12,29 @@ interface Props {
   wrapperCss?: Interpolation<Theme>;
 }
 
+const applyMessageObj: Record<RecruitState, { h1: string; button: string }> = {
+  PREVIOUS: {
+    h1: '14기는 아직 준비중',
+    button: '모집 예정',
+  },
+  IN_PROGRESS: {
+    h1: '이제 여러분 차례예요! \n디프만 13기 멤버가 되고 싶다면',
+    button: '바로 지원하기',
+  },
+  FINISH: {
+    h1: '이제 여러분 차례예요! \n디프만 13기 멤버가 되고 싶다면',
+    button: '모집 마감',
+  },
+};
+
 export default function ApplySection({ wrapperCss }: Props) {
-  const { isInProgress } = useIsInProgress();
+  const { isInProgress, progressState } = useIsInProgress();
+  const applyMessage = applyMessageObj[progressState];
 
   return (
     <section css={[sectionCss, wrapperCss]}>
       <small css={smallCss}>APPLY</small>
-      <h2 css={headingCss}>
-        이제 여러분 차례예요!
-        <br />
-        디프만 13기 멤버가 되고 싶다면
-      </h2>
+      <h2 css={headingCss}>{applyMessage.h1}</h2>
 
       {isInProgress ? (
         <ClickableLink
@@ -30,10 +43,10 @@ export default function ApplySection({ wrapperCss }: Props) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          바로 지원하기
+          {applyMessage.button}
         </ClickableLink>
       ) : (
-        <button css={disabledButtonCss}>모집 마감</button>
+        <button css={disabledButtonCss}>{applyMessage.button}</button>
       )}
     </section>
   );
