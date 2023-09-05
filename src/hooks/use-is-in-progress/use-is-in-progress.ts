@@ -1,6 +1,6 @@
 import { END_DATE, START_DATE } from '~/constants/common';
 
-type RecruitState = 'PREVIOUS' | 'IN_PROGRESS' | 'FINISH';
+export type RecruitState = 'PREVIOUS' | 'IN_PROGRESS' | 'FINISH';
 
 const 하루 = 1000 * 60 * 60 * 24;
 
@@ -25,7 +25,8 @@ export default function useIsInProgress() {
   };
 
   const isInProgress = getCurrentState() === 'IN_PROGRESS';
+  const progressState = getCurrentState();
   const remainDay = getRemainDay();
 
-  return { isInProgress, remainDay };
+  return { isInProgress, progressState, remainDay };
 }
