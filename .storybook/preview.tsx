@@ -3,14 +3,16 @@ const path = require('path');
 import type { Preview } from '@storybook/react';
 import React from 'react';
 import GlobalStyle from '../src/styles/globalStyle';
+import { ThemeProvider } from '@emotion/react';
+import { theme } from '../src/styles/theme';
 
 const preview: Preview = {
   decorators: [
     Story => (
-      <div>
+      <ThemeProvider theme={theme}>
         <GlobalStyle />
         <Story />
-      </div>
+      </ThemeProvider>
     ),
   ],
   parameters: {
