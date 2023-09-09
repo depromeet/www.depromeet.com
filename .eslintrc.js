@@ -29,7 +29,13 @@ module.exports = {
       '@typescript-eslint/parser': ['.ts', '.tsx'],
     },
   },
-  extends: ['next', 'prettier', 'plugin:import/recommended', 'plugin:import/typescript'],
+  extends: [
+    'next',
+    'prettier',
+    'plugin:import/recommended',
+    'plugin:import/typescript',
+    'plugin:storybook/recommended',
+  ],
   plugins: ['prettier', 'import', '@typescript-eslint', 'simple-import-sort', 'unused-imports'],
   parser: '@typescript-eslint/parser',
   rules: {
