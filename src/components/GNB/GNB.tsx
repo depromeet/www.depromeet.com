@@ -1,13 +1,32 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 
 import { Button } from '~/components/Button';
-import { GNB_MENU_NAME } from '~/constant/gnb';
+import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import { colors } from '~/styles/colors';
 
 const LOGO_IMAGE = `/images/logo.png`;
+
+function ApplyButton({ menu }: { menu: GNBMenu }) {
+  return (
+    <Button css={applyButtonCss}>
+      <Link css={linkCss} href={menu.href}>
+        {menu.name}
+      </Link>
+    </Button>
+  );
+}
+
 export function GNB() {
+  const { pathname } = useRouter();
+  const getActiveLinkcss = (menu: GNBMenu) => {
+    if (pathname.startsWith(menu.href)) {
+      return activeLinkCss;
+    }
+    return inActiveLinkCss;
+  };
   return (
     <nav css={navCss}>
       <div css={navWrapperCss}>
@@ -18,13 +37,9 @@ export function GNB() {
           {GNB_MENU_NAME.map(menu => (
             <li css={menuCss} key={menu.name}>
               {menu.type === 'button' ? (
-                <Button css={yellow500css}>
-                  <Link css={linkButtonCss} href={menu.href}>
-                    {menu.name}
-                  </Link>
-                </Button>
+                <ApplyButton menu={menu} />
               ) : (
-                <Link css={linkCss} href={menu.href}>
+                <Link css={[linkCss, getActiveLinkcss(menu)]} href={menu.href}>
                   {menu.name}
                 </Link>
               )}
@@ -64,22 +79,22 @@ const menuCss = css`
   margin: auto 0;
 `;
 
-const linkCss = css`
+const activeLinkCss = css`
+  color: ${colors.yellow500};
+`;
+
+const inActiveLinkCss = css`
   color: ${colors.white};
+`;
+
+const linkCss = css`
   font-size: 1.25rem;
   font-weight: 500;
   line-height: 150%; /* 30px */
   letter-spacing: -0.2px;
 `;
 
-const linkButtonCss = css`
-  font-size: 1.25rem;
-  font-weight: 500;
-  line-height: 150%; /* 30px */
-  letter-spacing: -0.2px;
-`;
-
-const yellow500css = css`
+const applyButtonCss = css`
   background-color: ${colors.yellow500};
   color: ${colors.black800};
 `;

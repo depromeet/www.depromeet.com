@@ -1,10 +1,10 @@
-type GNB = {
+export type GNBMenu = {
   name: 'About' | '모집안내' | '프로젝트' | '지원하기';
   href: '/about' | '/recruit' | '/project' | '/';
   type: 'text' | 'button';
 };
 // TODO: 지원하기 url 넣기
-export const GNB_MENU_NAME: GNB[] = [
+export const GNB_MENU_NAME: GNBMenu[] = [
   {
     name: 'About',
     href: '/about',
