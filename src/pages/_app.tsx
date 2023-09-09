@@ -3,6 +3,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { domMax, LazyMotion } from 'framer-motion';
 
+import { GNB } from '~/components/GNB';
 import { BASE_URL } from '~/constant/common';
 import { useRecordPageView } from '~/hooks/useRecordPageView';
 import GlobalStyle from '~/styles/globalStyle';
@@ -25,6 +26,7 @@ export default function App({ Component, pageProps }: AppProps & InitialProps) {
       </Head>
 
       <GlobalStyle />
+      <GNB />
       <Component {...pageProps} />
     </LazyMotion>
   );
