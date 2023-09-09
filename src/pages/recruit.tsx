@@ -1,9 +1,9 @@
 import { SEO } from '~/components/SEO';
 
-export default function About() {
+export default function Recruit() {
   return (
     <>
-      <SEO title="디프만 - About" />
+      <SEO title="디프만 - Recruit" />
       <main></main>
     </>
   );
