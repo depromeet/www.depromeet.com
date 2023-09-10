@@ -1,1 +1,1 @@
-export * from './GNB';
+export { GNB } from './GNB';
