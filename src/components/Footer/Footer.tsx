@@ -40,6 +40,7 @@ const footerCss = css`
 
 const footerInfoWrapper = css`
   max-width: 1240px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   height: 218px;
