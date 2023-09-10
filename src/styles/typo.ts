@@ -1,36 +1,39 @@
 import { css } from '@emotion/react';
 
+// FIXME: 다른 곳에서 사용하게 되면 유틸로 분리할게요~ @kimyouknow
+const pxToRem = (px: number, base = 16) => `${px / base}rem`;
+
 export const typos = {
   pretendard: {
     subTitle1: css`
       /* Pretendard/Subtitle Bold */
-      font-size: 32px;
+      font-size: ${pxToRem(32)};
       font-style: normal;
       font-weight: 700;
       line-height: 150%; /* 48px */
-      letter-spacing: -0.32px;
+      letter-spacing: ${pxToRem(-0.32)};
     `,
     subTitle2: css`
       /* Pretendard/Subtitle 2 Bold */
-      font-size: 20px;
+      font-size: ${pxToRem(20)};
       font-style: normal;
       font-weight: 500;
       line-height: 150%; /* 30px */
-      letter-spacing: -0.2px;
+      letter-spacing: ${pxToRem(-0.2)};
     `,
     body1: css`
       /* Pretendard/Body 1 Medium */
-      font-size: 18px;
+      font-size: ${pxToRem(18)};
       font-style: normal;
       font-weight: 500;
-      line-height: 25.2px; /* 140% */
-      letter-spacing: -0.18px;
+      line-height: 140%; /*  25.2px */
+      letter-spacing: ${pxToRem(-0.18)};
     `,
   },
   decimal: {
     title1: css`
       /* Decimal/Title 1 */
-      font-size: 60px;
+      font-size: ${pxToRem(60)};
       font-style: normal;
       font-weight: 600;
       line-height: 135%; /* 81px */
@@ -38,7 +41,7 @@ export const typos = {
     `,
     title2: css`
       /* Decimal/Title 2 */
-      font-size: 40px;
+      font-size: ${pxToRem(40)};
       font-style: normal;
       font-weight: 600;
       line-height: 135%; /* 54px */
@@ -46,19 +49,19 @@ export const typos = {
     `,
     subTitle1: css`
       /* Decimal/Subtitle 1 */
-      font-size: 28px;
+      font-size: ${pxToRem(28)};
       font-style: normal;
       font-weight: 600;
-      line-height: 30px; /* 107.143% */
-      letter-spacing: -0.28px;
+      line-height: 107.143%; /* 30px */
+      letter-spacing: ${pxToRem(-0.28)};
     `,
     body1: css`
       /* Decimal/Body 1 */
-      font-size: 18px;
+      font-size: ${pxToRem(18)};
       font-style: normal;
       font-weight: 500;
-      line-height: 25.2px; /* 140% */
-      letter-spacing: -0.18px;
+      line-height: 140%; /* 25.2px */
+      letter-spacing: ${pxToRem(-0.18)};
     `,
   },
 };
