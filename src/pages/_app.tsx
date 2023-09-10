@@ -1,6 +1,7 @@
 import type { AppContext, AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { ThemeProvider } from '@emotion/react';
 import { domMax, LazyMotion } from 'framer-motion';
 
 import { Footer } from '~/components/Footer';
@@ -8,6 +9,7 @@ import { GNB } from '~/components/GNB';
 import { BASE_URL } from '~/constant/common';
 import { useRecordPageView } from '~/hooks/useRecordPageView';
 import GlobalStyle from '~/styles/globalStyle';
+import { theme } from '~/styles/theme';
 
 interface InitialProps {
   userAgent: string;
@@ -20,19 +22,21 @@ export default function App({ Component, pageProps }: AppProps & InitialProps) {
   useRecordPageView();
 
   return (
-    <LazyMotion features={domMax}>
-      <Head>
-        <link rel="canonical" href={currentUrl} />
-        <meta property="og:url" content={currentUrl} />
-      </Head>
-
-      <GlobalStyle />
-      <GNB />
-      <Component {...pageProps} />
-      <Footer />
-    </LazyMotion>
+    <ThemeProvider theme={theme}>
+      <LazyMotion features={domMax}>
+        <Head>
+          <link rel="canonical" href={currentUrl} />
+          <meta property="og:url" content={currentUrl} />
+        </Head>
+        <GNB />
+        <GlobalStyle />
+        <Component {...pageProps} />
+        <Footer />
+      </LazyMotion>
+    </ThemeProvider>
   );
 }
+
 App.getInitialProps = async ({ ctx }: AppContext) => {
   const userAgent = ctx.req?.headers['user-agent'] || 'Desktop';
 
