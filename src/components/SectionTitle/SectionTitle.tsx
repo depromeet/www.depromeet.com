@@ -40,6 +40,7 @@ const titleCss = (theme: Theme) => css`
   margin-top: 16px;
   text-align: center;
   text-align: center;
+  white-space: pre-line;
 `;
 
 const descriptionCss = (theme: Theme) => css`
