@@ -1,5 +1,7 @@
 import { css, Theme } from '@emotion/react';
 
+import { theme } from '~/styles/theme';
+
 interface ScheduleSectionProps {
   label: string;
   title: string;
@@ -7,9 +9,11 @@ interface ScheduleSectionProps {
     date: string;
     content: string;
   }>;
+
+  titleBgColor: keyof typeof theme.colors;
 }
 
-export function ScheduleSection({ label, title, schedule }: ScheduleSectionProps) {
+export function ScheduleSection({ label, title, schedule, titleBgColor }: ScheduleSectionProps) {
   return (
     <section css={layoutCss}>
       <div css={topLabelContainerCss}>
@@ -17,7 +21,7 @@ export function ScheduleSection({ label, title, schedule }: ScheduleSectionProps
           <span key={index}>{char}</span>
         ))}
       </div>
-      <div css={titleContainerCss}>
+      <div css={theme => titleContainerCss(theme, titleBgColor)}>
         <h2>{title}</h2>
       </div>
       <div css={scheduleContainerCss}>
@@ -38,6 +42,10 @@ const layoutCss = (theme: Theme) => css`
   margin: 0 auto;
 
   background-color: ${theme.colors.black800};
+
+  & + & {
+    margin-top: 32px;
+  }
 `;
 
 const topLabelContainerCss = (theme: Theme) => css`
@@ -56,9 +64,9 @@ const topLabelContainerCss = (theme: Theme) => css`
   }
 `;
 
-const titleContainerCss = (theme: Theme) => css`
+const titleContainerCss = (theme: Theme, titleBgColor: keyof typeof theme.colors) => css`
   ${theme.typos.pretendard.subTitle1};
-  background-color: ${theme.colors.blue400};
+  background-color: ${theme.colors[titleBgColor]};
   color: ${theme.colors.black800};
   text-align: center;
   padding: 40px 0;
@@ -67,6 +75,7 @@ const titleContainerCss = (theme: Theme) => css`
 const scheduleContainerCss = (theme: Theme) => css`
   display: flex;
   padding: 50px 90px;
+  background-color: ${theme.colors.black400};
 
   & > div {
     display: flex;
