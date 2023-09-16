@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 import { GA_ID, IS_PRODUCTION } from '~/constant/common';
 
-export const useRecordPageView = () => {
+export function useRecordPageView() {
   const router = useRouter();
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export const useRecordPageView = () => {
       if (IS_PRODUCTION) router.events.off('routeChangeComplete', recordPageView);
     };
   }, [router.events]);
-};
+}
 
 declare global {
   interface Window {
