@@ -31,7 +31,7 @@ const layoutCss = css`
 
 const labelCss = (theme: Theme) => css`
   ${theme.typos.decimal.body1};
-  color: ${theme.colors.yellow};
+  color: ${theme.colors.yellow500};
   text-align: center;
 `;
 
