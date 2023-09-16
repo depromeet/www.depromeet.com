@@ -41,22 +41,23 @@ export const typos = {
   decimal: {
     title1: css`
       /* Decimal/Title 1 */
+      font-family: Decimal;
       font-size: ${pxToRem(60)};
       font-style: normal;
       font-weight: 600;
       line-height: 135%;
-      text-transform: capitalize;
     `,
     title2: css`
       /* Decimal/Title 2 */
+      font-family: Decimal;
       font-size: ${pxToRem(36)};
       font-style: normal;
       font-weight: 600;
       line-height: 135%;
-      text-transform: capitalize;
     `,
     subTitle1: css`
       /* Decimal/Subtitle 1 */
+      font-family: Decimal;
       font-size: ${pxToRem(28)};
       font-style: normal;
       font-weight: 600;
@@ -65,6 +66,7 @@ export const typos = {
     `,
     body1: css`
       /* Decimal/Body 1 */
+      font-family: Decimal;
       font-size: ${pxToRem(18)};
       font-style: normal;
       font-weight: 500;
