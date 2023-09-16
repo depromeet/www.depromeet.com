@@ -8,6 +8,7 @@ export function ReviewWrapper({ children }: PropsWithChildren<ReviewWrapperProps
   return (
     <Swiper.Wrapper
       spaceBetween={20}
+      slidesPerView="auto"
       loop={true}
       autoplay={{
         delay: 0,
