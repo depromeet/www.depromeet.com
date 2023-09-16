@@ -38,7 +38,6 @@ export const typos = {
       font-style: normal;
       font-weight: 600;
       line-height: 135%; /* 81px */
-      text-transform: capitalize;
     `,
     title2: css`
       /* Decimal/Title 2 */
@@ -47,7 +46,6 @@ export const typos = {
       font-style: normal;
       font-weight: 600;
       line-height: 135%; /* 54px */
-      text-transform: capitalize;
     `,
     subTitle1: css`
       /* Decimal/Subtitle 1 */
