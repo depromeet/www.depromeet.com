@@ -17,7 +17,7 @@ export const Primary: Story = {
     <div css={{ backgroundColor: 'black' }}>
       <SectionTitle
         label="프로젝트"
-        title={'DESIGNERS and \nProgrammers are Meeting'}
+        title={'Designers and \nProgrammers are Meeting'}
         description="디프만은 디자이너와 개발자가 만나 서비스기획부터 론칭까지,
     하나의 프로덕트를 완성하며 성장하는 IT 커뮤니티입니다"
       />
