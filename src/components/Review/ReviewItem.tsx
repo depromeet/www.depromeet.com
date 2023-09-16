@@ -52,35 +52,35 @@ export function ReviewItem({ name, group, part, summary, links }: ReviewItemProp
 }
 
 const layoutCss = (theme: Theme) => css`
-  padding: 56px 72px;
+  padding: 44px 52px;
   background-color: ${theme.colors.black400};
   display: flex;
   flex-direction: column;
-  max-width: 554px;
+  max-width: 476px;
 `;
 
 const titleLayoutCss = css`
   display: flex;
-  gap: 20px;
+  gap: 12px;
   align-items: center;
 `;
 
 const titleH3Css = (theme: Theme) => css`
-  ${theme.typos.pretendard.subTitle1};
+  ${theme.typos.pretendard.subTitle2};
   color: ${theme.colors.white};
 `;
 
 const titleSpanCss = (theme: Theme) => css`
-  ${theme.typos.pretendard.subTitle2};
+  ${theme.typos.pretendard.body1};
   color: ${theme.colors.white};
   display: flex;
   gap: 8px;
 `;
 
 const summaryCss = (theme: Theme) => css`
-  ${theme.typos.pretendard.subTitle2};
+  ${theme.typos.pretendard.body1};
   color: ${theme.colors.gray100};
-  margin-top: 32px;
+  margin-top: 20px;
 `;
 
 const linkLayoutCss = css`
@@ -100,7 +100,7 @@ const arrowIconCss = (theme: Theme) => css`
 const linkCss = (theme: Theme) => css`
   ${theme.typos.pretendard.body1};
   color: ${theme.colors.blue400};
-  margin-top: 44px;
+  margin-top: 20px;
   display: flex;
   align-items: center;
 `;
