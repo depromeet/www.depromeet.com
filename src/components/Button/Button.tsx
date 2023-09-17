@@ -34,10 +34,6 @@ const buttonCss = (theme: Theme, size: ButtonSize) => css`
     height: 54px;
   `}
 
-  &:disabled {
-    background-color: ${theme.colors.gray300};
-    color: ${theme.colors.gray100};
-  }
 
   &:hover {
     background-color: ${theme.colors.yellow400};
@@ -45,5 +41,10 @@ const buttonCss = (theme: Theme, size: ButtonSize) => css`
 
   &:active {
     background-color: ${theme.colors.yellow300};
+  }
+
+  &:disabled {
+    background-color: ${theme.colors.gray300};
+    color: ${theme.colors.gray100};
   }
 `;
