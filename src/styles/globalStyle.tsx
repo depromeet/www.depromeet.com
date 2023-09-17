@@ -1,5 +1,7 @@
 import { css, Global } from '@emotion/react';
 
+import { colors } from '~/styles/colors';
+
 import { resetCss } from './resetCss';
 
 export default function GlobalStyle() {
@@ -12,6 +14,7 @@ const globalCss = css`
   :root {
     max-width: 100vw;
     overflow-x: hidden;
+    background-color: ${colors.black800};
 
     font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
       'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji',
