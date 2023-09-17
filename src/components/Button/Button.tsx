@@ -1,6 +1,8 @@
 import { ButtonHTMLAttributes } from 'react';
 import { css, Interpolation, Theme } from '@emotion/react';
 
+import { mediaQuery } from '~/styles/media';
+
 type ButtonSize = 'md' | 'lg';
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
@@ -26,7 +28,7 @@ const buttonCss = (theme: Theme, size: ButtonSize) => css`
     padding: 0 24px;
     height: 42px;
 
-    @media screen and (max-width: ${theme.breakpoints.mobile}) {
+    ${mediaQuery('mobile')} {
       font-size: 14px;
       height: 34px;
     }
@@ -38,7 +40,7 @@ const buttonCss = (theme: Theme, size: ButtonSize) => css`
     padding: 0 24px;
     height: 54px;
 
-    @media screen and (max-width: ${theme.breakpoints.mobile}) {
+    ${mediaQuery('mobile')} {
       ${theme.typos.pretendard.body2};
       height: 42px;
     }
