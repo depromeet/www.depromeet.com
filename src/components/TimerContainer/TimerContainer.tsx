@@ -35,7 +35,7 @@ export function TimerContainer() {
           <Button size="lg">14기 지원하기</Button>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
