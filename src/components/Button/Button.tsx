@@ -38,4 +38,12 @@ const buttonCss = (theme: Theme, size: ButtonSize) => css`
     background-color: ${theme.colors.gray300};
     color: ${theme.colors.gray100};
   }
+
+  &:hover {
+    background-color: ${theme.colors.yellow400};
+  }
+
+  &:active {
+    background-color: ${theme.colors.yellow300};
+  }
 `;
