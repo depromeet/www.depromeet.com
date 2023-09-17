@@ -6,6 +6,7 @@ import { domMax, LazyMotion } from 'framer-motion';
 
 import { Footer } from '~/components/Footer';
 import { GNB } from '~/components/GNB';
+import { Thumbnail } from '~/components/Thumbnail';
 import { BASE_URL } from '~/constant/common';
 import { useRecordPageView } from '~/hooks/useRecordPageView';
 import GlobalStyle from '~/styles/globalStyle';
@@ -21,6 +22,9 @@ export default function App({ Component, pageProps }: AppProps & InitialProps) {
 
   useRecordPageView();
 
+  const PROJECT_DUMMY_IMG = '/images/project/13-1.png';
+  const SESSION_DUMMY_IMG = '/images/session/orientation.png';
+
   return (
     <ThemeProvider theme={theme}>
       <LazyMotion features={domMax}>
@@ -30,6 +34,23 @@ export default function App({ Component, pageProps }: AppProps & InitialProps) {
         </Head>
         <GNB />
         <GlobalStyle />
+        <Thumbnail
+          img={PROJECT_DUMMY_IMG}
+          title="자린고비"
+          subTitle="13기"
+          description="거지들의 이야기로 쌓이는<br/>소비습관 개선 서비스"
+          links={[
+            { type: 'Behance', href: '' },
+            { type: 'Github', href: '' },
+            { type: 'Web', href: '' },
+          ]}
+        />
+        <Thumbnail
+          img={SESSION_DUMMY_IMG}
+          title="오리엔테이션"
+          subTitle="Orientation"
+          description="디프만의 첫 시작, 서로를 알아갈 수 있는<br/>오리엔테이션에 모두가 함께 해요."
+        />
         <Component {...pageProps} />
         <Footer />
       </LazyMotion>
