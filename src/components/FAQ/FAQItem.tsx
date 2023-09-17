@@ -7,11 +7,11 @@ import { theme } from '~/styles/theme';
 interface FAQItemProps {
   isOpen: boolean;
   onClickOpenButton: () => void;
-  title: string;
-  description: string;
+  question: string;
+  answer: string;
 }
 
-export function FAQItem({ isOpen, onClickOpenButton, title, description }: FAQItemProps) {
+export function FAQItem({ isOpen, onClickOpenButton, question, answer }: FAQItemProps) {
   return (
     <li onClick={onClickOpenButton}>
       <motion.div
@@ -20,7 +20,7 @@ export function FAQItem({ isOpen, onClickOpenButton, title, description }: FAQIt
         variants={headerVariants}
         transition={{ duration: 0.3, ease: 'easeOut' }}
       >
-        <h3>{title}</h3>
+        <h3>{question}</h3>
         <motion.div variants={arrowIconVariants} transition={{ duration: 0.3, ease: 'easeOut' }}>
           <ArrowIcon
             direction={isOpen ? 'up' : 'down'}
@@ -36,7 +36,7 @@ export function FAQItem({ isOpen, onClickOpenButton, title, description }: FAQIt
         variants={bodyVariants}
         transition={{ duration: 0.3, height: 0, ease: 'easeOut' }}
       >
-        <p>{description}</p>
+        <p>{answer}</p>
       </motion.div>
     </li>
   );
