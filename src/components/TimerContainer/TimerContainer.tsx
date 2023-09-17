@@ -3,8 +3,11 @@ import { css, Theme } from '@emotion/react';
 import { DEADLINE_DATE } from '~/constant/common';
 
 import { Timer } from './Timer';
+import useDiffDay from './useDiffDay';
 
 export function TimerContainer() {
+  const time = useDiffDay(DEADLINE_DATE);
+
   return (
     <div css={containerCss}>
       <div css={gradientCss} />
@@ -15,7 +18,7 @@ export function TimerContainer() {
             <p>디프만은 디자이너와 개발자가 만나 서비스 기획부터 론칭까지</p>
             <p>하나의 프로덕트를 완성하며 성장하는 IT 커뮤니티입니다</p>
           </div>
-          <Timer deadlineDay={DEADLINE_DATE} />
+          <Timer time={time} />
           <button css={buttonCss}>14기 지원하기</button>
         </div>
       </div>

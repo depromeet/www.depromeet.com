@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
 import { css, Theme } from '@emotion/react';
+
+import useMounted from '~/hooks/useMounted';
 
 type KeyType = 'day' | 'hour' | 'min' | 'sec';
 
@@ -8,18 +9,13 @@ const keys: KeyType[] = ['day', 'hour', 'min', 'sec'];
 const labels = ['DAYS', 'HRS', 'MINS', 'SEC'];
 
 interface TimerProps {
-  deadlineDay: string;
+  time: Record<KeyType, string>;
 }
 
-export function Timer({ deadlineDay }: TimerProps) {
-  const [date, setDate] = useState(diffDay(`${deadlineDay}`));
+export function Timer({ time }: TimerProps) {
+  const mounted = useMounted();
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setDate(diffDay(`${deadlineDay}`));
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [deadlineDay]);
+  if (!mounted) return <></>;
 
   return (
     <div css={layoutCss}>
@@ -27,7 +23,7 @@ export function Timer({ deadlineDay }: TimerProps) {
         <>
           <div key={key} css={timeTextCss}>
             <div>
-              {date[key].split('').map((text, jdx) => (
+              {time[key].split('').map((text, jdx) => (
                 <span key={'time-text' + key + jdx}>{text}</span>
               ))}
             </div>
@@ -81,16 +77,3 @@ const timeTextCss = (theme: Theme) => css`
     margin-top: 16px;
   }
 `;
-
-function diffDay(deadLine: string) {
-  const masTime = new Date(deadLine);
-  const todayTime = new Date();
-
-  const diff = new Date(masTime.getTime() - todayTime.getTime()).getTime();
-
-  const day = String(Math.floor(diff / (1000 * 3600 * 24))).padStart(2, '0');
-  const hour = String(Math.floor((diff / (1000 * 3600)) % 24)).padStart(2, '0');
-  const minute = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0');
-  const second = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
-  return { day, hour, min: minute, sec: second };
-}
