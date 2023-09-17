@@ -19,8 +19,6 @@ export function QualificationItem({ index, description }: QualificationItemProps
 const layoutCss = (theme: Theme) => css`
   background-color: ${theme.colors.black400};
   padding: 48px 30px;
-  width: 312px;
-  height: 197px;
   display: flex;
   flex-direction: column;
   gap: 20px;

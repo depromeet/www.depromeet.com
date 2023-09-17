@@ -3,29 +3,9 @@ import { css, Theme } from '@emotion/react';
 
 import { ArrowIcon } from '~/components/Icons';
 import { Swiper } from '~/components/Swiper';
+import { ReviewItemType } from '~/constant/review';
 
-export type ReadMoreLink = {
-  type: 'blog' | 'project';
-  url: string;
-  label: string;
-};
-
-export interface ReviewItemProps {
-  name: string;
-  /**
-   * 기수
-   * ex) 14기
-   */
-  group: string;
-  /**
-   * 파트
-   * ex) WEB
-   */
-  part: string;
-  summary: string;
-  links: ReadMoreLink[];
-}
-
+interface ReviewItemProps extends ReviewItemType {}
 export function ReviewItem({ name, group, part, summary, links }: ReviewItemProps) {
   return (
     <Swiper.Item css={layoutCss}>

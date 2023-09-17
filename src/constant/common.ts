@@ -14,3 +14,5 @@ export const END_DATE = '2023-10-08T14:59:59.000Z';
 
 // export const START_DATE = '2023-08-18T22:21:59.000Z'; // test
 // export const END_DATE = '2023-03-04T20:00:00.000Z'; // test
+
+export const DEADLINE_DATE = '2023-10-17T14:59:59.000Z'; // NOTE: 마감일 10.18

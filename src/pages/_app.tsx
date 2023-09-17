@@ -6,6 +6,7 @@ import { domMax, LazyMotion } from 'framer-motion';
 
 import { Footer } from '~/components/Footer';
 import { GNB } from '~/components/GNB';
+import { Sign } from '~/components/Sign';
 import { BASE_URL } from '~/constant/common';
 import { useRecordPageView } from '~/hooks/useRecordPageView';
 import GlobalStyle from '~/styles/globalStyle';
@@ -29,6 +30,7 @@ export default function App({ Component, pageProps }: AppProps & InitialProps) {
           <meta property="og:url" content={currentUrl} />
         </Head>
         <GNB />
+        <Sign />
         <GlobalStyle />
         <Component {...pageProps} />
         <Footer />
