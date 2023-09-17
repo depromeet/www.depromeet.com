@@ -10,6 +10,9 @@ export function TimerContainer() {
 
   return (
     <div css={containerCss}>
+      <div css={bgImageCss}>
+        <img src="/images/main/main-bg.png" alt="main-bg" />
+      </div>
       <div css={gradientCss} />
       <div css={layoutCss}>
         <div>
@@ -27,26 +30,46 @@ export function TimerContainer() {
   );
 }
 
-const containerCss = css`
+const containerCss = (theme: Theme) => css`
   position: relative;
   padding: 30px 0;
   background: linear-gradient(180deg, #0973ee 0%, rgba(9, 115, 238, 0) 100%);
+  overflow: hidden;
+
+  height: 828px;
+
+  @media screen and (max-width: ${theme.breakpoints.pc}) {
+    padding: 0;
+  }
 `;
 
-const layoutCss = css`
-  background: url('/images/main/main-bg.png');
-  background-position: 50%;
-  background-size: cover;
-  background-repeat: no-repeat;
+const bgImageCss = (theme: Theme) => css`
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  text-align: center;
+
+  img {
+    width: 1300px;
+    height: 768.857px;
+
+    @media screen and (max-width: 1300px) {
+      width: 100%;
+      height: auto;
+    }
+  }
+`;
+
+const layoutCss = (theme: Theme) => css`
   margin: auto;
 
-  width: 1300px;
-  height: 768.857px;
-  position: relative;
-  z-index: 1; // NOTE : gradient 뒤로 가려지지 않게
+  max-width: 726px;
 
   & > div {
-    max-width: 726px;
+    position: relative;
+    z-index: 2; // NOTE : gradient 뒤로 가려지지 않게
     margin: 0 auto;
 
     & > * {
@@ -62,7 +85,10 @@ const gradientCss = css`
   position: absolute;
   bottom: 0;
   left: 0;
-  z-index: 0;
+  z-index: 1;
+
+  @media screen and (max-width: 1300px) {
+  }
 `;
 
 const headingCss = (theme: Theme) => css`
