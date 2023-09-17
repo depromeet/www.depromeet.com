@@ -7,6 +7,7 @@ const config: StorybookConfig = {
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     '@storybook/addon-onboarding',
+    'storybook-addon-next',
     '@storybook/addon-interactions',
     '@storybook/addon-styling',
   ],
@@ -14,6 +15,7 @@ const config: StorybookConfig = {
     name: '@storybook/nextjs',
     options: { nextConfigPath: path.resolve(__dirname, '../next.config.js') },
   },
+  staticDirs: ['../public'],
   docs: {
     autodocs: 'tag',
   },
