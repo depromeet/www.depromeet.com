@@ -12,11 +12,11 @@ interface TimerProps {
 }
 
 export function Timer({ deadlineDay }: TimerProps) {
-  const [date, setDate] = useState(diffDay(`${deadlineDay} 00:00:00`));
+  const [date, setDate] = useState(diffDay(`${deadlineDay}`));
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setDate(diffDay(`${deadlineDay} 00:00:00`));
+      setDate(diffDay(`${deadlineDay}`));
     }, 1000);
     return () => clearInterval(timer);
   }, [deadlineDay]);
