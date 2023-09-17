@@ -38,7 +38,7 @@ export function ScheduleSection({ label, title, schedule, titleBgColor }: Schedu
 
 const layoutCss = (theme: Theme) => css`
   max-width: 960px;
-  color: #fff;
+  color: ${theme.colors.white};
   margin: 0 auto;
 
   background-color: ${theme.colors.black800};
