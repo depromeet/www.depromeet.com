@@ -5,7 +5,7 @@ import { m, Variants } from 'framer-motion';
 import { ArrowIcon } from '~/components/Icons';
 import { colors } from '~/styles/colors';
 
-type Link = {
+export type Link = {
   type: 'Behance' | 'Github' | 'Web' | 'App';
   href: string;
 };
@@ -70,7 +70,6 @@ const articleCss = css`
   width: 312px;
   height: 208px;
   padding: 24px;
-  margin-top: 100px;
 `;
 
 const imageCss = css`
@@ -153,7 +152,6 @@ const textVariants: Variants = {
 const articleVariants: Variants = {
   default: { background: 'transparent' },
   hover: {
-    background: 'rgba(19, 28, 40, 0.5)',
     transition: {
       duration: 0.3,
       ease: defaultEasing,
@@ -162,9 +160,11 @@ const articleVariants: Variants = {
 };
 
 const imageVariants: Variants = {
-  default: { filter: 'blur(0px)' },
+  default: {
+    filter: 'blur(0px)',
+  },
   hover: {
-    filter: 'blur(7px)',
+    filter: 'blur(7px) brightness(0.3)',
     transition: {
       duration: 0.3,
       ease: defaultEasing,
