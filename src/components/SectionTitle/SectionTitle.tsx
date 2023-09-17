@@ -27,6 +27,7 @@ const layoutCss = css`
   flex-direction: column;
   align-items: center;
   background-color: inherit;
+  padding: 88px 0;
 `;
 
 const labelCss = (theme: Theme) => css`
@@ -36,7 +37,7 @@ const labelCss = (theme: Theme) => css`
 `;
 
 const titleCss = (theme: Theme) => css`
-  ${theme.typos.decimal.title1};
+  ${theme.typos.decimal.subTitle1};
   color: ${theme.colors.white};
   margin-top: 16px;
   text-align: center;

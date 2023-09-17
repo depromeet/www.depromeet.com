@@ -1,11 +1,10 @@
 import { useState } from 'react';
 
 import { FAQItem } from '~/components/FAQ/FAQItem';
-
-type FAQListType = { title: string; description: string };
+import { FAQType } from '~/constant/faq';
 
 interface FAQListProps {
-  FAQList: FAQListType[];
+  FAQList: FAQType[];
 }
 
 const DEFAULT_OPEN = 0;
@@ -25,7 +24,7 @@ export function FAQList({ FAQList }: FAQListProps) {
     <ul>
       {FAQList.map((item, index) => (
         <FAQItem
-          key={item.title}
+          key={item.question}
           isOpen={activeIndex === index}
           onClickOpenButton={() => onClickActiveFaq(index)}
           {...item}
