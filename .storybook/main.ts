@@ -21,5 +21,6 @@ const config: StorybookConfig = {
     options.presets!.push('@emotion/babel-preset-css-prop');
     return options;
   },
+  staticDirs: ['../public'],
 };
 export default config;
