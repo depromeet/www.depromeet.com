@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import { PositionsItem } from '~/components/Positions/PositionsItem';
 import { SectionTitle } from '~/components/SectionTitle';
 import { POSITIONS } from '~/constant/position';
+import { commonLayoutCss } from '~/styles/layout';
 
 export function Positions() {
   return (
@@ -18,6 +19,7 @@ export function Positions() {
 }
 
 const layoutCss = css`
+  ${commonLayoutCss}
   display: flex;
   flex-direction: column;
   align-items: center;

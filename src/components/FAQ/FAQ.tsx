@@ -4,6 +4,7 @@ import { css, Theme } from '@emotion/react';
 import { FAQList } from '~/components/FAQ/FAQList';
 import { SectionTitle } from '~/components/SectionTitle';
 import { FAQ_GROUP, FAQGroupType, FAQS, FAQType } from '~/constant/faq';
+import { commonLayoutCss } from '~/styles/layout';
 
 export function FAQ() {
   const [activeTab, setActiveTab] = useState<FAQGroupType>('지원자격');
@@ -46,6 +47,7 @@ const QuestionsMap: Record<FAQGroupType, FAQType[]> = {
 };
 
 const layoutCss = css`
+  ${commonLayoutCss}
   display: flex;
   flex-direction: column;
   gap: 16px;

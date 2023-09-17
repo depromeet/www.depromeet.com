@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 import { QualificationItem } from '~/components/Qualification/QualificationItem';
 import { SectionTitle } from '~/components/SectionTitle';
 import { QUALIFICATIONS } from '~/constant/qualification';
+import { commonLayoutCss } from '~/styles/layout';
 
 export function Qualification() {
   return (
@@ -18,6 +19,7 @@ export function Qualification() {
 }
 
 const layoutCss = css`
+  ${commonLayoutCss}
   display: flex;
   flex-direction: column;
   align-items: center;
