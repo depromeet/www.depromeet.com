@@ -19,6 +19,7 @@ export function TimerContainer() {
             <p>하나의 프로덕트를 완성하며 성장하는 IT 커뮤니티입니다</p>
           </div>
           <Timer time={time} />
+          {/* TODO : 14기 지원 링크 연결 */}
           <button css={buttonCss}>14기 지원하기</button>
         </div>
       </div>
