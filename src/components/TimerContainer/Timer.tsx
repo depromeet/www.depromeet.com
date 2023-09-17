@@ -1,6 +1,7 @@
 import { css, Theme } from '@emotion/react';
 
 import useMounted from '~/hooks/useMounted';
+import { mediaQuery } from '~/styles/media';
 
 type KeyType = 'day' | 'hour' | 'min' | 'sec';
 
@@ -21,6 +22,7 @@ export function Timer({ time }: TimerProps) {
     <div css={layoutCss}>
       {keys.map((key, index) => (
         <>
+          {index !== 0 && <span css={timeSplitCss}>:</span>}
           <div key={key} css={timeTextCss}>
             <div>
               {time[key].split('').map((text, jdx) => (
@@ -30,7 +32,6 @@ export function Timer({ time }: TimerProps) {
 
             <p>{labels[index]}</p>
           </div>
-          <span css={timeSplitCss}>:</span>
         </>
       ))}
     </div>
@@ -38,21 +39,33 @@ export function Timer({ time }: TimerProps) {
 }
 
 const layoutCss = (theme: Theme) => css`
-  width: 726px;
-  height: 195px;
+  width: 100%;
   margin: auto;
   display: flex;
   background-color: ${theme.colors.black800};
   color: ${theme.colors.yellow500};
 
-  gap: 18px;
   padding: 26px 24px;
+
+  & > * {
+    flex: 1;
+  }
+
+  ${mediaQuery('mobile')} {
+    padding: 10px;
+  }
 `;
 
 const timeSplitCss = (theme: Theme) => css`
   ${theme.typos.decimal.title1}
   color: ${theme.colors.yellow500};
   line-height: 101px;
+  text-align: center;
+
+  ${mediaQuery('mobile')} {
+    font-size: 24px;
+    line-height: 44px;
+  }
 `;
 
 const timeTextCss = (theme: Theme) => css`
@@ -75,5 +88,20 @@ const timeTextCss = (theme: Theme) => css`
     color: ${theme.colors.white};
     text-align: center;
     margin-top: 16px;
+  }
+
+  ${mediaQuery('mobile')} {
+    & > div {
+      font-size: 24px;
+      gap: 2px;
+      span {
+        width: 29px;
+        padding: 6px;
+      }
+    }
+
+    & > p {
+      font-size: 16px;
+    }
   }
 `;
