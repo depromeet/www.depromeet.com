@@ -7908,7 +7908,7 @@ loader-utils@^2.0.0, loader-utils@^2.0.4:
     emojis-list "^3.0.0"
     json5 "^2.1.2"
 
-loader-utils@^3.2.0:
+loader-utils@^3.2.0, loader-utils@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-3.2.1.tgz#4fb104b599daafd82ef3e1a41fb9265f87e1f576"
   integrity sha512-ZvFw1KWS3GVyYBYb7qkmRM/WwL2TQQBxgCK62rlvm4WpVQ23Nb4tYjApUlfjrEGvOs7KHEsmyUn75OHZrJMWPw==
@@ -9836,7 +9836,7 @@ sass-loader@^12.4.0:
     klona "^2.0.4"
     neo-async "^2.6.2"
 
-sass-loader@^13.2.2:
+sass-loader@^13.2.0, sass-loader@^13.2.2:
   version "13.3.2"
   resolved "https://registry.yarnpkg.com/sass-loader/-/sass-loader-13.3.2.tgz#460022de27aec772480f03de17f5ba88fa7e18c6"
   integrity sha512-CQbKl57kdEv+KDLquhC+gE3pXt74LEAzm+tzywcA0/aHZuub8wTErbjAoNI57rPUWRYRNC5WUnNl8eGJNbDdwg==
@@ -10197,6 +10197,20 @@ store2@^2.14.2:
   version "2.14.2"
   resolved "https://registry.yarnpkg.com/store2/-/store2-2.14.2.tgz#56138d200f9fe5f582ad63bc2704dbc0e4a45068"
   integrity sha512-siT1RiqlfQnGqgT/YzXVUNsom9S0H1OX+dpdGN1xkyYATo4I6sep5NmsRD/40s3IIOvlCq6akxkqG82urIZW1w==
+
+storybook-addon-next@^1.8.0:
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/storybook-addon-next/-/storybook-addon-next-1.8.0.tgz#e37d5c851dd10a46a0d3aca170c49ba100e51e06"
+  integrity sha512-hCDRkgTllb9Qz14u+oafnhUbKMWZ/YKgcVBHDc9ilbsd9I3bHqBwpldfTelL/ahfo2jDqPnCQVnQkXV8U+fr2Q==
+  dependencies:
+    image-size "^1.0.0"
+    loader-utils "^3.2.1"
+    postcss-loader "^7.0.2"
+    resolve-url-loader "^5.0.0"
+    sass-loader "^13.2.0"
+    semver "^7.3.8"
+    tsconfig-paths "^4.1.2"
+    tsconfig-paths-webpack-plugin "^4.0.0"
 
 storybook@^7.4.0:
   version "7.4.0"
@@ -10646,7 +10660,7 @@ ts-pnp@^1.1.6:
   resolved "https://registry.yarnpkg.com/ts-pnp/-/ts-pnp-1.2.0.tgz#a500ad084b0798f1c3071af391e65912c86bca92"
   integrity sha512-csd+vJOb/gkzvcCHgTGSChYpy5f1/XKNsmvBGO4JXS+z1v2HobugDz4s1IeFXM3wZB44uczs+eazB5Q/ccdhQw==
 
-tsconfig-paths-webpack-plugin@^4.0.1:
+tsconfig-paths-webpack-plugin@^4.0.0, tsconfig-paths-webpack-plugin@^4.0.1:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/tsconfig-paths-webpack-plugin/-/tsconfig-paths-webpack-plugin-4.1.0.tgz#3c6892c5e7319c146eee1e7302ed9e6f2be4f763"
   integrity sha512-xWFISjviPydmtmgeUAuXp4N1fky+VCtfhOkDUFIv5ea7p4wuTomI4QTrXvFBX2S4jZsmyTSrStQl+E+4w+RzxA==
