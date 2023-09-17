@@ -25,6 +25,11 @@ const buttonCss = (theme: Theme, size: ButtonSize) => css`
   css`
     padding: 0 24px;
     height: 42px;
+
+    @media screen and (max-width: ${theme.breakpoints.mobile}) {
+      font-size: 14px;
+      height: 34px;
+    }
   `}
 
   ${size === 'lg' &&
@@ -32,6 +37,11 @@ const buttonCss = (theme: Theme, size: ButtonSize) => css`
     width: 100%;
     padding: 0 24px;
     height: 54px;
+
+    @media screen and (max-width: ${theme.breakpoints.mobile}) {
+      ${theme.typos.pretendard.body2};
+      height: 42px;
+    }
   `}
 
 
