@@ -153,16 +153,6 @@ const headingCss = (theme: Theme) => css`
   }
 `;
 
-const buttonCss = (theme: Theme) => css`
-  ${theme.typos.pretendard.body1};
-  color: ${theme.colors.black800};
-  background-color: ${theme.colors.yellow500};
-  width: 100%;
-
-  padding: 16px 24px;
-  height: 58px;
-`;
-
 const mobileOnlyCss = (theme: Theme) => css`
   display: none;
 
