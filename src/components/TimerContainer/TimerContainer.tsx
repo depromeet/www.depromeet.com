@@ -3,6 +3,7 @@ import { css, Theme } from '@emotion/react';
 
 import { Button } from '~/components/Button';
 import { DEADLINE_DATE } from '~/constant/common';
+import { mediaQuery } from '~/styles/media';
 
 import { Timer } from './Timer';
 import useDiffDay from './useDiffDay';
@@ -38,7 +39,7 @@ export function TimerContainer() {
   );
 }
 
-const containerCss = (theme: Theme) => css`
+const containerCss = css`
   position: relative;
   padding: 30px 0;
   background: linear-gradient(180deg, #0973ee 0%, rgba(9, 115, 238, 0) 100%);
@@ -46,16 +47,16 @@ const containerCss = (theme: Theme) => css`
 
   height: 828px;
 
-  @media screen and (max-width: ${theme.breakpoints.pc}) {
+  ${mediaQuery('pc')} {
     padding: 0;
   }
 
-  @media screen and (max-width: ${theme.breakpoints.mobile}) {
+  ${mediaQuery('mobile')} {
     height: 428px;
   }
 `;
 
-const bgImageCss = (theme: Theme) => css`
+const bgImageCss = css`
   position: absolute;
   top: 20px;
   left: 0;
@@ -73,12 +74,12 @@ const bgImageCss = (theme: Theme) => css`
     }
   }
 
-  @media screen and (max-width: ${theme.breakpoints.pc}) {
+  ${mediaQuery('pc')} {
     top: 0;
   }
 `;
 
-const layoutCss = (theme: Theme) => css`
+const layoutCss = css`
   margin: auto;
 
   max-width: 726px;
@@ -94,11 +95,11 @@ const layoutCss = (theme: Theme) => css`
     }
   }
 
-  @media screen and (max-width: ${theme.breakpoints.tablet}) {
+  ${mediaQuery('tablet')} {
     margin: 0 30px;
   }
 
-  @media screen and (max-width: ${theme.breakpoints.mobile}) {
+  ${mediaQuery('mobile')} {
     margin: 0 16px;
     & > div {
       & > * {
@@ -134,7 +135,7 @@ const headingCss = (theme: Theme) => css`
     color: ${theme.colors.gray20};
   }
 
-  @media screen and (max-width: ${theme.breakpoints.mobile}) {
+  ${mediaQuery('mobile')} {
     padding-top: 65px;
     padding-bottom: 16px;
     & > h1 {
@@ -153,10 +154,10 @@ const headingCss = (theme: Theme) => css`
   }
 `;
 
-const mobileOnlyCss = (theme: Theme) => css`
+const mobileOnlyCss = css`
   display: none;
 
-  @media screen and (max-width: ${theme.breakpoints.mobile}) {
+  ${mediaQuery('mobile')} {
     display: block;
   }
 `;

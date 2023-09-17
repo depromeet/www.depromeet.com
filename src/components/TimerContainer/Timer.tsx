@@ -1,6 +1,7 @@
 import { css, Theme } from '@emotion/react';
 
 import useMounted from '~/hooks/useMounted';
+import { mediaQuery } from '~/styles/media';
 
 type KeyType = 'day' | 'hour' | 'min' | 'sec';
 
@@ -50,7 +51,7 @@ const layoutCss = (theme: Theme) => css`
     flex: 1;
   }
 
-  @media screen and (max-width: ${theme.breakpoints.mobile}) {
+  ${mediaQuery('mobile')} {
     padding: 10px;
   }
 `;
@@ -61,7 +62,7 @@ const timeSplitCss = (theme: Theme) => css`
   line-height: 101px;
   text-align: center;
 
-  @media screen and (max-width: ${theme.breakpoints.mobile}) {
+  ${mediaQuery('mobile')} {
     font-size: 24px;
     line-height: 44px;
   }
@@ -89,7 +90,7 @@ const timeTextCss = (theme: Theme) => css`
     margin-top: 16px;
   }
 
-  @media screen and (max-width: ${theme.breakpoints.mobile}) {
+  ${mediaQuery('mobile')} {
     & > div {
       font-size: 24px;
       gap: 2px;
