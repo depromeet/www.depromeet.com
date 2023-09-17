@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { css, Theme } from '@emotion/react';
 
+import { Button } from '~/components/Button';
 import { DEADLINE_DATE } from '~/constant/common';
 
 import { Timer } from './Timer';
@@ -30,7 +31,7 @@ export function TimerContainer() {
           </div>
           <Timer time={time} />
           {/* TODO : 14기 지원 링크 연결 */}
-          <button css={buttonCss}>14기 지원하기</button>
+          <Button size="lg">14기 지원하기</Button>
         </div>
       </div>
     </div>
