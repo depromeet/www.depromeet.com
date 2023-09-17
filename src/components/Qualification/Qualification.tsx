@@ -21,7 +21,6 @@ const layoutCss = css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 88px;
 `;
 
 const listCss = css`

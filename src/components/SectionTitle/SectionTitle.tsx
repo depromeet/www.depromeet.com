@@ -27,6 +27,7 @@ const layoutCss = css`
   flex-direction: column;
   align-items: center;
   background-color: inherit;
+  padding: 88px 0;
 `;
 
 const labelCss = (theme: Theme) => css`
