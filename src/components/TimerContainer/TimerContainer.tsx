@@ -12,7 +12,7 @@ export function TimerContainer() {
   const time = useDiffDay(DEADLINE_DATE);
 
   return (
-    <div css={containerCss}>
+    <section css={containerCss}>
       <div css={bgImageCss}>
         <Image src="/images/main/main-bg.png" alt="main-bg" width={1300} height={768.857} />
       </div>
