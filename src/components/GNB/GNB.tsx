@@ -28,26 +28,29 @@ export function GNB() {
     return inActiveLinkCss;
   };
   return (
-    <nav css={navCss}>
-      <div css={navWrapperCss}>
-        <Link href={'/'}>
-          {<Image src={LOGO_IMAGE} alt="로고 이미지" width={240} height={30} />}
-        </Link>
-        <ul css={menuContainerCss}>
-          {GNB_MENU_NAME.map(menu => (
-            <li css={menuCss} key={menu.name}>
-              {menu.type === 'button' ? (
-                <ApplyButton menu={menu} />
-              ) : (
-                <Link css={[linkCss, getActiveLinkcss(menu)]} href={menu.href}>
-                  {menu.name}
-                </Link>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </nav>
+    <>
+      <nav css={navCss}>
+        <div css={navWrapperCss}>
+          <Link href={'/'}>
+            {<Image src={LOGO_IMAGE} alt="로고 이미지" width={240} height={30} />}
+          </Link>
+          <ul css={menuContainerCss}>
+            {GNB_MENU_NAME.map(menu => (
+              <li css={menuCss} key={menu.name}>
+                {menu.type === 'button' ? (
+                  <ApplyButton menu={menu} />
+                ) : (
+                  <Link css={[linkCss, getActiveLinkcss(menu)]} href={menu.href}>
+                    {menu.name}
+                  </Link>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
+      <div css={blankCss} />
+    </>
   );
 }
 
@@ -59,6 +62,11 @@ const navCss = css`
   left: 0;
   z-index: 9998;
   width: 100vw;
+`;
+
+const blankCss = css`
+  width: 100vw;
+  height: 72px;
 `;
 
 const navWrapperCss = css`
