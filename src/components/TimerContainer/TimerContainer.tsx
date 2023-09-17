@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { css, Theme } from '@emotion/react';
 
 import { DEADLINE_DATE } from '~/constant/common';
@@ -11,7 +12,7 @@ export function TimerContainer() {
   return (
     <div css={containerCss}>
       <div css={bgImageCss}>
-        <img src="/images/main/main-bg.png" alt="main-bg" />
+        <Image src="/images/main/main-bg.png" alt="main-bg" width={1300} height={768.857} />
       </div>
       <div css={gradientCss} />
       <div css={layoutCss}>
@@ -20,6 +21,12 @@ export function TimerContainer() {
             <h1>DEPROMEET</h1>
             <p>디프만은 디자이너와 개발자가 만나 서비스 기획부터 론칭까지</p>
             <p>하나의 프로덕트를 완성하며 성장하는 IT 커뮤니티입니다</p>
+
+            <div css={mobileOnlyCss}>
+              <p>디프만은 디자이너와 개발자가 만나</p>
+              <p>서비스 기획부터 론칭까지 하나의 프로덕트를</p>
+              <p>완성하며 성장하는 IT 커뮤니티입니다</p>
+            </div>
           </div>
           <Timer time={time} />
           {/* TODO : 14기 지원 링크 연결 */}
@@ -41,6 +48,10 @@ const containerCss = (theme: Theme) => css`
   @media screen and (max-width: ${theme.breakpoints.pc}) {
     padding: 0;
   }
+
+  @media screen and (max-width: ${theme.breakpoints.mobile}) {
+    height: 428px;
+  }
 `;
 
 const bgImageCss = (theme: Theme) => css`
@@ -60,6 +71,10 @@ const bgImageCss = (theme: Theme) => css`
       height: auto;
     }
   }
+
+  @media screen and (max-width: ${theme.breakpoints.pc}) {
+    top: 0;
+  }
 `;
 
 const layoutCss = (theme: Theme) => css`
@@ -68,12 +83,26 @@ const layoutCss = (theme: Theme) => css`
   max-width: 726px;
 
   & > div {
+    width: 100%;
     position: relative;
     z-index: 2; // NOTE : gradient 뒤로 가려지지 않게
     margin: 0 auto;
 
     & > * {
       margin-bottom: 20px;
+    }
+  }
+
+  @media screen and (max-width: ${theme.breakpoints.tablet}) {
+    margin: 0 30px;
+  }
+
+  @media screen and (max-width: ${theme.breakpoints.mobile}) {
+    margin: 0 16px;
+    & > div {
+      & > * {
+        margin-bottom: 8px;
+      }
     }
   }
 `;
@@ -86,9 +115,6 @@ const gradientCss = css`
   bottom: 0;
   left: 0;
   z-index: 1;
-
-  @media screen and (max-width: 1300px) {
-  }
 `;
 
 const headingCss = (theme: Theme) => css`
@@ -102,9 +128,27 @@ const headingCss = (theme: Theme) => css`
     margin-bottom: 20px;
   }
 
-  & > p {
+  p {
     ${theme.typos.pretendard.subTitle2};
     color: ${theme.colors.gray20};
+  }
+
+  @media screen and (max-width: ${theme.breakpoints.mobile}) {
+    padding-top: 65px;
+    padding-bottom: 16px;
+    & > h1 {
+      ${theme.typos.decimal.title2};
+      margin-bottom: 8px;
+    }
+
+    & > p {
+      display: none;
+    }
+
+    div > p {
+      ${theme.typos.pretendard.body2};
+      font-size: 14px;
+    }
   }
 `;
 
@@ -116,4 +160,12 @@ const buttonCss = (theme: Theme) => css`
 
   padding: 16px 24px;
   height: 58px;
+`;
+
+const mobileOnlyCss = (theme: Theme) => css`
+  display: none;
+
+  @media screen and (max-width: ${theme.breakpoints.mobile}) {
+    display: block;
+  }
 `;
