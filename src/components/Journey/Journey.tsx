@@ -2,15 +2,20 @@ import Image from 'next/image';
 import { css, Theme } from '@emotion/react';
 
 import { commonLayoutCss } from '~/styles/layout';
+import { mediaQuery } from '~/styles/media';
 
 export function Journey() {
   return (
     <section css={[commonLayoutCss, layoutCss]}>
-      <h1 css={headingCss}>
+      <h1>
         디자이너와 개발자를 만나
         <br />
         공동의 성장을 위한 여정에 합류해보세요
       </h1>
+      <h2>
+        디자이너와 개발자를 만나 공동의 <br />
+        성장을 위한 여정에 합류해보세요
+      </h2>
       <div>
         <Image
           src="/images/main/passport-combination.png"
@@ -49,11 +54,33 @@ const layoutCss = (theme: Theme) => css`
   padding: 0 30px;
 
   color: ${theme.colors.white};
-`;
 
-const headingCss = (theme: Theme) => css`
-  ${theme.typos.decimal.title2};
-  text-align: center;
+  h1,
+  h2 {
+    ${theme.typos.decimal.title2};
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 20px;
+    display: none;
+  }
+
+  ${mediaQuery('mobile')} {
+    gap: 24px;
+
+    h1 {
+      display: none;
+    }
+    h2 {
+      display: block;
+    }
+
+    img {
+      width: 240px;
+      height: 155px;
+    }
+  }
 `;
 
 const infoContainerCss = (theme: Theme) => css`
@@ -79,5 +106,19 @@ const infoContainerCss = (theme: Theme) => css`
 
   p {
     ${theme.typos.decimal.subTitle1};
+  }
+
+  ${mediaQuery('mobile')} {
+    grid-template-columns: repeat(2, 1fr);
+
+    h3,
+    p {
+      font-size: 14px;
+      line-height: 30px;
+    }
+    & > div {
+      padding: 8px 4px;
+      gap: 8px;
+    }
   }
 `;
