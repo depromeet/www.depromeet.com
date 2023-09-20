@@ -13,7 +13,7 @@ export default function Root() {
       <main css={layoutCss}>
         <TimerContainer />
         <div css={contentCss}>
-          <Journey />
+          <Journey /> 
           <RecruitEntrance />
         </div>
       </main>
