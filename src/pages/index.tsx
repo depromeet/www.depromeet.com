@@ -2,8 +2,11 @@ import { css, Theme } from '@emotion/react';
 
 import { Journey } from '~/components/Journey';
 import { RecruitEntrance } from '~/components/RecruitEntrance';
+import { ScheduleSection } from '~/components/ScheduleSection';
+import { SectionTitle } from '~/components/SectionTitle';
 import { SEO } from '~/components/SEO';
 import { TimerContainer } from '~/components/TimerContainer';
+import { MEMBER_SCHEDULE, SESSION_SCHEDULES } from '~/constant/schedule';
 import { mediaQuery } from '~/styles/media';
 
 export default function Root() {
@@ -15,6 +18,11 @@ export default function Root() {
         <div css={contentCss}>
           <Journey />
           <RecruitEntrance />
+          <section>
+            <SectionTitle label="14th Schedule" title={'14기 일정'} />
+            <ScheduleSection {...MEMBER_SCHEDULE} />
+            <ScheduleSection {...SESSION_SCHEDULES} />
+          </section>
         </div>
       </main>
     </>
