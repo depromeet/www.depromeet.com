@@ -1,8 +1,10 @@
 import { css, Theme } from '@emotion/react';
 
 import { Journey } from '~/components/Journey';
+import { RecruitEntrance } from '~/components/RecruitEntrance';
 import { SEO } from '~/components/SEO';
 import { TimerContainer } from '~/components/TimerContainer';
+import { mediaQuery } from '~/styles/media';
 
 export default function Root() {
   return (
@@ -12,6 +14,7 @@ export default function Root() {
         <TimerContainer />
         <div css={contentCss}>
           <Journey />
+          <RecruitEntrance />
         </div>
       </main>
     </>
@@ -23,7 +26,13 @@ const layoutCss = (theme: Theme) => css`
 `;
 
 const contentCss = css`
-  & > * {
+  & > section {
     margin-bottom: 200px;
+  }
+
+  ${mediaQuery('mobile')} {
+    & > section {
+      margin-bottom: 120px;
+    }
   }
 `;
