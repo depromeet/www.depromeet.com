@@ -19,7 +19,7 @@ export function SectionTitle({ label, title, description, ...layoutProps }: Sect
     <div css={layoutCss} {...layoutProps}>
       <h4 css={labelCss}>{label}</h4>
       <h2 css={titleCss}>{title}</h2>
-      <p css={descriptionCss}>{description}</p>
+      {description && <p css={descriptionCss}>{description}</p>}
     </div>
   );
 }
