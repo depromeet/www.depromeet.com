@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { css } from '@emotion/react';
+import { css, Theme } from '@emotion/react';
 
 import { FIRST_ROW_FOOTER_INFOS, SECOND_ROW_FOOTER_INFOS } from '~/constant/footer';
 import { colors } from '~/styles/colors';
@@ -11,7 +11,7 @@ export function Footer() {
         <ul css={rowCss}>
           {FIRST_ROW_FOOTER_INFOS.map(footer => (
             <li key={footer.name}>
-              <Link css={linkCss} href={footer.href}>
+              <Link css={[linkCss, strongLinkCss]} href={footer.href}>
                 {footer.name}
               </Link>
             </li>
@@ -57,21 +57,17 @@ const rowGapCss = css`
   margin-top: 16px;
 `;
 
-const linkCss = css`
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 25.2px; /* 140% */
-  letter-spacing: -0.18px;
-  color: ${colors.gray100};
+const linkCss = (theme: Theme) => css`
+  ${theme.typos.pretendard.body1};
+  color: ${theme.colors.gray100};
 `;
 
-const copyrightCss = css`
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 25.2px; /* 140% */
-  letter-spacing: -0.18px;
-  color: ${colors.gray200};
+const strongLinkCss = (theme: Theme) => css`
+  ${theme.typos.pretendard.subTitle2};
+`;
+
+const copyrightCss = (theme: Theme) => css`
+  ${theme.typos.pretendard.body1};
+  color: ${theme.colors.gray200};
   margin-top: 40px;
 `;
