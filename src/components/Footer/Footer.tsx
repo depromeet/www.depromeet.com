@@ -3,6 +3,7 @@ import { css, Theme } from '@emotion/react';
 
 import { FIRST_ROW_FOOTER_INFOS, SECOND_ROW_FOOTER_INFOS } from '~/constant/footer';
 import { colors } from '~/styles/colors';
+import { mediaQuery } from '~/styles/media';
 
 export function Footer() {
   return (
@@ -17,11 +18,12 @@ export function Footer() {
             </li>
           ))}
         </ul>
-        <ul css={[rowCss, rowGapCss]}>
+        <ul css={[secondRowCss]}>
           {SECOND_ROW_FOOTER_INFOS.map(footer => (
             <li key={footer.name}>
               <Link css={linkCss} href={footer.href}>
-                {footer.name}
+                <span>{footer.name}</span>
+                <span>{footer.detail}</span>
               </Link>
             </li>
           ))}
@@ -46,20 +48,51 @@ const footerInfoWrapper = css`
   height: 218px;
   justify-content: center;
   align-items: center;
+
+  ${mediaQuery('mobile')} {
+    height: 167px;
+    width: 100%;
+  }
 `;
 
 const rowCss = css`
   display: flex;
   gap: 40px;
+
+  ${mediaQuery('mobile')} {
+    width: 100%;
+    gap: 0;
+    justify-content: space-between;
+  }
 `;
 
-const rowGapCss = css`
+const secondRowCss = css`
+  display: flex;
+  gap: 40px;
   margin-top: 16px;
+
+  span + span {
+    margin-left: 12px;
+  }
+  ${mediaQuery('mobile')} {
+    width: 100%;
+    gap: 0;
+    justify-content: space-between;
+    margin-top: 8px;
+
+    span + span {
+      margin-left: 16px;
+    }
+  }
 `;
 
 const linkCss = (theme: Theme) => css`
   ${theme.typos.pretendard.body1};
   color: ${theme.colors.gray100};
+
+  ${mediaQuery('mobile')} {
+    font-size: 11px;
+  }
 `;
 
 const strongLinkCss = (theme: Theme) => css`
@@ -70,4 +103,9 @@ const copyrightCss = (theme: Theme) => css`
   ${theme.typos.pretendard.body1};
   color: ${theme.colors.gray200};
   margin-top: 40px;
+
+  ${mediaQuery('mobile')} {
+    font-size: 11px;
+    margin-top: 24px;
+  }
 `;
