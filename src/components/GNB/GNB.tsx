@@ -4,8 +4,10 @@ import { useRouter } from 'next/router';
 import { css, Theme } from '@emotion/react';
 
 import { Button } from '~/components/Button';
+import { MenuIcon } from '~/components/Icons';
 import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import { colors } from '~/styles/colors';
+import { mediaQuery } from '~/styles/media';
 
 const LOGO_IMAGE = `/images/logo.png`;
 
@@ -47,6 +49,9 @@ export function GNB() {
               </li>
             ))}
           </ul>
+          <div css={mobileMenuContainerCss}>
+            <MenuIcon />
+          </div>
         </div>
       </nav>
       <div css={blankCss} />
@@ -80,6 +85,18 @@ const navWrapperCss = css`
 const menuContainerCss = css`
   display: flex;
   gap: 32px;
+
+  ${mediaQuery('mobile')} {
+    display: none;
+  }
+`;
+
+const mobileMenuContainerCss = css`
+  display: none;
+
+  ${mediaQuery('mobile')} {
+    display: block;
+  }
 `;
 
 const menuCss = css`
