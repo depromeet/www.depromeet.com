@@ -1,1 +1,0 @@
-export { RecruitEntrance } from './RecruitEntrance';
