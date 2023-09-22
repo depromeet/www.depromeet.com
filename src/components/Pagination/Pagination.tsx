@@ -31,7 +31,7 @@ export function Pagination({ handlePageClick, numberOfPages, currentPage }: Pagi
 const listCss = css`
   margin-top: 70px;
   display: flex;
-  gap: 48px;
+  gap: 28px;
   justify-content: center;
   ${theme.typos.pretendard.subTitle2};
   &:hover {
