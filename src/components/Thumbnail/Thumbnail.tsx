@@ -57,7 +57,6 @@ export function Thumbnail({ title, subTitle, img, description, links }: Thumbnai
 
 const articleCss = css`
   position: relative;
-  width: 312px;
   height: 208px;
   padding: 24px;
   &:hover {
@@ -69,14 +68,8 @@ const articleCss = css`
 `;
 
 const imageCss = css`
-  position: absolute;
-  top: 0;
-  left: 0;
   object-fit: cover;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  transition: filter 0.3s ease;
+  object-position: center;
 `;
 
 const contentsCss = css`
@@ -110,6 +103,7 @@ const linkCss = css`
   line-height: 22px;
   letter-spacing: -0.16px;
   margin-right: 2px;
+  z-index: 10;
 `;
 
 const titleCss = css`

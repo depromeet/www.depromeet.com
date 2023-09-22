@@ -9,6 +9,7 @@ import { Thumbnail } from '~/components/Thumbnail';
 import { Link } from '~/components/Thumbnail/Thumbnail';
 import { staggerHalf } from '~/constant/motion';
 import { PROJECT_LIST } from '~/constant/project';
+import { mediaQuery } from '~/styles/media';
 import { getCurrentProjects, getTenUnderProjects, sliceByPage } from '~/utils/pagination';
 
 const FIRST_PAGE = 1;
@@ -86,6 +87,10 @@ const mainCss = css`
 const sectionCss = css`
   width: 100vw;
   max-width: 960px;
+  padding: 30px;
+  ${mediaQuery('mobile')} {
+    padding: 20px;
+  }
 `;
 
 const projectContainerCss = css`
@@ -94,4 +99,10 @@ const projectContainerCss = css`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 12px;
+  ${mediaQuery('tablet')} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  ${mediaQuery('mobile')} {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
