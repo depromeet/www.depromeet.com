@@ -1,49 +1,49 @@
 import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 
+import { Pagination } from '~/components/Pagination';
+import { ProjectTab } from '~/components/ProjectTab';
 import { SEO } from '~/components/SEO';
 import { Thumbnail } from '~/components/Thumbnail';
 import { Link } from '~/components/Thumbnail/Thumbnail';
-import { PROJECT_LIST, TAB_LIST } from '~/constant/project';
-import { colors } from '~/styles/colors';
-import { theme } from '~/styles/theme';
+import { PROJECT_LIST } from '~/constant/project';
+import { getCurrentProjects, getTenUnderProjects, sliceByPage } from '~/utils/pagination';
 
-export default function Project() {
-  const [currentTab, setCurrentTab] = useState('전체');
+const FIRST_PAGE = 1;
+const ALL_TAB = '전체';
+const TEN_UNDER_TAB = '-10기';
+
+export default function ProjectPage() {
+  const [currentTab, setCurrentTab] = useState(ALL_TAB);
   const [selectedProjectList, setSelectedProjectList] = useState(PROJECT_LIST);
+  const [currentPage, setCurrentPage] = useState(FIRST_PAGE);
 
   useEffect(() => {
-    if (currentTab === '전체') {
+    setCurrentPage(1);
+    if (currentTab === ALL_TAB) {
       return setSelectedProjectList(PROJECT_LIST);
     }
-    if (currentTab === '-10기') {
-      return setSelectedProjectList(
-        PROJECT_LIST.filter(project => Number(project.subTitle.replace('기', '')) <= 10)
-      );
+
+    if (currentTab === TEN_UNDER_TAB) {
+      return setSelectedProjectList(getTenUnderProjects(PROJECT_LIST));
     }
-    setSelectedProjectList(PROJECT_LIST.filter(project => project.subTitle === currentTab));
+
+    const selectedProjects = getCurrentProjects(PROJECT_LIST, currentTab);
+    setSelectedProjectList(selectedProjects);
   }, [currentTab]);
+
+  const onClickPage = (page: number) => {
+    setCurrentPage(page);
+  };
 
   return (
     <>
       <SEO title="디프만 - Project" />
       <main css={mainCss}>
         <section css={sectionCss}>
-          <ul css={tabWrapperCss}>
-            <li css={tabContainerCss}>
-              {TAB_LIST.map(tab => (
-                <button
-                  key={tab}
-                  css={currentTab === tab ? activeTabCss : inActiveTabCss}
-                  onClick={() => setCurrentTab(tab)}
-                >
-                  {tab}
-                </button>
-              ))}
-            </li>
-          </ul>
+          <ProjectTab currentTab={currentTab} setCurrentTab={setCurrentTab} />
           <div css={projectContainerCss}>
-            {selectedProjectList.map(project => (
+            {sliceByPage(selectedProjectList, currentPage).map(project => (
               <Thumbnail
                 key={project.title}
                 img={`/images/project/${project.subTitle}/${project.title}.png`}
@@ -54,6 +54,11 @@ export default function Project() {
               />
             ))}
           </div>
+          <Pagination
+            numberOfPages={Math.ceil(selectedProjectList.length / 9)}
+            currentPage={currentPage}
+            handlePageClick={onClickPage}
+          />
         </section>
       </main>
     </>
@@ -71,26 +76,6 @@ const mainCss = css`
 const sectionCss = css`
   width: 100vw;
   max-width: 960px;
-`;
-
-const tabWrapperCss = css`
-  display: flex;
-`;
-
-const tabContainerCss = css`
-  display: flex;
-`;
-
-const activeTabCss = css`
-  ${theme.typos.pretendard.subTitle2};
-  padding: 16px 24px;
-  color: ${colors.yellow500};
-`;
-
-const inActiveTabCss = css`
-  ${theme.typos.pretendard.subTitle2};
-  padding: 16px 24px;
-  color: ${colors.white};
 `;
 
 const projectContainerCss = css`
