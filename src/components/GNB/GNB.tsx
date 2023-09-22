@@ -1,17 +1,19 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { css } from '@emotion/react';
+import { css, Theme } from '@emotion/react';
 
 import { Button } from '~/components/Button';
+import { MenuIcon } from '~/components/Icons';
 import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import { colors } from '~/styles/colors';
+import { mediaQuery } from '~/styles/media';
 
 const LOGO_IMAGE = `/images/logo.png`;
 
 function ApplyButton({ menu }: { menu: GNBMenu }) {
   return (
-    <Button css={applyButtonCss}>
+    <Button>
       <Link css={linkCss} href={menu.href}>
         {menu.name}
       </Link>
@@ -32,7 +34,7 @@ export function GNB() {
       <nav css={navCss}>
         <div css={navWrapperCss}>
           <Link href={'/'}>
-            {<Image src={LOGO_IMAGE} alt="로고 이미지" width={240} height={30} />}
+            {<Image src={LOGO_IMAGE} alt="로고 이미지" width={154} height={18.9} />}
           </Link>
           <ul css={menuContainerCss}>
             {GNB_MENU_NAME.map(menu => (
@@ -47,6 +49,9 @@ export function GNB() {
               </li>
             ))}
           </ul>
+          <div css={mobileMenuContainerCss}>
+            <MenuIcon />
+          </div>
         </div>
       </nav>
       <div css={blankCss} />
@@ -57,7 +62,7 @@ export function GNB() {
 const navCss = css`
   background-color: ${colors.black800};
   position: fixed;
-  padding: 0 20px;
+  padding: 20px 32px;
   top: 0;
   left: 0;
   z-index: 9998;
@@ -66,7 +71,7 @@ const navCss = css`
 
 const blankCss = css`
   width: 100vw;
-  height: 72px;
+  height: 82px;
 `;
 
 const navWrapperCss = css`
@@ -74,35 +79,38 @@ const navWrapperCss = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 72px;
   margin: 0 auto;
 `;
 
 const menuContainerCss = css`
   display: flex;
-  gap: 60px;
+  gap: 32px;
+
+  ${mediaQuery('mobile')} {
+    display: none;
+  }
+`;
+
+const mobileMenuContainerCss = css`
+  display: none;
+
+  ${mediaQuery('mobile')} {
+    display: block;
+  }
 `;
 
 const menuCss = css`
   margin: auto 0;
 `;
 
-const activeLinkCss = css`
-  color: ${colors.yellow500};
+const activeLinkCss = (theme: Theme) => css`
+  color: ${theme.colors.yellow500};
 `;
 
-const inActiveLinkCss = css`
-  color: ${colors.white};
+const inActiveLinkCss = (theme: Theme) => css`
+  color: ${theme.colors.white};
 `;
 
-const linkCss = css`
-  font-size: 1.25rem;
-  font-weight: 500;
-  line-height: 150%; /* 30px */
-  letter-spacing: -0.2px;
-`;
-
-const applyButtonCss = css`
-  background-color: ${colors.yellow500};
-  color: ${colors.black800};
+const linkCss = (theme: Theme) => css`
+  ${theme.typos.pretendard.body1};
 `;

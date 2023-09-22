@@ -5,6 +5,7 @@ import { FAQList } from '~/components/FAQ/FAQList';
 import { SectionTitle } from '~/components/SectionTitle';
 import { FAQ_GROUP, FAQGroupType, FAQS, FAQType } from '~/constant/faq';
 import { commonLayoutCss } from '~/styles/layout';
+import { mediaQuery } from '~/styles/media';
 
 export function FAQ() {
   const [activeTab, setActiveTab] = useState<FAQGroupType>('지원자격');
@@ -65,4 +66,8 @@ const tabCss = (theme: Theme, isActive: boolean) => css`
   color: ${isActive ? theme.colors.yellow500 : theme.colors.white};
   cursor: pointer;
   padding: 16px 24px;
+
+  ${mediaQuery('mobile')} {
+    font-size: 14px;
+  }
 `;

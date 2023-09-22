@@ -1,7 +1,9 @@
 import { css, Theme } from '@emotion/react';
 
-import { Journey } from '~/components/Journey';
-import { RecruitEntrance } from '~/components/RecruitEntrance';
+import { FAQ } from '~/components/FAQ';
+import { RecruitTextSection, SignImageSection } from '~/components/Main';
+import { Journey } from '~/components/Main/Journey';
+import { RecruitEntrance } from '~/components/Main/RecruitEntrance';
 import { ScheduleSection } from '~/components/ScheduleSection';
 import { SectionTitle } from '~/components/SectionTitle';
 import { SEO } from '~/components/SEO';
@@ -23,6 +25,11 @@ export default function Root() {
             <ScheduleSection {...MEMBER_SCHEDULE} />
             <ScheduleSection {...SESSION_SCHEDULES} />
           </section>
+          <section>
+            <FAQ />
+          </section>
+          <SignImageSection />
+          <RecruitTextSection />
         </div>
       </main>
     </>
