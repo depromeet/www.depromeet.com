@@ -1,15 +1,22 @@
 import { css } from '@emotion/react';
 
-export function MobileMenuIcon() {
+interface Props {
+  onClick?: () => void;
+  isChecked?: boolean;
+}
+export function MobileMenuIcon({ onClick, isChecked }: Props) {
   return (
     <div css={containerCss}>
-      <input className="burger-check" type="checkbox" id="burger-check" />
+      <input
+        className="burger-check"
+        type="checkbox"
+        id="burger-check"
+        onClick={onClick}
+        checked={isChecked}
+      />
       <label className="burger-icon" htmlFor="burger-check">
         <span className="burger-sticks"></span>
       </label>
-      <div className="menu">
-        <div></div>
-      </div>
     </div>
   );
 }
@@ -25,6 +32,7 @@ const containerCss = css`
     right: 0;
     height: 100%;
     max-width: 0;
+    min-width: 100px;
     transition: 0.5s ease;
     z-index: 1;
     background-color: #eee;
@@ -72,12 +80,6 @@ const containerCss = css`
 
   .burger-check {
     display: none;
-  }
-
-  .burger-check:checked {
-    ~ .menu {
-      max-width: 200px;
-    }
   }
 
   .burger-check:checked ~ .burger-icon .burger-sticks {
