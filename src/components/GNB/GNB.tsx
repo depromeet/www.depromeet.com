@@ -53,9 +53,6 @@ export function GNB() {
               </li>
             ))}
           </ul>
-          <div css={mobileMenuContainerCss}>
-            <MenuIcon />
-          </div>
         </div>
       </nav>
       <nav css={mobileNavCss}>
