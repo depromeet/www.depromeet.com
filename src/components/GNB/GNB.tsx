@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { css, Theme } from '@emotion/react';
 
 import { Button } from '~/components/Button';
-import { MenuIcon } from '~/components/Icons';
+import { MobileMenuIcon } from '~/components/GNB/MobileMenuIcon';
 import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
@@ -50,7 +50,7 @@ export function GNB() {
             ))}
           </ul>
           <div css={mobileMenuContainerCss}>
-            <MenuIcon />
+            <MobileMenuIcon />
           </div>
         </div>
       </nav>
