@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import { css } from '@emotion/react';
-import { m, Variants } from 'framer-motion';
+import { m } from 'framer-motion';
 
 import { ArrowIcon } from '~/components/Icons';
+import { defaultFadeInVariants } from '~/constant/motion';
 import { colors } from '~/styles/colors';
 
 export type Link = {
@@ -18,49 +19,32 @@ type ThumbnailProps = {
   links?: Link[];
 };
 
-const defaultEasing = [0.6, -0.05, 0.01, 0.99];
-
 export function Thumbnail({ title, subTitle, img, description, links }: ThumbnailProps) {
   return (
-    <m.article
-      css={articleCss}
-      initial="default"
-      whileHover="hover"
-      animate="default"
-      variants={articleVariants}
-    >
-      <m.div css={imageCss} variants={imageVariants}>
-        <Image src={img} alt={title} fill quality={100} />
-      </m.div>
-      <m.div css={contentsCss}>
-        <m.div>
-          <m.p css={titleCss} variants={textVariants}>
-            {title}
-          </m.p>
-          <m.p css={subTitleCss} variants={textVariants}>
-            {subTitle}
-          </m.p>
-        </m.div>
-        <m.p
-          css={descriptionCss}
-          variants={textVariants}
-          dangerouslySetInnerHTML={{ __html: description }}
-        />
+    <m.article css={articleCss} variants={defaultFadeInVariants}>
+      <Image css={imageCss} src={img} alt={title} fill quality={100} />
+      <div css={gradientCss} />
+      <div css={contentsCss}>
+        <div>
+          <p css={titleCss}>{title}</p>
+          <p css={subTitleCss}>{subTitle}</p>
+        </div>
+        <p css={descriptionCss} dangerouslySetInnerHTML={{ __html: description }} />
         {links && (
-          <m.div css={linkContainerCss}>
+          <div css={linkContainerCss}>
             {links.map(link => (
-              <m.span key={link.type} css={linkWrapperCss}>
-                <m.a href={link.href} css={linkCss} variants={textVariants}>
+              <span key={link.type} css={linkWrapperCss}>
+                <a href={link.href} css={linkCss}>
                   {link.type}
-                </m.a>
-                <m.span variants={textVariants}>
+                </a>
+                <span>
                   <ArrowIcon direction={'right'} color={colors.blue400} width={16} height={16} />
-                </m.span>
-              </m.span>
+                </span>
+              </span>
             ))}
-          </m.div>
+          </div>
         )}
-      </m.div>
+      </div>
     </m.article>
   );
 }
@@ -87,6 +71,11 @@ const contentsCss = css`
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
+  opacity: 0;
+  &:hover {
+    filter: blur(7px);
+    opacity: 1;
+  }
 `;
 
 const linkContainerCss = css`
@@ -127,6 +116,13 @@ const subTitleCss = css`
   z-index: 10;
 `;
 
+const gradientCss = css`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 172px;
+`;
+
 const descriptionCss = css`
   position: relative;
   font-weight: 500;
@@ -137,37 +133,3 @@ const descriptionCss = css`
   letter-spacing: -0.16px;
   white-space: pre-wrap;
 `;
-
-const textVariants: Variants = {
-  default: { opacity: 0 },
-  hover: {
-    opacity: 1,
-    transition: {
-      duration: 0.3,
-      ease: defaultEasing,
-    },
-  },
-};
-
-const articleVariants: Variants = {
-  default: { background: 'transparent' },
-  hover: {
-    transition: {
-      duration: 0.3,
-      ease: defaultEasing,
-    },
-  },
-};
-
-const imageVariants: Variants = {
-  default: {
-    filter: 'blur(0px)',
-  },
-  hover: {
-    filter: 'blur(7px) brightness(0.3)',
-    transition: {
-      duration: 0.3,
-      ease: defaultEasing,
-    },
-  },
-};

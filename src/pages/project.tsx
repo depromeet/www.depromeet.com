@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
+import { AnimatePresence, m } from 'framer-motion';
 
 import { Pagination } from '~/components/Pagination';
 import { ProjectTab } from '~/components/ProjectTab';
 import { SEO } from '~/components/SEO';
 import { Thumbnail } from '~/components/Thumbnail';
 import { Link } from '~/components/Thumbnail/Thumbnail';
+import { staggerHalf } from '~/constant/motion';
 import { PROJECT_LIST } from '~/constant/project';
 import { getCurrentProjects, getTenUnderProjects, sliceByPage } from '~/utils/pagination';
 
@@ -42,18 +44,26 @@ export default function ProjectPage() {
       <main css={mainCss}>
         <section css={sectionCss}>
           <ProjectTab currentTab={currentTab} setCurrentTab={setCurrentTab} />
-          <div css={projectContainerCss}>
-            {sliceByPage(selectedProjectList, currentPage).map(project => (
-              <Thumbnail
-                key={project.title}
-                img={`/images/project/${project.subTitle}/${project.title}.png`}
-                title={project.title}
-                subTitle={project.subTitle}
-                description={project.description}
-                links={project.links as Link[]}
-              />
-            ))}
-          </div>
+          <AnimatePresence mode="wait" initial={false}>
+            <m.div
+              css={projectContainerCss}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={staggerHalf}
+            >
+              {sliceByPage(selectedProjectList, currentPage).map(project => (
+                <Thumbnail
+                  key={project.title}
+                  img={`/images/project/${project.subTitle}/${project.title}.png`}
+                  title={project.title}
+                  subTitle={project.subTitle}
+                  description={project.description}
+                  links={project.links as Link[]}
+                />
+              ))}
+            </m.div>
+          </AnimatePresence>
           <Pagination
             numberOfPages={Math.ceil(selectedProjectList.length / 9)}
             currentPage={currentPage}
