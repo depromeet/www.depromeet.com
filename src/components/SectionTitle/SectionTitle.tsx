@@ -17,8 +17,8 @@ interface SectionTitleProps {
 export function SectionTitle({ label, title, description, ...layoutProps }: SectionTitleProps) {
   return (
     <div css={layoutCss} {...layoutProps}>
-      <h4 css={labelCss}>{label}</h4>
-      <h2 css={titleCss}>{title}</h2>
+      {label && <h4 css={labelCss}>{label}</h4>}
+      {title && <h2 css={titleCss}>{title}</h2>}
       {description && <p css={descriptionCss}>{description}</p>}
     </div>
   );
