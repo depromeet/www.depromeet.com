@@ -1,5 +1,7 @@
 import { css, Theme } from '@emotion/react';
 
+import { commonLayoutCss } from '~/styles/layout';
+import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
 interface ScheduleSectionProps {
@@ -15,7 +17,7 @@ interface ScheduleSectionProps {
 
 export function ScheduleSection({ label, title, schedule, titleBgColor }: ScheduleSectionProps) {
   return (
-    <section css={layoutCss}>
+    <section css={[commonLayoutCss, layoutCss]}>
       <div css={topLabelContainerCss}>
         {label.split('').map((char, index) => (
           <span key={index}>{char}</span>
@@ -24,9 +26,9 @@ export function ScheduleSection({ label, title, schedule, titleBgColor }: Schedu
       <div css={theme => titleContainerCss(theme, titleBgColor)}>
         <h2>{title}</h2>
       </div>
-      <div css={scheduleContainerCss}>
+      <div css={theme => scheduleContainerCss(theme, schedule.length)}>
         {schedule.map(item => (
-          <div key={item.content}>
+          <div key={item.content} css={scheduleItemCss}>
             <p>{item.date}</p>
             <span>{item.content}</span>
           </div>
@@ -37,7 +39,6 @@ export function ScheduleSection({ label, title, schedule, titleBgColor }: Schedu
 }
 
 const layoutCss = (theme: Theme) => css`
-  max-width: 960px;
   color: ${theme.colors.white};
   margin: 0 auto;
 
@@ -62,6 +63,13 @@ const topLabelContainerCss = (theme: Theme) => css`
     padding: 6px 0;
     color: ${theme.colors.gray200};
   }
+
+  ${mediaQuery('mobile')} {
+    & > span {
+      font-size: 12px;
+      padding: 2px 0px;
+    }
+  }
 `;
 
 const titleContainerCss = (theme: Theme, titleBgColor: keyof typeof theme.colors) => css`
@@ -70,25 +78,57 @@ const titleContainerCss = (theme: Theme, titleBgColor: keyof typeof theme.colors
   color: ${theme.colors.black800};
   text-align: center;
   padding: 40px 0;
+
+  ${mediaQuery('mobile')} {
+    padding: 16px 0;
+    font-size: 16px;
+  }
 `;
 
-const scheduleContainerCss = (theme: Theme) => css`
+const scheduleItemCss = (theme: Theme) => css`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+
+  p {
+    ${theme.typos.decimal.body1};
+  }
+  span {
+    ${theme.typos.pretendard.body1};
+    color: ${theme.colors.gray20};
+  }
+  flex: 1;
+
+  ${mediaQuery('mobile')} {
+    gap: 8px;
+    p {
+      font-size: 14px;
+    }
+    span {
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+`;
+
+const scheduleContainerCss = (theme: Theme, scheduleCount: number) => css`
   display: flex;
   padding: 50px 90px;
   background-color: ${theme.colors.black400};
+  flex-wrap: wrap;
 
-  & > div {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    p {
-      ${theme.typos.decimal.body1};
-    }
-    span {
-      ${theme.typos.pretendard.body1};
-    }
-    &:not(:last-child) {
-      flex: 1;
-    }
+  ${mediaQuery('tablet')} {
+    padding: 50px 48px;
+  }
+
+  ${mediaQuery('mobile')} {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(${scheduleCount / 2}, 1fr);
+    padding: 16px 8px;
+    row-gap: 32px;
+    column-gap: 0;
+    text-align: center;
   }
 `;

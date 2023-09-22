@@ -1,5 +1,7 @@
 import { css, Theme } from '@emotion/react';
 
+import { mediaQuery } from '~/styles/media';
+
 interface SectionTitleProps {
   /**
    * 최상단 label
@@ -28,6 +30,10 @@ const layoutCss = css`
   align-items: center;
   background-color: inherit;
   padding: 88px 0;
+
+  ${mediaQuery('mobile')} {
+    padding: 24px 0;
+  }
 `;
 
 const labelCss = (theme: Theme) => css`
