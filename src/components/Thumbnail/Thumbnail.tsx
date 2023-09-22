@@ -21,7 +21,13 @@ type ThumbnailProps = {
 
 export function Thumbnail({ title, subTitle, img, description, links }: ThumbnailProps) {
   return (
-    <m.article css={articleCss} variants={defaultFadeInVariants}>
+    <m.article
+      css={articleCss}
+      variants={defaultFadeInVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
       <Image css={imageCss} src={img} alt={title} fill quality={100} />
       <div css={gradientCss} />
       <div css={contentsCss}>
@@ -54,6 +60,12 @@ const articleCss = css`
   width: 312px;
   height: 208px;
   padding: 24px;
+  &:hover {
+    cursor: pointer;
+  }
+  &:hover img {
+    filter: blur(7px) brightness(0.3);
+  }
 `;
 
 const imageCss = css`
@@ -64,6 +76,7 @@ const imageCss = css`
   z-index: -1;
   width: 100%;
   height: 100%;
+  transition: filter 0.3s ease;
 `;
 
 const contentsCss = css`
@@ -71,9 +84,10 @@ const contentsCss = css`
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
+  transition: opacity 0.3s ease;
   opacity: 0;
+
   &:hover {
-    filter: blur(7px);
     opacity: 1;
   }
 `;
