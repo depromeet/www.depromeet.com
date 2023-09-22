@@ -82,6 +82,12 @@ const mainCss = css`
   flex-direction: column;
   margin-top: 100px;
   margin-bottom: 200px;
+  ${mediaQuery('tablet')} {
+    margin-top: 74px;
+  }
+  ${mediaQuery('mobile')} {
+    margin-top: 60px;
+  }
 `;
 
 const sectionCss = css`
