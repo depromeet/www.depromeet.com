@@ -1,5 +1,6 @@
 import { AboutInfo } from '~/components/AboutInfo';
 import { Contact } from '~/components/Contact';
+import { OfflineSession } from '~/components/OfflineSession';
 import { SEO } from '~/components/SEO';
 
 export default function About() {
@@ -8,6 +9,7 @@ export default function About() {
       <SEO title="디프만 - About" />
       <main>
         <AboutInfo />
+        <OfflineSession />
         <Contact />
       </main>
     </>
