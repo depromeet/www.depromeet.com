@@ -34,6 +34,7 @@ const imageContainerCss = css`
     width: 346px;
     padding: 0;
     margin-left: 53px;
+
     img {
       position: relative;
       left: -53px;
@@ -99,5 +100,6 @@ const layoutCss = css`
 
   ${mediaQuery('mobile')} {
     gap: 16px;
+    justify-content: center;
   }
 `;

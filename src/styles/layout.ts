@@ -19,8 +19,9 @@ export const commonLayoutCss = css`
   }
 
   ${mediaQuery('mobile')} {
+    max-width: 475px; // TODO : 논의 필요
     width: calc(100vw - 32px);
-    margin: 0 16px;
+    margin: 0 auto;
     padding: 0;
   }
 `;

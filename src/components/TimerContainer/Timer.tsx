@@ -52,6 +52,7 @@ const layoutCss = (theme: Theme) => css`
   }
 
   ${mediaQuery('mobile')} {
+    max-width: 375px;
     padding: 10px;
   }
 `;
