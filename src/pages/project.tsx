@@ -9,6 +9,7 @@ import { Thumbnail } from '~/components/Thumbnail';
 import { Link } from '~/components/Thumbnail/Thumbnail';
 import { staggerHalf } from '~/constant/motion';
 import { PROJECT_LIST } from '~/constant/project';
+import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { mediaQuery } from '~/styles/media';
 import { getCurrentProjects, getTenUnderProjects, sliceByPage } from '~/utils/pagination';
 
@@ -20,6 +21,7 @@ export default function ProjectPage() {
   const [currentTab, setCurrentTab] = useState(ALL_TAB);
   const [selectedProjectList, setSelectedProjectList] = useState(PROJECT_LIST);
   const [currentPage, setCurrentPage] = useState(FIRST_PAGE);
+  const { isTargetSize: isTabletSize } = useCheckWindowSize('tablet');
 
   useEffect(() => {
     setCurrentPage(1);
@@ -53,7 +55,7 @@ export default function ProjectPage() {
               exit="exit"
               variants={staggerHalf}
             >
-              {sliceByPage(selectedProjectList, currentPage).map(project => (
+              {sliceByPage(selectedProjectList, currentPage, isTabletSize).map(project => (
                 <Thumbnail
                   key={project.title}
                   img={`/images/project/${project.subTitle}/${project.title}.png`}
