@@ -16,28 +16,54 @@ type ThumbnailProps = {
   img: string;
   description: string;
   links?: Link[];
+  showInfoDefault?: boolean;
+  backgroundShow?: boolean;
 };
 
 const defaultEasing = [0.6, -0.05, 0.01, 0.99];
 
-export function Thumbnail({ title, subTitle, img, description, links }: ThumbnailProps) {
+export function Thumbnail({
+  title,
+  subTitle,
+  img,
+  description,
+  links,
+  showInfoDefault = false,
+  backgroundShow = false,
+}: ThumbnailProps) {
   return (
     <m.article
       css={articleCss}
       initial="default"
       whileHover="hover"
       animate="default"
-      variants={articleVariants}
+      variants={
+        backgroundShow
+          ? {
+              ...articleVariants,
+              default: {
+                background:
+                  'linear-gradient(180deg, rgba(19, 28, 40, 0.9) 0%, rgba(19, 28, 40, 0) 100%)',
+              },
+            }
+          : articleVariants
+      }
     >
       <m.div css={imageCss} variants={imageVariants}>
         <Image src={img} alt={title} fill quality={100} />
       </m.div>
       <m.div css={contentsCss}>
         <m.div>
-          <m.p css={titleCss} variants={textVariants}>
+          <m.p
+            css={titleCss}
+            variants={showInfoDefault ? { ...textVariants, default: { opacity: 1 } } : textVariants}
+          >
             {title}
           </m.p>
-          <m.p css={subTitleCss} variants={textVariants}>
+          <m.p
+            css={subTitleCss}
+            variants={showInfoDefault ? { ...textVariants, default: { opacity: 1 } } : textVariants}
+          >
             {subTitle}
           </m.p>
         </m.div>
