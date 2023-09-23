@@ -20,3 +20,8 @@ export const SECOND_ROW_FOOTER_INFOS = [
   { name: 'Kakao channel', detail: '@depromeet', href: DEPROMEET_KAKAO_PLUS_FRIEND },
   { name: 'E-mail', detail: 'depromeet@gmail', href: DEPROMEET_EMAIL },
 ];
+
+export const CONTACT_INFO = [
+  { name: 'Kakao channel', detail: '@depromeet', href: DEPROMEET_KAKAO_PLUS_FRIEND },
+  { name: 'E-mail', detail: 'depromeet@gmail', href: DEPROMEET_EMAIL },
+];
