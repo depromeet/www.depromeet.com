@@ -1,5 +1,14 @@
+import { Link } from '~/components/Thumbnail/Thumbnail';
+
+export type Project = {
+  title: string;
+  subTitle: string;
+  description: string;
+  links: Link[];
+};
+
 export const TAB_LIST = ['전체', '13기', '12기', '11기', '-10기'];
-export const PROJECT_LIST = [
+export const PROJECT_LIST: Project[] = [
   {
     title: '자린고비',
     subTitle: '13기',
