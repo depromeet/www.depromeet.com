@@ -1,59 +1,77 @@
 import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
+import { AnimatePresence, m } from 'framer-motion';
 
+import { Pagination } from '~/components/Pagination';
+import { ProjectTab } from '~/components/ProjectTab';
 import { SEO } from '~/components/SEO';
 import { Thumbnail } from '~/components/Thumbnail';
 import { Link } from '~/components/Thumbnail/Thumbnail';
-import { PROJECT_LIST, TAB_LIST } from '~/constant/project';
-import { colors } from '~/styles/colors';
-import { theme } from '~/styles/theme';
+import { staggerHalf } from '~/constant/motion';
+import { PROJECT_LIST } from '~/constant/project';
+import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
+import { mediaQuery } from '~/styles/media';
+import { getCurrentProjects, getTenUnderProjects, sliceByPage } from '~/utils/pagination';
 
-export default function Project() {
-  const [currentTab, setCurrentTab] = useState('전체');
+const FIRST_PAGE = 1;
+const ALL_TAB = '전체';
+const TEN_UNDER_TAB = '-10기';
+
+export default function ProjectPage() {
+  const [currentTab, setCurrentTab] = useState(ALL_TAB);
   const [selectedProjectList, setSelectedProjectList] = useState(PROJECT_LIST);
+  const [currentPage, setCurrentPage] = useState(FIRST_PAGE);
+  const { isTargetSize: isTabletSize } = useCheckWindowSize('tablet');
 
   useEffect(() => {
-    if (currentTab === '전체') {
+    setCurrentPage(1);
+    if (currentTab === ALL_TAB) {
       return setSelectedProjectList(PROJECT_LIST);
     }
-    if (currentTab === '-10기') {
-      return setSelectedProjectList(
-        PROJECT_LIST.filter(project => Number(project.subTitle.replace('기', '')) <= 10)
-      );
+
+    if (currentTab === TEN_UNDER_TAB) {
+      return setSelectedProjectList(getTenUnderProjects(PROJECT_LIST));
     }
-    setSelectedProjectList(PROJECT_LIST.filter(project => project.subTitle === currentTab));
+
+    const selectedProjects = getCurrentProjects(PROJECT_LIST, currentTab);
+    setSelectedProjectList(selectedProjects);
   }, [currentTab]);
+
+  const onClickPage = (page: number) => {
+    setCurrentPage(page);
+  };
 
   return (
     <>
       <SEO title="디프만 - Project" />
       <main css={mainCss}>
         <section css={sectionCss}>
-          <ul css={tabWrapperCss}>
-            <li css={tabContainerCss}>
-              {TAB_LIST.map(tab => (
-                <button
-                  key={tab}
-                  css={currentTab === tab ? activeTabCss : inActiveTabCss}
-                  onClick={() => setCurrentTab(tab)}
-                >
-                  {tab}
-                </button>
+          <ProjectTab currentTab={currentTab} setCurrentTab={setCurrentTab} />
+          <AnimatePresence mode="wait" initial={false}>
+            <m.div
+              css={projectContainerCss}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={staggerHalf}
+            >
+              {sliceByPage(selectedProjectList, currentPage, isTabletSize).map(project => (
+                <Thumbnail
+                  key={project.title}
+                  img={`/images/project/${project.subTitle}/${project.title}.png`}
+                  title={project.title}
+                  subTitle={project.subTitle}
+                  description={project.description}
+                  links={project.links as Link[]}
+                />
               ))}
-            </li>
-          </ul>
-          <div css={projectContainerCss}>
-            {selectedProjectList.map(project => (
-              <Thumbnail
-                key={project.title}
-                img={`/images/project/${project.subTitle}/${project.title}.png`}
-                title={project.title}
-                subTitle={project.subTitle}
-                description={project.description}
-                links={project.links as Link[]}
-              />
-            ))}
-          </div>
+            </m.div>
+          </AnimatePresence>
+          <Pagination
+            numberOfPages={Math.ceil(selectedProjectList.length / 9)}
+            currentPage={currentPage}
+            handlePageClick={onClickPage}
+          />
         </section>
       </main>
     </>
@@ -66,31 +84,21 @@ const mainCss = css`
   flex-direction: column;
   margin-top: 100px;
   margin-bottom: 200px;
+  ${mediaQuery('tablet')} {
+    margin-top: 74px;
+  }
+  ${mediaQuery('mobile')} {
+    margin-top: 60px;
+  }
 `;
 
 const sectionCss = css`
   width: 100vw;
   max-width: 960px;
-`;
-
-const tabWrapperCss = css`
-  display: flex;
-`;
-
-const tabContainerCss = css`
-  display: flex;
-`;
-
-const activeTabCss = css`
-  ${theme.typos.pretendard.subTitle2};
-  padding: 16px 24px;
-  color: ${colors.yellow500};
-`;
-
-const inActiveTabCss = css`
-  ${theme.typos.pretendard.subTitle2};
-  padding: 16px 24px;
-  color: ${colors.white};
+  padding: 30px;
+  ${mediaQuery('mobile')} {
+    padding: 20px;
+  }
 `;
 
 const projectContainerCss = css`
@@ -99,4 +107,10 @@ const projectContainerCss = css`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 12px;
+  ${mediaQuery('tablet')} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  ${mediaQuery('mobile')} {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
