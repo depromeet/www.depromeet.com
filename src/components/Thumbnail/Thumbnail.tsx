@@ -40,7 +40,7 @@ export function Thumbnail({ title, subTitle, img, description, links }: Thumbnai
           <div css={linkContainerCss}>
             {links.map(link => (
               <span key={link.type} css={linkWrapperCss}>
-                <a href={link.href} css={linkCss}>
+                <a href={link.href} target="_blank" css={linkCss} rel="noreferrer">
                   {link.type}
                 </a>
                 <span>
