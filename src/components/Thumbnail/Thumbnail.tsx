@@ -17,40 +17,20 @@ type ThumbnailProps = {
   img: string;
   description: string;
   links?: Link[];
-  showInfoDefault?: boolean;
-  backgroundShow?: boolean;
 };
 
-export function Thumbnail({
-  title,
-  subTitle,
-  img,
-  description,
-  links,
-  showInfoDefault = false,
-  backgroundShow = false,
-}: ThumbnailProps) {
+export function Thumbnail({ title, subTitle, img, description, links }: ThumbnailProps) {
   return (
     <m.article
       css={articleCss}
-      variants={
-        backgroundShow
-          ? {
-              ...defaultFadeInVariants,
-              default: {
-                background:
-                  'linear-gradient(180deg, rgba(19, 28, 40, 0.9) 0%, rgba(19, 28, 40, 0) 100%)',
-              },
-            }
-          : defaultFadeInVariants
-      }
+      variants={defaultFadeInVariants}
       initial="initial"
       animate="animate"
       exit="exit"
     >
       <Image css={imageCss} src={img} alt={title} fill quality={100} />
       <div css={gradientCss} />
-      <div css={() => contentsCss(showInfoDefault)}>
+      <div css={contentsCss}>
         <div>
           <p css={titleCss}>{title}</p>
           <p css={subTitleCss}>{subTitle}</p>
@@ -93,13 +73,13 @@ const imageCss = css`
   object-position: center;
 `;
 
-const contentsCss = (showInfoDefault: boolean) => css`
+const contentsCss = css`
   display: flex;
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
   transition: opacity 0.3s ease;
-  opacity: ${showInfoDefault ? 1 : 0};
+  opacity: 0;
 
   &:hover {
     opacity: 1;
