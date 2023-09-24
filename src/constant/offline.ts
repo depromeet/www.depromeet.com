@@ -20,7 +20,7 @@ export const OFFLINE_SESSIONS = [
   {
     title: '중간발표',
     subTitle: 'Midterm announce',
-    description: '각 팀의 진행 상황을 공유하며 실질적ㅇ니 피드백을 주고 받을 수 있어요',
+    description: '각 팀의 진행 상황을 공유하며 실질적인 피드백을 주고 받을 수 있어요',
     img: '/images/session/midterm.png',
   },
   {

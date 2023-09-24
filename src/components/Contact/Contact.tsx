@@ -43,9 +43,14 @@ const InfoCss = (theme: Theme) => css`
   justify-content: space-between;
   align-items: flex-start;
   gap: 20px;
+  ${mediaQuery('tablet')} {
+    width: 344px;
+  }
 
   ${mediaQuery('mobile')} {
-    width: 344px;
+    width: 160px;
+    height: 96px;
+    padding: 16px 8px;
   }
 `;
 

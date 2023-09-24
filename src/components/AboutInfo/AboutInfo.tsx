@@ -48,6 +48,13 @@ const layoutCss = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+  ${mediaQuery('pc')} {
+    margin-top: 200px;
+  }
+
+  ${mediaQuery('mobile')} {
+    margin-top: 200px;
+  }
 `;
 
 const headerCss = (theme: Theme) => css`
