@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { css, Theme } from '@emotion/react';
 
-import { FIRST_ROW_FOOTER_INFOS, SECOND_ROW_FOOTER_INFOS } from '~/constant/footer';
+import { FIRST_ROW_FOOTER_INFOS, SECOND_ROW_FOOTER_INFOS } from '~/constant/contactInfo';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
@@ -12,7 +12,7 @@ export function Footer() {
         <ul css={rowCss}>
           {FIRST_ROW_FOOTER_INFOS.map(footer => (
             <li key={footer.name}>
-              <Link css={[linkCss, strongLinkCss]} href={footer.href}>
+              <Link css={[linkCss, strongLinkCss]} href={footer.href} target="_blank">
                 {footer.name}
               </Link>
             </li>
@@ -21,7 +21,7 @@ export function Footer() {
         <ul css={[secondRowCss]}>
           {SECOND_ROW_FOOTER_INFOS.map(footer => (
             <li key={footer.name}>
-              <Link css={linkCss} href={footer.href}>
+              <Link css={linkCss} href={footer.href} target="_blank">
                 <span>{footer.name}</span>
                 <span>{footer.detail}</span>
               </Link>

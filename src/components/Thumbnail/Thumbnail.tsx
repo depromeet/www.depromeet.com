@@ -59,6 +59,7 @@ const articleCss = css`
   position: relative;
   height: 208px;
   padding: 24px;
+  background: linear-gradient(180deg, rgba(19, 28, 40, 0.9) 0%, rgba(19, 28, 40, 0) 100%);
   &:hover {
     cursor: pointer;
   }
