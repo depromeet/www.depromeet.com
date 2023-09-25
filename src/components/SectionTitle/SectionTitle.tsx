@@ -1,5 +1,7 @@
 import { css, Theme } from '@emotion/react';
 
+import { mediaQuery } from '~/styles/media';
+
 interface SectionTitleProps {
   /**
    * 최상단 label
@@ -15,9 +17,9 @@ interface SectionTitleProps {
 export function SectionTitle({ label, title, description, ...layoutProps }: SectionTitleProps) {
   return (
     <div css={layoutCss} {...layoutProps}>
-      <h4 css={labelCss}>{label}</h4>
-      <h2 css={titleCss}>{title}</h2>
-      <p css={descriptionCss}>{description}</p>
+      {label && <h4 css={labelCss}>{label}</h4>}
+      {title && <h2 css={titleCss}>{title}</h2>}
+      {description && <p css={descriptionCss}>{description}</p>}
     </div>
   );
 }
@@ -28,6 +30,10 @@ const layoutCss = css`
   align-items: center;
   background-color: inherit;
   padding: 88px 0;
+
+  ${mediaQuery('mobile')} {
+    padding: 24px 0;
+  }
 `;
 
 const labelCss = (theme: Theme) => css`

@@ -1,5 +1,6 @@
 import { css, Global } from '@emotion/react';
 
+import { fontFace } from '~/styles/font';
 import { theme } from '~/styles/theme';
 
 import { resetCss } from './resetCss';
@@ -10,6 +11,7 @@ export default function GlobalStyle() {
 
 const globalCss = css`
   ${resetCss}
+  ${fontFace}
 
   :root {
     max-width: 100vw;
