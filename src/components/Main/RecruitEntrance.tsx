@@ -99,5 +99,6 @@ const layoutCss = css`
 
   ${mediaQuery('mobile')} {
     gap: 16px;
+    justify-content: center;
   }
 `;
