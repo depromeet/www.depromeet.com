@@ -7,7 +7,7 @@ import { defaultFadeInVariants } from '~/constant/motion';
 import { colors } from '~/styles/colors';
 
 export type Link = {
-  type: 'Behance' | 'Github' | 'Web' | 'App';
+  type: 'Behance' | 'Github' | 'Web' | 'Android' | 'IOS';
   href: string;
 };
 
@@ -59,7 +59,7 @@ const articleCss = css`
   position: relative;
   height: 208px;
   padding: 24px;
-  background: linear-gradient(180deg, rgba(19, 28, 40, 0.9) 0%, rgba(19, 28, 40, 0) 100%);
+  max-width: 312px;
   &:hover {
     cursor: pointer;
   }

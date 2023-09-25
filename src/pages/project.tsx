@@ -94,6 +94,7 @@ const mainCss = css`
 
 const sectionCss = css`
   width: 100vw;
+  max-width: 1020px;
   max-width: 960px;
   padding: 30px;
   ${mediaQuery('mobile')} {
