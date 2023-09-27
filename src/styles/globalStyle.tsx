@@ -1,6 +1,7 @@
 import { css, Global } from '@emotion/react';
 
 import { fontFace } from '~/styles/font';
+import { SIZE } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
 import { resetCss } from './resetCss';
@@ -21,6 +22,10 @@ const globalCss = css`
       'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji',
       'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
     font-size: 16px;
+
+    @media screen and (max-width: ${SIZE.mobile}) {
+      font-size: 14px;
+    }
 
     * {
       font-family: inherit;
