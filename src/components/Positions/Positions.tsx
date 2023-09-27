@@ -45,5 +45,7 @@ const listCss = css`
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    gap: 8px;
   }
 `;
