@@ -7,14 +7,14 @@ import { commonLayoutCss } from '~/styles/layout';
 
 export function Qualification() {
   return (
-    <div css={layoutCss}>
+    <section css={layoutCss}>
       <SectionTitle label="Qualification" title="전체 지원 자격" />
       <div css={listCss}>
         {QUALIFICATIONS.map(({ index, description }) => (
           <QualificationItem key={index} index={index} description={description} />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

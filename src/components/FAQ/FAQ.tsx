@@ -17,7 +17,7 @@ export function FAQ() {
   const isActive = (target: FAQGroupType) => activeTab === target;
 
   return (
-    <div css={layoutCss}>
+    <section css={layoutCss}>
       <SectionTitle label="FAQ" title="자주 묻는 질문" />
       <ul css={tabLayoutCss}>
         {FAQ_GROUP.map(label => (
@@ -31,7 +31,7 @@ export function FAQ() {
         ))}
       </ul>
       <FAQList FAQList={QuestionsMap[activeTab]} />
-    </div>
+    </section>
   );
 }
 
