@@ -1,5 +1,7 @@
 import { css } from '@emotion/react';
 
+import { mediaQuery } from '~/styles/media';
+
 export const pxToRem = (px: number, base = 16) => `${px / base}rem`;
 
 export const typos = {
@@ -27,6 +29,10 @@ export const typos = {
       font-weight: 500;
       line-height: 140%;
       letter-spacing: ${pxToRem(-0.18)};
+
+      ${mediaQuery('mobile')} {
+        font-size: ${pxToRem(16)};
+      }
     `,
     body2: css`
       /* Pretendard/Body 2 Medium */

@@ -40,8 +40,4 @@ const indexCss = (theme: Theme) => css`
 const descriptionCss = (theme: Theme) => css`
   ${theme.typos.pretendard.body1};
   color: ${theme.colors.gray20};
-
-  ${mediaQuery('mobile')} {
-    ${theme.typos.pretendard.body2};
-  }
 `;
