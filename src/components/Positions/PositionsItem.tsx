@@ -38,6 +38,11 @@ const layoutCss = (theme: Theme) => css`
   width: 306px;
   height: 272px;
 
+  img {
+    position: relative;
+    left: -14px;
+  }
+
   ${mediaQuery('tablet')} {
     width: 100%;
     height: 248px;
@@ -50,6 +55,11 @@ const layoutCss = (theme: Theme) => css`
     flex-direction: row;
     gap: 16px;
     align-items: center;
+
+    img {
+      width: 76px;
+      height: 76px;
+    }
   }
 `;
 
