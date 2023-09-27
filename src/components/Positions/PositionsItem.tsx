@@ -4,6 +4,7 @@ import { css, Theme } from '@emotion/react';
 
 import { ArrowIcon } from '~/components/Icons';
 import { POSITION_BASE } from '~/constant/image';
+import { mediaQuery } from '~/styles/media';
 
 type Position = 'aos' | 'design' | 'ios' | 'server' | 'web';
 
@@ -34,6 +35,12 @@ const layoutCss = (theme: Theme) => css`
   background-color: ${theme.colors.black400};
   width: 306px;
   height: 272px;
+
+  ${mediaQuery('tablet')} {
+    width: 100%;
+    height: 248px;
+    padding: 24px 32px;
+  }
 `;
 
 const titleCss = (theme: Theme) => css`

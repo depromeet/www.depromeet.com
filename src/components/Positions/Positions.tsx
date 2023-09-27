@@ -4,6 +4,7 @@ import { PositionsItem } from '~/components/Positions/PositionsItem';
 import { SectionTitle } from '~/components/SectionTitle';
 import { POSITIONS } from '~/constant/position';
 import { commonLayoutCss } from '~/styles/layout';
+import { mediaQuery } from '~/styles/media';
 
 export function Positions() {
   return (
@@ -33,4 +34,10 @@ const listCss = css`
   justify-content: center;
   position: relative;
   width: 960px; // TODO 전체 너비 상수화
+
+  ${mediaQuery('tablet')} {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+  }
 `;
