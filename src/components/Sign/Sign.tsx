@@ -30,9 +30,16 @@ export function Sign() {
 const imageContainerCss = css`
   display: flex;
   justify-content: center;
-  padding: 30px;
+  padding: 0 30px;
+  margin-bottom: 200px;
+
+  ${mediaQuery('tablet')} {
+    margin-bottom: 150px;
+  }
+
   ${mediaQuery('mobile')} {
-    padding: 20px;
+    padding: 0 20px;
+    margin-bottom: 60px;
   }
 `;
 

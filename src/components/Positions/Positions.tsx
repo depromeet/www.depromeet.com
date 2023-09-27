@@ -8,14 +8,14 @@ import { mediaQuery } from '~/styles/media';
 
 export function Positions() {
   return (
-    <div css={layoutCss}>
+    <section css={layoutCss}>
       <SectionTitle label="Positions" title="모집 직군" />
       <div css={listCss}>
         {POSITIONS.map(({ ...info }) => (
           <PositionsItem key={info.type} {...info} />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 
