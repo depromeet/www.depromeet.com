@@ -40,4 +40,10 @@ const listCss = css`
     grid-template-columns: repeat(2, 1fr);
     width: 100%;
   }
+
+  ${mediaQuery('mobile')} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
