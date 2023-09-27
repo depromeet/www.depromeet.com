@@ -1,5 +1,6 @@
 import { css, Theme } from '@emotion/react';
 
+import { mediaQuery } from '~/styles/media';
 import { formatSingleDigit } from '~/utils/format';
 
 interface QualificationItemProps {
@@ -22,6 +23,13 @@ const layoutCss = (theme: Theme) => css`
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  ${mediaQuery('tablet')} {
+    padding: 48px 38px;
+  }
+  ${mediaQuery('mobile')} {
+    padding: 16px;
+  }
 `;
 
 const indexCss = (theme: Theme) => css`
@@ -32,4 +40,8 @@ const indexCss = (theme: Theme) => css`
 const descriptionCss = (theme: Theme) => css`
   ${theme.typos.pretendard.body1};
   color: ${theme.colors.gray20};
+
+  ${mediaQuery('mobile')} {
+    ${theme.typos.pretendard.body2};
+  }
 `;
