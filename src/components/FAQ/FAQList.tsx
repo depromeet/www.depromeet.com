@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { css } from '@emotion/react';
 
 import { FAQItem } from '~/components/FAQ/FAQItem';
 import { FAQType } from '~/constant/faq';
+import { mediaQuery } from '~/styles/media';
 
 interface FAQListProps {
   FAQList: FAQType[];
@@ -21,7 +23,7 @@ export function FAQList({ FAQList }: FAQListProps) {
   };
 
   return (
-    <ul>
+    <ul css={containerCss}>
       {FAQList.map((item, index) => (
         <FAQItem
           key={item.question}
@@ -33,3 +35,13 @@ export function FAQList({ FAQList }: FAQListProps) {
     </ul>
   );
 }
+
+const containerCss = css`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  ${mediaQuery('mobile')} {
+    gap: 8px;
+  }
+`;
