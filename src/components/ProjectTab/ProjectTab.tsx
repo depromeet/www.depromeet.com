@@ -34,6 +34,10 @@ const tabWrapperCss = css`
 
 const tabContainerCss = css`
   display: flex;
+
+  ${mediaQuery('mobile')} {
+    gap: 8px;
+  }
 `;
 
 const tabCss = css`
@@ -41,7 +45,7 @@ const tabCss = css`
   padding: 16px 24px;
   ${mediaQuery('mobile')} {
     ${theme.typos.pretendard.body2};
-    padding: 8px 16px;
+    padding: 16px 8px;
   }
 `;
 
