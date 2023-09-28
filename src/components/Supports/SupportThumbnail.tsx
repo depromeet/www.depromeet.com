@@ -5,10 +5,9 @@ import { m } from 'framer-motion';
 import { ArrowIcon } from '~/components/Icons';
 import { defaultFadeInVariants } from '~/constant/motion';
 import { colors } from '~/styles/colors';
-import { mediaQuery } from '~/styles/media';
 
 export type Link = {
-  type: 'Behance' | 'Github' | 'Web' | 'Android' | 'IOS';
+  type: 'Behance' | 'Github' | 'Web' | 'App';
   href: string;
 };
 
@@ -20,7 +19,7 @@ type ThumbnailProps = {
   links?: Link[];
 };
 
-export function Thumbnail({ title, subTitle, img, description, links }: ThumbnailProps) {
+export function SupportThumbnail({ title, subTitle, img, description, links }: ThumbnailProps) {
   return (
     <m.article
       css={articleCss}
@@ -56,24 +55,34 @@ export function Thumbnail({ title, subTitle, img, description, links }: Thumbnai
   );
 }
 
+SupportThumbnail.OnlyImage = function OnlyImage({
+  title,
+  img,
+}: Pick<ThumbnailProps, 'title' | 'img'>) {
+  return (
+    <div css={imageArticleCss}>
+      <Image css={imageCss} src={img} alt={title} fill quality={100} />
+    </div>
+  );
+};
+
 const articleCss = css`
   position: relative;
   height: 208px;
-  padding: 24px;
-  max-width: 312px;
+  width: 312px;
   overflow: hidden;
-  ${mediaQuery('tablet')} {
-    max-width: 100%;
-  }
-  ${mediaQuery('mobile')} {
-    max-width: 100%;
-  }
   &:hover {
     cursor: pointer;
   }
   &:hover img {
     filter: blur(5px) brightness(0.4);
   }
+`;
+
+const imageArticleCss = css`
+  position: relative;
+  height: 208px;
+  width: 312px;
 `;
 
 const imageCss = css`

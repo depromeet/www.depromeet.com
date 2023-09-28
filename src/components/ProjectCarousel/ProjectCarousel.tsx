@@ -1,17 +1,17 @@
 import { css } from '@emotion/react';
 import Marquee from 'react-fast-marquee';
 
-import { ReviewItem } from '~/components/Review/ReviewItem';
+import { ProjectCarouselItem } from '~/components/ProjectCarousel/ProjectCarouselItem';
 import { SectionTitle } from '~/components/SectionTitle';
-import { REVIEWS } from '~/constant/review';
+import { PROJECT_LIST } from '~/constant/project';
 
-export function Review() {
+export function ProjectCarousel() {
   return (
     <section css={layoutCss}>
-      <SectionTitle label="Review" title="지난 기수 후기" />
+      <SectionTitle label="Project" title="프로젝트" />
       <Marquee>
-        {REVIEWS.map(({ ...info }) => (
-          <ReviewItem key={info.name} {...info} />
+        {PROJECT_LIST.map(project => (
+          <ProjectCarouselItem key={project.title} {...project} />
         ))}
       </Marquee>
     </section>

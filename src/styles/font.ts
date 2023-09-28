@@ -22,13 +22,13 @@ export const fontFace = css`
   @font-face {
     font-family: 'Decimal';
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     src: local(''), url('/fonts/Decimal-book.woff') format('woff');
   }
   @font-face {
     font-family: 'Decimal';
     font-style: normal;
-    font-weight: 500;
+    font-weight: 300;
     src: local(''), url('/fonts/Decimal-light.woff') format('woff');
   }
 `;

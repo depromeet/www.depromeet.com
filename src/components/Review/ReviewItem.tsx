@@ -2,14 +2,13 @@ import Link from 'next/link';
 import { css, Theme } from '@emotion/react';
 
 import { ArrowIcon } from '~/components/Icons';
-import { Swiper } from '~/components/Swiper';
 import { ReviewItemType } from '~/constant/review';
 import { mediaQuery } from '~/styles/media';
 
 interface ReviewItemProps extends ReviewItemType {}
 export function ReviewItem({ name, group, part, summary, links }: ReviewItemProps) {
   return (
-    <Swiper.Item css={layoutCss}>
+    <div css={layoutCss}>
       <div>
         <div css={titleLayoutCss}>
           <h3 css={titleH3Css}>{name}</h3>
@@ -30,7 +29,7 @@ export function ReviewItem({ name, group, part, summary, links }: ReviewItemProp
           </Link>
         ))}
       </div>
-    </Swiper.Item>
+    </div>
   );
 }
 
@@ -39,7 +38,9 @@ const layoutCss = (theme: Theme) => css`
   background-color: ${theme.colors.black400};
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   max-width: 476px;
+  margin-left: 20px;
 
   ${mediaQuery('tablet')} {
     padding: 30px 50px;
@@ -47,6 +48,7 @@ const layoutCss = (theme: Theme) => css`
   }
 
   ${mediaQuery('mobile')} {
+    margin-left: 8px;
     max-width: 277px;
     padding: 12px;
   }
@@ -115,5 +117,3 @@ const linkCss = (theme: Theme) => css`
     margin-top: 32px;
   }
 `;
-
-ReviewItem.displayName = 'SwiperSlide';
