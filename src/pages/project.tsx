@@ -11,7 +11,14 @@ import { staggerHalf } from '~/constant/motion';
 import { PROJECT_LIST } from '~/constant/project';
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { mediaQuery } from '~/styles/media';
-import { getCurrentProjects, getTenUnderProjects, sliceByPage } from '~/utils/pagination';
+import {
+  getCurrentProjects,
+  getTenUnderProjects,
+  MOBILE_PAGE_SIZE,
+  PC_PAGE_SIZE,
+  sliceByPage,
+  TABLET_PAGE_SIZE,
+} from '~/utils/pagination';
 
 const FIRST_PAGE = 1;
 const ALL_TAB = '전체';
@@ -22,6 +29,7 @@ export default function ProjectPage() {
   const [selectedProjectList, setSelectedProjectList] = useState(PROJECT_LIST);
   const [currentPage, setCurrentPage] = useState(FIRST_PAGE);
   const { isTargetSize: isTabletSize } = useCheckWindowSize('tablet');
+  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
 
   useEffect(() => {
     setCurrentPage(1);
@@ -41,6 +49,16 @@ export default function ProjectPage() {
     setCurrentPage(page);
   };
 
+  const getNumberOfPages = () => {
+    if (isMobileSize) {
+      return MOBILE_PAGE_SIZE;
+    }
+    if (isTabletSize) {
+      return TABLET_PAGE_SIZE;
+    }
+    return PC_PAGE_SIZE;
+  };
+
   return (
     <>
       <SEO title="디프만 - Project" />
@@ -55,20 +73,22 @@ export default function ProjectPage() {
               exit="exit"
               variants={staggerHalf}
             >
-              {sliceByPage(selectedProjectList, currentPage, isTabletSize).map(project => (
-                <Thumbnail
-                  key={project.title}
-                  img={`/images/project/${project.subTitle}/${project.title}.png`}
-                  title={project.title}
-                  subTitle={project.subTitle}
-                  description={project.description}
-                  links={project.links as Link[]}
-                />
-              ))}
+              {sliceByPage(selectedProjectList, currentPage, isTabletSize, isMobileSize).map(
+                project => (
+                  <Thumbnail
+                    key={project.title}
+                    img={`/images/project/${project.subTitle}/${project.title}.png`}
+                    title={project.title}
+                    subTitle={project.subTitle}
+                    description={project.description}
+                    links={project.links as Link[]}
+                  />
+                )
+              )}
             </m.div>
           </AnimatePresence>
           <Pagination
-            numberOfPages={Math.ceil(selectedProjectList.length / 9)}
+            numberOfPages={Math.ceil(selectedProjectList.length / getNumberOfPages())}
             currentPage={currentPage}
             handlePageClick={onClickPage}
           />
