@@ -1,0 +1,1 @@
+export { ProjectCarousel } from './ProjectCarousel';
