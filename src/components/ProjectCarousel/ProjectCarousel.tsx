@@ -7,14 +7,14 @@ import { PROJECT_LIST } from '~/constant/project';
 
 export function ProjectCarousel() {
   return (
-    <div css={layoutCss}>
+    <section css={layoutCss}>
       <SectionTitle label="Project" title="프로젝트" />
       <Marquee>
         {PROJECT_LIST.map(project => (
           <ProjectCarouselItem key={project.title} {...project} />
         ))}
       </Marquee>
-    </div>
+    </section>
   );
 }
 
