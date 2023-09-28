@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 
-export const pxToRem = (px: number, base = 16) => `${px / base}rem`;
+import { pxToRem } from '~/styles/style.utils';
 
 export const typos = {
   pretendard: {
