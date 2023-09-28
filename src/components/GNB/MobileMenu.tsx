@@ -4,6 +4,7 @@ import { css, Theme } from '@emotion/react';
 import { m } from 'framer-motion';
 
 import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
+import { mediaQuery } from '~/styles/media';
 
 interface MobileMenuProps {
   onClickMenu: () => void;
@@ -73,6 +74,10 @@ const mobileMenuCss = (theme: Theme) => css`
 const linkCss = (theme: Theme) => css`
   ${theme.typos.pretendard.body1};
   color: ${theme.colors.white};
+
+  ${mediaQuery('mobile')} {
+    font-size: 1rem;
+  }
 
   &:hover,
   &:active {
