@@ -4,6 +4,7 @@ import { css, Theme } from '@emotion/react';
 
 import { ArrowIcon } from '~/components/Icons';
 import { POSITION_BASE } from '~/constant/image';
+import useIsInProgress from '~/hooks/useIsInProgress';
 import { mediaQuery } from '~/styles/media';
 
 type Position = 'aos' | 'design' | 'ios' | 'server' | 'web';
@@ -15,12 +16,16 @@ interface PositionsItemProps {
 }
 
 export function PositionsItem({ type, title, link }: PositionsItemProps) {
+  const { isInProgress } = useIsInProgress();
+
+  const redirectLink = isInProgress ? link : '/recruit';
+
   return (
     <div css={layoutCss}>
       <Image width={112} height={112} src={`${POSITION_BASE}/${type}.png`} alt={title} />
       <div>
         <h3 css={titleCss}>{title}</h3>
-        <Link href={link} target="_blank" css={linkCss}>
+        <Link href={redirectLink} target="_blank" css={linkCss}>
           <span>자세히보기</span>
           <ArrowIcon direction="right" css={arrowIconCss} />
         </Link>
