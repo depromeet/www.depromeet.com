@@ -102,7 +102,7 @@ const bodyCss = (theme: Theme) => css`
   ${mediaQuery('mobile')} {
     > p {
       padding: 16px;
-      font-size: 14px;
+      font-weight: 400;
     }
   }
 `;
