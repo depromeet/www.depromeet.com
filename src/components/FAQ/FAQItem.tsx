@@ -14,12 +14,13 @@ interface FAQItemProps {
 
 export function FAQItem({ isOpen, onClickOpenButton, question, answer }: FAQItemProps) {
   return (
-    <li onClick={onClickOpenButton}>
+    <li>
       <motion.div
         css={theme => headerCss(theme, isOpen)}
         animate={isOpen ? 'open' : 'closed'}
         variants={headerVariants}
         transition={{ duration: 0.3, ease: 'easeOut' }}
+        onClick={onClickOpenButton}
       >
         <h3>{question}</h3>
         <motion.div variants={arrowIconVariants} transition={{ duration: 0.3, ease: 'easeOut' }}>
@@ -29,10 +30,8 @@ export function FAQItem({ isOpen, onClickOpenButton, question, answer }: FAQItem
           />
         </motion.div>
       </motion.div>
-
       <motion.div
         css={bodyCss}
-        initial={{ opacity: 0, height: 0 }}
         animate={isOpen ? 'open' : 'closed'}
         variants={bodyVariants}
         transition={{ duration: 0.3, height: 0, ease: 'easeOut' }}
@@ -49,8 +48,9 @@ const headerVariants: Variants = {
 };
 
 const bodyVariants: Variants = {
-  open: { opacity: 1, height: 'fit-content' },
-  closed: { opacity: 0, height: 0 },
+  initial: { opacity: 0, height: 0, display: 'none' },
+  open: { opacity: 1, height: 'fit-content', display: 'block' },
+  closed: { opacity: 0, height: 0, display: 'none' },
 };
 
 const arrowIconVariants: Variants = {
@@ -64,6 +64,7 @@ const headerCss = (theme: Theme, isOpen: boolean) => css`
   justify-content: space-between;
   align-items: center;
   padding: 25px 30px;
+  cursor: pointer;
   > h3 {
     color: ${isOpen ? theme.colors.black800 : theme.colors.white};
     text-align: center;
