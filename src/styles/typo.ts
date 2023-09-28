@@ -20,7 +20,7 @@ export const typos = {
       /* Pretendard/Subtitle 2 Bold */
       font-size: ${pxToRem(20)};
       font-style: normal;
-      font-weight: 700;
+      font-weight: 500;
       line-height: 150%;
       letter-spacing: ${pxToRem(-0.2)};
       ${mediaQuery('mobile')} {
