@@ -76,10 +76,6 @@ const infoContainerCss = (theme: Theme) => css`
   ${mediaQuery('mobile')} {
     gap: 8px;
 
-    h1 {
-      ${theme.typos.pretendard.subTitle2};
-    }
-
     p {
       font-size: 14px;
     }
