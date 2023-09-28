@@ -39,7 +39,7 @@ export function GNB() {
       <nav css={navCss}>
         <div css={navWrapperCss}>
           <Link href={'/'}>
-            {<Image src={LOGO_IMAGE} alt="로고 이미지" width={154} height={18.9} />}
+            <Image src={LOGO_IMAGE} alt="로고 이미지" width={154} height={18.9} />
           </Link>
           <ul css={menuContainerCss}>
             {GNB_MENU_NAME.map(menu => (
@@ -59,7 +59,7 @@ export function GNB() {
       <nav css={mobileNavCss} ref={containerRef}>
         <div css={mobileMenuGNBCss}>
           <Link href={'/'}>
-            {<Image src={LOGO_IMAGE} alt="로고 이미지" width={154} height={18.9} />}
+            <Image src={LOGO_IMAGE} alt="로고 이미지" width={130} height={16} />
           </Link>
           <MobileMenuIcon
             onClick={() => (isDropdownOpen ? closeDropdown() : openDropdown())}

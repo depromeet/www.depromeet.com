@@ -24,8 +24,8 @@ export function MobileMenuIcon({ onClick, isChecked }: Props) {
 
 const containerCss = css`
   position: relative;
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
 
   .menu {
     position: absolute;
