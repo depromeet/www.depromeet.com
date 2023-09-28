@@ -81,7 +81,7 @@ export const Sessions: Story = {
           },
           {
             date: '01.20',
-            content: '배포데이',
+            content: '런칭데이',
           },
           {
             date: '02.17',
