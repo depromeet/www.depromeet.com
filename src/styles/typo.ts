@@ -1,5 +1,7 @@
 import { css } from '@emotion/react';
 
+import { mediaQuery } from '~/styles/media';
+
 export const pxToRem = (px: number, base = 16) => `${px / base}rem`;
 
 export const typos = {
@@ -11,6 +13,9 @@ export const typos = {
       font-weight: 700;
       line-height: 150%;
       letter-spacing: ${pxToRem(-0.32)};
+      ${mediaQuery('mobile')} {
+        font-size: ${pxToRem(20)};
+      }
     `,
     subTitle2: css`
       /* Pretendard/Subtitle 2 Bold */
@@ -19,6 +24,9 @@ export const typos = {
       font-weight: 700;
       line-height: 150%;
       letter-spacing: ${pxToRem(-0.2)};
+      ${mediaQuery('mobile')} {
+        font-size: ${pxToRem(14)};
+      }
     `,
     body1: css`
       /* Pretendard/Body 1 Medium */
@@ -27,6 +35,10 @@ export const typos = {
       font-weight: 500;
       line-height: 140%;
       letter-spacing: ${pxToRem(-0.18)};
+      ${mediaQuery('mobile')} {
+        font-size: ${pxToRem(12)};
+        letter-spacing: ${pxToRem(-0.12)};
+      }
     `,
     body2: css`
       /* Pretendard/Body 2 Medium */
@@ -62,6 +74,10 @@ export const typos = {
       font-weight: 600;
       line-height: 107.143%;
       letter-spacing: ${pxToRem(-0.28)};
+      ${mediaQuery('mobile')} {
+        font-size: ${pxToRem(16)};
+        letter-spacing: ${pxToRem(-0.16)};
+      }
     `,
     body1: css`
       /* Decimal/Body 1 */

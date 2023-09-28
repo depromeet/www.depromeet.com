@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { css, Theme } from '@emotion/react';
 
+import { ABOUT_INFO } from '~/constant/aboutInfo';
 import { commonLayoutCss } from '~/styles/layout';
 import { mediaQuery } from '~/styles/media';
 import { pxToRem } from '~/styles/typo';
@@ -53,18 +54,36 @@ const layoutCss = css`
   }
 
   ${mediaQuery('mobile')} {
-    margin-top: 200px;
+    margin-top: 20px;
   }
 `;
 
 const headerCss = (theme: Theme) => css`
-  ${theme.typos.pretendard.subTitle1};
   font-size: ${pxToRem(40)};
   color: ${theme.colors.white};
+  text-align: center;
+  line-height: 56px; /* 140% */
+  letter-spacing: -0.4px;
+  ${mediaQuery('mobile')} {
+    font-size: ${pxToRem(20)};
+    line-height: 150%; /* 30px */
+    letter-spacing: -0.2px;
+  }
 `;
 
 const aboutBodyCss = css`
+  display: flex;
+  flex-direction: column;
   margin-top: 200px;
+  gap: 24px;
+  ${mediaQuery('tablet')} {
+    margin-top: 100px;
+    gap: 57px;
+  }
+  ${mediaQuery('mobile')} {
+    margin-top: 100px;
+    gap: 50px;
+  }
 `;
 
 const aboutItemCss = css`
@@ -72,6 +91,9 @@ const aboutItemCss = css`
   gap: 24px;
   align-items: center;
   justify-content: center;
+  ${mediaQuery('mobile')} {
+    gap: 0px;
+  }
 `;
 
 const aboutInfoCss = css`
@@ -86,9 +108,13 @@ const imageCss = css`
   height: 400px;
   object-fit: cover;
   object-position: center;
-  ${mediaQuery('mobile')} {
+  ${mediaQuery('tablet')} {
     width: 270px;
     height: 270px;
+  }
+  ${mediaQuery('mobile')} {
+    width: 150px;
+    height: 150px;
   }
 `;
 
@@ -100,26 +126,7 @@ const aboutTitleCss = (theme: Theme) => css`
 const aboutDescriptionCss = (theme: Theme) => css`
   ${theme.typos.pretendard.subTitle2};
   color: ${theme.colors.gray100};
+  ${mediaQuery('mobile')} {
+    letter-spacing: ${pxToRem(-0.14)};
+  }
 `;
-
-const PASSPORT_IMAGE = `/images/about/passport.png`;
-const AIRPLANE_IMAGE = `/images/about/airplane.png`;
-
-const ABOUT_INFO = [
-  {
-    label: 'passport',
-    image: PASSPORT_IMAGE,
-    title: '디자이너, 개발자의\n 커리어 패스 여정',
-    description:
-      '14기는 매주 토요일, 총 16주간 진행되며 \n다양한 오프라인 세션과 네트워킹이 준비되어 있습니다',
-    reverse: false,
-  },
-  {
-    label: 'airplane',
-    image: AIRPLANE_IMAGE,
-    title: '서비스 론칭 후\n유저에게 도착하는 순간까지',
-    description:
-      'UT, 론칭데이 등 실제 서비스를 구현하고\n타켓 유저에게 도달하는 전 과정을 경험합니다',
-    reverse: true,
-  },
-];
