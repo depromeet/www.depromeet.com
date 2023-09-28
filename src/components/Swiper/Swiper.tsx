@@ -1,6 +1,6 @@
 import { PropsWithChildren, useRef } from 'react';
 import { css } from '@emotion/react';
-import { Autoplay, Navigation, Pagination, Scrollbar } from 'swiper';
+import { Autoplay, Navigation, Pagination, Scrollbar } from 'swiper/modules';
 import * as SwiperReact from 'swiper/react';
 
 import 'swiper/css';
