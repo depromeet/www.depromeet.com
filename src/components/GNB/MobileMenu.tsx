@@ -1,15 +1,24 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { css, Theme } from '@emotion/react';
 import { m } from 'framer-motion';
 
-import { Button } from '~/components/Button';
-import { GNB_MENU_NAME } from '~/constant/gnb';
+import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
 
 interface MobileMenuProps {
   onClickMenu: () => void;
 }
 
 export function MobileMenu({ onClickMenu }: MobileMenuProps) {
+  const { pathname } = useRouter();
+
+  const getActiveLinkcss = (menu: GNBMenu) => {
+    if (pathname.startsWith(menu.href)) {
+      return activeLinkCss;
+    }
+    return inActiveLinkCss;
+  };
+
   return (
     <m.article
       initial={{ height: 0, opacity: 0 }}
@@ -28,11 +37,11 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
           >
             {menu.type === 'button' ? (
               <Link href={menu.href}>
-                <Button size="lg">{menu.name}</Button>
+                <a css={[linkCss]}>{menu.name}</a>
               </Link>
             ) : (
-              <Link css={[linkCss]} href={menu.href}>
-                {menu.name}
+              <Link href={menu.href}>
+                <a css={[linkCss, getActiveLinkcss(menu)]}>{menu.name}</a>
               </Link>
             )}
           </m.li>
@@ -64,19 +73,17 @@ const mobileMenuCss = (theme: Theme) => css`
 const linkCss = (theme: Theme) => css`
   ${theme.typos.pretendard.body1};
   color: ${theme.colors.white};
+
   &:hover,
   &:active {
     color: ${theme.colors.yellow500};
   }
 `;
 
-const buttonCss = (theme: Theme) => css`
-  background-color: ${theme.colors.yellow500};
-  color: ${theme.colors.black800};
+const activeLinkCss = (theme: Theme) => css`
+  color: ${theme.colors.yellow500};
+`;
 
-  width: 100%;
-  padding: 0 24px;
-
-  ${theme.typos.pretendard.body2};
-  height: 42px;
+const inActiveLinkCss = (theme: Theme) => css`
+  color: ${theme.colors.white};
 `;
