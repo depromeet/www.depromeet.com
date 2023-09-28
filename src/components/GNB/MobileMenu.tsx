@@ -27,11 +27,9 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
             exit={{ opacity: 0 }}
           >
             {menu.type === 'button' ? (
-              <Button size="lg">
-                <Link css={[buttonCss]} href={menu.href}>
-                  {menu.name}
-                </Link>
-              </Button>
+              <Link href={menu.href}>
+                <Button size="lg">{menu.name}</Button>
+              </Link>
             ) : (
               <Link css={[linkCss]} href={menu.href}>
                 {menu.name}
