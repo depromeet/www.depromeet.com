@@ -3,7 +3,7 @@ import { css, Theme } from '@emotion/react';
 
 import { commonLayoutCss } from '~/styles/layout';
 import { mediaQuery } from '~/styles/media';
-import { pxToRem } from '~/styles/typo';
+import { pxToRem } from '~/styles/style.utils';
 
 export function AboutInfo() {
   return (
