@@ -19,17 +19,21 @@ export function OfflineSession() {
   );
 }
 
-const layoutCss = css``;
+const layoutCss = css`
+  margin-top: 150px;
+  ${mediaQuery('tablet')} {
+    margin-top: 150px;
+  }
+  ${mediaQuery('mobile')} {
+    margin-top: 100px;
+  }
+`;
 
 const sessionContainerCss = css`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
   gap: 12px;
   ${mediaQuery('tablet')} {
     grid-template-columns: repeat(2, 1fr);
-  }
-  ${mediaQuery('mobile')} {
-    grid-template-columns: repeat(1, 1fr);
   }
 `;

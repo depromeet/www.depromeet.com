@@ -24,11 +24,26 @@ export function Contact() {
   );
 }
 
-const layoutCss = css``;
+const layoutCss = css`
+  margin-top: 150px;
+  margin-bottom: 150px;
+  ${mediaQuery('tablet')} {
+    margin-top: 150px;
+    margin-bottom: 150px;
+  }
+  ${mediaQuery('mobile')} {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+`;
 
 const infoListCss = css`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  ${mediaQuery('mobile')} {
+    gap: 10px;
+  }
 `;
 
 const InfoCss = (theme: Theme) => css`
@@ -44,11 +59,11 @@ const InfoCss = (theme: Theme) => css`
   align-items: flex-start;
   gap: 20px;
   ${mediaQuery('tablet')} {
-    width: 344px;
+    width: 100%;
   }
 
   ${mediaQuery('mobile')} {
-    width: 160px;
+    width: 100%;
     height: 96px;
     padding: 16px 8px;
   }
