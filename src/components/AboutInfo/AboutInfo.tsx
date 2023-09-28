@@ -14,7 +14,7 @@ export function AboutInfo() {
       </div>
       <ul css={aboutBodyCss}>
         {ABOUT_INFO.map(({ image, title, label, description, reverse }) => (
-          <div key={title} css={aboutItemCss}>
+          <div key={title} css={aboutItemCss(reverse)}>
             {reverse ? (
               <>
                 <div css={aboutInfoCss}>
@@ -86,13 +86,27 @@ const aboutBodyCss = css`
   }
 `;
 
-const aboutItemCss = css`
+const aboutItemCss = (reverse: boolean) => css`
   display: flex;
   gap: 24px;
   align-items: center;
   justify-content: center;
+  ${reverse &&
+  css`
+    padding-left: 80px;
+
+    ${mediaQuery('tablet')} {
+      padding-left: 34px;
+    }
+    ${mediaQuery('mobile')} {
+      padding-left: 0;
+    }
+  `}
   ${mediaQuery('mobile')} {
-    gap: 0px;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    ${reverse && 'flex-direction: column-reverse;'}
   }
 `;
 
@@ -108,13 +122,19 @@ const imageCss = css`
   height: 400px;
   object-fit: cover;
   object-position: center;
+
   ${mediaQuery('tablet')} {
     width: 270px;
     height: 270px;
+
+    img {
+      object-fit: inherit;
+    }
   }
+
   ${mediaQuery('mobile')} {
-    width: 150px;
-    height: 150px;
+    width: 220px;
+    height: 220px;
   }
 `;
 

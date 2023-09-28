@@ -17,7 +17,7 @@ export function Journey() {
         디자이너와 개발자를 만나 공동의 <br />
         성장을 위한 여정에 합류해보세요
       </h2>
-      <div>
+      <div css={imageContainerCss}>
         <Image
           src="/images/main/passport-combination.png"
           width={530.326}
@@ -122,5 +122,19 @@ const infoContainerCss = (theme: Theme) => css`
       padding: 8px 4px;
       gap: 8px;
     }
+  }
+`;
+
+const imageContainerCss = css`
+  width: 530.326px;
+  height: 340px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+    position: relative;
+    bottom: 24px;
   }
 `;
