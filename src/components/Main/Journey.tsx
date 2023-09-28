@@ -3,6 +3,7 @@ import { css, Theme } from '@emotion/react';
 
 import { commonLayoutCss } from '~/styles/layout';
 import { mediaQuery } from '~/styles/media';
+import { pxToRem } from '~/styles/style.utils';
 
 export function Journey() {
   return (
@@ -68,6 +69,7 @@ const layoutCss = (theme: Theme) => css`
 
   ${mediaQuery('mobile')} {
     gap: 24px;
+    font-size: ${pxToRem(20)};
 
     h1 {
       display: none;
@@ -110,6 +112,7 @@ const infoContainerCss = (theme: Theme) => css`
 
   ${mediaQuery('mobile')} {
     grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
 
     h3,
     p {

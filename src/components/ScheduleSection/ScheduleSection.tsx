@@ -94,6 +94,7 @@ const scheduleItemCss = (theme: Theme) => css`
 
   p {
     ${theme.typos.decimal.body1};
+    font-weight: 700;
   }
   span {
     ${theme.typos.pretendard.body1};
