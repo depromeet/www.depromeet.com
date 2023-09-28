@@ -35,8 +35,8 @@ export const typos = {
       line-height: 140%;
       letter-spacing: ${pxToRem(-0.18)};
       ${mediaQuery('mobile')} {
-        font-size: ${pxToRem(12)};
-        letter-spacing: ${pxToRem(-0.12)};
+        font-size: ${pxToRem(14)};
+        letter-spacing: ${pxToRem(-0.14)};
       }
     `,
     body2: css`
