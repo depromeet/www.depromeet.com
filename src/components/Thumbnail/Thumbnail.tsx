@@ -59,7 +59,6 @@ export function Thumbnail({ title, subTitle, img, description, links }: Thumbnai
 const articleCss = css`
   position: relative;
   height: 208px;
-  padding: 24px;
   max-width: 312px;
   overflow: hidden;
   ${mediaQuery('tablet')} {
@@ -83,6 +82,7 @@ const imageCss = css`
 
 const contentsCss = css`
   display: flex;
+  padding: 24px;
   flex-direction: column;
   height: 100%;
   justify-content: space-between;

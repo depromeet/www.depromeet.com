@@ -3,6 +3,8 @@ import { css } from '@emotion/react';
 import { m, Variants } from 'framer-motion';
 
 import { ArrowIcon } from '~/components/Icons';
+import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
+import useToggle from '~/hooks/useToggle';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
@@ -32,12 +34,21 @@ export function OfflineThumbnail({
   showInfoDefault = false,
   backgroundShow = false,
 }: ThumbnailProps) {
+  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
+  const [isOpen, toggleIsOpen] = useToggle(false);
+
+  const onMobileClick = () => {
+    if (!isMobileSize) return;
+    toggleIsOpen();
+  };
+
   return (
     <m.article
       css={articleCss}
       initial="default"
       whileHover="hover"
-      animate="default"
+      animate={isMobileSize && isOpen ? 'hover' : 'default'}
+      onClick={onMobileClick}
       variants={
         backgroundShow
           ? {
