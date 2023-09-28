@@ -1,20 +1,17 @@
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
-import { Swiper } from '~/components/Swiper';
 import { Project } from '~/constant/project';
 
 interface ProjectCarouselItemProps extends Project {}
 
 export function ProjectCarouselItem({ title, subTitle }: ProjectCarouselItemProps) {
   return (
-    <Swiper.Item css={imageCss}>
+    <div css={imageCss}>
       <Image alt={title} src={`/images/project/${subTitle}/${title}.png`} fill quality={100} />
-    </Swiper.Item>
+    </div>
   );
 }
-
-ProjectCarouselItem.displayName = 'SwiperSlide';
 
 const imageCss = css`
   position: relative;
@@ -22,4 +19,5 @@ const imageCss = css`
   height: 208px;
   object-fit: cover;
   object-position: center;
+  margin-left: 20px;
 `;

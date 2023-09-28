@@ -2,13 +2,12 @@ import Link from 'next/link';
 import { css, Theme } from '@emotion/react';
 
 import { ArrowIcon } from '~/components/Icons';
-import { Swiper } from '~/components/Swiper';
 import { ReviewItemType } from '~/constant/review';
 
 interface ReviewItemProps extends ReviewItemType {}
 export function ReviewItem({ name, group, part, summary, links }: ReviewItemProps) {
   return (
-    <Swiper.Item css={layoutCss}>
+    <div css={layoutCss}>
       <div css={titleLayoutCss}>
         <h3 css={titleH3Css}>{name}</h3>
         <div css={titleSpanCss}>
@@ -27,7 +26,7 @@ export function ReviewItem({ name, group, part, summary, links }: ReviewItemProp
           </Link>
         ))}
       </div>
-    </Swiper.Item>
+    </div>
   );
 }
 
@@ -37,6 +36,7 @@ const layoutCss = (theme: Theme) => css`
   display: flex;
   flex-direction: column;
   max-width: 476px;
+  margin-left: 20px;
 `;
 
 const titleLayoutCss = css`
