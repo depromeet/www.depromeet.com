@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -9,6 +8,7 @@ import { Button } from '~/components/Button';
 import { MobileMenu } from '~/components/GNB/MobileMenu';
 import { MobileMenuIcon } from '~/components/GNB/MobileMenuIcon';
 import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
+import { useDropDown } from '~/hooks/useDropdown';
 import { mediaQuery } from '~/styles/media';
 
 const LOGO_IMAGE = `/images/logo.png`;
@@ -25,7 +25,8 @@ function ApplyButton({ menu }: { menu: GNBMenu }) {
 
 export function GNB() {
   const { pathname } = useRouter();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { containerRef, isDropdownOpen, openDropdown, closeDropdown } = useDropDown();
+
   const getActiveLinkcss = (menu: GNBMenu) => {
     if (pathname.startsWith(menu.href)) {
       return activeLinkCss;
@@ -55,14 +56,19 @@ export function GNB() {
           </ul>
         </div>
       </nav>
-      <nav css={mobileNavCss}>
+      <nav css={mobileNavCss} ref={containerRef}>
         <div css={mobileMenuGNBCss}>
           <Link href={'/'}>
             {<Image src={LOGO_IMAGE} alt="로고 이미지" width={154} height={18.9} />}
           </Link>
-          <MobileMenuIcon onClick={() => setIsMenuOpen(prev => !prev)} isChecked={isMenuOpen} />
+          <MobileMenuIcon
+            onClick={() => (isDropdownOpen ? closeDropdown() : openDropdown())}
+            isChecked={isDropdownOpen}
+          />
         </div>
-        <AnimatePresence mode="wait">{isMenuOpen && <MobileMenu />}</AnimatePresence>
+        <AnimatePresence mode="wait">
+          {isDropdownOpen && <MobileMenu onClickMenu={closeDropdown} />}
+        </AnimatePresence>
       </nav>
       <div css={blankCss} />
     </>

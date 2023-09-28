@@ -13,6 +13,7 @@ export function MobileMenuIcon({ onClick, isChecked }: Props) {
         id="burger-check"
         onClick={onClick}
         checked={isChecked}
+        readOnly
       />
       <label className="burger-icon" htmlFor="burger-check">
         <span className="burger-sticks"></span>

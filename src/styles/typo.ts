@@ -1,8 +1,7 @@
 import { css } from '@emotion/react';
 
 import { mediaQuery } from '~/styles/media';
-
-export const pxToRem = (px: number, base = 16) => `${px / base}rem`;
+import { pxToRem } from '~/styles/style.utils';
 
 export const typos = {
   pretendard: {
