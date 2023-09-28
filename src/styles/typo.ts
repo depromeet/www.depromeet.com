@@ -47,6 +47,15 @@ export const typos = {
       line-height: 140%;
       letter-spacing: ${pxToRem(-0.16)};
     `,
+    body3: css`
+      /* Pretendard/Body 3 Regular */
+      font-family: Pretendard;
+      font-size: ${pxToRem(14)};
+      font-style: normal;
+      font-weight: 500;
+      line-height: 140%; /* 19.6px */
+      letter-spacing: ${pxToRem(-0.14)};
+    `,
   },
   decimal: {
     title1: css`
@@ -83,7 +92,7 @@ export const typos = {
       font-family: Decimal;
       font-size: ${pxToRem(18)};
       font-style: normal;
-      font-weight: 500;
+      font-weight: 600;
       line-height: 140%;
       letter-spacing: ${pxToRem(-0.18)};
     `,

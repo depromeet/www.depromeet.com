@@ -57,6 +57,7 @@ const layoutCss = (theme: Theme) => css`
     align-items: center;
 
     img {
+      position: static;
       width: 76px;
       height: 76px;
     }

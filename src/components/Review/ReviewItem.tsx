@@ -4,6 +4,7 @@ import { css, Theme } from '@emotion/react';
 import { ArrowIcon } from '~/components/Icons';
 import { Swiper } from '~/components/Swiper';
 import { ReviewItemType } from '~/constant/review';
+import { mediaQuery } from '~/styles/media';
 
 interface ReviewItemProps extends ReviewItemType {}
 export function ReviewItem({ name, group, part, summary, links }: ReviewItemProps) {
@@ -48,6 +49,10 @@ const titleLayoutCss = css`
 const titleH3Css = (theme: Theme) => css`
   ${theme.typos.pretendard.subTitle2};
   color: ${theme.colors.white};
+
+  ${mediaQuery('mobile')} {
+    font-size: 20px;
+  }
 `;
 
 const titleSpanCss = (theme: Theme) => css`
