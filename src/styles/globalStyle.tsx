@@ -22,10 +22,6 @@ const globalCss = css`
       'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
     font-size: 16px;
 
-    @media screen and (max-width: 650px) {
-      font-size: 14px;
-    }
-
     * {
       font-family: inherit;
       color: inherit;
