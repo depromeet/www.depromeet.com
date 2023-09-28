@@ -1,7 +1,7 @@
 export const IS_PRODUCTION = process.env.NODE_ENV === 'production';
 
-export const GA_ID = 'G-VZ0Q43XDPN';
-export const HOTJAR_ID = '3115834';
+export const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+export const HOTJAR_ID = process.env.NEXT_PUBLIC_HOTJAR_ID;
 
 export const BASE_URL = 'https://www.depromeet.com';
 
