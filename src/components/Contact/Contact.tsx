@@ -63,6 +63,7 @@ const InfoCss = (theme: Theme) => css`
   }
 
   ${mediaQuery('mobile')} {
+    font-size: 0.8rem;
     width: 100%;
     height: 96px;
     padding: 16px 8px;
