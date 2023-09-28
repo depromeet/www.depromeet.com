@@ -3,20 +3,23 @@ import { css, Theme } from '@emotion/react';
 
 import { ArrowIcon } from '~/components/Icons';
 import { ReviewItemType } from '~/constant/review';
+import { mediaQuery } from '~/styles/media';
 
 interface ReviewItemProps extends ReviewItemType {}
 export function ReviewItem({ name, group, part, summary, links }: ReviewItemProps) {
   return (
     <div css={layoutCss}>
-      <div css={titleLayoutCss}>
-        <h3 css={titleH3Css}>{name}</h3>
-        <div css={titleSpanCss}>
-          <span>{group}</span>
-          <span>{part}</span>
+      <div>
+        <div css={titleLayoutCss}>
+          <h3 css={titleH3Css}>{name}</h3>
+          <div css={titleSpanCss}>
+            <span>{group}</span>
+            <span>{part}</span>
+          </div>
         </div>
-      </div>
-      <div css={summaryCss}>
-        <p>{summary}</p>
+        <div css={summaryCss}>
+          <p>{summary}</p>
+        </div>
       </div>
       <div css={linkLayoutCss}>
         {links.map(({ label, url }) => (
@@ -38,7 +41,17 @@ const layoutCss = (theme: Theme) => css`
   justify-content: space-between;
   max-width: 476px;
   margin-left: 20px;
-  height: 330px;
+
+  ${mediaQuery('tablet')} {
+    padding: 30px 50px;
+    max-width: 410px;
+  }
+
+  ${mediaQuery('mobile')} {
+    margin-left: 8px;
+    max-width: 277px;
+    padding: 12px;
+  }
 `;
 
 const titleLayoutCss = css`
@@ -50,6 +63,10 @@ const titleLayoutCss = css`
 const titleH3Css = (theme: Theme) => css`
   ${theme.typos.pretendard.subTitle2};
   color: ${theme.colors.white};
+
+  ${mediaQuery('mobile')} {
+    font-size: 20px;
+  }
 `;
 
 const titleSpanCss = (theme: Theme) => css`
@@ -62,7 +79,14 @@ const titleSpanCss = (theme: Theme) => css`
 const summaryCss = (theme: Theme) => css`
   ${theme.typos.pretendard.body1};
   color: ${theme.colors.gray100};
-  margin-top: 20px;
+  margin-top: 16px;
+
+  ${mediaQuery('tablet')} {
+    margin-top: 32px;
+  }
+  ${mediaQuery('mobile')} {
+    margin-top: 20px;
+  }
 `;
 
 const linkLayoutCss = css`
@@ -85,4 +109,11 @@ const linkCss = (theme: Theme) => css`
   margin-top: 20px;
   display: flex;
   align-items: center;
+
+  ${mediaQuery('tablet')} {
+    margin-top: 44px;
+  }
+  ${mediaQuery('mobile')} {
+    margin-top: 32px;
+  }
 `;

@@ -104,11 +104,8 @@ const scheduleItemCss = (theme: Theme) => css`
 
   ${mediaQuery('mobile')} {
     gap: 8px;
-    p {
-      font-size: 14px;
-    }
+
     span {
-      font-size: 14px;
       font-weight: 400;
     }
   }

@@ -116,7 +116,6 @@ const infoContainerCss = (theme: Theme) => css`
 
     h3,
     p {
-      font-size: 14px;
       line-height: 30px;
     }
     & > div {

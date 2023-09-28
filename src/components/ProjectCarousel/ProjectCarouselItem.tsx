@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 
 import { Project } from '~/constant/project';
+import { mediaQuery } from '~/styles/media';
 
 interface ProjectCarouselItemProps extends Project {}
 
@@ -20,4 +21,10 @@ const imageCss = css`
   object-fit: cover;
   object-position: center;
   margin-left: 20px;
+
+  ${mediaQuery('mobile')} {
+    width: 200px;
+    height: 130px;
+    margin-left: 8px;
+  }
 `;
