@@ -84,5 +84,3 @@ const linkCss = (theme: Theme) => css`
   display: flex;
   align-items: center;
 `;
-
-ReviewItem.displayName = 'SwiperSlide';
