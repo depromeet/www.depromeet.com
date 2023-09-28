@@ -60,11 +60,12 @@ const articleCss = css`
   height: 208px;
   padding: 24px;
   max-width: 312px;
+  overflow: hidden;
   &:hover {
     cursor: pointer;
   }
   &:hover img {
-    filter: blur(7px) brightness(0.3);
+    filter: blur(5px) brightness(0.4);
   }
 `;
 

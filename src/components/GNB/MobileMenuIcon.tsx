@@ -13,6 +13,7 @@ export function MobileMenuIcon({ onClick, isChecked }: Props) {
         id="burger-check"
         onClick={onClick}
         checked={isChecked}
+        readOnly
       />
       <label className="burger-icon" htmlFor="burger-check">
         <span className="burger-sticks"></span>
@@ -23,8 +24,8 @@ export function MobileMenuIcon({ onClick, isChecked }: Props) {
 
 const containerCss = css`
   position: relative;
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
 
   .menu {
     position: absolute;

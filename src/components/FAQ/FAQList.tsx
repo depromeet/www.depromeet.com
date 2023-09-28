@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 
 import { FAQItem } from '~/components/FAQ/FAQItem';
 import { FAQType } from '~/constant/faq';
+import { mediaQuery } from '~/styles/media';
 
 interface FAQListProps {
   FAQList: FAQType[];
@@ -39,4 +40,8 @@ const containerCss = css`
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  ${mediaQuery('mobile')} {
+    gap: 8px;
+  }
 `;
