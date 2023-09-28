@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 
-// FIXME: 다른 곳에서 사용하게 되면 유틸로 분리할게요~ @kimyouknow
-const pxToRem = (px: number, base = 16) => `${px / base}rem`;
+export const pxToRem = (px: number, base = 16) => `${px / base}rem`;
 
 export const typos = {
   pretendard: {

@@ -3,6 +3,7 @@ import { css, Theme } from '@emotion/react';
 
 import { Button } from '~/components/Button';
 import { DEADLINE_DATE } from '~/constant/common';
+import { commonLayoutCss } from '~/styles/layout';
 import { mediaQuery } from '~/styles/media';
 
 import { Timer } from './Timer';
@@ -17,7 +18,7 @@ export function TimerContainer() {
         <Image src="/images/main/main-bg.png" alt="main-bg" width={1300} height={768.857} />
       </div>
       <div css={gradientCss} />
-      <div css={layoutCss}>
+      <div css={[commonLayoutCss, layoutCss]}>
         <div>
           <div css={headingCss}>
             <h1>DEPROMEET</h1>
@@ -94,13 +95,13 @@ const layoutCss = css`
       margin-bottom: 20px;
     }
   }
-
-  ${mediaQuery('tablet')} {
-    margin: 0 30px;
+  ${mediaQuery('pc')} {
+    margin: 0 auto;
   }
 
   ${mediaQuery('mobile')} {
-    margin: 0 16px;
+    max-width: 400px;
+
     & > div {
       & > * {
         margin-bottom: 8px;

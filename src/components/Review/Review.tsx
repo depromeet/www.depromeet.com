@@ -7,7 +7,7 @@ import { REVIEWS } from '~/constant/review';
 
 export function Review() {
   return (
-    <div css={layoutCss}>
+    <section css={layoutCss}>
       <SectionTitle label="Review" title="지난 기수 후기" />
       <Swiper.Wrapper
         spaceBetween={20}
@@ -22,7 +22,7 @@ export function Review() {
           <ReviewItem key={info.name} {...info} />
         ))}
       </Swiper.Wrapper>
-    </div>
+    </section>
   );
 }
 

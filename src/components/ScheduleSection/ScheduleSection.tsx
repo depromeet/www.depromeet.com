@@ -62,6 +62,7 @@ const topLabelContainerCss = (theme: Theme) => css`
     flex: 1;
     padding: 6px 0;
     color: ${theme.colors.gray200};
+    text-transform: uppercase;
   }
 
   ${mediaQuery('mobile')} {
