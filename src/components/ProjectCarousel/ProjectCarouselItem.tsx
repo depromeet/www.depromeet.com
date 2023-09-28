@@ -2,13 +2,9 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 
 import { Swiper } from '~/components/Swiper';
+import { Project } from '~/constant/project';
 
-interface ProjectCarouselItemProps {
-  title: string;
-  subTitle: string;
-  description: string;
-  links: Array<{ type: string; href: string }>;
-}
+interface ProjectCarouselItemProps extends Project {}
 
 export function ProjectCarouselItem({ title, subTitle }: ProjectCarouselItemProps) {
   return (
