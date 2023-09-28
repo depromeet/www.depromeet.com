@@ -13,13 +13,19 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
   return (
     <m.article
       initial={{ height: 0, opacity: 0 }}
-      animate={{ height: 'fit-content', opacity: 1 }}
+      animate={{ height: '280px', opacity: 1 }}
       exit={{ height: 0, opacity: 0 }}
       css={mobileMenuCss}
     >
       <ul>
         {GNB_MENU_NAME.map(menu => (
-          <li key={menu.name} onClick={onClickMenu}>
+          <m.li
+            key={menu.name}
+            onClick={onClickMenu}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
             {menu.type === 'button' ? (
               <Button size="lg">
                 <Link css={[buttonCss]} href={menu.href}>
@@ -31,7 +37,7 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
                 {menu.name}
               </Link>
             )}
-          </li>
+          </m.li>
         ))}
       </ul>
     </m.article>
@@ -67,6 +73,12 @@ const linkCss = (theme: Theme) => css`
 `;
 
 const buttonCss = (theme: Theme) => css`
-  ${theme.typos.pretendard.body1};
+  background-color: ${theme.colors.yellow500};
   color: ${theme.colors.black800};
+
+  width: 100%;
+  padding: 0 24px;
+
+  ${theme.typos.pretendard.body2};
+  height: 42px;
 `;

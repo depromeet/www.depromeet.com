@@ -1,8 +1,10 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { css, Theme } from '@emotion/react';
 
 import { Button } from '~/components/Button';
-import { DEADLINE_DATE } from '~/constant/common';
+import { END_DATE } from '~/constant/common';
+import useIsInProgress from '~/hooks/useIsInProgress';
 import { commonLayoutCss } from '~/styles/layout';
 import { mediaQuery } from '~/styles/media';
 
@@ -10,7 +12,14 @@ import { Timer } from './Timer';
 import useDiffDay from './useDiffDay';
 
 export function TimerContainer() {
-  const time = useDiffDay(DEADLINE_DATE);
+  const { isInProgress, progressState } = useIsInProgress();
+  const time = useDiffDay(END_DATE);
+
+  const router = useRouter();
+
+  const onButtonClick = () => {
+    router.push(process.env.NEXT_PUBLIC_RECRUIT_URL ?? '');
+  };
 
   return (
     <section css={containerCss}>
@@ -31,14 +40,22 @@ export function TimerContainer() {
               <p>완성하며 성장하는 IT 커뮤니티입니다</p>
             </div>
           </div>
-          <Timer time={time} />
-          {/* TODO : 14기 지원 링크 연결 */}
-          <Button size="lg">14기 지원하기</Button>
+          <Timer time={progressState === 'FINISH' ? FINISH_TIME_OBJ : time} />
+          <Button size="lg" disabled={!isInProgress} onClick={onButtonClick}>
+            14기 지원하기
+          </Button>
         </div>
       </div>
     </section>
   );
 }
+
+const FINISH_TIME_OBJ = {
+  day: '00',
+  hour: '00',
+  min: '00',
+  sec: '00',
+};
 
 const containerCss = css`
   position: relative;

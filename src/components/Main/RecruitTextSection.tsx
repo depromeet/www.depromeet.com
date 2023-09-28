@@ -1,17 +1,28 @@
+import { useRouter } from 'next/router';
 import { css, Theme } from '@emotion/react';
 
 import { Button } from '~/components/Button';
+import useIsInProgress from '~/hooks/useIsInProgress';
 import { commonLayoutCss } from '~/styles/layout';
 import { mediaQuery } from '~/styles/media';
 
 export function RecruitTextSection() {
+  const { isInProgress } = useIsInProgress();
+  const router = useRouter();
+
+  const onButtonClick = () => {
+    router.push(process.env.NEXT_PUBLIC_RECRUIT_URL ?? '');
+  };
+
   return (
     <section css={[commonLayoutCss, layoutCss]}>
       <h1>
         서비스 런칭부터 운영까지 <br />
         열정적인 여정에 지금 합류하세요
       </h1>
-      <Button>14기 지원하기</Button>
+      <Button onClick={onButtonClick} disabled={!isInProgress}>
+        14기 지원하기
+      </Button>
     </section>
   );
 }

@@ -58,5 +58,6 @@ const buttonCss = (theme: Theme, size: ButtonSize) => css`
   &:disabled {
     background-color: ${theme.colors.gray300};
     color: ${theme.colors.gray100};
+    cursor: not-allowed;
   }
 `;
