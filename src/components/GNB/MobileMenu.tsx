@@ -4,7 +4,11 @@ import { m } from 'framer-motion';
 
 import { GNB_MENU_NAME } from '~/constant/gnb';
 
-export function MobileMenu({}) {
+interface MobileMenuProps {
+  onClickMenu: () => void;
+}
+
+export function MobileMenu({ onClickMenu }: MobileMenuProps) {
   return (
     <m.article
       initial={{ height: 0, opacity: 0 }}
@@ -14,7 +18,7 @@ export function MobileMenu({}) {
     >
       <ul>
         {GNB_MENU_NAME.map(menu => (
-          <li key={menu.name}>
+          <li key={menu.name} onClick={onClickMenu}>
             {menu.type === 'button' ? (
               <Link css={[linkCss, activeLinkCss]} href={menu.href}>
                 {menu.name}
