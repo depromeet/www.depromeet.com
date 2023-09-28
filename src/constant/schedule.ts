@@ -13,7 +13,7 @@ interface Schedule {
 
 export const MEMBER_SCHEDULE: Schedule = {
   label: 'members',
-  title: '멤버모집',
+  title: '멤버 모집',
   titleBgColor: 'blue400',
   schedule: [
     {

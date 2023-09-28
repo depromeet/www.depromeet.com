@@ -19,7 +19,7 @@ export default function Recruit() {
           <SectionTitle label="14th Schedule" title={'14기 일정'} />
           <ScheduleSection
             label="members"
-            title="멤버모집"
+            title="멤버 모집"
             titleBgColor={'blue400'}
             schedule={[
               {

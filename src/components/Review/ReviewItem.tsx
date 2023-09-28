@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { css, Theme } from '@emotion/react';
 
 import { ArrowIcon } from '~/components/Icons';
-import { Swiper } from '~/components/Swiper';
 import { ReviewItemType } from '~/constant/review';
 import { mediaQuery } from '~/styles/media';
 
@@ -30,7 +29,7 @@ export function ReviewItem({ name, group, part, summary, links }: ReviewItemProp
           </Link>
         ))}
       </div>
-    </Swiper.Item>
+    </div>
   );
 }
 
@@ -39,6 +38,7 @@ const layoutCss = (theme: Theme) => css`
   background-color: ${theme.colors.black400};
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   max-width: 476px;
 
   ${mediaQuery('tablet')} {
@@ -115,5 +115,3 @@ const linkCss = (theme: Theme) => css`
     margin-top: 32px;
   }
 `;
-
-ReviewItem.displayName = 'SwiperSlide';
