@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 
 import { FAQItem } from '~/components/FAQ/FAQItem';
@@ -21,6 +21,10 @@ export function FAQList({ FAQList }: FAQListProps) {
      */
     setActiveIndex(prev => (prev === idx ? CLOSE : idx));
   };
+
+  useEffect(() => {
+    setActiveIndex(DEFAULT_OPEN);
+  }, []);
 
   return (
     <ul css={containerCss}>
