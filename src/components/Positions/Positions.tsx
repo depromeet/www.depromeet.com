@@ -32,5 +32,4 @@ const listCss = css`
   align-items: flex-start;
   justify-content: center;
   position: relative;
-  width: 960px; // TODO 전체 너비 상수화
 `;

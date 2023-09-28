@@ -4,6 +4,7 @@ import { m, Variants } from 'framer-motion';
 
 import { ArrowIcon } from '~/components/Icons';
 import { colors } from '~/styles/colors';
+import { mediaQuery } from '~/styles/media';
 
 export type Link = {
   type: 'Behance' | 'Github' | 'Web' | 'App';
@@ -93,9 +94,16 @@ export function OfflineThumbnail({
 
 const articleCss = css`
   position: relative;
-  width: 312px;
   height: 208px;
   padding: 24px;
+  overflow: hidden;
+  ${mediaQuery('mobile')} {
+    padding: 14px;
+    height: 158px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const imageCss = css`
@@ -103,6 +111,7 @@ const imageCss = css`
   top: 0;
   left: 0;
   object-fit: cover;
+  object-position: center;
   z-index: -1;
   width: 100%;
   height: 100%;
@@ -142,6 +151,9 @@ const titleCss = css`
   line-height: 30px;
   color: ${colors.white};
   z-index: 10;
+  ${mediaQuery('mobile')} {
+    font-size: 1rem;
+  }
 `;
 
 const subTitleCss = css`
@@ -151,6 +163,10 @@ const subTitleCss = css`
   line-height: 22px;
   color: ${colors.gray100};
   z-index: 10;
+  ${mediaQuery('mobile')} {
+    font-size: 0.8rem;
+    margin-top: -5px;
+  }
 `;
 
 const descriptionCss = css`
@@ -162,6 +178,10 @@ const descriptionCss = css`
   z-index: 10;
   letter-spacing: -0.16px;
   white-space: pre-wrap;
+  ${mediaQuery('mobile')} {
+    line-height: 20px;
+    font-size: 0.75rem;
+  }
 `;
 
 const textVariants: Variants = {
@@ -190,7 +210,7 @@ const imageVariants: Variants = {
     filter: 'blur(0px)',
   },
   hover: {
-    filter: 'blur(7px) brightness(0.3)',
+    filter: 'blur(5px) brightness(0.4)',
     transition: {
       duration: 0.3,
       ease: defaultEasing,

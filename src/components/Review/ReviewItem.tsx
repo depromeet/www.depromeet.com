@@ -35,8 +35,10 @@ const layoutCss = (theme: Theme) => css`
   background-color: ${theme.colors.black400};
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   max-width: 476px;
   margin-left: 20px;
+  height: 330px;
 `;
 
 const titleLayoutCss = css`

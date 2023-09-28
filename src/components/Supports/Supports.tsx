@@ -1,19 +1,20 @@
 import { css } from '@emotion/react';
 
-import { OfflineThumbnail } from '~/components/OfflineSession/OfflineThumbnail';
 import { SectionTitle } from '~/components/SectionTitle';
-import { OFFLINE_SESSIONS } from '~/constant/offline';
+import { SupportThumbnail } from '~/components/Supports/SupportThumbnail';
+import { SUPPORTS } from '~/constant/supports';
 import { commonLayoutCss } from '~/styles/layout';
 import { mediaQuery } from '~/styles/media';
 
-export function OfflineSession() {
+export function Supports() {
   return (
     <div css={[commonLayoutCss, layoutCss]}>
       <SectionTitle label="Offline Activity" title="오프라인 세션" />
-      <ul css={sessionContainerCss}>
-        {OFFLINE_SESSIONS.map(session => (
-          <OfflineThumbnail key={session.title} {...session} showInfoDefault backgroundShow />
+      <ul css={supportContainerCss}>
+        {SUPPORTS.map(support => (
+          <SupportThumbnail key={support.title} {...support} />
         ))}
+        <SupportThumbnail.OnlyImage title="what's next?" img="/images/support/next.png" />
       </ul>
     </div>
   );
@@ -29,11 +30,10 @@ const layoutCss = css`
   }
 `;
 
-const sessionContainerCss = css`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  ${mediaQuery('tablet')} {
-    grid-template-columns: repeat(2, 1fr);
-  }
+const supportContainerCss = css`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
 `;
