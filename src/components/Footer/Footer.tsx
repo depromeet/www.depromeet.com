@@ -76,8 +76,8 @@ const secondRowCss = css`
   }
   ${mediaQuery('mobile')} {
     width: 100%;
-    gap: 0;
-    justify-content: space-between;
+    gap: 40px;
+    justify-content: center;
     margin-top: 8px;
 
     span + span {
