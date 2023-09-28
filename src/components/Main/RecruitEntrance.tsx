@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { css, Theme } from '@emotion/react';
 
 import { Button } from '~/components/Button';
@@ -22,7 +23,9 @@ export function RecruitEntrance() {
           <p>지원 자격부터 모집 직무까지</p>
           <p>상세 내용을 한 번에 확인해보세요</p>
         </div>
-        <Button>바로가기</Button>
+        <Link href="/recruit">
+          <Button>바로가기</Button>
+        </Link>
       </div>
     </section>
   );
