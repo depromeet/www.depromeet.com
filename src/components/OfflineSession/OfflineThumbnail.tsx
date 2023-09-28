@@ -96,6 +96,7 @@ const articleCss = css`
   width: 312px;
   height: 208px;
   padding: 24px;
+  overflow: hidden;
 `;
 
 const imageCss = css`
@@ -190,7 +191,7 @@ const imageVariants: Variants = {
     filter: 'blur(0px)',
   },
   hover: {
-    filter: 'blur(7px) brightness(0.3)',
+    filter: 'blur(5px) brightness(0.4)',
     transition: {
       duration: 0.3,
       ease: defaultEasing,
