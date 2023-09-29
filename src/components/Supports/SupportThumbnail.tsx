@@ -69,6 +69,7 @@ SupportThumbnail.OnlyImage = function OnlyImage({
 const articleCss = css`
   position: relative;
   height: 208px;
+  padding: 24px;
   width: 312px;
   overflow: hidden;
   &:hover {

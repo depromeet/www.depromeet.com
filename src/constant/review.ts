@@ -25,9 +25,13 @@ export const REVIEWS: ReviewItemType[] = [
     group: '13기',
     part: 'WEB',
     summary:
-      '프로덕트 개발의 AtoZ를 자세히 체험해볼 수 있는 좋은 기회였어요. 그 과정에서 마주한 여러 기술적 도전, 그리고 다양한 사람들과의 네트워킹을 통해 한 단계 성장할 수 있었던 것 같습니다. 무엇보다 좋은 팀원들을 만날 수 있다는 것이 디프만의 가장 큰 장점이 아닐까 생각해요. 좋은사람 좋은자리 빼이',
+      '프로덕트 개발의 AtoZ를 체험해볼 수 있는 좋은 기회였어요. 여러 기술적 도전과 네트워킹을 통해 한 단계 성장할 수 있었던 것 같습니다. 무엇보다 좋은 팀원들을 만날 수 있다는 것이 가장 큰 장점 아닐까요?',
     links: [
-      { type: 'blog', label: '블로그', url: 'https://velog.io/@sjoleee_/디프만-13기를-추억하며' },
+      {
+        type: 'blog',
+        label: '블로그 후기',
+        url: 'https://velog.io/@sjoleee_/디프만-13기를-추억하며',
+      },
     ],
   },
   {
@@ -35,7 +39,7 @@ export const REVIEWS: ReviewItemType[] = [
     group: '13기',
     part: 'WEB',
     summary:
-      '적절한 인원과 기간으로 프로젝트 기획부터 배포까지 경험해 볼 수 있는 동아리였습니다. 같은 직군, 타직군 분들과 협업하며 배울수 있는 점이 좋았습니다. 결과물을 남길수 있도록 체계적인 시스템으로 서포트 해줘서 잘 런칭할 수 있었습니다!',
+      '프로젝트 기획부터 배포까지 경험해 볼 수 있는 동아리였습니다. 같은 직군, 타직군 분들과 협업하며 배울수 있는 점이 좋았습니다. 결과물을 남길수 있도록 체계적인 시스템으로 서포트 해줘서 잘 런칭할 수 있었습니다!',
     links: [
       { type: 'project', label: '프로젝트', url: 'https://github.com/depromeet/Ding-dong-fe' },
     ],
@@ -46,7 +50,9 @@ export const REVIEWS: ReviewItemType[] = [
     part: 'DESIGN',
     summary:
       '디프만 프로젝트를 통해 서비스 기획부터 배포까지 전 과정에 참여하고, 다양한 네트워킹 활동으로 즐겁게 성장할 수 있었어요. 열정적인 분들과 빠른 호흡으로 진행했던 잊지 못할 경험이었습니다.',
-    links: [{ type: 'blog', label: '블로그', url: 'https://blog.naver.com/hye_duck/223114158145' }],
+    links: [
+      { type: 'blog', label: '블로그 후기', url: 'https://blog.naver.com/hye_duck/223114158145' },
+    ],
   },
   {
     name: '정영경',
@@ -67,15 +73,17 @@ export const REVIEWS: ReviewItemType[] = [
     group: '13기',
     part: 'SERVER',
     summary:
-      '항상 프로젝트를 진행할 때 기술적인 부분만 고려하면서 진행해 왔는데, 이번 프로젝트에서는 디자이너, 개발자가 함께 기획부터 개발까지 하는 것이기 때문에 정말 제대로 된 서비스를 만들고 싶은 욕심이 생겼다.',
-    links: [{ type: 'blog', label: '블로그', url: 'https://hello-judy-world.tistory.com/203' }],
+      '항상 프로젝트를 진행할 때 기술적인 부분만 고려하면서 진행해 왔는데, 이번 프로젝트에서는 디자이너, 개발자가 함께 기획부터 개발까지 하는 것이기 때문에 정말 제대로 된 서비스를 만들고 싶은 욕심이 생겼어요.',
+    links: [
+      { type: 'blog', label: '블로그 후기', url: 'https://hello-judy-world.tistory.com/203' },
+    ],
   },
   {
     name: '정성훈',
     group: '13기',
     part: 'SERVER',
     summary:
-      '디프만을 통해서 서비스 런칭을 넘어서  유저를 만나고 실제 데이터 기반으로 서비스를 성장시켜나갈 수 있다는 점이 좋았습니다. 디프만에서 좋은 사람들을 만났기에 최고의 사이드 프로젝트를 할 수 있었던 것 같아요',
+      '적절한 기간 내 프로젝트 기획부터 배포까지 경험해 볼 수 있는 동아리였습니다. 다양한 직군과 협업하며 배울수 있는 점이 좋았습니다. 체계적인 시스템으로 서포트 해줘서 잘 런칭할 수 있었습니다!',
     links: [
       {
         type: 'project',
@@ -90,6 +98,6 @@ export const REVIEWS: ReviewItemType[] = [
     part: 'SERVER',
     summary:
       '동아리를 통해 슬럼프를 극복하려고 했던거 같아요. 특히, 디프만은 현업 개발자와 사이드 프로젝트를 함께 할 수 있다는 장점 외에도 만드는 프로덕트의 질이 높아서 가장 가고싶었던 동아리 였습니다.',
-    links: [{ type: 'blog', label: '블로그', url: 'https://dlwnsdud205.tistory.com/353' }],
+    links: [{ type: 'blog', label: '블로그 후기', url: 'https://dlwnsdud205.tistory.com/353' }],
   },
 ];

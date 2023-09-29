@@ -80,6 +80,9 @@ const summaryCss = (theme: Theme) => css`
   ${theme.typos.pretendard.body1};
   color: ${theme.colors.gray100};
   margin-top: 16px;
+  > p {
+    word-break: break-all;
+  }
 
   ${mediaQuery('tablet')} {
     margin-top: 32px;
