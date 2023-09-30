@@ -9,7 +9,11 @@ import { mediaQuery } from '~/styles/media';
 export function Positions() {
   return (
     <section css={layoutCss}>
-      <SectionTitle label="Positions" title="모집 직군" />
+      <SectionTitle
+        label="Positions"
+        title="모집 직군"
+        description="지원 가능 기간 : 10월 2일 00:00 ~ 10월 8일 23:59"
+      />
       <div css={listCss}>
         {POSITIONS.map(({ ...info }) => (
           <PositionsItem key={info.type} {...info} />

@@ -9,19 +9,29 @@ import { MobileMenu } from '~/components/GNB/MobileMenu';
 import { MobileMenuIcon } from '~/components/GNB/MobileMenuIcon';
 import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import { useDropDown } from '~/hooks/useDropdown';
+import useIsInProgress from '~/hooks/useIsInProgress';
 import { mediaQuery } from '~/styles/media';
 
 const LOGO_IMAGE = `/images/logo.png`;
 
 function ApplyButton({ menu }: { menu: GNBMenu }) {
+  const { isInProgress } = useIsInProgress();
+  const router = useRouter();
+
+  const onClick = () => {
+    router.push(menu.href);
+  };
+
   return (
-    <Button>
-      <Link css={linkCss} href={menu.href}>
-        {menu.name}
-      </Link>
+    <Button disabled={!isInProgress} css={linkButtonCss} onClick={onClick}>
+      {menu.name}
     </Button>
   );
 }
+
+const linkButtonCss = (theme: Theme) => css`
+  ${theme.typos.pretendard.body1};
+`;
 
 export function GNB() {
   const { pathname } = useRouter();
