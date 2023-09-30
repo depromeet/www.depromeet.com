@@ -24,9 +24,9 @@ export const OFFLINE_SESSIONS = [
     img: '/images/session/midterm.png',
   },
   {
-    title: '론칭데이',
+    title: '런칭데이',
     subTitle: 'Launching Day',
-    description: '론칭된 서비스를 팀 부스에서 공개해요. 모든 팀의 서비스를 사용해볼 수 있어요.',
+    description: '런칭된 서비스를 팀 부스에서 공개해요. 모든 팀의 서비스를 사용해볼 수 있어요.',
     img: '/images/session/launching.png',
   },
   {
