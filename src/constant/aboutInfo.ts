@@ -13,9 +13,9 @@ export const ABOUT_INFO = [
   {
     label: 'airplane',
     image: AIRPLANE_IMAGE,
-    title: '서비스 론칭 후\n유저에게 도착하는 순간까지',
+    title: '서비스 런칭 후\n유저에게 도착하는 순간까지',
     description:
-      'UT, 론칭데이 등 실제 서비스를 구현하고\n타켓 유저에게 도달하는 전 과정을 경험합니다',
+      'UT, 런칭데이 등 실제 서비스를 구현하고\n타켓 유저에게 도달하는 전 과정을 경험합니다',
     reverse: true,
   },
 ];

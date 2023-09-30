@@ -31,12 +31,12 @@ export function TimerContainer() {
         <div>
           <div css={headingCss}>
             <h1>DEPROMEET</h1>
-            <p>디프만은 디자이너와 개발자가 만나 서비스 기획부터 론칭까지</p>
+            <p>디프만은 디자이너와 개발자가 만나 서비스 기획부터 런칭까지</p>
             <p>하나의 프로덕트를 완성하며 성장하는 IT 커뮤니티입니다</p>
 
             <div css={mobileOnlyCss}>
               <p>디프만은 디자이너와 개발자가 만나</p>
-              <p>서비스 기획부터 론칭까지 하나의 프로덕트를</p>
+              <p>서비스 기획부터 런칭까지 하나의 프로덕트를</p>
               <p>완성하며 성장하는 IT 커뮤니티입니다</p>
             </div>
           </div>

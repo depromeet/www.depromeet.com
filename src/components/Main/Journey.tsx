@@ -35,11 +35,11 @@ export function Journey() {
           <p>7 YEARS</p>
         </div>
         <div>
-          <h3>10-13기 론칭 성공률</h3>
+          <h3>10-13기 런칭 성공률</h3>
           <p>100%</p>
         </div>
         <div>
-          <h3>5-13기 론칭 서비스</h3>
+          <h3>5-13기 런칭 서비스</h3>
           <p>50+</p>
         </div>
       </div>
