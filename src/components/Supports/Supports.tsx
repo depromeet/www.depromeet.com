@@ -9,7 +9,7 @@ import { mediaQuery } from '~/styles/media';
 export function Supports() {
   return (
     <div css={[commonLayoutCss, layoutCss]}>
-      <SectionTitle label="Offline Activity" title="오프라인 세션" />
+      <SectionTitle label="Supports" title="후원사 소개" />
       <ul css={supportContainerCss}>
         {SUPPORTS.map(support => (
           <SupportThumbnail key={support.title} {...support} />
