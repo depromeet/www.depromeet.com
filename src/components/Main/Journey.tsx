@@ -137,4 +137,8 @@ const imageContainerCss = css`
     position: relative;
     bottom: 24px;
   }
+  ${mediaQuery('mobile')} {
+    width: 240px;
+    height: 155px;
+  }
 `;

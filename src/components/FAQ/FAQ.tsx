@@ -55,6 +55,9 @@ const tabLayoutCss = css`
   > li:first-child {
     padding-left: 0px;
   }
+  ${mediaQuery('tablet')} {
+    justify-content: center;
+  }
 `;
 
 const tabCss = (theme: Theme, isActive: boolean) => css`
