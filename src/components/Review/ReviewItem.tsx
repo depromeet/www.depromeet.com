@@ -40,17 +40,20 @@ const layoutCss = (theme: Theme) => css`
   flex-direction: column;
   justify-content: space-between;
   max-width: 476px;
+  height: 289px;
   margin-left: 20px;
 
   ${mediaQuery('tablet')} {
     padding: 30px 50px;
-    max-width: 410px;
+    max-width: 510px;
+    height: 336px;
   }
 
   ${mediaQuery('mobile')} {
     margin-left: 8px;
     max-width: 277px;
-    padding: 12px;
+    height: 212px;
+    padding: 20px;
   }
 `;
 
@@ -64,8 +67,12 @@ const titleH3Css = (theme: Theme) => css`
   ${theme.typos.pretendard.subTitle2};
   color: ${theme.colors.white};
 
+  ${mediaQuery('tablet')} {
+    ${theme.typos.pretendard.subTitle1};
+  }
+
   ${mediaQuery('mobile')} {
-    font-size: 20px;
+    ${theme.typos.pretendard.subTitle1};
   }
 `;
 
@@ -88,7 +95,7 @@ const summaryCss = (theme: Theme) => css`
     margin-top: 32px;
   }
   ${mediaQuery('mobile')} {
-    margin-top: 20px;
+    margin-top: 8px;
   }
 `;
 
@@ -114,9 +121,9 @@ const linkCss = (theme: Theme) => css`
   align-items: center;
 
   ${mediaQuery('tablet')} {
-    margin-top: 44px;
+    margin-top: 20px;
   }
   ${mediaQuery('mobile')} {
-    margin-top: 32px;
+    margin-top: 24px;
   }
 `;
