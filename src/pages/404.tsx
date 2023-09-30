@@ -1,127 +1,51 @@
 import Image from 'next/image';
-import { css } from '@emotion/react';
+import { useRouter } from 'next/router';
+import { css, Theme } from '@emotion/react';
 
-import { ClickableLink } from '~/components/common/Clickable';
-import { HOME_IMAGE_BASE } from '~/constants/images';
-import useMediaQuery from '~/hooks/use-media-query';
-import { colors, mediaQuery } from '~/styles/constants';
+import { Button } from '~/components/Button';
+import { mediaQuery } from '~/styles/media';
 
-const HEADER_BACK_IMAGE = `${HOME_IMAGE_BASE}/header-back.webp`;
-const MOBILE_HEADER_BACK_IMAGE = `${HOME_IMAGE_BASE}/mobile-header-back.webp`;
-const HEADER_FRONT_IMAGE = `${HOME_IMAGE_BASE}/header-front.png`;
-const MOBILE_HEADER_FRONT_IMAGE = `${HOME_IMAGE_BASE}/mobile-header-front.webp`;
-
+const ERROR_IMAGE = `/images/error/career.png`;
 export default function NotFound() {
-  const isMobile = useMediaQuery('xs');
+  const router = useRouter();
+
+  const onButtonClick = () => {
+    router.push('/');
+  };
 
   return (
-    <main css={mainCss}>
-      <Image
-        css={imageCss}
-        src={isMobile ? MOBILE_HEADER_BACK_IMAGE : HEADER_BACK_IMAGE}
-        alt="디프만"
-        placeholder="blur"
-        blurDataURL={isMobile ? MOBILE_HEADER_BACK_IMAGE : HEADER_BACK_IMAGE}
-        priority
-        quality={100}
-        fill
-      />
-      <span css={designerTextCss}>404</span>
-      <span css={programmerTextCss}>NOT FOUND</span>
-      <Image
-        css={imageCss}
-        src={isMobile ? MOBILE_HEADER_FRONT_IMAGE : HEADER_FRONT_IMAGE}
-        alt="depromeet"
-        placeholder="blur"
-        blurDataURL={isMobile ? MOBILE_HEADER_FRONT_IMAGE : HEADER_FRONT_IMAGE}
-        priority
-        quality={100}
-        fill
-      />
-      <ClickableLink href="/" css={linkCss}>
+    <main css={errorContainerCss}>
+      <Image src={ERROR_IMAGE} alt="error image" width={270} height={270} />
+      <h2 css={errorTitleCss}>404 ERROR</h2>
+      <p css={errorDescriptionCss}>디프만 이륙 중 문제가 생겼어요</p>
+      <Button css={homeButtonCss} onClick={onButtonClick}>
         홈으로 가기
-      </ClickableLink>
+      </Button>
     </main>
   );
 }
 
-const mainCss = css`
-  position: relative;
-  width: 100%;
-  height: 780px;
-
+const errorContainerCss = css`
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  gap: 24px;
   align-items: center;
-
-  padding-bottom: 14vh;
-`;
-
-const linkCss = css`
-  border-radius: 2px;
-  padding: 16px 98px;
-  background-color: ${colors.black};
-
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
-  color: ${colors.gray100};
-
-  ${mediaQuery('xs')} {
-    padding: 18px 60px;
-    font-size: 16px;
-    line-height: 19px;
+  flex-direction: column;
+  margin: 150px 0;
+  ${mediaQuery('mobile')} {
+    margin: 50px 0;
   }
 `;
 
-const imageCss = css`
-  position: absolute;
-  top: 0;
-  left: 0;
-  object-fit: cover;
-  z-index: -1;
+const errorTitleCss = (theme: Theme) => css`
+  ${theme.typos.decimal.title2};
+  color: white;
 `;
 
-const graphicTextCss = css`
-  position: absolute;
-  font-weight: 600;
-  font-size: 150px;
-  z-index: -1;
-
-  ${mediaQuery('sm')} {
-    font-size: 100px;
-  }
-
-  ${mediaQuery('xs')} {
-    font-size: 50px;
-  }
+const errorDescriptionCss = (theme: Theme) => css`
+  ${theme.typos.pretendard.subTitle2};
+  color: white;
 `;
 
-const designerTextCss = css`
-  ${graphicTextCss};
-  top: 165px;
-  left: 14vw;
-
-  ${mediaQuery('sm')} {
-    left: 7vw;
-  }
-
-  ${mediaQuery('xs')} {
-    top: 113px;
-  }
-`;
-
-const programmerTextCss = css`
-  ${graphicTextCss};
-  top: 327px;
-  left: 24vw;
-
-  ${mediaQuery('sm')} {
-    left: 9vw;
-  }
-
-  ${mediaQuery('xs')} {
-    top: 182px;
-  }
+const homeButtonCss = css`
+  width: 130px;
 `;

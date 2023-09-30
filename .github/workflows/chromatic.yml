@@ -1,0 +1,36 @@
+# Workflow name
+name: 'Chromatic'
+
+# Event for the workflow
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main, develop]
+
+# List of jobs
+jobs:
+  chromatic-deployment:
+    # Operating System
+    runs-on: ubuntu-latest
+    # Job steps
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install dependencies
+        # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
+        run: yarn
+        # 👇 Adds Chromatic as a step in the workflow
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        id: chromatic
+        # Chromatic GitHub Action options
+        with:
+          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          onlyChanged: true
+      - name: comment PR
+        uses: thollander/actions-comment-pull-request@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          message: '🚀storybook: ${{ steps.chromatic.outputs.storybookUrl }}'

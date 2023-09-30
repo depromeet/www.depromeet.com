@@ -1,30 +1,55 @@
-import { css } from '@emotion/react';
+import { css, Theme } from '@emotion/react';
 
-import ApplySection from '~/components/common/ApplySection';
-import SEO from '~/components/common/SEO';
-import ContentsSection from '~/components/home/ContentsSection';
-import HeaderSection from '~/components/home/HeaderSection';
-import IntroductionSection from '~/components/home/IntroductionSection';
-import { mediaQuery } from '~/styles/constants';
+import { FAQ } from '~/components/FAQ';
+import { RecruitTextSection, SignImageSection } from '~/components/Main';
+import { Journey } from '~/components/Main/Journey';
+import { RecruitEntrance } from '~/components/Main/RecruitEntrance';
+import { ProjectCarousel } from '~/components/ProjectCarousel';
+import { ScheduleSection } from '~/components/ScheduleSection';
+import { SectionTitle } from '~/components/SectionTitle';
+import { SEO } from '~/components/SEO';
+import { TimerContainer } from '~/components/TimerContainer';
+import { MEMBER_SCHEDULE, SESSION_SCHEDULES } from '~/constant/schedule';
+import { mediaQuery } from '~/styles/media';
 
 export default function Root() {
   return (
     <>
       <SEO />
-      <main>
-        <HeaderSection />
-        <IntroductionSection />
-        <ContentsSection />
-        <ApplySection wrapperCss={applySectionMarginCss} />
+      <main css={layoutCss}>
+        <TimerContainer />
+        <div css={contentCss}>
+          <Journey />
+          <RecruitEntrance />
+          <ProjectCarousel />
+          <section>
+            <SectionTitle label="14th Schedule" title={'14기 일정'} />
+            <ScheduleSection {...MEMBER_SCHEDULE} />
+            <ScheduleSection {...SESSION_SCHEDULES} />
+          </section>
+          <section>
+            <FAQ />
+          </section>
+          <SignImageSection />
+          <RecruitTextSection />
+        </div>
       </main>
     </>
   );
 }
 
-const applySectionMarginCss = css`
-  margin-bottom: 240px;
+const layoutCss = (theme: Theme) => css`
+  background-color: ${theme.colors.black800};
+`;
 
-  ${mediaQuery('xs')} {
-    margin-bottom: 150px;
+const contentCss = css`
+  & > section {
+    margin-bottom: 200px;
+  }
+
+  ${mediaQuery('mobile')} {
+    & > section {
+      margin-bottom: 120px;
+    }
   }
 `;

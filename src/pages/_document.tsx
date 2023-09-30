@@ -1,6 +1,6 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 
-import { GA_ID, HOTJAR_ID, IS_PRODUCTION } from '~/constants/common';
+import { GA_ID, HOTJAR_ID, IS_PRODUCTION } from '~/constant/common';
 
 export default function Document() {
   return (
