@@ -17,11 +17,11 @@ export const MEMBER_SCHEDULE: Schedule = {
   titleBgColor: 'blue400',
   schedule: [
     {
-      date: '10.09',
+      date: '10.02',
       content: '서류 접수 시작',
     },
     {
-      date: '10.18',
+      date: '10.08',
       content: '서류 마감',
     },
     {

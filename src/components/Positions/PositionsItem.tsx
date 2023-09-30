@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { css, Theme } from '@emotion/react';
 
 import { ArrowIcon } from '~/components/Icons';
@@ -18,17 +18,25 @@ interface PositionsItemProps {
 export function PositionsItem({ type, title, link }: PositionsItemProps) {
   const { isInProgress } = useIsInProgress();
 
-  const redirectLink = isInProgress ? link : '/recruit';
+  const router = useRouter();
+
+  const onClick = () => {
+    if (isInProgress) {
+      router.push(link);
+    }
+  };
 
   return (
     <div css={layoutCss}>
       <Image width={112} height={112} src={`${POSITION_BASE}/${type}.png`} alt={title} />
       <div>
         <h3 css={titleCss}>{title}</h3>
-        <Link href={redirectLink} target="_blank" css={linkCss}>
-          <span>자세히보기</span>
-          <ArrowIcon direction="right" css={arrowIconCss} />
-        </Link>
+        <button onClick={onClick} disabled={!isInProgress} css={linkCss}>
+          {/* <Link href={redirectLink} target="_blank" css={linkCss}> */}
+          <span>지원하기</span>
+          <ArrowIcon direction="right" css={theme => arrowIconCss(theme, !isInProgress)} />
+          {/* </Link> */}
+        </button>
       </div>
     </div>
   );
@@ -90,12 +98,17 @@ const linkCss = (theme: Theme) => css`
     margin-left: 4px;
   }
 
+  &:disabled {
+    cursor: not-allowed;
+    color: ${theme.colors.gray200};
+  }
+
   ${mediaQuery('mobile')} {
     font-size: 14px;
   }
 `;
 
-const arrowIconCss = (theme: Theme) => css`
+const arrowIconCss = (theme: Theme, disabled: boolean) => css`
   width: 24px;
   height: 24px;
 
@@ -103,4 +116,11 @@ const arrowIconCss = (theme: Theme) => css`
     stroke: ${theme.colors.blue400};
     stroke-width: 4;
   }
+
+  ${disabled &&
+  css`
+    > path {
+      stroke: ${theme.colors.gray200};
+    }
+  `}
 `;

@@ -4,6 +4,7 @@ import { css, Theme } from '@emotion/react';
 import { m } from 'framer-motion';
 
 import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
+import useIsInProgress from '~/hooks/useIsInProgress';
 import { mediaQuery } from '~/styles/media';
 
 interface MobileMenuProps {
@@ -11,7 +12,8 @@ interface MobileMenuProps {
 }
 
 export function MobileMenu({ onClickMenu }: MobileMenuProps) {
-  const { pathname } = useRouter();
+  const { pathname, push } = useRouter();
+  const { isInProgress } = useIsInProgress();
 
   const getActiveLinkcss = (menu: GNBMenu) => {
     if (pathname.startsWith(menu.href)) {
@@ -37,9 +39,9 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
             exit={{ opacity: 0 }}
           >
             {menu.type === 'button' ? (
-              <Link href={menu.href}>
-                <a css={[linkCss]}>{menu.name}</a>
-              </Link>
+              <button disabled={!isInProgress} onClick={() => push(menu.href)} css={linkCss}>
+                {menu.name}
+              </button>
             ) : (
               <Link href={menu.href}>
                 <a css={[linkCss, getActiveLinkcss(menu)]}>{menu.name}</a>
@@ -82,6 +84,11 @@ const linkCss = (theme: Theme) => css`
   &:hover,
   &:active {
     color: ${theme.colors.yellow500};
+  }
+
+  &:disabled {
+    color: ${theme.colors.gray200};
+    cursor: not-allowed;
   }
 `;
 
