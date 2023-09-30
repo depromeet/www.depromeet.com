@@ -39,7 +39,7 @@ export const REVIEWS: ReviewItemType[] = [
     group: '13기',
     part: 'WEB',
     summary:
-      '프로젝트 기획부터 배포까지 경험해 볼 수 있는 동아리였습니다. 같은 직군, 타직군 분들과 협업하며 배울수 있는 점이 좋았습니다. 결과물을 남길수 있도록 체계적인 시스템으로 서포트 해줘서 잘 런칭할 수 있었습니다!',
+      '기획부터 배포까지 경험해 볼 수 있는 동아리였습니다. 같은 직군, 타직군 분들과 협업하며 배울수 있는 점이 좋았습니다. 결과물을 남길수 있도록 체계적인 시스템으로 서포트 해줘서 잘 런칭할 수 있었습니다!',
     links: [
       { type: 'project', label: '프로젝트', url: 'https://github.com/depromeet/Ding-dong-fe' },
     ],
