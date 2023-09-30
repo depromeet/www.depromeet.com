@@ -1,6 +1,8 @@
-import { css } from '@emotion/react';
+import Link from 'next/link';
+import { css, Theme } from '@emotion/react';
 import Marquee from 'react-fast-marquee';
 
+import { Button } from '~/components/Button';
 import { ProjectCarouselItem } from '~/components/ProjectCarousel/ProjectCarouselItem';
 import { SectionTitle } from '~/components/SectionTitle';
 import { PROJECT_LIST } from '~/constant/project';
@@ -16,6 +18,9 @@ export function ProjectCarousel() {
           <ProjectCarouselItem key={project.title} {...project} />
         ))}
       </Marquee>
+      <Button css={projectButtonCss}>
+        <Link href="/project">전체보기</Link>
+      </Button>
     </section>
   );
 }
@@ -25,4 +30,9 @@ const layoutCss = css`
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+`;
+
+const projectButtonCss = (theme: Theme) => css`
+  ${theme.typos.pretendard.body1};
+  margin-top: 88px;
 `;
