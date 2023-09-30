@@ -18,7 +18,7 @@ export function TimerContainer() {
   const router = useRouter();
 
   const onButtonClick = () => {
-    router.push(process.env.NEXT_PUBLIC_RECRUIT_URL ?? '');
+    router.push('/apply');
   };
 
   return (
