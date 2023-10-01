@@ -69,7 +69,7 @@ export const REVIEWS: ReviewItemType[] = [
     ],
   },
   {
-    name: '김정윤',
+    name: '박정윤',
     group: '13기',
     part: 'SERVER',
     summary:
