@@ -4,6 +4,7 @@ import { css, Theme } from '@emotion/react';
 import { FAQList } from '~/components/FAQ/FAQList';
 import { SectionTitle } from '~/components/SectionTitle';
 import { FAQ_GROUP, FAQGroupType, FAQS } from '~/constant/faq';
+import { SwitchCase } from '~/hocs/SwitchCase';
 import { commonLayoutCss } from '~/styles/layout';
 import { mediaQuery } from '~/styles/media';
 
@@ -30,9 +31,15 @@ export function FAQ() {
           </li>
         ))}
       </ul>
-      {activeTab === '지원자격' && <FAQList FAQList={지원자격질문들} />}
-      {activeTab === '면접' && <FAQList FAQList={면접질문들} />}
-      {activeTab === '활동' && <FAQList FAQList={활동질문들} />}
+      <SwitchCase
+        value={activeTab}
+        caseBy={{
+          지원자격: <FAQList FAQList={지원자격질문들} />,
+          면접: <FAQList FAQList={면접질문들} />,
+          활동: <FAQList FAQList={활동질문들} />,
+        }}
+        defaultComponent={<FAQList FAQList={지원자격질문들} />}
+      />
     </section>
   );
 }
