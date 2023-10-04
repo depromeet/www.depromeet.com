@@ -10,7 +10,7 @@ export const NOTION_RECRUIT_PATH =
 
 // NOTE: UTC 타임존에 맞추기 위해 9시간을 뺌
 export const START_DATE = '2023-10-01T15:00:00.000Z'; // 10.02 00:00
-export const END_DATE = '2023-10-07T14:59:59.000Z'; // 10.08 11:59:59
+export const END_DATE = '2023-10-08T14:59:59.000Z'; // 10.08 11:59:59
 
 // export const START_DATE = '2023-08-18T22:21:59.000Z'; // test
 // export const END_DATE = '2023-03-04T20:00:00.000Z'; // test
