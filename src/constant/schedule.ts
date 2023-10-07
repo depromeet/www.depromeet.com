@@ -37,7 +37,7 @@ export const MEMBER_SCHEDULE: Schedule = {
 
 export const SESSION_SCHEDULES: Schedule = {
   label: 'sessions',
-  title: '정기 세션',
+  title: '오프라인 정기 세션',
   titleBgColor: 'yellow400',
   schedule: [
     {

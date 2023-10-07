@@ -23,7 +23,11 @@ export default function Root() {
           <RecruitEntrance />
           <ProjectCarousel />
           <section>
-            <SectionTitle label="14th Schedule" title={'14기 일정'} />
+            <SectionTitle
+              label="14th Schedule"
+              title={'14기 일정'}
+              description="세션은 매주 진행되며, 오프라인 세션은 오프라인에서 이뤄집니다."
+            />
             <ScheduleSection {...MEMBER_SCHEDULE} />
             <ScheduleSection {...SESSION_SCHEDULES} />
           </section>
