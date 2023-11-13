@@ -57,7 +57,7 @@ export const SESSION_SCHEDULES: Schedule = {
       content: '중간 발표',
     },
     {
-      date: '01.20',
+      date: '02.03',
       content: '런칭데이',
     },
     {
