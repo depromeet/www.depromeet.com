@@ -78,6 +78,9 @@ const articleCss = css`
   &:hover img {
     filter: blur(5px) brightness(0.4);
   }
+  &:hover > div {
+    opacity: 1;
+  }
 `;
 
 const imageArticleCss = css`
@@ -98,10 +101,6 @@ const contentsCss = css`
   justify-content: space-between;
   transition: opacity 0.3s ease;
   opacity: 0;
-
-  &:hover {
-    opacity: 1;
-  }
 `;
 
 const linkContainerCss = css`
