@@ -37,6 +37,9 @@ describe('format 관련 유틸 함수', () => {
       expect(() => formatSingleDigit(9.9)).toThrowError(
         '잘못된 입력입니다. 양수 정수만 처리 가능합니다.'
       );
+      expect(() => formatSingleDigit(Infinity)).toThrowError(
+        '잘못된 입력입니다. 양수 정수만 처리 가능합니다.'
+      );
     });
   });
 });
