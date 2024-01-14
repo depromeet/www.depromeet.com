@@ -14,15 +14,14 @@ interface FAQItemProps {
 
 export function FAQItem({ isOpen, onClickOpenButton, question, answer }: FAQItemProps) {
   return (
-    <li>
+    <li role="button" aria-expanded={isOpen} onClick={onClickOpenButton} css={liCss}>
       <motion.div
         css={theme => headerCss(theme, isOpen)}
         animate={isOpen ? 'open' : 'closed'}
         variants={headerVariants}
         transition={{ duration: 0.3, ease: 'easeOut' }}
-        onClick={onClickOpenButton}
       >
-        <h3>{question}</h3>
+        <h4>{question}</h4>
         <motion.div variants={arrowIconVariants} transition={{ duration: 0.3, ease: 'easeOut' }}>
           <ArrowIcon
             direction={isOpen ? 'up' : 'down'}
@@ -58,14 +57,18 @@ const arrowIconVariants: Variants = {
   closed: { stroke: theme.colors.blue400 },
 };
 
+const liCss = css`
+  cursor: pointer;
+`;
+
 const headerCss = (theme: Theme, isOpen: boolean) => css`
   background-color: ${isOpen ? theme.colors.blue400 : theme.colors.black400};
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 25px 30px;
-  cursor: pointer;
-  > h3 {
+
+  > h4 {
     color: ${isOpen ? theme.colors.black800 : theme.colors.white};
     text-align: center;
     ${theme.typos.pretendard.subTitle2}
