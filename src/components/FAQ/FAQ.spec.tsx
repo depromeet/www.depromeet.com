@@ -43,7 +43,7 @@ describe('FAQ 컴포넌트 레이아웃 테스트', () => {
       wrapper: Provider,
     });
 
-    const questionListContainer = screen.getByRole('list', { name: '지원자격' });
+    const questionListContainer = screen.getByRole('list', { name: /지원자격/ });
     const questionItems = within(questionListContainer).getAllByRole('button');
 
     expect(questionItems[0]).toHaveAttribute('aria-expanded', 'true');
@@ -53,7 +53,7 @@ describe('FAQ 컴포넌트 레이아웃 테스트', () => {
       wrapper: Provider,
     });
 
-    const questionListContainer = screen.getByRole('list', { name: '지원자격' });
+    const questionListContainer = screen.getByRole('list', { name: /지원자격/ });
     const [, ...restQuestionItems] = within(questionListContainer).getAllByRole('button');
 
     restQuestionItems.forEach(x => {
@@ -70,7 +70,7 @@ describe('FAQ 컴포넌트 인터렉션 테스트', () => {
       wrapper: Provider,
     });
 
-    const questionListContainer = screen.getByRole('list', { name: '지원자격' });
+    const questionListContainer = screen.getByRole('list', { name: /faq-list/ });
     const questionItems = within(questionListContainer).getAllByRole('button');
 
     expect(questionItems[0]).toHaveAttribute('aria-expanded', 'true');
@@ -86,7 +86,7 @@ describe('FAQ 컴포넌트 인터렉션 테스트', () => {
       wrapper: Provider,
     });
 
-    const questionListContainer = screen.getByRole('list', { name: '지원자격' });
+    const questionListContainer = screen.getByRole('list', { name: /faq-list/ });
     const questionItems = within(questionListContainer).getAllByRole('button');
 
     expect(questionItems[1]).toHaveAttribute('aria-expanded', 'false');
@@ -102,7 +102,7 @@ describe('FAQ 컴포넌트 인터렉션 테스트', () => {
       wrapper: Provider,
     });
 
-    const questionListContainer = screen.getByRole('list', { name: '지원자격' });
+    const questionListContainer = screen.getByRole('list', { name: /faq-list/ });
     const questionItems = within(questionListContainer).getAllByRole('button');
 
     expect(questionItems[0]).toHaveAttribute('aria-expanded', 'true');
@@ -122,13 +122,13 @@ describe('FAQ 컴포넌트 인터렉션 테스트', () => {
       wrapper: Provider,
     });
 
-    await user.click(screen.getByRole('tab', { name: '지원자격' }));
+    await user.click(screen.getByRole('tab', { name: /지원자격/ }));
 
     expect(screen.getByRole('tab', { name: '지원자격', selected: true })).toBeInTheDocument();
     expect(screen.getByRole('tab', { name: '면접', selected: false })).toBeInTheDocument();
     expect(screen.getByRole('tab', { name: '활동', selected: false })).toBeInTheDocument();
 
-    expect(screen.getByRole('list', { name: '지원자격' })).toBeInTheDocument();
+    expect(screen.getByRole('list', { name: /지원자격/ })).toBeInTheDocument();
   });
   it('🟢 [면접]탭을 클릭하면 [면접]질문들 항목을 표시한다.', async () => {
     const user = userEvent.setup();
@@ -143,7 +143,7 @@ describe('FAQ 컴포넌트 인터렉션 테스트', () => {
     expect(screen.getByRole('tab', { name: '면접', selected: true })).toBeInTheDocument();
     expect(screen.getByRole('tab', { name: '활동', selected: false })).toBeInTheDocument();
 
-    expect(screen.getByRole('list', { name: '면접' })).toBeInTheDocument();
+    expect(screen.getByRole('list', { name: /면접/ })).toBeInTheDocument();
   });
   it('🟢 [활동]탭을 클릭하면 [활동]질문들 항목을 표시한다.', async () => {
     const user = userEvent.setup();
@@ -158,7 +158,7 @@ describe('FAQ 컴포넌트 인터렉션 테스트', () => {
     expect(screen.getByRole('tab', { name: '면접', selected: false })).toBeInTheDocument();
     expect(screen.getByRole('tab', { name: '활동', selected: true })).toBeInTheDocument();
 
-    expect(screen.getByRole('list', { name: '활동' })).toBeInTheDocument();
+    expect(screen.getByRole('list', { name: /활동/ })).toBeInTheDocument();
   });
   it('🟢 다른 탭을 클릭하면, 가장 위에 있는 질문은 답변이 보이는 상태로 렌더링한다.', async () => {
     const user = userEvent.setup();
@@ -169,7 +169,7 @@ describe('FAQ 컴포넌트 인터렉션 테스트', () => {
 
     await user.click(screen.getByRole('tab', { name: '면접' }));
 
-    const questionListContainer = screen.getByRole('list', { name: '면접' });
+    const questionListContainer = screen.getByRole('list', { name: /면접/ });
     const [fistQuestionItem] = within(questionListContainer).getAllByRole('button');
 
     expect(fistQuestionItem).toHaveAttribute('aria-expanded', 'true');
@@ -183,7 +183,7 @@ describe('FAQ 컴포넌트 인터렉션 테스트', () => {
 
     await user.click(screen.getByRole('tab', { name: '면접' }));
 
-    const questionListContainer = screen.getByRole('list', { name: '면접' });
+    const questionListContainer = screen.getByRole('list', { name: /면접/ });
     const [, ...restQuestionItems] = within(questionListContainer).getAllByRole('button');
 
     restQuestionItems.forEach(x => {

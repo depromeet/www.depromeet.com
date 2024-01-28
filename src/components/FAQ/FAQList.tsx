@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { HTMLProps, useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 
 import { FAQItem } from '~/components/FAQ/FAQItem';
 import { FAQType } from '~/constant/faq';
 import { mediaQuery } from '~/styles/media';
 
-interface FAQListProps {
+interface FAQListProps extends HTMLProps<HTMLUListElement> {
   FAQList: FAQType[];
   label: string;
 }
@@ -13,7 +13,7 @@ interface FAQListProps {
 const DEFAULT_OPEN_IDX = 0;
 const CLOSE_IDX = -1;
 
-export function FAQList({ FAQList, label }: FAQListProps) {
+export function FAQList({ FAQList, label, ...props }: FAQListProps) {
   const [activeIndex, setActiveIndex] = useState(DEFAULT_OPEN_IDX);
 
   const onClickActiveFaq = (idx: number) => {
@@ -28,7 +28,7 @@ export function FAQList({ FAQList, label }: FAQListProps) {
   }, []);
 
   return (
-    <ul aria-label={label} css={containerCss}>
+    <ul aria-label={`faq-list-${label}`} css={containerCss} {...props}>
       {FAQList.map((item, index) => (
         <FAQItem
           key={item.question}
