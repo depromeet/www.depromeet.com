@@ -21,18 +21,20 @@ export function FAQ() {
       <SectionTitle label="FAQ" title="자주 묻는 질문" />
       <ul css={tabLayoutCss}>
         {FAQ_GROUP.map(label => (
-          <li
-            key={label}
-            onClick={() => onClickTab(label)}
-            css={theme => tabCss(theme, isActive(label))}
-          >
-            {label}
+          <li key={label} onClick={() => onClickTab(label)}>
+            <button
+              role="tab"
+              aria-selected={isActive(label)}
+              css={theme => tabCss(theme, isActive(label))}
+            >
+              {label}
+            </button>
           </li>
         ))}
       </ul>
-      {activeTab === '지원자격' && <FAQList FAQList={지원자격질문들} />}
-      {activeTab === '면접' && <FAQList FAQList={면접질문들} />}
-      {activeTab === '활동' && <FAQList FAQList={활동질문들} />}
+      {activeTab === '지원자격' && <FAQList label="지원자격" FAQList={지원자격질문들} />}
+      {activeTab === '면접' && <FAQList label="면접" FAQList={면접질문들} />}
+      {activeTab === '활동' && <FAQList label="활동" FAQList={활동질문들} />}
     </section>
   );
 }

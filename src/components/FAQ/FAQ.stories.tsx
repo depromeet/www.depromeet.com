@@ -23,7 +23,7 @@ export const Primary = {
 };
 
 export const List = {
-  render: () => <FAQList FAQList={FAQS} />,
+  render: () => <FAQList label="스토리북" FAQList={FAQS} />,
 };
 
 export const Interaction = {
