@@ -3,7 +3,7 @@ export type GNBMenu = {
   href: '/about' | '/recruit' | '/project' | '/apply';
   type: 'text' | 'button';
 };
-// TODO: 지원하기 url 넣기
+
 export const GNB_MENU_NAME: GNBMenu[] = [
   {
     name: 'About',
@@ -20,9 +20,9 @@ export const GNB_MENU_NAME: GNBMenu[] = [
     href: '/project',
     type: 'text',
   },
-  {
-    name: '지원하기',
-    href: '/apply',
-    type: 'button',
-  },
+  // {
+  //   name: '지원하기',
+  //   href: '/apply',
+  //   type: 'button',
+  // },
 ];

@@ -25,7 +25,7 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
   return (
     <m.article
       initial={{ height: 0, opacity: 0 }}
-      animate={{ height: '280px', opacity: 1 }}
+      animate={{ height: '234px', opacity: 1 }}
       exit={{ height: 0, opacity: 0 }}
       css={mobileMenuCss}
     >

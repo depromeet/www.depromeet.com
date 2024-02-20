@@ -1,10 +1,7 @@
 import Image from 'next/image';
-import { useRouter } from 'next/router';
 import { css, Theme } from '@emotion/react';
 
-import { ArrowIcon } from '~/components/Icons';
 import { POSITION_BASE } from '~/constant/image';
-import useIsInProgress from '~/hooks/useIsInProgress';
 import { mediaQuery } from '~/styles/media';
 
 type Position = 'aos' | 'design' | 'ios' | 'server' | 'web';
@@ -15,28 +12,30 @@ interface PositionsItemProps {
   link: string;
 }
 
-export function PositionsItem({ type, title, link }: PositionsItemProps) {
-  const { isInProgress } = useIsInProgress();
+export function PositionsItem({
+  type,
+  title,
+}: // link
+PositionsItemProps) {
+  // const { isInProgress } = useIsInProgress();
 
-  const router = useRouter();
+  // const router = useRouter();
 
-  const onClick = () => {
-    if (isInProgress) {
-      router.push(link);
-    }
-  };
+  // const onClick = () => {
+  //   if (isInProgress) {
+  //     router.push(link);
+  //   }
+  // };
 
   return (
     <div css={layoutCss}>
       <Image width={112} height={112} src={`${POSITION_BASE}/${type}.png`} alt={title} />
       <div>
         <h3 css={titleCss}>{title}</h3>
-        <button onClick={onClick} disabled={!isInProgress} css={linkCss}>
-          {/* <Link href={redirectLink} target="_blank" css={linkCss}> */}
+        {/* <button onClick={onClick} disabled={!isInProgress} css={linkCss}>
           <span>지원하기</span>
           <ArrowIcon direction="right" css={theme => arrowIconCss(theme, !isInProgress)} />
-          {/* </Link> */}
-        </button>
+        </button> */}
       </div>
     </div>
   );
@@ -88,39 +87,39 @@ const titleCss = (theme: Theme) => css`
   }
 `;
 
-const linkCss = (theme: Theme) => css`
-  ${theme.typos.pretendard.body1};
-  color: ${theme.colors.blue400};
-  display: flex;
-  align-items: center;
-  margin-top: 8px;
-  > svg {
-    margin-left: 4px;
-  }
+// const linkCss = (theme: Theme) => css`
+//   ${theme.typos.pretendard.body1};
+//   color: ${theme.colors.blue400};
+//   display: flex;
+//   align-items: center;
+//   margin-top: 8px;
+//   > svg {
+//     margin-left: 4px;
+//   }
 
-  &:disabled {
-    cursor: not-allowed;
-    color: ${theme.colors.gray200};
-  }
+//   &:disabled {
+//     cursor: not-allowed;
+//     color: ${theme.colors.gray200};
+//   }
 
-  ${mediaQuery('mobile')} {
-    font-size: 14px;
-  }
-`;
+//   ${mediaQuery('mobile')} {
+//     font-size: 14px;
+//   }
+// `;
 
-const arrowIconCss = (theme: Theme, disabled: boolean) => css`
-  width: 24px;
-  height: 24px;
+// const arrowIconCss = (theme: Theme, disabled: boolean) => css`
+//   width: 24px;
+//   height: 24px;
 
-  > path {
-    stroke: ${theme.colors.blue400};
-    stroke-width: 4;
-  }
+//   > path {
+//     stroke: ${theme.colors.blue400};
+//     stroke-width: 4;
+//   }
 
-  ${disabled &&
-  css`
-    > path {
-      stroke: ${theme.colors.gray200};
-    }
-  `}
-`;
+//   ${disabled &&
+//   css`
+//     > path {
+//       stroke: ${theme.colors.gray200};
+//     }
+//   `}
+// `;
