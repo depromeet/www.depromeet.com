@@ -2,23 +2,10 @@ import Image from 'next/image';
 import { css, Theme } from '@emotion/react';
 
 import GuideModalButton from '~/components/GuideModalButton';
-// import { END_DATE } from '~/constant/common';
-// import useIsInProgress from '~/hooks/useIsInProgress';
 import { commonLayoutCss } from '~/styles/layout';
 import { mediaQuery } from '~/styles/media';
 
-// import useDiffDay from './useDiffDay';
-
 export function TimerContainer() {
-  // const { isInProgress, progressState } = useIsInProgress();
-  // const time = useDiffDay(END_DATE);
-
-  // const router = useRouter();
-
-  // const onButtonClick = () => {
-  //   router.push('/apply');
-  // };
-
   return (
     <section css={containerCss}>
       <div css={bgImageCss}>
@@ -38,10 +25,6 @@ export function TimerContainer() {
               <p>완성하며 성장하는 IT 커뮤니티입니다</p>
             </div>
           </div>
-          {/* <Timer time={progressState === 'FINISH' ? FINISH_TIME_OBJ : time} />
-          <Button size="lg" disabled={!isInProgress} onClick={onButtonClick}>
-            14기 지원하기
-          </Button> */}
 
           <GuideModalButton />
         </div>
@@ -49,13 +32,6 @@ export function TimerContainer() {
     </section>
   );
 }
-
-// const FINISH_TIME_OBJ = {
-//   day: '00',
-//   hour: '00',
-//   min: '00',
-//   sec: '00',
-// };
 
 const containerCss = css`
   position: relative;

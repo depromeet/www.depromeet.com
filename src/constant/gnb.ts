@@ -20,9 +20,4 @@ export const GNB_MENU_NAME: GNBMenu[] = [
     href: '/project',
     type: 'text',
   },
-  // {
-  //   name: '지원하기',
-  //   href: '/apply',
-  //   type: 'button',
-  // },
 ];
