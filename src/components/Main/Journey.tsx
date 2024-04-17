@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { css, Theme } from '@emotion/react';
 
 import { QUANTIFIED_INFO } from '~/constant/aboutInfo';
+import { commonLayoutCss } from '~/styles/layout';
 import { mediaQuery } from '~/styles/media';
 
 import { LinkButton } from './LinkButton';
@@ -21,7 +22,7 @@ function DepromeetInformation() {
 
 export function Journey() {
   return (
-    <section css={layoutCss}>
+    <section css={[commonLayoutCss, layoutCss]}>
       <h1>
         디프만은 디자이너와 개발자가 서비스 기획부터
         <br />
@@ -62,12 +63,13 @@ const layoutCss = (theme: Theme) => css`
 
 const infoContainerCss = css`
   width: 100%;
-  max-width: 1024px;
+  min-width: 660px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
 
   ${mediaQuery('mobile')} {
+    min-width: 275px;
     grid-template-columns: repeat(2, 1fr);
   }
 `;
