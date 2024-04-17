@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 import { mediaQuery } from '~/styles/media';
 
 const layout = {
-  maxWidth: '960px',
+  maxWidth: '1024px',
 } as const;
 
 export const commonLayoutCss = css`
