@@ -133,10 +133,8 @@ export const typos = {
       font-style: normal;
       font-weight: 400;
       line-height: ${pxToRem(28.8)};
-      /* letter-spacing: ${pxToRem(-0.28)}; */
       ${mediaQuery('mobile')} {
         font-size: ${pxToRem(20)};
-        /* letter-spacing: ${pxToRem(-0.16)}; */
       }
     `,
     regular14: css`
@@ -145,7 +143,6 @@ export const typos = {
       font-style: normal;
       font-weight: 400;
       line-height: ${pxToRem(16.8)};
-      /* letter-spacing: ${pxToRem(-0.18)}; */
     `,
   },
   notosans: {
@@ -172,11 +169,6 @@ export const typos = {
       font-weight: 600;
       line-height: ${pxToRem(30)};
       letter-spacing: -4%;
-      /* letter-spacing: ${pxToRem(-0.28)}; */
-      /* ${mediaQuery('mobile')} { */
-      /* font-size: ${pxToRem(20)}; */
-      /* letter-spacing: ${pxToRem(-0.16)}; */
-      /* } */
     `,
     semibold16: css`
       font-family: NotoSansVariable;
@@ -185,7 +177,6 @@ export const typos = {
       font-weight: 600;
       line-height: ${pxToRem(24)};
       letter-spacing: -4%;
-      /* letter-spacing: ${pxToRem(-0.18)}; */
     `,
     semibold14: css`
       font-family: NotoSansVariable;
@@ -194,7 +185,6 @@ export const typos = {
       font-weight: 600;
       line-height: ${pxToRem(21)};
       letter-spacing: -4%;
-      /* letter-spacing: ${pxToRem(-0.18)}; */
     `,
     regular20: css`
       font-family: NotoSansVariable;
