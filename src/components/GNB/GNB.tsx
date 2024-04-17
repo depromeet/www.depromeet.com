@@ -86,8 +86,8 @@ export function GNB() {
   );
 }
 
-const navCommonCss = (theme: Theme) => css`
-  background-color: ${theme.colors.black800};
+const navCommonCss = () => css`
+  background-color: black;
   position: fixed;
   top: 0;
   left: 0;
@@ -95,8 +95,8 @@ const navCommonCss = (theme: Theme) => css`
   width: 100vw;
 `;
 
-const navCss = (theme: Theme) => css`
-  ${navCommonCss(theme)};
+const navCss = () => css`
+  ${navCommonCss()};
   padding: 12px 40px;
   height: 61px;
 
@@ -142,8 +142,8 @@ const linkCss = (theme: Theme) => css`
   ${theme.typos.notosans.regular14};
 `;
 
-const mobileMenuGNBCss = (theme: Theme) => css`
-  ${navCommonCss(theme)};
+const mobileMenuGNBCss = () => css`
+  ${navCommonCss()};
   padding: 20px 32px;
   display: flex;
   align-items: center;

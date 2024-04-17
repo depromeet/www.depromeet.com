@@ -1,7 +1,6 @@
 import { css, Global } from '@emotion/react';
 
 import { fontFace } from '~/styles/font';
-import { theme } from '~/styles/theme';
 
 import { resetCss } from './resetCss';
 
@@ -32,6 +31,5 @@ const globalCss = css`
       word-break: keep-all;
       word-wrap: break-word;
     }
-    background-color: ${theme.colors.black800};
   }
 `;

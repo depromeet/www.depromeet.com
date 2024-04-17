@@ -1,4 +1,4 @@
-import { css, Theme } from '@emotion/react';
+import { css } from '@emotion/react';
 
 import { FAQ } from '~/components/FAQ';
 import { RecruitTextSection, SignImageSection } from '~/components/Main';
@@ -16,7 +16,7 @@ export default function Root() {
   return (
     <>
       <SEO />
-      <main css={layoutCss}>
+      <main>
         <TimerContainer />
         <div css={contentCss}>
           <Journey />
@@ -41,10 +41,6 @@ export default function Root() {
     </>
   );
 }
-
-const layoutCss = (theme: Theme) => css`
-  background-color: ${theme.colors.black800};
-`;
 
 const contentCss = css`
   & > section {
