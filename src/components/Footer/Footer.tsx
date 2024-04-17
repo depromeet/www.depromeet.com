@@ -2,7 +2,6 @@ import Link from 'next/link';
 import { css, Theme } from '@emotion/react';
 
 import { FIRST_ROW_FOOTER_INFOS, SECOND_ROW_FOOTER_INFOS } from '~/constant/contactInfo';
-import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
 export function Footer() {
@@ -12,7 +11,7 @@ export function Footer() {
         <ul css={rowCss}>
           {FIRST_ROW_FOOTER_INFOS.map(footer => (
             <li key={footer.name}>
-              <Link css={[linkCss, strongLinkCss]} href={footer.href} target="_blank">
+              <Link css={[strongLinkCss]} href={footer.href} target="_blank">
                 {footer.name}
               </Link>
             </li>
@@ -28,36 +27,46 @@ export function Footer() {
             </li>
           ))}
         </ul>
-        <p css={copyrightCss}>© 2023 DEPROMEET. ALL RIGHTS RESERVED.</p>
       </div>
+      <p css={copyrightCss}>© 2024 DEPROMEET. ALL RIGHTS RESERVED.</p>
     </footer>
   );
 }
 
 const footerCss = css`
-  background-color: ${colors.black800};
-  padding: 0 20px;
+  background-color: black;
+  padding: 60px 30px;
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+
+  ${mediaQuery('mobile')} {
+    padding: 40px 30px;
+    gap: 20px;
+  }
 `;
 
 const footerInfoWrapper = css`
   max-width: 1240px;
   margin: 0 auto;
   display: flex;
+  gap: 12px;
   flex-direction: column;
-  height: 218px;
   justify-content: center;
   align-items: center;
 
   ${mediaQuery('mobile')} {
-    height: 167px;
+    height: 130px;
     width: 100%;
   }
 `;
 
 const rowCss = css`
   display: flex;
-  gap: 40px;
+  gap: 24px;
+  margin: 0 auto;
 
   ${mediaQuery('mobile')} {
     width: 100%;
@@ -68,8 +77,7 @@ const rowCss = css`
 
 const secondRowCss = css`
   display: flex;
-  gap: 40px;
-  margin-top: 16px;
+  gap: 24px;
 
   span + span {
     margin-left: 12px;
@@ -86,26 +94,29 @@ const secondRowCss = css`
   }
 `;
 
+const strongLinkCss = (theme: Theme) => css`
+  ${theme.typos.bebas.regular24};
+  color: white;
+
+  ${mediaQuery('mobile')} {
+    font-size: 18px;
+  }
+`;
+
 const linkCss = (theme: Theme) => css`
-  ${theme.typos.pretendard.body1};
-  color: ${theme.colors.gray100};
+  ${theme.typos.bebas.regular14};
+  color: white;
 
   ${mediaQuery('mobile')} {
     font-size: 11px;
   }
 `;
 
-const strongLinkCss = (theme: Theme) => css`
-  ${theme.typos.pretendard.subTitle2};
-`;
-
 const copyrightCss = (theme: Theme) => css`
-  ${theme.typos.pretendard.body1};
-  color: ${theme.colors.gray200};
-  margin-top: 40px;
+  ${theme.typos.notosans.regular8};
+  color: white;
 
   ${mediaQuery('mobile')} {
-    font-size: 11px;
-    margin-top: 24px;
+    font-size: 10px;
   }
 `;
