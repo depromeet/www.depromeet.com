@@ -35,7 +35,7 @@ export function Journey() {
         <span css={spanCss}>성장추구형</span> 커뮤니티입니다.
       </h1>
       <DepromeetInformation />
-      <LinkButton color="black" text="ABOUT" />
+      <LinkButton color="black" text="ABOUT" href="/about" />
     </section>
   );
 }

@@ -4,12 +4,14 @@ import { css } from '@emotion/react';
 
 import { theme } from '~/styles/theme';
 
-export function LinkButton({ color, text }: { color: string; text: string }) {
+export function LinkButton({ color, text, href }: { color: string; text: string; href: string }) {
+  const arrowSrc = `/images/main/${color === 'black' ? '' : 'white-'}arrow.svg`;
+
   return (
-    <Link css={linkCss({ color })} href="/about">
+    <Link css={linkCss({ color })} href={href}>
       {text}
-      <span css={arrowImgContainerCss({ color: color === 'black' ? 'white' : color })}>
-        <Image src="/images/main/arrow.svg" alt={`${text} 버튼`} width={15} height={15} />
+      <span css={arrowImgContainerCss({ color: color === 'black' ? 'white' : 'black' })}>
+        <Image src={arrowSrc} width={15} height={15} alt={`${text} 버튼`} />
       </span>
     </Link>
   );
@@ -22,7 +24,7 @@ const linkCss = ({ color }: { color: string }) => css`
   display: flex;
   gap: 8px;
   ${theme.typos.notosans.regular20};
-  color: white;
+  color: ${color === 'black' ? 'white' : 'black'};
   background-color: ${color};
   border-radius: 400px;
   justify-content: center;

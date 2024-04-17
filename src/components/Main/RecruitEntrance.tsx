@@ -43,7 +43,7 @@ export function RecruitEntrance() {
         <Image src="/images/main/digging-clock.svg" alt="인재상중 몰입" width={292} height={292} />
         <Image src="/images/main/share-clock.svg" alt="인재상중 공유" width={292} height={292} />
       </div>
-      <LinkButton color="black" text="모집 안내" />
+      <LinkButton color="black" text="모집 안내" href="/recruit" />
     </section>
   );
 }
