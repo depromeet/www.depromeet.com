@@ -21,7 +21,7 @@ const linkCss = ({ color }: { color: string }) => css`
   height: 62px;
   display: flex;
   gap: 8px;
-  ${theme.typos.notosans.semibold20};
+  ${theme.typos.notosans.regular20};
   color: white;
   background-color: ${color};
   border-radius: 400px;
