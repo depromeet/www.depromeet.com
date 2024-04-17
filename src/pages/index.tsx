@@ -1,10 +1,6 @@
-import { Ending } from '~/components/Ending';
-import { Intro } from '~/components/Intro';
-import { Journey } from '~/components/Main/Journey';
-import { RecruitEntrance } from '~/components/Main/RecruitEntrance';
+import { Ending, Intro, Journey, RecruitEntrance, Subscribe } from '~/components/Main';
 import { ProjectCarousel } from '~/components/ProjectCarousel';
 import { SEO } from '~/components/SEO';
-import { Subscribe } from '~/components/Subscribe';
 
 export default function Root() {
   return (

@@ -26,7 +26,7 @@ export function Subscribe() {
 }
 
 const containerCss = css`
-  height: 506px;
+  height: 530px;
   display: flex;
   flex-direction: column;
   gap: 40px;
