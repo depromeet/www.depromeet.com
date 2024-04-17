@@ -7,8 +7,95 @@ export type Project = {
   links?: Link[];
 };
 
-export const TAB_LIST = ['전체', '13기', '12기', '11기', '-10기'];
+export const TAB_LIST = ['전체', '14기', '13기', '12기', '11기', '-10기'];
 export const PROJECT_LIST: Project[] = [
+  {
+    title: '반디부디',
+    subTitle: '14기',
+    description: '내가 그리는 나의 인생지도<br/>Draw your life map',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/191517975/BANDIBOODI-Draw-your-life-map?tracking_source=search_projects|bandiboodi',
+      },
+      { type: 'Github', href: 'https://github.com/depromeet/amazing3-fe' },
+      { type: 'Web', href: 'https://www.bandiboodi.com' },
+    ],
+  },
+  {
+    title: 'PRAISE-UP',
+    subTitle: '14기',
+    description: '이미지로 소통하는 칭찬 SNS',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/191497631/praise-up-SNS',
+      },
+      { type: 'Github', href: 'https://github.com/depromeet/praise-up-client' },
+      { type: 'Web', href: 'https://www.praise-up.app/' },
+    ],
+  },
+  {
+    title: '10MM (10분만)',
+    subTitle: '14기',
+    description: '하루 10분으로 시작하는 시간 관리 서비스<br/>Time management App',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/191522849/10-10-Time-management-%08App?tracking_source=search_projects%7C10mm',
+      },
+      { type: 'Github', href: 'https://github.com/depromeet/10mm-client-web' },
+      { type: 'Web', href: 'https://www.10mm.today/auth/login?redirect=/' },
+    ],
+  },
+  {
+    title: '틈틈',
+    subTitle: '14기',
+    description: 'IT Career Growth Networking Service',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/191510163/%08TEUMTEUM-IT-Career-Growth-Networking-Service',
+      },
+      { type: 'Github', href: 'https://github.com/depromeet/TeumTeum-Android' },
+      {
+        type: 'Android',
+        href: 'https://play.google.com/store/apps/details?id=com.teumteum.teumteum&pli=1',
+      },
+    ],
+  },
+  {
+    title: '또잇또잇',
+    subTitle: '14기',
+    description: '재방문 맛집 공유<br/>Revisit Eatery Sharing',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/191512505/DDOEAT-DDOEAT-Revisit-Eatery-Sharing',
+      },
+      { type: 'Github', href: 'https://github.com/depromeet/ddoeat_client' },
+      {
+        type: 'Web',
+        href: 'https://www.ddoeat.site/',
+      },
+    ],
+  },
+  {
+    title: '삐삐',
+    subTitle: '14기',
+    description: '하루 한 번, 가족에게 보내는 생존신고 서비스<br/>Family Widget Service',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/191508405/-Family-Widget-Service',
+      },
+      { type: 'Github', href: 'https://github.com/depromeet/14th-team5-iOS' },
+      {
+        type: 'iOS',
+        href: 'https://no5ing.kr/',
+      },
+    ],
+  },
   {
     title: '자린고비',
     subTitle: '13기',
@@ -72,7 +159,7 @@ export const PROJECT_LIST: Project[] = [
       },
       { type: 'Github', href: 'https://github.com/depromeet/street-drop-iOS' },
       {
-        type: 'IOS',
+        type: 'iOS',
         href: 'https://apps.apple.com/kr/app/%EC%8A%A4%ED%8A%B8%EB%A6%BF%EB%93%9C%EB%9E%8D-street-drop/id6450315928',
       },
     ],
@@ -116,7 +203,7 @@ export const PROJECT_LIST: Project[] = [
         href: 'https://www.behance.net/gallery/175706595/Pumping',
       },
       { type: 'Github', href: 'https://github.com/depromeet/Pumping-iOS' },
-      { type: 'IOS', href: 'https://apps.apple.com/app/id6451131066' },
+      { type: 'iOS', href: 'https://apps.apple.com/app/id6451131066' },
     ],
   },
   {
@@ -159,7 +246,7 @@ export const PROJECT_LIST: Project[] = [
       },
       { type: 'Github', href: 'https://github.com/depromeet/ticlemoa-backend' },
       {
-        type: 'IOS',
+        type: 'iOS',
         href: 'https://apps.apple.com/kr/app/ticlemoa/id1659267166',
       },
     ],
@@ -209,7 +296,7 @@ export const PROJECT_LIST: Project[] = [
         href: 'https://ahmatda.notion.site/ahmatda/3202c2a4e2dd440eb95ae3345a130fc4',
       },
       {
-        type: 'IOS',
+        type: 'iOS',
         href: 'https://apps.apple.com/kr/app/%EC%95%84%EB%A7%9E%EB%8B%A4/id1660192508',
       },
       {
@@ -228,7 +315,7 @@ export const PROJECT_LIST: Project[] = [
         href: 'https://www.behance.net/gallery/161783411/Ping-Pong',
       },
       {
-        type: 'IOS',
+        type: 'iOS',
         href: 'https://apps.apple.com/kr/app/%ED%95%91%ED%90%81-pingpong/id1662351621',
       },
     ],
@@ -273,7 +360,7 @@ export const PROJECT_LIST: Project[] = [
         href: 'https://www.behance.net/gallery/147207859/TANG-Inspiration-Archiving-App',
       },
       {
-        type: 'IOS',
+        type: 'iOS',
         href: 'https://apps.apple.com/kr/app/%EC%98%81%EA%B0%90%ED%83%B1/id1626598770',
       },
       {
@@ -311,7 +398,7 @@ export const PROJECT_LIST: Project[] = [
         href: 'https://www.moodpic.kr/',
       },
       {
-        type: 'IOS',
+        type: 'iOS',
         href: 'https://apps.apple.com/kr/app/%EB%AC%B4%EB%93%9C%ED%94%BD/id1642343841',
       },
       {
@@ -330,7 +417,7 @@ export const PROJECT_LIST: Project[] = [
         href: 'https://www.behance.net/gallery/145307681/Tikitaka-Location-based-real-time-chat-Q-A-ap',
       },
       {
-        type: 'IOS',
+        type: 'iOS',
         href: 'https://apps.apple.com/kr/app/%ED%8B%B0%ED%82%A4%ED%83%80%EC%B9%B4-tikitaka/id1617831823?l=en',
       },
     ],
@@ -345,7 +432,7 @@ export const PROJECT_LIST: Project[] = [
         href: 'https://www.behance.net/gallery/147282295/%28Mongseal%29Archive-Your-Dream?tracking_source=search_projects%7Cdream',
       },
       {
-        type: 'IOS',
+        type: 'iOS',
         href: 'https://apps.apple.com/kr/app/%EB%AA%BD%EC%8B%A4-mong-seal/id1622154270?l=kr',
       },
     ],
@@ -416,7 +503,7 @@ export const PROJECT_LIST: Project[] = [
         href: 'https://play.google.com/store/apps/details?id=com.depromeet.bboxx',
       },
       {
-        type: 'IOS',
+        type: 'iOS',
         href: 'https://apps.apple.com/kr/app/%EB%B9%A1%EC%93%B0/id1597106306',
       },
     ],
@@ -438,7 +525,7 @@ export const PROJECT_LIST: Project[] = [
     description: '나만의 전시보관소',
     links: [
       {
-        type: 'IOS',
+        type: 'iOS',
         href: 'https://apps.apple.com/kr/app/archive/id1599941822',
       },
     ],
@@ -475,7 +562,7 @@ export const PROJECT_LIST: Project[] = [
         href: 'https://play.google.com/store/apps/details?id=com.depromeet.bodymood',
       },
       {
-        type: 'IOS',
+        type: 'iOS',
         href: 'https://apps.apple.com/kr/app/bodymood/id1588818384',
       },
     ],
@@ -502,7 +589,7 @@ export const PROJECT_LIST: Project[] = [
       '영차는 투자 자산 모아보기 직접 입력한 정보를<br> 기반으로 현재 투자 상황을 모아볼 수 있습니다.',
     links: [
       {
-        type: 'IOS',
+        type: 'iOS',
         href: 'https://apps.apple.com/.../%EC%98%81%EC%B0%A8/id1571507288',
       },
     ],
@@ -528,7 +615,7 @@ export const PROJECT_LIST: Project[] = [
         href: 'https://play.google.com/store/apps/details?id=com.def.custom&fbclid=IwAR01nq8JiuvvGdpnxFZEOJXef5EiOVP929GCGtHvv3-uiXkLVhIv2R9YS_c',
       },
       {
-        type: 'IOS',
+        type: 'iOS',
         href: 'https://apps.apple.com/kr/app/%EB%A7%88%EC%9D%B4%EB%A0%88%EC%8B%9C%ED%94%BD/id1569961091?fbclid=IwAR2Bu-JPXUcUiCY6dUPv6kq2KwoD97p8jl2Rf2lqY_o59pyKQbHVccPweOE',
       },
     ],
@@ -585,7 +672,7 @@ export const PROJECT_LIST: Project[] = [
         href: 'https://play.google.com/store/apps/details?id=com.zion830.threedollars',
       },
       {
-        type: 'IOS',
+        type: 'iOS',
         href: 'https://apps.apple.com/kr/app/%EA%B0%80%EC%8A%B4%EC%86%8D3%EC%B2%9C%EC%9B%90-%EB%82%98%EC%99%80-%EA%B0%80%EA%B9%8C%EC%9A%B4-%EB%B6%95%EC%96%B4%EB%B9%B5/id1496099467',
       },
     ],
@@ -616,7 +703,7 @@ export const PROJECT_LIST: Project[] = [
     description: '칼퇴를 하고싶게 도와주는 요정녀석',
     links: [
       {
-        type: 'IOS',
+        type: 'iOS',
         href: 'https://apps.apple.com/kr/app/%EC%B9%BC%ED%87%B4%EC%9A%94%EC%A0%95/id1467381865',
       },
     ],
@@ -627,7 +714,7 @@ export const PROJECT_LIST: Project[] = [
     description: '오늘 뭐 먹지?',
     links: [
       {
-        type: 'IOS',
+        type: 'iOS',
         href: 'https://apps.apple.com/kr/app/%EC%95%84%EB%AC%B4%EA%B1%B0%EB%82%98-%EC%98%A4%EB%8A%98-%EB%AD%90-%EB%A8%B9%EC%A7%80/id1542442642',
       },
       {
