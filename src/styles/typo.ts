@@ -99,21 +99,21 @@ export const typos = {
   },
   /**/
   bebas: {
-    40: css`
+    regular40: css`
       font-family: Bebas;
       font-size: ${pxToRem(40)};
       font-style: normal;
       font-weight: 400;
       line-height: ${pxToRem(48)};
     `,
-    32: css`
+    regular32: css`
       font-family: Bebas;
       font-size: ${pxToRem(30)};
       font-style: normal;
       font-weight: 400;
       line-height: ${pxToRem(36)};
     `,
-    24: css`
+    regular24: css`
       font-family: Bebas;
       font-size: ${pxToRem(24)};
       font-style: normal;
@@ -125,7 +125,7 @@ export const typos = {
         /* letter-spacing: ${pxToRem(-0.16)}; */
       }
     `,
-    14: css`
+    regular14: css`
       font-family: Bebas;
       font-size: ${pxToRem(14)};
       font-style: normal;
