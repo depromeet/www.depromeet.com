@@ -186,7 +186,7 @@ export const typos = {
       font-family: NotoSansVariable;
       font-size: ${pxToRem(20)};
       font-style: normal;
-      font-weight: 600;
+      font-weight: 400;
       line-height: ${pxToRem(30)};
       letter-spacing: -5%;
     `,

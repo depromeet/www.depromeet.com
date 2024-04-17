@@ -36,12 +36,11 @@ export const fontFace = css`
     font-family: 'Bebas';
     font-style: normal;
     font-weight: 700;
-    src: local(''), url('/fonts/Bebas-Regular.ttf') format('ttf');
+    src: local(''), url('/fonts/Bebas-Regular.ttf') format('truetype');
   }
   @font-face {
     font-family: 'NotoSansVariable';
     font-style: normal;
-    font-weight: 600;
-    src: local(''), url('/fonts/NotoSansKR-VariableFont_wght.ttf') format('ttf');
+    src: local(''), url('/fonts/NotoSansKR-VariableFont_wght.ttf') format('truetype');
   }
 `;
