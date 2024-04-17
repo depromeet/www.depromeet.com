@@ -1,5 +1,3 @@
-import { css } from '@emotion/react';
-
 import { FAQ } from '~/components/FAQ';
 import { Intro } from '~/components/Intro';
 import { RecruitTextSection, SignImageSection } from '~/components/Main';
@@ -16,7 +14,7 @@ export default function Root() {
     <>
       <SEO />
       <main>
-        <div css={contentCss}>
+        <div>
           <Intro />
           <Journey />
           <RecruitEntrance />
@@ -36,9 +34,3 @@ export default function Root() {
     </>
   );
 }
-
-const contentCss = css`
-  & > section {
-    margin-bottom: 80px;
-  }
-`;

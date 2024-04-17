@@ -104,13 +104,14 @@ export const typos = {
       font-size: ${pxToRem(88)};
       font-style: normal;
       font-weight: 400;
+      line-height: ${pxToRem(104)};
     `,
     regular66: css`
       font-family: Bebas;
       font-size: ${pxToRem(66)};
       font-style: normal;
       font-weight: 400;
-      line-height: ${pxToRem(105.6)};
+      line-height: ${pxToRem(76)};
     `,
     regular40: css`
       font-family: Bebas;
