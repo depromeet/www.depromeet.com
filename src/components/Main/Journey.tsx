@@ -41,6 +41,7 @@ export function Journey() {
 }
 
 const layoutCss = (theme: Theme) => css`
+  padding: 40px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -54,6 +55,7 @@ const layoutCss = (theme: Theme) => css`
   }
 
   ${mediaQuery('mobile')} {
+    padding: 0;
     h1 {
       ${theme.typos.notosans.semibold20};
       min-width: 300px;
