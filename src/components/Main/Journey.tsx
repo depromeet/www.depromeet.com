@@ -1,48 +1,44 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { css, Theme } from '@emotion/react';
 
-import { commonLayoutCss } from '~/styles/layout';
+import { QUANTIFIED_INFO } from '~/constant/aboutInfo';
 import { mediaQuery } from '~/styles/media';
-import { pxToRem } from '~/styles/style.utils';
+
+function DepromeetInformation() {
+  return (
+    <div css={infoContainerCss}>
+      {QUANTIFIED_INFO.map(({ label, text }, idx) => (
+        <div key={idx} css={gridItemCss}>
+          <span>{text}</span>
+          <h3>{label}</h3>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export function Journey() {
   return (
-    <section css={[commonLayoutCss, layoutCss]}>
+    <section css={layoutCss}>
       <h1>
-        디자이너와 개발자를 만나
+        디프만은 디자이너와 개발자가 서비스 기획부터
         <br />
-        공동의 성장을 위한 여정에 합류해보세요
+        런칭까지 함께 경험하는{' '}
+        <span css={spanCss}>
+          <div css={emphasisCss}>
+            <Image src="/images/main/emphasis.svg" alt="성장추구형 강조" width={162} height={48} />
+          </div>
+        </span>
+        <span css={spanCss}>성장추구형</span> 커뮤니티입니다.
       </h1>
-      <h2>
-        디자이너와 개발자를 만나 공동의 <br />
-        성장을 위한 여정에 합류해보세요
-      </h2>
-      <div css={imageContainerCss}>
-        <Image
-          src="/images/main/passport-combination.png"
-          width={530.326}
-          height={340}
-          alt="passport combination"
-        />
-      </div>
-      <div css={infoContainerCss}>
-        <div>
-          <h3>누적 멤버 수</h3>
-          <p>850+</p>
-        </div>
-        <div>
-          <h3>탄생한지</h3>
-          <p>7 YEARS</p>
-        </div>
-        <div>
-          <h3>10-13기 런칭 성공률</h3>
-          <p>100%</p>
-        </div>
-        <div>
-          <h3>5-13기 런칭 서비스</h3>
-          <p>50+</p>
-        </div>
-      </div>
+      <DepromeetInformation />
+      <Link css={linkCss} href="/about">
+        ABOUT
+        <span css={arrowImgContainerCss}>
+          <Image src="/images/main/arrow.svg" alt="ABOUT 페이지로 이동" width={15} height={15} />
+        </span>
+      </Link>
     </section>
   );
 }
@@ -52,93 +48,101 @@ const layoutCss = (theme: Theme) => css`
   flex-direction: column;
   align-items: center;
   gap: 80px;
-  padding: 0 30px;
 
-  color: ${theme.colors.white};
+  color: black;
 
-  h1,
-  h2 {
-    ${theme.typos.decimal.title2};
+  h1 {
+    ${theme.typos.notosans.semibold32};
     text-align: center;
   }
 
-  h2 {
-    font-size: 20px;
-    display: none;
-  }
-
   ${mediaQuery('mobile')} {
-    gap: 24px;
-    font-size: ${pxToRem(20)};
-
     h1 {
-      display: none;
-    }
-    h2 {
-      display: block;
-    }
-
-    img {
-      width: 240px;
-      height: 155px;
+      ${theme.typos.notosans.semibold20};
+      min-width: 300px;
     }
   }
 `;
 
-const infoContainerCss = (theme: Theme) => css`
-  display: grid;
-  gap: 20px;
+const infoContainerCss = css`
   width: 100%;
-
+  max-width: 1024px;
+  display: grid;
   grid-template-columns: repeat(4, 1fr);
-  & > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-
-    background-color: ${theme.colors.black400};
-    padding: 52px 0;
-  }
-
-  h3 {
-    ${theme.typos.pretendard.body1};
-    color: ${theme.colors.gray100};
-  }
-
-  p {
-    ${theme.typos.decimal.subTitle1};
-  }
+  gap: 0;
 
   ${mediaQuery('mobile')} {
     grid-template-columns: repeat(2, 1fr);
-    gap: 4px;
+  }
+`;
 
-    h3,
-    p {
-      line-height: 30px;
+const gridItemCss = (theme: Theme) => css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: black;
+
+  span {
+    ${theme.typos.bebas.regular88}
+  }
+
+  h3 {
+    text-align: center;
+    width: 100%;
+    background-color: black;
+    color: white;
+    ${theme.typos.notosans.regular16}
+  }
+
+  ${mediaQuery('mobile')} {
+    span {
+      ${theme.typos.bebas.regular66}
     }
-    & > div {
-      padding: 8px 4px;
-      gap: 8px;
+
+    h3 {
+      ${theme.typos.notosans.regular14}
     }
   }
 `;
 
-const imageContainerCss = css`
-  width: 530.326px;
-  height: 340px;
+const spanCss = css`
+  position: relative;
+`;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-position: center;
-    object-fit: cover;
-    position: relative;
-    bottom: 24px;
-  }
+const emphasisCss = css`
+  position: absolute;
+  left: 0;
+  top: 0;
+
   ${mediaQuery('mobile')} {
-    width: 240px;
-    height: 155px;
+    img {
+      width: 99px;
+      height: 32px;
+    }
   }
+`;
+
+const linkCss = (theme: Theme) => css`
+  padding: 16px, 40px, 16px, 48px;
+  width: 205px;
+  height: 62px;
+  display: flex;
+  gap: 8px;
+  ${theme.typos.notosans.semibold20};
+  color: white;
+  background-color: black;
+  border-radius: 400px;
+  justify-content: center;
+  align-items: center;
+`;
+
+const arrowImgContainerCss = css`
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 400px;
+  background-color: white;
 `;

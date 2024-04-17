@@ -99,6 +99,19 @@ export const typos = {
   },
   /**/
   bebas: {
+    regular88: css`
+      font-family: Bebas;
+      font-size: ${pxToRem(88)};
+      font-style: normal;
+      font-weight: 400;
+    `,
+    regular66: css`
+      font-family: Bebas;
+      font-size: ${pxToRem(66)};
+      font-style: normal;
+      font-weight: 400;
+      line-height: ${pxToRem(105.6)};
+    `,
     regular40: css`
       font-family: Bebas;
       font-size: ${pxToRem(40)};
