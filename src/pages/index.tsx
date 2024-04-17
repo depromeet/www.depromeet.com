@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 
 import { FAQ } from '~/components/FAQ';
+import { Intro } from '~/components/Intro';
 import { RecruitTextSection, SignImageSection } from '~/components/Main';
 import { Journey } from '~/components/Main/Journey';
 import { RecruitEntrance } from '~/components/Main/RecruitEntrance';
@@ -8,17 +9,15 @@ import { ProjectCarousel } from '~/components/ProjectCarousel';
 import { ScheduleSection } from '~/components/ScheduleSection';
 import { SectionTitle } from '~/components/SectionTitle';
 import { SEO } from '~/components/SEO';
-import { TimerContainer } from '~/components/TimerContainer';
 import { MEMBER_SCHEDULE, SESSION_SCHEDULES } from '~/constant/schedule';
-import { mediaQuery } from '~/styles/media';
 
 export default function Root() {
   return (
     <>
       <SEO />
       <main>
-        <TimerContainer />
         <div css={contentCss}>
+          <Intro />
           <Journey />
           <RecruitEntrance />
           <ProjectCarousel />
@@ -40,12 +39,6 @@ export default function Root() {
 
 const contentCss = css`
   & > section {
-    margin-bottom: 200px;
-  }
-
-  ${mediaQuery('mobile')} {
-    & > section {
-      margin-bottom: 120px;
-    }
+    margin-bottom: 80px;
   }
 `;
