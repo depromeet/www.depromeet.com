@@ -1,103 +1,96 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { css, Theme } from '@emotion/react';
 
-import { Button } from '~/components/Button';
-import { commonLayoutCss } from '~/styles/layout';
 import { mediaQuery } from '~/styles/media';
+
+import { LinkButton } from './LinkButton';
 
 export function RecruitEntrance() {
   return (
-    <section css={[commonLayoutCss, layoutCss]}>
-      <div css={imageContainerCss}>
-        <Image
-          src="/images/main/coin-drop.png"
-          width={400}
-          height={400}
-          alt="passport combination"
-        />
-      </div>
-      <div css={infoContainerCss}>
-        <h1>14기 모집 안내</h1>
+    <section css={layoutCss}>
+      <div css={descriptionCss}>
         <div>
-          <p>지원 자격부터 모집 직무까지</p>
-          <p>상세 내용을 한 번에 확인해보세요</p>
+          <Image
+            src="/images/main/left-bracket.svg"
+            alt="모집 안내 설명 시작"
+            width={16}
+            height={163}
+          />
         </div>
-        <Link href="/recruit">
-          <Button>바로가기</Button>
-        </Link>
+        <h1>
+          함께 몰입하고 성장하며,
+          <br />
+          배움을 공유할 수 있는,
+          <br />
+          디프만 15기를 모집합니다.
+        </h1>
+        <div>
+          <Image
+            src="/images/main/right-bracket.svg"
+            alt="모집 안내 설명 끝"
+            width={16}
+            height={163}
+          />
+        </div>
       </div>
+      <div css={imgFlexCss}>
+        <Image
+          src="/images/main/responsibility-clock.svg"
+          alt="인재상중 책임감"
+          width={292}
+          height={292}
+        />
+        <Image src="/images/main/digging-clock.svg" alt="인재상중 몰입" width={292} height={292} />
+        <Image src="/images/main/share-clock.svg" alt="인재상중 공유" width={292} height={292} />
+      </div>
+      <LinkButton color="black" text="모집 안내" />
     </section>
   );
 }
 
-const imageContainerCss = css`
-  padding: 24px;
-  ${mediaQuery('tablet')} {
-    width: 346px;
-    padding: 0;
-    margin-left: 53px;
-    img {
-      position: relative;
-      left: -53px;
-    }
-  }
-
-  ${mediaQuery('mobile')} {
-    width: 124px;
-    margin-left: 0;
-    img {
-      width: auto;
-      height: 170px;
-      left: -16px;
-    }
-  }
-`;
-
-const infoContainerCss = (theme: Theme) => css`
+const layoutCss = (theme: Theme) => css`
+  padding: 120px 0;
+  height: 894px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: space-between;
   gap: 24px;
-  text-align: left;
-  padding-right: 80px;
-
-  h1 {
-    ${theme.typos.pretendard.subTitle1};
-    color: ${theme.colors.white};
-  }
-  p {
-    ${theme.typos.pretendard.subTitle2};
-    color: ${theme.colors.gray100};
-  }
+  background-color: ${theme.colors.blue};
+  overflow: hidden;
 
   ${mediaQuery('tablet')} {
-    padding-right: 0;
-  }
-
-  ${mediaQuery('mobile')} {
-    gap: 8px;
-
-    p {
-      font-size: 14px;
-    }
-    button {
-      margin-top: 16px;
-    }
-  }
-`;
-
-const layoutCss = css`
-  display: flex;
-  gap: 80px;
-
-  ${mediaQuery('tablet')} {
-    gap: 7px;
+    gap: 20px;
   }
 
   ${mediaQuery('mobile')} {
     gap: 16px;
-    justify-content: center;
   }
+`;
+
+const descriptionCss = (theme: Theme) => css`
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+  h1 {
+    ${theme.typos.notosans.semibold24};
+    text-align: center;
+  }
+
+  ${mediaQuery('mobile')} {
+    h1 {
+      ${theme.typos.notosans.semibold20};
+    }
+
+    img {
+      width: 15px;
+      height: 150px;
+    }
+  }
+`;
+
+const imgFlexCss = css`
+  display: flex;
+  gap: 24px;
 `;
