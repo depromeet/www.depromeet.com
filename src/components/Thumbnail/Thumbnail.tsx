@@ -8,7 +8,7 @@ import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
 export type Link = {
-  type: 'Behance' | 'Github' | 'Web' | 'Android' | 'IOS';
+  type: 'Behance' | 'Github' | 'Web' | 'Android' | 'iOS';
   href: string;
 };
 
