@@ -41,7 +41,7 @@ export function Journey() {
 }
 
 const layoutCss = (theme: Theme) => css`
-  padding: 40px 0;
+  padding: 80px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,7 +55,7 @@ const layoutCss = (theme: Theme) => css`
   }
 
   ${mediaQuery('mobile')} {
-    padding: 0;
+    padding: 40px 0;
     h1 {
       ${theme.typos.notosans.semibold20};
       min-width: 300px;
@@ -70,6 +70,10 @@ const infoContainerCss = css`
   grid-template-columns: repeat(4, 1fr);
   gap: 0;
 
+  ${mediaQuery('tablet')} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   ${mediaQuery('mobile')} {
     min-width: 275px;
     grid-template-columns: repeat(2, 1fr);
@@ -80,7 +84,6 @@ const gridItemCss = (theme: Theme) => css`
   display: flex;
   flex-direction: column;
   align-items: center;
-
   color: black;
 
   span {
