@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { css, Theme } from '@emotion/react';
 import { m } from 'framer-motion';
 
-import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
+import { GNB_MOBILE_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import useIsInProgress from '~/hooks/useIsInProgress';
 import { mediaQuery } from '~/styles/media';
 
@@ -30,7 +30,7 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
       css={mobileMenuCss}
     >
       <ul>
-        {GNB_MENU_NAME.map(menu => (
+        {GNB_MOBILE_MENU_NAME.map(menu => (
           <m.li
             key={menu.name}
             onClick={onClickMenu}
@@ -74,7 +74,7 @@ const mobileMenuCss = (theme: Theme) => css`
 `;
 
 const linkCss = (theme: Theme) => css`
-  ${theme.typos.pretendard.body1};
+  ${theme.typos.notosans.regular14};
   color: ${theme.colors.white};
 
   ${mediaQuery('mobile')} {
@@ -83,7 +83,7 @@ const linkCss = (theme: Theme) => css`
 
   &:hover,
   &:active {
-    color: ${theme.colors.yellow500};
+    color: ${theme.colors.pink};
   }
 
   &:disabled {
@@ -93,7 +93,7 @@ const linkCss = (theme: Theme) => css`
 `;
 
 const activeLinkCss = (theme: Theme) => css`
-  color: ${theme.colors.yellow500};
+  color: ${theme.colors.pink};
 `;
 
 const inActiveLinkCss = (theme: Theme) => css`
