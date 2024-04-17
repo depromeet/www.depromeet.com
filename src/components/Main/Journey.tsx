@@ -1,9 +1,10 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { css, Theme } from '@emotion/react';
 
 import { QUANTIFIED_INFO } from '~/constant/aboutInfo';
 import { mediaQuery } from '~/styles/media';
+
+import { LinkButton } from './LinkButton';
 
 function DepromeetInformation() {
   return (
@@ -33,12 +34,7 @@ export function Journey() {
         <span css={spanCss}>성장추구형</span> 커뮤니티입니다.
       </h1>
       <DepromeetInformation />
-      <Link css={linkCss} href="/about">
-        ABOUT
-        <span css={arrowImgContainerCss}>
-          <Image src="/images/main/arrow.svg" alt="ABOUT 페이지로 이동" width={15} height={15} />
-        </span>
-      </Link>
+      <LinkButton color="black" text="ABOUT" />
     </section>
   );
 }
@@ -121,28 +117,4 @@ const emphasisCss = css`
       height: 32px;
     }
   }
-`;
-
-const linkCss = (theme: Theme) => css`
-  padding: 16px, 40px, 16px, 48px;
-  width: 205px;
-  height: 62px;
-  display: flex;
-  gap: 8px;
-  ${theme.typos.notosans.semibold20};
-  color: white;
-  background-color: black;
-  border-radius: 400px;
-  justify-content: center;
-  align-items: center;
-`;
-
-const arrowImgContainerCss = css`
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 400px;
-  background-color: white;
 `;
