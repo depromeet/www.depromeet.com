@@ -63,7 +63,7 @@ const mobileMenuCss = (theme: Theme) => css`
   top: 0;
   left: 0;
   margin: auto;
-  background-color: ${theme.colors.black800};
+  background-color: black;
   padding-top: 72px;
   border-bottom: 1px solid ${theme.colors.gray300};
 
