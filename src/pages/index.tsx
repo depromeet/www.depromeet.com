@@ -4,6 +4,7 @@ import { Journey } from '~/components/Main/Journey';
 import { RecruitEntrance } from '~/components/Main/RecruitEntrance';
 import { ProjectCarousel } from '~/components/ProjectCarousel';
 import { SEO } from '~/components/SEO';
+import { Subscribe } from '~/components/Subscribe';
 
 export default function Root() {
   return (
@@ -16,6 +17,7 @@ export default function Root() {
           <RecruitEntrance />
           <ProjectCarousel />
           <Ending />
+          <Subscribe />
         </div>
       </main>
     </>
