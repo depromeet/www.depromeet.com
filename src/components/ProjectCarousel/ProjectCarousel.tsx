@@ -8,14 +8,14 @@ import { mediaQuery } from '~/styles/media';
 
 import { LinkButton } from '../Main/LinkButton';
 
-const PROJECT_13 = PROJECT_LIST.filter(project => project.subTitle === '13기');
+const PROJECT_14 = PROJECT_LIST.filter(project => project.subTitle === '14기');
 
 export function ProjectCarousel() {
   return (
     <section css={layoutCss}>
       <SectionTitle title="14TH PROJECT" />
       <Marquee>
-        {PROJECT_13.map(project => (
+        {PROJECT_14.map(project => (
           <ProjectCarouselItem key={project.title} {...project} />
         ))}
       </Marquee>
