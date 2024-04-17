@@ -7,19 +7,6 @@ import { mediaQuery } from '~/styles/media';
 
 import { LinkButton } from './LinkButton';
 
-function DepromeetInformation() {
-  return (
-    <div css={infoContainerCss}>
-      {QUANTIFIED_INFO.map(({ label, text }, idx) => (
-        <div key={idx} css={gridItemCss}>
-          <span>{text}</span>
-          <h3>{label}</h3>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 export function Journey() {
   return (
     <section css={[commonLayoutCss, layoutCss]}>
@@ -37,6 +24,19 @@ export function Journey() {
       <DepromeetInformation />
       <LinkButton color="black" text="ABOUT" href="/about" />
     </section>
+  );
+}
+
+function DepromeetInformation() {
+  return (
+    <div css={infoContainerCss}>
+      {QUANTIFIED_INFO.map(({ label, text }, idx) => (
+        <div key={idx} css={gridItemCss}>
+          <span>{text}</span>
+          <h3>{label}</h3>
+        </div>
+      ))}
+    </div>
   );
 }
 
