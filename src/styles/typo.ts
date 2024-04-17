@@ -97,4 +97,130 @@ export const typos = {
       letter-spacing: ${pxToRem(-0.18)};
     `,
   },
+  /**/
+  bebas: {
+    40: css`
+      font-family: Bebas;
+      font-size: ${pxToRem(40)};
+      font-style: normal;
+      font-weight: 400;
+      line-height: ${pxToRem(48)};
+    `,
+    32: css`
+      font-family: Bebas;
+      font-size: ${pxToRem(30)};
+      font-style: normal;
+      font-weight: 400;
+      line-height: ${pxToRem(36)};
+    `,
+    24: css`
+      font-family: Bebas;
+      font-size: ${pxToRem(24)};
+      font-style: normal;
+      font-weight: 400;
+      line-height: ${pxToRem(28.8)};
+      /* letter-spacing: ${pxToRem(-0.28)}; */
+      ${mediaQuery('mobile')} {
+        font-size: ${pxToRem(20)};
+        /* letter-spacing: ${pxToRem(-0.16)}; */
+      }
+    `,
+    14: css`
+      font-family: Bebas;
+      font-size: ${pxToRem(14)};
+      font-style: normal;
+      font-weight: 400;
+      line-height: ${pxToRem(16.8)};
+      /* letter-spacing: ${pxToRem(-0.18)}; */
+    `,
+  },
+  notosans: {
+    semibold32: css`
+      font-family: NotoSansVariable;
+      font-size: ${pxToRem(32)};
+      font-style: normal;
+      font-weight: 600;
+      line-height: ${pxToRem(48)};
+      letter-spacing: -4%;
+    `,
+    semibold24: css`
+      font-family: NotoSansVariable;
+      font-size: ${pxToRem(24)};
+      font-style: normal;
+      font-weight: 600;
+      line-height: ${pxToRem(36)};
+      letter-spacing: -4%;
+    `,
+    semibold20: css`
+      font-family: NotoSansVariable;
+      font-size: ${pxToRem(20)};
+      font-style: normal;
+      font-weight: 600;
+      line-height: ${pxToRem(30)};
+      letter-spacing: -4%;
+      /* letter-spacing: ${pxToRem(-0.28)}; */
+      /* ${mediaQuery('mobile')} { */
+      /* font-size: ${pxToRem(20)}; */
+      /* letter-spacing: ${pxToRem(-0.16)}; */
+      /* } */
+    `,
+    semibold16: css`
+      font-family: NotoSansVariable;
+      font-size: ${pxToRem(16)};
+      font-style: normal;
+      font-weight: 600;
+      line-height: ${pxToRem(24)};
+      letter-spacing: -4%;
+      /* letter-spacing: ${pxToRem(-0.18)}; */
+    `,
+    semibold14: css`
+      font-family: NotoSansVariable;
+      font-size: ${pxToRem(14)};
+      font-style: normal;
+      font-weight: 600;
+      line-height: ${pxToRem(21)};
+      letter-spacing: -4%;
+      /* letter-spacing: ${pxToRem(-0.18)}; */
+    `,
+    regular20: css`
+      font-family: NotoSansVariable;
+      font-size: ${pxToRem(20)};
+      font-style: normal;
+      font-weight: 600;
+      line-height: ${pxToRem(30)};
+      letter-spacing: -5%;
+    `,
+    regular18: css`
+      font-family: NotoSansVariable;
+      font-size: ${pxToRem(18)};
+      font-style: normal;
+      font-weight: 400;
+      line-height: ${pxToRem(27)};
+      letter-spacing: -5%;
+    `,
+    regular16: css`
+      font-family: NotoSansVariable;
+      font-size: ${pxToRem(16)};
+      font-style: normal;
+      font-weight: 400;
+      line-height: ${pxToRem(24)};
+      letter-spacing: -5%;
+    `,
+    regular14: css`
+      font-family: NotoSansVariable;
+      font-size: ${pxToRem(14)};
+      font-style: normal;
+      font-weight: 400;
+      line-height: ${pxToRem(21)};
+      letter-spacing: -5%;
+    `,
+    regular8: css`
+      font-family: NotoSansVariable;
+      font-size: ${pxToRem(8)};
+      font-style: normal;
+      font-weight: 400;
+      line-height: ${pxToRem(12)};
+      letter-spacing: -2%;
+    `,
+  },
 };
