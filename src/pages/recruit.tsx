@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 
 import { FAQ } from '~/components/FAQ';
+import { Intro } from '~/components/Intro';
 import { Positions } from '~/components/Positions';
 import { Qualification } from '~/components/Qualification';
 import { Review } from '~/components/Review';
@@ -15,6 +16,13 @@ export default function Recruit() {
     <>
       <SEO title="디프만 - Recruit" />
       <main css={mainCss}>
+        <Intro
+          imageUrl="/images/recruit/intro-img.svg"
+          title="15기 인재상 및 모집 인트로"
+          width={1024}
+          height={760}
+          color="pink"
+        />
         <Qualification />
         <section>
           <SectionTitle
