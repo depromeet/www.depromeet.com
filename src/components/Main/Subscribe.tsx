@@ -17,8 +17,7 @@ export function Subscribe() {
           커리어 성장을 위한 모든 이야기를 뉴스레터로 보내드려요.
         </h3>
       </div>
-      {/* TODO: 디프만 stibee 주소 기입 필요 */}
-      <Link href="https://stibee.com/" css={linkCss}>
+      <Link href="https://depromeet.stibee.com/subscribe/" css={linkCss}>
         <span>디프만 뉴스레터 구독하기</span>
       </Link>
     </section>
