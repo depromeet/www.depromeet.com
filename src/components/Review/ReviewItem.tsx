@@ -113,6 +113,7 @@ const linkLayoutCss = css`
 `;
 
 const arrowIconCss = (theme: Theme) => css`
+  margin-top: 2px;
   width: 24px;
   height: 24px;
 
@@ -126,9 +127,15 @@ const linkCss = (theme: Theme) => css`
   color: ${theme.colors.pink};
   margin-top: 20px;
   display: flex;
+  gap: 4px;
   align-items: center;
 
   ${mediaQuery('mobile')} {
     ${theme.typos.notosans.regular14};
+
+    > Svg {
+      width: 18px;
+      height: 18px;
+    }
   }
 `;
