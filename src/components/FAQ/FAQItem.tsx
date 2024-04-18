@@ -1,8 +1,9 @@
-import Image from 'next/image';
 import { css, Theme } from '@emotion/react';
 import { motion, Variants } from 'framer-motion';
 
 import { mediaQuery } from '~/styles/media';
+
+import { NarrowArrowIcon } from '../Icons';
 
 interface FAQItemProps {
   isOpen: boolean;
@@ -12,7 +13,6 @@ interface FAQItemProps {
 }
 
 export function FAQItem({ isOpen, onClickOpenButton, question, answer }: FAQItemProps) {
-  const imagePath = `/images/recruit/${isOpen ? `up` : `down`}-arrow.svg`;
   return (
     <li role="button" aria-expanded={isOpen} onClick={onClickOpenButton} css={liCss}>
       <motion.div
@@ -27,7 +27,11 @@ export function FAQItem({ isOpen, onClickOpenButton, question, answer }: FAQItem
           transition={{ duration: 0.3, ease: 'easeOut' }}
           css={theme => arrowContainerCss(theme, isOpen)}
         >
-          <Image src={imagePath} width={24} height={24} alt="arrow" />
+          <NarrowArrowIcon
+            direction={isOpen ? 'up' : 'down'}
+            color={isOpen ? '' : '#FFFFFF'}
+            fill={isOpen ? '' : '#FFFFFF'}
+          />
         </motion.div>
       </motion.div>
       <motion.div

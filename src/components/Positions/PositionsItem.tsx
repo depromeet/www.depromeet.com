@@ -7,6 +7,8 @@ import { POSITION_BASE } from '~/constant/image';
 import { defaultFadeInVariants } from '~/constant/motion';
 import { mediaQuery } from '~/styles/media';
 
+import { NarrowArrowIcon } from '../Icons';
+
 type Position = 'aos' | 'design' | 'ios' | 'server' | 'web';
 
 interface PositionsItemProps {
@@ -44,14 +46,8 @@ export function PositionsItem({ type, title, link, description }: PositionsItemP
         <div css={linkContainerCss}>
           <Link css={linkCss} href={link}>
             지원하기
-            <span css={arrowCss}>
-              <Image
-                className="position-img"
-                src="/images/recruit/right-arrow.svg"
-                alt="지원하기 버튼"
-                width={24}
-                height={24}
-              />
+            <span css={arrowIconCss}>
+              <NarrowArrowIcon direction="right" fill="black" />
             </span>
           </Link>
         </div>
@@ -144,7 +140,7 @@ const linkCss = (theme: Theme) => css`
   ${theme.typos.notosans.regular20}
 `;
 
-const arrowCss = css`
+const arrowIconCss = css`
   width: 24px;
   height: 24px;
   background-color: white;
