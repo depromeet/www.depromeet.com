@@ -24,14 +24,14 @@ export function Subscribe() {
   );
 }
 
-const containerCss = css`
+const containerCss = (theme: Theme) => css`
   height: 530px;
   display: flex;
   flex-direction: column;
   gap: 40px;
   align-items: center;
   justify-content: center;
-  background-color: #f4f4f4;
+  background-color: ${theme.colors.lightGray};
 `;
 
 const descriptionCss = (theme: Theme) => css`
