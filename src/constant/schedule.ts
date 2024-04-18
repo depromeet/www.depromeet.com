@@ -1,68 +1,69 @@
-import { theme } from '~/styles/theme';
-
-interface Schedule {
-  label: string;
+export interface Schedule {
   title: string;
+  description?: string;
   schedule: Array<{
-    date: string;
     content: string;
+    date: string;
   }>;
-
-  titleBgColor: keyof typeof theme.colors;
 }
 
 export const MEMBER_SCHEDULE: Schedule = {
-  label: 'members',
   title: '멤버 모집',
-  titleBgColor: 'blue400',
   schedule: [
     {
-      date: '10.02',
       content: '서류 접수 시작',
+      date: '04.27',
     },
     {
-      date: '10.08',
       content: '서류 마감',
+      date: '05.04',
     },
     {
-      date: '10.21-22',
+      content: '서류 발표',
+      date: '05.15(PM 6)',
+    },
+    {
       content: '온라인 면접',
+      date: '05.18-19',
     },
     {
-      date: '10.31',
-      content: '최종 합격 안내',
+      content: '최종 합격',
+      date: '05.28(PM 6)',
     },
   ],
 };
 
 export const SESSION_SCHEDULES: Schedule = {
-  label: 'sessions',
-  title: '오프라인 정기 세션',
-  titleBgColor: 'yellow400',
+  title: '오프라인 세션',
+  description: '세션은 매주 토요일 진행되며, 오프라인 세션은 오프라인에서 이뤄집니다.',
   schedule: [
     {
-      date: '11.04',
       content: 'OT',
+      date: '06.01',
     },
     {
-      date: '11.25',
       content: '네트워킹',
+      date: '06.15',
     },
     {
-      date: '12.09',
-      content: 'UT',
+      content: 'UT 세션',
+      date: '07.06',
     },
     {
-      date: '12.23',
       content: '중간 발표',
+      date: '07.20',
     },
     {
-      date: '02.03',
+      content: '해커톤',
+      date: '08.03',
+    },
+    {
       content: '런칭데이',
+      date: '08.31',
     },
     {
-      date: '02.17',
       content: '최종 발표',
+      date: '09.14',
     },
   ],
 };
