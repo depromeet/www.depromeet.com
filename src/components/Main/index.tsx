@@ -1,5 +1,4 @@
 export { Ending } from './Ending';
-export { Intro } from './Intro';
 export { Journey } from './Journey';
 export { RecruitEntrance } from './RecruitEntrance';
 export { RecruitTextSection } from './RecruitTextSection';
