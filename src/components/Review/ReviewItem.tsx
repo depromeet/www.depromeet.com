@@ -35,12 +35,12 @@ export function ReviewItem({ name, group, part, summary, links }: ReviewItemProp
 
 const layoutCss = (theme: Theme) => css`
   padding: 44px 52px;
-  background-color: ${theme.colors.black400};
+  background-color: ${theme.colors.lightGray};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   max-width: 476px;
-  height: 289px;
+  height: 294px;
   margin-left: 20px;
 
   ${mediaQuery('tablet')} {
@@ -51,8 +51,8 @@ const layoutCss = (theme: Theme) => css`
 
   ${mediaQuery('mobile')} {
     margin-left: 8px;
-    max-width: 277px;
-    height: 212px;
+    max-width: 293px;
+    height: 220px;
     padding: 20px;
   }
 `;
@@ -61,32 +61,38 @@ const titleLayoutCss = css`
   display: flex;
   gap: 12px;
   align-items: center;
+
+  ${mediaQuery('mobile')} {
+    gap: 8px;
+  }
 `;
 
 const titleH3Css = (theme: Theme) => css`
-  ${theme.typos.pretendard.subTitle2};
-  color: ${theme.colors.white};
-
-  ${mediaQuery('tablet')} {
-    ${theme.typos.pretendard.subTitle1};
-  }
+  ${theme.typos.notosans.semibold20};
+  color: black;
 
   ${mediaQuery('mobile')} {
-    ${theme.typos.pretendard.subTitle1};
+    ${theme.typos.notosans.semibold16};
   }
 `;
 
 const titleSpanCss = (theme: Theme) => css`
-  ${theme.typos.pretendard.body1};
-  color: ${theme.colors.white};
+  ${theme.typos.notosans.semibold16};
+  color: ${theme.colors.gray};
   display: flex;
-  gap: 8px;
+  gap: 5px;
+  margin-top: 2px;
+
+  ${mediaQuery('mobile')} {
+    ${theme.typos.notosans.regular14};
+  }
 `;
 
 const summaryCss = (theme: Theme) => css`
-  ${theme.typos.pretendard.body1};
-  color: ${theme.colors.gray100};
+  ${theme.typos.notosans.regular18};
+  color: black;
   margin-top: 16px;
+
   > p {
     word-break: break-all;
   }
@@ -94,7 +100,9 @@ const summaryCss = (theme: Theme) => css`
   ${mediaQuery('tablet')} {
     margin-top: 32px;
   }
+
   ${mediaQuery('mobile')} {
+    ${theme.typos.notosans.regular14};
     margin-top: 8px;
   }
 `;
@@ -109,21 +117,18 @@ const arrowIconCss = (theme: Theme) => css`
   height: 24px;
 
   > path {
-    stroke: ${theme.colors.blue400};
+    stroke: ${theme.colors.pink};
   }
 `;
 
 const linkCss = (theme: Theme) => css`
-  ${theme.typos.pretendard.body1};
-  color: ${theme.colors.blue400};
+  ${theme.typos.notosans.regular18};
+  color: ${theme.colors.pink};
   margin-top: 20px;
   display: flex;
   align-items: center;
 
-  ${mediaQuery('tablet')} {
-    margin-top: 20px;
-  }
   ${mediaQuery('mobile')} {
-    margin-top: 24px;
+    ${theme.typos.notosans.regular14};
   }
 `;

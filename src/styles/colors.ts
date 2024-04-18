@@ -19,4 +19,5 @@ export const colors = {
   pink: '#FF94B5',
   green: '#1EC4B4',
   lightGray: '#F4F4F4',
+  gray: '#999999',
 } as const;

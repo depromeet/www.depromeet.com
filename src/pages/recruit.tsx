@@ -18,9 +18,9 @@ export default function Recruit() {
           height={760}
           color="pink"
         />
+        <Positions />
         <Qualification />
         <Schedules />
-        <Positions />
         <Review />
         <FAQ />
       </main>
