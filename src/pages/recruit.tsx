@@ -1,5 +1,3 @@
-import { css } from '@emotion/react';
-
 import { FAQ } from '~/components/FAQ';
 import { Intro } from '~/components/Intro';
 import { Positions } from '~/components/Positions';
@@ -9,13 +7,12 @@ import { ScheduleSection } from '~/components/ScheduleSection';
 import { SectionTitle } from '~/components/SectionTitle';
 import { SEO } from '~/components/SEO';
 import { MEMBER_SCHEDULE, SESSION_SCHEDULES } from '~/constant/schedule';
-import { mediaQuery } from '~/styles/media';
 
 export default function Recruit() {
   return (
     <>
       <SEO title="디프만 - Recruit" />
-      <main css={mainCss}>
+      <main>
         <Intro
           imageUrl="/images/recruit/intro-img.svg"
           title="15기 인재상 및 모집 인트로"
@@ -40,15 +37,3 @@ export default function Recruit() {
     </>
   );
 }
-
-const mainCss = css`
-  & > section {
-    margin-bottom: 200px;
-  }
-
-  ${mediaQuery('mobile')} {
-    & > section {
-      margin-bottom: 120px;
-    }
-  }
-`;
