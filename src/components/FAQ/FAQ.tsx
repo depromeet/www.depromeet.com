@@ -21,13 +21,17 @@ export function FAQ() {
       <ul css={tabLayoutCss}>
         {FAQ_GROUP.map(label => (
           <li key={label} onClick={() => onClickTab(label)}>
-            <button
-              role="tab"
-              aria-selected={isActive(label)}
-              css={theme => tabCss(theme, isActive(label))}
-            >
-              {label}
-            </button>
+            <div css={tabWrapperCss}>
+              <div css={theme => tabContainerCss(theme, isActive(label))}>
+                <button
+                  role="tab"
+                  aria-selected={isActive(label)}
+                  css={theme => tabCss(theme, isActive(label))}
+                >
+                  {label}
+                </button>
+              </div>
+            </div>
           </li>
         ))}
       </ul>
@@ -70,16 +74,19 @@ const tabLayoutCss = css`
   }
 `;
 
+const tabWrapperCss = css`
+  padding: 16px 24px;
+`;
+
+const tabContainerCss = (theme: Theme, isActive: boolean) => css`
+  padding-bottom: 5px;
+  border-bottom: ${isActive ? '3px' : '0'} solid ${theme.colors.green};
+`;
+
 const tabCss = (theme: Theme, isActive: boolean) => css`
-  ${theme.typos.pretendard.subTitle2}
+  ${theme.typos.notosans.semibold16}
   color: ${isActive ? theme.colors.green : theme.colors.gray};
   cursor: pointer;
-  padding: 16px 24px;
-
-  ${mediaQuery('mobile')} {
-    font-size: 14px;
-    padding: 8px 12px;
-  }
 `;
 
 const listCss = css`
