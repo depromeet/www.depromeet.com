@@ -1,7 +1,10 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { css, Theme } from '@emotion/react';
+import { m } from 'framer-motion';
 
 import { POSITION_BASE } from '~/constant/image';
+import { defaultFadeInVariants } from '~/constant/motion';
 import { mediaQuery } from '~/styles/media';
 
 type Position = 'aos' | 'design' | 'ios' | 'server' | 'web';
@@ -10,61 +13,147 @@ interface PositionsItemProps {
   type: Position;
   title: string;
   link: string;
+  description: string[];
 }
 
-export function PositionsItem({ type, title }: PositionsItemProps) {
+export function PositionsItem({ type, title, link, description }: PositionsItemProps) {
   return (
-    <div css={layoutCss}>
-      <Image width={112} height={112} src={`${POSITION_BASE}/${type}.png`} alt={title} />
-      <div>
-        <h3 css={titleCss}>{title}</h3>
+    <m.article
+      css={articleCss}
+      variants={defaultFadeInVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
+      <div css={theme => layoutCss(theme, type)}>
+        <div css={imgContainerCss}>
+          <Image fill src={`${POSITION_BASE}/${type}.svg`} alt={title} />
+        </div>
       </div>
-    </div>
+      <div css={contentsCss}>
+        <div>
+          <h1 css={titleCss}>
+            {title} {type !== 'design' ? 'DEVELOPER' : 'DESIGNER'}
+          </h1>
+          <div css={descriptionCss}>
+            {description.map((comment, idx) => (
+              <p key={idx}>{comment}</p>
+            ))}
+          </div>
+        </div>
+        <div css={linkContainerCss}>
+          <Link css={linkCss} href={link}>
+            지원하기
+            <span css={arrowCss}>
+              <Image
+                className="position-img"
+                src="/images/recruit/right-arrow.svg"
+                alt="지원하기 버튼"
+                width={24}
+                height={24}
+              />
+            </span>
+          </Link>
+        </div>
+      </div>
+    </m.article>
   );
 }
 
-const layoutCss = (theme: Theme) => css`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 36px 32px;
-  background-color: ${theme.colors.black400};
-  width: 306px;
-  height: 272px;
+const getColorByPosition = (theme: Theme, position: string) => {
+  if (position === 'web') return theme.colors.yellow;
+  else if (position === 'server') return theme.colors.purple;
+  else if (position === 'ios') return theme.colors.pink;
+  else if (position === 'aos') return theme.colors.green;
+  else if (position === 'design') return theme.colors.blue;
+};
 
-  img {
-    position: relative;
-    left: -14px;
-  }
+const articleCss = css`
+  position: relative;
+  width: 306px;
+  height: 430px;
+  overflow: hidden;
 
   ${mediaQuery('tablet')} {
-    width: 100%;
-    height: 248px;
-    padding: 24px 32px;
+    max-width: 100%;
   }
-
   ${mediaQuery('mobile')} {
-    padding: 8px 16px;
-    height: 92px;
-    flex-direction: row;
-    gap: 16px;
-    align-items: center;
-
-    img {
-      position: static;
-      width: 76px;
-      height: 76px;
-    }
+    max-width: 100%;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+  &:hover img {
+    filter: blur(6px) brightness(0.7);
   }
 `;
 
-const titleCss = (theme: Theme) => css`
-  ${theme.typos.decimal.body1};
-  color: ${theme.colors.white};
-  margin-top: 28px;
+const contentsCss = css`
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 306px;
+  height: 430px;
+  display: flex;
+  padding: 24px;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  transition: opacity 0.3s ease;
+  opacity: 0;
 
-  ${mediaQuery('mobile')} {
-    margin-top: 0;
-    font-size: 16px;
+  &:hover {
+    background-color: rgba(19, 28, 40, 0.7);
+    opacity: 1;
   }
+`;
+
+const layoutCss = (theme: Theme, position: string) => css`
+  background-color: ${getColorByPosition(theme, position)};
+  width: 306px;
+  height: 430px;
+`;
+
+const titleCss = (theme: Theme) => css`
+  ${theme.typos.bebas.regular32};
+  color: white;
+`;
+
+const descriptionCss = (theme: Theme) => css`
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  > p {
+    color: white;
+    ${theme.typos.notosans.regular16}
+  }
+`;
+
+const linkContainerCss = css`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const linkCss = (theme: Theme) => css`
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  color: white;
+  ${theme.typos.notosans.regular20}
+`;
+
+const arrowCss = css`
+  width: 24px;
+  height: 24px;
+  background-color: white;
+  border-radius: 400px;
+`;
+
+const imgContainerCss = css`
+  top: 15px;
+  position: relative;
+  width: 306px;
+  height: 310px;
 `;
