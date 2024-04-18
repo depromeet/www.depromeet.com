@@ -1,13 +1,16 @@
 import Image from 'next/image';
-import { css, Theme } from '@emotion/react';
+import { css } from '@emotion/react';
 
+import { ColorType } from '~/constant/color';
 import { mediaQuery } from '~/styles/media';
+import { theme } from '~/styles/theme';
 
 type IntroProps = {
   imageUrl: string;
   title: string;
   width: number;
   height: number;
+  color: ColorType;
 };
 
 type ImageSize = {
@@ -17,9 +20,9 @@ type ImageSize = {
 
 const MAX_WIDTH = 1024;
 
-export function Intro({ imageUrl, title, width, height }: IntroProps) {
+export function Intro({ imageUrl, title, width, height, color }: IntroProps) {
   return (
-    <section css={containerCss}>
+    <section css={containerCss({ color: theme.colors[color] })}>
       <div css={bgImageCss({ width, height })}>
         <Image src={imageUrl} alt={title} width={width} height={height} />
       </div>
@@ -27,12 +30,12 @@ export function Intro({ imageUrl, title, width, height }: IntroProps) {
   );
 }
 
-const containerCss = (theme: Theme) => css`
+const containerCss = ({ color }: { color: string }) => css`
   padding-top: 61px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${theme.colors.blue};
+  background-color: ${color};
 
   ${mediaQuery('mobile')} {
     padding-top: 75px;

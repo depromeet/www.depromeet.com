@@ -14,6 +14,7 @@ export default function Root() {
             title="15기 모집 인트로"
             width={1024}
             height={780}
+            color={'blue'}
           />
           <Journey />
           <RecruitEntrance />
