@@ -19,3 +19,10 @@ export const ABOUT_INFO = [
     reverse: true,
   },
 ];
+
+export const QUANTIFIED_INFO = [
+  { label: '탄생한지', text: '8YEARS' },
+  { label: '10-14기 런칭 성공률', text: '100%' },
+  { label: '5-14기 런칭 서비스', text: '50+' },
+  { label: '누적 멤버 수', text: '900+' },
+];

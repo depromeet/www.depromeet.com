@@ -1,14 +1,13 @@
-import { css } from '@emotion/react';
+import { css, Theme } from '@emotion/react';
 import Marquee from 'react-fast-marquee';
 
 import { ReviewItem } from '~/components/Review/ReviewItem';
-import { SectionTitle } from '~/components/SectionTitle';
 import { REVIEWS } from '~/constant/review';
 
 export function Review() {
   return (
     <section css={layoutCss}>
-      <SectionTitle label="Review" title="지난 기수 후기" />
+      <h1>멤버 후기</h1>
       <Marquee>
         {REVIEWS.map(({ ...info }) => (
           <ReviewItem key={info.name} {...info} />
@@ -18,9 +17,16 @@ export function Review() {
   );
 }
 
-const layoutCss = css`
+const layoutCss = (theme: Theme) => css`
+  padding: 120px 0;
   display: flex;
   flex-direction: column;
+  gap: 16px;
   align-items: center;
   overflow: hidden;
+  background-color: white;
+
+  h1 {
+    ${theme.typos.notosans.semibold20}
+  }
 `;
