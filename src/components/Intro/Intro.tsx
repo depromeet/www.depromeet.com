@@ -24,7 +24,7 @@ export function Intro({ imageUrl, title, width, height, color }: IntroProps) {
   return (
     <section css={containerCss({ color: theme.colors[color] })}>
       <div css={bgImageCss({ width, height })}>
-        <Image src={imageUrl} alt={title} width={width} height={height} />
+        <Image src={imageUrl} alt={title} width={width} height={height} priority />
       </div>
     </section>
   );
