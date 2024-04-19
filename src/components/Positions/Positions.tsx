@@ -5,6 +5,8 @@ import { PositionsItem } from '~/components/Positions/PositionsItem';
 import { POSITIONS } from '~/constant/position';
 import { mediaQuery } from '~/styles/media';
 
+import { MobilePositionItem } from './MobilePositionItem';
+
 export function Positions() {
   return (
     <section css={layoutCss}>
@@ -38,6 +40,16 @@ export function Positions() {
         <div css={listCss}>
           {POSITIONS.map(({ ...info }) => (
             <PositionsItem key={info.type} {...info} />
+          ))}
+        </div>
+        <div css={mobileListCss}>
+          {POSITIONS.map(({ ...info }) => (
+            <MobilePositionItem
+              key={info.type}
+              title={info.title}
+              type={info.type}
+              link={info.link}
+            />
           ))}
         </div>
       </div>
@@ -122,16 +134,23 @@ const listCss = css`
   width: 960px; // TODO 전체 너비 상수화
 
   ${mediaQuery('tablet')} {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
     width: 100%;
   }
+  ${mediaQuery('mobile')} {
+    display: none;
+  }
+`;
+
+const mobileListCss = css`
+  display: none;
 
   ${mediaQuery('mobile')} {
+    padding: 0 16px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
-
     gap: 8px;
   }
 `;

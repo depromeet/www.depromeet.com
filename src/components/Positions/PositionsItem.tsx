@@ -5,11 +5,10 @@ import { m } from 'framer-motion';
 
 import { POSITION_BASE } from '~/constant/image';
 import { defaultFadeInVariants } from '~/constant/motion';
+import { getColorByPosition, Position } from '~/constant/position';
 import { mediaQuery } from '~/styles/media';
 
 import { NarrowArrowIcon } from '../Icons';
-
-type Position = 'aos' | 'design' | 'ios' | 'server' | 'web';
 
 interface PositionsItemProps {
   type: Position;
@@ -63,14 +62,6 @@ export function PositionsItem({ type, title, link, description }: PositionsItemP
     </m.article>
   );
 }
-
-const getColorByPosition = (theme: Theme, position: string) => {
-  if (position === 'web') return theme.colors.yellow;
-  else if (position === 'server') return theme.colors.purple;
-  else if (position === 'ios') return theme.colors.pink;
-  else if (position === 'aos') return theme.colors.green;
-  else if (position === 'design') return theme.colors.blue;
-};
 
 const articleCss = css`
   position: relative;
