@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { css, Theme } from '@emotion/react';
 import { m } from 'framer-motion';
 
+import { getDDay, START_DATE } from '~/constant/common';
 import { GNB_MOBILE_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import useIsInProgress from '~/hooks/useIsInProgress';
 import { mediaQuery } from '~/styles/media';
@@ -14,6 +15,7 @@ interface MobileMenuProps {
 export function MobileMenu({ onClickMenu }: MobileMenuProps) {
   const { pathname, push } = useRouter();
   const { isInProgress } = useIsInProgress();
+  const dday = getDDay(START_DATE);
 
   const getActiveLinkcss = (menu: GNBMenu) => {
     if (pathname.startsWith(menu.href)) {
@@ -40,7 +42,7 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
           >
             {menu.type === 'button' ? (
               <button disabled={!isInProgress} onClick={() => push(menu.href)} css={linkCss}>
-                {menu.name}
+                {isInProgress ? menu.name : dday < 0 ? `D${dday}` : `D+${dday}`}
               </button>
             ) : (
               <Link href={menu.href} css={[linkCss, getActiveLinkcss(menu)]}>
