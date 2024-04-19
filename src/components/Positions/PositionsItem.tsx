@@ -35,7 +35,15 @@ export function PositionsItem({ type, title, link, description }: PositionsItemP
       <div css={contentsCss}>
         <div>
           <h1 css={titleCss}>
-            {title} {type !== 'design' ? 'DEVELOPER' : 'DESIGNER'}
+            {title === 'iOS' ? (
+              <>
+                <span>i</span>
+                OS
+              </>
+            ) : (
+              title
+            )}{' '}
+            {type !== 'design' ? 'DEVELOPER' : 'DESIGNER'}
           </h1>
           <div css={descriptionCss}>
             {description.map((comment, idx) => (
@@ -113,6 +121,10 @@ const layoutCss = (theme: Theme, position: string) => css`
 const titleCss = (theme: Theme) => css`
   ${theme.typos.bebas.regular32};
   color: white;
+
+  > span {
+    ${theme.typos.notosans.semibold28};
+  }
 `;
 
 const descriptionCss = (theme: Theme) => css`
