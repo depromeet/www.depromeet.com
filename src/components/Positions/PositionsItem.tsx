@@ -50,14 +50,16 @@ export function PositionsItem({ type, title, link, description }: PositionsItemP
             ))}
           </div>
         </div>
-        <div css={linkContainerCss}>
-          <Link css={linkCss} href={link}>
-            지원하기
-            <span css={arrowIconCss}>
-              <NarrowArrowIcon direction="right" fill="black" />
-            </span>
-          </Link>
-        </div>
+        {link && (
+          <div css={linkContainerCss}>
+            <Link css={linkCss} href={link}>
+              지원하기
+              <span css={arrowIconCss}>
+                <NarrowArrowIcon direction="right" fill="black" />
+              </span>
+            </Link>
+          </div>
+        )}
       </div>
     </m.article>
   );

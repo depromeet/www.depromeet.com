@@ -30,12 +30,14 @@ export function MobilePositionItem({ type, title, link }: MobilePositionsItemPro
             title
           )}
         </h1>
-        <Link href={link} css={linkCss}>
-          지원하기
-          <span css={arrowIconCss}>
-            <NarrowArrowIcon direction="right" fill="white" />
-          </span>
-        </Link>
+        {link && (
+          <Link href={link} css={linkCss}>
+            지원하기
+            <span css={arrowIconCss}>
+              <NarrowArrowIcon direction="right" fill="white" />
+            </span>
+          </Link>
+        )}
       </div>
     </div>
   );
