@@ -2,14 +2,11 @@ import Image from 'next/image';
 import { css, Theme } from '@emotion/react';
 
 import { QUANTIFIED_INFO } from '~/constant/aboutInfo';
-import { commonLayoutCss } from '~/styles/layout';
 import { mediaQuery } from '~/styles/media';
-
-import { LinkButton } from './LinkButton';
 
 export function Journey() {
   return (
-    <section css={[commonLayoutCss, layoutCss]}>
+    <div css={layoutCss}>
       <h1>
         디프만은 디자이너와 개발자가 서비스 기획부터
         <br />
@@ -22,8 +19,7 @@ export function Journey() {
         <span css={spanCss}>성장추구형</span> 커뮤니티입니다.
       </h1>
       <DepromeetInformation />
-      <LinkButton color="black" text="ABOUT" href="/about" />
-    </section>
+    </div>
   );
 }
 
@@ -41,14 +37,11 @@ function DepromeetInformation() {
 }
 
 const layoutCss = (theme: Theme) => css`
-  padding: 80px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 80px;
-
   color: black;
-  background-color: white;
 
   h1 {
     ${theme.typos.notosans.semibold32};
@@ -66,6 +59,7 @@ const layoutCss = (theme: Theme) => css`
 
 const infoContainerCss = css`
   width: 100%;
+  max-width: 1024px;
   min-width: 660px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);

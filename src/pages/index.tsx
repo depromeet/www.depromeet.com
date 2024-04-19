@@ -1,5 +1,5 @@
 import { Intro } from '~/components/Intro';
-import { Ending, Journey, RecruitEntrance, Subscribe } from '~/components/Main';
+import { Ending, JourneyEntrance, RecruitEntrance, Subscribe } from '~/components/Main';
 import { ProjectCarousel } from '~/components/ProjectCarousel';
 import { SEO } from '~/components/SEO';
 
@@ -16,7 +16,7 @@ export default function Root() {
             height={780}
             color={'blue'}
           />
-          <Journey />
+          <JourneyEntrance />
           <RecruitEntrance />
           <ProjectCarousel />
           <Ending />
