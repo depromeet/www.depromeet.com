@@ -31,8 +31,7 @@ function ApplyButton() {
   );
 }
 
-const linkButtonCss = (theme: Theme) => css`
-  ${theme.typos.notosans.semibold14};
+const linkButtonCss = css`
   width: 105px;
   height: 37px;
   padding: 8px 24px 8px 24px;
