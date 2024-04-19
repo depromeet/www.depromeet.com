@@ -25,7 +25,7 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
   return (
     <m.article
       initial={{ height: 0, opacity: 0 }}
-      animate={{ height: '234px', opacity: 1 }}
+      animate={{ height: '310px', opacity: 1 }}
       exit={{ height: 0, opacity: 0 }}
       css={mobileMenuCss}
     >
@@ -56,9 +56,7 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
 
 const mobileMenuCss = (theme: Theme) => css`
   z-index: 9997;
-
   width: 100vw;
-  height: fit-content;
   position: fixed;
   top: 0;
   left: 0;
@@ -68,6 +66,7 @@ const mobileMenuCss = (theme: Theme) => css`
   border-bottom: 1px solid ${theme.colors.gray300};
 
   overflow: hidden;
+
   li {
     padding: 12px 32px;
   }
