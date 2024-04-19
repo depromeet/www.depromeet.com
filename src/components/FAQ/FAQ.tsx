@@ -2,13 +2,11 @@ import { useState } from 'react';
 import { css, Theme } from '@emotion/react';
 
 import { FAQList } from '~/components/FAQ/FAQList';
-import { SectionTitle } from '~/components/SectionTitle';
 import { FAQ_GROUP, FAQGroupType, FAQS } from '~/constant/faq';
-import { commonLayoutCss } from '~/styles/layout';
 import { mediaQuery } from '~/styles/media';
 
 export function FAQ() {
-  const [activeTab, setActiveTab] = useState<FAQGroupType>('지원자격');
+  const [activeTab, setActiveTab] = useState<FAQGroupType>('지원 자격');
 
   const onClickTab = (target: FAQGroupType) => {
     setActiveTab(target);
@@ -18,38 +16,52 @@ export function FAQ() {
 
   return (
     <section css={layoutCss}>
-      <SectionTitle label="FAQ" title="자주 묻는 질문" />
+      <h1>자주 묻는 질문</h1>
+
       <ul css={tabLayoutCss}>
         {FAQ_GROUP.map(label => (
           <li key={label} onClick={() => onClickTab(label)}>
-            <button
-              role="tab"
-              aria-selected={isActive(label)}
-              css={theme => tabCss(theme, isActive(label))}
-            >
-              {label}
-            </button>
+            <div css={tabWrapperCss}>
+              <div css={theme => tabContainerCss(theme, isActive(label))}>
+                <button
+                  role="tab"
+                  aria-selected={isActive(label)}
+                  css={theme => tabCss(theme, isActive(label))}
+                >
+                  {label}
+                </button>
+              </div>
+            </div>
           </li>
         ))}
       </ul>
-      {activeTab === '지원자격' && <FAQList label="지원자격" FAQList={지원자격질문들} />}
-      {activeTab === '면접' && <FAQList label="면접" FAQList={면접질문들} />}
-      {activeTab === '활동' && <FAQList label="활동" FAQList={활동질문들} />}
+      <div css={listCss}>
+        {activeTab === '지원 자격' && <FAQList label="지원 자격" FAQList={지원자격질문들} />}
+        {activeTab === '면접 관련' && <FAQList label="면접 관련" FAQList={면접질문들} />}
+        {activeTab === '활동 관련' && <FAQList label="활동 관련" FAQList={활동질문들} />}
+      </div>
     </section>
   );
 }
 
-const 지원자격질문들 = FAQS.filter(x => x.group === '지원자격');
+const 지원자격질문들 = FAQS.filter(x => x.group === '지원 자격');
 
-const 면접질문들 = FAQS.filter(x => x.group === '면접');
+const 면접질문들 = FAQS.filter(x => x.group === '면접 관련');
 
-const 활동질문들 = FAQS.filter(x => x.group === '활동');
+const 활동질문들 = FAQS.filter(x => x.group === '활동 관련');
 
-const layoutCss = css`
-  ${commonLayoutCss}
+const layoutCss = (theme: Theme) => css`
+  padding: 120px 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  background-color: ${theme.colors.lightGray};
+
+  h1 {
+    ${theme.typos.notosans.semibold20}
+  }
 `;
 
 const tabLayoutCss = css`
@@ -62,14 +74,23 @@ const tabLayoutCss = css`
   }
 `;
 
-const tabCss = (theme: Theme, isActive: boolean) => css`
-  ${theme.typos.pretendard.subTitle2}
-  color: ${isActive ? theme.colors.yellow500 : theme.colors.white};
-  cursor: pointer;
+const tabWrapperCss = css`
   padding: 16px 24px;
+`;
 
-  ${mediaQuery('mobile')} {
-    font-size: 14px;
-    padding: 8px 12px;
-  }
+const tabContainerCss = (theme: Theme, isActive: boolean) => css`
+  padding-bottom: 5px;
+  border-bottom: ${isActive ? '3px' : '0'} solid ${theme.colors.green};
+`;
+
+const tabCss = (theme: Theme, isActive: boolean) => css`
+  ${theme.typos.notosans.semibold16}
+  color: ${isActive ? theme.colors.green : theme.colors.gray};
+  cursor: pointer;
+`;
+
+const listCss = css`
+  padding: 0 16px;
+  width: 100%;
+  max-width: 944px;
 `;

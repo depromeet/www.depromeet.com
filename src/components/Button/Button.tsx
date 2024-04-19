@@ -18,9 +18,9 @@ export function Button({ children, size = 'md', overrideCss, ...props }: ButtonP
 }
 
 const buttonCss = (theme: Theme, size: ButtonSize) => css`
-  ${theme.typos.pretendard.body1};
-  background-color: ${theme.colors.yellow500};
-  color: ${theme.colors.black800};
+  ${theme.typos.notosans.semibold14};
+  background-color: white;
+  color: black;
   display: block;
 
   ${size === 'md' &&
@@ -48,16 +48,16 @@ const buttonCss = (theme: Theme, size: ButtonSize) => css`
 
 
   &:hover {
-    background-color: ${theme.colors.yellow400};
+    background-color: ${theme.colors.blue};
   }
 
   &:active {
-    background-color: ${theme.colors.yellow300};
+    background-color: ${theme.colors.blue};
   }
 
   &:disabled {
-    background-color: ${theme.colors.gray300};
-    color: ${theme.colors.gray100};
+    background-color: ${theme.colors.lightGray};
+    color: black;
     cursor: not-allowed;
   }
 `;

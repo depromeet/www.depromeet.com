@@ -17,12 +17,12 @@ export function QualificationItem({ index, description }: QualificationItemProps
   );
 }
 
-const layoutCss = (theme: Theme) => css`
-  background-color: ${theme.colors.black400};
+const layoutCss = css`
   padding: 48px 30px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  background-color: white;
 
   ${mediaQuery('tablet')} {
     padding: 48px 38px;
@@ -33,15 +33,19 @@ const layoutCss = (theme: Theme) => css`
 `;
 
 const indexCss = (theme: Theme) => css`
-  ${theme.typos.decimal.subTitle1};
-  color: ${theme.colors.blue300};
+  ${theme.typos.bebas.regular32};
+  color: ${theme.colors.pink};
+
+  ${mediaQuery('mobile')} {
+    ${theme.typos.bebas.regular24};
+  }
 `;
 
 const descriptionCss = (theme: Theme) => css`
-  ${theme.typos.pretendard.body1};
-  color: ${theme.colors.gray20};
+  ${theme.typos.notosans.semibold16};
+  color: black;
 
   ${mediaQuery('mobile')} {
-    ${theme.typos.pretendard.body3};
+    ${theme.typos.notosans.regular14};
   }
 `;
