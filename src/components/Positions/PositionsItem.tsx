@@ -91,7 +91,7 @@ const contentsCss = css`
   width: 306px;
   height: 430px;
   display: flex;
-  padding: 24px;
+  padding: 20px;
   flex-direction: column;
   height: 100%;
   justify-content: space-between;

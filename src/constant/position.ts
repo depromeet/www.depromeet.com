@@ -15,7 +15,7 @@ export const POSITIONS: Array<ComponentProps<typeof PositionsItem>> = [
   },
   {
     type: 'ios',
-    title: 'IOS',
+    title: 'iOS',
     link: process.env.NEXT_PUBLIC_GREETING_IOS ?? '',
     description: [
       'UIKit 혹은 SwiftUI를 통하여 개발을 해본경험이 있으신 분',

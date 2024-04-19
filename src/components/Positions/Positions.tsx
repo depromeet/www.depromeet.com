@@ -115,7 +115,7 @@ const titleCss = (theme: Theme) => css`
 const listCss = css`
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 8px;
   align-items: flex-start;
   justify-content: center;
   position: relative;
