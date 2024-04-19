@@ -29,6 +29,7 @@ export function ApplyBanner() {
 }
 
 const layoutCss = (theme: Theme) => css`
+  z-index: 9999;
   position: sticky;
   bottom: 0;
   width: 100%;
