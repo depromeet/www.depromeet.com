@@ -18,4 +18,5 @@ const containerCss = css`
   display: flex;
   flex-direction: column;
   gap: 56px;
+  background-color: white;
 `;

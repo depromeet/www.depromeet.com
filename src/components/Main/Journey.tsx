@@ -48,6 +48,7 @@ const layoutCss = (theme: Theme) => css`
   gap: 80px;
 
   color: black;
+  background-color: white;
 
   h1 {
     ${theme.typos.notosans.semibold32};

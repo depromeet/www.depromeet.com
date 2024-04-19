@@ -24,6 +24,7 @@ const layoutCss = (theme: Theme) => css`
   gap: 16px;
   align-items: center;
   overflow: hidden;
+  background-color: white;
 
   h1 {
     ${theme.typos.notosans.semibold20}
