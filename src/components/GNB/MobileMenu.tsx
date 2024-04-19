@@ -43,8 +43,8 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
                 {menu.name}
               </button>
             ) : (
-              <Link href={menu.href}>
-                <a css={[linkCss, getActiveLinkcss(menu)]}>{menu.name}</a>
+              <Link href={menu.href} css={[linkCss, getActiveLinkcss(menu)]}>
+                {menu.name}
               </Link>
             )}
           </m.li>
@@ -63,7 +63,7 @@ const mobileMenuCss = (theme: Theme) => css`
   margin: auto;
   background-color: black;
   padding-top: 72px;
-  border-bottom: 1px solid ${theme.colors.gray300};
+  border-bottom: 1px solid ${theme.colors.lightGray};
 
   overflow: hidden;
 
