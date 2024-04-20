@@ -45,7 +45,7 @@ export function Thumbnail({ title, subTitle, img, description, links }: Thumbnai
                   {link.type}
                 </a>
                 <span>
-                  <ArrowIcon direction={'right'} color={colors.blue400} width={16} height={16} />
+                  <ArrowIcon direction={'right'} color={colors.mint} width={16} height={16} />
                 </span>
               </span>
             ))}
@@ -106,7 +106,7 @@ const linkWrapperCss = css`
 `;
 
 const linkCss = css`
-  color: ${colors.blue400};
+  color: ${colors.mint};
   font-weight: 500;
   font-size: 1rem;
   line-height: 22px;
