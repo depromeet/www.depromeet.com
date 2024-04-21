@@ -10,10 +10,13 @@ import { SectionTitleV2 } from '../SectionTitleV2';
 export function Supports() {
   return (
     <div css={[layoutCss]}>
-      <SectionTitleV2 css={titleContainerCss}>
-        <span css={spanCss}>15TH</span>
-        <span css={titleCss}>후원사</span>
-      </SectionTitleV2>
+      <div css={titleContainerCss}>
+        <SectionTitleV2 css={titleContainerCss}>
+          <span css={spanCss}>15TH</span>
+          <span css={titleCss}>후원사</span>
+        </SectionTitleV2>
+        <p css={subTitleCss}>디프만 후원사는 지속해서 추가 예정입니다.</p>
+      </div>
       <ul css={supportContainerCss}>
         {SUPPORTS.map(support => (
           <SupportThumbnail key={support.title} {...support} />
@@ -58,6 +61,7 @@ const supportContainerCss = css`
 
 const titleContainerCss = css`
   display: flex;
+  flex-direction: column;
   gap: 4px;
 `;
 
@@ -67,4 +71,9 @@ const spanCss = (theme: Theme) => css`
 
 const titleCss = (theme: Theme) => css`
   ${theme.typos.notosans.semibold20}
+`;
+
+const subTitleCss = (theme: Theme) => css`
+  ${theme.typos.notosans.semibold16}
+  color: #555;
 `;
