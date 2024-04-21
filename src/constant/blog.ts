@@ -18,7 +18,7 @@ export const BLOG_LIST: Blog[] = [
     title: '14주만에 런칭 성공률 100%를 <br/>달성한 비결, 런칭데이!',
     date: '24.02.17',
     img: '/images/blog/launching.png',
-    links: [{ type: 'MEDIUM', href: 'https://medium.com/p/3429d0be8762' }],
+    links: [{ type: 'MEDIUM', href: 'https://medium.com/p/d6fc5bf6f2d8' }],
   },
   {
     title: 'UT 설계부터 개선 과정까지,<br/>디프만 14기의 중간 발표',
