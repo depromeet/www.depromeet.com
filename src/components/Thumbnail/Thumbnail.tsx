@@ -8,15 +8,15 @@ import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
 export type Link = {
-  type: 'BEHANCE' | 'GITHUB' | 'WEB' | 'Android' | 'iOS' | 'APP';
+  type: 'BEHANCE' | 'GITHUB' | 'WEB' | 'Android' | 'iOS' | 'APP' | 'MEDIUM';
   href: string;
 };
 
 type ThumbnailProps = {
   title: string;
-  subTitle: string;
+  subTitle?: string;
   img: string;
-  description: string;
+  description?: string;
   links?: Link[];
 };
 
@@ -33,10 +33,10 @@ export function Thumbnail({ title, subTitle, img, description, links }: Thumbnai
       <div css={gradientCss} />
       <div css={contentsCss}>
         <div>
-          <p css={titleCss}>{title}</p>
+          <p css={titleCss} dangerouslySetInnerHTML={{ __html: title as string }} />
           <p css={subTitleCss}>{subTitle}</p>
         </div>
-        <p css={descriptionCss} dangerouslySetInnerHTML={{ __html: description }} />
+        <p css={descriptionCss} dangerouslySetInnerHTML={{ __html: description as string }} />
         {links && (
           <div css={linkContainerCss}>
             {links.map(link => (
