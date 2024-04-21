@@ -61,7 +61,7 @@ const buttonWrapperCss = css`
 const moreCss = css`
   display: none;
   font-size: 0.9rem;
-  color: ${theme.colors.yellow500};
+  color: ${theme.colors.green};
   padding: 8px 24px;
   margin-top: 30px;
   font-weight: 700;
@@ -72,5 +72,5 @@ const moreCss = css`
 
 const listItemCss = (selected: boolean) => css`
   padding: 10px;
-  color: ${selected ? theme.colors.yellow500 : theme.colors.white};
+  color: ${selected ? theme.colors.green : '#555'};
 `;
