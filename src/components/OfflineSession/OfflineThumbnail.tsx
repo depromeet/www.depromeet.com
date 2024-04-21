@@ -36,7 +36,6 @@ export function OfflineThumbnail({
   titleTextColor,
   links,
   showInfoDefault = false,
-  backgroundShow = false,
 }: ThumbnailProps) {
   const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
   const [isOpen, toggleIsOpen] = useToggle(false);
@@ -53,18 +52,9 @@ export function OfflineThumbnail({
       whileHover="hover"
       animate={isMobileSize && isOpen ? 'hover' : 'default'}
       onClick={onMobileClick}
-      variants={
-        backgroundShow
-          ? {
-              ...articleVariants,
-              default: {
-                background: 'linear-gradient(180deg, #FFF 0%, rgba(255, 255, 255, 0.75) 100%)',
-              },
-            }
-          : articleVariants
-      }
+      variants={articleVariants}
     >
-      <m.div css={imageCss} variants={imageVariants}>
+      <m.div css={imageCss}>
         <Image src={img} alt={title} fill quality={100} />
       </m.div>
       <m.div css={contentsCss}>
@@ -106,7 +96,6 @@ export function OfflineThumbnail({
           </m.div>
         )}
       </m.div>
-      <Image src={img} alt={title} fill />
     </m.article>
   );
 }
@@ -132,9 +121,11 @@ const imageCss = css`
   left: 0;
   object-fit: cover;
   object-position: center;
-  z-index: -1;
+  z-index: 1;
   width: 100%;
   height: 100%;
+  background: 'linear-gradient(180deg, #FFF 0%, rgba(255, 255, 255, 0.75) 100%)';
+  opacity: 0.4;
 `;
 
 const contentsCss = css`
@@ -212,22 +203,9 @@ const textVariants: Variants = {
 };
 
 const articleVariants: Variants = {
-  default: { backgroundColor: 'transparent' },
+  default: { background: 'transparent' },
   hover: {
-    backgroundColor: 'black',
-    transition: {
-      duration: 0.3,
-      ease: defaultEasing,
-    },
-  },
-};
-
-const imageVariants: Variants = {
-  default: {
-    background: 'white',
-  },
-  hover: {
-    background: 'rgba(19, 28, 40, 0.70)',
+    background: 'var(--DIM-70, rgba(19, 28, 40, 0.70))',
     backdropFilter: 'blur(7.198952674865723px)',
     transition: {
       duration: 0.3,

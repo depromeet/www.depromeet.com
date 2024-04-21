@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { css } from '@emotion/react';
+import { css, Theme } from '@emotion/react';
 import { m } from 'framer-motion';
 
 import { ArrowIcon } from '~/components/Icons';
@@ -8,15 +8,15 @@ import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
 export type Link = {
-  type: 'Behance' | 'Github' | 'Web' | 'Android' | 'iOS';
+  type: 'BEHANCE' | 'GITHUB' | 'WEB' | 'Android' | 'iOS' | 'APP' | 'MEDIUM';
   href: string;
 };
 
 type ThumbnailProps = {
   title: string;
-  subTitle: string;
+  subTitle?: string;
   img: string;
-  description: string;
+  description?: string;
   links?: Link[];
 };
 
@@ -33,10 +33,10 @@ export function Thumbnail({ title, subTitle, img, description, links }: Thumbnai
       <div css={gradientCss} />
       <div css={contentsCss}>
         <div>
-          <p css={titleCss}>{title}</p>
+          <p css={titleCss} dangerouslySetInnerHTML={{ __html: title as string }} />
           <p css={subTitleCss}>{subTitle}</p>
         </div>
-        <p css={descriptionCss} dangerouslySetInnerHTML={{ __html: description }} />
+        <p css={descriptionCss} dangerouslySetInnerHTML={{ __html: description as string }} />
         {links && (
           <div css={linkContainerCss}>
             {links.map(link => (
@@ -45,7 +45,7 @@ export function Thumbnail({ title, subTitle, img, description, links }: Thumbnai
                   {link.type}
                 </a>
                 <span>
-                  <ArrowIcon direction={'right'} color={colors.mint} width={16} height={16} />
+                  <ArrowIcon direction={'right'} color={colors.green} width={16} height={16} />
                 </span>
               </span>
             ))}
@@ -105,12 +105,9 @@ const linkWrapperCss = css`
   align-items: center;
 `;
 
-const linkCss = css`
-  color: ${colors.mint};
-  font-weight: 500;
-  font-size: 1rem;
-  line-height: 22px;
-  letter-spacing: -0.16px;
+const linkCss = (theme: Theme) => css`
+  ${theme.typos.bebas.regular24}
+  color: ${colors.green};
   margin-right: 2px;
   z-index: 10;
 `;
