@@ -41,20 +41,22 @@ const tabContainerCss = css`
 `;
 
 const tabCss = css`
-  ${theme.typos.pretendard.subTitle2};
+  ${theme.typos.notosans.regular20};
   padding: 16px 24px;
   ${mediaQuery('mobile')} {
-    ${theme.typos.pretendard.body2};
+    ${theme.typos.notosans.regular14};
     padding: 16px 8px;
   }
 `;
 
 const activeTabCss = css`
   ${tabCss};
-  color: ${theme.colors.yellow500};
+  color: ${theme.colors.green};
+  text-decoration: underline;
+  text-underline-offset: 8px;
 `;
 
 const inActiveTabCss = css`
   ${tabCss};
-  color: ${theme.colors.white};
+  color: '#555';
 `;

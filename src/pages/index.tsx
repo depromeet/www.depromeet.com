@@ -16,7 +16,7 @@ export default function Root() {
             height={780}
             color={'blue'}
           />
-          <JourneyEntrance />
+          <JourneyEntrance hasLinkButton />
           <RecruitEntrance />
           <ProjectCarousel />
           <Ending />

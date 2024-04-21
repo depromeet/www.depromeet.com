@@ -5,6 +5,7 @@ import { m } from 'framer-motion';
 import { ArrowIcon } from '~/components/Icons';
 import { defaultFadeInVariants } from '~/constant/motion';
 import { colors } from '~/styles/colors';
+import { mediaQuery } from '~/styles/media';
 
 export type Link = {
   type: 'Behance' | 'Github' | 'Web' | 'App';
@@ -70,8 +71,9 @@ const articleCss = css`
   position: relative;
   height: 208px;
   padding: 24px;
-  width: 312px;
+  width: 100%;
   overflow: hidden;
+
   &:hover {
     cursor: pointer;
   }
@@ -80,6 +82,10 @@ const articleCss = css`
   }
   &:hover > div {
     opacity: 1;
+  }
+
+  ${mediaQuery('mobile')} {
+    height: 164px;
   }
 `;
 

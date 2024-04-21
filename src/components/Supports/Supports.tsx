@@ -1,39 +1,70 @@
-import { css } from '@emotion/react';
+import { css, Theme } from '@emotion/react';
 
-import { SectionTitle } from '~/components/SectionTitle';
 import { SupportThumbnail } from '~/components/Supports/SupportThumbnail';
 import { SUPPORTS } from '~/constant/supports';
-import { commonLayoutCss } from '~/styles/layout';
 import { mediaQuery } from '~/styles/media';
+import { theme } from '~/styles/theme';
+
+import { SectionTitleV2 } from '../SectionTitleV2';
 
 export function Supports() {
   return (
-    <div css={[commonLayoutCss, layoutCss]}>
-      <SectionTitle label="Supports" title="후원사 소개" />
+    <div css={[layoutCss]}>
+      <SectionTitleV2 css={titleContainerCss}>
+        <span css={spanCss}>15TH</span>
+        <span css={titleCss}>후원사</span>
+      </SectionTitleV2>
       <ul css={supportContainerCss}>
         {SUPPORTS.map(support => (
           <SupportThumbnail key={support.title} {...support} />
         ))}
-        <SupportThumbnail.OnlyImage title="what's next?" img="/images/support/next.png" />
       </ul>
     </div>
   );
 }
 
 const layoutCss = css`
-  margin-top: 150px;
-  ${mediaQuery('tablet')} {
-    margin-top: 150px;
-  }
+  padding: 120px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  background-color: white;
+
   ${mediaQuery('mobile')} {
-    margin-top: 100px;
+    padding: 0;
+    background-color: ${theme.colors.lightGray};
   }
 `;
 
 const supportContainerCss = css`
+  display: grid;
+  width: 100%;
+  max-width: 960px;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 20px;
+  column-gap: 12px;
+
+  ${mediaQuery('tablet')} {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 32px;
+  }
+
+  ${mediaQuery('mobile')} {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0 16px;
+  }
+`;
+
+const titleContainerCss = css`
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  align-items: flex-start;
-  justify-content: center;
+  gap: 4px;
+`;
+
+const spanCss = (theme: Theme) => css`
+  ${theme.typos.bebas.regular24}
+`;
+
+const titleCss = (theme: Theme) => css`
+  ${theme.typos.notosans.semibold20}
 `;

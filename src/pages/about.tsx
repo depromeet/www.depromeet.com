@@ -1,6 +1,6 @@
-import { AboutInfo } from '~/components/AboutInfo';
+import AboutDepromeeet from '~/components/AboutInfo/AboutDepromeeet';
 import { Contact } from '~/components/Contact';
-import { OfflineSession } from '~/components/OfflineSession';
+import { Intro } from '~/components/Intro';
 import { SEO } from '~/components/SEO';
 import { Supports } from '~/components/Supports';
 
@@ -9,8 +9,14 @@ export default function About() {
     <>
       <SEO title="디프만 - About" />
       <main>
-        <AboutInfo />
-        <OfflineSession />
+        <Intro
+          imageUrl="/images/about/intro-img.svg"
+          title="15기 정보 인트로"
+          width={1024}
+          height={400}
+          color="yellow"
+        />
+        <AboutDepromeeet />
         <Supports />
         <Contact />
       </main>

@@ -1,12 +1,14 @@
 import Image from 'next/image';
-import { css } from '@emotion/react';
+import { css, Theme } from '@emotion/react';
 import { m, Variants } from 'framer-motion';
 
-import { ArrowIcon } from '~/components/Icons';
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import useToggle from '~/hooks/useToggle';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
+import { theme } from '~/styles/theme';
+
+import { ArrowIcon } from '../Icons';
 
 export type Link = {
   type: 'Behance' | 'Github' | 'Web' | 'App';
@@ -18,6 +20,7 @@ type ThumbnailProps = {
   subTitle: string;
   img: string;
   description: string;
+  titleTextColor: string;
   links?: Link[];
   showInfoDefault?: boolean;
   backgroundShow?: boolean;
@@ -30,6 +33,7 @@ export function OfflineThumbnail({
   subTitle,
   img,
   description,
+  titleTextColor,
   links,
   showInfoDefault = false,
   backgroundShow = false,
@@ -54,8 +58,7 @@ export function OfflineThumbnail({
           ? {
               ...articleVariants,
               default: {
-                background:
-                  'linear-gradient(180deg, rgba(19, 28, 40, 0.9) 0%, rgba(19, 28, 40, 0) 100%)',
+                background: 'linear-gradient(180deg, #FFF 0%, rgba(255, 255, 255, 0.75) 100%)',
               },
             }
           : articleVariants
@@ -67,14 +70,18 @@ export function OfflineThumbnail({
       <m.div css={contentsCss}>
         <m.div>
           <m.p
-            css={titleCss}
+            css={titleCss(titleTextColor)}
             variants={showInfoDefault ? { ...textVariants, default: { opacity: 1 } } : textVariants}
           >
             {title}
           </m.p>
           <m.p
             css={subTitleCss}
-            variants={showInfoDefault ? { ...textVariants, default: { opacity: 1 } } : textVariants}
+            variants={
+              showInfoDefault
+                ? { ...textVariants, default: { opacity: 1 }, hover: { color: 'white' } }
+                : textVariants
+            }
           >
             {subTitle}
           </m.p>
@@ -99,12 +106,14 @@ export function OfflineThumbnail({
           </m.div>
         )}
       </m.div>
+      <Image src={img} alt={title} fill />
     </m.article>
   );
 }
 
 const articleCss = css`
   position: relative;
+  width: 100%;
   height: 208px;
   padding: 24px;
   overflow: hidden;
@@ -155,24 +164,20 @@ const linkCss = css`
   margin-right: 2px;
 `;
 
-const titleCss = css`
+const titleCss = (color: string) => css`
+  ${theme.typos.bebas.regular40}
   position: relative;
-  font-weight: 700;
-  font-size: 1.25rem;
-  line-height: 30px;
-  color: ${colors.white};
+  color: ${color};
   z-index: 10;
   ${mediaQuery('mobile')} {
     font-size: 1rem;
   }
 `;
 
-const subTitleCss = css`
+const subTitleCss = (theme: Theme) => css`
+  ${theme.typos.notosans.semibold20}
   position: relative;
-  font-weight: 500;
-  font-size: 1rem;
-  line-height: 22px;
-  color: ${colors.gray100};
+  color: black;
   z-index: 10;
   ${mediaQuery('mobile')} {
     font-size: 0.8rem;
@@ -185,7 +190,7 @@ const descriptionCss = css`
   font-weight: 500;
   font-size: 1rem;
   line-height: 22px;
-  color: ${colors.white};
+  color: white;
   z-index: 10;
   letter-spacing: -0.16px;
   white-space: pre-wrap;
@@ -207,8 +212,9 @@ const textVariants: Variants = {
 };
 
 const articleVariants: Variants = {
-  default: { background: 'transparent' },
+  default: { backgroundColor: 'transparent' },
   hover: {
+    backgroundColor: 'black',
     transition: {
       duration: 0.3,
       ease: defaultEasing,
@@ -218,10 +224,11 @@ const articleVariants: Variants = {
 
 const imageVariants: Variants = {
   default: {
-    filter: 'blur(0px)',
+    background: 'white',
   },
   hover: {
-    filter: 'blur(5px) brightness(0.4)',
+    background: 'rgba(19, 28, 40, 0.70)',
+    backdropFilter: 'blur(7.198952674865723px)',
     transition: {
       duration: 0.3,
       ease: defaultEasing,
