@@ -19,9 +19,9 @@ export const Project = {
       subTitle="13기"
       description="거지들의 이야기로 쌓이는<br/>소비습관 개선 서비스"
       links={[
-        { type: 'Behance', href: '' },
-        { type: 'Github', href: '' },
-        { type: 'Web', href: '' },
+        { type: 'BEHANCE', href: '' },
+        { type: 'GITHUB', href: '' },
+        { type: 'WEB', href: '' },
       ]}
     />
   ),
