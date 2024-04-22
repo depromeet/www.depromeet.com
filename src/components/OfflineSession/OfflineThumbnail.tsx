@@ -113,6 +113,9 @@ const articleCss = css`
   &:hover {
     cursor: pointer;
   }
+  &:hover img {
+    filter: blur(6px) brightness(0.7);
+  }
 `;
 
 const imageCss = css`
