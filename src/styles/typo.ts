@@ -162,6 +162,12 @@ export const typos = {
       line-height: ${pxToRem(42)};
       letter-spacing: -4%;
     `,
+    semibold26: css`
+      font-family: NotoSansVariable;
+      font-size: ${pxToRem(26)};
+      font-style: normal;
+      font-weight: 600;
+    `,
     semibold24: css`
       font-family: NotoSansVariable;
       font-size: ${pxToRem(24)};

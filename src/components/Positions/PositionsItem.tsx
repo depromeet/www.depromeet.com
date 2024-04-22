@@ -116,7 +116,7 @@ const titleCss = (theme: Theme) => css`
   color: white;
 
   > span {
-    ${theme.typos.notosans.semibold28};
+    ${theme.typos.notosans.semibold26};
   }
 `;
 
