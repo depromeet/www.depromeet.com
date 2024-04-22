@@ -16,17 +16,3 @@ export const END_DATE = '2024-05-04T14:59:59.000Z'; // 05.04 11:59:59
 // export const END_DATE = '2025-03-04T20:00:00.000Z'; // test
 
 export const DEADLINE_DATE = '2024-05-14T14:59:59.000Z'; // NOTE: 마감일(?) 05.15
-
-export const getDDay = (date: string) => {
-  const today = new Date();
-  const targetDate = new Date(date);
-
-  today.setHours(0, 0, 0, 0);
-  targetDate.setHours(0, 0, 0, 0);
-
-  const timeDifference = today.getTime() - targetDate.getTime();
-  const oneDay = 24 * 60 * 60 * 1000;
-
-  const dday = Math.floor(timeDifference / oneDay) + 1;
-  return dday;
-};

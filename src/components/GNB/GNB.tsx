@@ -7,7 +7,6 @@ import { AnimatePresence } from 'framer-motion';
 import { Button } from '~/components/Button';
 import { MobileMenu } from '~/components/GNB/MobileMenu';
 import { MobileMenuIcon } from '~/components/GNB/MobileMenuIcon';
-import { getDDay, START_DATE } from '~/constant/common';
 import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import { useDropDown } from '~/hooks/useDropdown';
 import useIsInProgress from '~/hooks/useIsInProgress';
@@ -16,9 +15,8 @@ import { mediaQuery } from '~/styles/media';
 const LOGO_IMAGE = `/images/logo.svg`;
 
 function ApplyButton() {
-  const { isInProgress } = useIsInProgress();
+  const { isInProgress, dDay } = useIsInProgress();
   const router = useRouter();
-  const dday = getDDay(START_DATE);
 
   const onClick = () => {
     router.push('/apply');
@@ -26,7 +24,7 @@ function ApplyButton() {
 
   return (
     <Button disabled={!isInProgress} css={linkButtonCss} onClick={onClick}>
-      {isInProgress ? ' 지원하기' : dday < 0 ? `D${dday}` : `D+${dday}`}
+      {isInProgress ? ' 지원하기' : dDay < 0 ? `D${dDay}` : `D+${dDay}`}
     </Button>
   );
 }
