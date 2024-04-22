@@ -8,10 +8,7 @@ export function ScheduleTable({ title, description, schedule }: Schedule) {
   return (
     <div css={layoutCss}>
       <div css={titleCss}>
-        <div>
-          <span>15TH</span>
-          <h1>{title}</h1>
-        </div>
+        <h1>{title}</h1>
         {description && <h3>{description}</h3>}
       </div>
       <div css={tableCss({ length: schedule.length })}>
@@ -52,16 +49,6 @@ const titleCss = (theme: Theme) => css`
   gap: 4px;
   align-items: center;
   justify-content: center;
-
-  div {
-    display: flex;
-    gap: 5px;
-    align-items: center;
-  }
-
-  span {
-    ${theme.typos.bebas.regular24};
-  }
 
   h1 {
     ${theme.typos.notosans.semibold20};
