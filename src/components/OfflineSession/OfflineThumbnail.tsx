@@ -104,17 +104,20 @@ const articleCss = css`
   position: relative;
   width: 100%;
   height: 208px;
-  padding: 24px;
+  padding: 18px;
   overflow: hidden;
-  ${mediaQuery('mobile')} {
+  ${mediaQuery('tablet')} {
     padding: 14px;
+  }
+  ${mediaQuery('mobile')} {
+    padding: 10px;
     height: 158px;
   }
   &:hover {
     cursor: pointer;
   }
   &:hover img {
-    filter: blur(6px) brightness(0.7);
+    filter: blur(8px) brightness(0.4);
   }
 `;
 
@@ -163,8 +166,12 @@ const titleCss = (color: string) => css`
   position: relative;
   color: ${color};
   z-index: 10;
+
+  ${mediaQuery('tablet')} {
+    ${theme.typos.bebas.regular32}
+  }
   ${mediaQuery('mobile')} {
-    font-size: 1rem;
+    ${theme.typos.bebas.regular24}
   }
 `;
 
@@ -174,8 +181,7 @@ const subTitleCss = (theme: Theme) => css`
   color: black;
   z-index: 10;
   ${mediaQuery('mobile')} {
-    font-size: 0.8rem;
-    margin-top: -5px;
+    ${theme.typos.notosans.semibold14}
   }
 `;
 
