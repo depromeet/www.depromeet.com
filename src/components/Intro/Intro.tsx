@@ -18,13 +18,11 @@ type ImageSize = {
   height: number;
 };
 
-const MAX_WIDTH = 1024;
-
 export function Intro({ imageUrl, title, width, height, color }: IntroProps) {
   return (
     <section css={containerCss({ color: theme.colors[color] })}>
       <div css={bgImageCss({ width, height })}>
-        <Image src={imageUrl} alt={title} width={width} height={height} priority />
+        <Image src={imageUrl} alt={title} fill priority />
       </div>
     </section>
   );
@@ -43,17 +41,10 @@ const containerCss = ({ color }: { color: string }) => css`
 `;
 
 const bgImageCss = (props: ImageSize) => css`
-  top: 20px;
-
-  img {
-    width: ${props.width}px;
-    height: ${props.height}px;
-
-    @media screen and (max-width: ${MAX_WIDTH}px) {
-      width: 100%;
-      height: auto;
-    }
-  }
+  position: relative;
+  width: 100%;
+  max-width: 1024px;
+  height: ${props.height}px;
 
   ${mediaQuery('pc')} {
     top: 0;
