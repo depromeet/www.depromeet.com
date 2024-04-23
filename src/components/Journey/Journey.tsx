@@ -13,7 +13,7 @@ export function Journey() {
         런칭까지 함께 경험하는{' '}
         <span css={spanCss}>
           <div css={emphasisCss}>
-            <Image src="/images/main/emphasis.svg" alt="성장추구형 강조" width={162} height={48} />
+            <Image src="/images/main/emphasis.svg" alt="성장추구형 강조" width={164} height={50} />
           </div>
         </span>
         <span css={spanCss}>성장추구형</span> 커뮤니티입니다.
@@ -111,13 +111,14 @@ const spanCss = css`
 
 const emphasisCss = css`
   position: absolute;
-  left: 0;
+  left: -8px;
   top: 0;
 
   ${mediaQuery('mobile')} {
+    left: -4px;
     img {
-      width: 99px;
-      height: 32px;
+      width: 100px;
+      height: 34px;
     }
   }
 `;
