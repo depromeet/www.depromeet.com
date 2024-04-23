@@ -7,7 +7,7 @@ export type Project = {
   links?: Link[];
 };
 
-export const TAB_LIST = ['전체', '14기', '13기', '12기', '11기', '-10기'];
+export const TAB_LIST = ['전체', '14기', '13기', '12기', '11기', '~10기'];
 export const PROJECT_LIST: Project[] = [
   {
     title: '반디부디',

@@ -13,6 +13,10 @@ export default function AboutDepromeeet() {
 }
 
 const layoutCss = css`
+  padding: 120px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
   background-color: '#F4F4F4';
 `;
 

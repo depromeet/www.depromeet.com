@@ -26,6 +26,8 @@ export function MobilePositionItem({ type, title, link }: MobilePositionsItemPro
               <span>i</span>
               OS
             </>
+          ) : type === 'design' ? (
+            'DESIGN'
           ) : (
             title
           )}

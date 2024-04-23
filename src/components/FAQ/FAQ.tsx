@@ -66,7 +66,7 @@ const layoutCss = (theme: Theme) => css`
 
 const tabLayoutCss = css`
   display: flex;
-  > li:first-child {
+  > li:first-of-type {
     padding-left: 0px;
   }
   ${mediaQuery('tablet')} {

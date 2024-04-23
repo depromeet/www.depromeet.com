@@ -12,7 +12,6 @@ export function Supports() {
     <div css={[layoutCss]}>
       <div css={titleContainerCss}>
         <SectionTitleV2 css={titleContainerCss}>
-          <span css={spanCss}>15TH</span>
           <span css={titleCss}>후원사</span>
         </SectionTitleV2>
         <p css={subTitleCss}>디프만 후원사는 지속해서 추가 예정입니다.</p>
@@ -63,10 +62,6 @@ const titleContainerCss = css`
   display: flex;
   flex-direction: column;
   gap: 4px;
-`;
-
-const spanCss = (theme: Theme) => css`
-  ${theme.typos.bebas.regular24}
 `;
 
 const titleCss = (theme: Theme) => css`

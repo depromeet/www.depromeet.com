@@ -18,11 +18,13 @@ type ImageSize = {
   height: number;
 };
 
+const MAX_WIDTH = 1024;
+
 export function Intro({ imageUrl, title, width, height, color }: IntroProps) {
   return (
     <section css={containerCss({ color: theme.colors[color] })}>
       <div css={bgImageCss({ width, height })}>
-        <Image src={imageUrl} alt={title} fill priority />
+        <Image src={imageUrl} alt={title} width={width} height={height} priority />
       </div>
     </section>
   );
@@ -36,15 +38,23 @@ const containerCss = ({ color }: { color: string }) => css`
   background-color: ${color};
 
   ${mediaQuery('mobile')} {
-    padding-top: 75px;
+    padding-top: 73px;
   }
 `;
 
 const bgImageCss = (props: ImageSize) => css`
-  position: relative;
-  width: 100%;
-  max-width: 1024px;
-  height: ${props.height}px;
+  top: 20px;
+
+  img {
+    width: ${props.width}px;
+    height: ${props.height}px;
+    vertical-align: bottom;
+
+    @media screen and (max-width: ${MAX_WIDTH}px) {
+      width: 100%;
+      height: auto;
+    }
+  }
 
   ${mediaQuery('pc')} {
     top: 0;
