@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { css, Theme } from '@emotion/react';
 
@@ -6,6 +7,14 @@ import { mediaQuery } from '~/styles/media';
 import { LinkButton } from './LinkButton';
 
 export function RecruitEntrance() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    const currentWidth = window.innerWidth;
+    ref.current.scrollLeft = currentWidth / 2 - (currentWidth > 700 ? currentWidth / 3 : 0);
+  }, []);
+
   return (
     <section css={layoutCss}>
       <div css={descriptionCss}>
@@ -33,15 +42,15 @@ export function RecruitEntrance() {
           />
         </div>
       </div>
-      <div css={imgFlexCss}>
+      <div css={imgFlexCss} ref={ref}>
         <Image
           src="/images/main/responsibility-clock.svg"
           alt="인재상중 책임감"
-          width={292}
+          width={316}
           height={292}
         />
         <Image src="/images/main/digging-clock.svg" alt="인재상중 몰입" width={292} height={292} />
-        <Image src="/images/main/share-clock.svg" alt="인재상중 공유" width={292} height={292} />
+        <Image src="/images/main/share-clock.svg" alt="인재상중 공유" width={316} height={292} />
       </div>
       <LinkButton color="black" text="모집 안내" href="/recruit" />
     </section>
@@ -50,21 +59,16 @@ export function RecruitEntrance() {
 
 const layoutCss = (theme: Theme) => css`
   padding: 120px 0;
-  height: 894px;
   display: flex;
   flex-direction: column;
+  gap: 100px;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
   background-color: ${theme.colors.blue};
   overflow: hidden;
 
   ${mediaQuery('tablet')} {
-    gap: 20px;
-  }
-
-  ${mediaQuery('mobile')} {
-    gap: 16px;
+    gap: 56px;
   }
 `;
 
@@ -93,4 +97,27 @@ const descriptionCss = (theme: Theme) => css`
 const imgFlexCss = css`
   display: flex;
   gap: 24px;
+
+  @media (max-width: 800px) {
+    width: 100%;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* FireFox */
+    &::-webkit-scrollbar {
+      /* Chrome, Safari, Edge, ... */
+      display: none;
+    }
+
+    img {
+      flex: 0 0 40%;
+      scroll-snap-align: center;
+    }
+  }
+
+  ${mediaQuery('mobile')} {
+    img {
+      flex: 0 0 60%;
+    }
+  }
 `;
