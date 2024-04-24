@@ -77,7 +77,7 @@ const infoContainerCss = css`
   }
 
   ${mediaQuery('mobile')} {
-    min-width: 275px;
+    min-width: 310px;
     grid-template-columns: repeat(2, 1fr);
   }
 `;
