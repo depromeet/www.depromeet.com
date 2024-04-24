@@ -23,7 +23,7 @@ import {
 
 const FIRST_PAGE = 1;
 const ALL_TAB = '전체';
-const TEN_UNDER_TAB = '-10기';
+const TEN_UNDER_TAB = '~10기';
 
 export default function ProjectPage() {
   const [currentTab, setCurrentTab] = useState(ALL_TAB);
