@@ -85,7 +85,9 @@ const articleCss = css`
   }
 
   ${mediaQuery('mobile')} {
-    height: 164px;
+    max-width: 450px;
+    padding: 18px;
+    height: 180px;
   }
 `;
 
