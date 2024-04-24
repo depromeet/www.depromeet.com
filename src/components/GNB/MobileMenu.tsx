@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { css, Theme } from '@emotion/react';
@@ -15,7 +14,6 @@ interface MobileMenuProps {
 export function MobileMenu({ onClickMenu }: MobileMenuProps) {
   const { pathname, push } = useRouter();
   const { isInProgress, dDay } = useIsInProgress();
-  const [dDayCount] = useState(dDay);
 
   const getActiveLinkcss = (menu: GNBMenu) => {
     if (pathname.startsWith(menu.href)) {
@@ -42,7 +40,7 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
           >
             {menu.type === 'button' ? (
               <button disabled={!isInProgress} onClick={() => push(menu.href)} css={linkCss}>
-                {isInProgress ? menu.name : dDayCount < 0 ? `D${dDayCount}` : `D+${dDayCount}`}
+                {isInProgress ? menu.name : dDay < 0 ? `D${dDay}` : `D+${dDay}`}
               </button>
             ) : (
               <Link href={menu.href} css={[linkCss, getActiveLinkcss(menu)]}>

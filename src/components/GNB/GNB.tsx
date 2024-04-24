@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -17,7 +16,6 @@ const LOGO_IMAGE = `/images/logo.svg`;
 
 function ApplyButton() {
   const { isInProgress, dDay } = useIsInProgress();
-  const [dDayCount] = useState(dDay);
   const router = useRouter();
 
   const onClick = () => {
@@ -26,7 +24,7 @@ function ApplyButton() {
 
   return (
     <Button disabled={!isInProgress} css={linkButtonCss} onClick={onClick}>
-      {isInProgress ? ' 지원하기' : dDayCount < 0 ? `D${dDayCount}` : `D+${dDayCount}`}
+      {isInProgress ? ' 지원하기' : dDay < 0 ? `D${dDay}` : `D+${dDay}`}
     </Button>
   );
 }
