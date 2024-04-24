@@ -49,9 +49,16 @@ const layoutCss = (theme: Theme) => css`
     text-align: center;
   }
 
+  ${mediaQuery('tablet')} {
+    h1 {
+      ${theme.typos.notosans.semibold26};
+    }
+  }
+
   ${mediaQuery('mobile')} {
     padding: 40px 0;
     h1 {
+      margin: 0 20px;
       ${theme.typos.notosans.semibold20};
       min-width: 300px;
     }
@@ -113,6 +120,14 @@ const emphasisCss = css`
   position: absolute;
   left: -8px;
   top: 0;
+
+  ${mediaQuery('tablet')} {
+    left: -6px;
+    img {
+      width: 132px;
+      height: 42px;
+    }
+  }
 
   ${mediaQuery('mobile')} {
     left: -4px;
