@@ -30,7 +30,6 @@ export function SupportThumbnail({ title, subTitle, img, description, links }: T
       exit="exit"
     >
       <Image css={imageCss} src={img} alt={title} fill quality={100} />
-      <div css={gradientCss} />
       <div css={contentsCss}>
         <div>
           <p css={titleCss}>{title}</p>
@@ -45,7 +44,7 @@ export function SupportThumbnail({ title, subTitle, img, description, links }: T
                   {link.type}
                 </a>
                 <span>
-                  <ArrowIcon direction={'right'} color={colors.blue400} width={16} height={16} />
+                  <ArrowIcon direction={'right'} color={colors.mint} width={16} height={16} />
                 </span>
               </span>
             ))}
@@ -73,6 +72,7 @@ const articleCss = css`
   padding: 24px;
   width: 100%;
   overflow: hidden;
+  background-color: black;
 
   &:hover {
     cursor: pointer;
@@ -121,7 +121,7 @@ const linkWrapperCss = css`
 `;
 
 const linkCss = css`
-  color: ${colors.blue400};
+  color: ${colors.mint};
   font-weight: 500;
   font-size: 1rem;
   line-height: 22px;
@@ -146,13 +146,6 @@ const subTitleCss = css`
   line-height: 22px;
   color: ${colors.gray100};
   z-index: 10;
-`;
-
-const gradientCss = css`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 172px;
 `;
 
 const descriptionCss = css`

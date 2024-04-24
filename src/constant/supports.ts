@@ -11,7 +11,7 @@ export type Support = {
 export const SUPPORTS: Support[] = [
   {
     title: '팀스파르타',
-    subTitle: 'SpartaCodingClub',
+    subTitle: 'TeamSparta',
     description: '세션 운영을 위한 지원금 100만원과 커뮤니티 참여 혜택을 제공합니다.',
     img: '/images/support/spartar.png',
   },
