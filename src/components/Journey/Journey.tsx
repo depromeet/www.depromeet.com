@@ -49,14 +49,13 @@ const layoutCss = (theme: Theme) => css`
     text-align: center;
   }
 
-  ${mediaQuery('tablet')} {
+  @media (max-width: 800px) {
     h1 {
       ${theme.typos.notosans.semibold26};
     }
   }
 
   ${mediaQuery('mobile')} {
-    padding: 40px 0;
     h1 {
       margin: 0 20px;
       ${theme.typos.notosans.semibold20};
@@ -121,7 +120,7 @@ const emphasisCss = css`
   left: -8px;
   top: 0;
 
-  ${mediaQuery('tablet')} {
+  @media (max-width: 800px) {
     left: -6px;
     img {
       width: 132px;
