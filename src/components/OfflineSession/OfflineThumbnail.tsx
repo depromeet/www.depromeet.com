@@ -57,6 +57,7 @@ export function OfflineThumbnail({
       <m.div css={imageCss}>
         <Image src={img} alt={title} fill quality={100} />
       </m.div>
+      <m.div css={gradientCss} variants={gradientVariants} />
       <m.div css={contentsCss}>
         <m.div>
           <m.p
@@ -107,6 +108,7 @@ const articleCss = css`
   min-width: 160px;
   padding: 18px;
   overflow: hidden;
+  background-color: transparent;
 
   ${mediaQuery('tablet')} {
     padding: 14px;
@@ -123,16 +125,22 @@ const articleCss = css`
   }
 `;
 
+const gradientCss = css`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
 const imageCss = css`
   position: absolute;
   top: 0;
   left: 0;
   object-fit: cover;
   object-position: center;
-  z-index: 1;
   width: 100%;
   height: 100%;
-  background: 'linear-gradient(180deg, #FFF 0%, rgba(255, 255, 255, 0.75) 100%)';
   opacity: 0.4;
 `;
 
@@ -222,5 +230,15 @@ const articleVariants: Variants = {
       duration: 0.3,
       ease: defaultEasing,
     },
+  },
+};
+
+const gradientVariants: Variants = {
+  default: {
+    background:
+      'linear-gradient(to top, rgba(255, 255, 255, 0.5) 10%, rgba(255, 255, 255, 1) 100%)',
+  },
+  hover: {
+    display: 'none',
   },
 };
