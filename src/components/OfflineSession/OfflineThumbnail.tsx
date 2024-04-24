@@ -104,8 +104,10 @@ const articleCss = css`
   position: relative;
   width: 100%;
   height: 208px;
+  min-width: 160px;
   padding: 18px;
   overflow: hidden;
+
   ${mediaQuery('tablet')} {
     padding: 14px;
   }

@@ -69,6 +69,7 @@ const titleCss = (theme: Theme) => css`
 `;
 
 const subTitleCss = (theme: Theme) => css`
+  text-align: center;
   ${theme.typos.notosans.semibold16}
   color: #555;
 `;
