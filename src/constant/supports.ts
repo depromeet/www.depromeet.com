@@ -25,4 +25,16 @@ export const SUPPORTS: Support[] = [
     img: '/images/support/inflearn.png',
     link: 'https://www.inflearn.com/',
   },
+  {
+    title: '서핏',
+    subTitle: 'Surfit',
+    img: '/images/support/surfit.png',
+    link: 'https://www.surfit.io/',
+  },
+  {
+    title: '디스콰이엇',
+    subTitle: 'Disquiet',
+    img: '/images/support/disquiet.png',
+    link: 'https://disquiet.io/',
+  },
 ];

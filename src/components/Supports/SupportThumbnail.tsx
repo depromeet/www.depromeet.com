@@ -59,6 +59,8 @@ SupportThumbnail.OnlyImage = function OnlyImage({
 const linkCss = css`
   width: 100%;
   height: 100%;
+  display: flex;
+  justify-content: center;
 `;
 
 const articleCss = css`
