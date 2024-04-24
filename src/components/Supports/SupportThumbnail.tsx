@@ -1,8 +1,8 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { css } from '@emotion/react';
 import { m } from 'framer-motion';
 
-import { ArrowIcon } from '~/components/Icons';
 import { defaultFadeInVariants } from '~/constant/motion';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
@@ -16,42 +16,32 @@ type ThumbnailProps = {
   title: string;
   subTitle: string;
   img: string;
-  description: string;
-  links?: Link[];
+  description?: string;
+  link: string;
 };
 
-export function SupportThumbnail({ title, subTitle, img, description, links }: ThumbnailProps) {
+export function SupportThumbnail({ title, subTitle, img, description, link }: ThumbnailProps) {
   return (
-    <m.article
-      css={articleCss}
-      variants={defaultFadeInVariants}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-    >
-      <Image css={imageCss} src={img} alt={title} fill quality={100} />
-      <div css={contentsCss}>
-        <div>
-          <p css={titleCss}>{title}</p>
-          <p css={subTitleCss}>{subTitle}</p>
-        </div>
-        <p css={descriptionCss} dangerouslySetInnerHTML={{ __html: description }} />
-        {links && (
-          <div css={linkContainerCss}>
-            {links.map(link => (
-              <span key={link.type} css={linkWrapperCss}>
-                <a href={link.href} target="_blank" css={linkCss} rel="noreferrer">
-                  {link.type}
-                </a>
-                <span>
-                  <ArrowIcon direction={'right'} color={colors.mint} width={16} height={16} />
-                </span>
-              </span>
-            ))}
+    <Link href={link} css={linkCss}>
+      <m.article
+        css={articleCss}
+        variants={defaultFadeInVariants}
+        initial="initial"
+        animate="animate"
+        exit="exit"
+      >
+        <Image css={imageCss} src={img} alt={title} fill quality={100} />
+        <div css={contentsCss}>
+          <div>
+            <p css={titleCss}>{title}</p>
+            <p css={subTitleCss}>{subTitle}</p>
           </div>
-        )}
-      </div>
-    </m.article>
+          {description && (
+            <p css={descriptionCss} dangerouslySetInnerHTML={{ __html: description }} />
+          )}
+        </div>
+      </m.article>
+    </Link>
   );
 }
 
@@ -65,6 +55,11 @@ SupportThumbnail.OnlyImage = function OnlyImage({
     </div>
   );
 };
+
+const linkCss = css`
+  width: 100%;
+  height: 100%;
+`;
 
 const articleCss = css`
   position: relative;
@@ -106,30 +101,9 @@ const contentsCss = css`
   display: flex;
   flex-direction: column;
   height: 100%;
-  justify-content: space-between;
+  justify-content: space-evenly;
   transition: opacity 0.3s ease;
   opacity: 0;
-`;
-
-const linkContainerCss = css`
-  display: flex;
-  gap: 12px;
-  align-items: center;
-`;
-
-const linkWrapperCss = css`
-  display: flex;
-  align-items: center;
-`;
-
-const linkCss = css`
-  color: ${colors.mint};
-  font-weight: 500;
-  font-size: 1rem;
-  line-height: 22px;
-  letter-spacing: -0.16px;
-  margin-right: 2px;
-  z-index: 10;
 `;
 
 const titleCss = css`
