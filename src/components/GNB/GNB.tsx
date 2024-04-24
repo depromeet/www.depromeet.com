@@ -143,7 +143,7 @@ const linkCss = (theme: Theme) => css`
 
 const mobileMenuGNBCss = () => css`
   ${navCommonCss()};
-  padding: 20px 32px;
+  padding: 21px 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
