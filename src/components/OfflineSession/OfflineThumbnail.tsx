@@ -70,11 +70,14 @@ const articleCss = css`
   background-color: black;
 
   ${mediaQuery('tablet')} {
-    padding: 14px;
+    padding: 16px;
   }
   ${mediaQuery('mobile')} {
-    padding: 10px;
+    padding: 14px;
     height: 158px;
+  }
+  @media (max-width: 400px) {
+    padding: 10px;
   }
   &:hover {
     cursor: pointer;
@@ -143,7 +146,10 @@ const descriptionCss = css`
   position: relative;
   font-weight: 500;
   font-size: 1rem;
+  line-height: 22px;
   color: white;
+  z-index: 10;
+  letter-spacing: -0.16px;
   white-space: pre-wrap;
   z-index: 10;
 
