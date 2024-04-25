@@ -1,12 +1,11 @@
 import { css } from '@emotion/react';
 import { AnimatePresence, m } from 'framer-motion';
 
+import { BlogPostThumbnail, Link } from '~/components/Blog';
 import { Intro } from '~/components/Intro';
 import { Subscribe } from '~/components/Main';
 import { SectionTitleV2 } from '~/components/SectionTitleV2';
 import { SEO } from '~/components/SEO';
-import { Thumbnail } from '~/components/Thumbnail';
-import { Link } from '~/components/Thumbnail/Thumbnail';
 import { BLOG_LIST } from '~/constant/blog';
 import { staggerHalf } from '~/constant/motion';
 import { mediaQuery } from '~/styles/media';
@@ -34,10 +33,11 @@ export default function blog() {
               variants={staggerHalf}
             >
               {BLOG_LIST.map(blog => (
-                <Thumbnail
+                <BlogPostThumbnail
                   key={blog.title}
                   img={blog.img}
                   title={blog.title}
+                  date={blog.date}
                   links={blog.links as Link[]}
                 />
               ))}
@@ -74,6 +74,8 @@ const blogContainerCss = css`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 12px;
+  justify-items: center;
+
   ${mediaQuery('tablet')} {
     grid-template-columns: repeat(2, 1fr);
   }
