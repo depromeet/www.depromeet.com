@@ -98,3 +98,145 @@ export const typos = {
     `,
   },
 };
+
+export const typosV2 = {
+  bebas: {
+    regular88: css`
+      font-family: Bebas;
+      font-size: ${pxToRem(88)};
+      font-style: normal;
+      font-weight: 400;
+      line-height: ${pxToRem(104)};
+    `,
+    regular66: css`
+      font-family: Bebas;
+      font-size: ${pxToRem(66)};
+      font-style: normal;
+      font-weight: 400;
+      line-height: ${pxToRem(76)};
+    `,
+    regular40: css`
+      font-family: Bebas;
+      font-size: ${pxToRem(40)};
+      font-style: normal;
+      font-weight: 400;
+      line-height: ${pxToRem(48)};
+    `,
+    regular32: css`
+      font-family: Bebas;
+      font-size: ${pxToRem(30)};
+      font-style: normal;
+      font-weight: 400;
+      line-height: ${pxToRem(36)};
+    `,
+    regular24: css`
+      font-family: Bebas;
+      font-size: ${pxToRem(24)};
+      font-style: normal;
+      font-weight: 400;
+      line-height: ${pxToRem(28.8)};
+      ${mediaQuery('mobile')} {
+        font-size: ${pxToRem(20)};
+      }
+    `,
+    regular14: css`
+      font-family: Bebas;
+      font-size: ${pxToRem(14)};
+      font-style: normal;
+      font-weight: 400;
+      line-height: ${pxToRem(16.8)};
+    `,
+  },
+  pretendard: {
+    semibold32: css`
+      font-size: ${pxToRem(32)};
+      font-style: normal;
+      font-weight: 600;
+      line-height: ${pxToRem(48)};
+      letter-spacing: -4%;
+    `,
+    semibold28: css`
+      font-size: ${pxToRem(28)};
+      font-style: normal;
+      font-weight: 600;
+      line-height: ${pxToRem(40)};
+      letter-spacing: -4%;
+    `,
+    semibold26: css`
+      font-size: ${pxToRem(26)};
+      font-style: normal;
+      line-height: ${pxToRem(40)};
+      font-weight: 600;
+    `,
+    semibold24: css`
+      font-size: ${pxToRem(24)};
+      font-style: normal;
+      font-weight: 600;
+      line-height: ${pxToRem(36)};
+      letter-spacing: -4%;
+    `,
+    semibold20: css`
+      font-size: ${pxToRem(20)};
+      font-style: normal;
+      font-weight: 600;
+      line-height: ${pxToRem(30)};
+      letter-spacing: -4%;
+    `,
+    semibold18: css`
+      font-size: ${pxToRem(18)};
+      font-style: normal;
+      font-weight: 600;
+      line-height: ${pxToRem(32)};
+      letter-spacing: -4%;
+    `,
+    semibold16: css`
+      font-size: ${pxToRem(16)};
+      font-style: normal;
+      font-weight: 600;
+      line-height: ${pxToRem(24)};
+      letter-spacing: -4%;
+    `,
+    semibold14: css`
+      font-size: ${pxToRem(14)};
+      font-style: normal;
+      font-weight: 600;
+      line-height: ${pxToRem(21)};
+      letter-spacing: -4%;
+    `,
+    regular20: css`
+      font-size: ${pxToRem(20)};
+      font-style: normal;
+      font-weight: 400;
+      line-height: ${pxToRem(30)};
+      letter-spacing: -5%;
+    `,
+    regular18: css`
+      font-size: ${pxToRem(18)};
+      font-style: normal;
+      font-weight: 400;
+      line-height: ${pxToRem(27)};
+      letter-spacing: -5%;
+    `,
+    regular16: css`
+      font-size: ${pxToRem(16)};
+      font-style: normal;
+      font-weight: 400;
+      line-height: ${pxToRem(24)};
+      letter-spacing: -5%;
+    `,
+    regular14: css`
+      font-size: ${pxToRem(14)};
+      font-style: normal;
+      font-weight: 400;
+      line-height: ${pxToRem(21)};
+      letter-spacing: -5%;
+    `,
+    regular8: css`
+      font-size: ${pxToRem(8)};
+      font-style: normal;
+      font-weight: 400;
+      line-height: ${pxToRem(12)};
+      letter-spacing: -2%;
+    `,
+  },
+};

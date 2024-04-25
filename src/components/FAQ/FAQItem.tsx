@@ -1,9 +1,9 @@
 import { css, Theme } from '@emotion/react';
 import { motion, Variants } from 'framer-motion';
 
-import { ArrowIcon } from '~/components/Icons';
 import { mediaQuery } from '~/styles/media';
-import { theme } from '~/styles/theme';
+
+import { NarrowArrowIcon } from '../Icons';
 
 interface FAQItemProps {
   isOpen: boolean;
@@ -22,10 +22,15 @@ export function FAQItem({ isOpen, onClickOpenButton, question, answer }: FAQItem
         transition={{ duration: 0.3, ease: 'easeOut' }}
       >
         <h4>{question}</h4>
-        <motion.div variants={arrowIconVariants} transition={{ duration: 0.3, ease: 'easeOut' }}>
-          <ArrowIcon
+        <motion.div
+          variants={arrowIconVariants}
+          transition={{ duration: 0.3, ease: 'easeOut' }}
+          css={theme => arrowContainerCss(theme, isOpen)}
+        >
+          <NarrowArrowIcon
             direction={isOpen ? 'up' : 'down'}
-            css={theme => arrowIconCss(theme, isOpen)}
+            color={isOpen ? '' : '#FFFFFF'}
+            fill={isOpen ? '' : '#FFFFFF'}
           />
         </motion.div>
       </motion.div>
@@ -42,8 +47,8 @@ export function FAQItem({ isOpen, onClickOpenButton, question, answer }: FAQItem
 }
 
 const headerVariants: Variants = {
-  open: { backgroundColor: theme.colors.blue400 },
-  closed: { backgroundColor: theme.colors.black400 },
+  open: { backgroundColor: 'black' },
+  closed: { backgroundColor: 'white' },
 };
 
 const bodyVariants: Variants = {
@@ -53,8 +58,8 @@ const bodyVariants: Variants = {
 };
 
 const arrowIconVariants: Variants = {
-  open: { stroke: theme.colors.black800 },
-  closed: { stroke: theme.colors.blue400 },
+  open: { stroke: 'black' },
+  closed: { stroke: 'white' },
 };
 
 const liCss = css`
@@ -62,50 +67,45 @@ const liCss = css`
 `;
 
 const headerCss = (theme: Theme, isOpen: boolean) => css`
-  background-color: ${isOpen ? theme.colors.blue400 : theme.colors.black400};
+  background-color: ${isOpen ? 'black' : 'white'};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px 30px;
+  padding: 12px 30px;
 
   > h4 {
-    color: ${isOpen ? theme.colors.black800 : theme.colors.white};
+    color: ${isOpen ? 'white' : 'black'};
     text-align: center;
-    ${theme.typos.pretendard.subTitle2}
+    ${theme.typosV2.pretendard.regular16}
   }
 
   ${mediaQuery('mobile')} {
-    padding: 8px;
+    padding: 12px;
 
-    > h3 {
-      font-weight: 500;
-      font-size: 14px;
+    > h4 {
+      ${theme.typosV2.pretendard.regular14}
     }
   }
 `;
 
-const arrowIconCss = (theme: Theme, isOpen: boolean) => css`
-  > path {
-    stroke: ${isOpen ? theme.colors.black800 : theme.colors.blue400};
-  }
-
-  ${mediaQuery('mobile')} {
-    width: 24px;
-    height: 24px;
-  }
+const arrowContainerCss = (theme: Theme, isOpen: boolean) => css`
+  border-radius: 400px;
+  width: 24px;
+  height: 24px;
+  background-color: ${isOpen ? theme.colors.mint : 'black'};
 `;
 
 const bodyCss = (theme: Theme) => css`
-  background-color: ${theme.colors.black800};
+  background-color: white;
   > p {
-    padding: 40px;
-    color: ${theme.colors.white};
-    ${theme.typos.pretendard.body1};
+    padding: 12px 30px;
+    color: black;
+    ${theme.typosV2.pretendard.regular16};
   }
   ${mediaQuery('mobile')} {
     > p {
-      padding: 16px;
-      font-weight: 400;
+      padding: 12px;
+      ${theme.typosV2.pretendard.regular14}
     }
   }
 `;

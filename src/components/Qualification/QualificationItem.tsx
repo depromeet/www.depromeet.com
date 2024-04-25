@@ -17,31 +17,32 @@ export function QualificationItem({ index, description }: QualificationItemProps
   );
 }
 
-const layoutCss = (theme: Theme) => css`
-  background-color: ${theme.colors.black400};
-  padding: 48px 30px;
+const layoutCss = css`
+  padding: 48px 26px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  background-color: white;
 
-  ${mediaQuery('tablet')} {
-    padding: 48px 38px;
-  }
   ${mediaQuery('mobile')} {
     padding: 16px;
   }
 `;
 
 const indexCss = (theme: Theme) => css`
-  ${theme.typos.decimal.subTitle1};
-  color: ${theme.colors.blue300};
+  ${theme.typosV2.bebas.regular32};
+  color: ${theme.colors.pink};
+
+  ${mediaQuery('mobile')} {
+    ${theme.typosV2.bebas.regular24};
+  }
 `;
 
 const descriptionCss = (theme: Theme) => css`
-  ${theme.typos.pretendard.body1};
-  color: ${theme.colors.gray20};
+  ${theme.typosV2.pretendard.semibold16};
+  color: black;
 
   ${mediaQuery('mobile')} {
-    ${theme.typos.pretendard.body3};
+    ${theme.typosV2.pretendard.regular14};
   }
 `;

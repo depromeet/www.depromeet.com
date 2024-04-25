@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { AnimatePresence, m } from 'framer-motion';
 
+import { Intro } from '~/components/Intro';
 import { Pagination } from '~/components/Pagination';
 import { ProjectTab } from '~/components/ProjectTab';
 import { SEO } from '~/components/SEO';
@@ -22,7 +23,7 @@ import {
 
 const FIRST_PAGE = 1;
 const ALL_TAB = '전체';
-const TEN_UNDER_TAB = '-10기';
+const TEN_UNDER_TAB = '~10기';
 
 export default function ProjectPage() {
   const [currentTab, setCurrentTab] = useState(ALL_TAB);
@@ -62,7 +63,14 @@ export default function ProjectPage() {
   return (
     <>
       <SEO title="디프만 - Project" />
-      <main css={mainCss}>
+      <main>
+        <Intro
+          imageUrl="/images/project/intro-img.svg"
+          title="프로젝트 배너 이미지"
+          width={1024}
+          height={400}
+          color="purple"
+        />
         <section css={sectionCss}>
           <ProjectTab currentTab={currentTab} setCurrentTab={setCurrentTab} />
           <AnimatePresence mode="wait" initial={false}>
@@ -98,31 +106,25 @@ export default function ProjectPage() {
   );
 }
 
-const mainCss = css`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 100px;
-  margin-bottom: 200px;
-  ${mediaQuery('tablet')} {
-    margin-top: 74px;
-  }
-  ${mediaQuery('mobile')} {
-    margin-top: 60px;
-  }
-`;
-
 const sectionCss = css`
-  width: 100vw;
-  max-width: 1020px;
-  max-width: 960px;
-  padding: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: white;
+  padding: 80px 0;
+
+  ${mediaQuery('tablet')} {
+    padding: 80px 32px;
+  }
   ${mediaQuery('mobile')} {
-    padding: 20px;
+    padding: 80px 16px;
   }
 `;
 
 const projectContainerCss = css`
+  width: 100%;
+  max-width: 960px;
   margin-top: 36px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);

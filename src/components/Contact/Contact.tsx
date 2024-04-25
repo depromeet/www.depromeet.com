@@ -1,15 +1,16 @@
 import Link from 'next/link';
 import { css, Theme } from '@emotion/react';
 
-import { SectionTitle } from '~/components/SectionTitle';
 import { CONTACT_INFO } from '~/constant/contactInfo';
-import { commonLayoutCss } from '~/styles/layout';
 import { mediaQuery } from '~/styles/media';
+import { theme } from '~/styles/theme';
+
+import { SectionTitleV2 } from '../SectionTitleV2';
 
 export function Contact() {
   return (
-    <div css={[commonLayoutCss, layoutCss]}>
-      <SectionTitle label="Contact" title="디프만에 대해 궁금한게 있으신가요?" />
+    <div css={[layoutCss]}>
+      <SectionTitleV2 style={titleCss}>CONTACT</SectionTitleV2>
       <ul css={infoListCss}>
         {CONTACT_INFO.map(footer => (
           <li key={footer.name}>
@@ -25,32 +26,37 @@ export function Contact() {
 }
 
 const layoutCss = css`
-  margin-top: 150px;
-  margin-bottom: 150px;
-  ${mediaQuery('tablet')} {
-    margin-top: 150px;
-    margin-bottom: 150px;
-  }
-  ${mediaQuery('mobile')} {
-    margin-top: 100px;
-    margin-bottom: 100px;
-  }
+  padding: 120px 0;
+  background-color: ${theme.colors.lightGray};
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
 `;
 
 const infoListCss = css`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
+  width: 100%;
+  max-width: 960px;
+
+  ${mediaQuery('tablet')} {
+    padding: 0 32px;
+  }
+
   ${mediaQuery('mobile')} {
-    gap: 10px;
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0 16px;
   }
 `;
 
 const InfoCss = (theme: Theme) => css`
-  ${theme.typos.pretendard.body1};
-  background-color: ${theme.colors.black400};
-  color: ${theme.colors.gray20};
-  width: 470px;
+  ${theme.typosV2.pretendard.regular18};
+  background-color: ${theme.colors.white};
+  color: black;
+  width: 100%;
   height: 172px;
   padding: 48px 36px;
   display: flex;
@@ -58,19 +64,13 @@ const InfoCss = (theme: Theme) => css`
   justify-content: space-between;
   align-items: flex-start;
   gap: 20px;
-  ${mediaQuery('tablet')} {
-    width: 100%;
-  }
-
-  ${mediaQuery('mobile')} {
-    font-size: 0.8rem;
-    width: 100%;
-    height: 96px;
-    padding: 16px 8px;
-  }
 `;
 
 const infoNameCss = (theme: Theme) => css`
-  ${theme.typos.decimal.subTitle1};
-  color: ${theme.colors.blue300};
+  ${theme.typosV2.bebas.regular32};
+  color: black;
+`;
+
+const titleCss = (theme: Theme) => css`
+  ${theme.typosV2.bebas.regular24}
 `;

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { css, Theme } from '@emotion/react';
 import { m } from 'framer-motion';
 
-import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
+import { GNB_MOBILE_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import useIsInProgress from '~/hooks/useIsInProgress';
 import { mediaQuery } from '~/styles/media';
 
@@ -13,7 +13,7 @@ interface MobileMenuProps {
 
 export function MobileMenu({ onClickMenu }: MobileMenuProps) {
   const { pathname, push } = useRouter();
-  const { isInProgress } = useIsInProgress();
+  const { isInProgress, dDay } = useIsInProgress();
 
   const getActiveLinkcss = (menu: GNBMenu) => {
     if (pathname.startsWith(menu.href)) {
@@ -25,12 +25,12 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
   return (
     <m.article
       initial={{ height: 0, opacity: 0 }}
-      animate={{ height: '234px', opacity: 1 }}
+      animate={{ height: '310px', opacity: 1 }}
       exit={{ height: 0, opacity: 0 }}
       css={mobileMenuCss}
     >
       <ul>
-        {GNB_MENU_NAME.map(menu => (
+        {GNB_MOBILE_MENU_NAME.map(menu => (
           <m.li
             key={menu.name}
             onClick={onClickMenu}
@@ -39,12 +39,17 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
             exit={{ opacity: 0 }}
           >
             {menu.type === 'button' ? (
-              <button disabled={!isInProgress} onClick={() => push(menu.href)} css={linkCss}>
-                {menu.name}
+              <button
+                disabled={!isInProgress}
+                onClick={() => push(menu.href)}
+                css={linkCss}
+                suppressHydrationWarning
+              >
+                {isInProgress ? menu.name : dDay < 0 ? `D${dDay}` : `D+${dDay}`}
               </button>
             ) : (
-              <Link href={menu.href}>
-                <a css={[linkCss, getActiveLinkcss(menu)]}>{menu.name}</a>
+              <Link href={menu.href} css={[linkCss, getActiveLinkcss(menu)]}>
+                {menu.name}
               </Link>
             )}
           </m.li>
@@ -56,25 +61,24 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
 
 const mobileMenuCss = (theme: Theme) => css`
   z-index: 9997;
-
   width: 100vw;
-  height: fit-content;
   position: fixed;
   top: 0;
   left: 0;
   margin: auto;
-  background-color: ${theme.colors.black800};
+  background-color: black;
   padding-top: 72px;
-  border-bottom: 1px solid ${theme.colors.gray300};
+  border-bottom: 1px solid ${theme.colors.lightGray};
 
   overflow: hidden;
+
   li {
     padding: 12px 32px;
   }
 `;
 
 const linkCss = (theme: Theme) => css`
-  ${theme.typos.pretendard.body1};
+  ${theme.typosV2.pretendard.regular14};
   color: ${theme.colors.white};
 
   ${mediaQuery('mobile')} {
@@ -83,7 +87,7 @@ const linkCss = (theme: Theme) => css`
 
   &:hover,
   &:active {
-    color: ${theme.colors.yellow500};
+    color: ${theme.colors.pink};
   }
 
   &:disabled {
@@ -93,7 +97,7 @@ const linkCss = (theme: Theme) => css`
 `;
 
 const activeLinkCss = (theme: Theme) => css`
-  color: ${theme.colors.yellow500};
+  color: ${theme.colors.pink};
 `;
 
 const inActiveLinkCss = (theme: Theme) => css`

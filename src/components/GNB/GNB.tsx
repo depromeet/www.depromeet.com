@@ -12,25 +12,29 @@ import { useDropDown } from '~/hooks/useDropdown';
 import useIsInProgress from '~/hooks/useIsInProgress';
 import { mediaQuery } from '~/styles/media';
 
-const LOGO_IMAGE = `/images/logo.png`;
+const LOGO_IMAGE = `/images/logo.svg`;
 
-function ApplyButton({ menu }: { menu: GNBMenu }) {
-  const { isInProgress } = useIsInProgress();
+function ApplyButton() {
+  const { isInProgress, dDay } = useIsInProgress();
   const router = useRouter();
 
   const onClick = () => {
-    router.push(menu.href);
+    router.push('/apply');
   };
 
   return (
-    <Button disabled={!isInProgress} css={linkButtonCss} onClick={onClick}>
-      {menu.name}
+    <Button disabled={!isInProgress} css={linkButtonCss} onClick={onClick} suppressHydrationWarning>
+      {isInProgress ? ' 지원하기' : dDay < 0 ? `D${dDay}` : `D+${dDay}`}
     </Button>
   );
 }
 
-const linkButtonCss = (theme: Theme) => css`
-  ${theme.typos.pretendard.body1};
+const linkButtonCss = css`
+  width: 105px;
+  height: 37px;
+  padding: 8px 24px 8px 24px;
+  border-radius: 300px;
+  opacity: 0px;
 `;
 
 export function GNB() {
@@ -49,27 +53,24 @@ export function GNB() {
       <nav css={navCss}>
         <div css={navWrapperCss}>
           <Link href={'/'}>
-            <Image src={LOGO_IMAGE} alt="로고 이미지" width={154} height={18.9} />
+            <Image src={LOGO_IMAGE} alt="로고 이미지" width={112} height={24} />
           </Link>
           <ul css={menuContainerCss}>
             {GNB_MENU_NAME.map(menu => (
               <li css={menuCss} key={menu.name}>
-                {menu.type === 'button' ? (
-                  <ApplyButton menu={menu} />
-                ) : (
-                  <Link css={[linkCss, getActiveLinkcss(menu)]} href={menu.href}>
-                    {menu.name}
-                  </Link>
-                )}
+                <Link css={[linkCss, getActiveLinkcss(menu)]} href={menu.href}>
+                  {menu.name}
+                </Link>
               </li>
             ))}
           </ul>
+          <ApplyButton />
         </div>
       </nav>
       <nav css={mobileNavCss} ref={containerRef}>
         <div css={mobileMenuGNBCss}>
           <Link href={'/'}>
-            <Image src={LOGO_IMAGE} alt="로고 이미지" width={130} height={16} />
+            <Image src={LOGO_IMAGE} alt="로고 이미지" width={112} height={24} />
           </Link>
           <MobileMenuIcon
             onClick={() => (isDropdownOpen ? closeDropdown() : openDropdown())}
@@ -80,13 +81,12 @@ export function GNB() {
           {isDropdownOpen && <MobileMenu onClickMenu={closeDropdown} />}
         </AnimatePresence>
       </nav>
-      <div css={blankCss} />
     </>
   );
 }
 
-const navCommonCss = (theme: Theme) => css`
-  background-color: ${theme.colors.black800};
+const navCommonCss = () => css`
+  background-color: black;
   position: fixed;
   top: 0;
   left: 0;
@@ -94,21 +94,13 @@ const navCommonCss = (theme: Theme) => css`
   width: 100vw;
 `;
 
-const navCss = (theme: Theme) => css`
-  ${navCommonCss(theme)};
-  padding: 20px 32px;
+const navCss = () => css`
+  ${navCommonCss()};
+  padding: 12px 40px;
+  height: 61px;
 
   ${mediaQuery('mobile')} {
     display: none;
-  }
-`;
-
-const blankCss = css`
-  width: 100vw;
-  height: 82px;
-
-  ${mediaQuery('mobile')} {
-    height: 72px;
   }
 `;
 
@@ -138,7 +130,7 @@ const menuCss = css`
 `;
 
 const activeLinkCss = (theme: Theme) => css`
-  color: ${theme.colors.yellow500};
+  color: ${theme.colors.pink};
 `;
 
 const inActiveLinkCss = (theme: Theme) => css`
@@ -146,12 +138,12 @@ const inActiveLinkCss = (theme: Theme) => css`
 `;
 
 const linkCss = (theme: Theme) => css`
-  ${theme.typos.pretendard.body1};
+  ${theme.typosV2.pretendard.regular14};
 `;
 
-const mobileMenuGNBCss = (theme: Theme) => css`
-  ${navCommonCss(theme)};
-  padding: 20px 32px;
+const mobileMenuGNBCss = () => css`
+  ${navCommonCss()};
+  padding: 21px 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;

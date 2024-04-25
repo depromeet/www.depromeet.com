@@ -29,10 +29,13 @@ const layoutCss = css`
   flex-direction: column;
   align-items: center;
   background-color: inherit;
-  padding: 88px 0;
+  padding-top: 96px;
 
+  ${mediaQuery('tablet')} {
+    padding-top: 88px;
+  }
   ${mediaQuery('mobile')} {
-    padding: 24px 0;
+    padding-top: 80px;
   }
 `;
 
@@ -43,7 +46,7 @@ const labelCss = (theme: Theme) => css`
 `;
 
 const titleCss = (theme: Theme) => css`
-  ${theme.typos.pretendard.subTitle1};
+  ${theme.typosV2.bebas.regular24}
   color: ${theme.colors.white};
   margin-top: 16px;
   text-align: center;

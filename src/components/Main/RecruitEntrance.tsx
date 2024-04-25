@@ -1,103 +1,139 @@
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { css, Theme } from '@emotion/react';
 
-import { Button } from '~/components/Button';
-import { commonLayoutCss } from '~/styles/layout';
 import { mediaQuery } from '~/styles/media';
 
+import { LinkWrapper } from './LinkWrapper';
+import { NarrowArrowIcon } from '../Icons';
+
 export function RecruitEntrance() {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    const currentWidth = window.innerWidth;
+    ref.current.scrollLeft = currentWidth / 2 - (currentWidth > 700 ? currentWidth / 3 : 0);
+  }, []);
+
   return (
-    <section css={[commonLayoutCss, layoutCss]}>
-      <div css={imageContainerCss}>
-        <Image
-          src="/images/main/coin-drop.png"
-          width={400}
-          height={400}
-          alt="passport combination"
-        />
-      </div>
-      <div css={infoContainerCss}>
-        <h1>14기 모집 안내</h1>
+    <section css={layoutCss}>
+      <div css={descriptionCss}>
         <div>
-          <p>지원 자격부터 모집 직무까지</p>
-          <p>상세 내용을 한 번에 확인해보세요</p>
+          <Image
+            src="/images/main/left-bracket.svg"
+            alt="모집 안내 설명 시작"
+            width={16}
+            height={163}
+          />
         </div>
-        <Link href="/recruit">
-          <Button>바로가기</Button>
-        </Link>
+        <h1>
+          함께 몰입하고 성장하며,
+          <br />
+          배움을 공유할 수 있는,
+          <br />
+          디프만 15기를 모집합니다.
+        </h1>
+        <div>
+          <Image
+            src="/images/main/right-bracket.svg"
+            alt="모집 안내 설명 끝"
+            width={16}
+            height={163}
+          />
+        </div>
       </div>
+      <div css={imgFlexCss} ref={ref}>
+        <Image
+          src="/images/main/responsibility-clock.svg"
+          alt="인재상중 책임감"
+          width={316}
+          height={292}
+        />
+        <Image src="/images/main/digging-clock.svg" alt="인재상중 몰입" width={292} height={292} />
+        <Image src="/images/main/share-clock.svg" alt="인재상중 공유" width={316} height={292} />
+      </div>
+      <LinkWrapper href="/project" textColor="white" textHover={true}>
+        모집 안내
+        <span css={arrowImgContainerCss}>
+          <NarrowArrowIcon direction="right" color="black" fill="black" />
+        </span>
+      </LinkWrapper>
     </section>
   );
 }
 
-const imageContainerCss = css`
-  padding: 24px;
-  ${mediaQuery('tablet')} {
-    width: 346px;
-    padding: 0;
-    margin-left: 53px;
-    img {
-      position: relative;
-      left: -53px;
-    }
-  }
-
-  ${mediaQuery('mobile')} {
-    width: 124px;
-    margin-left: 0;
-    img {
-      width: auto;
-      height: 170px;
-      left: -16px;
-    }
-  }
-`;
-
-const infoContainerCss = (theme: Theme) => css`
+const layoutCss = (theme: Theme) => css`
+  padding: 120px 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 24px;
-  text-align: left;
-  padding-right: 80px;
-
-  h1 {
-    ${theme.typos.pretendard.subTitle1};
-    color: ${theme.colors.white};
-  }
-  p {
-    ${theme.typos.pretendard.subTitle2};
-    color: ${theme.colors.gray100};
-  }
+  gap: 100px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: ${theme.colors.blue};
+  overflow: hidden;
 
   ${mediaQuery('tablet')} {
-    padding-right: 0;
+    gap: 56px;
+  }
+`;
+
+const descriptionCss = (theme: Theme) => css`
+  display: flex;
+  gap: 20px;
+  align-items: center;
+
+  h1 {
+    ${theme.typosV2.pretendard.semibold24};
+    text-align: center;
   }
 
   ${mediaQuery('mobile')} {
-    gap: 8px;
-
-    p {
-      font-size: 14px;
+    h1 {
+      ${theme.typosV2.pretendard.semibold20};
     }
-    button {
-      margin-top: 16px;
+
+    img {
+      width: 15px;
+      height: 150px;
     }
   }
 `;
 
-const layoutCss = css`
+const imgFlexCss = css`
   display: flex;
-  gap: 80px;
+  gap: 24px;
 
-  ${mediaQuery('tablet')} {
-    gap: 7px;
+  @media (max-width: 800px) {
+    width: 100%;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; /* FireFox */
+    &::-webkit-scrollbar {
+      /* Chrome, Safari, Edge, ... */
+      display: none;
+    }
+
+    img {
+      flex: 0 0 40%;
+      scroll-snap-align: center;
+    }
   }
 
   ${mediaQuery('mobile')} {
-    gap: 16px;
-    justify-content: center;
+    img {
+      flex: 0 0 60%;
+    }
   }
+`;
+
+const arrowImgContainerCss = css`
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 400px;
+  background-color: white;
 `;
