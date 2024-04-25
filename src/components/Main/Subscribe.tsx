@@ -18,7 +18,7 @@ export function Subscribe() {
         </h3>
       </div>
       <Link href="https://depromeet.stibee.com/subscribe/" css={linkCss}>
-        <span>디프만 뉴스레터 구독하기</span>
+        디프만 뉴스레터 구독하기
       </Link>
     </section>
   );
@@ -64,7 +64,7 @@ const descriptionCss = (theme: Theme) => css`
   }
 `;
 
-const linkCss = css`
+const linkCss = (theme: Theme) => css`
   width: 296px;
   height: 62px;
   padding: 16px 48px 16px 48px;
@@ -75,4 +75,8 @@ const linkCss = css`
   color: white;
   background-color: black;
   text-align: center;
+
+  &:hover {
+    color: ${theme.colors.pink};
+  }
 `;
