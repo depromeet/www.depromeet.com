@@ -95,7 +95,7 @@ const secondRowCss = css`
 `;
 
 const strongLinkCss = (theme: Theme) => css`
-  ${theme.typos.bebas.regular24};
+  ${theme.typosV2.bebas.regular24};
   color: white;
 
   ${mediaQuery('mobile')} {
@@ -104,7 +104,7 @@ const strongLinkCss = (theme: Theme) => css`
 `;
 
 const linkCss = (theme: Theme) => css`
-  ${theme.typos.bebas.regular14};
+  ${theme.typosV2.pretendard.regular14};
   color: white;
 
   ${mediaQuery('mobile')} {
@@ -113,7 +113,7 @@ const linkCss = (theme: Theme) => css`
 `;
 
 const copyrightCss = (theme: Theme) => css`
-  ${theme.typos.notosans.regular8};
+  ${theme.typosV2.pretendard.regular8};
   color: white;
 
   ${mediaQuery('mobile')} {

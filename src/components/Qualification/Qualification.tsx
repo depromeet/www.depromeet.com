@@ -28,7 +28,7 @@ const layoutCss = (theme: Theme) => css`
 `;
 
 const titleCss = css`
-  ${theme.typos.notosans.semibold20}
+  ${theme.typosV2.pretendard.semibold20}
 `;
 
 const listCss = css`

@@ -18,7 +18,7 @@ export function Button({ children, size = 'md', overrideCss, ...props }: ButtonP
 }
 
 const buttonCss = (theme: Theme, size: ButtonSize) => css`
-  ${theme.typos.notosans.semibold14};
+  ${theme.typosV2.pretendard.semibold14};
   background-color: white;
   color: black;
   display: block;

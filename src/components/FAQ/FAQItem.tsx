@@ -76,14 +76,14 @@ const headerCss = (theme: Theme, isOpen: boolean) => css`
   > h4 {
     color: ${isOpen ? 'white' : 'black'};
     text-align: center;
-    ${theme.typos.notosans.regular16}
+    ${theme.typosV2.pretendard.regular16}
   }
 
   ${mediaQuery('mobile')} {
     padding: 12px;
 
     > h4 {
-      ${theme.typos.notosans.regular14}
+      ${theme.typosV2.pretendard.regular14}
     }
   }
 `;
@@ -100,12 +100,12 @@ const bodyCss = (theme: Theme) => css`
   > p {
     padding: 12px 30px;
     color: black;
-    ${theme.typos.notosans.regular16};
+    ${theme.typosV2.pretendard.regular16};
   }
   ${mediaQuery('mobile')} {
     > p {
       padding: 12px;
-      ${theme.typos.notosans.regular14}
+      ${theme.typosV2.pretendard.regular14}
     }
   }
 `;

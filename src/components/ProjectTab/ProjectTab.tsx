@@ -41,10 +41,10 @@ const tabContainerCss = css`
 `;
 
 const tabCss = css`
-  ${theme.typos.notosans.regular20};
+  ${theme.typosV2.pretendard.regular20};
   padding: 16px 24px;
   ${mediaQuery('mobile')} {
-    ${theme.typos.notosans.regular14};
+    ${theme.typosV2.pretendard.regular14};
     padding: 16px 8px;
   }
 `;

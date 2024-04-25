@@ -23,7 +23,7 @@ const linkCss = ({ color }: { color: string }) => css`
   height: 62px;
   display: flex;
   gap: 8px;
-  ${theme.typos.notosans.regular20};
+  ${theme.typosV2.pretendard.regular20};
   color: ${color === 'black' ? 'white' : 'black'};
   background-color: ${color};
   border-radius: 400px;

@@ -78,7 +78,7 @@ const mobileMenuCss = (theme: Theme) => css`
 `;
 
 const linkCss = (theme: Theme) => css`
-  ${theme.typos.notosans.regular14};
+  ${theme.typosV2.pretendard.regular14};
   color: ${theme.colors.white};
 
   ${mediaQuery('mobile')} {

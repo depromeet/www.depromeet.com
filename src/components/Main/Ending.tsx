@@ -34,20 +34,20 @@ const containerCss = (theme: Theme) => css`
     position: absolute;
     bottom: 10px;
     left: calc(50% - 118px);
-    ${theme.typos.notosans.semibold32}
+    ${theme.typosV2.pretendard.semibold32}
   }
 
   ${mediaQuery('tablet')} {
     h1 {
       left: calc(50% - 85px);
-      ${theme.typos.notosans.semibold24}
+      ${theme.typosV2.pretendard.semibold24}
     }
   }
 
   ${mediaQuery('mobile')} {
     h1 {
       left: calc(50% - 76px);
-      ${theme.typos.notosans.semibold20}
+      ${theme.typosV2.pretendard.semibold20}
     }
   }
 `;

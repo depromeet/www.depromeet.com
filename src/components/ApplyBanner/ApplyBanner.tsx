@@ -47,7 +47,7 @@ const linkCss = (theme: Theme) => css`
   justify-content: center;
 
   p {
-    ${theme.typos.notosans.semibold20}
+    ${theme.typosV2.pretendard.semibold20}
   }
 `;
 

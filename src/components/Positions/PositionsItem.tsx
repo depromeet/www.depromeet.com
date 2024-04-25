@@ -36,17 +36,17 @@ export function PositionsItem({ type, title, link, description }: PositionsItemP
       </div>
       <div css={contentsCss}>
         <div>
-          <h1 css={titleCss}>
+          <div css={titleCss}>
             {title === 'iOS' ? (
-              <>
-                <span>i</span>
-                OS
-              </>
+              <div css={iosCss}>
+                <span css={spanCss}>i</span>
+                <h1 css={h1Css}>OS</h1>
+              </div>
             ) : (
-              title
+              <h1 css={h1Css}>{title}</h1>
             )}{' '}
-            {type !== 'design' ? 'DEVELOPER' : 'DESIGNER'}
-          </h1>
+            <h1 css={h1Css}>{type !== 'design' ? 'DEVELOPER' : 'DESIGNER'}</h1>
+          </div>
           <div css={descriptionCss}>
             {description.map((comment, idx) => (
               <p key={idx}>{comment}</p>
@@ -114,13 +114,24 @@ const layoutCss = (theme: Theme, position: string) => css`
   height: 430px;
 `;
 
-const titleCss = (theme: Theme) => css`
-  ${theme.typos.bebas.regular32};
-  color: white;
+const titleCss = css`
+  display: flex;
+  gap: 6px;
+`;
 
-  > span {
-    ${theme.typos.notosans.semibold26};
-  }
+const h1Css = (theme: Theme) => css`
+  ${theme.typosV2.bebas.regular32};
+  color: white;
+`;
+
+const spanCss = (theme: Theme) => css`
+  ${theme.typosV2.pretendard.semibold28};
+  color: white;
+`;
+
+const iosCss = css`
+  display: flex;
+  gap: 1px;
 `;
 
 const descriptionCss = (theme: Theme) => css`
@@ -131,7 +142,7 @@ const descriptionCss = (theme: Theme) => css`
 
   > p {
     color: white;
-    ${theme.typos.notosans.regular16}
+    ${theme.typosV2.pretendard.regular16}
   }
 `;
 
@@ -145,7 +156,7 @@ const linkCss = (theme: Theme) => css`
   gap: 5px;
   align-items: center;
   color: white;
-  ${theme.typos.notosans.regular20}
+  ${theme.typosV2.pretendard.regular20}
 `;
 
 const arrowIconCss = css`

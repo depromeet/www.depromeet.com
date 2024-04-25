@@ -47,5 +47,5 @@ const sessionContainerCss = css`
 `;
 
 const titleCss = (theme: Theme) => css`
-  ${theme.typos.notosans.semibold20}
+  ${theme.typosV2.pretendard.semibold20}
 `;

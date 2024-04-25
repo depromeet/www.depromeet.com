@@ -44,7 +44,7 @@ const linkCss = (
   height: 62px;
   display: flex;
   gap: 8px;
-  ${theme.typos.notosans.regular20};
+  ${theme.typosV2.pretendard.regular20};
   border-radius: 400px;
   justify-content: center;
   align-items: center;

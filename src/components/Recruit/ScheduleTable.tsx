@@ -51,11 +51,11 @@ const titleCss = (theme: Theme) => css`
   justify-content: center;
 
   h1 {
-    ${theme.typos.notosans.semibold20};
+    ${theme.typosV2.pretendard.semibold20};
   }
 
   h3 {
-    ${theme.typos.notosans.semibold16};
+    ${theme.typosV2.pretendard.semibold16};
     color: #555555;
     text-align: center;
   }
@@ -99,7 +99,7 @@ const tableItemCss = (theme: Theme) => css`
   align-items: center;
   text-align: center;
 
-  ${theme.typos.notosans.semibold16}
+  ${theme.typosV2.pretendard.semibold16}
 
   h1 {
     width: 100%;

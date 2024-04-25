@@ -84,13 +84,13 @@ const descriptionCss = (theme: Theme) => css`
   align-items: center;
 
   h1 {
-    ${theme.typos.notosans.semibold24};
+    ${theme.typosV2.pretendard.semibold24};
     text-align: center;
   }
 
   ${mediaQuery('mobile')} {
     h1 {
-      ${theme.typos.notosans.semibold20};
+      ${theme.typosV2.pretendard.semibold20};
     }
 
     img {

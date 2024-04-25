@@ -22,10 +22,10 @@ export function MobilePositionItem({ type, title, link }: MobilePositionsItemPro
       <div>
         <h1 css={titleCss}>
           {title === 'iOS' ? (
-            <>
-              <span>i</span>
-              OS
-            </>
+            <div css={iosCss}>
+              <span css={spanCss}>i</span>
+              <h1 css={h1Css}>OS</h1>
+            </div>
           ) : type === 'design' ? (
             'DESIGN'
           ) : (
@@ -62,12 +62,19 @@ const imgContainerCss = css`
   height: 86px;
 `;
 
-const titleCss = (theme: Theme) => css`
-  ${theme.typos.bebas.regular24};
+const titleCss = css``;
 
-  > span {
-    ${theme.typos.notosans.semibold18};
-  }
+const h1Css = (theme: Theme) => css`
+  ${theme.typosV2.bebas.regular24};
+`;
+
+const spanCss = (theme: Theme) => css`
+  ${theme.typosV2.pretendard.semibold18};
+`;
+
+const iosCss = css`
+  display: flex;
+  gap: 1px;
 `;
 
 const linkCss = (theme: Theme) => css`
@@ -76,7 +83,7 @@ const linkCss = (theme: Theme) => css`
   gap: 5px;
   align-items: center;
   color: black;
-  ${theme.typos.notosans.regular18}
+  ${theme.typosV2.pretendard.regular18}
 `;
 
 const arrowIconCss = css`

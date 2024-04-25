@@ -106,7 +106,7 @@ const linkWrapperCss = css`
 `;
 
 const linkCss = (theme: Theme) => css`
-  ${theme.typos.bebas.regular24}
+  ${theme.typosV2.bebas.regular24}
   color: ${colors.green};
   margin-right: 2px;
   z-index: 10;

@@ -43,11 +43,11 @@ const errorContainerCss = (theme: Theme) => css`
 `;
 
 const errorDescriptionCss = (theme: Theme) => css`
-  ${theme.typos.notosans.semibold32};
+  ${theme.typosV2.pretendard.semibold32};
   text-align: center;
 
   ${mediaQuery('mobile')} {
-    ${theme.typos.notosans.semibold24};
+    ${theme.typosV2.pretendard.semibold24};
   }
 `;
 
@@ -56,7 +56,7 @@ const returnButtonCss = (theme: Theme) => css`
   width: 240px;
   height: 62px;
   border-radius: 400px;
-  ${theme.typos.notosans.semibold20};
+  ${theme.typosV2.pretendard.semibold20};
   color: white;
   background-color: black;
 
@@ -64,6 +64,6 @@ const returnButtonCss = (theme: Theme) => css`
     padding: 12px 28px;
     width: 200px;
     height: 50px;
-    ${theme.typos.notosans.semibold16};
+    ${theme.typosV2.pretendard.semibold16};
   }
 `;

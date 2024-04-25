@@ -41,7 +41,7 @@ const descriptionCss = (theme: Theme) => css`
   text-align: center;
 
   h1 {
-    ${theme.typos.notosans.semibold32}
+    ${theme.typosV2.pretendard.semibold32}
 
     span {
       color: ${theme.colors.blue};
@@ -49,17 +49,17 @@ const descriptionCss = (theme: Theme) => css`
   }
 
   h3 {
-    ${theme.typos.notosans.regular20}
+    ${theme.typosV2.pretendard.regular20}
     color: #555555;
   }
 
   ${mediaQuery('mobile')} {
     h1 {
-      ${theme.typos.notosans.semibold24}
+      ${theme.typosV2.pretendard.semibold24}
     }
 
     h3 {
-      ${theme.typos.notosans.regular16}
+      ${theme.typosV2.pretendard.regular16}
     }
   }
 `;

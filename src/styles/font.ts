@@ -38,9 +38,4 @@ export const fontFace = css`
     font-weight: 700;
     src: local(''), url('/fonts/Bebas-Regular.ttf') format('truetype');
   }
-  @font-face {
-    font-family: 'NotoSansVariable';
-    font-style: normal;
-    src: local(''), url('/fonts/NotoSansKR-VariableFont_wght.ttf') format('truetype');
-  }
 `;

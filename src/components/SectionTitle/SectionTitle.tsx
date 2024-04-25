@@ -46,7 +46,7 @@ const labelCss = (theme: Theme) => css`
 `;
 
 const titleCss = (theme: Theme) => css`
-  ${theme.typos.bebas.regular24}
+  ${theme.typosV2.bebas.regular24}
   color: ${theme.colors.white};
   margin-top: 16px;
   text-align: center;

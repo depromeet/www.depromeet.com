@@ -27,6 +27,6 @@ const layoutCss = (theme: Theme) => css`
   background-color: white;
 
   h1 {
-    ${theme.typos.notosans.semibold20}
+    ${theme.typosV2.pretendard.semibold20}
   }
 `;

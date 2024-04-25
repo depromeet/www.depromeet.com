@@ -66,28 +66,28 @@ const titleLayoutCss = css`
 `;
 
 const titleH3Css = (theme: Theme) => css`
-  ${theme.typos.notosans.semibold20};
+  ${theme.typosV2.pretendard.semibold20};
   color: black;
 
   ${mediaQuery('mobile')} {
-    ${theme.typos.notosans.semibold16};
+    ${theme.typosV2.pretendard.semibold16};
   }
 `;
 
 const titleSpanCss = (theme: Theme) => css`
-  ${theme.typos.notosans.semibold16};
+  ${theme.typosV2.pretendard.semibold16};
   color: ${theme.colors.gray};
   display: flex;
   gap: 5px;
   margin-top: 2px;
 
   ${mediaQuery('mobile')} {
-    ${theme.typos.notosans.regular14};
+    ${theme.typosV2.pretendard.regular14};
   }
 `;
 
 const summaryCss = (theme: Theme) => css`
-  ${theme.typos.notosans.regular16};
+  ${theme.typosV2.pretendard.regular16};
   color: black;
   margin-top: 16px;
 
@@ -100,7 +100,7 @@ const summaryCss = (theme: Theme) => css`
   }
 
   ${mediaQuery('mobile')} {
-    ${theme.typos.notosans.regular14};
+    ${theme.typosV2.pretendard.regular14};
     margin-top: 8px;
   }
 `;
@@ -121,7 +121,7 @@ const arrowIconCss = (theme: Theme) => css`
 `;
 
 const linkCss = (theme: Theme) => css`
-  ${theme.typos.notosans.regular18};
+  ${theme.typosV2.pretendard.regular18};
   color: ${theme.colors.pink};
   margin-top: 20px;
   display: flex;
@@ -129,7 +129,7 @@ const linkCss = (theme: Theme) => css`
   align-items: center;
 
   ${mediaQuery('mobile')} {
-    ${theme.typos.notosans.regular14};
+    ${theme.typosV2.pretendard.regular14};
 
     > Svg {
       width: 18px;

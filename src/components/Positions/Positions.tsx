@@ -116,11 +116,11 @@ const titleCss = (theme: Theme) => css`
   color: white;
 
   > h1 {
-    ${theme.typos.notosans.semibold20}
+    ${theme.typosV2.pretendard.semibold20}
   }
 
   > p {
-    ${theme.typos.notosans.regular20}
+    ${theme.typosV2.pretendard.regular20}
   }
 `;
 

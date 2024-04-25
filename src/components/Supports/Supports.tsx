@@ -71,12 +71,12 @@ const titleContainerCss = css`
 `;
 
 const titleCss = (theme: Theme) => css`
-  ${theme.typos.notosans.semibold20}
+  ${theme.typosV2.pretendard.semibold20}
 `;
 
 const subTitleCss = (theme: Theme) => css`
   text-align: center;
-  ${theme.typos.notosans.semibold16}
+  ${theme.typosV2.pretendard.semibold16}
   color: #555;
 `;
 

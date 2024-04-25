@@ -30,19 +30,19 @@ const layoutCss = css`
 `;
 
 const indexCss = (theme: Theme) => css`
-  ${theme.typos.bebas.regular32};
+  ${theme.typosV2.bebas.regular32};
   color: ${theme.colors.pink};
 
   ${mediaQuery('mobile')} {
-    ${theme.typos.bebas.regular24};
+    ${theme.typosV2.bebas.regular24};
   }
 `;
 
 const descriptionCss = (theme: Theme) => css`
-  ${theme.typos.notosans.semibold16};
+  ${theme.typosV2.pretendard.semibold16};
   color: black;
 
   ${mediaQuery('mobile')} {
-    ${theme.typos.notosans.regular14};
+    ${theme.typosV2.pretendard.regular14};
   }
 `;
