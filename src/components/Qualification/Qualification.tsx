@@ -32,13 +32,13 @@ const titleCss = css`
 `;
 
 const listCss = css`
-  padding: 0 16px;
+  padding: 0 10px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 12px;
+  grid-gap: 10px;
   max-width: 960px; // TODO: 변수화해서 theme.ts에서 관리하기
 
-  ${mediaQuery('mobile')} {
+  ${mediaQuery('tablet')} {
     grid-template-columns: repeat(2, 1fr);
   }
 `;

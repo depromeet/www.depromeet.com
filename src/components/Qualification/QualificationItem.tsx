@@ -18,15 +18,12 @@ export function QualificationItem({ index, description }: QualificationItemProps
 }
 
 const layoutCss = css`
-  padding: 48px 30px;
+  padding: 48px 26px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   background-color: white;
 
-  ${mediaQuery('tablet')} {
-    padding: 48px 38px;
-  }
   ${mediaQuery('mobile')} {
     padding: 16px;
   }
