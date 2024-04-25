@@ -2,13 +2,9 @@ import Image from 'next/image';
 import { css, Theme } from '@emotion/react';
 import { m, Variants } from 'framer-motion';
 
-import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
-import useToggle from '~/hooks/useToggle';
-import { colors } from '~/styles/colors';
+import { defaultFadeInVariants } from '~/constant/motion';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
-
-import { ArrowIcon } from '../Icons';
 
 export type Link = {
   type: 'Behance' | 'Github' | 'Web' | 'App';
@@ -34,69 +30,29 @@ export function OfflineThumbnail({
   img,
   description,
   titleTextColor,
-  links,
-  showInfoDefault = false,
 }: ThumbnailProps) {
-  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
-  const [isOpen, toggleIsOpen] = useToggle(false);
-
-  const onMobileClick = () => {
-    if (!isMobileSize) return;
-    toggleIsOpen();
-  };
-
   return (
     <m.article
       css={articleCss}
-      initial="default"
+      initial="initial"
+      animate="animate"
+      exit="exit"
       whileHover="hover"
-      animate={isMobileSize && isOpen ? 'hover' : 'default'}
-      onClick={onMobileClick}
-      variants={articleVariants}
+      variants={defaultFadeInVariants}
     >
-      <m.div css={imageCss}>
-        <Image src={img} alt={title} fill quality={100} />
-      </m.div>
-      <m.div css={gradientCss} variants={gradientVariants} />
-      <m.div css={contentsCss}>
-        <m.div>
-          <m.p
-            css={titleCss(titleTextColor)}
-            variants={showInfoDefault ? { ...textVariants, default: { opacity: 1 } } : textVariants}
-          >
-            {title}
-          </m.p>
-          <m.p
-            css={subTitleCss}
-            variants={
-              showInfoDefault
-                ? { ...textVariants, default: { opacity: 1 }, hover: { color: 'white' } }
-                : textVariants
-            }
-          >
-            {subTitle}
-          </m.p>
-        </m.div>
+      <section css={gradientCss} />
+      <Image css={imageCss} src={img} alt={title} fill quality={100} />
+      <div>
+        <h1 css={titleCss(titleTextColor)}>{title}</h1>
+        <h3 css={subTitleCss}>{subTitle}</h3>
+      </div>
+      <div css={contentsCss}>
         <m.p
           css={descriptionCss}
           variants={textVariants}
           dangerouslySetInnerHTML={{ __html: description }}
         />
-        {links && (
-          <m.div css={linkContainerCss}>
-            {links.map(link => (
-              <m.span key={link.type} css={linkWrapperCss}>
-                <m.a href={link.href} css={linkCss} variants={textVariants}>
-                  {link.type}
-                </m.a>
-                <m.span variants={textVariants}>
-                  <ArrowIcon direction={'right'} color={colors.blue400} width={16} height={16} />
-                </m.span>
-              </m.span>
-            ))}
-          </m.div>
-        )}
-      </m.div>
+      </div>
     </m.article>
   );
 }
@@ -108,7 +64,10 @@ const articleCss = css`
   min-width: 160px;
   padding: 18px;
   overflow: hidden;
-  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: black;
 
   ${mediaQuery('tablet')} {
     padding: 14px;
@@ -120,55 +79,30 @@ const articleCss = css`
   &:hover {
     cursor: pointer;
   }
+  &:hover > section {
+    opacity: 0;
+  }
+  &:hover > div {
+    opacity: 1;
+
+    h3 {
+      color: white;
+    }
+  }
   &:hover img {
     filter: blur(8px) brightness(0.4);
   }
 `;
 
-const gradientCss = css`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-`;
-
 const imageCss = css`
-  position: absolute;
-  top: 0;
-  left: 0;
   object-fit: cover;
   object-position: center;
-  width: 100%;
-  height: 100%;
-  opacity: 0.4;
+  z-index: -1;
 `;
 
 const contentsCss = css`
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: space-between;
-`;
-
-const linkContainerCss = css`
-  display: flex;
-  gap: 12px;
-  align-items: center;
-`;
-
-const linkWrapperCss = css`
-  display: flex;
-  align-items: center;
-`;
-
-const linkCss = css`
-  color: ${colors.blue400};
-  font-weight: 500;
-  font-size: 1rem;
-  line-height: 22px;
-  letter-spacing: -0.16px;
-  margin-right: 2px;
+  transition: opacity 0.3s ease;
+  opacity: 0;
 `;
 
 const titleCss = (color: string) => css`
@@ -190,20 +124,29 @@ const subTitleCss = (theme: Theme) => css`
   position: relative;
   color: black;
   z-index: 10;
+
   ${mediaQuery('mobile')} {
     ${theme.typos.notosans.semibold14}
   }
+`;
+
+const gradientCss = css`
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.6) 10%, rgba(255, 255, 255, 1) 100%);
 `;
 
 const descriptionCss = css`
   position: relative;
   font-weight: 500;
   font-size: 1rem;
-  line-height: 22px;
   color: white;
-  z-index: 10;
-  letter-spacing: -0.16px;
   white-space: pre-wrap;
+  z-index: 10;
+
   ${mediaQuery('mobile')} {
     line-height: 20px;
     font-size: 0.75rem;
@@ -218,27 +161,5 @@ const textVariants: Variants = {
       duration: 0.3,
       ease: defaultEasing,
     },
-  },
-};
-
-const articleVariants: Variants = {
-  default: { background: 'transparent' },
-  hover: {
-    background: 'var(--DIM-70, rgba(19, 28, 40, 0.70))',
-    backdropFilter: 'blur(7.198952674865723px)',
-    transition: {
-      duration: 0.3,
-      ease: defaultEasing,
-    },
-  },
-};
-
-const gradientVariants: Variants = {
-  default: {
-    background:
-      'linear-gradient(to top, rgba(255, 255, 255, 0.5) 10%, rgba(255, 255, 255, 1) 100%)',
-  },
-  hover: {
-    display: 'none',
   },
 };
