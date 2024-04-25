@@ -1,11 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { css } from '@emotion/react';
+import { css, Theme } from '@emotion/react';
 import { m } from 'framer-motion';
 
 import { defaultFadeInVariants } from '~/constant/motion';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
+
+import { ArrowIcon } from '../Icons';
 
 export type Link = {
   type: 'Behance' | 'Github' | 'Web' | 'App';
@@ -22,26 +24,30 @@ type ThumbnailProps = {
 
 export function SupportThumbnail({ title, subTitle, img, description, link }: ThumbnailProps) {
   return (
-    <Link href={link} css={linkCss}>
-      <m.article
-        css={articleCss}
-        variants={defaultFadeInVariants}
-        initial="initial"
-        animate="animate"
-        exit="exit"
-      >
-        <Image css={imageCss} src={img} alt={title} fill quality={100} />
-        <div css={contentsCss}>
-          <div>
-            <p css={titleCss}>{title}</p>
-            <p css={subTitleCss}>{subTitle}</p>
-          </div>
-          {description && (
-            <p css={descriptionCss} dangerouslySetInnerHTML={{ __html: description }} />
+    <m.article
+      css={articleCss}
+      variants={defaultFadeInVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    >
+      <Image css={imageCss} src={img} alt={title} fill quality={100} />
+      <div css={contentsCss}>
+        <div>
+          <p css={titleCss}>{title}</p>
+          <p css={subTitleCss}>{subTitle}</p>
+          {link && (
+            <Link css={linkButtonCss} href={link}>
+              바로가기
+              <ArrowIcon direction={'right'} color={colors.mint} width={18} height={18} />
+            </Link>
           )}
         </div>
-      </m.article>
-    </Link>
+        {description && (
+          <p css={descriptionCss} dangerouslySetInnerHTML={{ __html: description }} />
+        )}
+      </div>
+    </m.article>
   );
 }
 
@@ -55,13 +61,6 @@ SupportThumbnail.OnlyImage = function OnlyImage({
     </div>
   );
 };
-
-const linkCss = css`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-`;
 
 const articleCss = css`
   position: relative;
@@ -122,7 +121,7 @@ const subTitleCss = css`
   font-weight: 500;
   font-size: 1rem;
   line-height: 22px;
-  color: ${colors.gray100};
+  color: ${colors.gray};
   z-index: 10;
 `;
 
@@ -135,4 +134,19 @@ const descriptionCss = css`
   z-index: 10;
   letter-spacing: -0.16px;
   white-space: pre-wrap;
+`;
+
+const linkButtonCss = (theme: Theme) => css`
+  position: relative;
+  width: 80px;
+  height: 32px;
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 22px;
+  letter-spacing: -0.16px;
+  margin-right: 2px;
+  color: ${theme.colors.mint};
 `;
