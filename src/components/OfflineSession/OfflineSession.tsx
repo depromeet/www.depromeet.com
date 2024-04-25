@@ -13,7 +13,7 @@ export function OfflineSession() {
       <SectionTitleV2 style={titleCss}>오프라인 세션</SectionTitleV2>
       <ul css={sessionContainerCss}>
         {OFFLINE_SESSIONS.map(session => (
-          <OfflineThumbnail key={session.title} {...session} showInfoDefault backgroundShow />
+          <OfflineThumbnail key={session.title} {...session} />
         ))}
       </ul>
     </div>

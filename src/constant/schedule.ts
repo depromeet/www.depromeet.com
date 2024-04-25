@@ -20,7 +20,7 @@ export const MEMBER_SCHEDULE: Schedule = {
     },
     {
       content: '서류 발표',
-      date: '05.15(PM 6)',
+      date: '05.15',
     },
     {
       content: '온라인 면접',
@@ -28,7 +28,7 @@ export const MEMBER_SCHEDULE: Schedule = {
     },
     {
       content: '최종 합격',
-      date: '05.28(PM 6)',
+      date: '05.28',
     },
   ],
 };

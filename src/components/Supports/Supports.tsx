@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { css, Theme } from '@emotion/react';
 
 import { SupportThumbnail } from '~/components/Supports/SupportThumbnail';
@@ -20,6 +21,9 @@ export function Supports() {
         {SUPPORTS.map(support => (
           <SupportThumbnail key={support.title} {...support} />
         ))}
+        <div css={imageContainerCss}>
+          <Image src="/images/support/next.png" alt="what's next?" fill quality={100} />
+        </div>
       </ul>
     </div>
   );
@@ -46,13 +50,15 @@ const supportContainerCss = css`
   grid-template-columns: repeat(3, 1fr);
   row-gap: 20px;
   column-gap: 12px;
+  justify-items: center;
+  justify-content: center;
 
   ${mediaQuery('tablet')} {
     grid-template-columns: repeat(2, 1fr);
     padding: 0 32px;
   }
 
-  ${mediaQuery('mobile')} {
+  @media (max-width: 600px) {
     grid-template-columns: repeat(1, 1fr);
     padding: 0 16px;
   }
@@ -69,6 +75,19 @@ const titleCss = (theme: Theme) => css`
 `;
 
 const subTitleCss = (theme: Theme) => css`
+  text-align: center;
   ${theme.typos.notosans.semibold16}
   color: #555;
+`;
+
+const imageContainerCss = css`
+  position: relative;
+  width: 100%;
+  height: 208px;
+
+  ${mediaQuery('mobile')} {
+    max-width: 450px;
+    padding: 18px;
+    height: 180px;
+  }
 `;

@@ -1,11 +1,13 @@
 import Image from 'next/image';
-import { css } from '@emotion/react';
+import Link from 'next/link';
+import { css, Theme } from '@emotion/react';
 import { m } from 'framer-motion';
 
-import { ArrowIcon } from '~/components/Icons';
 import { defaultFadeInVariants } from '~/constant/motion';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
+
+import { ArrowIcon } from '../Icons';
 
 export type Link = {
   type: 'Behance' | 'Github' | 'Web' | 'App';
@@ -16,11 +18,11 @@ type ThumbnailProps = {
   title: string;
   subTitle: string;
   img: string;
-  description: string;
-  links?: Link[];
+  description?: string;
+  link: string;
 };
 
-export function SupportThumbnail({ title, subTitle, img, description, links }: ThumbnailProps) {
+export function SupportThumbnail({ title, subTitle, img, description, link }: ThumbnailProps) {
   return (
     <m.article
       css={articleCss}
@@ -30,26 +32,19 @@ export function SupportThumbnail({ title, subTitle, img, description, links }: T
       exit="exit"
     >
       <Image css={imageCss} src={img} alt={title} fill quality={100} />
-      <div css={gradientCss} />
       <div css={contentsCss}>
         <div>
           <p css={titleCss}>{title}</p>
           <p css={subTitleCss}>{subTitle}</p>
+          {link && (
+            <Link css={linkButtonCss} href={link}>
+              바로가기
+              <ArrowIcon direction={'right'} color={colors.mint} width={18} height={18} />
+            </Link>
+          )}
         </div>
-        <p css={descriptionCss} dangerouslySetInnerHTML={{ __html: description }} />
-        {links && (
-          <div css={linkContainerCss}>
-            {links.map(link => (
-              <span key={link.type} css={linkWrapperCss}>
-                <a href={link.href} target="_blank" css={linkCss} rel="noreferrer">
-                  {link.type}
-                </a>
-                <span>
-                  <ArrowIcon direction={'right'} color={colors.blue400} width={16} height={16} />
-                </span>
-              </span>
-            ))}
-          </div>
+        {description && (
+          <p css={descriptionCss} dangerouslySetInnerHTML={{ __html: description }} />
         )}
       </div>
     </m.article>
@@ -73,6 +68,7 @@ const articleCss = css`
   padding: 24px;
   width: 100%;
   overflow: hidden;
+  background-color: black;
 
   &:hover {
     cursor: pointer;
@@ -85,7 +81,9 @@ const articleCss = css`
   }
 
   ${mediaQuery('mobile')} {
-    height: 164px;
+    max-width: 450px;
+    padding: 18px;
+    height: 180px;
   }
 `;
 
@@ -104,30 +102,9 @@ const contentsCss = css`
   display: flex;
   flex-direction: column;
   height: 100%;
-  justify-content: space-between;
+  justify-content: space-evenly;
   transition: opacity 0.3s ease;
   opacity: 0;
-`;
-
-const linkContainerCss = css`
-  display: flex;
-  gap: 12px;
-  align-items: center;
-`;
-
-const linkWrapperCss = css`
-  display: flex;
-  align-items: center;
-`;
-
-const linkCss = css`
-  color: ${colors.blue400};
-  font-weight: 500;
-  font-size: 1rem;
-  line-height: 22px;
-  letter-spacing: -0.16px;
-  margin-right: 2px;
-  z-index: 10;
 `;
 
 const titleCss = css`
@@ -144,15 +121,8 @@ const subTitleCss = css`
   font-weight: 500;
   font-size: 1rem;
   line-height: 22px;
-  color: ${colors.gray100};
+  color: ${colors.gray};
   z-index: 10;
-`;
-
-const gradientCss = css`
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 172px;
 `;
 
 const descriptionCss = css`
@@ -164,4 +134,19 @@ const descriptionCss = css`
   z-index: 10;
   letter-spacing: -0.16px;
   white-space: pre-wrap;
+`;
+
+const linkButtonCss = (theme: Theme) => css`
+  position: relative;
+  width: 80px;
+  height: 32px;
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 22px;
+  letter-spacing: -0.16px;
+  margin-right: 2px;
+  color: ${theme.colors.mint};
 `;

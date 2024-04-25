@@ -39,7 +39,12 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
             exit={{ opacity: 0 }}
           >
             {menu.type === 'button' ? (
-              <button disabled={!isInProgress} onClick={() => push(menu.href)} css={linkCss}>
+              <button
+                disabled={!isInProgress}
+                onClick={() => push(menu.href)}
+                css={linkCss}
+                suppressHydrationWarning
+              >
                 {isInProgress ? menu.name : dDay < 0 ? `D${dDay}` : `D+${dDay}`}
               </button>
             ) : (

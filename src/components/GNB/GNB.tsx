@@ -23,7 +23,7 @@ function ApplyButton() {
   };
 
   return (
-    <Button disabled={!isInProgress} css={linkButtonCss} onClick={onClick}>
+    <Button disabled={!isInProgress} css={linkButtonCss} onClick={onClick} suppressHydrationWarning>
       {isInProgress ? ' 지원하기' : dDay < 0 ? `D${dDay}` : `D+${dDay}`}
     </Button>
   );
@@ -143,7 +143,7 @@ const linkCss = (theme: Theme) => css`
 
 const mobileMenuGNBCss = () => css`
   ${navCommonCss()};
-  padding: 20px 32px;
+  padding: 21px 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
