@@ -6,18 +6,12 @@ import { defaultFadeInVariants } from '~/constant/motion';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
-export type Link = {
-  type: 'Behance' | 'Github' | 'Web' | 'App';
-  href: string;
-};
-
 type ThumbnailProps = {
   title: string;
   subTitle: string;
   img: string;
   description: string;
   titleTextColor: string;
-  links?: Link[];
   showInfoDefault?: boolean;
   backgroundShow?: boolean;
 };
@@ -151,7 +145,6 @@ const descriptionCss = css`
   z-index: 10;
   letter-spacing: -0.16px;
   white-space: pre-wrap;
-  z-index: 10;
 
   ${mediaQuery('mobile')} {
     line-height: 20px;
