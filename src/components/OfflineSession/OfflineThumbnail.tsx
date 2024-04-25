@@ -103,27 +103,27 @@ const contentsCss = css`
 `;
 
 const titleCss = (color: string) => css`
-  ${theme.typos.bebas.regular40}
+  ${theme.typosV2.bebas.regular40}
   position: relative;
   color: ${color};
   z-index: 10;
 
   ${mediaQuery('tablet')} {
-    ${theme.typos.bebas.regular32}
+    ${theme.typosV2.bebas.regular32}
   }
   ${mediaQuery('mobile')} {
-    ${theme.typos.bebas.regular24}
+    ${theme.typosV2.bebas.regular24}
   }
 `;
 
 const subTitleCss = (theme: Theme) => css`
-  ${theme.typos.notosans.semibold20}
+  ${theme.typosV2.pretendard.semibold20}
   position: relative;
   color: black;
   z-index: 10;
 
   ${mediaQuery('mobile')} {
-    ${theme.typos.notosans.semibold14}
+    ${theme.typosV2.pretendard.semibold14}
   }
 `;
 

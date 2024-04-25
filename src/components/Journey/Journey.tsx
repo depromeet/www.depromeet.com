@@ -13,7 +13,7 @@ export function Journey() {
         런칭까지 함께 경험하는{' '}
         <span css={spanCss}>
           <div css={emphasisCss}>
-            <Image src="/images/main/emphasis.svg" alt="성장추구형 강조" width={164} height={50} />
+            <Image src="/images/main/emphasis.svg" alt="성장추구형 강조" width={152} height={50} />
           </div>
         </span>
         <span css={spanCss}>성장추구형</span> 커뮤니티입니다.
@@ -45,20 +45,20 @@ const layoutCss = (theme: Theme) => css`
   color: black;
 
   h1 {
-    ${theme.typos.notosans.semibold32};
+    ${theme.typosV2.pretendard.semibold32};
     text-align: center;
   }
 
   @media (max-width: 800px) {
     h1 {
-      ${theme.typos.notosans.semibold26};
+      ${theme.typosV2.pretendard.semibold26};
     }
   }
 
   ${mediaQuery('mobile')} {
     h1 {
       margin: 0 20px;
-      ${theme.typos.notosans.semibold20};
+      ${theme.typosV2.pretendard.semibold20};
       min-width: 300px;
     }
   }
@@ -89,7 +89,7 @@ const gridItemCss = (theme: Theme) => css`
   color: black;
 
   span {
-    ${theme.typos.bebas.regular88}
+    ${theme.typosV2.bebas.regular88}
   }
 
   h3 {
@@ -97,16 +97,16 @@ const gridItemCss = (theme: Theme) => css`
     width: 100%;
     background-color: black;
     color: white;
-    ${theme.typos.notosans.regular16}
+    ${theme.typosV2.pretendard.regular16}
   }
 
   ${mediaQuery('mobile')} {
     span {
-      ${theme.typos.bebas.regular66}
+      ${theme.typosV2.bebas.regular66}
     }
 
     h3 {
-      ${theme.typos.notosans.regular14}
+      ${theme.typosV2.pretendard.regular14}
     }
   }
 `;
@@ -118,12 +118,12 @@ const spanCss = css`
 const emphasisCss = css`
   position: absolute;
   left: -8px;
-  top: 0;
+  top: -4px;
 
   @media (max-width: 800px) {
     left: -6px;
     img {
-      width: 132px;
+      width: 124px;
       height: 42px;
     }
   }
@@ -131,8 +131,8 @@ const emphasisCss = css`
   ${mediaQuery('mobile')} {
     left: -4px;
     img {
-      width: 100px;
-      height: 34px;
+      width: 94px;
+      height: 36px;
     }
   }
 `;

@@ -18,34 +18,31 @@ export function QualificationItem({ index, description }: QualificationItemProps
 }
 
 const layoutCss = css`
-  padding: 48px 30px;
+  padding: 48px 26px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   background-color: white;
 
-  ${mediaQuery('tablet')} {
-    padding: 48px 38px;
-  }
   ${mediaQuery('mobile')} {
     padding: 16px;
   }
 `;
 
 const indexCss = (theme: Theme) => css`
-  ${theme.typos.bebas.regular32};
+  ${theme.typosV2.bebas.regular32};
   color: ${theme.colors.pink};
 
   ${mediaQuery('mobile')} {
-    ${theme.typos.bebas.regular24};
+    ${theme.typosV2.bebas.regular24};
   }
 `;
 
 const descriptionCss = (theme: Theme) => css`
-  ${theme.typos.notosans.semibold16};
+  ${theme.typosV2.pretendard.semibold16};
   color: black;
 
   ${mediaQuery('mobile')} {
-    ${theme.typos.notosans.regular14};
+    ${theme.typosV2.pretendard.regular14};
   }
 `;

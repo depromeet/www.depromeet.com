@@ -4,7 +4,8 @@ import { css, Theme } from '@emotion/react';
 
 import { mediaQuery } from '~/styles/media';
 
-import { LinkButton } from './LinkButton';
+import { LinkWrapper } from './LinkWrapper';
+import { NarrowArrowIcon } from '../Icons';
 
 export function RecruitEntrance() {
   const ref = useRef<HTMLDivElement>(null);
@@ -52,7 +53,12 @@ export function RecruitEntrance() {
         <Image src="/images/main/digging-clock.svg" alt="인재상중 몰입" width={292} height={292} />
         <Image src="/images/main/share-clock.svg" alt="인재상중 공유" width={316} height={292} />
       </div>
-      <LinkButton color="black" text="모집 안내" href="/recruit" />
+      <LinkWrapper href="/project" textColor="white" textHover={true}>
+        모집 안내
+        <span css={arrowImgContainerCss}>
+          <NarrowArrowIcon direction="right" color="black" fill="black" />
+        </span>
+      </LinkWrapper>
     </section>
   );
 }
@@ -78,13 +84,13 @@ const descriptionCss = (theme: Theme) => css`
   align-items: center;
 
   h1 {
-    ${theme.typos.notosans.semibold24};
+    ${theme.typosV2.pretendard.semibold24};
     text-align: center;
   }
 
   ${mediaQuery('mobile')} {
     h1 {
-      ${theme.typos.notosans.semibold20};
+      ${theme.typosV2.pretendard.semibold20};
     }
 
     img {
@@ -120,4 +126,14 @@ const imgFlexCss = css`
       flex: 0 0 60%;
     }
   }
+`;
+
+const arrowImgContainerCss = css`
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 400px;
+  background-color: white;
 `;

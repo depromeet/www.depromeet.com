@@ -97,7 +97,9 @@ export const typos = {
       letter-spacing: ${pxToRem(-0.18)};
     `,
   },
-  /**/
+};
+
+export const typosV2 = {
   bebas: {
     regular88: css`
       font-family: Bebas;
@@ -145,9 +147,8 @@ export const typos = {
       line-height: ${pxToRem(16.8)};
     `,
   },
-  notosans: {
+  pretendard: {
     semibold32: css`
-      font-family: NotoSansVariable;
       font-size: ${pxToRem(32)};
       font-style: normal;
       font-weight: 600;
@@ -155,22 +156,19 @@ export const typos = {
       letter-spacing: -4%;
     `,
     semibold28: css`
-      font-family: NotoSansVariable;
       font-size: ${pxToRem(28)};
       font-style: normal;
       font-weight: 600;
-      line-height: ${pxToRem(44)};
+      line-height: ${pxToRem(40)};
       letter-spacing: -4%;
     `,
     semibold26: css`
-      font-family: NotoSansVariable;
       font-size: ${pxToRem(26)};
       font-style: normal;
       line-height: ${pxToRem(40)};
       font-weight: 600;
     `,
     semibold24: css`
-      font-family: NotoSansVariable;
       font-size: ${pxToRem(24)};
       font-style: normal;
       font-weight: 600;
@@ -178,7 +176,6 @@ export const typos = {
       letter-spacing: -4%;
     `,
     semibold20: css`
-      font-family: NotoSansVariable;
       font-size: ${pxToRem(20)};
       font-style: normal;
       font-weight: 600;
@@ -186,15 +183,13 @@ export const typos = {
       letter-spacing: -4%;
     `,
     semibold18: css`
-      font-family: NotoSansVariable;
       font-size: ${pxToRem(18)};
       font-style: normal;
       font-weight: 600;
-      line-height: ${pxToRem(27)};
+      line-height: ${pxToRem(32)};
       letter-spacing: -4%;
     `,
     semibold16: css`
-      font-family: NotoSansVariable;
       font-size: ${pxToRem(16)};
       font-style: normal;
       font-weight: 600;
@@ -202,7 +197,6 @@ export const typos = {
       letter-spacing: -4%;
     `,
     semibold14: css`
-      font-family: NotoSansVariable;
       font-size: ${pxToRem(14)};
       font-style: normal;
       font-weight: 600;
@@ -210,7 +204,6 @@ export const typos = {
       letter-spacing: -4%;
     `,
     regular20: css`
-      font-family: NotoSansVariable;
       font-size: ${pxToRem(20)};
       font-style: normal;
       font-weight: 400;
@@ -218,7 +211,6 @@ export const typos = {
       letter-spacing: -5%;
     `,
     regular18: css`
-      font-family: NotoSansVariable;
       font-size: ${pxToRem(18)};
       font-style: normal;
       font-weight: 400;
@@ -226,7 +218,6 @@ export const typos = {
       letter-spacing: -5%;
     `,
     regular16: css`
-      font-family: NotoSansVariable;
       font-size: ${pxToRem(16)};
       font-style: normal;
       font-weight: 400;
@@ -234,7 +225,6 @@ export const typos = {
       letter-spacing: -5%;
     `,
     regular14: css`
-      font-family: NotoSansVariable;
       font-size: ${pxToRem(14)};
       font-style: normal;
       font-weight: 400;
@@ -242,7 +232,6 @@ export const typos = {
       letter-spacing: -5%;
     `,
     regular8: css`
-      font-family: NotoSansVariable;
       font-size: ${pxToRem(8)};
       font-style: normal;
       font-weight: 400;

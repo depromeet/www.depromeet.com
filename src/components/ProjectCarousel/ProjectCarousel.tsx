@@ -6,7 +6,8 @@ import { SectionTitle } from '~/components/SectionTitle';
 import { PROJECT_LIST } from '~/constant/project';
 import { mediaQuery } from '~/styles/media';
 
-import { LinkButton } from '../Main/LinkButton';
+import { NarrowArrowIcon } from '../Icons';
+import { LinkWrapper } from '../Main/LinkWrapper';
 
 const PROJECT_14 = PROJECT_LIST.filter(project => project.subTitle === '14기');
 
@@ -19,7 +20,12 @@ export function ProjectCarousel() {
           <ProjectCarouselItem key={project.title} {...project} />
         ))}
       </Marquee>
-      <LinkButton color="white" text="모든 프로젝트" href="/project" />
+      <LinkWrapper href="/project" backgroundColor="white" backgroundHover={true}>
+        모든 프로젝트
+        <span css={arrowImgContainerCss}>
+          <NarrowArrowIcon direction="right" color="white" fill="white" />
+        </span>
+      </LinkWrapper>
     </section>
   );
 }
@@ -40,4 +46,14 @@ const layoutCss = css`
   ${mediaQuery('mobile')} {
     height: 550px;
   }
+`;
+
+const arrowImgContainerCss = css`
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 400px;
+  background-color: black;
 `;

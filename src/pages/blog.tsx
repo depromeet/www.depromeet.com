@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css, Theme } from '@emotion/react';
 import { AnimatePresence, m } from 'framer-motion';
 
 import { BlogPostThumbnail, Link } from '~/components/Blog';
@@ -23,7 +23,7 @@ export default function blog() {
           color="green"
         />
         <section css={sectionCss}>
-          <SectionTitleV2>디프만 블로그</SectionTitleV2>
+          <SectionTitleV2 style={titleCss}>디프만 블로그</SectionTitleV2>
           <AnimatePresence mode="wait" initial={false}>
             <m.div
               css={blogContainerCss}
@@ -64,6 +64,10 @@ const sectionCss = css`
   ${mediaQuery('mobile')} {
     padding: 80px 16px;
   }
+`;
+
+const titleCss = (theme: Theme) => css`
+  ${theme.typosV2.pretendard.semibold20}
 `;
 
 const blogContainerCss = css`

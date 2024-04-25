@@ -124,7 +124,7 @@ const linkCss = (theme: Theme) => css`
   align-items: center;
   color: ${colors.mint};
   z-index: 10;
-  ${theme.typos.bebas.regular24}
+  ${theme.typosV2.bebas.regular24}
 `;
 
 const titleCss = css`

@@ -60,7 +60,7 @@ const layoutCss = (theme: Theme) => css`
   background-color: ${theme.colors.lightGray};
 
   h1 {
-    ${theme.typos.notosans.semibold20}
+    ${theme.typosV2.pretendard.semibold20}
   }
 `;
 
@@ -84,7 +84,7 @@ const tabContainerCss = (theme: Theme, isActive: boolean) => css`
 `;
 
 const tabCss = (theme: Theme, isActive: boolean) => css`
-  ${theme.typos.notosans.semibold16}
+  ${theme.typosV2.pretendard.semibold16}
   color: ${isActive ? theme.colors.green : theme.colors.gray};
   cursor: pointer;
 `;

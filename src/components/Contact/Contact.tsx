@@ -53,7 +53,7 @@ const infoListCss = css`
 `;
 
 const InfoCss = (theme: Theme) => css`
-  ${theme.typos.notosans.regular18};
+  ${theme.typosV2.pretendard.regular18};
   background-color: ${theme.colors.white};
   color: black;
   width: 100%;
@@ -67,10 +67,10 @@ const InfoCss = (theme: Theme) => css`
 `;
 
 const infoNameCss = (theme: Theme) => css`
-  ${theme.typos.bebas.regular32};
+  ${theme.typosV2.bebas.regular32};
   color: black;
 `;
 
 const titleCss = (theme: Theme) => css`
-  ${theme.typos.bebas.regular24}
+  ${theme.typosV2.bebas.regular24}
 `;
