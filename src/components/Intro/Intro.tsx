@@ -31,14 +31,14 @@ export function Intro({ imageUrl, title, width, height, color }: IntroProps) {
 }
 
 const containerCss = ({ color }: { color: string }) => css`
-  padding-top: 61px;
+  padding-top: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: ${color};
 
   ${mediaQuery('mobile')} {
-    padding-top: 73px;
+    padding-top: 72px;
   }
 `;
 
