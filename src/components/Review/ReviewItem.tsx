@@ -45,8 +45,6 @@ const layoutCss = (theme: Theme) => css`
 
   ${mediaQuery('tablet')} {
     padding: 30px 50px;
-    max-width: 510px;
-    height: 336px;
   }
 
   ${mediaQuery('mobile')} {
@@ -89,7 +87,7 @@ const titleSpanCss = (theme: Theme) => css`
 `;
 
 const summaryCss = (theme: Theme) => css`
-  ${theme.typos.notosans.regular18};
+  ${theme.typos.notosans.regular16};
   color: black;
   margin-top: 16px;
 
