@@ -1,6 +1,7 @@
 import { css, SerializedStyles, Theme } from '@emotion/react';
 
-import { LinkButton } from './LinkButton';
+import { LinkWrapper } from './LinkWrapper';
+import { NarrowArrowIcon } from '../Icons';
 import { Journey } from '../Journey';
 
 interface JorneyEntranceProps {
@@ -12,7 +13,14 @@ export function JourneyEntrance({ hasLinkButton, style }: JorneyEntranceProps) {
   return (
     <section css={[layoutCss, style]}>
       <Journey />
-      {hasLinkButton && <LinkButton color="black" text="ABOUT" href="/about" />}
+      {hasLinkButton && (
+        <LinkWrapper href="/project" textColor="white" textHover={true}>
+          ABOUT
+          <span css={arrowImgContainerCss}>
+            <NarrowArrowIcon direction="right" color="black" fill="black" />
+          </span>
+        </LinkWrapper>
+      )}
     </section>
   );
 }
@@ -25,4 +33,14 @@ const layoutCss = (theme: Theme) => css`
   gap: 80px;
   align-items: center;
   background-color: ${theme.colors.lightGray};
+`;
+
+const arrowImgContainerCss = css`
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 400px;
+  background-color: white;
 `;
