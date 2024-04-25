@@ -6,6 +6,7 @@ import { m } from 'framer-motion';
 import { POSITION_BASE } from '~/constant/image';
 import { defaultFadeInVariants } from '~/constant/motion';
 import { getColorByPosition, Position } from '~/constant/position';
+import useIsInProgress from '~/hooks/useIsInProgress';
 import { mediaQuery } from '~/styles/media';
 
 import { NarrowArrowIcon } from '../Icons';
@@ -18,6 +19,8 @@ interface PositionsItemProps {
 }
 
 export function PositionsItem({ type, title, link, description }: PositionsItemProps) {
+  const { isInProgress } = useIsInProgress();
+
   return (
     <m.article
       css={articleCss}
@@ -50,7 +53,7 @@ export function PositionsItem({ type, title, link, description }: PositionsItemP
             ))}
           </div>
         </div>
-        {link && (
+        {link && isInProgress && (
           <div css={linkContainerCss}>
             <Link css={linkCss} href={link}>
               지원하기
