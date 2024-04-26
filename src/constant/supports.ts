@@ -37,4 +37,10 @@ export const SUPPORTS: Support[] = [
     img: '/images/support/disquiet.png',
     link: 'https://disquiet.io/',
   },
+  {
+    title: '엘리스',
+    subTitle: 'elice',
+    img: '/images/support/elice.png',
+    link: 'https://elice.io/ko/',
+  },
 ];

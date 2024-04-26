@@ -14,7 +14,7 @@ export function JourneyEntrance({ hasLinkButton, style }: JorneyEntranceProps) {
     <section css={[layoutCss, style]}>
       <Journey />
       {hasLinkButton && (
-        <LinkWrapper href="/project" textColor="white" textHover={true}>
+        <LinkWrapper href="/about" textColor="white" textHover={true}>
           ABOUT
           <span css={arrowImgContainerCss}>
             <NarrowArrowIcon direction="right" color="black" fill="black" />

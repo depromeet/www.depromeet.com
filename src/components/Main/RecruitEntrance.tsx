@@ -53,7 +53,7 @@ export function RecruitEntrance() {
         <Image src="/images/main/digging-clock.svg" alt="인재상중 몰입" width={292} height={292} />
         <Image src="/images/main/share-clock.svg" alt="인재상중 공유" width={316} height={292} />
       </div>
-      <LinkWrapper href="/project" textColor="white" textHover={true}>
+      <LinkWrapper href="/recruit" textColor="white" textHover={true}>
         모집 안내
         <span css={arrowImgContainerCss}>
           <NarrowArrowIcon direction="right" color="black" fill="black" />
