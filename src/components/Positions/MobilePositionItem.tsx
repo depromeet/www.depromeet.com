@@ -4,6 +4,7 @@ import { css, Theme } from '@emotion/react';
 
 import { POSITION_BASE } from '~/constant/image';
 import { getColorByPosition, Position } from '~/constant/position';
+import useIsInProgress from '~/hooks/useIsInProgress';
 
 import { NarrowArrowIcon } from '../Icons';
 
