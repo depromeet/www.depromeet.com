@@ -28,7 +28,7 @@ export const MEMBER_SCHEDULE: Schedule = {
     },
     {
       content: '최종 합격',
-      date: '05.28',
+      date: '05.25',
     },
   ],
 };
