@@ -20,18 +20,15 @@ export function MobilePositionItem({ type, title, link }: MobilePositionsItemPro
         <Image src={`${POSITION_BASE}/${type}-mobile.svg`} alt={title} fill />
       </div>
       <div>
-        <h1 css={titleCss}>
-          {title === 'iOS' ? (
-            <div css={iosCss}>
-              <span css={spanCss}>i</span>
-              <h1 css={h1Css}>OS</h1>
-            </div>
-          ) : type === 'design' ? (
-            'DESIGN'
-          ) : (
-            title
-          )}
-        </h1>
+        {title === 'iOS' ? (
+          <div css={iosCss}>
+            <span css={spanCss}>i</span>
+            <h1 css={h1Css}>OS</h1>
+          </div>
+        ) : (
+          <h1 css={titleCss}>{type === 'design' ? 'DESIGN' : title}</h1>
+        )}
+
         {link && (
           <Link href={link} css={linkCss}>
             지원하기
@@ -62,7 +59,10 @@ const imgContainerCss = css`
   height: 86px;
 `;
 
-const titleCss = css``;
+const titleCss = (theme: Theme) => css`
+  ${theme.typosV2.bebas.regular24};
+  padding-bottom: 4px;
+`;
 
 const h1Css = (theme: Theme) => css`
   ${theme.typosV2.bebas.regular24};
@@ -81,9 +81,8 @@ const linkCss = (theme: Theme) => css`
   display: flex;
   align-items: center;
   gap: 5px;
-  align-items: center;
   color: black;
-  ${theme.typosV2.pretendard.regular18}
+  ${theme.typosV2.pretendard.regular20}
 `;
 
 const arrowIconCss = css`
