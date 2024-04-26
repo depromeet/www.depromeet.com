@@ -10,11 +10,12 @@ export function ApplyBanner() {
   const { isInProgress } = useIsInProgress();
   const { pathname } = useRouter();
   const isApplyPage = pathname.startsWith('/apply');
+  const isRecruitPage = pathname.startsWith('/recruit');
   const is404 = pathname === '/404';
 
   return (
     <>
-      {isInProgress && !isApplyPage && !is404 && (
+      {isInProgress && !isApplyPage && !isRecruitPage && !is404 && (
         <section css={layoutCss}>
           <Link href="/apply" css={linkCss}>
             <p>디프만 15기 지원하기</p>
