@@ -55,7 +55,7 @@ export function PositionsItem({ type, title, link, description }: PositionsItemP
         </div>
         {link && isInProgress && (
           <div css={linkContainerCss}>
-            <Link css={linkCss} href={link}>
+            <Link css={linkCss} href={link} target="_blank">
               지원하기
               <span css={arrowIconCss}>
                 <NarrowArrowIcon direction="right" fill="black" />
