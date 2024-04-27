@@ -129,7 +129,7 @@ const linkCss = (theme: Theme) => css`
 
 const titleCss = css`
   position: relative;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 1.25rem;
   line-height: 30px;
   color: ${colors.white};
