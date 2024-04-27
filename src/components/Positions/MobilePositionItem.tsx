@@ -30,7 +30,7 @@ export function MobilePositionItem({ type, title, link }: MobilePositionsItemPro
         )}
 
         {link && (
-          <Link href={link} css={linkCss}>
+          <Link href={link} css={linkCss} target="_blank">
             지원하기
             <span css={arrowIconCss}>
               <NarrowArrowIcon direction="right" fill="white" />
