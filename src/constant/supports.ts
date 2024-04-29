@@ -43,4 +43,10 @@ export const SUPPORTS: Support[] = [
     img: '/images/support/elice.png',
     link: 'https://elice.io/ko/',
   },
+  {
+    title: '모두의연구소',
+    subTitle: 'modulabs',
+    img: '/images/support/모두의연구소.png',
+    link: 'https://modulabs.co.kr/',
+  },
 ];
