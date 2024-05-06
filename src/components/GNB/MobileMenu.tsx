@@ -45,7 +45,7 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
                 css={linkCss}
                 suppressHydrationWarning
               >
-                {isInProgress ? menu.name : dDay < 0 ? `D${dDay}` : `D+${dDay}`}
+                {isInProgress ? menu.name : dDay < 0 ? `D${dDay}` : '지원 마감'}
               </button>
             ) : (
               <Link href={menu.href} css={[linkCss, getActiveLinkcss(menu)]}>
