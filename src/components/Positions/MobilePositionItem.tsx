@@ -4,6 +4,7 @@ import { css, Theme } from '@emotion/react';
 
 import { POSITION_BASE } from '~/constant/image';
 import { getColorByPosition, Position } from '~/constant/position';
+import useIsInProgress from '~/hooks/useIsInProgress';
 
 import { NarrowArrowIcon } from '../Icons';
 
@@ -14,6 +15,8 @@ interface MobilePositionsItemProps {
 }
 
 export function MobilePositionItem({ type, title, link }: MobilePositionsItemProps) {
+  const { isInProgress } = useIsInProgress();
+
   return (
     <div css={theme => layoutCss(theme, type)}>
       <div css={imgContainerCss}>
@@ -29,7 +32,7 @@ export function MobilePositionItem({ type, title, link }: MobilePositionsItemPro
           <h1 css={titleCss}>{type === 'design' ? 'DESIGN' : title}</h1>
         )}
 
-        {link && (
+        {link && isInProgress && (
           <Link href={link} css={linkCss} target="_blank">
             지원하기
             <span css={arrowIconCss}>

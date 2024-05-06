@@ -24,7 +24,7 @@ function ApplyButton() {
 
   return (
     <Button disabled={!isInProgress} css={linkButtonCss} onClick={onClick} suppressHydrationWarning>
-      {isInProgress ? ' 지원하기' : dDay < 0 ? `D${dDay}` : `D+${dDay}`}
+      {isInProgress ? ' 지원하기' : dDay < 0 ? `D${dDay}` : `지원 마감`}
     </Button>
   );
 }

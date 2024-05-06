@@ -26,7 +26,8 @@ export default function useIsInProgress() {
 
   const getDDay = (): number => {
     const currentDate = new Date();
-    const dDay = currentDate.getDate() - startDate.getDate();
+    const timeGap = currentDate.getTime() - startDate.getTime();
+    const dDay = Math.round(timeGap / 하루);
     return dDay;
   };
 
