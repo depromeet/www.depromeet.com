@@ -49,4 +49,10 @@ export const SUPPORTS: Support[] = [
     img: '/images/support/모두의연구소.png',
     link: 'https://modulabs.co.kr/',
   },
+  {
+    title: '점핏',
+    subTitle: 'Jumpit',
+    img: '/images/support/jumpit.png',
+    link: 'https://www.jumpit.co.kr/',
+  },
 ];
