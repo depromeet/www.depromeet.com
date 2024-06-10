@@ -1,28 +1,27 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { css, Theme } from '@emotion/react';
 import { m } from 'framer-motion';
 
 import { ArrowIcon } from '~/components/Icons';
+import { BlogLink } from '~/constant/blog';
 import { defaultFadeInVariants } from '~/constant/motion';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
-
-export type Link = {
-  type: 'MEDIUM';
-  href: string;
-};
 
 type ThumbnailProps = {
   title: string;
   date: string;
   img: string;
-  links?: Link[];
+  link: BlogLink;
   showInfoDefault?: boolean;
   backgroundShow?: boolean;
 };
 
-export function BlogPostThumbnail({ title, date, img, links }: ThumbnailProps) {
+export function BlogPostThumbnail({ title, date, img, link }: ThumbnailProps) {
+  const handleClickThumbnail = () => {
+    window.open(link.href);
+  };
+
   return (
     <m.article
       css={articleCss}
@@ -31,6 +30,7 @@ export function BlogPostThumbnail({ title, date, img, links }: ThumbnailProps) {
       exit="exit"
       whileHover="hover"
       variants={defaultFadeInVariants}
+      onClick={handleClickThumbnail}
     >
       <section css={gradientCss} />
       <Image css={imageCss} src={img} alt={title} fill quality={100} />
@@ -39,16 +39,12 @@ export function BlogPostThumbnail({ title, date, img, links }: ThumbnailProps) {
         <h3 css={dateCss}>{date}</h3>
       </div>
       <div css={contentsCss}>
-        {links && (
-          <div css={linkContainerCss}>
-            {links.map(link => (
-              <Link key={link.type} href={link.href} css={linkCss}>
-                {link.type}
-                <ArrowIcon direction={'right'} color={colors.mint} width={16} height={16} />
-              </Link>
-            ))}
+        <div css={linkContainerCss}>
+          <div css={linkCss}>
+            {link.type}
+            <ArrowIcon direction={'right'} color={colors.mint} width={16} height={16} />
           </div>
-        )}
+        </div>
       </div>
     </m.article>
   );
