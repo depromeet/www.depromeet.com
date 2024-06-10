@@ -1,7 +1,7 @@
 import { css, Theme } from '@emotion/react';
 import { AnimatePresence, m } from 'framer-motion';
 
-import { BlogPostThumbnail, Link } from '~/components/Blog';
+import { BlogPostThumbnail } from '~/components/Blog';
 import { Intro } from '~/components/Intro';
 import { Subscribe } from '~/components/Main';
 import { SectionTitleV2 } from '~/components/SectionTitleV2';
@@ -38,7 +38,7 @@ export default function blog() {
                   img={blog.img}
                   title={blog.title}
                   date={blog.date}
-                  links={blog.links as Link[]}
+                  link={blog.link}
                 />
               ))}
             </m.div>
