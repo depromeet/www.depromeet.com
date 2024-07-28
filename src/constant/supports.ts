@@ -55,4 +55,16 @@ export const SUPPORTS: Support[] = [
     img: '/images/support/jumpit.png',
     link: 'https://www.jumpit.co.kr/',
   },
+  {
+    title: '제이펍',
+    subTitle: 'Jpub',
+    img: '/images/support/jpub.png',
+    link: 'https://jpub.tistory.com/',
+  },
+  {
+    title: '이지스퍼블리싱',
+    subTitle: 'EasysPublishing',
+    img: '/images/support/easyspub.png',
+    link: 'https://www.easyspub.co.kr/Main/pub',
+  },
 ];
