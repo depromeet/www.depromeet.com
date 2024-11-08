@@ -1,7 +1,7 @@
 import { type ComponentProps } from 'react';
 import { AnimatePresence } from 'framer-motion';
 
-import Portal from '~/components/Portal/Portal';
+import Portal from '~/components/Modal/Portal';
 
 interface Props extends ComponentProps<typeof Portal> {
   /**
@@ -17,9 +17,8 @@ interface Props extends ComponentProps<typeof Portal> {
 
 /**
  * @description Portal을 AnimatePresence와 함께 사용합니다
- * @params { string } "sync" | "wait" | "popLayout"
  */
-const AnimatePortal = ({ children, isShowing, mode = 'sync' }: Props) => {
+const AnimatePortal = ({ children, isShowing, mode = 'wait' }: Props) => {
   return (
     <Portal>
       <AnimatePresence mode={mode}>{isShowing && children}</AnimatePresence>
