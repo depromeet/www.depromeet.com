@@ -2,8 +2,8 @@ import { type ComponentProps, type MouseEvent, type PropsWithChildren } from 're
 import { css } from '@emotion/react';
 import { m, Variants } from 'framer-motion';
 
-import AnimatePortal from '~/components/Modal/AnimatePortal';
 import useScrollLock from '~/components/Modal/useScrollLock';
+import AnimatePortal from '~/components/Portal/AnimatePortal';
 
 interface Props {
   /**
