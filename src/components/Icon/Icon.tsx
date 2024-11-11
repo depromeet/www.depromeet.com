@@ -10,7 +10,7 @@ type Props = {
   color?: string;
   size?: string | number;
   onClick?: () => void;
-} & React.SVGProps<SVGSVGElement>;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const DEFAULT_ICON_COLOR = '#000000';
 
@@ -22,18 +22,31 @@ export const Icon = memo(function Icon({
   ...props
 }: Props) {
   const SVGIcon = icons[icon];
-  const widthRem = typeof size === 'number' ? `${size}px` : size;
+  const width = typeof size === 'number' ? `${size}px` : size;
 
   return (
-    <SVGIcon
+    <button
       onClick={onClick}
       css={css`
-        color: ${color};
-        cursor: ${onClick ? 'pointer' : 'inherit'};
-        width: ${widthRem};
-        height: auto;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: ${onClick ? 'pointer' : 'default'};
+        display: inline-flex;
+
+        &:focus {
+          outline: none;
+        }
       `}
       {...props}
-    />
+    >
+      <SVGIcon
+        css={css`
+          color: ${color};
+          width: ${width};
+          max-height: fit-content;
+        `}
+      />
+    </button>
   );
 });

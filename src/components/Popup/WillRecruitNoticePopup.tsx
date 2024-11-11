@@ -69,7 +69,6 @@ const containerCss = () => css`
 const contentCss = () => css`
   width: 100%;
   display: flex;
-  row-gap: 0.5rem;
 
   span {
     display: block;
@@ -102,7 +101,9 @@ const buttonCss = () => css`
 `;
 
 const iconCss = () => css`
-  margin-left: auto;
+  right: 0;
+  margin-right: 20px;
+  position: absolute;
 `;
 
 export default WillRecruitNoticePopup;
