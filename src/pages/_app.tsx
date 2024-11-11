@@ -7,6 +7,7 @@ import { domMax, LazyMotion } from 'framer-motion';
 import { ApplyBanner } from '~/components/ApplyBanner';
 import { Footer } from '~/components/Footer';
 import { GNB } from '~/components/GNB';
+import WillRecruitNoticePopup from '~/components/Popup/WillRecruitNoticePopup';
 import { BASE_URL } from '~/constant/common';
 import { useRecordPageView } from '~/hooks/useRecordPageView';
 import GlobalStyle from '~/styles/globalStyle';
@@ -30,6 +31,7 @@ export default function App({ Component, pageProps }: AppProps & InitialProps) {
           <meta property="og:url" content={currentUrl} />
         </Head>
         <GNB />
+        <WillRecruitNoticePopup />
         <GlobalStyle />
         <Component {...pageProps} />
         <Footer />
