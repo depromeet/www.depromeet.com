@@ -6,19 +6,26 @@ import { Icon } from '~/components/Icon/Icon';
 import { Lottie } from '~/components/Lottie/Lottie';
 import Popup from '~/components/Popup/Popup';
 import { mediaQuery } from '~/styles/media';
+import { getPopupCookie, setPopupCookie } from '~/utils/utils';
 
 const WillRecruitNoticePopup = () => {
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowing(true);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
+  const POPUP_COOKIE_NAME = '16TH-POPUP';
   const [isShowing, setShowing] = useState(false);
-  const handleClick = () => window.open('https://www.naver.com');
-  const handleClose = () => setShowing(false);
+
+  useEffect(() => {
+    if (getPopupCookie({ cookieName: POPUP_COOKIE_NAME })) {
+      const timer = setTimeout(() => {
+        setShowing(true);
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
+  const handleClick = () => (window.location.href = 'https://bit.ly/3YJgDmR');
+  const handleClose = () => {
+    setShowing(false);
+    setPopupCookie({ cookieName: POPUP_COOKIE_NAME, expires: 1 });
+  };
 
   return (
     <Popup

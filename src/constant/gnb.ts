@@ -1,6 +1,6 @@
 export type GNBMenu = {
   name: 'About' | '모집 안내' | '프로젝트' | '블로그' | '지원하기' | '16기 모집 알림 신청';
-  href: '/about' | '/recruit' | '/project' | '/blog' | '/apply' | 'https://www.naver.com';
+  href: '/about' | '/recruit' | '/project' | '/blog' | '/apply' | 'https://bit.ly/3YJgDmR';
   type: 'text' | 'button';
 };
 
@@ -51,7 +51,7 @@ export const GNB_MOBILE_MENU_NAME: GNBMenu[] = [
   },
   {
     name: '16기 모집 알림 신청',
-    href: 'https://www.naver.com',
+    href: 'https://bit.ly/3YJgDmR',
     type: 'text',
   },
 ];

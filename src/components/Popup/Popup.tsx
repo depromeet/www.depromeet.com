@@ -4,6 +4,7 @@ import { m, Variants } from 'framer-motion';
 
 import useScrollLock from '~/components/Modal/useScrollLock';
 import AnimatePortal from '~/components/Portal/AnimatePortal';
+import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { mediaQuery } from '~/styles/media';
 import { generateModalPositionStyle } from '~/utils/utils';
 
@@ -22,7 +23,8 @@ const Popup = ({
   mode = 'wait',
   containerStyles,
 }: ComponentProps<typeof AnimatePortal> & PopupProps) => {
-  useScrollLock({ lock: isShowing });
+  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
+  useScrollLock({ lock: isMobileSize && isShowing });
 
   return (
     <AnimatePortal isShowing={isShowing} mode={mode}>

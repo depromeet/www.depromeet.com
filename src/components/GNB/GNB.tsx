@@ -31,7 +31,12 @@ const currentGeneration = 16;
 // }
 
 function NotifyButton() {
-  return <Button css={linkButtonCss}> {currentGeneration}기 모집 알림 신청 </Button>;
+  const handleClick = () => (window.location.href = 'https://bit.ly/3YJgDmR');
+  return (
+    <Button onClick={handleClick} css={linkButtonCss}>
+      {currentGeneration}기 모집 알림 신청
+    </Button>
+  );
 }
 
 const linkButtonCss = css`

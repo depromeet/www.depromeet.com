@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import Cookies from 'js-cookie';
 
 /**
  * @description
@@ -42,4 +43,28 @@ const generateModalPositionStyle = ({ position = 'center center' }: { position?:
   `;
 };
 
-export { generateModalPositionStyle };
+/**
+ * @description
+ * 사용자에게 팝업을 띄었는지 유무를 판단하기 위해 쿠키에 대한 값을 가져오는 유틸함수예요.
+ *
+ * @params {string} cookieName
+ * */
+function getPopupCookie({ cookieName }: { cookieName: string }) {
+  if (!Cookies.get(cookieName)) {
+    return true;
+  }
+  return false;
+}
+
+/**
+ * @description
+ * 사용자에게 팝업을 띄었는지 유무를 판단하기 위해 쿠키에 대한 값을 세팅하는 유틸함수예요.
+ *
+ * @params {string} cookieName
+ * @params {number} expires
+ * */
+function setPopupCookie({ cookieName, expires = 1 }: { cookieName: string; expires?: number }) {
+  Cookies.set(cookieName, 'true', { expires: expires });
+}
+
+export { generateModalPositionStyle, getPopupCookie, setPopupCookie };
