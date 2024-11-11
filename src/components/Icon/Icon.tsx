@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import { css } from '@emotion/react';
 
-import * as icons from '~/assets/16th/icon';
+import * as icons from '../../../public/images/16th/icon';
 
 export type IconType = keyof typeof icons;
 

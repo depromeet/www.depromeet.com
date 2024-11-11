@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 
-import watch from '~/assets/16th/lottie/watch.json';
 import { Icon } from '~/components/Icon/Icon';
 import { Lottie } from '~/components/Lottie/Lottie';
 import Popup from '~/components/Popup/Popup';
 import { mediaQuery } from '~/styles/media';
 import { getPopupCookie, setPopupCookie } from '~/utils/utils';
+
+import watch from '../../../public/images/16th/lottie/watch.json';
 
 const WillRecruitNoticePopup = () => {
   const POPUP_COOKIE_NAME = '16TH-POPUP';
