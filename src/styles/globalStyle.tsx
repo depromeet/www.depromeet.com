@@ -31,6 +31,7 @@ const globalCss = css`
       box-sizing: border-box;
       word-break: keep-all;
       word-wrap: break-word;
+      -webkit-tap-highlight-color: transparent !important;
     }
   }
 `;
