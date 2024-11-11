@@ -9,28 +9,37 @@ import { MobileMenu } from '~/components/GNB/MobileMenu';
 import { MobileMenuIcon } from '~/components/GNB/MobileMenuIcon';
 import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import { useDropDown } from '~/hooks/useDropdown';
-import useIsInProgress from '~/hooks/useIsInProgress';
 import { mediaQuery } from '~/styles/media';
 
 const LOGO_IMAGE = `/images/logo.svg`;
+const currentGeneration = 16;
 
-function ApplyButton() {
-  const { isInProgress, dDay } = useIsInProgress();
-  const router = useRouter();
+// TODO: 추후 해당 컴포넌트 재사용
+// function ApplyButton() {
+//   const { isInProgress, dDay } = useIsInProgress();
+//   const router = useRouter();
+//
+//   const onClick = () => {
+//     router.push('/apply');
+//   };
+//
+//   return (
+//     <Button disabled={!isInProgress} css={linkButtonCss} onClick={onClick} suppressHydrationWarning>
+//       {isInProgress ? ' 지원하기' : dDay < 0 ? `D${dDay}` : `지원 마감`}
+//     </Button>
+//   );
+// }
 
-  const onClick = () => {
-    router.push('/apply');
-  };
-
+function NotifyButton() {
+  const handleClick = () => (window.location.href = 'https://bit.ly/3YJgDmR');
   return (
-    <Button disabled={!isInProgress} css={linkButtonCss} onClick={onClick} suppressHydrationWarning>
-      {isInProgress ? ' 지원하기' : dDay < 0 ? `D${dDay}` : `지원 마감`}
+    <Button onClick={handleClick} css={linkButtonCss}>
+      {currentGeneration}기 모집 알림 신청
     </Button>
   );
 }
 
 const linkButtonCss = css`
-  width: 105px;
   height: 37px;
   padding: 8px 24px 8px 24px;
   border-radius: 300px;
@@ -64,7 +73,8 @@ export function GNB() {
               </li>
             ))}
           </ul>
-          <ApplyButton />
+          {/*<ApplyButton />*/}
+          <NotifyButton />
         </div>
       </nav>
       <nav css={mobileNavCss} ref={containerRef}>
