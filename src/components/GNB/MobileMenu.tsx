@@ -51,7 +51,7 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
               <Link
                 href={menu.href}
                 css={[linkCss, getActiveLinkcss(menu)]}
-                target={menu.newTab ? '_blank' : '_self'}
+                target={menu.isNewTab ? '_blank' : '_self'}
               >
                 {menu.name}
               </Link>
