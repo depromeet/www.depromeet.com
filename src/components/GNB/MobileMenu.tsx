@@ -48,7 +48,11 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
                 {isInProgress ? menu.name : dDay < 0 ? `D${dDay}` : '지원 마감'}
               </button>
             ) : (
-              <Link href={menu.href} css={[linkCss, getActiveLinkcss(menu)]}>
+              <Link
+                href={menu.href}
+                css={[linkCss, getActiveLinkcss(menu)]}
+                target={menu.isNewTab ? '_blank' : '_self'}
+              >
                 {menu.name}
               </Link>
             )}

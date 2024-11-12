@@ -22,7 +22,7 @@ const WillRecruitNoticePopup = () => {
       return () => clearTimeout(timer);
     }
   }, []);
-  const handleClick = () => (window.location.href = 'https://bit.ly/3YJgDmR');
+  const handleClick = () => window.open('https://bit.ly/3YJgDmR');
   const handleClose = () => {
     setShowing(false);
     setPopupCookie({ cookieName: POPUP_COOKIE_NAME, expires: 1 });
