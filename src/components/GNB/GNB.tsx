@@ -31,7 +31,7 @@ const currentGeneration = 16;
 // }
 
 function NotifyButton() {
-  const handleClick = () => (window.location.href = 'https://bit.ly/3YJgDmR');
+  const handleClick = () => window.open('https://bit.ly/3YJgDmR');
   return (
     <Button onClick={handleClick} css={linkButtonCss}>
       {currentGeneration}기 모집 알림 신청
