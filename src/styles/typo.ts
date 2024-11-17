@@ -148,60 +148,96 @@ export const typosV2 = {
     `,
   },
   pretendard: {
+    bold62: css`
+      font-size: ${pxToRem(62)};
+      font-style: normal;
+      font-weight: 700;
+      line-height: ${pxToRem(74)};
+      letter-spacing: -0.04em;
+    `,
+    bold32: css`
+      font-size: ${pxToRem(32)};
+      font-style: normal;
+      font-weight: 700;
+      line-height: ${pxToRem(38)};
+      letter-spacing: -0.04em;
+    `,
+    bold20: css`
+      font-size: ${pxToRem(20)};
+      font-style: normal;
+      font-weight: 700;
+      line-height: ${pxToRem(24)};
+      letter-spacing: -0.04em;
+    `,
+    semibold48: css`
+      font-size: ${pxToRem(48)};
+      font-style: normal;
+      font-weight: 600;
+      line-height: ${pxToRem(57)};
+      letter-spacing: -0.04em;
+    `,
     semibold32: css`
       font-size: ${pxToRem(32)};
       font-style: normal;
       font-weight: 600;
       line-height: ${pxToRem(48)};
-      letter-spacing: -4%;
+      letter-spacing: -0.04em;
     `,
     semibold28: css`
       font-size: ${pxToRem(28)};
       font-style: normal;
       font-weight: 600;
       line-height: ${pxToRem(40)};
-      letter-spacing: -4%;
+      letter-spacing: -0.04em;
     `,
     semibold26: css`
       font-size: ${pxToRem(26)};
       font-style: normal;
       line-height: ${pxToRem(40)};
       font-weight: 600;
+      letter-spacing: -0.04em;
     `,
     semibold24: css`
       font-size: ${pxToRem(24)};
       font-style: normal;
       font-weight: 600;
       line-height: ${pxToRem(36)};
-      letter-spacing: -4%;
+      letter-spacing: -0.04em;
     `,
     semibold20: css`
       font-size: ${pxToRem(20)};
       font-style: normal;
       font-weight: 600;
       line-height: ${pxToRem(30)};
-      letter-spacing: -4%;
+      letter-spacing: -0.04em;
     `,
     semibold18: css`
       font-size: ${pxToRem(18)};
       font-style: normal;
       font-weight: 600;
       line-height: ${pxToRem(32)};
-      letter-spacing: -4%;
+      letter-spacing: -0.04em;
     `,
     semibold16: css`
       font-size: ${pxToRem(16)};
       font-style: normal;
       font-weight: 600;
       line-height: ${pxToRem(24)};
-      letter-spacing: -4%;
+      letter-spacing: -0.04em;
     `,
     semibold14: css`
       font-size: ${pxToRem(14)};
       font-style: normal;
       font-weight: 600;
       line-height: ${pxToRem(21)};
-      letter-spacing: -4%;
+      letter-spacing: -0.04em;
+    `,
+    medium18: css`
+      font-size: ${pxToRem(18)};
+      font-style: normal;
+      font-weight: 500;
+      line-height: ${pxToRem(21)};
+      letter-spacing: -5%;
     `,
     regular20: css`
       font-size: ${pxToRem(20)};
