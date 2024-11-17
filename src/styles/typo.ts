@@ -162,11 +162,25 @@ export const typosV2 = {
       line-height: ${pxToRem(38)};
       letter-spacing: -0.04em;
     `,
+    bold28: css`
+      font-size: ${pxToRem(28)};
+      font-style: normal;
+      font-weight: 700;
+      line-height: ${pxToRem(33)};
+      letter-spacing: -0.04em;
+    `,
     bold20: css`
       font-size: ${pxToRem(20)};
       font-style: normal;
       font-weight: 700;
       line-height: ${pxToRem(24)};
+      letter-spacing: -0.04em;
+    `,
+    bold16: css`
+      font-size: ${pxToRem(16)};
+      font-style: normal;
+      font-weight: 700;
+      line-height: ${pxToRem(19)};
       letter-spacing: -0.04em;
     `,
     semibold48: css`
@@ -223,6 +237,13 @@ export const typosV2 = {
       font-style: normal;
       font-weight: 600;
       line-height: ${pxToRem(24)};
+      letter-spacing: -0.04em;
+    `,
+    semibold15: css`
+      font-size: ${pxToRem(15)};
+      font-style: normal;
+      font-weight: 600;
+      line-height: ${pxToRem(18)};
       letter-spacing: -0.04em;
     `,
     semibold14: css`
