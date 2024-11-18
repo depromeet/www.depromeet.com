@@ -22,6 +22,6 @@ export const SECOND_ROW_FOOTER_INFOS = [
 ];
 
 export const CONTACT_INFO = [
-  { name: 'Kakao channel', detail: '@depromeet', href: DEPROMEET_KAKAO_PLUS_FRIEND },
-  { name: 'E-mail', detail: 'depromeet@gmail.com', href: DEPROMEET_EMAIL },
+  { name: '카카오톡 문의', detail: '@depromeet', href: DEPROMEET_KAKAO_PLUS_FRIEND },
+  { name: '이메일 문의', detail: 'depromeet@gmail.com', href: DEPROMEET_EMAIL },
 ];

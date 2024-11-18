@@ -6,6 +6,7 @@ export type Support = {
   link: string;
 };
 
+/* TODO: 16기 후원사 image export */
 export const SUPPORTS: Support[] = [
   {
     title: '팀스파르타',

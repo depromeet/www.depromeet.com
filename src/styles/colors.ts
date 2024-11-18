@@ -1,4 +1,5 @@
 export const colors = {
+  black: '#000000',
   black800: '#070814',
   black400: '#1D1F2C',
   gray300: '#343744',
@@ -21,4 +22,28 @@ export const colors = {
   lightGray: '#F4F4F4',
   gray: '#999999',
   mint: '#A0EEE9',
+
+  // NOTE: 16th
+  grey: {
+    '00': '#FFFFFF',
+    '100': '#F4F4F5',
+    '300': '#999999',
+    '500': '#323232',
+    '600': '#232323',
+    '900': '#000000',
+  },
+
+  primary: {
+    pink: '#FF90FF',
+    blue: '#006AFE',
+  },
+
+  sub: {
+    sky: '#48A4FF',
+    darkMint: '#00CEBA',
+    lightPink: '#FF97FF',
+    purple: '#877BFF',
+    yellow: '#FFEC87',
+    lightMint: '#A0EEE9',
+  },
 } as const;

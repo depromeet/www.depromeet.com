@@ -1,29 +1,38 @@
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
-import { ColorType } from '~/constant/color';
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
-import { theme } from '~/styles/theme';
 
 type IntroProps = {
   imageUrl: string;
   title: string;
   width: number;
   height: number;
-  color: ColorType;
+  color: keyof typeof colors | string;
 };
-
-type ImageSize = {
-  width: number;
-  height: number;
-};
-
-const MAX_WIDTH = 1024;
 
 export function Intro({ imageUrl, title, width, height, color }: IntroProps) {
+  const getColor = (color: string) => {
+    const keys = color.split('.');
+    let current: any = colors;
+
+    for (const key of keys) {
+      if (!current[key]) {
+        throw new Error(`Invalid color key: ${color}`);
+      }
+      current = current[key];
+    }
+
+    if (typeof current !== 'string') {
+      throw new Error(`Color key '${color}' points to a nested object, not a string.`);
+    }
+
+    return current;
+  };
   return (
-    <section css={containerCss({ color: theme.colors[color] })}>
-      <div css={bgImageCss({ width, height })}>
+    <section css={containerCss({ color: getColor(color) })}>
+      <div css={bgImageCss}>
         <Image src={imageUrl} alt={title} width={width} height={height} priority />
       </div>
     </section>
@@ -42,17 +51,21 @@ const containerCss = ({ color }: { color: string }) => css`
   }
 `;
 
-const bgImageCss = (props: ImageSize) => css`
+const bgImageCss = () => css`
   top: 20px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   img {
-    width: ${props.width}px;
-    height: ${props.height}px;
-    vertical-align: bottom;
+    object-fit: cover;
 
-    @media screen and (max-width: ${MAX_WIDTH}px) {
+    ${mediaQuery('mobile')} {
       width: 100%;
       height: auto;
+      object-fit: contain;
     }
   }
 
