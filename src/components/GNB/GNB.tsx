@@ -11,7 +11,7 @@ import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import { useDropDown } from '~/hooks/useDropdown';
 import { mediaQuery } from '~/styles/media';
 
-const LOGO_IMAGE = `/images/16th/images/logo/depromeet.svg`;
+const LOGO_IMAGE = `/images/16th/logo/depromeet.svg`;
 const CURRENT_GENERATION = 16;
 
 function NotifyButton() {
