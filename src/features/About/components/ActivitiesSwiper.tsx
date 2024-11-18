@@ -80,12 +80,11 @@ export const ActivitiesSwiper = ({ activities, backgroundImageUrl, subject }: Pr
 };
 
 const containerCss = ({ imageUrl }: { imageUrl: string }) => css`
-  width: 100%; /* 화면 너비에 맞게 설정 */
+  width: 100%;
   max-width: 1280px;
   height: 468px;
   padding: 70px 0;
   border-radius: 20px;
-  border: 1px solid black;
   background-image: url(${imageUrl});
   background-size: cover;
   position: relative;
