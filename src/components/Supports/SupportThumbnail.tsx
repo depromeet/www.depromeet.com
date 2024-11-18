@@ -68,7 +68,7 @@ const articleCss = css`
   padding: 24px;
   width: 100%;
   overflow: hidden;
-  background-color: black;
+  background-color: ${colors.gray[900]};
 
   &:hover {
     cursor: pointer;

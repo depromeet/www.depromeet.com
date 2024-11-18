@@ -24,14 +24,23 @@ export function Journey() {
 }
 
 function DepromeetInformation() {
+  // NOTE: 빌드 에러 수정을 위해 임시 주석처리
   return (
     <div css={infoContainerCss}>
-      {QUANTIFIED_INFO.map(({ label, text }, idx) => (
-        <div key={idx} css={gridItemCss}>
-          <span>{text}</span>
-          <h3>{label}</h3>
-        </div>
-      ))}
+      {QUANTIFIED_INFO.map(
+        (
+          {
+            label,
+            // text
+          },
+          idx
+        ) => (
+          <div key={idx} css={gridItemCss}>
+            {/* <span>{text}</span> */}
+            <h3>{label}</h3>
+          </div>
+        )
+      )}
     </div>
   );
 }
