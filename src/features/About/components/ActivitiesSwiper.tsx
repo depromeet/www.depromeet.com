@@ -5,6 +5,7 @@ import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { ArrowIcon } from '~/components/Icons';
+import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
 import 'swiper/css';
@@ -23,7 +24,6 @@ type Props = {
 
 export const ActivitiesSwiper = ({ activities, backgroundImageUrl, subject }: Props) => {
   SwiperCore.use([Navigation]);
-
   const buttonClass = {
     prev: `swiper-button-prev-${subject}`,
     next: `swiper-button-next-${subject}`,
@@ -41,7 +41,7 @@ export const ActivitiesSwiper = ({ activities, backgroundImageUrl, subject }: Pr
         </button>
       </div>
       <Swiper
-        slidesPerView={4}
+        slidesPerView={'auto'}
         spaceBetween={18}
         navigation={{
           prevEl: `.${buttonClass.prev}`,
@@ -53,7 +53,12 @@ export const ActivitiesSwiper = ({ activities, backgroundImageUrl, subject }: Pr
         }}
       >
         {activities.map(({ title, description, img }) => (
-          <SwiperSlide key={title}>
+          <SwiperSlide
+            key={title}
+            style={{
+              width: '276px',
+            }}
+          >
             <div css={card.wrapperCss}>
               <Image
                 src={img}
@@ -75,7 +80,8 @@ export const ActivitiesSwiper = ({ activities, backgroundImageUrl, subject }: Pr
 };
 
 const containerCss = ({ imageUrl }: { imageUrl: string }) => css`
-  width: 1280px;
+  width: 100%; /* 화면 너비에 맞게 설정 */
+  max-width: 1280px;
   height: 468px;
   padding: 70px 0;
   border-radius: 20px;
@@ -83,6 +89,11 @@ const containerCss = ({ imageUrl }: { imageUrl: string }) => css`
   background-image: url(${imageUrl});
   background-size: cover;
   position: relative;
+  overflow: hidden;
+
+  ${mediaQuery('mobile')} {
+    border-radius: 0;
+  }
 `;
 
 const navigation = {
@@ -117,6 +128,10 @@ const navigation = {
     /* reset swiper navigation style */
     &::after {
       content: '';
+    }
+
+    ${mediaQuery('mobile')} {
+      opacity: 0;
     }
   `,
 };

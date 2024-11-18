@@ -65,11 +65,6 @@ const introCss = {
   headline: css`
     ${theme.typosV2.pretendard.bold32}
     line-height: 150%;
-
-    ${mediaQuery('mobile')} {
-      ${theme.typosV2.pretendard.bold28}
-      line-height: 150%;
-    }
   `,
   description: css`
     ${theme.typosV2.pretendard.medium18}
@@ -84,6 +79,7 @@ const introCss = {
 };
 
 const activitiesCss = css`
+  max-width: 100%;
   margin-top: 72px;
 
   ${mediaQuery('mobile')} {
