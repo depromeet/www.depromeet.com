@@ -23,6 +23,32 @@ export const colors = {
   gray: '#999999',
   mint: '#A0EEE9',
 
+  // NOTE: 디프만 16기 컬러셋
+  '16th': {
+    gray: {
+      '00': '#FFFFFF',
+      '100': '#F4F4F5',
+      '300': '#999999',
+      '500': '#323232',
+      '600': '#232323',
+      '900': '#000000',
+    },
+
+    primary: {
+      pink: '#FF90FF',
+      blue: '#006AFE',
+    },
+
+    sub: {
+      sky: '#48A4FF',
+      darkMint: '#00CEBA',
+      lightPink: '#FF97FF',
+      purple: '#877BFF',
+      yellow: '#FFEC87',
+      lightMint: '#A0EEE9',
+    },
+  },
+
   // NOTE: 16th
   grey: {
     '00': '#FFFFFF',
