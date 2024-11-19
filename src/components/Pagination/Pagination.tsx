@@ -40,11 +40,12 @@ export function Pagination({ handlePageClick, numberOfPages, currentPage }: Pagi
 }
 
 const listCss = css`
-  margin-top: 70px;
+  margin-top: 36px;
   display: flex;
-  gap: 28px;
   justify-content: center;
-  ${theme.typos.pretendard.subTitle2};
+  ${theme.typosV2.pretendard.regular16};
+  line-height: 150%;
+
   &:hover {
     cursor: pointer;
   }
@@ -65,12 +66,17 @@ const moreCss = css`
   padding: 8px 24px;
   margin-top: 30px;
   font-weight: 700;
+
   ${mediaQuery('mobile')} {
     display: block;
   }
 `;
 
 const listItemCss = (selected: boolean) => css`
-  padding: 10px;
-  color: ${selected ? theme.colors.green : '#555'};
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${selected ? theme.colors.grey[900] : theme.colors.grey[300]};
 `;

@@ -65,11 +65,11 @@ export default function ProjectPage() {
       <SEO title="디프만 - Project" />
       <main>
         <Intro
-          imageUrl="/images/project/intro-img.svg"
+          imageUrl="/images/16th/project/project.svg"
           title="프로젝트 배너 이미지"
-          width={1024}
-          height={400}
-          color="purple"
+          width={1920}
+          height={300}
+          color="black"
         />
         <section css={sectionCss}>
           <ProjectTab currentTab={currentTab} setCurrentTab={setCurrentTab} />
