@@ -7,19 +7,109 @@ export type Project = {
   links?: Link[];
 };
 
-export const TAB_LIST = ['전체', '14기', '13기', '12기', '11기', '~10기'];
+export const TAB_LIST = ['전체', '15기', '14기', '13기', '12기', '11기', '~10기'];
 export const PROJECT_LIST: Project[] = [
+  {
+    title: '모링(moring)',
+    subTitle: '15기',
+    description: '모임으로 하나되는 우리 -<br/>릴레이 질문으로 채워나가는 나만의 자기소개',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/206508371/(moring)-',
+      },
+      { type: 'Github', href: 'https://github.com/depromeet/15th-team3-FE' },
+      { type: 'Web', href: 'https://www.moring.one/' },
+    ],
+  },
+  {
+    title: '왈왈(WALWAL)',
+    subTitle: '15기',
+    description: '반려동물과 함께 추억을 기록하고 공유하는<br/>새로운 펫 커뮤니티 서비스',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/207768545/WALWAL-%08PET-SERVICE',
+      },
+      { type: 'Github', href: 'https://github.com/depromeet/WalWal-iOS' },
+      { type: 'APP', href: 'https://apps.apple.com/kr/app/%EC%99%88%EC%99%88/id6553981069' },
+    ],
+  },
+  {
+    title: 'SPOT!',
+    subTitle: '15기',
+    description: '내가 만들어가는 야구장 시야 서비스<br/>My BallPark Seat View Service',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/207588847/SPOT-My-BallPark-Seat-View-Service',
+      },
+      { type: 'Github', href: 'https://github.com/depromeet/SPOT-Android' },
+      {
+        type: 'Android',
+        href: 'https://play.google.com/store/apps/details?id=com.dpm.spot',
+      },
+    ],
+  },
+  {
+    title: 'BBOGAK 뽀각',
+    subTitle: '15기',
+    description: '취준 정보 정리를 돕는, 나의 취뽀 도우미 뽀각',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/207843619/BBOGAK-',
+      },
+      { type: 'Github', href: 'https://github.com/depromeet/bbo-gak-server' },
+      {
+        type: 'Web',
+        href: 'https://www.bbogak.com/login',
+      },
+    ],
+  },
+  {
+    title: 'swimie',
+    subTitle: '15기',
+    description: '친구들의 응원과 함께하는 수영 일기',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/207850709/swimie-l-',
+      },
+      { type: 'Github', href: 'https://github.com/depromeet/Swimie-Web' },
+      {
+        type: 'Web',
+        href: 'https://apps.apple.com/ca/app/swimie/id6670447205',
+      },
+    ],
+  },
+  {
+    title: 'Layer',
+    subTitle: '15기',
+    description: '성장하는 당신을 위한 회고 서비스<br/>Retrospective service',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/207850381/Layer-Retrospective-service',
+      },
+      { type: 'Github', href: 'https://github.com/depromeet/layer' },
+      {
+        type: 'Web',
+        href: 'https://www.layerapp.io/login',
+      },
+    ],
+  },
   {
     title: '반디부디',
     subTitle: '14기',
     description: '내가 그리는 나의 인생지도<br/>Draw your life map',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/191517975/BANDIBOODI-Draw-your-life-map?tracking_source=search_projects|bandiboodi',
       },
-      { type: 'GITHUB', href: 'https://github.com/depromeet/amazing3-fe' },
-      { type: 'WEB', href: 'https://www.bandiboodi.com' },
+      { type: 'Github', href: 'https://github.com/depromeet/amazing3-fe' },
+      { type: 'Web', href: 'https://www.bandiboodi.com' },
     ],
   },
   {
@@ -28,11 +118,11 @@ export const PROJECT_LIST: Project[] = [
     description: '이미지로 소통하는 칭찬 SNS',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/191497631/praise-up-SNS',
       },
-      { type: 'GITHUB', href: 'https://github.com/depromeet/praise-up-client' },
-      { type: 'WEB', href: 'https://www.praise-up.app/' },
+      { type: 'Github', href: 'https://github.com/depromeet/praise-up-client' },
+      { type: 'Web', href: 'https://www.praise-up.app/' },
     ],
   },
   {
@@ -41,11 +131,11 @@ export const PROJECT_LIST: Project[] = [
     description: '하루 10분으로 시작하는 시간 관리 서비스<br/>Time management App',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/191522849/10-10-Time-management-%08App?tracking_source=search_projects%7C10mm',
       },
-      { type: 'GITHUB', href: 'https://github.com/depromeet/10mm-client-web' },
-      { type: 'WEB', href: 'https://www.10mm.today/auth/login?redirect=/' },
+      { type: 'Github', href: 'https://github.com/depromeet/10mm-client-web' },
+      { type: 'Web', href: 'https://www.10mm.today/auth/login?redirect=/' },
     ],
   },
   {
@@ -54,10 +144,10 @@ export const PROJECT_LIST: Project[] = [
     description: 'IT Career Growth Networking Service',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/191510163/%08TEUMTEUM-IT-Career-Growth-Networking-Service',
       },
-      { type: 'GITHUB', href: 'https://github.com/depromeet/TeumTeum-Android' },
+      { type: 'Github', href: 'https://github.com/depromeet/TeumTeum-Android' },
       {
         type: 'APP',
         href: 'https://play.google.com/store/apps/details?id=com.teumteum.teumteum&pli=1',
@@ -70,12 +160,12 @@ export const PROJECT_LIST: Project[] = [
     description: '재방문 맛집 공유<br/>Revisit Eatery Sharing',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/191512505/DDOEAT-DDOEAT-Revisit-Eatery-Sharing',
       },
-      { type: 'GITHUB', href: 'https://github.com/depromeet/ddoeat_client' },
+      { type: 'Github', href: 'https://github.com/depromeet/ddoeat_client' },
       {
-        type: 'WEB',
+        type: 'Web',
         href: 'https://www.ddoeat.site/',
       },
     ],
@@ -86,10 +176,10 @@ export const PROJECT_LIST: Project[] = [
     description: '하루 한 번, 가족에게 보내는 생존신고 서비스<br/>Family Widget Service',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/191508405/-Family-Widget-Service',
       },
-      { type: 'GITHUB', href: 'https://github.com/depromeet/14th-team5-iOS' },
+      { type: 'Github', href: 'https://github.com/depromeet/14th-team5-iOS' },
       {
         type: 'APP',
         href: 'https://no5ing.kr/',
@@ -102,11 +192,11 @@ export const PROJECT_LIST: Project[] = [
     description: '거지들의 이야기로 쌓이는<br/>소비습관 개선 서비스',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/175690517/-Improve-your-spending-habit-with-people',
       },
-      { type: 'GITHUB', href: 'https://github.com/depromeet/jalingobi-client' },
-      { type: 'WEB', href: 'https://jalingobi.com' },
+      { type: 'Github', href: 'https://github.com/depromeet/jalingobi-client' },
+      { type: 'Web', href: 'https://jalingobi.com' },
     ],
   },
   {
@@ -115,11 +205,11 @@ export const PROJECT_LIST: Project[] = [
     description: '카페 음료의 당을<br/>기록하고 관리하는 서비스',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/175685591/-(Over-Sweet)-',
       },
-      { type: 'GITHUB', href: 'https://github.com/depromeet/oversweet-core' },
-      { type: 'WEB', href: 'https://oversweet.vercel.app' },
+      { type: 'Github', href: 'https://github.com/depromeet/oversweet-core' },
+      { type: 'Web', href: 'https://oversweet.vercel.app' },
     ],
   },
   {
@@ -128,11 +218,11 @@ export const PROJECT_LIST: Project[] = [
     description: '동료의 익명 피드백으로<br/>발견하는 나만의 커리어 DNA',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: ' https://www.behance.net/gallery/175696341/Na-Lab-',
       },
-      { type: 'GITHUB', href: ' https://github.com/depromeet/na-lab-client' },
-      { type: 'WEB', href: 'https://nalab.me' },
+      { type: 'Github', href: ' https://github.com/depromeet/na-lab-client' },
+      { type: 'Web', href: 'https://nalab.me' },
     ],
   },
   {
@@ -141,11 +231,11 @@ export const PROJECT_LIST: Project[] = [
     description: 'AI 기반 직무역량 키워드 추천 및<br/>자기소개서 작성 서비스',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/175702481/insight-out',
       },
-      { type: 'GITHUB', href: 'https://github.com/depromeet/InsightOut-client' },
-      { type: 'WEB', href: 'https://insightout.kr' },
+      { type: 'Github', href: 'https://github.com/depromeet/InsightOut-client' },
+      { type: 'Web', href: 'https://insightout.kr' },
     ],
   },
   {
@@ -154,10 +244,10 @@ export const PROJECT_LIST: Project[] = [
     description: '길을 걸으며 음악을 드랍하는<br/>음악 공유 소셜 서비스',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/175696753/Street-Drop-Location-based-music-community-services',
       },
-      { type: 'GITHUB', href: 'https://github.com/depromeet/street-drop-iOS' },
+      { type: 'Github', href: 'https://github.com/depromeet/street-drop-iOS' },
       {
         type: 'iOS',
         href: 'https://apps.apple.com/kr/app/%EC%8A%A4%ED%8A%B8%EB%A6%BF%EB%93%9C%EB%9E%8D-street-drop/id6450315928',
@@ -170,10 +260,10 @@ export const PROJECT_LIST: Project[] = [
     description: '약속 가는 중 친구들과 즐기는<br/>Share-play 서비스',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/175647815/WHATNOW-Share-Play',
       },
-      { type: 'GITHUB', href: 'https://github.com/depromeet/whatnow-android' },
+      { type: 'Github', href: 'https://github.com/depromeet/whatnow-android' },
       {
         type: 'Android',
         href: 'https://play.google.com/store/apps/details?id=com.depromeet.whatnow&hl=ko-KR',
@@ -186,11 +276,11 @@ export const PROJECT_LIST: Project[] = [
     description: '서로의 TMI를 공유하고<br/>친해지고 싶은 마음을 전하세요!',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/175602565/DingDong-TMI-',
       },
-      { type: 'GITHUB', href: 'https://github.com/depromeet/Ding-dong-fe' },
-      { type: 'WEB', href: 'https://www.ding-dong-planet.com' },
+      { type: 'Github', href: 'https://github.com/depromeet/Ding-dong-fe' },
+      { type: 'Web', href: 'https://www.ding-dong-planet.com' },
     ],
   },
   {
@@ -199,10 +289,10 @@ export const PROJECT_LIST: Project[] = [
     description: '크루원과 함께<br/>운동 경쟁하는 서비스',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/175706595/Pumping',
       },
-      { type: 'GITHUB', href: 'https://github.com/depromeet/Pumping-iOS' },
+      { type: 'Github', href: 'https://github.com/depromeet/Pumping-iOS' },
       { type: 'iOS', href: 'https://apps.apple.com/app/id6451131066' },
     ],
   },
@@ -212,10 +302,10 @@ export const PROJECT_LIST: Project[] = [
     description: '나를 바꾸는 작은 습관의 힘,<br/>습관 관리 서비스',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://url.kr/pyhgze',
       },
-      { type: 'GITHUB', href: 'https://github.com/depromeet12th/three-days-android' },
+      { type: 'Github', href: 'https://github.com/depromeet12th/three-days-android' },
       { type: 'Android', href: 'https://c11.kr/19ln2' },
     ],
   },
@@ -225,10 +315,10 @@ export const PROJECT_LIST: Project[] = [
     description: '내 친구가 보내는 생생한<br/>푸시알림 서비스',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/161848521/KNOCKNOCK-PUSH-NOTIFICATION-CUSTOM-SERVICE',
       },
-      { type: 'GITHUB', href: 'https://github.com/depromeet/12th-KnockKnock-Android' },
+      { type: 'Github', href: 'https://github.com/depromeet/12th-KnockKnock-Android' },
       {
         type: 'Android',
         href: 'https://play.google.com/store/apps/details?id=com.depromeet.knockknock',
@@ -241,10 +331,10 @@ export const PROJECT_LIST: Project[] = [
     description: '아티클을 모아 지식을 태산처럼,<br/>아티클 스크랩 서비스',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/161983453/TICLEMOA-Article-clipping-service-',
       },
-      { type: 'GITHUB', href: 'https://github.com/depromeet/ticlemoa-backend' },
+      { type: 'Github', href: 'https://github.com/depromeet/ticlemoa-backend' },
       {
         type: 'iOS',
         href: 'https://apps.apple.com/kr/app/ticlemoa/id1659267166',
@@ -257,12 +347,12 @@ export const PROJECT_LIST: Project[] = [
     description: '내가 만든 퀴즈로<br/>스터디를 재미있게, 똑스',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/161231589/Toks-Quiz-Study-Service-',
       },
-      { type: 'GITHUB', href: 'https://github.com/depromeet/toks-web' },
+      { type: 'Github', href: 'https://github.com/depromeet/toks-web' },
       {
-        type: 'WEB',
+        type: 'Web',
         href: 'https://tokstudy.com/',
       },
     ],
@@ -273,11 +363,11 @@ export const PROJECT_LIST: Project[] = [
     description: '지식을 공유하고, 후원하며<br/>함께 성장하는 블로깅 플랫폼',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/161841129/-Coquality-High-Quality-Blogging-',
       },
       {
-        type: 'WEB',
+        type: 'Web',
         href: 'https://coquality.vercel.app',
       },
     ],
@@ -288,11 +378,11 @@ export const PROJECT_LIST: Project[] = [
     description: '대신 외쳐주는 소지품 리스트',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/161161601/-Ahmatda-Checklist-for-Your-Belongings',
       },
       {
-        type: 'WEB',
+        type: 'Web',
         href: 'https://ahmatda.notion.site/ahmatda/3202c2a4e2dd440eb95ae3345a130fc4',
       },
       {
@@ -311,7 +401,7 @@ export const PROJECT_LIST: Project[] = [
     description: '재능을 교환하고 나누며<br/>성장하는 플랫폼, 핑퐁',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/161783411/Ping-Pong',
       },
       {
@@ -326,11 +416,11 @@ export const PROJECT_LIST: Project[] = [
     description: '진심을 표현하고 싶을 때,<br/>꼬깃 접어 전해보세요',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://url.kr/qd3ijo',
       },
       {
-        type: 'WEB',
+        type: 'Web',
         href: 'https://www.ggo-geet.com',
       },
     ],
@@ -341,11 +431,11 @@ export const PROJECT_LIST: Project[] = [
     description: '편의점 세계 맥주로<br/>세계 여행도장깨기',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/147281821/Beer-Air-UXUI-Design-Mobile-App-Service',
       },
       {
-        type: 'WEB',
+        type: 'Web',
         href: 'https://beerair.kr',
       },
     ],
@@ -356,7 +446,7 @@ export const PROJECT_LIST: Project[] = [
     description: '영감을 모아 통통튀는 아이디어로,<br/>영감탱',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/147207859/TANG-Inspiration-Archiving-App',
       },
       {
@@ -375,7 +465,7 @@ export const PROJECT_LIST: Project[] = [
     description: '운동 회원권 양도 거래 서비스,<br/>바통',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/147261349/Baton',
       },
       {
@@ -390,11 +480,11 @@ export const PROJECT_LIST: Project[] = [
     description: '부정적 감정의 기록,<br/>퍼스널 아카이빙 서비스',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/147271219/Archiving-My-Personal-Emotions-Moodpic',
       },
       {
-        type: 'WEB',
+        type: 'Web',
         href: 'https://www.moodpic.kr/',
       },
       {
@@ -413,7 +503,7 @@ export const PROJECT_LIST: Project[] = [
     description: '위치 기반 실시간 채팅 서비스,<br/>티키타카',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/145307681/Tikitaka-Location-based-real-time-chat-Q-A-ap',
       },
       {
@@ -428,7 +518,7 @@ export const PROJECT_LIST: Project[] = [
     description: '흐릿했던 꿈을 선명하게',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/147282295/%28Mongseal%29Archive-Your-Dream?tracking_source=search_projects%7Cdream',
       },
       {
@@ -443,7 +533,7 @@ export const PROJECT_LIST: Project[] = [
     description: '페어러와 함께 평화롭게<br/>집안일 하기',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/147276499/fairerPeacemaker-for-Houseworker',
       },
       {
@@ -458,11 +548,11 @@ export const PROJECT_LIST: Project[] = [
     description: '주식 용어로 즐기는 웹툰의<br/>새로운 덕질 문화, 개미는 툰툰',
     links: [
       {
-        type: 'BEHANCE',
+        type: 'Behance',
         href: 'https://www.behance.net/gallery/147262623/-ANTOON-l-Webtoon-Community-Service',
       },
       {
-        type: 'WEB',
+        type: 'Web',
         href: 'https://antoon.fun/',
       },
       {
@@ -547,7 +637,7 @@ export const PROJECT_LIST: Project[] = [
     description: '오늘 당신은 매운게 땡긴다!',
     links: [
       {
-        type: 'WEB',
+        type: 'Web',
         href: 'https://ohmebddeng.kr/',
       },
     ],
@@ -577,7 +667,7 @@ export const PROJECT_LIST: Project[] = [
         href: 'https://play.google.com/store/apps/details?id=com.wesellloveandhappiness.omo',
       },
       {
-        type: 'WEB',
+        type: 'Web',
         href: 'https://omo-deployment.vercel.app/',
       },
     ],
@@ -626,7 +716,7 @@ export const PROJECT_LIST: Project[] = [
     description: '쉽고 빠른 나만의 테스트 만들기',
     links: [
       {
-        type: 'WEB',
+        type: 'Web',
         href: 'https://todaytest.netlify.app/',
       },
     ],
@@ -637,7 +727,7 @@ export const PROJECT_LIST: Project[] = [
     description: '익명 소통 플랫폼',
     links: [
       {
-        type: 'WEB',
+        type: 'Web',
         href: 'https://www.hush-it.com',
       },
     ],
@@ -722,7 +812,7 @@ export const PROJECT_LIST: Project[] = [
         href: 'https://play.google.com/store/apps/details?id=com.levin.depromeet3t_anything',
       },
       {
-        type: 'WEB',
+        type: 'Web',
         href: 'https://depromeet.github.io/8th-final-3team-front/',
       },
     ],

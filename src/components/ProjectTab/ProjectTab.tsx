@@ -41,8 +41,10 @@ const tabContainerCss = css`
 `;
 
 const tabCss = css`
-  ${theme.typosV2.pretendard.regular20};
-  padding: 16px 24px;
+  ${theme.typosV2.pretendard.semibold16};
+  padding: 16px 20px;
+  color: ${theme.colors.grey[300]};
+
   ${mediaQuery('mobile')} {
     ${theme.typosV2.pretendard.regular14};
     padding: 16px 8px;
@@ -51,7 +53,7 @@ const tabCss = css`
 
 const activeTabCss = css`
   ${tabCss};
-  color: ${theme.colors.green};
+  color: ${theme.colors.grey[900]};
   text-decoration: underline;
   text-underline-offset: 8px;
 `;
