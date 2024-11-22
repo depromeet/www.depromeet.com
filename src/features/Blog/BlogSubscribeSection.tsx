@@ -42,7 +42,7 @@ const articleCss = () => css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: ${theme.colors['16th'].gray['100']};
+  background: ${theme.colors.grey['100']};
   padding: 36px 0px 40px 0px;
   width: 100%;
   max-width: 500px;
@@ -62,7 +62,7 @@ const descriptionCss = (theme: Theme) => css`
 
   span {
     ${theme.typosV2.pretendard.semibold26};
-    color: ${theme.colors['16th'].gray['900']};
+    color: ${theme.colors.grey['900']};
   }
 
   ${mediaQuery('mobile')} {
