@@ -18,7 +18,7 @@ export function ApplyBanner() {
       {isInProgress && !isApplyPage && !isRecruitPage && !is404 && (
         <section css={layoutCss}>
           <Link href="/apply" css={linkCss}>
-            <p>디프만 15기 지원하기</p>
+            <p>디프만 16기 지원하기</p>
             <span css={arrowIconCss}>
               <NarrowArrowIcon direction="right" color="white" />
             </span>

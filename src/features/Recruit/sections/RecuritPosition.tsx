@@ -1,13 +1,11 @@
-import Image from 'next/image';
 import { css, Theme } from '@emotion/react';
 
+import { MobilePositionItem } from '~/components/Positions/MobilePositionItem';
 import { PositionsItem } from '~/components/Positions/PositionsItem';
 import { POSITIONS } from '~/constant/position';
 import { mediaQuery } from '~/styles/media';
 
-import { MobilePositionItem } from './MobilePositionItem';
-
-export function Positions() {
+export const RecuritPosition = () => {
   return (
     <section css={layoutCss}>
       <div css={containerCss}>
@@ -18,7 +16,6 @@ export function Positions() {
           </div>
         </div>
         <div css={mobileHeaderCss}>
-          <Image src="/images/logo.svg" alt="디프만 로고" width={278} height={58} />
           <div css={titleCss}>
             <h1>모집 직군</h1>
             <p>
@@ -46,7 +43,7 @@ export function Positions() {
       </div>
     </section>
   );
-}
+};
 
 const layoutCss = css`
   padding-bottom: 120px;
@@ -65,6 +62,10 @@ const containerCss = css`
   align-items: center;
   justify-content: space-between;
   gap: 56px;
+
+  ${mediaQuery('mobile')} {
+    margin-top: 80px;
+  }
 `;
 
 const headerCss = css`
@@ -105,6 +106,14 @@ const titleCss = (theme: Theme) => css`
 
   > p {
     ${theme.typosV2.pretendard.medium18}
+  }
+
+  ${mediaQuery('mobile')} {
+    gap: 24px;
+
+    > h1 {
+      ${theme.typosV2.pretendard.bold28}
+    }
   }
 `;
 

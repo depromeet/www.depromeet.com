@@ -5,7 +5,7 @@ import { m } from 'framer-motion';
 
 import { POSITION_BASE } from '~/constant/image';
 import { defaultFadeInVariants } from '~/constant/motion';
-import { getColorByPosition, Position } from '~/constant/position';
+import { Position } from '~/constant/position';
 import useIsInProgress from '~/hooks/useIsInProgress';
 import { mediaQuery } from '~/styles/media';
 
@@ -29,9 +29,9 @@ export function PositionsItem({ type, title, link, description }: PositionsItemP
       animate="animate"
       exit="exit"
     >
-      <div css={theme => layoutCss(theme, type)}>
+      <div css={() => layoutCss()}>
         <div css={imgContainerCss}>
-          <Image fill src={`${POSITION_BASE}/${type}.svg`} alt={title} />
+          <Image fill src={`${POSITION_BASE}/${type}.svg`} alt={title} id={'default'} />
         </div>
       </div>
       <div css={contentsCss}>
@@ -71,8 +71,9 @@ export function PositionsItem({ type, title, link, description }: PositionsItemP
 const articleCss = css`
   position: relative;
   width: 306px;
-  height: 430px;
+  height: 336px;
   overflow: hidden;
+  border-radius: 20px;
 
   ${mediaQuery('tablet')} {
     max-width: 100%;
@@ -93,7 +94,7 @@ const contentsCss = css`
   left: 0;
   top: 0;
   width: 306px;
-  height: 430px;
+  height: 336px;
   display: flex;
   padding: 20px;
   flex-direction: column;
@@ -102,16 +103,19 @@ const contentsCss = css`
   transition: opacity 0.3s ease;
   opacity: 0;
 
+  img {
+    border-radius: 20px;
+  }
+
   &:hover {
     background-color: rgba(19, 28, 40, 0.7);
     opacity: 1;
   }
 `;
 
-const layoutCss = (theme: Theme, position: string) => css`
-  background-color: ${getColorByPosition(theme, position)};
+const layoutCss = () => css`
   width: 306px;
-  height: 430px;
+  height: 336px;
 `;
 
 const titleCss = css`
@@ -167,8 +171,11 @@ const arrowIconCss = css`
 `;
 
 const imgContainerCss = css`
-  top: 15px;
   position: relative;
   width: 306px;
-  height: 310px;
+  height: 336px;
+
+  img {
+    border-radius: 20px;
+  }
 `;

@@ -30,11 +30,11 @@ const layoutCss = css`
 `;
 
 const indexCss = (theme: Theme) => css`
-  ${theme.typosV2.bebas.regular32};
+  ${theme.typosV2.pretendard.semibold28};
   color: ${theme.colors.pink};
 
   ${mediaQuery('mobile')} {
-    ${theme.typosV2.bebas.regular24};
+    ${theme.typosV2.pretendard.semibold24};
   }
 `;
 
