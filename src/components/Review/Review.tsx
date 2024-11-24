@@ -21,12 +21,12 @@ const layoutCss = (theme: Theme) => css`
   padding: 120px 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 52px;
   align-items: center;
   overflow: hidden;
   background-color: white;
 
   h1 {
-    ${theme.typosV2.pretendard.semibold20}
+    ${theme.typosV2.pretendard.bold32}
   }
 `;

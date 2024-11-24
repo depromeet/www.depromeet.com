@@ -72,6 +72,7 @@ const headerCss = (theme: Theme, isOpen: boolean) => css`
   justify-content: space-between;
   align-items: center;
   padding: 12px 30px;
+  border-radius: ${isOpen ? '12px 12px 0 0' : '12px'};
 
   > h4 {
     color: ${isOpen ? 'white' : 'black'};
@@ -92,11 +93,12 @@ const arrowContainerCss = (theme: Theme, isOpen: boolean) => css`
   border-radius: 400px;
   width: 24px;
   height: 24px;
-  background-color: ${isOpen ? theme.colors.mint : 'black'};
+  background-color: ${isOpen ? 'white' : 'black'};
 `;
 
 const bodyCss = (theme: Theme) => css`
   background-color: white;
+  border-radius: 0 0 12px 12px;
   > p {
     padding: 12px 30px;
     color: black;

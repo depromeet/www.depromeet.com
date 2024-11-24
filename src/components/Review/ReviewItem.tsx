@@ -121,7 +121,7 @@ const arrowIconCss = (theme: Theme) => css`
 `;
 
 const linkCss = (theme: Theme) => css`
-  ${theme.typosV2.pretendard.regular18};
+  ${theme.typosV2.pretendard.semibold16};
   color: ${theme.colors.pink};
   margin-top: 20px;
   display: flex;
