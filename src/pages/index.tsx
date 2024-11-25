@@ -1,15 +1,23 @@
+import dynamic from 'next/dynamic';
+
 import { SEO } from '~/components/SEO';
 import {
   MainBlogSection,
   MainIntroSection,
-  MainProjectSection,
   MainReasonSection,
   MainRecruitSection,
   MainResultSection,
   MainScheduleSection,
+  MainSubscribeSection,
   MainSupportSection,
 } from '~/features/Main/sections';
-import { MainSubscribeSection } from '~/features/Main/sections/MainSubscribeSection';
+
+const DynamicMainProjectSection = dynamic(
+  () => import('~/features/Main/sections').then(({ MainProjectSection }) => MainProjectSection),
+  {
+    ssr: false,
+  }
+);
 
 export default function Root() {
   return (
@@ -20,7 +28,7 @@ export default function Root() {
         <MainResultSection />
         <MainReasonSection />
         <MainScheduleSection />
-        <MainProjectSection />
+        <DynamicMainProjectSection />
         <MainSupportSection />
         <MainRecruitSection />
         <MainBlogSection />

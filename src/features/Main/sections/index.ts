@@ -5,4 +5,5 @@ export * from './MainReasonSection';
 export * from './MainRecruitSection';
 export * from './MainResultSection';
 export * from './MainScheduleSection';
+export * from './MainSubscribeSection';
 export * from './MainSupportSection';
