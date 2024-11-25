@@ -14,14 +14,17 @@ export const colors = {
   yellow400: '#C6E413',
   yellow300: '#A1BB00',
 
-  yellow: '#FFEC86',
-  purple: '#7269CE',
+  yellow: '#FFEC87',
+  purple: '#877BFF',
   blue: '#48A4FF',
   pink: '#FF90FF',
+  lightPink: '#FF97FF',
   green: '#1EC4B4',
   lightGray: '#F4F4F4',
   gray: '#999999',
   mint: '#A0EEE9',
+  darkMint: '#00CEBA',
+  sky: '#48A4FF',
 
   // NOTE: 디프만 16기 컬러셋
   '16th': {
