@@ -23,9 +23,11 @@ const layoutCss = css`
   flex-direction: column;
   gap: 20px;
   background-color: white;
+  border-radius: 12px;
 
   ${mediaQuery('mobile')} {
-    padding: 16px;
+    gap: 12px;
+    padding: 24px;
   }
 `;
 
@@ -43,6 +45,6 @@ const descriptionCss = (theme: Theme) => css`
   color: black;
 
   ${mediaQuery('mobile')} {
-    ${theme.typosV2.pretendard.regular14};
+    ${theme.typosV2.pretendard.semibold15};
   }
 `;

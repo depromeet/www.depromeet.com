@@ -32,7 +32,7 @@ const titleCss = css`
 `;
 
 const listCss = css`
-  padding: 0 10px;
+  padding: 0 16px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;
