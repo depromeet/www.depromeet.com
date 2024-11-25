@@ -128,9 +128,13 @@ const listCss = css`
 
   ${mediaQuery('tablet')} {
     width: 100%;
+    padding: 0 24px;
   }
+
   ${mediaQuery('mobile')} {
-    display: none;
+    /** NOTE: 16기에서는 모바일에 따른 적응형 UI를 사용하지 않습니다,
+    추후 적응형 컴포넌트로 사용 시에 해당 주석을 해제해주세요 */
+    // display: none;
   }
 `;
 
@@ -138,11 +142,13 @@ const mobileListCss = css`
   display: none;
 
   ${mediaQuery('mobile')} {
+    /** NOTE: 16기에서는 모바일에 따른 적응형 UI를 사용하지 않습니다,
+    추후 적응형 컴포넌트로 사용 시에 해당 주석을 해제해주세요 */
+    //display: flex;
     padding: 0 16px;
     width: 100%;
     align-items: center;
     justify-content: center;
-    display: flex;
     flex-direction: column;
     gap: 8px;
   }

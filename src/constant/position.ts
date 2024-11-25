@@ -8,25 +8,27 @@ export type Position = 'aos' | 'design' | 'ios' | 'server' | 'web';
 export const getColorByPosition = (theme: Theme, position: string) => {
   if (position === 'web') return theme.colors.yellow;
   else if (position === 'server') return theme.colors.purple;
-  else if (position === 'ios') return theme.colors.pink;
-  else if (position === 'aos') return theme.colors.green;
-  else if (position === 'design') return theme.colors.blue;
+  else if (position === 'ios') return theme.colors.lightPink;
+  else if (position === 'aos') return theme.colors.darkMint;
+  else if (position === 'design') return theme.colors.sky;
 };
 
 export const POSITIONS: Array<ComponentProps<typeof PositionsItem>> = [
   {
     type: 'design',
     title: 'UX/UI',
+    keyword: ['리서치', 'UX', '디자인시스템'],
     link: process.env.NEXT_PUBLIC_NINEHIRE_DESIGN ?? '',
     description: [
       'Figma를 사용해 프로젝트를 해본 경험이 있으신 분',
-      'Figma에서 Component 및 Variable 기능을 능숙하게 활용할 수 있으신 분',
       'UX 문제 해결 능력을 갖추신 분',
+      '사용자 중심의 사고를 바탕으로 팀원들과 논리적인 커뮤니케이션을 할 수 있는 분',
     ],
   },
   {
     type: 'aos',
     title: 'ANDROID',
+    keyword: ['Android', 'Kotlin', 'Git'],
     link: process.env.NEXT_PUBLIC_NINEHIRE_AOS ?? '',
     description: [
       'Retrofit을 이용한 서버 통신(API)을 해본 경험이 있으신 분',
@@ -37,6 +39,7 @@ export const POSITIONS: Array<ComponentProps<typeof PositionsItem>> = [
   {
     type: 'ios',
     title: 'iOS',
+    keyword: ['iOS', 'Swift', 'Git'],
     link: process.env.NEXT_PUBLIC_NINEHIRE_IOS ?? '',
     description: [
       'UIKit 혹은 SwiftUI를 통하여 개발을 해본경험이 있으신 분',
@@ -47,6 +50,7 @@ export const POSITIONS: Array<ComponentProps<typeof PositionsItem>> = [
   {
     type: 'server',
     title: 'SERVER',
+    keyword: ['Backend', 'Infra', 'Git'],
     link: process.env.NEXT_PUBLIC_NINEHIRE_SERVER ?? '',
     description: [
       '프로젝트 초기 설계 및 인프라 배포 경험이 있으신 분',
@@ -57,6 +61,7 @@ export const POSITIONS: Array<ComponentProps<typeof PositionsItem>> = [
   {
     type: 'web',
     title: 'WEB',
+    keyword: ['Frontend', 'SPA', '프레임워크', 'Git'],
     link: process.env.NEXT_PUBLIC_NINEHIRE_WEB ?? '',
     description: [
       '프로젝트 협업에 있어 Git 사용 및 협업 툴 사용에 무리가 없는 분',

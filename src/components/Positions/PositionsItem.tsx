@@ -1,24 +1,26 @@
+import { Fragment } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { css, Theme } from '@emotion/react';
 import { m } from 'framer-motion';
 
+import { Icon } from '~/components/Icon/Icon';
 import { POSITION_BASE } from '~/constant/image';
 import { defaultFadeInVariants } from '~/constant/motion';
-import { Position } from '~/constant/position';
+import { getColorByPosition, Position } from '~/constant/position';
 import useIsInProgress from '~/hooks/useIsInProgress';
 import { mediaQuery } from '~/styles/media';
-
-import { NarrowArrowIcon } from '../Icons';
+import { theme } from '~/styles/theme';
 
 interface PositionsItemProps {
   type: Position;
   title: string;
+  keyword: string[];
   link: string;
   description: string[];
 }
 
-export function PositionsItem({ type, title, link, description }: PositionsItemProps) {
+export function PositionsItem({ type, title, link, description, keyword }: PositionsItemProps) {
   const { isInProgress } = useIsInProgress();
 
   return (
@@ -29,40 +31,55 @@ export function PositionsItem({ type, title, link, description }: PositionsItemP
       animate="animate"
       exit="exit"
     >
-      <div css={() => layoutCss()}>
-        <div css={imgContainerCss}>
-          <Image fill src={`${POSITION_BASE}/${type}.svg`} alt={title} id={'default'} />
+      <div css={theme => layoutCss(theme, type)}>
+        <div css={imgContainerCss} id={'initialContainer'}>
+          <Image
+            width={166}
+            height={73}
+            src={`${POSITION_BASE}/${type}.svg`}
+            alt={title}
+            id={'default'}
+          />
+          <span css={positionDescriptionCss}> {keyword.join(' · ')} </span>
+          <div css={applyBtnCss}>
+            <span> 지원하기 </span>
+            <Icon icon={'ic_arrow_black'} size={24} />
+          </div>
         </div>
       </div>
       <div css={contentsCss}>
         <div>
-          <div css={titleCss}>
-            {title === 'iOS' ? (
-              <div css={iosCss}>
-                <span css={spanCss}>i</span>
-                <h1 css={h1Css}>OS</h1>
-              </div>
-            ) : (
-              <h1 css={h1Css}>{title}</h1>
-            )}{' '}
-            <h1 css={h1Css}>{type !== 'design' ? 'DEVELOPER' : 'DESIGNER'}</h1>
-          </div>
+          <Image
+            width={142}
+            height={54}
+            src={`${POSITION_BASE}/${type}_hover.svg`}
+            alt={title}
+            id={'default'}
+            style={{
+              height: '54px',
+              width: 'auto',
+            }}
+          />
           <div css={descriptionCss}>
             {description.map((comment, idx) => (
               <p key={idx}>{comment}</p>
             ))}
           </div>
         </div>
-        {link && isInProgress && (
+        {
           <div css={linkContainerCss}>
             <Link css={linkCss} href={link} target="_blank">
-              지원하기
-              <span css={arrowIconCss}>
-                <NarrowArrowIcon direction="right" fill="black" />
-              </span>
+              {link && isInProgress ? (
+                '지원 마감'
+              ) : (
+                <Fragment>
+                  지원하기
+                  <Icon icon={'ic_arrow_white'} size={20} />
+                </Fragment>
+              )}
             </Link>
           </div>
-        )}
+        }
       </div>
     </m.article>
   );
@@ -80,12 +97,15 @@ const articleCss = css`
   }
   ${mediaQuery('mobile')} {
     max-width: 100%;
+    width: 100%;
   }
   &:hover {
     cursor: pointer;
   }
-  &:hover img {
-    filter: blur(6px) brightness(0.7);
+  &:hover {
+    #initialContainer {
+      filter: blur(6px) brightness(0.7);
+    }
   }
 `;
 
@@ -96,46 +116,36 @@ const contentsCss = css`
   width: 306px;
   height: 336px;
   display: flex;
-  padding: 20px;
+  padding: 30px 28px;
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
   transition: opacity 0.3s ease;
   opacity: 0;
 
-  img {
-    border-radius: 20px;
-  }
-
   &:hover {
-    background-color: rgba(19, 28, 40, 0.7);
+    background: rgba(79, 101, 133, 0.7);
+    backdrop-filter: blur(15px);
     opacity: 1;
   }
 `;
 
-const layoutCss = () => css`
+const layoutCss = (theme: Theme, position: string) => css`
+  background-color: ${getColorByPosition(theme, position)};
   width: 306px;
   height: 336px;
+
+  ${mediaQuery('mobile')} {
+    width: 100%;
+  }
 `;
 
-const titleCss = css`
+const applyBtnCss = () => css`
+  ${theme.typosV2.pretendard.semibold20};
   display: flex;
-  gap: 6px;
-`;
-
-const h1Css = (theme: Theme) => css`
-  ${theme.typosV2.bebas.regular32};
-  color: white;
-`;
-
-const spanCss = (theme: Theme) => css`
-  ${theme.typosV2.pretendard.semibold28};
-  color: white;
-`;
-
-const iosCss = css`
-  display: flex;
-  gap: 1px;
+  align-items: center;
+  column-gap: 8px;
+  margin-top: auto;
 `;
 
 const descriptionCss = (theme: Theme) => css`
@@ -146,13 +156,13 @@ const descriptionCss = (theme: Theme) => css`
 
   > p {
     color: white;
-    ${theme.typosV2.pretendard.regular16}
+    ${theme.typosV2.pretendard.medium15}
   }
 `;
 
 const linkContainerCss = css`
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 `;
 
 const linkCss = (theme: Theme) => css`
@@ -160,22 +170,22 @@ const linkCss = (theme: Theme) => css`
   gap: 5px;
   align-items: center;
   color: white;
-  ${theme.typosV2.pretendard.regular20}
-`;
-
-const arrowIconCss = css`
-  width: 24px;
-  height: 24px;
-  background-color: white;
-  border-radius: 400px;
+  ${theme.typosV2.pretendard.semibold18}
 `;
 
 const imgContainerCss = css`
   position: relative;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+
   width: 306px;
   height: 336px;
+  padding: 40px 32px;
+`;
 
-  img {
-    border-radius: 20px;
-  }
+const positionDescriptionCss = css`
+  display: block;
+  ${theme.typosV2.pretendard.medium13}
 `;
