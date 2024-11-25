@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
+import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
 import { ResultCardList } from './ResultCardList';
@@ -21,15 +22,24 @@ export const Result = () => {
           {isMobileSize && <br />}
           <span css={emphasis.text}>
             <div css={emphasis.imageWrapper}>
-              <Image
-                src="/images/16th/about/emphasis.png"
-                alt="성장추구형 강조"
-                width={124}
-                height={40}
-              />
+              {isMobileSize ? (
+                <Image
+                  src="/images/16th/about/emphasis.png"
+                  alt="성장추구형 강조"
+                  width={95}
+                  height={33}
+                />
+              ) : (
+                <Image
+                  src="/images/16th/about/emphasis.png"
+                  alt="성장추구형 강조"
+                  width={132}
+                  height={43}
+                />
+              )}
             </div>
           </span>
-          <span css={emphasis.text}>성장추구형</span>
+          <span css={emphasis.growText}>성장추구형</span>
           <span css={emphasis.rightText}>커뮤니티입니다.</span>
         </h1>
       </div>
@@ -55,6 +65,11 @@ const title = {
       line-height: 150%;
       text-align: center;
       height: fit-content;
+
+      ${mediaQuery('mobile')} {
+        ${theme.typosV2.pretendard.semibold18}
+        line-height: 150%;
+      }
     }
   `,
 };
@@ -65,13 +80,31 @@ const emphasis = {
   `,
   rightText: css`
     margin-left: 14px;
+
+    ${mediaQuery('mobile')} {
+      margin-left: 8px;
+    }
   `,
   text: css`
     position: relative;
   `,
+  growText: css`
+    position: relative;
+    ${theme.typosV2.pretendard.semibold26};
+
+    ${mediaQuery('mobile')} {
+      ${theme.typosV2.pretendard.semibold20}
+      line-height: 150%;
+    }
+  `,
   imageWrapper: css`
     position: absolute;
     left: -11px;
-    top: -3px;
+    top: -4px;
+
+    ${mediaQuery('mobile')} {
+      left: -6px;
+      top: -4px;
+    }
   `,
 };
