@@ -85,7 +85,7 @@ const content = {
 
     ${mediaQuery('mobile')} {
       margin: 0;
-      padding: 0;
+      padding: 0 8px;
       gap: 16px;
       justify-content: center;
     }
