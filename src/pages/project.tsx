@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 import { AnimatePresence, m } from 'framer-motion';
 
-import { Intro } from '~/components/Intro';
 import { Pagination } from '~/components/Pagination';
 import { ProjectTab } from '~/components/ProjectTab';
 import { SEO } from '~/components/SEO';
@@ -10,6 +9,7 @@ import { Thumbnail } from '~/components/Thumbnail';
 import { Link } from '~/components/Thumbnail/Thumbnail';
 import { staggerHalf } from '~/constant/motion';
 import { PROJECT_LIST } from '~/constant/project';
+import { IntroSection } from '~/features/Common/sections/IntroSection';
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { mediaQuery } from '~/styles/media';
 import {
@@ -64,12 +64,9 @@ export default function ProjectPage() {
     <>
       <SEO title="디프만 - Project" />
       <main>
-        <Intro
-          imageUrl="/images/16th/project/project.svg"
-          title="프로젝트 배너 이미지"
-          width={1920}
-          height={300}
-          color="black"
+        <IntroSection
+          defaultImgUrl="/images/16th/project/project.svg"
+          mobileImgUrl="/images/16th/project/project_m.svg"
         />
         <section css={sectionCss}>
           <ProjectTab currentTab={currentTab} setCurrentTab={setCurrentTab} />

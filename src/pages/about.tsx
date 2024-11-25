@@ -5,14 +5,17 @@ import {
   AboutResultSection,
   AboutSupportsSection,
 } from '~/features/About/sections';
-import { AboutIntroSection } from '~/features/About/sections/AboutIntroSection';
+import { IntroSection } from '~/features/Common/sections/IntroSection';
 
 export default function About() {
   return (
     <>
       <SEO title="디프만 - About" />
       <main>
-        <AboutIntroSection />
+        <IntroSection
+          defaultImgUrl="/images/16th/about/about.png"
+          mobileImgUrl="/images/16th/about/about_m.png"
+        />
         <AboutResultSection />
         <AboutActivitiesSection />
         <AboutSupportsSection />
