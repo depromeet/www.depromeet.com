@@ -30,11 +30,14 @@ export function ProjectTab({ currentTab, setCurrentTab }: ProjectTabProps) {
 
 const tabWrapperCss = css`
   display: flex;
-  width: 100%;
-  overflow-x: scroll;
 
-  &::-webkit-scrollbar {
-    display: none;
+  ${mediaQuery('mobile')} {
+    width: 100%;
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 `;
 
