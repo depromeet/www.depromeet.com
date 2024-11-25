@@ -6,7 +6,6 @@ import { theme } from '~/styles/theme';
 
 import { ResultCardList } from './ResultCardList';
 
-// TODO: 공통 컴포넌트 분리 / 반응형 작업
 export const Result = () => {
   const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
   return (
