@@ -38,6 +38,7 @@ const resultWrapper = css`
   display: flex;
   flex-direction: column;
   gap: 30px;
+  width: 100%;
   text-align: center;
 `;
 
