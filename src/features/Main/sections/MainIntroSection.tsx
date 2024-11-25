@@ -18,9 +18,10 @@ export const MainIntroSection = () => {
         <Image
           width={!isMobileSize ? 1920 : 438}
           height={!isMobileSize ? 1080 : 445}
-          src={'/images/16th/lottie/depromeet.gif'}
+          src={'/images/16th/intro/depromeet.gif'}
           id="depromeet"
           alt="디퍼 모집 이미지"
+          priority
         />
         <Image
           src={!isMobileSize ? '/images/16th/intro/title.svg' : '/images/16th/intro/title_m.svg'}

@@ -36,7 +36,7 @@ export default function Root() {
         {/* NOTE: 기존 웹 구조 */}
         {/* <div>
           <Intro
-            imageUrl="/images/main/intro-img.svg"
+            imageUrl="/images/main/recruit-img.svg"
             title="15기 모집 인트로"
             width={1024}
             height={780}
