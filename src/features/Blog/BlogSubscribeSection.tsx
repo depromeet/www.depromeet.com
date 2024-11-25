@@ -49,7 +49,6 @@ const articleCss = () => css`
   max-width: 900px;
   height: auto;
   border-radius: 20px;
-}
 `;
 
 const descriptionCss = (theme: Theme) => css`

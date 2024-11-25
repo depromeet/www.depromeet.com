@@ -1,14 +1,32 @@
-import { Intro } from '~/components/Intro';
-import { Ending, JourneyEntrance, RecruitEntrance, Subscribe } from '~/components/Main';
-import { ProjectCarousel } from '~/components/ProjectCarousel';
 import { SEO } from '~/components/SEO';
+import {
+  MainBlogSection,
+  MainIntroSection,
+  MainProjectSection,
+  MainReasonSection,
+  MainRecruitSection,
+  MainResultSection,
+  MainScheduleSection,
+  MainSupportSection,
+} from '~/features/Main/sections';
+import { MainSubscribeSection } from '~/features/Main/sections/MainSubscribeSection';
 
 export default function Root() {
   return (
     <>
       <SEO />
       <main>
-        <div>
+        <MainIntroSection />
+        <MainResultSection />
+        <MainReasonSection />
+        <MainScheduleSection />
+        <MainProjectSection />
+        <MainSupportSection />
+        <MainRecruitSection />
+        <MainBlogSection />
+        <MainSubscribeSection />
+        {/* NOTE: 기존 웹 구조 */}
+        {/* <div>
           <Intro
             imageUrl="/images/main/intro-img.svg"
             title="15기 모집 인트로"
@@ -21,7 +39,7 @@ export default function Root() {
           <ProjectCarousel />
           <Ending />
           <Subscribe />
-        </div>
+        </div> */}
       </main>
     </>
   );
