@@ -307,7 +307,7 @@ export const typosV2 = {
       font-style: normal;
       font-weight: 400;
       line-height: ${pxToRem(24)};
-      letter-spacing: -0.05em;
+      letter-spacing: ${pxToRem(-0.64)};
     `,
     regular14: css`
       font-size: ${pxToRem(14)};

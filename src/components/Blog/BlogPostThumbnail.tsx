@@ -7,6 +7,7 @@ import { BlogLink } from '~/constant/blog';
 import { defaultFadeInVariants } from '~/constant/motion';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
+import { theme } from '~/styles/theme';
 
 type ThumbnailProps = {
   title: string;
@@ -55,7 +56,7 @@ const articleCss = css`
   width: 100%;
   height: 208px;
   min-width: 160px;
-  padding: 18px;
+  padding: 24px;
   overflow: hidden;
   display: flex;
   border-radius: 12px;
@@ -64,15 +65,10 @@ const articleCss = css`
   background-color: black;
 
   ${mediaQuery('tablet')} {
-    padding: 16px;
   }
   ${mediaQuery('mobile')} {
-    padding: 14px;
     height: 180px;
     max-width: 460px;
-  }
-  @media (max-width: 400px) {
-    padding: 10px;
   }
   &:hover {
     cursor: pointer;
@@ -125,25 +121,17 @@ const linkCss = (theme: Theme) => css`
 `;
 
 const titleCss = css`
+  ${theme.typosV2.pretendard.semibold20};
   position: relative;
-  font-weight: 500;
-  font-size: 1.25rem;
-  line-height: 30px;
-  color: ${colors.white};
+  color: ${theme.colors.white};
   z-index: 10;
   white-space: pre-line;
-
-  ${mediaQuery('mobile')} {
-    font-size: 1rem;
-  }
 `;
 
 const dateCss = css`
+  ${theme.typosV2.pretendard.regular16}
   position: relative;
-  font-weight: 500;
-  font-size: 1rem;
-  line-height: 22px;
-  color: ${colors.gray};
+  color: ${theme.colors.grey['100']};
   z-index: 10;
 
   ${mediaQuery('mobile')} {

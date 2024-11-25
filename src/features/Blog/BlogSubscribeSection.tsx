@@ -34,7 +34,7 @@ const containerCss = (theme: Theme) => css`
   background-color: ${theme.colors.white};
 
   ${mediaQuery('mobile')} {
-    padding: 80px 16px;
+    padding: 80px 20px;
   }
 `;
 
