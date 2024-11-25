@@ -155,6 +155,13 @@ export const typosV2 = {
       line-height: ${pxToRem(74)};
       letter-spacing: -0.04em;
     `,
+    bold44: css`
+      font-size: ${pxToRem(44)};
+      font-style: normal;
+      font-weight: 700;
+      line-height: ${pxToRem(53)};
+      letter-spacing: -0.04em;
+    `,
     bold32: css`
       font-size: ${pxToRem(32)};
       font-style: normal;
