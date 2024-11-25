@@ -1,9 +1,7 @@
 import { css, Theme } from '@emotion/react';
 import { motion, Variants } from 'framer-motion';
 
-import { mediaQuery } from '~/styles/media';
-
-import { NarrowArrowIcon } from '../Icons';
+import { Icon } from '~/components/Icon/Icon';
 
 interface FAQItemProps {
   isOpen: boolean;
@@ -27,10 +25,10 @@ export function FAQItem({ isOpen, onClickOpenButton, question, answer }: FAQItem
           transition={{ duration: 0.3, ease: 'easeOut' }}
           css={theme => arrowContainerCss(theme, isOpen)}
         >
-          <NarrowArrowIcon
+          <Icon
+            icon={isOpen ? 'ic_arrow_white' : 'ic_arrow_black'}
             direction={isOpen ? 'up' : 'down'}
-            color={isOpen ? '' : '#FFFFFF'}
-            fill={isOpen ? '' : '#FFFFFF'}
+            size={24}
           />
         </motion.div>
       </motion.div>
@@ -71,21 +69,13 @@ const headerCss = (theme: Theme, isOpen: boolean) => css`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 30px;
+  padding: 16px 30px;
   border-radius: ${isOpen ? '12px 12px 0 0' : '12px'};
 
   > h4 {
     color: ${isOpen ? 'white' : 'black'};
-    text-align: center;
-    ${theme.typosV2.pretendard.regular16}
-  }
-
-  ${mediaQuery('mobile')} {
-    padding: 12px;
-
-    > h4 {
-      ${theme.typosV2.pretendard.regular14}
-    }
+    text-align: left;
+    ${theme.typosV2.pretendard.medium16}
   }
 `;
 
@@ -100,14 +90,8 @@ const bodyCss = (theme: Theme) => css`
   background-color: white;
   border-radius: 0 0 12px 12px;
   > p {
-    padding: 12px 30px;
+    padding: 16px 30px;
     color: black;
-    ${theme.typosV2.pretendard.regular16};
-  }
-  ${mediaQuery('mobile')} {
-    > p {
-      padding: 12px;
-      ${theme.typosV2.pretendard.regular14}
-    }
+    ${theme.typosV2.pretendard.medium16};
   }
 `;

@@ -54,7 +54,6 @@ const layoutCss = (theme: Theme) => css`
   padding: 120px 0;
   display: flex;
   flex-direction: column;
-  gap: 28px;
   align-items: center;
   justify-content: center;
   background-color: ${theme.colors.lightGray};
@@ -66,12 +65,18 @@ const layoutCss = (theme: Theme) => css`
 
 const tabLayoutCss = css`
   display: flex;
+  margin: 28px 0 16px 0;
+
   > li:first-of-type {
     padding-left: 0px;
   }
 
   ${mediaQuery('tablet')} {
     justify-content: center;
+  }
+
+  ${mediaQuery('mobile')} {
+    margin: 40px 0 16px 0;
   }
 `;
 

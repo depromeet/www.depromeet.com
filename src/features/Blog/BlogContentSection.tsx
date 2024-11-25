@@ -40,24 +40,29 @@ const sectionCss = css`
   flex-direction: column;
   align-items: center;
   background-color: white;
-  padding: 120px 0;
+  padding: 100px 0;
+  gap: 80px;
 
   ${mediaQuery('tablet')} {
-    padding: 80px 32px;
+    padding: 100px 48px;
   }
   ${mediaQuery('mobile')} {
-    padding: 80px 16px;
+    padding: 100px 20px;
+    gap: 50px;
   }
 `;
 
 const titleCss = (theme: Theme) => css`
-  ${theme.typosV2.pretendard.semibold20}
+  ${theme.typosV2.pretendard.bold32};
+
+  ${mediaQuery('mobile')} {
+    ${theme.typosV2.pretendard.bold28}
+  }
 `;
 
 const blogContainerCss = css`
   width: 100%;
   max-width: 960px;
-  margin-top: 36px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
