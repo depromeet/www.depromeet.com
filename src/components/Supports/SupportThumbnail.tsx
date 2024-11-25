@@ -31,7 +31,15 @@ export function SupportThumbnail({ title, subTitle, img, description, link }: Th
       animate="animate"
       exit="exit"
     >
-      <Image css={imageCss} src={img} alt={title} fill quality={100} />
+      <Image
+        css={imageCss}
+        src={img}
+        alt={title}
+        fill
+        style={{
+          objectFit: 'contain',
+        }}
+      />
       <div css={contentsCss}>
         <div>
           <p css={titleCss}>{title}</p>
@@ -64,9 +72,10 @@ SupportThumbnail.OnlyImage = function OnlyImage({
 
 const articleCss = css`
   position: relative;
-  height: 208px;
-  padding: 24px;
+  max-width: 280px;
   width: 100%;
+  height: 120px;
+  padding: 24px;
   overflow: hidden;
   background-color: ${colors.gray[900]};
 
@@ -81,9 +90,9 @@ const articleCss = css`
   }
 
   ${mediaQuery('mobile')} {
-    max-width: 450px;
+    max-width: 160px;
     padding: 18px;
-    height: 180px;
+    height: auto;
   }
 `;
 
