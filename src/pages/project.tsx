@@ -125,8 +125,8 @@ const projectContainerCss = css`
   margin-top: 36px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
   gap: 12px;
+
   ${mediaQuery('tablet')} {
     grid-template-columns: repeat(2, 1fr);
   }
