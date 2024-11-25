@@ -30,6 +30,12 @@ export function ProjectTab({ currentTab, setCurrentTab }: ProjectTabProps) {
 
 const tabWrapperCss = css`
   display: flex;
+  width: 100%;
+  overflow-x: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const tabContainerCss = css`
@@ -44,10 +50,6 @@ const tabCss = css`
   ${theme.typosV2.pretendard.semibold16};
   padding: 16px 20px;
   color: ${theme.colors.grey[300]};
-
-  ${mediaQuery('mobile')} {
-    padding: 16px 8px;
-  }
 `;
 
 const activeTabCss = css`
