@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import { ThemeProvider } from '@emotion/react';
 import { domMax, LazyMotion } from 'framer-motion';
 
-import { ApplyBanner } from '~/components/ApplyBanner';
 import { Footer } from '~/components/Footer';
 import { GNB } from '~/components/GNB';
 import WillRecruitNoticePopup from '~/components/Popup/WillRecruitNoticePopup';
@@ -35,7 +34,6 @@ export default function App({ Component, pageProps }: AppProps & InitialProps) {
         <GlobalStyle />
         <Component {...pageProps} />
         <Footer />
-        <ApplyBanner />
       </LazyMotion>
     </ThemeProvider>
   );
