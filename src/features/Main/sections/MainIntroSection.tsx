@@ -10,7 +10,9 @@ export const MainIntroSection = () => {
   const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
 
   return (
-    // TODO: 디자이너분들께 공유드리기, 사진 깨짐 현상 존재
+    /** FIXME: 디자이너분들께 공유드리기, 사진 깨짐 현상 존재
+     * 추가로 보완해야할 부분 추가
+     * */
     <section css={containerCss}>
       <article css={articleCss}>
         <Image
