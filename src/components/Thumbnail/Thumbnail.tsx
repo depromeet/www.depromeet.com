@@ -80,7 +80,7 @@ const articleCss = css`
     cursor: pointer;
   }
   &:hover img {
-    filter: blur(5px) brightness(0.4);
+    filter: brightness(0.3);
   }
 `;
 

@@ -46,7 +46,6 @@ const tabCss = css`
   color: ${theme.colors.grey[300]};
 
   ${mediaQuery('mobile')} {
-    ${theme.typosV2.pretendard.regular14};
     padding: 16px 8px;
   }
 `;
