@@ -105,6 +105,7 @@ const content = {
   descriptionCss: css`
     ${theme.typosV2.pretendard.medium18};
     line-height: 160%;
+    white-space: pre-wrap;
 
     ${mediaQuery('mobile')} {
       ${theme.typosV2.pretendard.medium15};
