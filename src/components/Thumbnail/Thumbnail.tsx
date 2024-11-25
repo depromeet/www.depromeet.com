@@ -65,7 +65,7 @@ export function Thumbnail({ title, subTitle, img, description, links }: Thumbnai
 
 const articleCss = css`
   position: relative;
-  height: 208px;
+  height: 220px;
   max-width: 312px;
   overflow: hidden;
   border-radius: 12px;
