@@ -43,7 +43,7 @@ export function PositionsItem({ type, title, link, description, keyword }: Posit
           <span css={positionDescriptionCss}> {keyword.join(' · ')} </span>
           <div css={applyBtnCss}>
             <span> 지원하기 </span>
-            <Icon icon={'ic_arrow_black'} size={24} />
+            <Icon icon={'ic_arrow_black'} size={24} direction={'right'} />
           </div>
         </div>
       </div>
@@ -74,7 +74,7 @@ export function PositionsItem({ type, title, link, description, keyword }: Posit
               ) : (
                 <Fragment>
                   지원하기
-                  <Icon icon={'ic_arrow_white'} size={20} />
+                  <Icon icon={'ic_arrow_white'} size={20} direction={'right'} />
                 </Fragment>
               )}
             </Link>
