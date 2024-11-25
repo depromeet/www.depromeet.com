@@ -99,6 +99,7 @@ const sectionCss = (isMaxCurrentPage?: boolean) => css`
     &::after {
       content: '';
       position: absolute;
+
       bottom: 140px;
       height: 220px;
       width: 100%;
@@ -111,6 +112,10 @@ const sectionCss = (isMaxCurrentPage?: boolean) => css`
         #000 50%,
         #000 100%
       );
+
+      ${mediaQuery('mobile')} {
+        bottom: 100px;
+      }
     }
   `}
 `;
