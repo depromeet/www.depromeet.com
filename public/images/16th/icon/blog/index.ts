@@ -1,0 +1,1 @@
+export { default as ic_letter } from './letter.svg';

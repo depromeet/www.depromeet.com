@@ -89,7 +89,7 @@ const secondRowCss = css`
 
   #footer-name {
     // TODO: 디자인 컬러셋 PR 반영 확인 후 수정
-    color: ${theme.colors['16th'].gray['00']};
+    color: ${theme.colors.grey['00']};
     opacity: 0.6;
   }
 

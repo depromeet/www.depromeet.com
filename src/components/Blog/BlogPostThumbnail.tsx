@@ -58,6 +58,7 @@ const articleCss = css`
   padding: 18px;
   overflow: hidden;
   display: flex;
+  border-radius: 12px;
   flex-direction: column;
   justify-content: space-between;
   background-color: black;
