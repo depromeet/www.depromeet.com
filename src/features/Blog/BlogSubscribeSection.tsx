@@ -43,7 +43,7 @@ const articleCss = () => css`
   flex-direction: column;
   align-items: center;
   background: ${theme.colors.grey['100']};
-  padding: 36px 0px 40px 0px;
+  padding: 36px 16px 40px 16px;
   width: 100%;
   max-width: 500px;
   max-width: 900px;
@@ -66,7 +66,7 @@ const descriptionCss = (theme: Theme) => css`
 
   ${mediaQuery('mobile')} {
     span {
-      ${theme.typosV2.pretendard.semibold16}
+      ${theme.typosV2.pretendard.semibold20}
     }
   }
 `;
