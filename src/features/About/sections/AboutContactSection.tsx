@@ -7,7 +7,7 @@ import { theme } from '~/styles/theme';
 
 export const AboutContactSection = () => {
   return (
-    <div css={[layoutCss]}>
+    <div css={layoutCss}>
       <h1 css={titleCss}>궁금한 점이 있으신가요?</h1>
 
       <ul css={infoListCss}>
@@ -32,6 +32,10 @@ const layoutCss = css`
   flex-direction: column;
   align-items: center;
   gap: 36px;
+
+  ${mediaQuery('tablet')} {
+    padding: 120px 20px;
+  }
 `;
 
 const titleCss = (theme: Theme) => css`
@@ -55,7 +59,6 @@ const infoListCss = css`
   ${mediaQuery('mobile')} {
     grid-template-columns: repeat(1, 1fr);
     gap: 16px;
-    padding: 0 20px;
   }
 `;
 

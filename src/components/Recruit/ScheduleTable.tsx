@@ -59,6 +59,10 @@ const titleCss = (theme: Theme) => css`
     ${theme.typosV2.pretendard.semibold16};
     text-align: center;
   }
+
+  ${mediaQuery('mobile')} {
+    white-space: pre-wrap;
+  }
 `;
 
 const tableCss = ({ length }: { length: number }) => css`

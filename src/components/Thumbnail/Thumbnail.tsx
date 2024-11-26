@@ -46,14 +46,12 @@ export function Thumbnail({ title, subTitle, img, description, links }: Thumbnai
                   {link.type}
                 </a>
                 {/* NOTE: 화살표 교체 필요 */}
-                <span>
-                  <ArrowIcon
-                    direction={'right'}
-                    color={colors.sub.lightMint}
-                    width={16}
-                    height={16}
-                  />
-                </span>
+                <ArrowIcon
+                  direction={'right'}
+                  color={colors.sub.lightMint}
+                  width={16}
+                  height={16}
+                />
               </span>
             ))}
           </div>
@@ -101,6 +99,7 @@ const contentsCss = css`
 
   &:hover {
     opacity: 1;
+    backdrop-filter: blur(10px);
   }
 `;
 

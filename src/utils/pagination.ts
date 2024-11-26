@@ -14,7 +14,7 @@ export const sliceByPage = (
   const initialPage = startPage !== undefined ? startPage : page - 1;
 
   if (isMobileSize) {
-    return projects.slice(0, MOBILE_PAGE_SIZE * page);
+    return projects.slice(MOBILE_PAGE_SIZE * initialPage, MOBILE_PAGE_SIZE * page);
   }
   if (isTabletSize) {
     return projects.slice(TABLET_PAGE_SIZE * initialPage, TABLET_PAGE_SIZE * page);
