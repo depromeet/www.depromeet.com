@@ -97,7 +97,7 @@ export const LANDING_SECOND_SECTION_SCHEDULE: LandingSchedule = {
       content: '최종 발표',
     },
   ],
-} as const;
+};
 
 export const LANDING_FIRST_SECTION_SCHEDULE: LandingSchedule = {
   schedule: [
@@ -121,4 +121,4 @@ export const LANDING_FIRST_SECTION_SCHEDULE: LandingSchedule = {
       content: 'UT',
     },
   ],
-} as const;
+};
