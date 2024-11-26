@@ -30,56 +30,67 @@ export const ActivitiesSwiper = ({ activities, backgroundImageUrl, subject }: Pr
   };
 
   return (
-    <div css={containerCss({ imageUrl: backgroundImageUrl })}>
-      {/* NOTE: icon 교체 필요 */}
-      <div css={navigation.wrapperCss}>
-        <button className={buttonClass.prev} css={navigation.buttonCss}>
-          <ArrowIcon direction="left" />
-        </button>
-        <button className={buttonClass.next} css={navigation.buttonCss}>
-          <ArrowIcon direction="right" />
-        </button>
-      </div>
-      <Swiper
-        slidesPerView={'auto'}
-        spaceBetween={18}
-        navigation={{
-          prevEl: `.${buttonClass.prev}`,
-          nextEl: `.${buttonClass.next}`,
-        }}
-        style={{
-          display: 'flex',
-          padding: '0 56px',
-        }}
-      >
-        {activities.map(({ title, description, img }) => (
-          <SwiperSlide
-            key={title}
-            style={{
-              width: '276px',
-            }}
-          >
-            <div css={card.wrapperCss}>
-              <Image
-                src={img}
-                alt={title}
-                width={240}
-                height={147}
-                css={{ borderRadius: '12px' }}
-              />
-              <div css={card.textCss}>
-                <h1 css={card.titleCss}>{title}</h1>
-                <p css={card.descriptionCss}>{description}</p>
+    <div css={containerCss}>
+      <div css={swiperWrapperCss({ imageUrl: backgroundImageUrl })}>
+        {/* NOTE: icon 교체 필요 */}
+        <div css={navigation.wrapperCss}>
+          <button className={buttonClass.prev} css={navigation.buttonCss}>
+            <ArrowIcon direction="left" />
+          </button>
+          <button className={buttonClass.next} css={navigation.buttonCss}>
+            <ArrowIcon direction="right" />
+          </button>
+        </div>
+        <Swiper
+          slidesPerView={'auto'}
+          spaceBetween={18}
+          navigation={{
+            prevEl: `.${buttonClass.prev}`,
+            nextEl: `.${buttonClass.next}`,
+          }}
+          style={{
+            display: 'flex',
+            padding: '0 56px',
+          }}
+        >
+          {activities.map(({ title, description, img }) => (
+            <SwiperSlide
+              key={title}
+              style={{
+                width: '276px',
+              }}
+            >
+              <div css={card.wrapperCss}>
+                <Image
+                  src={img}
+                  alt={title}
+                  width={240}
+                  height={147}
+                  css={{ borderRadius: '12px' }}
+                />
+                <div css={card.textCss}>
+                  <h1 css={card.titleCss}>{title}</h1>
+                  <p css={card.descriptionCss}>{description}</p>
+                </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
   );
 };
 
-const containerCss = ({ imageUrl }: { imageUrl: string }) => css`
+const containerCss = css`
+  width: 100%;
+  padding: 0 20px;
+
+  ${mediaQuery('mobile')} {
+    padding: 0;
+  }
+`;
+
+const swiperWrapperCss = ({ imageUrl }: { imageUrl: string }) => css`
   width: 100%;
   max-width: 1280px;
   height: 468px;
