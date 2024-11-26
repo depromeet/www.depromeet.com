@@ -43,6 +43,7 @@ const indexCss = (theme: Theme) => css`
 const descriptionCss = (theme: Theme) => css`
   ${theme.typosV2.pretendard.semibold16};
   color: black;
+  white-space: pre-wrap;
 
   ${mediaQuery('mobile')} {
     ${theme.typosV2.pretendard.semibold15};
