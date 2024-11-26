@@ -11,7 +11,7 @@ import { ReasonCard } from '../components/ReasonCard';
  * * Main 페이지 합류해야 하는 이유 section
  */
 export const MainReasonSection = () => {
-  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
+  const { isTargetSize: isTabletSize } = useCheckWindowSize('tablet');
 
   return (
     <section css={containerCss}>
@@ -24,7 +24,7 @@ export const MainReasonSection = () => {
         <ReasonCard
           {...item}
           index={index}
-          isMobileSize={isMobileSize}
+          isTabletSize={isTabletSize}
           isReverseDirection={index % 2 !== 0}
           key={item.title}
         />
@@ -39,6 +39,10 @@ const containerCss = css`
   align-items: center;
   gap: 118px;
   padding: 140px 0;
+
+  ${mediaQuery('tablet')} {
+    gap: 32px;
+  }
 
   ${mediaQuery('mobile')} {
     padding: 80px 20px;
@@ -55,7 +59,7 @@ const text = {
     gap: 12px;
     color: white;
 
-    ${mediaQuery('mobile')} {
+    ${mediaQuery('tablet')} {
       margin-bottom: 98px;
     }
   `,

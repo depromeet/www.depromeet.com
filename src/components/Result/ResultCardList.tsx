@@ -17,6 +17,7 @@ export const ResultCardList = () => {
           key={idx}
           enableScrollSpy={true}
           scrollSpyOnce={true}
+          separator=""
         >
           {({ countUpRef }) => (
             <div css={cardCss}>
@@ -41,6 +42,12 @@ const containerCss = css`
   gap: 16px;
   width: 1040px;
   height: 240px;
+
+  ${mediaQuery('tablet')} {
+    grid-template-columns: repeat(2, 1fr);
+    width: 484px;
+    height: auto;
+  }
 
   ${mediaQuery('mobile')} {
     grid-template-columns: repeat(2, 1fr);

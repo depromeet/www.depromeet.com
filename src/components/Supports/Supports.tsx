@@ -37,7 +37,7 @@ const layoutCss = css`
 
 const introCss = {
   headline: css`
-    ${theme.typosV2.pretendard.bold32}
+    ${theme.typosV2.pretendard.bold44}
     line-height: 150%;
     color: ${theme.colors.white};
 
@@ -69,6 +69,11 @@ const supportContainerCss = css`
   column-gap: 20px;
   justify-items: center;
   justify-content: center;
+
+  ${mediaQuery('tablet')} {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 580px;
+  }
 
   ${mediaQuery('mobile')} {
     grid-template-columns: repeat(2, 1fr);
