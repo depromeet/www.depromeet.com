@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { ThemeProvider } from '@emotion/react';
 import { domMax, LazyMotion } from 'framer-motion';
 
+import { FloatingActionButton } from '~/components/FAB';
 import { Footer } from '~/components/Footer';
 import { GNB } from '~/components/GNB';
 import { BASE_URL } from '~/constant/common';
@@ -28,6 +29,7 @@ export default function App({ Component, pageProps }: AppProps & InitialProps) {
           <link rel="canonical" href={currentUrl} />
           <meta property="og:url" content={currentUrl} />
         </Head>
+        <FloatingActionButton />
         <GNB />
         <GlobalStyle />
         <Component {...pageProps} />

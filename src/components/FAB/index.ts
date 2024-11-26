@@ -1,0 +1,1 @@
+export { FloatingActionButton } from './FloatingActionButton';

@@ -92,4 +92,5 @@ const blogContainerCss = css`
   display: flex;
   column-gap: 50px;
   margin-top: 92px;
+  margin-left: 50px;
 `;

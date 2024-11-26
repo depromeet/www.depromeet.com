@@ -11,6 +11,7 @@ import { theme } from '~/styles/theme';
  */
 export const MainRecruitSection = () => {
   const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
+  const handleClick = () => window.open('https://bit.ly/3YJgDmR');
 
   return (
     <section css={containerCss}>
@@ -19,7 +20,9 @@ export const MainRecruitSection = () => {
         <h1 css={text.titleCss}>
           디프만과 함께 성장 할 <br /> 16기 디퍼를 모집합니다
         </h1>
-        <button css={buttonCss}>16기 모집 알림 신청</button>
+        <button css={buttonCss} onClick={handleClick}>
+          16기 모집 알림 신청
+        </button>
         <Image
           width={!isMobileSize ? 1051 : 440}
           height={!isMobileSize ? 326 : 136}
