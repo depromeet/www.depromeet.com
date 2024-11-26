@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { css } from '@emotion/react';
 
 import { DEPROMEET_EMAIL, DEPROMEET_KAKAO_PLUS_FRIEND } from '~/constant/depromeet';
@@ -8,8 +8,21 @@ import { Icon } from '../Icon/Icon';
 const FloatingActionButton = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [hoveredButton, setHoveredButton] = useState<string | null>(null);
+  const fabContainerRef = useRef<HTMLDivElement>(null);
 
   const toggleMenu = () => setIsOpen(prev => !prev);
+
+  const handleClickOutside = (e: MouseEvent) => {
+    if (fabContainerRef.current && !fabContainerRef.current.contains(e.target as Node)) {
+      setIsOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    setIsMounted(true);
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const [isMounted, setIsMounted] = useState(false);
 
@@ -22,7 +35,7 @@ const FloatingActionButton = () => {
   }
 
   return (
-    <div css={fabContainerStyle}>
+    <div css={fabContainerStyle} ref={fabContainerRef}>
       <button
         css={fabButtonStyle}
         onClick={toggleMenu}
