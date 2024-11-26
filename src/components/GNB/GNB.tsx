@@ -123,7 +123,7 @@ const navWrapperCss = css`
 
 const menuContainerCss = css`
   display: flex;
-  gap: 32px;
+  gap: 40px;
 `;
 
 const mobileNavCss = css`
@@ -147,7 +147,7 @@ const inActiveLinkCss = (theme: Theme) => css`
 `;
 
 const linkCss = (theme: Theme) => css`
-  ${theme.typosV2.pretendard.regular14};
+  ${theme.typosV2.pretendard.semibold15};
 `;
 
 const mobileMenuGNBCss = () => css`

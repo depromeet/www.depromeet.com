@@ -32,7 +32,7 @@ export const PROJECT_LIST: Project[] = [
         href: 'https://www.behance.net/gallery/207768545/WALWAL-%08PET-SERVICE',
       },
       { type: 'Github', href: 'https://github.com/depromeet/WalWal-iOS' },
-      { type: 'APP', href: 'https://apps.apple.com/kr/app/%EC%99%88%EC%99%88/id6553981069' },
+      { type: 'iOS', href: 'https://apps.apple.com/kr/app/%EC%99%88%EC%99%88/id6553981069' },
     ],
   },
   {

@@ -78,16 +78,7 @@ const articleCss = css`
   padding: 24px;
   overflow: hidden;
   background-color: ${colors.gray[900]};
-
-  &:hover {
-    cursor: pointer;
-  }
-  &:hover img {
-    filter: blur(5px) brightness(0.4);
-  }
-  &:hover > div {
-    opacity: 1;
-  }
+  cursor: pointer;
 
   ${mediaQuery('mobile')} {
     max-width: 160px;
