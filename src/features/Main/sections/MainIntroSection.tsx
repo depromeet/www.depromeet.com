@@ -2,6 +2,8 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
+import { mediaQuery } from '~/styles/media';
+import { theme } from '~/styles/theme';
 
 /**
  * * Main 페이지 Intro + 지원 버튼 section
@@ -30,6 +32,7 @@ export const MainIntroSection = () => {
           id={'title'}
           alt={'디프만 메인 '}
         />
+        <button css={buttonCss}>16기 지원하기</button>
       </article>
     </section>
   );
@@ -51,6 +54,9 @@ const articleCss = () => css`
   width: 100%;
   height: 100%;
 
+  display: flex;
+  flex-direction: column;
+
   #depromeet,
   #title {
     position: absolute;
@@ -67,5 +73,25 @@ const articleCss = () => css`
 
   #title {
     top: 20%;
+  }
+`;
+
+const buttonCss = () => css`
+  ${theme.typosV2.pretendard.bold24}
+  background: white;
+  position: relative;
+  margin: auto auto 80px;
+  width: fit-content;
+  height: auto;
+  border-radius: 97px;
+
+  display: flex;
+  padding: 20px 40px;
+  justify-content: center;
+  align-items: center;
+
+  ${mediaQuery('mobile')} {
+    ${theme.typosV2.pretendard.bold18}
+    padding: 16px 32px;
   }
 `;
