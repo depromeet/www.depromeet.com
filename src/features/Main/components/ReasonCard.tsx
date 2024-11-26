@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
@@ -8,11 +9,53 @@ type Props = {
   image: string;
   title: string;
   description: string;
+  index?: number;
+  isMobileSize?: boolean;
   isReverseDirection?: boolean;
 };
-export const ReasonCard = ({ image, title, description, isReverseDirection }: Props) => {
+export const ReasonCard = ({
+  image,
+  title,
+  description,
+  index,
+  isMobileSize,
+  isReverseDirection,
+}: Props) => {
+  const [isVisible, setIsVisible] = useState<boolean>(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const isRenderArrow = !isMobileSize || index === 0;
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div css={containerCss(isReverseDirection)}>
+    <div ref={ref} css={[containerCss(isReverseDirection), isVisible ? fadeInCss : hiddenCss]}>
+      {isRenderArrow && (
+        <div css={arrowWrapperCss}>
+          <Image
+            src={'/images/16th/main/reason/reason_arrow.png'}
+            width={20}
+            height={90}
+            alt="reason arrow"
+          />
+        </div>
+      )}
+
       <div css={imageWrapperCss}>
         <Image
           src={image}
@@ -32,7 +75,19 @@ export const ReasonCard = ({ image, title, description, isReverseDirection }: Pr
   );
 };
 
+const fadeInCss = css`
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+`;
+
+const hiddenCss = css`
+  opacity: 0;
+  transform: translateY(20px);
+`;
+
 const containerCss = (isReverseDirection?: boolean) => css`
+  position: relative;
   display: flex;
   gap: 58px;
   width: 1000px;
@@ -51,6 +106,12 @@ const containerCss = (isReverseDirection?: boolean) => css`
     flex-direction: column;
     gap: 24px;
   }
+`;
+
+const arrowWrapperCss = css`
+  position: absolute;
+  top: -102px;
+  left: calc(50% - 10px);
 `;
 
 const imageWrapperCss = css`
