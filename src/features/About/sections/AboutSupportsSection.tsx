@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 
 import { Supports } from '~/components/Supports';
+import { DEPROMEET_EMAIL } from '~/constant/depromeet';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
@@ -10,7 +11,9 @@ export const AboutSupportsSection = () => {
     <div css={[layoutCss]}>
       <Supports />
 
-      <button css={supportButtonCss}>후원 문의하기</button>
+      <a css={supportButtonCss} href={DEPROMEET_EMAIL}>
+        후원 문의하기
+      </a>
     </div>
   );
 };

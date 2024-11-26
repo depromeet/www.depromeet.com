@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 
 import { REASONS } from '~/constant/reason';
+import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
@@ -10,6 +11,8 @@ import { ReasonCard } from '../components/ReasonCard';
  * * Main 페이지 합류해야 하는 이유 section
  */
 export const MainReasonSection = () => {
+  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
+
   return (
     <section css={containerCss}>
       <div css={text.wrapperCss}>
@@ -18,7 +21,13 @@ export const MainReasonSection = () => {
       </div>
 
       {REASONS.map((item, index) => (
-        <ReasonCard {...item} isReverseDirection={index % 2 !== 0} key={item.title} />
+        <ReasonCard
+          {...item}
+          index={index}
+          isMobileSize={isMobileSize}
+          isReverseDirection={index % 2 !== 0}
+          key={item.title}
+        />
       ))}
     </section>
   );
@@ -33,6 +42,7 @@ const containerCss = css`
 
   ${mediaQuery('mobile')} {
     padding: 80px 20px;
+    gap: 32px;
   }
 `;
 
@@ -44,6 +54,10 @@ const text = {
     text-align: center;
     gap: 12px;
     color: white;
+
+    ${mediaQuery('mobile')} {
+      margin-bottom: 98px;
+    }
   `,
 
   subCss: css`
