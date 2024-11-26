@@ -101,6 +101,7 @@ const contentsCss = css`
 
   &:hover {
     opacity: 1;
+    backdrop-filter: blur(10px);
   }
 `;
 
