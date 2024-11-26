@@ -10,6 +10,8 @@ import { theme } from '~/styles/theme';
  */
 export const MainIntroSection = () => {
   const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
+  // FIXME: 추후 링크 상수화 진행
+  const handleClick = () => window.open('https://bit.ly/3YJgDmR');
 
   return (
     /** FIXME: 디자이너분들께 공유드리기, 사진 깨짐 현상 존재
@@ -32,7 +34,9 @@ export const MainIntroSection = () => {
           id={'title'}
           alt={'디프만 메인 '}
         />
-        <button css={buttonCss}>16기 지원하기</button>
+        <button css={buttonCss} onClick={handleClick}>
+          16기 모집 알림 신청
+        </button>
       </article>
     </section>
   );
