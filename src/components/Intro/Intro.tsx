@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
 
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
@@ -30,28 +30,38 @@ export function Intro({ imageUrl, title, width, height, color }: IntroProps) {
 
     return current;
   };
+
   return (
-    <section css={containerCss({ color: getColor(color) })}>
+    <section css={[containerCss({ color: getColor(color) })]}>
       <div css={bgImageCss}>
-        <Image src={imageUrl} alt={title} width={width} height={height} priority />
+        <Image src={imageUrl} alt={title} width={width} height={height} priority css={fadeInCss} />
       </div>
     </section>
   );
 }
 
+const fadeInAnimation = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const fadeInCss = css`
+  animation: ${fadeInAnimation} 500ms ease-in-out;
+  opacity: 1;
+`;
+
 const containerCss = ({ color }: { color: string }) => css`
-  padding-top: 60px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: ${color};
-
-  ${mediaQuery('mobile')} {
-    padding-top: 72px;
-  }
 `;
 
-const bgImageCss = () => css`
+const bgImageCss = css`
   top: 20px;
   width: 100%;
   overflow: hidden;
