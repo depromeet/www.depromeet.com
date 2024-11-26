@@ -13,8 +13,8 @@ export default function About() {
       <SEO title="디프만 - About" />
       <main>
         <IntroSection
-          defaultImgUrl="/images/16th/about/about.png"
-          mobileImgUrl="/images/16th/about/about_m.png"
+          defaultImgUrl="/images/16th/about/about.svg"
+          mobileImgUrl="/images/16th/about/about_m.svg"
         />
         <AboutResultSection />
         <AboutActivitiesSection />
