@@ -4,6 +4,7 @@ import {
   LANDING_FIRST_SECTION_SCHEDULE,
   LANDING_SECOND_SECTION_SCHEDULE,
 } from '~/constant/schedule';
+import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
@@ -13,11 +14,14 @@ import { ScheduleTable } from '../components/ScheduleTable';
  * * Main 페이지 주차별 일정 section
  */
 export const MainScheduleSection = () => {
+  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
   return (
     <section css={containerCss}>
       <div css={text.wrapperCss}>
         <h1 css={text.titleCss}>16주, 성장과 성취의 여정</h1>
-        <p css={text.subCss}>세션은 매주 토요일 진행되며, 오프라인과 온라인이 번갈아 진행됩니다</p>
+        <p css={text.subCss}>
+          세션은 매주 토요일 진행되며, {isMobileSize && <br />}오프라인과 온라인이 번갈아 진행됩니다
+        </p>
       </div>
       <div css={scheduleWrapperCss}>
         <ScheduleTable {...LANDING_FIRST_SECTION_SCHEDULE} title="1-8주차" />

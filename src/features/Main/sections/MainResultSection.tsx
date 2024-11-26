@@ -17,7 +17,7 @@ export const MainResultSection = () => {
       <Link href={'/about'} css={button.containerCss}>
         <div css={button.wrapperCss}>
           디프만 소개 보기
-          <Icon icon={'ic_arrow_white'} size={24} />
+          <Icon icon={'ic_arrow_white'} size={24} direction="right" />
         </div>
       </Link>
     </section>

@@ -13,8 +13,7 @@ export const Result = () => {
     <div css={layoutCss}>
       <div css={title.wrapper}>
         <h1>
-          디프만은 디자이너와 개발자가
-          {isMobileSize && <br />}
+          디프만은 디자이너와 개발자가 {isMobileSize && <br />}
           기획, 릴리즈, 이후 개선까지
         </h1>
         <h1>
