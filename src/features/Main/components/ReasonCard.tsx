@@ -10,7 +10,7 @@ type Props = {
   title: string;
   description: string;
   index?: number;
-  isMobileSize?: boolean;
+  isTabletSize?: boolean;
   isReverseDirection?: boolean;
 };
 export const ReasonCard = ({
@@ -18,12 +18,12 @@ export const ReasonCard = ({
   title,
   description,
   index,
-  isMobileSize,
+  isTabletSize,
   isReverseDirection,
 }: Props) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
-  const isRenderArrow = !isMobileSize || index === 0;
+  const isRenderArrow = !isTabletSize || index === 0;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -100,9 +100,10 @@ const containerCss = (isReverseDirection?: boolean) => css`
     flex-direction: row-reverse;
   `}
 
-  ${mediaQuery('mobile')} {
+  ${mediaQuery('tablet')} {
     padding: 12px 12px 40px;
     width: 100%;
+    max-width: 500px;
     flex-direction: column;
     gap: 24px;
   }
@@ -122,7 +123,7 @@ const imageWrapperCss = css`
   border-radius: 20px;
   overflow: hidden;
 
-  ${mediaQuery('mobile')} {
+  ${mediaQuery('tablet')} {
     width: 100%;
     height: 100%;
     aspect-ratio: 476/318;
@@ -144,7 +145,7 @@ const content = {
       margin-right: 0px;
     `}
 
-    ${mediaQuery('mobile')} {
+    ${mediaQuery('tablet')} {
       margin: 0;
       padding: 0 8px;
       gap: 16px;
