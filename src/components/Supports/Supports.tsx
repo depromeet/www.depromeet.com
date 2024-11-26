@@ -70,6 +70,11 @@ const supportContainerCss = css`
   justify-items: center;
   justify-content: center;
 
+  ${mediaQuery('tablet')} {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 580px;
+  }
+
   ${mediaQuery('mobile')} {
     grid-template-columns: repeat(2, 1fr);
     row-gap: 8px;
