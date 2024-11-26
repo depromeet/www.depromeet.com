@@ -35,7 +35,7 @@ interface Props {
 
 const DEFAULT_TITLE = '디프만 - Depromeet';
 const DEFAULT_DESCRIPTION = '오직 디자이너와 프로그래머의 동반성장을 위해서';
-const DEFAULT_IMAGE = '/15th-og-main.png';
+const DEFAULT_IMAGE = '/16th-og-main.png';
 const DEFAULT_WIDTH = '1300';
 const DEFAULT_HEIGHT = '650';
 
