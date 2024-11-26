@@ -42,7 +42,7 @@ export const MEMBER_SCHEDULE: Schedule = {
 
 export const SESSION_SCHEDULES: Schedule = {
   title: '오프라인 세션',
-  description: '세션은 매주 토요일 진행되며, 오프라인 세션은 오프라인에서 이뤄집니다',
+  description: '세션은 매주 토요일 진행되며, \n오프라인 세션은 오프라인에서 이뤄집니다',
   schedule: [
     {
       content: 'OT',
