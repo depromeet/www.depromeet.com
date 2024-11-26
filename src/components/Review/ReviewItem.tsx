@@ -34,23 +34,25 @@ export function ReviewItem({ name, group, part, summary, links }: ReviewItemProp
 }
 
 const layoutCss = (theme: Theme) => css`
-  padding: 44px 52px;
-  background-color: ${theme.colors.lightGray};
+  padding: 48px 52px;
+  background-color: ${theme.colors.grey['100']};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   max-width: 476px;
   height: 294px;
   margin-left: 20px;
+  border-radius: 12px;
 
   ${mediaQuery('tablet')} {
-    padding: 30px 50px;
+    padding: 44px 52px;
   }
 
   ${mediaQuery('mobile')} {
     margin-left: 8px;
     max-width: 293px;
-    height: 220px;
+    height: 100%;
+    max-height: fit-content;
     padding: 20px;
   }
 `;
@@ -68,26 +70,18 @@ const titleLayoutCss = css`
 const titleH3Css = (theme: Theme) => css`
   ${theme.typosV2.pretendard.semibold20};
   color: black;
-
-  ${mediaQuery('mobile')} {
-    ${theme.typosV2.pretendard.semibold16};
-  }
 `;
 
 const titleSpanCss = (theme: Theme) => css`
-  ${theme.typosV2.pretendard.semibold16};
+  ${theme.typosV2.pretendard.medium14};
   color: ${theme.colors.gray};
   display: flex;
   gap: 5px;
   margin-top: 2px;
-
-  ${mediaQuery('mobile')} {
-    ${theme.typosV2.pretendard.regular14};
-  }
 `;
 
 const summaryCss = (theme: Theme) => css`
-  ${theme.typosV2.pretendard.regular16};
+  ${theme.typosV2.pretendard.medium18};
   color: black;
   margin-top: 16px;
 
@@ -100,7 +94,7 @@ const summaryCss = (theme: Theme) => css`
   }
 
   ${mediaQuery('mobile')} {
-    ${theme.typosV2.pretendard.regular14};
+    ${theme.typosV2.pretendard.medium15};
     margin-top: 8px;
   }
 `;
@@ -121,7 +115,7 @@ const arrowIconCss = (theme: Theme) => css`
 `;
 
 const linkCss = (theme: Theme) => css`
-  ${theme.typosV2.pretendard.regular18};
+  ${theme.typosV2.pretendard.semibold16};
   color: ${theme.colors.pink};
   margin-top: 20px;
   display: flex;

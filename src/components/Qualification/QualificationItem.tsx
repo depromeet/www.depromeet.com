@@ -23,26 +23,29 @@ const layoutCss = css`
   flex-direction: column;
   gap: 20px;
   background-color: white;
+  border-radius: 12px;
 
   ${mediaQuery('mobile')} {
-    padding: 16px;
+    gap: 12px;
+    padding: 24px;
   }
 `;
 
 const indexCss = (theme: Theme) => css`
-  ${theme.typosV2.bebas.regular32};
+  ${theme.typosV2.pretendard.semibold28};
   color: ${theme.colors.pink};
 
   ${mediaQuery('mobile')} {
-    ${theme.typosV2.bebas.regular24};
+    ${theme.typosV2.pretendard.semibold24};
   }
 `;
 
 const descriptionCss = (theme: Theme) => css`
   ${theme.typosV2.pretendard.semibold16};
   color: black;
+  white-space: pre-wrap;
 
   ${mediaQuery('mobile')} {
-    ${theme.typosV2.pretendard.regular14};
+    ${theme.typosV2.pretendard.semibold15};
   }
 `;

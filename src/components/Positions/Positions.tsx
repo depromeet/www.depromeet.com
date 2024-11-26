@@ -12,15 +12,6 @@ export function Positions() {
     <section css={layoutCss}>
       <div css={containerCss}>
         <div css={headerCss}>
-          <div css={logosCss}>
-            <Image src="/images/logo.svg" alt="디프만 로고" width={278} height={58} />
-            <Image
-              src="/images/recruit/2024-recruitment.svg"
-              alt="모집 헤더"
-              width={143}
-              height={68}
-            />
-          </div>
           <div css={titleCss}>
             <h1>모집 직군</h1>
             <p>디프만은 다섯개의 직군에서 신규 회원을 모집하고 있습니다.</p>
@@ -67,7 +58,7 @@ const layoutCss = css`
 
 const containerCss = css`
   width: 100%;
-  margin-top: 10px;
+  margin-top: 120px;
   max-width: 960px;
   display: flex;
   flex-direction: column;
@@ -86,13 +77,6 @@ const headerCss = css`
   ${mediaQuery('mobile')} {
     display: none;
   }
-`;
-
-const logosCss = css`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 `;
 
 const mobileHeaderCss = css`
@@ -116,11 +100,11 @@ const titleCss = (theme: Theme) => css`
   color: white;
 
   > h1 {
-    ${theme.typosV2.pretendard.semibold20}
+    ${theme.typosV2.pretendard.bold32}
   }
 
   > p {
-    ${theme.typosV2.pretendard.regular20}
+    ${theme.typosV2.pretendard.medium18}
   }
 `;
 

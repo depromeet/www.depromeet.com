@@ -54,23 +54,29 @@ const layoutCss = (theme: Theme) => css`
   padding: 120px 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
   align-items: center;
   justify-content: center;
   background-color: ${theme.colors.lightGray};
 
   h1 {
-    ${theme.typosV2.pretendard.semibold20}
+    ${theme.typosV2.pretendard.bold32}
   }
 `;
 
 const tabLayoutCss = css`
   display: flex;
+  margin: 28px 0 16px 0;
+
   > li:first-of-type {
     padding-left: 0px;
   }
+
   ${mediaQuery('tablet')} {
     justify-content: center;
+  }
+
+  ${mediaQuery('mobile')} {
+    margin: 40px 0 16px 0;
   }
 `;
 
@@ -80,12 +86,12 @@ const tabWrapperCss = css`
 
 const tabContainerCss = (theme: Theme, isActive: boolean) => css`
   padding-bottom: 5px;
-  border-bottom: ${isActive ? '3px' : '0'} solid ${theme.colors.green};
+  border-bottom: ${isActive ? '3px' : '0'} solid ${theme.colors.grey['900']};
 `;
 
 const tabCss = (theme: Theme, isActive: boolean) => css`
   ${theme.typosV2.pretendard.semibold16}
-  color: ${isActive ? theme.colors.green : theme.colors.gray};
+  color: ${isActive ? theme.colors.grey['900'] : theme.colors.gray};
   cursor: pointer;
 `;
 

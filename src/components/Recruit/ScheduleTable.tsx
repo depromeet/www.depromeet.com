@@ -38,7 +38,7 @@ export function ScheduleTable({ title, description, schedule }: Schedule) {
 const layoutCss = css`
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 44px;
   align-items: center;
   justify-content: center;
 `;
@@ -46,18 +46,22 @@ const layoutCss = css`
 const titleCss = (theme: Theme) => css`
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 14px;
   align-items: center;
   justify-content: center;
+  color: ${theme.colors.grey['900']};
 
   h1 {
-    ${theme.typosV2.pretendard.semibold20};
+    ${theme.typosV2.pretendard.bold32};
   }
 
   h3 {
     ${theme.typosV2.pretendard.semibold16};
-    color: #555555;
     text-align: center;
+  }
+
+  ${mediaQuery('mobile')} {
+    white-space: pre-wrap;
   }
 `;
 
@@ -68,6 +72,8 @@ const tableCss = ({ length }: { length: number }) => css`
   display: grid;
   grid-template-columns: repeat(${length}, 1fr);
   gap: 0;
+  overflow: hidden;
+  box-sizing: border-box;
 
   ${mediaQuery('mobile')} {
     display: none;
@@ -99,13 +105,24 @@ const tableItemCss = (theme: Theme) => css`
   align-items: center;
   text-align: center;
 
+  // radius 처리를 위한 CSS 처리
+  &:first-child {
+    border-radius: 12px 0 0 12px;
+    overflow: hidden;
+  }
+
+  &:last-child {
+    border-radius: 0 12px 12px 0;
+    overflow: hidden;
+  }
+
   ${theme.typosV2.pretendard.semibold16}
 
   h1 {
     width: 100%;
     height: 48px;
-    color: black;
-    background-color: ${theme.colors.pink};
+    color: white;
+    background-color: ${theme.colors.black};
     justify-content: center;
     align-items: center;
     display: flex;
@@ -114,8 +131,8 @@ const tableItemCss = (theme: Theme) => css`
   span {
     width: 100%;
     height: 88px;
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: ${theme.colors.grey['100']};
     justify-content: center;
     align-items: center;
     display: flex;

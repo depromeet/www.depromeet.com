@@ -30,6 +30,15 @@ export function ProjectTab({ currentTab, setCurrentTab }: ProjectTabProps) {
 
 const tabWrapperCss = css`
   display: flex;
+
+  ${mediaQuery('mobile')} {
+    width: 100%;
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 `;
 
 const tabContainerCss = css`
@@ -41,18 +50,17 @@ const tabContainerCss = css`
 `;
 
 const tabCss = css`
-  ${theme.typosV2.pretendard.regular20};
-  padding: 16px 24px;
-  ${mediaQuery('mobile')} {
-    ${theme.typosV2.pretendard.regular14};
-    padding: 16px 8px;
-  }
+  ${theme.typosV2.pretendard.semibold16};
+  line-height: 150%;
+
+  padding: 16px 20px;
+  color: ${theme.colors.grey[300]};
 `;
 
 const activeTabCss = css`
   ${tabCss};
-  color: ${theme.colors.green};
-  text-decoration: underline;
+  color: ${theme.colors.grey[900]};
+  text-decoration: underline 2px;
   text-underline-offset: 8px;
 `;
 

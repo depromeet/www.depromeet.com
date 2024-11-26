@@ -11,10 +11,19 @@ import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import { useDropDown } from '~/hooks/useDropdown';
 import { mediaQuery } from '~/styles/media';
 
-const LOGO_IMAGE = `/images/logo.svg`;
-const currentGeneration = 16;
+const LOGO_IMAGE = `/images/16th/logo/depromeet.svg`;
+const CURRENT_GENERATION = 16;
 
-// TODO: 추후 해당 컴포넌트 재사용
+function NotifyButton() {
+  const handleClick = () => window.open('https://bit.ly/3YJgDmR');
+  return (
+    <Button onClick={handleClick} css={linkButtonCss}>
+      {CURRENT_GENERATION}기 모집 알림 신청
+    </Button>
+  );
+}
+
+// TODO: 웹 사이트 오픈 시에 주석 해제
 // function ApplyButton() {
 //   const { isInProgress, dDay } = useIsInProgress();
 //   const router = useRouter();
@@ -25,19 +34,10 @@ const currentGeneration = 16;
 //
 //   return (
 //     <Button disabled={!isInProgress} css={linkButtonCss} onClick={onClick} suppressHydrationWarning>
-//       {isInProgress ? ' 지원하기' : dDay < 0 ? `D${dDay}` : `지원 마감`}
+//       {isInProgress ? '16기 지원하기' : dDay < 0 ? `D${dDay}` : `지원 마감`}
 //     </Button>
 //   );
 // }
-
-function NotifyButton() {
-  const handleClick = () => window.open('https://bit.ly/3YJgDmR');
-  return (
-    <Button onClick={handleClick} css={linkButtonCss}>
-      {currentGeneration}기 모집 알림 신청
-    </Button>
-  );
-}
 
 const linkButtonCss = css`
   height: 37px;
@@ -73,7 +73,6 @@ export function GNB() {
               </li>
             ))}
           </ul>
-          {/*<ApplyButton />*/}
           <NotifyButton />
         </div>
       </nav>
@@ -124,7 +123,7 @@ const navWrapperCss = css`
 
 const menuContainerCss = css`
   display: flex;
-  gap: 32px;
+  gap: 40px;
 `;
 
 const mobileNavCss = css`
@@ -148,7 +147,7 @@ const inActiveLinkCss = (theme: Theme) => css`
 `;
 
 const linkCss = (theme: Theme) => css`
-  ${theme.typosV2.pretendard.regular14};
+  ${theme.typosV2.pretendard.semibold15};
 `;
 
 const mobileMenuGNBCss = () => css`

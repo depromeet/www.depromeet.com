@@ -8,16 +8,19 @@ export const sliceByPage = (
   projects: Project[],
   page: number,
   isTabletSize: boolean,
-  isMobileSize: boolean
+  isMobileSize: boolean,
+  startPage?: number
 ) => {
+  const initialPage = startPage !== undefined ? startPage : page - 1;
+
   if (isMobileSize) {
-    return projects.slice(0, MOBILE_PAGE_SIZE * page);
+    return projects.slice(MOBILE_PAGE_SIZE * initialPage, MOBILE_PAGE_SIZE * page);
   }
   if (isTabletSize) {
-    return projects.slice(TABLET_PAGE_SIZE * (page - 1), TABLET_PAGE_SIZE * page);
+    return projects.slice(TABLET_PAGE_SIZE * initialPage, TABLET_PAGE_SIZE * page);
   }
 
-  return projects.slice(PC_PAGE_SIZE * (page - 1), PC_PAGE_SIZE * page);
+  return projects.slice(PC_PAGE_SIZE * initialPage, PC_PAGE_SIZE * page);
 };
 
 export const getTenUnderProjects = (projects: Project[]) =>

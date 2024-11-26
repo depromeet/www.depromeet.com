@@ -22,17 +22,17 @@ const layoutCss = (theme: Theme) => css`
   padding: 120px 0;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 36px;
   align-items: center;
   background-color: ${theme.colors.lightGray};
 `;
 
 const titleCss = css`
-  ${theme.typosV2.pretendard.semibold20}
+  ${theme.typosV2.pretendard.bold32}
 `;
 
 const listCss = css`
-  padding: 0 10px;
+  padding: 0 16px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 10px;

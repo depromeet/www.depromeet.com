@@ -148,95 +148,215 @@ export const typosV2 = {
     `,
   },
   pretendard: {
+    bold62: css`
+      font-size: ${pxToRem(62)};
+      font-style: normal;
+      font-weight: 700;
+      line-height: ${pxToRem(74)};
+      letter-spacing: -0.04em;
+    `,
+    bold44: css`
+      font-size: ${pxToRem(44)};
+      font-style: normal;
+      font-weight: 700;
+      line-height: ${pxToRem(53)};
+      letter-spacing: -0.04em;
+    `,
+    bold32: css`
+      font-size: ${pxToRem(32)};
+      font-style: normal;
+      font-weight: 700;
+      line-height: ${pxToRem(38)};
+      letter-spacing: -0.04em;
+    `,
+    bold28: css`
+      font-size: ${pxToRem(28)};
+      font-style: normal;
+      font-weight: 700;
+      line-height: ${pxToRem(33)};
+      letter-spacing: -0.04em;
+    `,
+    bold24: css`
+      font-size: ${pxToRem(24)};
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: ${pxToRem(-0.48)};
+    `,
+    bold20: css`
+      font-size: ${pxToRem(20)};
+      font-style: normal;
+      font-weight: 700;
+      line-height: ${pxToRem(24)};
+      letter-spacing: -0.04em;
+    `,
+    bold18: css`
+      font-size: ${pxToRem(18)};
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
+      letter-spacing: ${pxToRem(-0.36)};
+    `,
+    bold16: css`
+      font-size: ${pxToRem(16)};
+      font-style: normal;
+      font-weight: 700;
+      line-height: ${pxToRem(19)};
+      letter-spacing: -0.04em;
+    `,
+    bold10: css`
+      font-size: ${pxToRem(10)};
+      font-style: normal;
+      font-weight: 700;
+      line-height: ${pxToRem(15)};
+      letter-spacing: ${pxToRem(-0.4)};
+    `,
+    semibold48: css`
+      font-size: ${pxToRem(48)};
+      font-style: normal;
+      font-weight: 600;
+      line-height: ${pxToRem(57)};
+      letter-spacing: -0.04em;
+    `,
     semibold32: css`
       font-size: ${pxToRem(32)};
       font-style: normal;
       font-weight: 600;
       line-height: ${pxToRem(48)};
-      letter-spacing: -4%;
+      letter-spacing: -0.04em;
     `,
     semibold28: css`
       font-size: ${pxToRem(28)};
       font-style: normal;
       font-weight: 600;
       line-height: ${pxToRem(40)};
-      letter-spacing: -4%;
+      letter-spacing: -0.04em;
     `,
     semibold26: css`
       font-size: ${pxToRem(26)};
       font-style: normal;
       line-height: ${pxToRem(40)};
       font-weight: 600;
+      letter-spacing: -0.04em;
     `,
     semibold24: css`
       font-size: ${pxToRem(24)};
       font-style: normal;
       font-weight: 600;
       line-height: ${pxToRem(36)};
-      letter-spacing: -4%;
+      letter-spacing: -0.04em;
     `,
     semibold20: css`
       font-size: ${pxToRem(20)};
       font-style: normal;
       font-weight: 600;
       line-height: ${pxToRem(30)};
-      letter-spacing: -4%;
+      letter-spacing: -0.04em;
     `,
     semibold18: css`
       font-size: ${pxToRem(18)};
       font-style: normal;
       font-weight: 600;
       line-height: ${pxToRem(32)};
-      letter-spacing: -4%;
+      letter-spacing: -0.04em;
     `,
     semibold16: css`
       font-size: ${pxToRem(16)};
       font-style: normal;
       font-weight: 600;
       line-height: ${pxToRem(24)};
-      letter-spacing: -4%;
+      letter-spacing: -0.04em;
+    `,
+    semibold15: css`
+      font-size: ${pxToRem(15)};
+      font-style: normal;
+      font-weight: 600;
+      line-height: ${pxToRem(22.5)};
+      letter-spacing: ${pxToRem(-0.75)};
     `,
     semibold14: css`
       font-size: ${pxToRem(14)};
       font-style: normal;
       font-weight: 600;
       line-height: ${pxToRem(21)};
-      letter-spacing: -4%;
+      letter-spacing: -0.04em;
+    `,
+    medium18: css`
+      font-size: ${pxToRem(18)};
+      font-style: normal;
+      font-weight: 500;
+      line-height: ${pxToRem(27)};
+      letter-spacing: ${pxToRem(-0.54)};
+    `,
+    medium16: css`
+      font-size: ${pxToRem(16)};
+      font-style: normal;
+      font-weight: 500;
+      line-height: ${pxToRem(24)};
+      letter-spacing: -0.05em;
+    `,
+    medium15: css`
+      font-size: ${pxToRem(15)};
+      font-style: normal;
+      font-weight: 500;
+      line-height: ${pxToRem(22.5)};
+      letter-spacing: ${pxToRem(-0.6)};
+    `,
+    medium14: css`
+      font-size: ${pxToRem(14)};
+      font-style: normal;
+      font-weight: 500;
+      line-height: ${pxToRem(17)};
+      letter-spacing: -0.05em;
+    `,
+    medium13: css`
+      font-size: ${pxToRem(13)};
+      font-style: normal;
+      font-weight: 500;
+      line-height: ${pxToRem(15)};
+      letter-spacing: -0.01em;
     `,
     regular20: css`
       font-size: ${pxToRem(20)};
       font-style: normal;
       font-weight: 400;
       line-height: ${pxToRem(30)};
-      letter-spacing: -5%;
+      letter-spacing: -0.05em;
     `,
     regular18: css`
       font-size: ${pxToRem(18)};
       font-style: normal;
       font-weight: 400;
       line-height: ${pxToRem(27)};
-      letter-spacing: -5%;
+      letter-spacing: -0.05em;
     `,
     regular16: css`
       font-size: ${pxToRem(16)};
       font-style: normal;
       font-weight: 400;
       line-height: ${pxToRem(24)};
-      letter-spacing: -5%;
+      letter-spacing: ${pxToRem(-0.64)};
     `,
     regular14: css`
       font-size: ${pxToRem(14)};
       font-style: normal;
       font-weight: 400;
       line-height: ${pxToRem(21)};
-      letter-spacing: -5%;
+      letter-spacing: -0.05em;
+    `,
+    regular9: css`
+      font-size: ${pxToRem(9)};
+      font-style: normal;
+      font-weight: 400;
+      line-height: ${pxToRem(15)};
+      letter-spacing: -0.02em;
     `,
     regular8: css`
       font-size: ${pxToRem(8)};
       font-style: normal;
       font-weight: 400;
       line-height: ${pxToRem(12)};
-      letter-spacing: -2%;
+      letter-spacing: -0.02em;
     `,
   },
 };

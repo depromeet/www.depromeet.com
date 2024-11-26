@@ -6,9 +6,10 @@ import { ArrowIcon } from '~/components/Icons';
 import { defaultFadeInVariants } from '~/constant/motion';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
+import { theme } from '~/styles/theme';
 
 export type Link = {
-  type: 'BEHANCE' | 'GITHUB' | 'WEB' | 'Android' | 'iOS' | 'APP' | 'MEDIUM';
+  type: 'Behance' | 'Github' | 'Web' | 'Android' | 'iOS' | 'APP' | 'MEDIUM';
   href: string;
 };
 
@@ -33,8 +34,8 @@ export function Thumbnail({ title, subTitle, img, description, links }: Thumbnai
       <div css={gradientCss} />
       <div css={contentsCss}>
         <div>
-          <p css={titleCss} dangerouslySetInnerHTML={{ __html: title as string }} />
           <p css={subTitleCss}>{subTitle}</p>
+          <p css={titleCss} dangerouslySetInnerHTML={{ __html: title as string }} />
         </div>
         <p css={descriptionCss} dangerouslySetInnerHTML={{ __html: description as string }} />
         {links && (
@@ -44,9 +45,13 @@ export function Thumbnail({ title, subTitle, img, description, links }: Thumbnai
                 <a href={link.href} target="_blank" css={linkCss} rel="noreferrer">
                   {link.type}
                 </a>
-                <span>
-                  <ArrowIcon direction={'right'} color={colors.green} width={16} height={16} />
-                </span>
+                {/* NOTE: 화살표 교체 필요 */}
+                <ArrowIcon
+                  direction={'right'}
+                  color={colors.sub.lightMint}
+                  width={16}
+                  height={16}
+                />
               </span>
             ))}
           </div>
@@ -58,9 +63,11 @@ export function Thumbnail({ title, subTitle, img, description, links }: Thumbnai
 
 const articleCss = css`
   position: relative;
-  height: 208px;
+  height: 220px;
   max-width: 312px;
   overflow: hidden;
+  border-radius: 12px;
+
   ${mediaQuery('tablet')} {
     max-width: 100%;
   }
@@ -71,30 +78,33 @@ const articleCss = css`
     cursor: pointer;
   }
   &:hover img {
-    filter: blur(5px) brightness(0.4);
+    filter: brightness(0.3);
   }
 `;
 
 const imageCss = css`
   object-fit: cover;
   object-position: center;
+  border-radius: 12px;
 `;
 
 const contentsCss = css`
   display: flex;
+  gap: 2px;
   padding: 24px;
   flex-direction: column;
   height: 100%;
-  justify-content: space-between;
   transition: opacity 0.3s ease;
   opacity: 0;
 
   &:hover {
     opacity: 1;
+    backdrop-filter: blur(10px);
   }
 `;
 
 const linkContainerCss = css`
+  margin-top: auto;
   display: flex;
   gap: 12px;
   align-items: center;
@@ -106,27 +116,28 @@ const linkWrapperCss = css`
 `;
 
 const linkCss = (theme: Theme) => css`
-  ${theme.typosV2.bebas.regular24}
-  color: ${colors.green};
+  position: relative;
+  ${theme.typosV2.pretendard.semibold16}
+  color: ${colors.sub.lightMint};
   margin-right: 2px;
   z-index: 10;
 `;
 
 const titleCss = css`
   position: relative;
-  font-weight: 700;
-  font-size: 1.25rem;
-  line-height: 30px;
-  color: ${colors.white};
+  ${theme.typosV2.pretendard.semibold24}
+  line-height: 150%;
+  color: ${colors.grey['00']};
   z-index: 10;
+  margin-top: 2px;
 `;
 
 const subTitleCss = css`
   position: relative;
-  font-weight: 500;
-  font-size: 1rem;
-  line-height: 22px;
-  color: ${colors.gray100};
+  ${theme.typosV2.pretendard.medium14}
+  line-height: 150%;
+  color: ${colors.grey['00']};
+  opacity: 46%;
   z-index: 10;
 `;
 
@@ -138,12 +149,10 @@ const gradientCss = css`
 `;
 
 const descriptionCss = css`
+  ${theme.typosV2.pretendard.medium15}
+  line-height: 150%;
   position: relative;
-  font-weight: 500;
-  font-size: 1rem;
-  line-height: 22px;
-  color: ${colors.white};
+  color: ${colors.grey['00']};
   z-index: 10;
-  letter-spacing: -0.16px;
   white-space: pre-wrap;
 `;

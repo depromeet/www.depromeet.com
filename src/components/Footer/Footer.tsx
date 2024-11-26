@@ -3,6 +3,7 @@ import { css, Theme } from '@emotion/react';
 
 import { FIRST_ROW_FOOTER_INFOS, SECOND_ROW_FOOTER_INFOS } from '~/constant/contactInfo';
 import { mediaQuery } from '~/styles/media';
+import { theme } from '~/styles/theme';
 
 export function Footer() {
   return (
@@ -21,8 +22,8 @@ export function Footer() {
           {SECOND_ROW_FOOTER_INFOS.map(footer => (
             <li key={footer.name}>
               <Link css={linkCss} href={footer.href} target="_blank">
-                <span>{footer.name}</span>
-                <span>{footer.detail}</span>
+                <span id="footer-name">{footer.name}</span>
+                <span id="footer-detail">{footer.detail}</span>
               </Link>
             </li>
           ))}
@@ -71,7 +72,10 @@ const rowCss = css`
   ${mediaQuery('mobile')} {
     width: 100%;
     gap: 0;
-    justify-content: space-between;
+    column-gap: 24px;
+    row-gap: 4px;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
   }
 `;
 
@@ -82,10 +86,19 @@ const secondRowCss = css`
   span + span {
     margin-left: 12px;
   }
+
+  #footer-name {
+    // TODO: 디자인 컬러셋 PR 반영 확인 후 수정
+    color: ${theme.colors.grey['00']};
+    opacity: 0.6;
+  }
+
   ${mediaQuery('mobile')} {
     width: 100%;
-    gap: 40px;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    gap: 0;
     margin-top: 8px;
 
     span + span {
@@ -95,7 +108,7 @@ const secondRowCss = css`
 `;
 
 const strongLinkCss = (theme: Theme) => css`
-  ${theme.typosV2.bebas.regular24};
+  ${theme.typosV2.pretendard.semibold20};
   color: white;
 
   ${mediaQuery('mobile')} {
@@ -105,6 +118,7 @@ const strongLinkCss = (theme: Theme) => css`
 
 const linkCss = (theme: Theme) => css`
   ${theme.typosV2.pretendard.regular14};
+  letter-spacing: inherit;
   color: white;
 
   ${mediaQuery('mobile')} {
@@ -113,7 +127,8 @@ const linkCss = (theme: Theme) => css`
 `;
 
 const copyrightCss = (theme: Theme) => css`
-  ${theme.typosV2.pretendard.regular8};
+  ${theme.typosV2.pretendard.regular9};
+  opacity: 0.8;
   color: white;
 
   ${mediaQuery('mobile')} {

@@ -1,5 +1,5 @@
 export type GNBMenu = {
-  name: 'About' | '모집 안내' | '프로젝트' | '블로그' | '지원하기' | '16기 모집 알림 신청';
+  name: '소개' | '모집 안내' | '프로젝트' | '블로그' | '지원하기' | '16기 모집 알림 신청';
   href: '/about' | '/recruit' | '/project' | '/blog' | '/apply' | 'https://bit.ly/3YJgDmR';
   type: 'text' | 'button';
   isNewTab?: boolean;
@@ -8,7 +8,7 @@ export type GNBMenu = {
 // TODO: 지원하기 url 넣기
 export const GNB_MENU_NAME: GNBMenu[] = [
   {
-    name: 'About',
+    name: '소개',
     href: '/about',
     type: 'text',
   },
@@ -31,7 +31,7 @@ export const GNB_MENU_NAME: GNBMenu[] = [
 
 export const GNB_MOBILE_MENU_NAME: GNBMenu[] = [
   {
-    name: 'About',
+    name: '소개',
     href: '/about',
     type: 'text',
   },
