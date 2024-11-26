@@ -38,7 +38,7 @@ export function ScheduleTable({ title, schedule }: LandingSchedule & { title: st
       </div>
       <div css={mobileScheduleCss}>
         {[mobileSchedule.splice(0, mobileSchedule.length / 2), mobileSchedule].map((data, idx1) => (
-          <div key={idx1} css={mobileTableCss({ length: data.length })}>
+          <div key={idx1} css={mobileTableCss({ length: data.length })} id="section">
             {data.map(({ content, highlighting }, idx2) => (
               <div key={idx2} css={tableItemCss}>
                 <div id="content">
@@ -82,7 +82,6 @@ const tableCss = ({ length }: { length: number }) => css`
 const mobileScheduleCss = css`
   display: none;
   flex-direction: column;
-  gap: 12px;
   width: 100%;
 
   ${mediaQuery('mobile')} {
@@ -94,6 +93,13 @@ const mobileTableCss = ({ length }: { length: number }) => css`
   ${mediaQuery('mobile')} {
     display: grid;
     grid-template-columns: repeat(${length}, 1fr);
+
+    &:nth-child(2) > div:first-child {
+      border-radius: 0 0 0 12px;
+    }
+    &:nth-child(2) > div:last-child {
+      border-radius: 0 0 12px 0;
+    }
   }
 `;
 
@@ -104,6 +110,7 @@ const tableItemCss = (theme: Theme) => css`
   text-align: center;
 
   // radius 처리를 위한 CSS 처리
+
   &:first-child {
     border-radius: 0 0 0 12px;
     overflow: hidden;
@@ -112,6 +119,15 @@ const tableItemCss = (theme: Theme) => css`
   &:last-child {
     border-radius: 0 0 12px 0;
     overflow: hidden;
+  }
+
+  ${mediaQuery('mobile')} {
+    border-radius: 0px;
+
+    &:first-child,
+    &:last-child {
+      border-radius: 0;
+    }
   }
 
   ${theme.typosV2.pretendard.semibold16}
