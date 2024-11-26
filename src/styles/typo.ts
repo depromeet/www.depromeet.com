@@ -204,6 +204,13 @@ export const typosV2 = {
       line-height: ${pxToRem(19)};
       letter-spacing: -0.04em;
     `,
+    bold10: css`
+      font-size: ${pxToRem(10)};
+      font-style: normal;
+      font-weight: 700;
+      line-height: ${pxToRem(15)};
+      letter-spacing: ${pxToRem(-0.4)};
+    `,
     semibold48: css`
       font-size: ${pxToRem(48)};
       font-style: normal;
