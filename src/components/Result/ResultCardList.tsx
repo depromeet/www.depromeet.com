@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import CountUp from 'react-countup';
 
 import { QUANTIFIED_INFO } from '~/constant/aboutInfo';
 import { colors } from '~/styles/colors';
@@ -9,13 +10,26 @@ export const ResultCardList = () => {
   return (
     <div css={containerCss}>
       {QUANTIFIED_INFO.map(({ label, number, unit }, idx) => (
-        <div key={idx} css={cardCss}>
-          <p css={textCss.label}>{label}</p>
-          <p css={textCss.wrapper}>
-            <span css={textCss.number}>{number}</span>
-            <span css={textCss.unit}>{unit}</span>
-          </p>
-        </div>
+        <CountUp
+          start={0}
+          end={number}
+          duration={3}
+          key={idx}
+          enableScrollSpy={true}
+          scrollSpyOnce={true}
+        >
+          {({ countUpRef }) => (
+            <div css={cardCss}>
+              <p css={textCss.label}>{label}</p>
+              <p css={textCss.wrapper}>
+                <span css={textCss.number} ref={countUpRef}>
+                  {number}
+                </span>
+                <span css={textCss.unit}>{unit}</span>
+              </p>
+            </div>
+          )}
+        </CountUp>
       ))}
     </div>
   );
