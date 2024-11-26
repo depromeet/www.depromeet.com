@@ -7,6 +7,13 @@ export interface Schedule {
   }>;
 }
 
+export interface LandingSchedule {
+  schedule: Array<{
+    content: string;
+    highlighting?: boolean;
+  }>;
+}
+
 export const MEMBER_SCHEDULE: Schedule = {
   title: '멤버 모집',
   schedule: [
@@ -64,6 +71,54 @@ export const SESSION_SCHEDULES: Schedule = {
     {
       content: '최종 발표',
       date: '04.19',
+    },
+  ],
+};
+
+export const LANDING_SECOND_SECTION_SCHEDULE: LandingSchedule = {
+  schedule: [
+    {
+      content: '개선 검증',
+      highlighting: true,
+    },
+    {
+      content: '중간 발표',
+    },
+    {
+      content: '해커톤',
+    },
+    {
+      content: '개별 팀 활동',
+    },
+    {
+      content: '런칭 데이',
+    },
+    {
+      content: '최종 발표',
+    },
+  ],
+};
+
+export const LANDING_FIRST_SECTION_SCHEDULE: LandingSchedule = {
+  schedule: [
+    {
+      content: 'OT',
+    },
+    {
+      content: '디프콘',
+      highlighting: true,
+    },
+    {
+      content: '아이디어 발표',
+    },
+    {
+      content: '네트워킹',
+    },
+    {
+      content: '개별 팀 활동',
+    },
+    {
+      content: 'UT',
     },
   ],
 };

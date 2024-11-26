@@ -18,7 +18,7 @@ type ThumbnailProps = {
   backgroundShow?: boolean;
 };
 
-export function BlogPostThumbnail({ title, date, img, link }: ThumbnailProps) {
+export function BlogPostThumbnail({ title, date, img, link, ...props }: ThumbnailProps) {
   const handleClickThumbnail = () => {
     window.open(link.href);
   };
@@ -32,6 +32,7 @@ export function BlogPostThumbnail({ title, date, img, link }: ThumbnailProps) {
       whileHover="hover"
       variants={defaultFadeInVariants}
       onClick={handleClickThumbnail}
+      {...props}
     >
       <section css={gradientCss} />
       <Image css={imageCss} src={img} alt={title} fill quality={100} />
@@ -117,7 +118,7 @@ const linkCss = (theme: Theme) => css`
   align-items: center;
   color: ${colors.mint};
   z-index: 10;
-  ${theme.typosV2.bebas.regular24}
+  ${theme.typosV2.pretendard.semibold16}
 `;
 
 const titleCss = css`
