@@ -43,7 +43,7 @@ const containerCss = css`
   overflow: hidden;
 
   ${mediaQuery('mobile')} {
-    padding: 80px 0 248px 0;
+    padding: 80px 0 78px 0;
   }
 `;
 
@@ -63,6 +63,7 @@ const text = {
     row-gap: 24px;
     align-items: center;
     text-align: center;
+    padding: 0 20px;
   `,
   subCss: css`
     ${theme.typosV2.pretendard.semibold20};

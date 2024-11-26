@@ -57,7 +57,7 @@ const containerCss = css`
   overflow: hidden;
 
   ${mediaQuery('mobile')} {
-    padding: 80px 0 248px 0;
+    padding: 80px 0 80px 0;
   }
 `;
 
