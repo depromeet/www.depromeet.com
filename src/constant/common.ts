@@ -10,7 +10,7 @@ export const NOTION_RECRUIT_PATH =
 
 // NOTE: UTC 타임존에 맞추기 위해 9시간을 뺌
 // TODO: 개발용으로 임시로 데이트 타임을 변경
-export const START_DATE = '2024-11-20T15:00:00.000Z'; // 04.27 00:00
+export const START_DATE = '2024-12-03T00:00:00.000Z'; // 04.27 00:00
 export const END_DATE = '2024-11-30T14:59:59.000Z'; // 05.04 11:59:59
 
 // export const START_DATE = '2024-04-19T06:00:00.000Z'; // test

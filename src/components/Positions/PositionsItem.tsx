@@ -21,7 +21,25 @@ interface PositionsItemProps {
 }
 
 export function PositionsItem({ type, title, link, description, keyword }: PositionsItemProps) {
-  const { isInProgress } = useIsInProgress();
+  const { progressState } = useIsInProgress();
+
+  const stateLabels = {
+    FINISH: '지원 마감',
+    PREVIOUS: '모집 예정',
+  };
+
+  const renderContent = ({ state = 'default' }: { state?: 'hover' | 'default' }) => {
+    if (progressState === 'IN_PROGRESS') {
+      return (
+        <Fragment>
+          <span> 지원하기 </span>
+          <Icon icon={state ? 'ic_arrow_black' : 'ic_arrow_white'} size={24} direction={'right'} />
+        </Fragment>
+      );
+    }
+
+    return stateLabels[progressState] || null;
+  };
 
   return (
     <m.article
@@ -41,10 +59,7 @@ export function PositionsItem({ type, title, link, description, keyword }: Posit
             id={'default'}
           />
           <span css={positionDescriptionCss}> {keyword.join(' · ')} </span>
-          <div css={applyBtnCss}>
-            <span> 지원하기 </span>
-            <Icon icon={'ic_arrow_black'} size={24} direction={'right'} />
-          </div>
+          <div css={applyBtnCss}>{renderContent({})}</div>
         </div>
       </div>
       <div css={contentsCss}>
@@ -69,14 +84,7 @@ export function PositionsItem({ type, title, link, description, keyword }: Posit
         {
           <div css={linkContainerCss}>
             <Link css={linkCss} href={link} target="_blank">
-              {link && isInProgress ? (
-                '지원 마감'
-              ) : (
-                <Fragment>
-                  지원하기
-                  <Icon icon={'ic_arrow_white'} size={20} direction={'right'} />
-                </Fragment>
-              )}
+              {renderContent({ state: 'hover' })}
             </Link>
           </div>
         }
@@ -128,6 +136,14 @@ const contentsCss = css`
     backdrop-filter: blur(15px);
     opacity: 1;
   }
+
+  ${mediaQuery('tablet')} {
+    max-width: 100%;
+  }
+  ${mediaQuery('mobile')} {
+    max-width: 100%;
+    width: 100%;
+  }
 `;
 
 const layoutCss = (theme: Theme, position: string) => css`
@@ -156,7 +172,7 @@ const descriptionCss = (theme: Theme) => css`
 
   > p {
     color: white;
-    ${theme.typosV2.pretendard.medium15}
+    ${theme.typosV2.pretendard.medium14}
   }
 `;
 

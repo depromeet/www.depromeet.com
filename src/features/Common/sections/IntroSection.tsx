@@ -20,6 +20,7 @@ export const IntroSection = ({
   mobileSize,
 }: IntroSectionProps) => {
   const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
+
   return (
     <>
       {isMobileSize ? (
