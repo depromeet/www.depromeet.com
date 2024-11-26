@@ -37,7 +37,7 @@ const layoutCss = css`
 
 const introCss = {
   headline: css`
-    ${theme.typosV2.pretendard.bold32}
+    ${theme.typosV2.pretendard.bold44}
     line-height: 150%;
     color: ${theme.colors.white};
 
