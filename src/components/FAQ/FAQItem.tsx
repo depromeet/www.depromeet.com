@@ -25,11 +25,7 @@ export function FAQItem({ isOpen, onClickOpenButton, question, answer }: FAQItem
           transition={{ duration: 0.3, ease: 'easeOut' }}
           css={theme => arrowContainerCss(theme, isOpen)}
         >
-          <Icon
-            icon={isOpen ? 'ic_arrow_white' : 'ic_arrow_black'}
-            direction={isOpen ? 'up' : 'down'}
-            size={24}
-          />
+          <Icon icon={isOpen ? 'ic_arrow_white_accordion' : 'ic_arrow_black_accordion'} size={24} />
         </motion.div>
       </motion.div>
       <motion.div
