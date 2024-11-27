@@ -38,8 +38,7 @@ export const MainProjectSection = () => {
         <h1 css={text.headlineCss}>프로젝트</h1>
         <p css={text.descriptionCss}>
           디프만 멤버 &apos;디퍼(DEEPER)&apos; 들의
-          {isMobileSize && <br />}
-          다양한 프로젝트를 확인해보세요
+          {isMobileSize && <br />} 다양한 프로젝트를 확인해보세요
         </p>
       </div>
 
