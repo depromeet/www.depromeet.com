@@ -14,7 +14,7 @@ export const Supports = () => {
     <div css={[layoutCss]}>
       <h1 css={introCss.headline}>후원사</h1>
       <p css={introCss.description}>
-        디프만은 IT비영리단체로 후원을 통해 {isMobileSize && <br />}더 많은 교육 기회에 도움을 받고
+        디프만은 IT 단체로 후원을 통해 {isMobileSize && <br />}더 많은 교육 기회에 도움을 받고
         있습니다.
       </p>
 
