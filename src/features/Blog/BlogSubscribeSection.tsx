@@ -81,8 +81,4 @@ const linkCss = (theme: Theme) => css`
   color: white;
   background-color: black;
   text-align: center;
-
-  &:hover {
-    color: ${theme.colors.pink};
-  }
 `;
