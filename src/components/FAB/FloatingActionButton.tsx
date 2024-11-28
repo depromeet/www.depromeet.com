@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { css } from '@emotion/react';
 
 import { DEPROMEET_EMAIL, DEPROMEET_KAKAO_PLUS_FRIEND } from '~/constant/depromeet';
+import { theme } from '~/styles/theme';
 
 import { Icon } from '../Icon/Icon';
 
@@ -115,6 +116,7 @@ const menuStyle = css`
 `;
 
 const menuItemStyle = css`
+  ${theme.typosV2.pretendard.semibold14}
   background-color: #333;
   color: #fff;
   padding: 12px 24px;

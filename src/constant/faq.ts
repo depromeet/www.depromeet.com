@@ -18,7 +18,7 @@ export const FAQS: FAQType[] = [
     group: '지원 자격',
     question: '관련 경험이 없어도 지원 가능한가요?',
     answer:
-      '관련 직무 경험이 없어도 지원 가능하지만, UI/UX Designer 직군은 지원 시 포트폴리오 제출이 필수입니다.',
+      '관련 직무 경험이 없어도 지원 가능하지만, Product Designer 직군은 지원 시 포트폴리오 제출이 필수입니다.',
   },
   {
     group: '지원 자격',

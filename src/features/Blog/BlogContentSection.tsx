@@ -74,5 +74,6 @@ const blogContainerCss = css`
   }
   ${mediaQuery('mobile')} {
     grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
   }
 `;
