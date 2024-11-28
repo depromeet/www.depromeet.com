@@ -52,7 +52,7 @@ const introCss = {
   description: (isAboutPage = false) => css`
     ${isAboutPage ? theme.typosV2.pretendard.semibold18 : theme.typosV2.pretendard.semibold20}
     line-height: 150%;
-    margin-top: ${isAboutPage ? '25' : '42'}px;
+    margin-top: 24px;
     text-align: center;
     color: ${theme.colors.white};
 
