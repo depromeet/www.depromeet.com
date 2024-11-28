@@ -68,7 +68,7 @@ const articleCss = css`
   ${mediaQuery('tablet')} {
   }
   ${mediaQuery('mobile')} {
-    height: 180px;
+    height: 220px;
     max-width: 460px;
   }
   &:hover {
