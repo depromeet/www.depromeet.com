@@ -7,7 +7,7 @@ import { mediaQuery } from '~/styles/media';
 
 export const RecuritPosition = () => {
   return (
-    <section css={layoutCss}>
+    <section css={layoutCss} id="apply">
       <div css={containerCss}>
         <div css={headerCss}>
           <div css={titleCss}>
