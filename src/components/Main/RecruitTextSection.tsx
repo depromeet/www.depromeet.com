@@ -11,7 +11,7 @@ export function RecruitTextSection() {
   const router = useRouter();
 
   const onButtonClick = () => {
-    router.push('/recruit');
+    router.push('/recruit#apply');
   };
 
   return (

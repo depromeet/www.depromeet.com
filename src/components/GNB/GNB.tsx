@@ -19,7 +19,7 @@ function ApplyButton() {
   const router = useRouter();
 
   const onClick = () => {
-    router.push('/recruit');
+    router.push('/recruit#apply');
   };
 
   return (

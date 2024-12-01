@@ -104,7 +104,7 @@ function adjustToUTC({
 function getPathToRecruit(router: ReturnType<typeof useRouter>, progressState: RecruitState) {
   if (progressState === 'IN_PROGRESS') {
     return {
-      action: () => router.push('/recruit'),
+      action: () => router.push('/recruit#apply'),
       label: '지원하기',
     };
   } else if (progressState === 'FINISH') {
