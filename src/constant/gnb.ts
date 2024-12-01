@@ -5,7 +5,7 @@
 
 export type GNBMenu = {
   name: '소개' | '모집 안내' | '프로젝트' | '블로그' | '지원하기' | '지원하기';
-  href: '/about' | '/recruit' | '/project' | '/blog' | 'recruit#apply';
+  href: '/about' | '/recruit' | '/recruit#apply' | '/project' | '/blog';
   type: 'text' | 'button';
   isNewTab?: boolean;
 };
