@@ -1,5 +1,8 @@
+import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import Cookies from 'js-cookie';
+
+import { RecruitState } from '~/hooks/useIsInProgress';
 
 /**
  * @description
@@ -67,4 +70,57 @@ function setPopupCookie({ cookieName, expires = 1 }: { cookieName: string; expir
   Cookies.set(cookieName, 'true', { expires: expires });
 }
 
-export { generateModalPositionStyle, getPopupCookie, setPopupCookie };
+/**
+ * @description
+ * UTC 타임존을 편하게 맞춰주는 유틸함수예요, 주로 지원 및 마감 시간에 사용되고 있어요.
+ * 기본 값으로 한국 시간을 기준으로 9시간이 설정되어있어요
+ *
+ * @params {string} dateString
+ * @params {number} offsetHours
+ */
+
+function adjustToUTC({
+  dateString,
+  offsetHours = 9,
+}: {
+  dateString: string;
+  offsetHours?: number;
+}) {
+  const date = new Date(dateString);
+  date.setHours(date.getHours() - offsetHours);
+  return date.toISOString();
+}
+
+/**
+ * @description
+ * 현재 지원 시각에 맞춰 지원 상태를 변경해주는 유틸함수예요
+ *
+ * @param {import('next/router').NextRouter} router - Next.js의 `useRouter`를 통해 얻은 라우터 객체
+ * @param {RecruitState} progressState - 현재 모집 상태. `IN_PROGRESS`, `FINISH`, 또는 기타 상태
+ *
+ * @returns {{ action: (() => void), label: string }}
+ */
+
+function getPathToRecruit(router: ReturnType<typeof useRouter>, progressState: RecruitState) {
+  if (progressState === 'IN_PROGRESS') {
+    return {
+      action: () => router.push('/recruit'),
+      label: '지원하기',
+    };
+  } else if (progressState === 'FINISH') {
+    return {
+      action: () => window.open('https://bit.ly/3YJgDmR'),
+      label: '16기 모집 알림 신청',
+    };
+  }
+
+  return { action: () => {}, label: '지원 마감' };
+}
+
+export {
+  adjustToUTC,
+  generateModalPositionStyle,
+  getPathToRecruit,
+  getPopupCookie,
+  setPopupCookie,
+};

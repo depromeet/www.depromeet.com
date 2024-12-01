@@ -9,35 +9,25 @@ import { MobileMenu } from '~/components/GNB/MobileMenu';
 import { MobileMenuIcon } from '~/components/GNB/MobileMenuIcon';
 import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import { useDropDown } from '~/hooks/useDropdown';
+import useIsInProgress from '~/hooks/useIsInProgress';
 import { mediaQuery } from '~/styles/media';
 
 const LOGO_IMAGE = `/images/16th/logo/depromeet.svg`;
-const CURRENT_GENERATION = 16;
 
-function NotifyButton() {
-  const handleClick = () => window.open('https://bit.ly/3YJgDmR');
+function ApplyButton() {
+  const { isInProgress, dDay } = useIsInProgress();
+  const router = useRouter();
+
+  const onClick = () => {
+    router.push('/recruit');
+  };
+
   return (
-    <Button onClick={handleClick} css={linkButtonCss}>
-      {CURRENT_GENERATION}기 모집 알림 신청
+    <Button disabled={!isInProgress} css={linkButtonCss} onClick={onClick} suppressHydrationWarning>
+      {isInProgress ? '16기 지원하기' : dDay < 0 ? `D${dDay}` : `지원 마감`}
     </Button>
   );
 }
-
-// TODO: 웹 사이트 오픈 시에 주석 해제
-// function ApplyButton() {
-//   const { isInProgress, dDay } = useIsInProgress();
-//   const router = useRouter();
-//
-//   const onClick = () => {
-//     router.push('/apply');
-//   };
-//
-//   return (
-//     <Button disabled={!isInProgress} css={linkButtonCss} onClick={onClick} suppressHydrationWarning>
-//       {isInProgress ? '16기 지원하기' : dDay < 0 ? `D${dDay}` : `지원 마감`}
-//     </Button>
-//   );
-// }
 
 const linkButtonCss = css`
   height: 37px;
@@ -73,7 +63,7 @@ export function GNB() {
               </li>
             ))}
           </ul>
-          <NotifyButton />
+          <ApplyButton />
         </div>
       </nav>
       <nav css={mobileNavCss} ref={containerRef}>

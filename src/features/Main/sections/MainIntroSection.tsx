@@ -1,28 +1,29 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
+import useIsInProgress from '~/hooks/useIsInProgress';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
+import { getPathToRecruit } from '~/utils/utils';
 
 /**
  * * Main 페이지 Intro + 지원 버튼 section
  */
 export const MainIntroSection = () => {
   const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
-  // FIXME: 추후 링크 상수화 진행
-  const handleClick = () => window.open('https://bit.ly/3YJgDmR');
   const [isClientReady, setIsClientReady] = useState<boolean>(false);
+  const router = useRouter();
+  const { progressState } = useIsInProgress();
+  const { label, action } = getPathToRecruit(router, progressState);
 
   useEffect(() => {
     setIsClientReady(true);
   }, []);
 
   return (
-    /** FIXME: 디자이너분들께 공유드리기, 사진 깨짐 현상 존재
-     * 추가로 보완해야할 부분 추가
-     * */
     <section css={containerCss}>
       {isClientReady && (
         <article css={articleCss}>
@@ -41,8 +42,8 @@ export const MainIntroSection = () => {
             id={'title'}
             alt={'디프만 메인'}
           />
-          <button css={buttonCss} onClick={handleClick}>
-            16기 모집 알림 신청
+          <button css={buttonCss} onClick={action}>
+            {label}
           </button>
         </article>
       )}

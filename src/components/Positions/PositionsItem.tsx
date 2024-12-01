@@ -29,8 +29,7 @@ export function PositionsItem({ type, title, link, description, keyword }: Posit
   };
 
   const renderContent = ({ state = 'default' }: { state?: 'hover' | 'default' }) => {
-    // FIXME: 링크 방어 코드 추후 변경
-    // if (!link) return null;
+    if (!link) return null;
     if (progressState === 'IN_PROGRESS') {
       return (
         <Fragment>
