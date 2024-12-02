@@ -6,17 +6,19 @@ import { m } from 'framer-motion';
 import { GNB_MOBILE_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import useIsInProgress from '~/hooks/useIsInProgress';
 import { mediaQuery } from '~/styles/media';
+import { getPathToRecruit } from '~/utils/utils';
 
 interface MobileMenuProps {
   onClickMenu: () => void;
 }
 
 export function MobileMenu({ onClickMenu }: MobileMenuProps) {
-  const { pathname, push } = useRouter();
-  const { isInProgress, dDay } = useIsInProgress();
+  const router = useRouter();
+  const { progressState } = useIsInProgress();
+  const { label, action } = getPathToRecruit(router, progressState);
 
   const getActiveLinkcss = (menu: GNBMenu) => {
-    if (pathname.startsWith(menu.href)) {
+    if (router.pathname.startsWith(menu.href)) {
       return activeLinkCss;
     }
     return inActiveLinkCss;
@@ -40,12 +42,12 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
           >
             {menu.type === 'button' ? (
               <button
-                disabled={!isInProgress}
-                onClick={() => push(menu.href)}
+                disabled={progressState === 'FINISH'}
+                onClick={action}
                 css={linkCss}
                 suppressHydrationWarning
               >
-                {isInProgress ? menu.name : dDay < 0 ? `D${dDay}` : '지원 마감'}
+                {label}
               </button>
             ) : (
               <Link
