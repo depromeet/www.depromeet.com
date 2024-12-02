@@ -11,20 +11,18 @@ import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import { useDropDown } from '~/hooks/useDropdown';
 import useIsInProgress from '~/hooks/useIsInProgress';
 import { mediaQuery } from '~/styles/media';
+import { getPathToRecruit } from '~/utils/utils';
 
 const LOGO_IMAGE = `/images/16th/logo/depromeet.svg`;
 
 function ApplyButton() {
-  const { isInProgress, dDay } = useIsInProgress();
+  const { progressState } = useIsInProgress();
   const router = useRouter();
-
-  const onClick = () => {
-    router.push('/recruit#apply');
-  };
+  const { label, action } = getPathToRecruit(router, progressState);
 
   return (
-    <Button disabled={!isInProgress} css={linkButtonCss} onClick={onClick} suppressHydrationWarning>
-      {isInProgress ? '16기 지원하기' : dDay < 0 ? `D${dDay}` : `지원 마감`}
+    <Button css={linkButtonCss} onClick={action} suppressHydrationWarning>
+      {label}
     </Button>
   );
 }

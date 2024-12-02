@@ -105,16 +105,16 @@ function getPathToRecruit(router: ReturnType<typeof useRouter>, progressState: R
   if (progressState === 'IN_PROGRESS') {
     return {
       action: () => router.push('/recruit#apply'),
-      label: '지원하기',
+      label: '16기 지원하기',
     };
-  } else if (progressState === 'FINISH') {
+  } else if (progressState === 'PREVIOUS') {
     return {
       action: () => window.open('https://bit.ly/3YJgDmR'),
       label: '16기 모집 알림 신청',
     };
   }
 
-  return { action: () => {}, label: '지원 마감' };
+  return { action: () => {}, label: '16기 모집 마감' };
 }
 
 export {
