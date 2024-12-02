@@ -46,14 +46,14 @@ const buttonCss = (theme: Theme, size: ButtonSize) => css`
     }
   `}
 
-
+/* NOTE: 16기에서는 불필요해서 사용을 하지 않았으나, 추후 사용을 위해 주석을 해제해주세요
   &:hover {
     background-color: ${theme.colors.blue};
   }
 
   &:active {
     background-color: ${theme.colors.blue};
-  }
+  } */
 
   &:disabled {
     background-color: ${theme.colors.lightGray};

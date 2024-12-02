@@ -1,6 +1,11 @@
+/** NOTE
+ * 본래는 `href` 속셍어 /apply 속성도 있었지만, 16기에서는 불필요하여 삭제했어요.
+ * 개발을 진행하시면서 참고를 해주세요
+ */
+
 export type GNBMenu = {
-  name: '소개' | '모집 안내' | '프로젝트' | '블로그' | '지원하기' | '16기 모집 알림 신청';
-  href: '/about' | '/recruit' | '/project' | '/blog' | '/apply' | 'https://bit.ly/3YJgDmR';
+  name: '소개' | '모집 안내' | '프로젝트' | '블로그' | '지원하기';
+  href: '/about' | '/recruit' | '/recruit#apply' | '/project' | '/blog';
   type: 'text' | 'button';
   isNewTab?: boolean;
 };
@@ -51,9 +56,8 @@ export const GNB_MOBILE_MENU_NAME: GNBMenu[] = [
     type: 'text',
   },
   {
-    name: '16기 모집 알림 신청',
-    href: 'https://bit.ly/3YJgDmR',
-    type: 'text',
-    isNewTab: true,
+    name: '지원하기',
+    href: '/recruit#apply',
+    type: 'button',
   },
 ];

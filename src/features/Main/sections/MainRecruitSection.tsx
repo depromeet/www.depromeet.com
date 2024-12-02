@@ -1,17 +1,22 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
+import useIsInProgress from '~/hooks/useIsInProgress';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
+import { getPathToRecruit } from '~/utils/utils';
 
 /**
  * * Main 페이지 지원하기 section
  * TODO: 링크 이벤트 연결하기
  */
 export const MainRecruitSection = () => {
+  const router = useRouter();
   const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
-  const handleClick = () => window.open('https://bit.ly/3YJgDmR');
+  const { progressState } = useIsInProgress();
+  const { action, label } = getPathToRecruit(router, progressState);
 
   return (
     <section css={containerCss}>
@@ -20,8 +25,8 @@ export const MainRecruitSection = () => {
         <h1 css={text.titleCss}>
           디프만과 함께 성장 할 <br /> 16기 디퍼를 모집합니다
         </h1>
-        <button css={buttonCss} onClick={handleClick}>
-          16기 모집 알림 신청
+        <button css={buttonCss} onClick={action}>
+          {label}
         </button>
         <Image
           width={!isMobileSize ? 1051 : 440}

@@ -21,26 +21,26 @@ interface PositionsItemProps {
 }
 
 export function PositionsItem({ type, title, link, description, keyword }: PositionsItemProps) {
-  const { progressState } = useIsInProgress();
-
-  const stateLabels = {
-    FINISH: '지원 마감',
-    PREVIOUS: '모집 예정',
-  };
+  const { progressState, isInProgress } = useIsInProgress();
 
   const renderContent = ({ state = 'default' }: { state?: 'hover' | 'default' }) => {
-    // FIXME: 링크 방어 코드 추후 변경
-    // if (!link) return null;
+    if (!link) return null;
     if (progressState === 'IN_PROGRESS') {
       return (
         <Fragment>
           <span> 지원하기 </span>
-          <Icon icon={state ? 'ic_arrow_black' : 'ic_arrow_white'} size={24} direction={'right'} />
+          <Icon
+            icon={state === 'default' ? 'ic_arrow_black' : 'ic_arrow_white'}
+            size={24}
+            direction={'right'}
+          />
         </Fragment>
       );
+    } else if (progressState === 'PREVIOUS') {
+      return '모집 예정';
     }
 
-    return stateLabels[progressState] || null;
+    return '모집 마감';
   };
 
   return (
@@ -85,7 +85,12 @@ export function PositionsItem({ type, title, link, description, keyword }: Posit
         </div>
         {
           <div css={linkContainerCss}>
-            <Link css={linkCss} href={link} target="_blank">
+            <Link
+              css={linkCss}
+              href={isInProgress ? link : ''}
+              target="_blank"
+              onClick={e => !isInProgress && e.preventDefault()}
+            >
               {renderContent({ state: 'hover' })}
             </Link>
           </div>
