@@ -13,7 +13,7 @@ export const NOTION_RECRUIT_PATH =
   'https://depromeet.notion.site/DEPROMEET-13th-f1e931cf073e43c4aeca44a4521b44be';
 
 // NOTE: UTC 타임존에 맞추기 위해 9시간을 뺌
-export const START_DATE = adjustToUTC({ dateString: '2024-12-02T09:45:00.000Z' });
+export const START_DATE = adjustToUTC({ dateString: '2024-12-02T09:48:00.000Z' });
 export const END_DATE = adjustToUTC({ dateString: '2024-12-02T10:00:00.000Z' });
 
 // export const START_DATE = '2024-04-19T06:00:00.000Z'; // test
