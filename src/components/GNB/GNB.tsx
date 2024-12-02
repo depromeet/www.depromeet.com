@@ -21,7 +21,12 @@ function ApplyButton() {
   const { label, action } = getPathToRecruit(router, progressState);
 
   return (
-    <Button css={linkButtonCss} onClick={action} suppressHydrationWarning>
+    <Button
+      css={linkButtonCss}
+      onClick={action}
+      disabled={progressState === 'FINISH'}
+      suppressHydrationWarning
+    >
       {label}
     </Button>
   );
