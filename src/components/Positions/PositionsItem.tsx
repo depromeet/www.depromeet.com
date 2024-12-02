@@ -29,7 +29,11 @@ export function PositionsItem({ type, title, link, description, keyword }: Posit
       return (
         <Fragment>
           <span> 지원하기 </span>
-          <Icon icon={state ? 'ic_arrow_black' : 'ic_arrow_white'} size={24} direction={'right'} />
+          <Icon
+            icon={state === 'default' ? 'ic_arrow_black' : 'ic_arrow_white'}
+            size={24}
+            direction={'right'}
+          />
         </Fragment>
       );
     } else if (progressState === 'PREVIOUS') {
