@@ -36,7 +36,7 @@ export function PositionsItem({ type, title, link, description, keyword }: Posit
       return '모집 예정';
     }
 
-    return '지원 마감';
+    return '모집 마감';
   };
 
   return (
