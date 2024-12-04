@@ -66,9 +66,18 @@ const cardCss = css`
   aspect-ratio: 1/1;
   background-color: ${colors.grey[100]};
   border-radius: 20px;
+  width: 248px;
+  height: 240px;
+
+  ${mediaQuery('tablet')} {
+    width: 234px;
+    height: 226px;
+  }
 
   ${mediaQuery('mobile')} {
     gap: 18px;
+    width: auto;
+    height: auto;
   }
 `;
 
