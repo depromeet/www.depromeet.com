@@ -11,7 +11,7 @@ import {
 export const FIRST_ROW_FOOTER_INFOS = [
   { name: 'Instagram', href: DEPROMEET_INSTAGRAM },
   { name: 'Behance', href: DEPROMEET_BEHANCE },
-  { name: 'Github', href: DEPROMEET_GITHUB },
+  { name: 'GitHub', href: DEPROMEET_GITHUB },
   { name: 'Medium', href: DEPROMEET_MEDIUM },
   { name: 'LinkedIn', href: DEPROMEET_LINKEDIN },
 ];

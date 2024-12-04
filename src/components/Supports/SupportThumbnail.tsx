@@ -10,7 +10,7 @@ import { mediaQuery } from '~/styles/media';
 import { ArrowIcon } from '../Icons';
 
 export type Link = {
-  type: 'Behance' | 'Github' | 'Web' | 'App';
+  type: 'Behance' | 'GitHub' | 'Web' | 'App';
   href: string;
 };
 
