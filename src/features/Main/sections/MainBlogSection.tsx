@@ -90,7 +90,7 @@ const text = {
 const blogContainerCss = css`
   width: 100%;
   display: flex;
-  column-gap: 50px;
+  column-gap: 40px;
   margin-top: 92px;
   margin-left: 50px;
 `;

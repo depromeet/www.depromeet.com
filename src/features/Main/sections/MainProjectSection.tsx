@@ -91,6 +91,7 @@ const sectionCss = (isMaxCurrentPage?: boolean) => css`
 
   ${mediaQuery('mobile')} {
     padding: 80px 24px 100px;
+    gap: 62px;
   }
 
   ${!isMaxCurrentPage &&
@@ -152,7 +153,6 @@ const text = {
 const projectContainerCss = css`
   width: 100%;
   max-width: 960px;
-  margin-top: 36px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;

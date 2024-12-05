@@ -42,7 +42,7 @@ export const POSITIONS: Array<ComponentProps<typeof PositionsItem>> = [
     keyword: ['iOS', 'Swift', 'Git'],
     link: process.env.NEXT_PUBLIC_NINEHIRE_IOS ?? '',
     description: [
-      'UIKit 혹은 SwiftUI를 통하여 개발을 해본경험이 있으신 분',
+      'UIKit 혹은 SwiftUI를 통하여 개발해본 경험이 있으신 분',
       '디자인패턴 (MVC, MVVM)에 대한 기본적인 이해가 있으신 분',
       '서버 API 통신 및 JSON을 다뤄본 경험이 있으신 분',
     ],

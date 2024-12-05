@@ -15,7 +15,7 @@ export const AboutActivitiesSection = () => {
       <div css={wrapperCss}>
         <h1 css={introCss.headline}>정규 세션</h1>
         <p css={introCss.description}>
-          정규 오프라인 세션을 통해 {isMobileSize && <br />}
+          정규 세션을 통해 {isMobileSize && <br />}
           성공적인 프로젝트 런칭에 더 가까워 집니다
         </p>
         <div css={activitiesCss}>
@@ -65,7 +65,7 @@ const introCss = {
     line-height: 150%;
   `,
   description: css`
-    ${theme.typosV2.pretendard.medium18}
+    ${theme.typosV2.pretendard.semibold18}
     line-height: 150%;
     margin-top: 18px;
     text-align: center;

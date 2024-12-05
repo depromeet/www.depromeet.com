@@ -55,7 +55,7 @@ export const ACTIVITIES = [
   {
     title: '스터디',
     description:
-      '자율적으로 스터디를 개설하고, 참여할 수 있는 기회를 제공해요. 스터디를 통해네트워킹 기회도 함께 가져요.',
+      '자율적으로 스터디를 개설하고, 참여할 수 있는 기회를 제공해요. 스터디를 통해 네트워킹 기회도 함께 가져요.',
     img: '/images/16th/about/activity/study.png',
   },
   {
