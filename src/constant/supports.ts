@@ -34,6 +34,12 @@ export const SUPPORTS: Support[] = [
     img: '/images/16th/support/surfit.png',
     link: 'https://www.surfit.io/',
   },
+  {
+    title: '나인하이어',
+    subTitle: 'Nine Hire',
+    img: '/images/16th/support/nine-hire.png',
+    link: 'https://www.ninehire.com/',
+  },
   // {
   //   title: '팀스파르타',
   //   subTitle: 'TeamSparta',
