@@ -11,10 +11,8 @@ export const RecuritPosition = () => {
   const { isInProgress } = useIsInProgress();
   const documentRecruitDate = isInProgress && (
     <Fragment>
-      <Fragment>
-        <br />
-        서류 접수 기간 : 2024.12.03 ~ 12.09 23:59
-      </Fragment>
+      <br />
+      서류 접수 기간 : 2024.12.03 ~ 12.09 23:59
     </Fragment>
   );
 
