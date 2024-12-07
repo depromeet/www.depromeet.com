@@ -1,18 +1,31 @@
+import { Fragment } from 'react';
 import { css, Theme } from '@emotion/react';
 
 import { MobilePositionItem } from '~/components/Positions/MobilePositionItem';
 import { PositionsItem } from '~/components/Positions/PositionsItem';
 import { POSITIONS } from '~/constant/position';
+import useIsInProgress from '~/hooks/useIsInProgress';
 import { mediaQuery } from '~/styles/media';
 
 export const RecuritPosition = () => {
+  const { isInProgress } = useIsInProgress();
+  const documentRecruitDate = isInProgress && (
+    <Fragment>
+      <br />
+      서류 접수 기간 : 2024.12.03 ~ 12.09 23:59
+    </Fragment>
+  );
+
   return (
     <section css={layoutCss} id="apply">
       <div css={containerCss}>
         <div css={headerCss}>
           <div css={titleCss}>
             <h1>모집 직군</h1>
-            <p>디프만은 다섯개의 직군에서 신규 회원을 모집하고 있습니다.</p>
+            <p>
+              디프만은 다섯개의 직군에서 신규 회원을 모집하고 있습니다.
+              {documentRecruitDate}
+            </p>
           </div>
         </div>
         <div css={mobileHeaderCss}>
@@ -22,6 +35,7 @@ export const RecuritPosition = () => {
               디프만은 다섯개의 직군에서 신규 회원을
               <br />
               모집하고 있습니다.
+              {documentRecruitDate}
             </p>
           </div>
         </div>
