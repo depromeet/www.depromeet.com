@@ -9,7 +9,7 @@ import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
 export type Link = {
-  type: 'Behance' | 'Github' | 'Web' | 'Android' | 'iOS' | 'APP' | 'MEDIUM';
+  type: 'Behance' | 'GitHub' | 'Web' | 'Android' | 'iOS' | 'APP' | 'MEDIUM';
   href: string;
 };
 
