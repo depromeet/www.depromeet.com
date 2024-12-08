@@ -13,6 +13,42 @@ export interface BlogLink extends Omit<Link, 'type'> {
 
 export const BLOG_LIST: Blog[] = [
   {
+    title: '[Interview] 사용자로부터 해답을 찾아나가는 수영 기록 서비스, Swimie',
+    date: '24.12.07',
+    img: '/images/16th/blog/medium/16th_swimie.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/interview-%EC%82%AC%EC%9A%A9%EC%9E%90%EB%A1%9C%EB%B6%80%ED%84%B0-%ED%95%B4%EB%8B%B5%EC%9D%84-%EC%B0%BE%EC%95%84%EB%82%98%EA%B0%80%EB%8A%94-%EC%88%98%EC%98%81-%EA%B8%B0%EB%A1%9D-%EC%84%9C%EB%B9%84%EC%8A%A4-swimie-82cdc6c66c23',
+    },
+  },
+  {
+    title: '디프만 16기 모집을 시작합니다!',
+    date: '24.12.03',
+    img: '/images/16th/blog/medium/16th_ recruitment.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://medium.com/@depromeet/%EB%94%94%ED%94%84%EB%A7%8C-16%EA%B8%B0-%EB%AA%A8%EC%A7%91%EC%9D%84-%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4-a7b7b0154905',
+    },
+  },
+  {
+    title: '[Interview] 디프만 15기: 성장과 협업, 그리고 열정의 이야기',
+    date: '24.12.03',
+    img: '/images/16th/blog/medium/16th_growth.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://medium.com/@depromeet/interview-%EB%94%94%ED%94%84%EB%A7%8C-15%EA%B8%B0-%EC%84%B1%EC%9E%A5%EA%B3%BC-%ED%98%91%EC%97%85-%EA%B7%B8%EB%A6%AC%EA%B3%A0-%EC%97%B4%EC%A0%95%EC%9D%98-%EC%9D%B4%EC%95%BC%EA%B8%B0-29a3607b926e',
+    },
+  },
+  {
+    title: '[Interview] 다음 기수를 기다리며, 운영진이 들려주는 디프만 이야기',
+    date: '24.11.01',
+    img: '/images/16th/blog/medium/16th_management.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://medium.com/@depromeet/interview-%EB%8B%A4%EC%9D%8C-%EA%B8%B0%EC%88%98%EB%A5%BC-%EA%B8%B0%EB%8B%A4%EB%A6%AC%EB%A9%B0-%EC%9A%B4%EC%98%81%EC%A7%84%EC%9D%B4-%EB%93%A4%EB%A0%A4%EC%A3%BC%EB%8A%94-%EB%94%94%ED%94%84%EB%A7%8C-%EC%9D%B4%EC%95%BC%EA%B8%B0-97da9799446e',
+    },
+  },
+  {
     title: '디프만 카페 지도를 소개합니다! (feat. 개발자, 디자이너를 위한 작업하기 좋은 카페 추천)',
     date: '24.09.01',
     img: '/images/16th/blog/medium/16th_cafe.svg',
