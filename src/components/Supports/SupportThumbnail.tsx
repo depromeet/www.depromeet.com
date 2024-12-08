@@ -66,9 +66,10 @@ const articleCss = css`
   cursor: pointer;
 
   ${mediaQuery('mobile')} {
-    max-width: 160px;
+    max-width: 100%;
     padding: 18px;
     height: auto;
+    aspect-ratio: 160/64;
   }
 `;
 
