@@ -93,16 +93,15 @@ export const BLOG_LIST: Blog[] = [
       href: 'https://depromeet.medium.com/interview-%ED%86%A0%EC%8A%A4%EB%B1%85%ED%81%AC-%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%EA%B0%80-%EB%A7%90%ED%95%B4%EC%A3%BC%EB%8A%94-ut-15c59d39335a',
     },
   },
-  // ㅇㅕ기부터 수정해야함
-  {
-    title: '디프만 15기를 시작합니다!',
-    date: '24.06.03',
-    img: '/images/16th/blog/medium/16th_start15th.svg',
-    link: {
-      type: 'Medium',
-      href: 'https://depromeet.medium.com/%EB%94%94%ED%94%84%EB%A7%8C-15%EA%B8%B0%EB%A5%BC-%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4-5e2d53ddef96',
-    },
-  },
+  // {
+  //   title: '디프만 15기를 시작합니다!',
+  //   date: '24.06.03',
+  //   img: '/images/16th/blog/medium/16th_start15th.svg',
+  //   link: {
+  //     type: 'Medium',
+  //     href: 'https://depromeet.medium.com/%EB%94%94%ED%94%84%EB%A7%8C-15%EA%B8%B0%EB%A5%BC-%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4-5e2d53ddef96',
+  //   },
+  // },
   {
     title: '[Interview] 디프만은 어떻게 공부할까?(feat. 인프런)',
     date: '24.05.31',
