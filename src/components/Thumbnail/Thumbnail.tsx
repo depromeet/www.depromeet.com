@@ -45,7 +45,6 @@ export function Thumbnail({ title, subTitle, img, description, links }: Thumbnai
                 <a href={link.href} target="_blank" css={linkCss} rel="noreferrer">
                   {link.type}
                 </a>
-                {/* NOTE: 화살표 교체 필요 */}
                 <ArrowIcon
                   direction={'right'}
                   color={colors.sub.lightMint}

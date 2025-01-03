@@ -36,15 +36,18 @@ export function BlogPostThumbnail({ title, date, img, link, ...props }: Thumbnai
     >
       <section css={gradientCss} />
       <Image css={imageCss} src={img} alt={title} fill quality={100} />
-      <div>
-        <h1 css={titleCss} dangerouslySetInnerHTML={{ __html: title as string }} />
-        <h3 css={dateCss}>{date}</h3>
-      </div>
-      <div css={contentsCss}>
-        <div css={linkContainerCss}>
-          <div css={linkCss}>
-            {link.type}
-            <ArrowIcon direction={'right'} color={colors.mint} width={16} height={16} />
+
+      <div css={contentCss}>
+        <div>
+          <h1 css={titleCss} dangerouslySetInnerHTML={{ __html: title as string }} />
+          <h3 css={dateCss}>{date}</h3>
+        </div>
+        <div css={contentsCss}>
+          <div css={linkContainerCss}>
+            <div css={linkCss}>
+              {link.type}
+              <ArrowIcon direction={'right'} color={colors.mint} width={16} height={16} />
+            </div>
           </div>
         </div>
       </div>
@@ -54,34 +57,48 @@ export function BlogPostThumbnail({ title, date, img, link, ...props }: Thumbnai
 
 const articleCss = css`
   position: relative;
+
   width: 100%;
   height: 208px;
   min-width: 160px;
-  padding: 24px;
+
   overflow: hidden;
-  display: flex;
   border-radius: 12px;
-  flex-direction: column;
-  justify-content: space-between;
   background-color: black;
 
-  ${mediaQuery('tablet')} {
-  }
   ${mediaQuery('mobile')} {
     height: 220px;
     max-width: 460px;
   }
+
   &:hover {
     cursor: pointer;
   }
+
+  &:hover img {
+    filter: brightness(0.5);
+  }
+`;
+
+const contentCss = css`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 100%;
+  height: 100%;
+  padding: 24px;
+
+  &:hover {
+    backdrop-filter: blur(5px);
+  }
+
   &:hover > section {
     opacity: 0;
   }
   &:hover > div {
     opacity: 1;
-  }
-  &:hover img {
-    filter: blur(8px) brightness(0.4);
   }
 `;
 
