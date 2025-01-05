@@ -13,6 +13,24 @@ export interface BlogLink extends Omit<Link, 'type'> {
 
 export const BLOG_LIST: Blog[] = [
   {
+    title: '[Interview] 문제의 본질을 찾아서: 야구장 시야 서비스, SPOT!',
+    date: '24.12.20',
+    img: '/images/16th/blog/medium/16th_spot.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/interview-%EB%AC%B8%EC%A0%9C%EC%9D%98-%EB%B3%B8%EC%A7%88%EC%9D%84-%EC%B0%BE%EC%95%84%EC%84%9C-%EC%95%BC%EA%B5%AC%EC%9E%A5-%EC%8B%9C%EC%95%BC-%EC%84%9C%EB%B9%84%EC%8A%A4-spot-43a6acb18460',
+    },
+  },
+  {
+    title: '[Interview] 아이디어 검증부터 마케팅 운영까지: 반려동물 커뮤니티 서비스, 왈왈',
+    date: '24.12.13',
+    img: '/images/16th/blog/medium/16th_walwal.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/interview-%EB%B0%98%EB%A0%A4%EB%8F%99%EB%AC%BC-%EC%BB%A4%EB%AE%A4%EB%8B%88%ED%8B%B0-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%99%88%EC%99%88-%EC%9D%B4%EC%95%BC%EA%B8%B0-14cb964b48d5',
+    },
+  },
+  {
     title: '[Interview] 사용자로부터 해답을 찾아나가는 수영 기록 서비스, Swimie',
     date: '24.12.07',
     img: '/images/16th/blog/medium/16th_swimie.webp',
@@ -93,15 +111,15 @@ export const BLOG_LIST: Blog[] = [
       href: 'https://depromeet.medium.com/interview-%ED%86%A0%EC%8A%A4%EB%B1%85%ED%81%AC-%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88%EA%B0%80-%EB%A7%90%ED%95%B4%EC%A3%BC%EB%8A%94-ut-15c59d39335a',
     },
   },
-  // {
-  //   title: '디프만 15기를 시작합니다!',
-  //   date: '24.06.03',
-  //   img: '/images/16th/blog/medium/16th_start15th.svg',
-  //   link: {
-  //     type: 'Medium',
-  //     href: 'https://depromeet.medium.com/%EB%94%94%ED%94%84%EB%A7%8C-15%EA%B8%B0%EB%A5%BC-%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4-5e2d53ddef96',
-  //   },
-  // },
+  {
+    title: '디프만 15기를 시작합니다!',
+    date: '24.06.03',
+    img: '/images/16th/blog/medium/16th_start15th.svg',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%94%94%ED%94%84%EB%A7%8C-15%EA%B8%B0%EB%A5%BC-%EC%8B%9C%EC%9E%91%ED%95%A9%EB%8B%88%EB%8B%A4-5e2d53ddef96',
+    },
+  },
   {
     title: '[Interview] 디프만은 어떻게 공부할까?(feat. 인프런)',
     date: '24.05.31',
