@@ -37,7 +37,7 @@ export function BlogPostThumbnail({ title, date, img, link, ...props }: Thumbnai
       <section css={gradientCss} />
       <Image css={imageCss} src={img} alt={title} fill quality={100} />
 
-      <div css={contentCss}>
+      <div css={wrapperCss}>
         <div>
           <h1 css={titleCss} dangerouslySetInnerHTML={{ __html: title as string }} />
           <h3 css={dateCss}>{date}</h3>
@@ -80,7 +80,7 @@ const articleCss = css`
   }
 `;
 
-const contentCss = css`
+const wrapperCss = css`
   position: relative;
   display: flex;
   flex-direction: column;
