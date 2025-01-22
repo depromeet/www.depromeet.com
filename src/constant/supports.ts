@@ -40,18 +40,18 @@ export const SUPPORTS: Support[] = [
     img: '/images/16th/support/nine-hire.png',
     link: 'https://www.ninehire.com/',
   },
-  // {
-  //   title: '팀스파르타',
-  //   subTitle: 'TeamSparta',
-  //   img: '/images/support/team-sparta.png',
-  //   link: 'https://spartacodingclub.kr/',
-  // },
-  // {
-  //   title: '디스콰이엇',
-  //   subTitle: 'Disquiet',
-  //   img: '/images/support/disquiet.png',
-  //   link: 'https://disquiet.io/',
-  // },
+  {
+    title: '직행',
+    subTitle: 'Zighang',
+    img: '/images/16th/support/zighang.png',
+    link: 'https://zighang.com/',
+  },
+  {
+    title: '스나이퍼팩토리',
+    subTitle: 'Sniperfactory',
+    img: '/images/16th/support/sniperfactory.png',
+    link: 'https://sniperfactory.com/',
+  },
   // {
   //   title: '모두의연구소',
   //   subTitle: 'modulabs',
