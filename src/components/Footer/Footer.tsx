@@ -6,6 +6,7 @@ import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
     <footer css={footerCss}>
       <div css={footerInfoWrapper}>
@@ -29,7 +30,7 @@ export function Footer() {
           ))}
         </ul>
       </div>
-      <p css={copyrightCss}>© 2024 DEPROMEET. ALL RIGHTS RESERVED.</p>
+      <p css={copyrightCss}>© {currentYear} DEPROMEET. ALL RIGHTS RESERVED.</p>
     </footer>
   );
 }
