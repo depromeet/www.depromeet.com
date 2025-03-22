@@ -52,28 +52,10 @@ export const SUPPORTS: Support[] = [
     img: '/images/16th/support/sniperfactory.png',
     link: 'https://sniperfactory.com/',
   },
-  // {
-  //   title: '모두의연구소',
-  //   subTitle: 'modulabs',
-  //   img: '/images/support/모두의연구소.png',
-  //   link: 'https://modulabs.co.kr/',
-  // },
-  // {
-  //   title: '점핏',
-  //   subTitle: 'Jumpit',
-  //   img: '/images/support/jumpit.png',
-  //   link: 'https://www.jumpit.co.kr/',
-  // },
-  // {
-  //   title: '제이펍',
-  //   subTitle: 'Jpub',
-  //   img: '/images/support/jpub.png',
-  //   link: 'https://jpub.tistory.com/',
-  // },
-  // {
-  //   title: '이지스퍼블리싱',
-  //   subTitle: 'EasysPublishing',
-  //   img: '/images/support/easyspub.png',
-  //   link: 'https://www.easyspub.co.kr/Main/pub',
-  // },
+  {
+    title: 'Adelab',
+    subTitle: 'Adelab',
+    img: '/images/16th/support/adelab.png',
+    link: 'https://bizcrush.app/en/',
+  },
 ];
