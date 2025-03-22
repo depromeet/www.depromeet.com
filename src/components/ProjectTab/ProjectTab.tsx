@@ -3,7 +3,8 @@ import { css } from '@emotion/react';
 
 import { TAB_LIST } from '~/constant/project';
 import { mediaQuery } from '~/styles/media';
-import { theme } from '~/styles/theme';
+
+import { ProjectTabItem } from './ProjectTabItem';
 
 type ProjectTabProps = {
   currentTab: string;
@@ -15,13 +16,12 @@ export function ProjectTab({ currentTab, setCurrentTab }: ProjectTabProps) {
     <ul css={tabWrapperCss}>
       <li css={tabContainerCss}>
         {TAB_LIST.map(tab => (
-          <button
+          <ProjectTabItem
             key={tab}
-            css={currentTab === tab ? activeTabCss : inActiveTabCss}
-            onClick={() => setCurrentTab(tab)}
-          >
-            {tab}
-          </button>
+            tab={tab}
+            isActive={currentTab === tab}
+            onClickTab={() => setCurrentTab(tab)}
+          />
         ))}
       </li>
     </ul>
@@ -47,24 +47,4 @@ const tabContainerCss = css`
   ${mediaQuery('mobile')} {
     gap: 8px;
   }
-`;
-
-const tabCss = css`
-  ${theme.typosV2.pretendard.semibold16};
-  line-height: 150%;
-
-  padding: 16px 20px;
-  color: ${theme.colors.grey[300]};
-`;
-
-const activeTabCss = css`
-  ${tabCss};
-  color: ${theme.colors.grey[900]};
-  text-decoration: underline 2px;
-  text-underline-offset: 8px;
-`;
-
-const inActiveTabCss = css`
-  ${tabCss};
-  color: '#555';
 `;
