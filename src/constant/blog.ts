@@ -1,6 +1,6 @@
 import { Link } from '~/components/Thumbnail/Thumbnail';
 
-interface Blog<T> {
+export interface Blog<T> {
   title: string;
   date: string;
   img: string;
@@ -8,8 +8,9 @@ interface Blog<T> {
   type: T;
 }
 
-export type OfficialBlogType = 'session' | 'interview' | 'etc';
-export type DeeperBlogType = 'project' | 'review';
+type OfficialBlogType = 'session' | 'interview' | 'etc';
+type DeeperBlogType = 'project' | 'review';
+export type AllBlog = Blog<OfficialBlogType | DeeperBlogType>;
 
 export interface BlogLink extends Omit<Link, 'type'> {
   type: 'Medium';
