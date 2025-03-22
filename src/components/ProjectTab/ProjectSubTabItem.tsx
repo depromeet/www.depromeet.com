@@ -40,4 +40,7 @@ const activeTabCss = css`
 
 const inActiveTabCss = css`
   ${tabCss};
+  ${mediaQuery('mobile')} {
+    color: ${theme.colors.grey[300]};
+  }
 `;

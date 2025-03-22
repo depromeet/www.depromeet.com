@@ -20,13 +20,14 @@ export function ProjectTabItem({
 }
 
 const tabCss = css`
-  ${theme.typosV2.pretendard.semibold16};
+  ${theme.typosV2.pretendard.semibold20};
   line-height: 150%;
 
   padding: 16px 20px;
   color: ${theme.colors.grey[300]};
 
   ${mediaQuery('mobile')} {
+    ${theme.typosV2.pretendard.bold16};
     padding: 12px;
   }
 `;

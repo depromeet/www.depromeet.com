@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
-import { AnimatePresence, m } from 'framer-motion';
 
-import { BlogPostThumbnail } from '~/components/Blog';
 import { ProjectSubTabItem } from '~/components/ProjectTab/ProjectSubTabItem';
 import { ProjectTabItem } from '~/components/ProjectTab/ProjectTabItem';
 import { AllBlog, DEEPER_BLOG_LIST, OFFICIAL_BLOG_LIST } from '~/constant/blog';
-import { staggerHalf } from '~/constant/motion';
 import { mediaQuery } from '~/styles/media';
+
+import { BlogPaginationSection } from './BlogPaginationSection';
 
 const OFFICIAL_SUB_TABS = [
   { key: 'entire', name: '전체' },
@@ -93,20 +92,10 @@ export const BlogContentSection = () => {
         </div>
       </div>
 
-      <AnimatePresence mode="wait" initial={true}>
-        <m.div
-          key={`${currentMainTab}-${currentSubTab.key}-${filteredBlogList.length}`}
-          css={blogContainerCss}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          variants={staggerHalf}
-        >
-          {filteredBlogList.map(blog => (
-            <BlogPostThumbnail key={blog.title} {...blog} />
-          ))}
-        </m.div>
-      </AnimatePresence>
+      <BlogPaginationSection
+        key={`${currentMainTab}-${currentSubTab.key}-${filteredBlogList.length}`}
+        blogList={filteredBlogList}
+      />
     </section>
   );
 };
@@ -172,22 +161,5 @@ const subTabWrapperCss = css`
 
   ${mediaQuery('mobile')} {
     padding: 10px 0;
-  }
-`;
-
-const blogContainerCss = css`
-  width: 100%;
-  max-width: 960px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  justify-items: center;
-
-  ${mediaQuery('tablet')} {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  ${mediaQuery('mobile')} {
-    grid-template-columns: repeat(1, 1fr);
-    gap: 20px;
   }
 `;
