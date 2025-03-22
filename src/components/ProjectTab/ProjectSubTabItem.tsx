@@ -28,6 +28,8 @@ const tabCss = css`
 
   ${mediaQuery('mobile')} {
     ${theme.typosV2.pretendard.semibold15};
+    line-height: 150%;
+    padding: 6.5px 12px;
   }
 `;
 

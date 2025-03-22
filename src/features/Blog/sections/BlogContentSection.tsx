@@ -121,10 +121,10 @@ const sectionCss = css`
   gap: 24px;
 
   ${mediaQuery('tablet')} {
-    padding: 100px 48px;
+    padding: 80px 48px;
   }
   ${mediaQuery('mobile')} {
-    padding: 100px 20px;
+    padding: 80px 20px;
     gap: 20px;
   }
 `;
@@ -137,6 +137,10 @@ const tabContainerCss = css`
   max-width: 960px;
   margin: 0 auto;
   align-self: flex-start;
+
+  ${mediaQuery('mobile')} {
+    gap: 4px;
+  }
 `;
 
 const sharedTabWrapperCss = css`
@@ -155,11 +159,20 @@ const sharedTabWrapperCss = css`
   }
 `;
 
-const mainTabWrapperCss = sharedTabWrapperCss;
+const mainTabWrapperCss = css`
+  ${sharedTabWrapperCss};
+  ${mediaQuery('mobile')} {
+    gap: 4px;
+  }
+`;
 
 const subTabWrapperCss = css`
   ${sharedTabWrapperCss};
   gap: 4px;
+
+  ${mediaQuery('mobile')} {
+    padding: 10px 0;
+  }
 `;
 
 const blogContainerCss = css`
