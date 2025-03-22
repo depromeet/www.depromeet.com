@@ -200,6 +200,56 @@ export const DEEPER_BLOG_LIST: Array<Blog<DeeperBlogType>> = [
 
 export const OFFICIAL_BLOG_LIST: Array<Blog<OfficialBlogType>> = [
   {
+    title: '디프만의 꽃, UT! 1차와 2차 UT 비교 분석',
+    date: '25.03.09',
+    img: '/images/16th/blog/medium/16th_ut.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%94%94%ED%94%84%EB%A7%8C%EC%9D%98-%EA%BD%83-ut-1%EC%B0%A8%EC%99%80-2%EC%B0%A8-ut-%EB%B9%84%EA%B5%90-%EB%B6%84%EC%84%9D-dd98354f6610',
+    },
+    type: 'session',
+  },
+  {
+    title: '디프만의 첫 컨퍼런스, 디프콘',
+    date: '25.02.17',
+    img: '/images/16th/blog/medium/16th_deepcon.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%94%94%ED%94%84%EB%A7%8C%EC%9D%98-%EC%B2%AB-%EC%BB%A8%ED%8D%BC%EB%9F%B0%EC%8A%A4-%EB%94%94%ED%94%84%EC%BD%98-b32bd468a890',
+    },
+    type: 'session',
+  },
+  {
+    title: '딥다이브 여정의 시작, 디프만 16기 OT 후기',
+    date: '25.01.26',
+    img: '/images/16th/blog/medium/16th_ot.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%94%A5%EB%8B%A4%EC%9D%B4%EB%B8%8C-%EC%97%AC%EC%A0%95%EC%9D%98-%EC%8B%9C%EC%9E%91-%EB%94%94%ED%94%84%EB%A7%8C-16%EA%B8%B0-ot-%ED%9B%84%EA%B8%B0-7bb96e7dd9f5',
+    },
+    type: 'session',
+  },
+  {
+    title: '디프만 16기 디퍼 모집 이야기 (feat. 나인하이어)',
+    date: '25.01.23',
+    img: '/images/16th/blog/medium/16th_ninehire.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%94%94%ED%94%84%EB%A7%8C-16%EA%B8%B0-%EB%94%94%ED%8D%BC-%EB%AA%A8%EC%A7%91-%EC%9D%B4%EC%95%BC%EA%B8%B0-feat-%EB%82%98%EC%9D%B8%ED%95%98%EC%9D%B4%EC%96%B4-66fcd5da1a45',
+    },
+    type: 'etc',
+  },
+  {
+    title: '디프만 16기 브랜딩 이야기',
+    date: '25.01.15',
+    img: '/images/16th/blog/medium/16th_branding.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%94%94%ED%94%84%EB%A7%8C-16%EA%B8%B0-%EB%B8%8C%EB%9E%9C%EB%94%A9-%EC%9D%B4%EC%95%BC%EA%B8%B0-ce81add8856f',
+    },
+    type: 'etc',
+  },
+  {
     title: '[Interview] 문제의 본질을 찾아서: 야구장 시야 서비스, SPOT!',
     date: '24.12.20',
     img: '/images/16th/blog/medium/16th_spot.webp',
@@ -260,6 +310,16 @@ export const OFFICIAL_BLOG_LIST: Array<Blog<OfficialBlogType>> = [
     type: 'interview',
   },
   {
+    title: '‘몰입’을 그려낸 15기 디프만의 브랜딩 스토리',
+    date: '24.09.22',
+    img: '/images/16th/blog/medium/15th_branding.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%AA%B0%EC%9E%85%EC%9D%84-%EA%B7%B8%EB%A0%A4%EB%82%B8-15%EA%B8%B0-%EB%94%94%ED%94%84%EB%A7%8C%EC%9D%98-%EB%B8%8C%EB%9E%9C%EB%94%A9-%EC%8A%A4%ED%86%A0%EB%A6%AC-a6b58e5de058',
+    },
+    type: 'etc',
+  },
+  {
     title: '디프만 카페 지도를 소개합니다! (feat. 개발자, 디자이너를 위한 작업하기 좋은 카페 추천)',
     date: '24.09.01',
     img: '/images/16th/blog/medium/16th_cafe.svg',
@@ -278,6 +338,26 @@ export const OFFICIAL_BLOG_LIST: Array<Blog<OfficialBlogType>> = [
       href: 'https://depromeet.medium.com/%EC%9D%B8%ED%94%84%EC%BD%98-%EB%B6%80%EC%8A%A4-%EC%A4%80%EB%B9%84%EC%97%90-%EC%A7%84%EC%8B%AC%EC%9D%B8-%EB%8F%99%EC%95%84%EB%A6%AC%EA%B0%80-%EC%9E%88%EB%8B%A4-e4440097d9f9',
     },
     type: 'session',
+  },
+  {
+    title: '2024 애플 디자인 세션 후기',
+    date: '24.08.03',
+    img: '/images/16th/blog/medium/16th_placeholder.svg',
+    link: {
+      type: 'Medium',
+      href: 'https://medium.com/depromeet/2024-%EC%95%A0%ED%94%8C-%EB%94%94%EC%9E%90%EC%9D%B8-%EC%84%B8%EC%85%98-%ED%9B%84%EA%B8%B0-a8c7de8d7efe',
+    },
+    type: 'etc',
+  },
+  {
+    title: '디프만 15기 모집 비하인드 (feat. 나인하이어)',
+    date: '24.07.29',
+    img: '/images/16th/blog/medium/15th_ninehire.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://medium.com/depromeet/%EB%94%94%ED%94%84%EB%A7%8C-15%EA%B8%B0-%EB%AA%A8%EC%A7%91-%EB%B9%84%ED%95%98%EC%9D%B8%EB%93%9C-feat-%EB%82%98%EC%9D%B8%ED%95%98%EC%9D%B4%EC%96%B4-5dec8d21ea6a',
+    },
+    type: 'etc',
   },
   {
     title: '디프만 15기 아이디어 공유 세션',
@@ -340,6 +420,16 @@ export const OFFICIAL_BLOG_LIST: Array<Blog<OfficialBlogType>> = [
     type: 'interview',
   },
   {
+    title: '디프만 14기X인프런, 인프런 스터디를 통한 레벨업!',
+    date: '24.03.03',
+    img: '/images/16th/blog/medium/14th_inflearn.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://medium.com/depromeet/%EB%94%94%ED%94%84%EB%A7%8C-14%EA%B8%B0x%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%9D%B8%ED%94%84%EB%9F%B0-%EC%8A%A4%ED%84%B0%EB%94%94%EB%A5%BC-%ED%86%B5%ED%95%9C-%EB%A0%88%EB%B2%A8%EC%97%85-0e1614af8299',
+    },
+    type: 'etc',
+  },
+  {
     title: '디프만 14기 최종발표, 성공적인 마무리',
     date: '24.03.03',
     img: '/images/16th/blog/medium/16th_last.svg',
@@ -376,6 +466,16 @@ export const OFFICIAL_BLOG_LIST: Array<Blog<OfficialBlogType>> = [
     link: {
       type: 'Medium',
       href: 'https://depromeet.medium.com/%EB%94%94%ED%94%84%EB%A7%8C-14%EA%B8%B0-%ED%8C%80%EC%9B%90%EB%93%A4%EA%B3%BC-%EC%B9%9C%ED%95%B4%EC%A7%80%EB%8A%94-%EA%B2%8C%EB%8D%94%EB%A7%81-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%82%B9%EB%8D%B0%EC%9D%B4-7de218bff76f',
+    },
+    type: 'session',
+  },
+  {
+    title: '디프만 14기 여정의 시작!',
+    date: '23.11.10',
+    img: '/images/16th/blog/medium/14th_ot.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://medium.com/depromeet/%EB%94%94%ED%94%84%EB%A7%8C-14%EA%B8%B0-%EC%97%AC%EC%A0%95%EC%9D%98-%EC%8B%9C%EC%9E%91-c126e860c2bb',
     },
     type: 'session',
   },
