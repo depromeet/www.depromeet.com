@@ -5,8 +5,8 @@ export const defaultEasing = [0.6, -0.05, 0.01, 0.99];
 export const defaultFadeInVariants: Variants = {
   initial: {
     opacity: 0,
-    y: 40,
-    transition: { duration: 0.5, ease: defaultEasing },
+    y: 10,
+    transition: { duration: 0.2, ease: defaultEasing },
     willChange: 'opacity, transform',
   },
   animate: {
@@ -17,8 +17,8 @@ export const defaultFadeInVariants: Variants = {
   },
   exit: {
     opacity: 0,
-    y: 40,
-    transition: { duration: 0.5, ease: defaultEasing },
+    y: 10,
+    transition: { duration: 0.2, ease: defaultEasing },
     willChange: 'opacity, transform',
   },
 };
