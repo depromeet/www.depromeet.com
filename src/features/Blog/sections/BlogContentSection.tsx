@@ -5,7 +5,7 @@ import { AnimatePresence, m } from 'framer-motion';
 import { BlogPostThumbnail } from '~/components/Blog';
 import { ProjectSubTabItem } from '~/components/ProjectTab/ProjectSubTabItem';
 import { ProjectTabItem } from '~/components/ProjectTab/ProjectTabItem';
-import { DEEPER_BLOG_LIST, OFFICIAL_BLOG_LIST } from '~/constant/blog';
+import { AllBlog, DEEPER_BLOG_LIST, OFFICIAL_BLOG_LIST } from '~/constant/blog';
 import { staggerHalf } from '~/constant/motion';
 import { mediaQuery } from '~/styles/media';
 
@@ -65,7 +65,7 @@ export const BlogContentSection = () => {
   const filteredBlogList =
     currentSubTab.key === 'entire'
       ? blogList
-      : blogList.filter(({ type }) => type === currentSubTab.key);
+      : (blogList as AllBlog[]).filter(({ type }) => type === currentSubTab.key);
 
   return (
     <section css={sectionCss}>
@@ -93,7 +93,7 @@ export const BlogContentSection = () => {
         </div>
       </div>
 
-      <AnimatePresence mode="wait" initial={false}>
+      <AnimatePresence mode="wait" initial={true}>
         <m.div
           key={`${currentMainTab}-${currentSubTab.key}-${filteredBlogList.length}`}
           css={blogContainerCss}
