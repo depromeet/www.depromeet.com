@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 
+import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
 export function ProjectTabItem({
@@ -24,13 +25,24 @@ const tabCss = css`
 
   padding: 16px 20px;
   color: ${theme.colors.grey[300]};
+
+  ${mediaQuery('mobile')} {
+    padding: 12px;
+  }
 `;
 
 const activeTabCss = css`
   ${tabCss};
   color: ${theme.colors.grey[900]};
-  text-decoration: underline 2px;
+  text-decoration-line: underline;
+  text-decoration-thickness: 2px;
   text-underline-offset: 8px;
+
+  ${mediaQuery('mobile')} {
+    text-decoration-line: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 14px;
+  }
 `;
 
 const inActiveTabCss = css`
