@@ -312,6 +312,16 @@ export const DEEPER_BLOG_LIST: Array<Blog<DeeperBlogType>> = [
 
 export const OFFICIAL_BLOG_LIST: Array<Blog<OfficialBlogType>> = [
   {
+    title: '디프만 해커톤, 집중의 시간과 프로젝트 완성도 높이기',
+    date: '25.04.02',
+    img: '/images/16th/blog/medium/16th_hackathon.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%94%94%ED%94%84%EB%A7%8C-%ED%95%B4%EC%BB%A4%ED%86%A4-%EC%A7%91%EC%A4%91%EC%9D%98-%EC%8B%9C%EA%B0%84%EA%B3%BC-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%99%84%EC%84%B1%EB%8F%84-%EB%86%92%EC%9D%B4%EA%B8%B0-2db25aaa8c06',
+    },
+    type: 'session',
+  },
+  {
     title: '디프만의 꽃, UT! 1차와 2차 UT 비교 분석',
     date: '25.03.09',
     img: '/images/16th/blog/medium/16th_ut.webp',
