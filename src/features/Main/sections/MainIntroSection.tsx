@@ -5,6 +5,7 @@ import { css } from '@emotion/react';
 
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import useIsInProgress from '~/hooks/useIsInProgress';
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 import { getPathToRecruit } from '~/utils/utils';
@@ -17,7 +18,7 @@ export const MainIntroSection = () => {
   const [isClientReady, setIsClientReady] = useState<boolean>(false);
   const router = useRouter();
   const { progressState } = useIsInProgress();
-  const { label, action } = getPathToRecruit(router, progressState);
+  const { label, action, isDisabled } = getPathToRecruit(router, progressState);
 
   useEffect(() => {
     setIsClientReady(true);
@@ -42,7 +43,7 @@ export const MainIntroSection = () => {
             id={'title'}
             alt={'디프만 메인'}
           />
-          <button css={buttonCss} onClick={action}>
+          <button css={buttonCss} onClick={action} disabled={isDisabled}>
             {label}
           </button>
         </article>
@@ -102,6 +103,11 @@ const buttonCss = () => css`
   padding: 20px 40px;
   justify-content: center;
   align-items: center;
+
+  &:disabled {
+    background: ${colors.grey[300]};
+    color: ${colors.grey[500]};
+  }
 
   ${mediaQuery('mobile')} {
     ${theme.typosV2.pretendard.bold18}

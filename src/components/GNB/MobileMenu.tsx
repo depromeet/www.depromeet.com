@@ -5,6 +5,7 @@ import { m } from 'framer-motion';
 
 import { GNB_MOBILE_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import useIsInProgress from '~/hooks/useIsInProgress';
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 import { getPathToRecruit } from '~/utils/utils';
 
@@ -15,7 +16,7 @@ interface MobileMenuProps {
 export function MobileMenu({ onClickMenu }: MobileMenuProps) {
   const router = useRouter();
   const { progressState } = useIsInProgress();
-  const { label, action } = getPathToRecruit(router, progressState);
+  const { label, action, isDisabled } = getPathToRecruit(router, progressState);
 
   const getActiveLinkcss = (menu: GNBMenu) => {
     if (router.pathname.startsWith(menu.href)) {
@@ -41,12 +42,7 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
             exit={{ opacity: 0 }}
           >
             {menu.type === 'button' ? (
-              <button
-                disabled={progressState === 'FINISH'}
-                onClick={action}
-                css={linkCss}
-                suppressHydrationWarning
-              >
+              <button disabled={isDisabled} onClick={action} css={linkCss} suppressHydrationWarning>
                 {label}
               </button>
             ) : (
@@ -97,8 +93,8 @@ const linkCss = (theme: Theme) => css`
   }
 
   &:disabled {
-    color: ${theme.colors.gray200};
-    cursor: not-allowed;
+    background: ${colors.grey[300]};
+    color: ${colors.grey[500]};
   }
 `;
 
