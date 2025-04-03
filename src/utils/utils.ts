@@ -98,7 +98,7 @@ function adjustToUTC({
  * @param {import('next/router').NextRouter} router - Next.js의 `useRouter`를 통해 얻은 라우터 객체
  * @param {RecruitState} progressState - 현재 모집 상태. `IN_PROGRESS`, `FINISH`, 또는 기타 상태
  *
- * @returns {{ action: (() => void), label: string }}
+ * @returns {{ action: (() => void), label: string, isDisabled?: boolean }}
  */
 
 function getPathToRecruit(router: ReturnType<typeof useRouter>, progressState: RecruitState) {
@@ -114,7 +114,7 @@ function getPathToRecruit(router: ReturnType<typeof useRouter>, progressState: R
     };
   }
 
-  return { action: () => {}, label: '16기 모집 마감' };
+  return { action: () => {}, label: '16기 모집 마감', isDisabled: true };
 }
 
 export {

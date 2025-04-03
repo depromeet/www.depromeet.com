@@ -15,7 +15,7 @@ interface MobileMenuProps {
 export function MobileMenu({ onClickMenu }: MobileMenuProps) {
   const router = useRouter();
   const { progressState } = useIsInProgress();
-  const { label, action } = getPathToRecruit(router, progressState);
+  const { label, action, isDisabled } = getPathToRecruit(router, progressState);
 
   const getActiveLinkcss = (menu: GNBMenu) => {
     if (router.pathname.startsWith(menu.href)) {
@@ -41,12 +41,7 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
             exit={{ opacity: 0 }}
           >
             {menu.type === 'button' ? (
-              <button
-                disabled={progressState === 'FINISH'}
-                onClick={action}
-                css={linkCss}
-                suppressHydrationWarning
-              >
+              <button disabled={isDisabled} onClick={action} css={linkCss} suppressHydrationWarning>
                 {label}
               </button>
             ) : (

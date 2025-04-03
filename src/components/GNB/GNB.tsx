@@ -10,6 +10,7 @@ import { MobileMenuIcon } from '~/components/GNB/MobileMenuIcon';
 import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import { useDropDown } from '~/hooks/useDropdown';
 import useIsInProgress from '~/hooks/useIsInProgress';
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 import { getPathToRecruit } from '~/utils/utils';
 
@@ -18,15 +19,10 @@ const LOGO_IMAGE = `/images/16th/logo/depromeet.svg`;
 function ApplyButton() {
   const { progressState } = useIsInProgress();
   const router = useRouter();
-  const { label, action } = getPathToRecruit(router, progressState);
+  const { label, action, isDisabled } = getPathToRecruit(router, progressState);
 
   return (
-    <Button
-      css={linkButtonCss}
-      onClick={action}
-      disabled={progressState === 'FINISH'}
-      suppressHydrationWarning
-    >
+    <Button css={linkButtonCss} onClick={action} disabled={isDisabled} suppressHydrationWarning>
       {label}
     </Button>
   );
@@ -37,6 +33,11 @@ const linkButtonCss = css`
   padding: 8px 24px 8px 24px;
   border-radius: 300px;
   opacity: 0px;
+
+  &:disabled {
+    background: ${colors.grey[300]};
+    color: ${colors.grey[500]};
+  }
 `;
 
 export function GNB() {

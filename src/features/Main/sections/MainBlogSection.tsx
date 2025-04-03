@@ -3,7 +3,7 @@ import { AnimatePresence, m } from 'framer-motion';
 import Marquee from 'react-fast-marquee';
 
 import { BlogPostThumbnail } from '~/components/Blog/BlogPostThumbnail';
-import { BLOG_LIST } from '~/constant/blog';
+import { OFFICIAL_BLOG_LIST } from '~/constant/blog';
 import { staggerHalf } from '~/constant/motion';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
@@ -27,7 +27,7 @@ export const MainBlogSection = () => {
             exit="exit"
             variants={staggerHalf}
           >
-            {BLOG_LIST.map(blog => (
+            {OFFICIAL_BLOG_LIST.map(blog => (
               <BlogPostThumbnail
                 key={blog.title}
                 img={blog.img}
