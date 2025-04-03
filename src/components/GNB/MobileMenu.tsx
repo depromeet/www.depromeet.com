@@ -5,7 +5,6 @@ import { m } from 'framer-motion';
 
 import { GNB_MOBILE_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import useIsInProgress from '~/hooks/useIsInProgress';
-import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 import { getPathToRecruit } from '~/utils/utils';
 
@@ -93,8 +92,8 @@ const linkCss = (theme: Theme) => css`
   }
 
   &:disabled {
-    background: ${colors.grey[300]};
-    color: ${colors.grey[500]};
+    color: ${theme.colors.gray200};
+    cursor: not-allowed;
   }
 `;
 
