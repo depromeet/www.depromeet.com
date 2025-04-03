@@ -1,6 +1,6 @@
 import { SEO } from '~/components/SEO';
-import { BlogContentSection } from '~/features/Blog/BlogContentSection';
-import { BlogSubscribeSection } from '~/features/Blog/BlogSubscribeSection';
+import { BlogContentSection } from '~/features/Blog/sections/BlogContentSection';
+import { BlogSubscribeSection } from '~/features/Blog/sections/BlogSubscribeSection';
 import { IntroSection } from '~/features/Common/sections/IntroSection';
 
 export default function blog() {
