@@ -1,7 +1,7 @@
 import { Link } from '~/components/Thumbnail/Thumbnail';
 
 export interface BlogLink extends Omit<Link, 'type'> {
-  type: 'Medium' | 'Velog' | 'Tistory' | 'Brunch';
+  type: 'Medium' | 'Velog' | 'Tistory' | 'Brunch' | 'Blog';
 }
 export interface Blog<T> {
   title: string;
@@ -16,6 +16,177 @@ type DeeperBlogType = 'project' | 'review';
 export type AllBlog = Blog<OfficialBlogType | DeeperBlogType>;
 
 export const DEEPER_BLOG_LIST: Array<Blog<DeeperBlogType>> = [
+  {
+    title: 'FCM + 잠금화면 으로 제공하는 정확한 막차 알림!',
+    date: '25.04.18',
+    img: '/images/16th/blog/deeper/16th_project_13.png',
+    link: {
+      type: 'Tistory',
+      href: 'https://depromeet-atcha.tistory.com/7',
+    },
+    type: 'project',
+  },
+  {
+    title: '[SPURT] SPURT를 개발하면서 최적화하려고 했던 부분들',
+    date: '25.04.18',
+    img: '/images/16th/blog/deeper/16th_project_4.png',
+    link: {
+      type: 'Tistory',
+      href: 'https://andantej99.tistory.com/71',
+    },
+    type: 'project',
+  },
+  {
+    title: '남들이 하니까가 아닌 Compose & MVI, 이유 있는 선택',
+    date: '25.04.18',
+    img: '/images/16th/blog/deeper/16th_project_12.png',
+    link: {
+      type: 'Tistory',
+      href: 'https://depromeet-atcha.tistory.com/6',
+    },
+    type: 'project',
+  },
+  {
+    title: 'SparseArray를 활용하여 효율적인 디자인시스템을 구축해보자!',
+    date: '25.04.18',
+    img: '/images/16th/blog/deeper/16th_project_11.png',
+    link: {
+      type: 'Tistory',
+      href: 'https://depromeet-atcha.tistory.com/5',
+    },
+    type: 'project',
+  },
+  {
+    title: '근처에 있는 사용자 조회 기능: Redis Geospatial가 적합한 선택일까?',
+    date: '25.04.18',
+    img: '/images/16th/blog/deeper/16th_project_1.webp',
+    link: {
+      type: 'Tistory',
+      href: 'https://hoya324.tistory.com/entry/%EA%B7%BC%EC%B2%98%EC%97%90-%EC%9E%88%EB%8A%94-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A1%B0%ED%9A%8C-%EA%B8%B0%EB%8A%A5-Redis-Geospatial%EA%B0%80-%EC%A0%81%ED%95%A9%ED%95%9C-%EC%84%A0%ED%83%9D%EC%9D%BC%EA%B9%8C',
+    },
+    type: 'project',
+  },
+  {
+    title: '[DPM] 디프만 16기 ‘CRITIX’ FE 팀이 겪은 문제들, 이렇게 개선했습니다.',
+    date: '25.04.18',
+    img: '/images/16th/blog/deeper/16th_project_14.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://medium.com/@dpm1piece/dpm-%EB%94%94%ED%94%84%EB%A7%8C-16%EA%B8%B0-critix-fe-%ED%8C%80%EC%9D%B4-%EA%B2%AA%EC%9D%80-%EB%AC%B8%EC%A0%9C%EB%93%A4-%EC%9D%B4%EB%A0%87%EA%B2%8C-%EA%B0%9C%EC%84%A0%ED%96%88%EC%8A%B5%EB%8B%88%EB%8B%A4-59fdfd008ab2',
+    },
+    type: 'project',
+  },
+  {
+    title: '[DPM] 디자이너 포트폴리오 서비스 Critix 서버는 포폴 피드백을 어떻게 구현했을까?!',
+    date: '25.04.18',
+    img: '/images/16th/blog/deeper/16th_project_14.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://medium.com/@dpm1piece/dpm-%EB%94%94%EC%9E%90%EC%9D%B4%EB%84%88-%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4-%EC%84%9C%EB%B9%84%EC%8A%A4-critix%EB%8A%94-%ED%8F%AC%ED%8F%B4-%ED%94%BC%EB%93%9C%EB%B0%B1%EC%9D%84-%EC%96%B4%EB%96%BB%EA%B2%8C-%EA%B5%AC%ED%98%84%ED%96%88%EC%9D%84%EA%B9%8C-e0d981a7c96a',
+    },
+    type: 'project',
+  },
+  {
+    title: '쌩CSS에서 framer-motion으로 갈아타기',
+    date: '25.04.15',
+    img: '/images/16th/blog/deeper/16th_project_1.webp',
+    link: {
+      type: 'Blog',
+      href: 'https://0ju428-blog.vercel.app/depromeet-framer-motion',
+    },
+    type: 'project',
+  },
+  {
+    title: '분산 서버에서 푸시 알림 중복 전송 문제 해결기 3편',
+    date: '25.04.13',
+    img: '/images/16th/blog/deeper/16th_project_10.png',
+    link: {
+      type: 'Tistory',
+      href: 'https://depromeet-atcha.tistory.com/4',
+    },
+    type: 'project',
+  },
+  {
+    title:
+      '[ React Native | Nextjs | WebView | IOS ] 웹 프로젝트를 앱처럼! RN으로 감싼 Next.js, 앱스토어 출시기',
+    date: '25.04.13',
+    img: '/images/16th/blog/deeper/16th_project_4.png',
+    link: {
+      type: 'Tistory',
+      href: 'https://supersett-diary.tistory.com/304',
+    },
+    type: 'project',
+  },
+  {
+    title: '분산 서버에서 푸시 알림 중복 전송 문제 해결기 2편',
+    date: '25.04.12',
+    img: '/images/16th/blog/deeper/16th_project_9.png',
+    link: {
+      type: 'Tistory',
+      href: 'https://depromeet-atcha.tistory.com/3',
+    },
+    type: 'project',
+  },
+  {
+    title: '분산 서버에서 푸시 알림 중복 전송 문제 해결기 1편',
+    date: '25.04.12',
+    img: '/images/16th/blog/deeper/16th_project_8.png',
+    link: {
+      type: 'Tistory',
+      href: 'https://depromeet-atcha.tistory.com/2',
+    },
+    type: 'project',
+  },
+  {
+    title: '지하철 막차 시간 가져오기(feat. 공공데이터)',
+    date: '25.04.11',
+    img: '/images/16th/blog/deeper/16th_project_7.png',
+    link: {
+      type: 'Tistory',
+      href: 'https://depromeet-atcha.tistory.com/1',
+    },
+    type: 'project',
+  },
+  {
+    title: '[4팀 Server] KOK 서비스의 만남장소 추천 알고리즘을 알아보자.',
+    date: '25.04.10',
+    img: '/images/16th/blog/deeper/16th_project_6.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://medium.com/@lms990427/%EC%84%9C%EB%B2%84-kok-%EC%84%9C%EB%B9%84%EC%8A%A4%EC%9D%98-%EB%A7%8C%EB%82%A8%EC%9E%A5%EC%86%8C-%EC%B6%94%EC%B2%9C-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%84-%EC%95%8C%EC%95%84%EB%B3%B4%EC%9E%90-7c2333c81938',
+    },
+    type: 'project',
+  },
+  {
+    title: '[디프만 16기] 기술스택 선정 및 프로젝트 설계 과정',
+    date: '25.04.06',
+    img: '/images/16th/blog/deeper/16th_project_2.png',
+    link: {
+      type: 'Velog',
+      href: 'https://velog.io/@junlight94/%EB%94%94%ED%94%84%EB%A7%8C-16%EA%B8%B0-%EA%B8%B0%EC%88%A0%EC%8A%A4%ED%83%9D-%EC%84%A0%EC%A0%95-%EB%B0%8F-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%84%A4%EA%B3%84-%EA%B3%BC%EC%A0%95',
+    },
+    type: 'project',
+  },
+  {
+    title: 'iOS 앱에서 Apple 로그인과 탈퇴(OIDC + PKCE 기반) 완전 정복',
+    date: '25.04.04',
+    img: '/images/16th/blog/deeper/16th_project_3.png',
+    link: {
+      type: 'Velog',
+      href: 'https://velog.io/@ghrltjdtprbs/%EB%AA%A8%EB%B0%94%EC%9D%BC-%EC%95%B1-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-%EC%86%8C%EC%85%9C-%EB%A1%9C%EA%B7%B8%EC%9D%B8-%EA%B5%AC%ED%98%84-OIDC-PKCE',
+    },
+    type: 'project',
+  },
+  {
+    title: 'Pn룰 도입기',
+    date: '25.03.29',
+    img: '/images/16th/blog/deeper/16th_project_5.png',
+    link: {
+      type: 'Blog',
+      href: 'https://heojooon.vercel.app/develop/pn-rule',
+    },
+    type: 'project',
+  },
   {
     title: '디프만(DEPROMEET) 16기 아이디어 정하기',
     date: '25.02.05',
@@ -311,6 +482,16 @@ export const DEEPER_BLOG_LIST: Array<Blog<DeeperBlogType>> = [
 ];
 
 export const OFFICIAL_BLOG_LIST: Array<Blog<OfficialBlogType>> = [
+  {
+    title: '디프만 해커톤, 집중의 시간과 프로젝트 완성도 높이기',
+    date: '25.04.02',
+    img: '/images/16th/blog/medium/16th_hackathon.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%94%94%ED%94%84%EB%A7%8C-%ED%95%B4%EC%BB%A4%ED%86%A4-%EC%A7%91%EC%A4%91%EC%9D%98-%EC%8B%9C%EA%B0%84%EA%B3%BC-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%99%84%EC%84%B1%EB%8F%84-%EB%86%92%EC%9D%B4%EA%B8%B0-2db25aaa8c06',
+    },
+    type: 'session',
+  },
   {
     title: '디프만의 꽃, UT! 1차와 2차 UT 비교 분석',
     date: '25.03.09',
