@@ -7,32 +7,91 @@ export type Project = {
   links?: Link[];
 };
 
-export const TAB_LIST = ['전체', '15기', '14기', '13기', '12기', '11기', '~10기'];
+export const TAB_LIST = ['전체', '16기', '15기', '14기', '13기', '12기', '11기', '~10기'];
 export const PROJECT_LIST: Project[] = [
   {
-    title: '모링(moring)',
-    subTitle: '15기',
-    description: '모임으로 하나되는 우리 -<br/>릴레이 질문으로 채워나가는 나만의 자기소개',
+    title: '앗차',
+    subTitle: '16기',
+    description: '당신의 유일무이 막차 알림 서비스',
     links: [
       {
         type: 'Behance',
-        href: 'https://www.behance.net/gallery/206508371/(moring)-',
+        href: 'https://www.behance.net/gallery/223967221/_',
       },
-      { type: 'Github', href: 'https://github.com/depromeet/15th-team3-FE' },
-      { type: 'Web', href: 'https://www.moring.one/' },
+      { type: 'Github', href: 'https://github.com/depromeet/16th-team6-Android' },
+      {
+        type: 'Android',
+        href: 'https://play.google.com/store/apps/details?id=com.depromeet.team6&pcampaignid=web_share',
+      },
     ],
   },
   {
-    title: '왈왈(WALWAL)',
-    subTitle: '15기',
-    description: '반려동물과 함께 추억을 기록하고 공유하는<br/>새로운 펫 커뮤니티 서비스',
+    title: '클로그',
+    subTitle: '16기',
+    description: '영상으로 남기는 클라이밍 기록 서비스',
     links: [
       {
         type: 'Behance',
-        href: 'https://www.behance.net/gallery/207768545/WALWAL-%08PET-SERVICE',
+        href: 'https://www.behance.net/gallery/223899719/CLOG-Climbing-Record-Service',
       },
-      { type: 'Github', href: 'https://github.com/depromeet/WalWal-iOS' },
-      { type: 'iOS', href: 'https://apps.apple.com/kr/app/%EC%99%88%EC%99%88/id6553981069' },
+      { type: 'Github', href: 'https://github.com/depromeet/clog-server' },
+      {
+        type: 'iOS',
+        href: 'https://apps.apple.com/kr/app/%ED%81%B4%EB%A1%9C%EA%B7%B8/id6741767026',
+      },
+    ],
+  },
+  {
+    title: '콕(KOK)',
+    subTitle: '16기',
+    description: 'KOK ONE SPOT<br/>다함께 정하는 중간장소 선정 서비스',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/223954747/KoK-',
+      },
+      { type: 'Github', href: 'https://github.com/depromeet/kok-client' },
+      { type: 'Web', href: 'https://www.kokokok.com' },
+    ],
+  },
+  {
+    title: 'SPURT',
+    subTitle: '16기',
+    description: '미루는 당신을 위한 마지막 스퍼트!<br/>여유시간 확보와 작은행동으로 시작을 도와요',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/223901673/SPURT-',
+      },
+      { type: 'Github', href: 'https://github.com/depromeet/16th-team3-FE' },
+      { type: 'iOS', href: 'https://apps.apple.com/kr/app/spurt/id6743025568' },
+    ],
+  },
+  {
+    title: 'Took',
+    subTitle: '16기',
+    description: '첫 만남의 순간<br/>툭! 공유하는 디지털 명함 서비스',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/223947977/TOOK-',
+      },
+      { type: 'Github', href: 'https://github.com/depromeet/Took-FE' },
+      { type: 'Web', href: 'https://www.even-took.com' },
+    ],
+  },
+  {
+    title: 'Critix',
+    subTitle: '16기',
+    description:
+      '프로덕트 디자인 포트폴리오의 장단점부터 직무 적합도, 문장 흐름까지 꼼꼼히 짚어주는 AI 피드백 서비스',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/223971927/Critix-AI-',
+      },
+      { type: 'Github', href: 'https://github.com/depromeet/16th-team1-FE' },
+      { type: 'Web', href: 'https://critix.kr/' },
     ],
   },
   {
@@ -52,6 +111,20 @@ export const PROJECT_LIST: Project[] = [
     ],
   },
   {
+    title: '왈왈(WALWAL)',
+    subTitle: '15기',
+    description: '반려동물과 함께 추억을 기록하고 공유하는<br/>새로운 펫 커뮤니티 서비스',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/207768545/WALWAL-%08PET-SERVICE',
+      },
+      { type: 'Github', href: 'https://github.com/depromeet/WalWal-iOS' },
+      { type: 'iOS', href: 'https://apps.apple.com/kr/app/%EC%99%88%EC%99%88/id6553981069' },
+    ],
+  },
+
+  {
     title: 'BBOGAK 뽀각',
     subTitle: '15기',
     description: '취준 정보 정리를 돕는, 나의 취뽀 도우미 뽀각',
@@ -65,6 +138,19 @@ export const PROJECT_LIST: Project[] = [
         type: 'Web',
         href: 'https://www.bbogak.com/login',
       },
+    ],
+  },
+  {
+    title: '모링(moring)',
+    subTitle: '15기',
+    description: '모임으로 하나되는 우리 -<br/>릴레이 질문으로 채워나가는 나만의 자기소개',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/206508371/(moring)-',
+      },
+      { type: 'Github', href: 'https://github.com/depromeet/15th-team3-FE' },
+      { type: 'Web', href: 'https://www.moring.one/' },
     ],
   },
   {
