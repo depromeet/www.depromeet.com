@@ -7,6 +7,7 @@ import { domMax, LazyMotion } from 'framer-motion';
 import { FloatingActionButton } from '~/components/FAB';
 import { Footer } from '~/components/Footer';
 import { GNB } from '~/components/GNB';
+import RecruitNotificationModal from '~/components/RecruitNotificationModal';
 import { BASE_URL } from '~/constant/common';
 import { useRecordPageView } from '~/hooks/useRecordPageView';
 import GlobalStyle from '~/styles/globalStyle';
@@ -34,6 +35,7 @@ export default function App({ Component, pageProps }: AppProps & InitialProps) {
         <GlobalStyle />
         <Component {...pageProps} />
         <Footer />
+        <RecruitNotificationModal />
       </LazyMotion>
     </ThemeProvider>
   );
