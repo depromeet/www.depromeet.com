@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import type { Theme } from '@emotion/react';
 import { css } from '@emotion/react';
-// import { Theme } from '@emotion/react';
 import { m } from 'framer-motion';
 
 import { GNB_MOBILE_MENU_NAME, GNBMenu } from '~/constant/gnb';
