@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { css, Theme } from '@emotion/react';
+import { css } from '@emotion/react';
+// import { Theme } from '@emotion/react';
 import { m } from 'framer-motion';
 
 import { GNB_MOBILE_MENU_NAME, GNBMenu } from '~/constant/gnb';
@@ -15,7 +16,7 @@ interface MobileMenuProps {
 export function MobileMenu({ onClickMenu }: MobileMenuProps) {
   const router = useRouter();
   const { progressState } = useIsInProgress();
-  const { label, action, isDisabled } = getPathToRecruit(router, progressState);
+  const { _label, _action, _isDisabled } = getPathToRecruit(router, progressState);
 
   const getActiveLinkcss = (menu: GNBMenu) => {
     if (router.pathname.startsWith(menu.href)) {
@@ -41,8 +42,12 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
             exit={{ opacity: 0 }}
           >
             {menu.type === 'button' ? (
-              <button disabled={isDisabled} onClick={action} css={linkCss} suppressHydrationWarning>
-                {label}
+              <button
+                onClick={() => (menu.isNewTab ? window.open(menu.href) : router.push(menu.href))}
+                css={linkCss}
+                suppressHydrationWarning
+              >
+                {menu.name}
               </button>
             ) : (
               <Link
@@ -60,7 +65,7 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
   );
 }
 
-const mobileMenuCss = (theme: Theme) => css`
+const mobileMenuCss = (_theme: Theme) => css`
   z-index: 9997;
   width: 100vw;
   position: fixed;
@@ -69,7 +74,6 @@ const mobileMenuCss = (theme: Theme) => css`
   margin: auto;
   background-color: black;
   padding-top: 72px;
-  border-bottom: 1px solid ${theme.colors.lightGray};
 
   overflow: hidden;
 
