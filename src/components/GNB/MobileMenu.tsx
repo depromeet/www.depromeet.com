@@ -16,7 +16,11 @@ interface MobileMenuProps {
 export function MobileMenu({ onClickMenu }: MobileMenuProps) {
   const router = useRouter();
   const { progressState } = useIsInProgress();
-  const { _label, _action, _isDisabled } = getPathToRecruit(router, progressState);
+  const {
+    label: _label,
+    action: _action,
+    isDisabled: _isDisabled,
+  } = getPathToRecruit(router, progressState);
 
   const getActiveLinkcss = (menu: GNBMenu) => {
     if (router.pathname.startsWith(menu.href)) {
