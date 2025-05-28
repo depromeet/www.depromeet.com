@@ -38,12 +38,6 @@ export const GNB_MENU_NAME: GNBMenu[] = [
     href: '/blog',
     type: 'text',
   },
-  {
-    name: '17기 모집 알림 신청',
-    href: 'https://forms.gle/Fn1i6zoipWXb3G5Q8',
-    type: 'button',
-    isNewTab: true,
-  },
 ];
 
 export const GNB_MOBILE_MENU_NAME: GNBMenu[] = [
