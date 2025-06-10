@@ -360,3 +360,187 @@ export const typosV2 = {
     `,
   },
 };
+
+// NOTE : 17th
+export const typosV3 = {
+  Abel: {
+    body1Regular: css`
+      font-family: Abel;
+      font-size: ${pxToRem(18)};
+      font-weight: 400;
+      line-height: 160%;
+      letter-spacing: ${pxToRem(-0.18)};
+    `,
+    body3Regular: css`
+      font-family: Abel;
+      font-size: ${pxToRem(16)};
+      font-weight: 400;
+      line-height: 170%;
+      letter-spacing: ${pxToRem(-0.16)};
+    `,
+  },
+  DMMono: {
+    body2: css`
+      font-family: DMMono;
+      font-size: ${pxToRem(17)};
+      font-weight: 400;
+      line-height: 170%;
+      letter-spacing: ${pxToRem(-0.17)};
+    `,
+  },
+  MartianMono: {
+    head3: css`
+      font-family: MartianMono;
+      font-size: ${pxToRem(26)};
+      font-weight: bold;
+      line-height: 125%;
+      letter-spacing: -5%;
+    `,
+  },
+  pretendard: {
+    /* Headline */
+    head1: css`
+      font-size: ${pxToRem(36)};
+      font-weight: bold;
+      line-height: 140%;
+      letter-spacing: 1%;
+    `,
+    head2: css`
+      font-size: ${pxToRem(32)};
+      font-weight: bold;
+      line-height: 140%;
+      letter-spacing: 1%;
+    `,
+
+    head4: css`
+      font-size: ${pxToRem(26)};
+      font-weight: bold;/
+      line-height: 140%;
+      letter-spacing: 1%;
+    `,
+    head5: css`
+      font-size: ${pxToRem(24)};
+      font-weight: bold;
+      line-height: 140%;
+      letter-spacing: 1%;
+    `,
+    head6: css`
+      font-size: ${pxToRem(22)};
+      font-weight: bold;
+      line-height: 140%;
+      letter-spacing: 1%;
+    `,
+    head7: css`
+      font-size: ${pxToRem(20)};
+      font-weight: bold;
+      line-height: 140%;
+      letter-spacing: 1%;
+    `,
+    /* Subtitle */
+    sub1Semibold: css`
+      font-size: ${pxToRem(20)};
+      font-weight: 600;
+      line-height: 140%;
+      letter-spacing: 0;
+    `,
+    sub1Medium: css`
+      font-size: ${pxToRem(20)};
+      font-weight: 500;
+      line-height: 140%;
+      letter-spacing: 0;
+    `,
+    sub2Bold: css`
+      font-size: ${pxToRem(18)};
+      font-weight: bold;
+      line-height: 140%;
+      letter-spacing: 0;
+    `,
+    sub2Semibold: css`
+      font-size: ${pxToRem(18)};
+      font-weight: 600;
+      line-height: 140%;
+      letter-spacing: 0;
+    `,
+    sub3Bold: css`
+      font-size: ${pxToRem(16)};
+      font-weight: bold;
+      line-height: 140%;
+      letter-spacing: 0;
+    `,
+    sub3Semibold: css`
+      font-size: ${pxToRem(16)};
+      font-weight: 600;
+      line-height: 140%;
+      letter-spacing: 0;
+    `,
+    sub4Semibold: css`
+      font-size: ${pxToRem(15)};
+      font-weight: 600;
+      line-height: 140%;
+      letter-spacing: 0;
+    `,
+    sub5Semibold: css`
+      font-size: ${pxToRem(14)};
+      font-weight: 600;
+      line-height: 140%;
+      letter-spacing: 0;
+    `,
+    sub5Medium: css`
+      font-size: ${pxToRem(14)};
+      font-weight: 500;
+      line-height: 140%;
+      letter-spacing: 0;
+    `,
+    /* Body */
+    body1Medium: css`
+      font-size: ${pxToRem(18)};
+      font-weight: 500;
+      line-height: 160%;
+      letter-spacing: ${pxToRem(-0.18)};
+    `,
+    body3Medium: css`
+      font-size: ${pxToRem(16)};
+      font-weight: 500;
+      line-height: 170%;
+      letter-spacing: ${pxToRem(-0.16)};
+    `,
+
+    body4Regular: css`
+      font-size: ${pxToRem(14)};
+      font-weight: 400;
+      line-height: 160%;
+      letter-spacing: ${pxToRem(-0.14)};
+    `,
+    body5Medium: css`
+      font-size: ${pxToRem(13)};
+      font-weight: 500;
+      line-height: 150%;
+      letter-spacing: ${pxToRem(-0.13)};
+    `,
+    body6Medium: css`
+      font-size: ${pxToRem(12)};
+      font-weight: 500;
+      line-height: 150%;
+      letter-spacing: ${pxToRem(-0.12)};
+    `,
+    body7Medium: css`
+      font-size: ${pxToRem(9)};
+      font-weight: 500;
+      line-height: 150%;
+      letter-spacing: ${pxToRem(-0.18)};
+    `,
+    /* Caption */
+    caption1Semibold: css`
+      font-size: ${pxToRem(14)};
+      font-weight: 600;
+      line-height: 150%;
+      letter-spacing: 0;
+    `,
+    caption1Medium: css`
+      font-size: ${pxToRem(14)};
+      font-weight: 500;
+      line-height: 150%;
+      letter-spacing: 0;
+    `,
+  },
+};

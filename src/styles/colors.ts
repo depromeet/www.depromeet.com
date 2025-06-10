@@ -27,19 +27,19 @@ export const colors = {
   sky: '#48A4FF',
 
   // NOTE: 16th
-  grey: {
-    '00': '#FFFFFF',
-    '100': '#F4F4F5',
-    '300': '#999999',
-    '500': '#323232',
-    '600': '#232323',
-    '900': '#000000',
-  },
+  // grey: {
+  //   '00': '#FFFFFF',
+  //   '100': '#F4F4F5',
+  //   '300': '#999999',
+  //   '500': '#323232',
+  //   '600': '#232323',
+  //   '900': '#000000',
+  // },
 
-  primary: {
-    pink: '#FF90FF',
-    blue: '#006AFE',
-  },
+  // primary: {
+  //   pink: '#FF90FF',
+  //   blue: '#006AFE',
+  // },
 
   sub: {
     sky: '#48A4FF',
@@ -48,5 +48,25 @@ export const colors = {
     purple: '#877BFF',
     yellow: '#FFEC87',
     lightMint: '#A0EEE9',
+  },
+
+  // NOTE : 17th
+  grey: {
+    '00': '#FFFFFF',
+    '100': '#E3E3E6',
+    '200': '#D5D5D9',
+    '300': '#C7C7CE',
+    '400': '#ADADB7',
+    '500': '#9595A1',
+    '600': '#777783',
+    '700': '#50505A',
+    '800': '#32323C',
+    '900': '#14141C',
+  },
+  primary: {
+    darknavy: '#040C23',
+    pink: '#FF90FF',
+    blue: '#478AF4',
+    grey: '#E3E5EA',
   },
 } as const;
