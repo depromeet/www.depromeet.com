@@ -52,7 +52,7 @@ export const colors = {
 
   // NOTE : 17th
   grey: {
-    white: '#FFFFFF',
+    '00': '#FFFFFF',
     '100': '#E3E3E6',
     '200': '#D5D5D9',
     '300': '#C7C7CE',
@@ -65,6 +65,7 @@ export const colors = {
   },
   primary: {
     darknavy: '#040C23',
+    pink: '#FF90FF',
     blue: '#478AF4',
     grey: '#E3E5EA',
   },
