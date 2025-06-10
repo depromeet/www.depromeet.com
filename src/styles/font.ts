@@ -38,4 +38,22 @@ export const fontFace = css`
     font-weight: 700;
     src: local(''), url('/fonts/Bebas-Regular.ttf') format('truetype');
   }
+
+  @font-face {
+    font-family: 'MartianMono';
+    font-style: normal;
+    font-weight: 700;
+    src: local(''), url('/fonts/MartianMono-Medium.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'Abel';
+    font-style: normal;
+    src: local(''), url('/fonts/Abel-Regular.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'DMMono';
+    font-style: normal;
+    font-weight: 700;
+    src: local(''), url('/fonts/DMMono-Regular.ttf') format('truetype');
+  }
 `;
