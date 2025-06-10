@@ -361,6 +361,7 @@ export const typosV2 = {
   },
 };
 
+// NOTE : 17th
 export const typosV3 = {
   Abel: {
     body1Regular: css`
