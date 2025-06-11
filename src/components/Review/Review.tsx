@@ -3,6 +3,7 @@ import Marquee from 'react-fast-marquee';
 
 import { ReviewItem } from '~/components/Review/ReviewItem';
 import { REVIEWS } from '~/constant/review';
+import { sectionBg } from '~/styles/background';
 
 export function Review() {
   return (
@@ -24,7 +25,7 @@ const layoutCss = (theme: Theme) => css`
   gap: 52px;
   align-items: center;
   overflow: hidden;
-  background-color: white;
+  ${sectionBg};
 
   h1 {
     ${theme.typosV2.pretendard.bold32}

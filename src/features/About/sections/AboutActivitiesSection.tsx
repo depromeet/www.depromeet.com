@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 
 import { ACTIVITIES, REGULARS_SESSIONS } from '~/constant/offline';
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
+import { sectionBg } from '~/styles/background';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
@@ -48,8 +49,8 @@ export const AboutActivitiesSection = () => {
 const containerCss = css`
   display: flex;
   flex-direction: column;
-  background-color: ${theme.colors.white};
   padding-bottom: 40px;
+  ${sectionBg};
 `;
 
 const wrapperCss = css`

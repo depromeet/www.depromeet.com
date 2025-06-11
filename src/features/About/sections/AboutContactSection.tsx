@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { css, Theme } from '@emotion/react';
 
 import { CONTACT_INFO } from '~/constant/contactInfo';
+import { sectionBg } from '~/styles/background';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
@@ -26,7 +27,7 @@ export const AboutContactSection = () => {
 
 const layoutCss = css`
   padding: 120px 0;
-  background-color: ${theme.colors.grey[100]};
+  ${sectionBg};
 
   display: flex;
   flex-direction: column;

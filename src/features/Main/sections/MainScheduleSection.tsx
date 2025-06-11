@@ -5,6 +5,7 @@ import {
   LANDING_SECOND_SECTION_SCHEDULE,
 } from '~/constant/schedule';
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
+import { sectionBg } from '~/styles/background';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
@@ -39,8 +40,9 @@ const containerCss = css`
   align-items: center;
   width: 100%;
   padding: 120px 62px 140px 62px;
-  background: white;
   overflow: hidden;
+
+  ${sectionBg};
 
   ${mediaQuery('mobile')} {
     padding: 80px 0 78px 0;

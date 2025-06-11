@@ -1,8 +1,9 @@
 import Link from 'next/link';
-import { css, Theme } from '@emotion/react';
+import { css } from '@emotion/react';
 
 import { Icon } from '~/components/Icon/Icon';
 import { Result } from '~/components/Result';
+import { sectionBg } from '~/styles/background';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
@@ -24,14 +25,15 @@ export const MainResultSection = () => {
   );
 };
 
-const layoutCss = (theme: Theme) => css`
+const layoutCss = css`
   padding: 140px 0;
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 90px;
   align-items: center;
-  background-color: ${theme.colors.white};
+
+  ${sectionBg};
 `;
 
 const resultWrapper = css`

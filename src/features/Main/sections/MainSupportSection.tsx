@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 
 import { Supports } from '~/components/Supports';
-import { theme } from '~/styles/theme';
+import { sectionBg } from '~/styles/background';
 
 /**
  * * Main 페이지 후원사 section
@@ -20,5 +20,5 @@ const layoutCss = css`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  background-color: ${theme.colors.black};
+  ${sectionBg};
 `;

@@ -3,6 +3,7 @@ import { css } from '@emotion/react';
 
 import { SUPPORTS } from '~/constant/supports';
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
+import { sectionBg } from '~/styles/background';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
@@ -35,7 +36,7 @@ const layoutCss = css`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  background-color: ${theme.colors.black};
+  ${sectionBg};
 `;
 
 const introCss = {

@@ -9,6 +9,7 @@ import { Link } from '~/components/Thumbnail/Thumbnail';
 import { staggerHalf } from '~/constant/motion';
 import { PROJECT_LIST } from '~/constant/project';
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
+import { sectionBg } from '~/styles/background';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 import { sliceByPage } from '~/utils/pagination';
@@ -81,7 +82,8 @@ const sectionCss = (isMaxCurrentPage?: boolean) => css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: black;
+  ${sectionBg};
+
   padding: 140px 0;
   gap: 68px;
 

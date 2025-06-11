@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 
 import { REASONS } from '~/constant/reason';
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
+import { sectionBg } from '~/styles/background';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
@@ -39,6 +40,8 @@ const containerCss = css`
   align-items: center;
   gap: 118px;
   padding: 140px 0;
+
+  ${sectionBg};
 
   ${mediaQuery('tablet')} {
     gap: 32px;

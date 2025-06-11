@@ -11,6 +11,7 @@ import { staggerHalf } from '~/constant/motion';
 import { PROJECT_LIST } from '~/constant/project';
 import { IntroSection } from '~/features/Common/sections/IntroSection';
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
+import { sectionGridBg } from '~/styles/background';
 import { mediaQuery } from '~/styles/media';
 import {
   getCurrentProjects,
@@ -110,6 +111,7 @@ const sectionCss = css`
   align-items: center;
   background-color: white;
   padding: 80px 0;
+  ${sectionGridBg};
 
   ${mediaQuery('tablet')} {
     padding: 80px 32px;

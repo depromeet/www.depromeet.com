@@ -4,6 +4,7 @@ import { css } from '@emotion/react';
 
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import useIsInProgress from '~/hooks/useIsInProgress';
+import { sectionBg } from '~/styles/background';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
@@ -47,7 +48,8 @@ const containerCss = css`
   flex-direction: column;
   align-items: center;
   padding: 100px 0 414px 0;
-  background: black;
+  ${sectionBg};
+
   overflow: hidden;
 
   ${mediaQuery('mobile')} {

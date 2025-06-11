@@ -67,6 +67,6 @@ export const colors = {
     darknavy: '#040C23',
     pink: '#FF90FF',
     blue: '#478AF4',
-    grey: '#E3E5EA',
+    gray: '#E3E5EA',
   },
 } as const;

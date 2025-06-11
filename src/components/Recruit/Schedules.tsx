@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 
 import { MEMBER_SCHEDULE, SESSION_SCHEDULES } from '~/constant/schedule';
+import { sectionBg } from '~/styles/background';
 
 import { ScheduleTable } from './ScheduleTable';
 
@@ -18,5 +19,5 @@ const containerCss = css`
   display: flex;
   flex-direction: column;
   gap: 56px;
-  background-color: white;
+  ${sectionBg};
 `;
