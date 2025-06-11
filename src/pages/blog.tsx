@@ -1,6 +1,5 @@
 import { SEO } from '~/components/SEO';
 import { BlogContentSection } from '~/features/Blog/sections/BlogContentSection';
-import { BlogSubscribeSection } from '~/features/Blog/sections/BlogSubscribeSection';
 import { IntroSection } from '~/features/Common/sections/IntroSection';
 
 export default function blog() {
@@ -13,7 +12,7 @@ export default function blog() {
           mobileImgUrl="/images/16th/blog/blog_m.svg"
         />
         <BlogContentSection />
-        <BlogSubscribeSection />
+        {/* <BlogSubscribeSection /> */}
       </main>
     </>
   );

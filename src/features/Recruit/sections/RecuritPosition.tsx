@@ -5,6 +5,7 @@ import { MobilePositionItem } from '~/components/Positions/MobilePositionItem';
 import { PositionsItem } from '~/components/Positions/PositionsItem';
 import { POSITIONS } from '~/constant/position';
 import useIsInProgress from '~/hooks/useIsInProgress';
+import { sectionGridBg } from '~/styles/background';
 import { mediaQuery } from '~/styles/media';
 
 export const RecuritPosition = () => {
@@ -64,7 +65,7 @@ const layoutCss = css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: black;
+  ${sectionGridBg};
 `;
 
 const containerCss = css`

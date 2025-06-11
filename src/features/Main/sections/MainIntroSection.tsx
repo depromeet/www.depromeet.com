@@ -5,6 +5,7 @@ import { css } from '@emotion/react';
 
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import useIsInProgress from '~/hooks/useIsInProgress';
+import { sectionGridBg } from '~/styles/background';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
@@ -57,6 +58,7 @@ const containerCss = () => css`
   height: 100dvh;
   padding-top: 61px;
 
+  ${sectionGridBg};
   display: flex;
   align-items: flex-start;
   justify-content: center;

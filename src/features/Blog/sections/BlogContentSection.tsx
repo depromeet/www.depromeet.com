@@ -4,6 +4,7 @@ import { css } from '@emotion/react';
 import { ProjectSubTabItem } from '~/components/ProjectTab/ProjectSubTabItem';
 import { ProjectTabItem } from '~/components/ProjectTab/ProjectTabItem';
 import { AllBlog, DEEPER_BLOG_LIST, OFFICIAL_BLOG_LIST } from '~/constant/blog';
+import { sectionGridBg } from '~/styles/background';
 import { mediaQuery } from '~/styles/media';
 
 import { BlogPaginationSection } from './BlogPaginationSection';
@@ -105,7 +106,7 @@ const sectionCss = css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
+  ${sectionGridBg};
   padding: 80px 0;
   gap: 24px;
 

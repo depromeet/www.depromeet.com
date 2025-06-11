@@ -3,6 +3,7 @@ import { css, Theme } from '@emotion/react';
 
 import { FAQList } from '~/components/FAQ/FAQList';
 import { FAQ_GROUP, FAQGroupType, FAQS } from '~/constant/faq';
+import { sectionBg } from '~/styles/background';
 import { mediaQuery } from '~/styles/media';
 
 export function FAQ() {
@@ -56,7 +57,7 @@ const layoutCss = (theme: Theme) => css`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: ${theme.colors.lightGray};
+  ${sectionBg};
 
   h1 {
     ${theme.typosV2.pretendard.bold32}

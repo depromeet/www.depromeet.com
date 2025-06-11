@@ -1,7 +1,8 @@
-import { css, Theme } from '@emotion/react';
+import { css } from '@emotion/react';
 
 import { QualificationItem } from '~/components/Qualification/QualificationItem';
 import { QUALIFICATIONS } from '~/constant/qualification';
+import { sectionBg } from '~/styles/background';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
@@ -18,13 +19,13 @@ export function Qualification() {
   );
 }
 
-const layoutCss = (theme: Theme) => css`
+const layoutCss = () => css`
   padding: 120px 0;
   display: flex;
   flex-direction: column;
   gap: 36px;
   align-items: center;
-  background-color: ${theme.colors.lightGray};
+  ${sectionBg};
 `;
 
 const titleCss = css`

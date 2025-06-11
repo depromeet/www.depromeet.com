@@ -5,6 +5,7 @@ import Marquee from 'react-fast-marquee';
 import { BlogPostThumbnail } from '~/components/Blog/BlogPostThumbnail';
 import { OFFICIAL_BLOG_LIST } from '~/constant/blog';
 import { staggerHalf } from '~/constant/motion';
+import { sectionBg } from '~/styles/background';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
@@ -55,6 +56,8 @@ const containerCss = css`
   padding: 120px 0 140px 0;
   background: white;
   overflow: hidden;
+
+  ${sectionBg};
 
   ${mediaQuery('mobile')} {
     padding: 80px 0 80px 0;
