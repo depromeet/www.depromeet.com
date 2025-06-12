@@ -12,11 +12,17 @@ export const MainBrandingSection = () => {
     <section css={layoutCss}>
       <div css={headerWrapper}>
         <div css={titleWrapper}>
-          <h1 css={titleCss}>{`Define\nyour direction`}</h1>
+          <div css={titleCss}>
+            <h1>{`Define\nyour direction`}</h1>
+            {[...Array(4)].map((_, i) => (
+              <div id="circle" key={i}></div>
+            ))}
+          </div>
         </div>
         <p css={sentenceCss}>두려움을 용기로, 상상을 도전으로</p>
-        <div css={imagesWrapperCss}>
-          {/* <Image
+      </div>
+      <div css={imagesWrapperCss}>
+        {/* <Image
             src={'/images/17th/3d-icon/web-icon.png'}
             alt={'web-icon'}
             width={300}
@@ -34,7 +40,6 @@ export const MainBrandingSection = () => {
             width={300}
             height={300}
           /> */}
-        </div>
       </div>
     </section>
   );
@@ -78,6 +83,7 @@ const titleCss = css`
   letter-spacing: -5px;
   line-height: 109%;
   text-align: start;
+  position: relative;
 
   white-space: pre;
 
@@ -92,6 +98,36 @@ const titleCss = css`
   ${mediaQuery('mobile')} {
     ${theme.typosV2.pretendard.bold28};
     line-height: 109%;
+  }
+
+  #circle {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1.09px solid rgba(71, 138, 244, 0.3);
+    z-index: 100;
+  }
+
+  #circle:nth-of-type(1) {
+    top: -0.5px;
+    left: -2.5px;
+    transform: translate(-50%, -50%);
+  }
+  #circle:nth-of-type(2) {
+    top: -0.5px;
+    right: -47.5px;
+    transform: translate(-50%, -50%);
+  }
+  #circle:nth-of-type(3) {
+    bottom: -15.5px;
+    left: -2.5px;
+    transform: translate(-50%, -50%);
+  }
+  #circle:nth-of-type(4) {
+    bottom: -15.5px;
+    right: -47.5px;
+    transform: translate(-50%, -50%);
   }
 `;
 
