@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
+import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { sectionBg } from '~/styles/background';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
@@ -10,10 +11,10 @@ import { pxToRem } from '~/styles/style.utils';
 import { theme } from '~/styles/theme';
 
 export const MainBrandingSection = () => {
-  const ref = useRef<HTMLDivElement>(null);
+  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
 
   return (
-    <section css={layoutCss} ref={ref}>
+    <section css={layoutCss}>
       <div css={headerWrapper}>
         <div css={titleWrapper}>
           <div css={titleCss}>
@@ -44,20 +45,20 @@ export const MainBrandingSection = () => {
         <Image
           src={'/images/17th/3d-icon/web-icon.png'}
           alt={'web-icon'}
-          width={300}
-          height={300}
+          width={!isMobileSize ? 300 : 200}
+          height={!isMobileSize ? 300 : 200}
         />
         <Image
           src={'/images/17th/3d-icon/Android-icon.png'}
           alt={'android-icon'}
-          width={300}
-          height={300}
+          width={!isMobileSize ? 300 : 200}
+          height={!isMobileSize ? 300 : 200}
         />
         <Image
           src={'/images/17th/3d-icon/server-icon.png'}
           alt={'server-icon'}
-          width={300}
-          height={300}
+          width={!isMobileSize ? 300 : 200}
+          height={!isMobileSize ? 300 : 200}
         />
       </div>
     </section>
@@ -67,10 +68,12 @@ export const MainBrandingSection = () => {
 const layoutCss = css`
   padding-top: 79px;
   width: 100%;
+  height: auto;
   display: flex;
   flex-direction: column;
-  gap: 90px;
+  overflow: hidden;
 
+  gap: 90px;
   ${sectionBg};
 `;
 
@@ -113,8 +116,9 @@ const titleCss = css`
   padding: 7px 54px 16px 7px;
 
   ${mediaQuery('mobile')} {
-    ${theme.typosV2.pretendard.bold28};
-    line-height: 109%;
+    font-size: ${pxToRem(36)};
+    letter-spacing: -3px;
+    padding: 7px 0px 12px 7px;
   }
 
   #circle {
@@ -128,23 +132,30 @@ const titleCss = css`
 
   #circle:nth-of-type(1) {
     top: -0.5px;
-    left: -2.5px;
+    left: -1.5px;
     transform: translate(-50%, -50%);
   }
   #circle:nth-of-type(2) {
     top: -0.5px;
-    right: -47.5px;
+    right: -48.5px;
     transform: translate(-50%, -50%);
+    ${mediaQuery('mobile')} {
+      right: -52.5px;
+    }
   }
   #circle:nth-of-type(3) {
     bottom: -15.5px;
-    left: -2.5px;
+    left: -1.5px;
     transform: translate(-50%, -50%);
   }
   #circle:nth-of-type(4) {
     bottom: -15.5px;
-    right: -47.5px;
+    right: -48.5px;
     transform: translate(-50%, -50%);
+
+    ${mediaQuery('mobile')} {
+      right: -52.5px;
+    }
   }
 `;
 
@@ -156,29 +167,49 @@ const sentenceCss = css`
   text-align: start;
 
   padding-left: 39px;
+
+  ${mediaQuery('mobile')} {
+    ${theme.typosV3.pretendard.body1Medium};
+  }
 `;
 
 const imagesWrapperCss = css`
   position: relative;
-  align-self: flex-start;
+  align-self: flex-end;
+
   width: 100%;
   height: 300px;
+
   z-index: 100;
+
   & > :first-child {
     position: absolute;
     right: 400px;
     top: -65%;
+
+    ${mediaQuery('mobile')} {
+      right: 150px;
+      top: -35%;
+    }
   }
   & > :nth-child(2) {
     position: absolute;
     right: 275px;
     top: 0;
-    transform: rotate(-49.87deg);
+    transform: rotate(-10.87deg);
+    ${mediaQuery('mobile')} {
+      right: 100px;
+      top: 15%;
+    }
   }
   & > :last-child {
     position: absolute;
     right: 100px;
     top: -40%;
-    transform: rotate(24.39deg);
+    transform: translate(0%) rotate(34.39deg);
+    ${mediaQuery('mobile')} {
+      right: 0px;
+      top: -15%;
+    }
   }
 `;
