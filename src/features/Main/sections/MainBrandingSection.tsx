@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { css } from '@emotion/react';
 
 import { sectionBg } from '~/styles/background';
@@ -22,24 +23,24 @@ export const MainBrandingSection = () => {
         <p css={sentenceCss}>두려움을 용기로, 상상을 도전으로</p>
       </div>
       <div css={imagesWrapperCss}>
-        {/* <Image
-            src={'/images/17th/3d-icon/web-icon.png'}
-            alt={'web-icon'}
-            width={300}
-            height={300}
-          />
-          <Image
-            src={'/images/17th/3d-icon/Android-icon.png'}
-            alt={'android-icon'}
-            width={300}
-            height={300}
-          />
-          <Image
-            src={'/images/17th/3d-icon/server-icon.png'}
-            alt={'server-icon'}
-            width={300}
-            height={300}
-          /> */}
+        <Image
+          src={'/images/17th/3d-icon/web-icon.png'}
+          alt={'web-icon'}
+          width={300}
+          height={300}
+        />
+        <Image
+          src={'/images/17th/3d-icon/Android-icon.png'}
+          alt={'android-icon'}
+          width={300}
+          height={300}
+        />
+        <Image
+          src={'/images/17th/3d-icon/server-icon.png'}
+          alt={'server-icon'}
+          width={300}
+          height={300}
+        />
       </div>
     </section>
   );
@@ -143,24 +144,25 @@ const sentenceCss = css`
 
 const imagesWrapperCss = css`
   position: relative;
+  align-self: flex-start;
   width: 100%;
-  height: 350px;
+  height: 300px;
   z-index: 100;
-
   & > :first-child {
     position: absolute;
-    left: 35%;
-    top: -30%;
+    right: 400px;
+    top: -65%;
   }
   & > :nth-child(2) {
     position: absolute;
-    left: 60%;
-    top: 10%;
-    transform: translateX(-50%);
+    right: 275px;
+    top: 0;
+    transform: rotate(-49.87deg);
   }
   & > :last-child {
     position: absolute;
-    left: 65%;
-    top: -15%;
+    right: 100px;
+    top: -40%;
+    transform: rotate(24.39deg);
   }
 `;
