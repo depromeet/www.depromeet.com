@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
+import { motion } from 'framer-motion';
 
 import { sectionBg } from '~/styles/background';
 import { colors } from '~/styles/colors';
@@ -9,12 +10,29 @@ import { pxToRem } from '~/styles/style.utils';
 import { theme } from '~/styles/theme';
 
 export const MainBrandingSection = () => {
+  const ref = useRef<HTMLDivElement>(null);
+
   return (
-    <section css={layoutCss}>
+    <section css={layoutCss} ref={ref}>
       <div css={headerWrapper}>
         <div css={titleWrapper}>
           <div css={titleCss}>
-            <h1>{`Define\nyour direction`}</h1>
+            {`Define\nyour direction`.split('').map((char, index) => (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  delay: 2 + index * 0.1,
+                  duration: 0,
+                  // repeat: Infinity,
+                  // repeatDelay: 3,
+                  // repeatType: 'loop',
+                }}
+              >
+                {char}
+              </motion.span>
+            ))}
             {[...Array(4)].map((_, i) => (
               <div id="circle" key={i}></div>
             ))}
@@ -52,8 +70,6 @@ const layoutCss = css`
   display: flex;
   flex-direction: column;
   gap: 90px;
-
-  border: black 1px solid;
 
   ${sectionBg};
 `;
