@@ -1,4 +1,5 @@
 export * from './MainBlogSection';
+export * from './MainBrandingSection';
 export * from './MainIntroSection';
 export * from './MainProjectSection';
 export * from './MainReasonSection';

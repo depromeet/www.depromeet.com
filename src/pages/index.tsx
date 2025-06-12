@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import { SEO } from '~/components/SEO';
 import {
   MainBlogSection,
+  MainBrandingSection,
   MainIntroSection,
   MainReasonSection,
   MainRecruitSection,
@@ -25,6 +26,7 @@ export default function Root() {
       <SEO />
       <main>
         <MainIntroSection />
+        <MainBrandingSection />
         <MainResultSection />
         <MainReasonSection />
         <MainScheduleSection />
