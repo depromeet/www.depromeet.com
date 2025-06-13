@@ -15,92 +15,108 @@ export const MainBrandingSection = () => {
 
   return (
     <section css={layoutCss}>
-      <div css={headerWrapper}>
-        <div css={titleWrapper}>
-          <div css={titleCss}>
-            {`Define\nyour direction`.split('').map((char, index) => (
-              <motion.span
-                key={index}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{
-                  delay: 2 + index * 0.1,
-                  duration: 0,
-                  // repeat: Infinity,
-                  // repeatDelay: 3,
-                  // repeatType: 'loop',
-                }}
-              >
-                {char}
-              </motion.span>
-            ))}
-            {[...Array(4)].map((_, i) => (
-              <div id="circle" key={i}></div>
-            ))}
+      <div css={wrapper}>
+        <div css={headerWrapper}>
+          <div css={titleWrapper}>
+            <div css={titleCss}>
+              {`Define\nyour direction`.split('').map((char, index) => (
+                <motion.span
+                  key={index}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true, amount: 0.5 }} // 뷰포트 50% 들어오면 한 번만 실행
+                  transition={{
+                    delay: 0.2 + index * 0.1,
+                    duration: 0,
+                  }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+              {[...Array(4)].map((_, i) => (
+                <div id="circle" key={i}></div>
+              ))}
+            </div>
           </div>
+          <p css={sentenceCss}>두려움을 용기로, 상상을 도전으로</p>
         </div>
-        <p css={sentenceCss}>두려움을 용기로, 상상을 도전으로</p>
-      </div>
-      <div css={imagesWrapperCss}>
-        <Image
-          src={'/images/17th/3d-icon/web-icon.png'}
-          alt={'web-icon'}
-          width={!isMobileSize ? 300 : 200}
-          height={!isMobileSize ? 300 : 200}
-        />
-        <Image
-          src={'/images/17th/3d-icon/Android-icon.png'}
-          alt={'android-icon'}
-          width={!isMobileSize ? 300 : 200}
-          height={!isMobileSize ? 300 : 200}
-        />
-        <Image
-          src={'/images/17th/3d-icon/server-icon.png'}
-          alt={'server-icon'}
-          width={!isMobileSize ? 300 : 200}
-          height={!isMobileSize ? 300 : 200}
-        />
+        <div css={imagesWrapperCss}>
+          <Image
+            src={'/images/17th/3d-icon/web-icon.png'}
+            alt={'web-icon'}
+            width={!isMobileSize ? 300 : 200}
+            height={!isMobileSize ? 300 : 200}
+          />
+          <Image
+            src={'/images/17th/3d-icon/Android-icon.png'}
+            alt={'android-icon'}
+            width={!isMobileSize ? 300 : 200}
+            height={!isMobileSize ? 300 : 200}
+          />
+          <Image
+            src={'/images/17th/3d-icon/server-icon.png'}
+            alt={'server-icon'}
+            width={!isMobileSize ? 300 : 200}
+            height={!isMobileSize ? 300 : 200}
+          />
+        </div>
       </div>
     </section>
   );
 };
 
 const layoutCss = css`
-  padding-top: 79px;
-  width: 100%;
+  padding: 78px 0;
+  width: 100dvw;
   height: auto;
-  display: flex;
+  display: flex;50% 0 32px 0;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   overflow: hidden;
 
   gap: 90px;
   ${sectionBg};
+
+`;
+
+const wrapper = css`
+  width: auto;
+  height: auto;
+  min-width: 1100px;
+  ${mediaQuery('mobile')} {
+    min-width: 100%;
+  }
 `;
 
 const headerWrapper = css`
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  width: 100%;
-  text-align: center;
   justify-center: flex-start;
   align-items: flex-start;
+  gap: 16px;
+
+  width: 100%;
+  text-align: center;
 `;
 
 const titleWrapper = css`
-  border: 1px solid rgba(71, 138, 244, 0.3);
+  border-style: solid;
+  border-width: 1.09px 0;
+  border-color: rgba(71, 138, 244, 0.3);
   width: 100%;
   align-items: flex-start;
   justify-content: flex-start;
   display: flex;
-  padding-left: 33px;
+  padding-left: 33.3px;
 `;
 
 const titleCss = css`
   ${theme.typosV3.MartianMono.head3};
   font-size: ${pxToRem(78)};
   font-weight: semibold;
-  letter-spacing: -5px;
+  letter-spacing: -3px;
   line-height: 109%;
   text-align: start;
   position: relative;
@@ -110,15 +126,19 @@ const titleCss = css`
   display: inline-block;
   width: auto;
   background: ${colors.primary.gray};
-  border: 1% solid rgba(71, 138, 244, 0.3);
+
+  border-style: solid;
+  border-width: 0 1.09px;
+  border-color: rgba(71, 138, 244, 0.3);
+
   z-index: 40;
 
-  padding: 7px 54px 16px 7px;
+  padding: 7px 60px 16px 7px;
 
   ${mediaQuery('mobile')} {
     font-size: ${pxToRem(36)};
     letter-spacing: -3px;
-    padding: 7px 0px 12px 7px;
+    padding: 7px 45px 12px 7px;
   }
 
   #circle {
@@ -132,29 +152,29 @@ const titleCss = css`
 
   #circle:nth-of-type(1) {
     top: -0.5px;
-    left: -1.5px;
+    left: -0.5px;
     transform: translate(-50%, -50%);
   }
   #circle:nth-of-type(2) {
     top: -0.5px;
-    right: -48.5px;
+    right: -15.5px;
     transform: translate(-50%, -50%);
     ${mediaQuery('mobile')} {
-      right: -52.5px;
+      right: -15.5px;
     }
   }
   #circle:nth-of-type(3) {
     bottom: -15.5px;
-    left: -1.5px;
+    left: -0.5px;
     transform: translate(-50%, -50%);
   }
   #circle:nth-of-type(4) {
     bottom: -15.5px;
-    right: -48.5px;
+    right: -15.5px;
     transform: translate(-50%, -50%);
 
     ${mediaQuery('mobile')} {
-      right: -52.5px;
+      right: -15.5px;
     }
   }
 `;
@@ -182,34 +202,39 @@ const imagesWrapperCss = css`
 
   z-index: 100;
 
+  /* web icon */
   & > :first-child {
     position: absolute;
+    top: -35%;
     right: 400px;
-    top: -65%;
 
     ${mediaQuery('mobile')} {
+      top: -15%;
       right: 150px;
-      top: -35%;
     }
   }
+  /* android icon */
   & > :nth-child(2) {
     position: absolute;
-    right: 275px;
-    top: 0;
+    top: 25%;
+    right: 250px;
     transform: rotate(-10.87deg);
+
     ${mediaQuery('mobile')} {
+      top: 30%;
       right: 100px;
-      top: 15%;
     }
   }
+
+  /* server icon */
   & > :last-child {
     position: absolute;
-    right: 100px;
-    top: -40%;
-    transform: translate(0%) rotate(34.39deg);
+    right: 75px;
+    top: -20%;
+    transform: translate(0%) rotate(44.39deg);
     ${mediaQuery('mobile')} {
-      right: 0px;
-      top: -15%;
+      top: 0;
+      right: -10px;
     }
   }
 `;
