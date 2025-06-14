@@ -10,6 +10,10 @@ import { mediaQuery } from '~/styles/media';
 import { pxToRem } from '~/styles/style.utils';
 import { theme } from '~/styles/theme';
 
+/**
+ * MainBrandingSection : section 02
+ *
+ */
 export const MainBrandingSection = () => {
   const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
 
@@ -24,7 +28,7 @@ export const MainBrandingSection = () => {
                   key={index}
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
-                  viewport={{ once: true, amount: 0.5 }} // 뷰포트 50% 들어오면 한 번만 실행
+                  viewport={{ once: false, amount: 0.5 }}
                   transition={{
                     delay: 0.2 + index * 0.1,
                     duration: 0,
@@ -67,7 +71,7 @@ export const MainBrandingSection = () => {
 
 const layoutCss = css`
   padding: 78px 0;
-  width: 100dvw;
+  width: 100%;
   height: auto;
   display: flex;50% 0 32px 0;
   flex-direction: column;
