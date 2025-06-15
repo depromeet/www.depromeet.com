@@ -34,13 +34,7 @@ const sliceByPage = (
   return projectList.slice(startIndex, endIndex);
 };
 
-export function ProjectPaginationSection({
-  _key,
-  projectList,
-}: {
-  _key: string;
-  projectList: Project[];
-}) {
+export function ProjectPaginationSection({ projectList }: { projectList: Project[] }) {
   const { isTargetSize: isTabletSize } = useCheckWindowSize('tablet');
   const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
 
