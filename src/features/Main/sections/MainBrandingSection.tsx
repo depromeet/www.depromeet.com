@@ -50,18 +50,21 @@ export const MainBrandingSection = () => {
             alt={'web-icon'}
             width={!isMobileSize ? 300 : 200}
             height={!isMobileSize ? 300 : 200}
+            id={'icon'}
           />
           <Image
             src={'/images/17th/3d-icon/Android-icon.png'}
             alt={'android-icon'}
             width={!isMobileSize ? 300 : 200}
             height={!isMobileSize ? 300 : 200}
+            id={'icon'}
           />
           <Image
             src={'/images/17th/3d-icon/server-icon.png'}
             alt={'server-icon'}
             width={!isMobileSize ? 300 : 200}
             height={!isMobileSize ? 300 : 200}
+            id={'icon'}
           />
         </div>
       </div>
@@ -206,7 +209,7 @@ const imagesWrapperCss = css`
   z-index: 100;
 
   /* web icon */
-  & > :first-child {
+  #icon:nth-of-type(1) {
     position: absolute;
     top: -35%;
     right: 400px;
@@ -217,7 +220,7 @@ const imagesWrapperCss = css`
     }
   }
   /* android icon */
-  & > :nth-child(2) {
+  #icon:nth-of-type(2) {
     position: absolute;
     top: 25%;
     right: 250px;
@@ -230,7 +233,7 @@ const imagesWrapperCss = css`
   }
 
   /* server icon */
-  & > :last-child {
+  #icon:nth-of-type(3) {
     position: absolute;
     right: 75px;
     top: -20%;
