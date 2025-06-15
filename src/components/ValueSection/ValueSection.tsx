@@ -25,13 +25,15 @@ export const ValueSection = () => {
 
   return (
     <div css={containerStyles}>
-      <div css={titleStyles}>17기의 인재상</div>
-      {values.map(value => (
-        <div key={value.id} css={valueCardStyles}>
-          <h3 css={titleStyles}>{value.title}</h3>
-          <p css={descriptionStyles}>{value.description}</p>
-        </div>
-      ))}
+      <div css={contentStyles}>
+        <div css={titleStyles}>17기의 인재상</div>
+        {values.map(value => (
+          <div key={value.id} css={valueCardStyles}>
+            <h3 css={titleStyles}>{value.title}</h3>
+            <p css={descriptionStyles}>{value.description}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
@@ -39,11 +41,19 @@ export const ValueSection = () => {
 const containerStyles = css`
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 16px;
-  max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
   ${sectionGridBg};
+`;
+
+const contentStyles = css`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 1100px;
 `;
 
 const valueCardStyles = css`
