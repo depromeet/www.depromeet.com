@@ -14,7 +14,7 @@ export const MainResultSection = () => {
 };
 
 const layoutCss = css`
-  padding: 140px 0;
+  padding: 32px 0 106.34px;
   width: 100%;
   display: flex;
   flex-direction: column;
