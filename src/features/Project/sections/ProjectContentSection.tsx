@@ -70,14 +70,14 @@ const sectionCss = css`
   flex-direction: column;
   align-items: center;
   ${sectionGridBg};
-  padding: 112px 0;
+  padding: 56px 0;
   gap: 36px;
 
   ${mediaQuery('tablet')} {
-    padding: 112px 48px;
+    padding: 56px 48px;
   }
   ${mediaQuery('mobile')} {
-    padding: 112px 20px;
+    padding: 56px 20px;
     gap: 32px;
   }
 `;
