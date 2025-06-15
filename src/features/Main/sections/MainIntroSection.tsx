@@ -134,17 +134,7 @@ export const MainIntroSection = () => {
           </button>
         </article>
       )}
-      <div css={scaleWrapperCss}>
-        <Image
-          fill
-          src="/images/17th/scale.svg"
-          alt="눈금"
-          id="scale"
-          style={{
-            objectFit: 'cover',
-          }}
-        />
-      </div>
+      <div css={scaleWrapperCss} />
     </section>
   );
 };
@@ -222,7 +212,11 @@ const scaleWrapperCss = () => css`
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 17px;
+  height: 17.2px;
+  background-image: url('/images/17th/scale.png');
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: repeat-x;
 `;
 
 const articleCss = () => css`
