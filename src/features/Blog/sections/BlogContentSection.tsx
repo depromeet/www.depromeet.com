@@ -156,14 +156,14 @@ const sectionCss = css`
   flex-direction: column;
   align-items: center;
   ${sectionGridBg};
-  padding: 61px 0;
+  padding: 112px 0;
   gap: 36px;
 
   ${mediaQuery('tablet')} {
-    padding: 61px 48px;
+    padding: 112px 48px;
   }
   ${mediaQuery('mobile')} {
-    padding: 61px 20px;
+    padding: 112px 20px;
     gap: 32px;
   }
 `;
