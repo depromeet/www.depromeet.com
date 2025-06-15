@@ -113,7 +113,7 @@ function getPathToRecruit(router: ReturnType<typeof useRouter>, progressState: R
     };
   }
 
-  return { action: () => {}, label: '16기 모집 마감', isDisabled: true };
+  return { action: () => {}, label: '17기 모집 마감', isDisabled: true };
 }
 
 export {
