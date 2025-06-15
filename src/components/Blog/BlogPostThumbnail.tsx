@@ -168,7 +168,7 @@ const linkCss = (theme: Theme) => css`
   background: rgba(0, 0, 0, 0.7);
   padding: 6px 10px;
   border-radius: 20px;
-  ${theme.typosV2.pretendard.medium12}
+  ${theme.typosV2.pretendard.medium13}
   transition: background 0.2s ease;
   backdrop-filter: blur(4px);
 
