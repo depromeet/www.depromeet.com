@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import { css } from '@emotion/react';
 
 import { AllBlog, DEEPER_BLOG_LIST, OFFICIAL_BLOG_LIST } from '~/constant/blog';
@@ -91,6 +92,15 @@ export const BlogContentSection = () => {
 
   return (
     <section css={sectionCss}>
+      <div css={titleImageContainerCss}>
+        <img
+          src="/images/blog/17th-blog.png"
+          alt="Blog"
+          width={190}
+          height={84}
+          css={titleImageCss}
+        />
+      </div>
       <div css={tabContainerCss}>
         {/* 메인 탭 */}
         <div css={mainTabWrapperCss}>
@@ -126,25 +136,57 @@ export const BlogContentSection = () => {
         key={`${currentMainTab}-${currentSubTab.key}-${filteredBlogList.length}`}
         blogList={filteredBlogList}
       />
+
+      <div css={rulerImageContainerCss}>
+        <Image
+          src="/images/blog/footer-ruler.png"
+          alt="ruler decoration"
+          fill
+          css={rulerImageCss}
+        />
+      </div>
     </section>
   );
 };
 
 const sectionCss = css`
+  position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   ${sectionGridBg};
-  padding: 80px 0;
+  padding: 61px 0;
   gap: 36px;
 
   ${mediaQuery('tablet')} {
-    padding: 80px 48px;
+    padding: 61px 48px;
   }
   ${mediaQuery('mobile')} {
-    padding: 80px 20px;
+    padding: 61px 20px;
     gap: 32px;
+  }
+`;
+
+const titleImageContainerCss = css`
+  align-self: flex-start;
+  max-width: 1200px;
+  width: 100%;
+  padding-inline: 48px;
+  padding-top: 47px;
+  padding-bottom: 26px;
+
+  ${mediaQuery('mobile')} {
+    padding-left: 20px;
+  }
+`;
+
+const titleImageCss = css`
+  object-fit: contain;
+
+  ${mediaQuery('mobile')} {
+    width: 150px;
+    height: 60px;
   }
 `;
 
@@ -285,4 +327,23 @@ const subTabItemActiveCss = css`
       bottom: 12px;
     }
   }
+`;
+
+const rulerImageContainerCss = css`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 20px;
+  z-index: 1;
+
+  ${mediaQuery('mobile')} {
+    height: 15px;
+  }
+`;
+
+const rulerImageCss = css`
+  object-fit: cover;
+  object-position: center;
 `;
