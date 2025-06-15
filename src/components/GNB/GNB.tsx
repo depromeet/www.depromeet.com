@@ -58,7 +58,7 @@ export function GNB() {
   const { containerRef, isDropdownOpen, openDropdown, closeDropdown } = useDropDown();
 
   const getActiveLinkcss = (menu: GNBMenu) => {
-    if (pathname.startsWith(menu.href)) {
+    if (pathname === menu.href) {
       return activeLinkCss;
     }
     return inActiveLinkCss;
