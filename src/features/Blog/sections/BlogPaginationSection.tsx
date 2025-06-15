@@ -8,7 +8,31 @@ import { AllBlog } from '~/constant/blog';
 import { staggerHalf } from '~/constant/motion';
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { mediaQuery } from '~/styles/media';
-import { MOBILE_PAGE_SIZE, PC_PAGE_SIZE, sliceByPage, TABLET_PAGE_SIZE } from '~/utils/pagination';
+
+// 새로운 페이지 사이즈 상수들 (2행 3열 = 6개)
+const PC_PAGE_SIZE = 6;
+const TABLET_PAGE_SIZE = 6;
+const MOBILE_PAGE_SIZE = 3;
+
+// 페이지별로 데이터를 슬라이스하는 함수
+const sliceByPage = (
+  blogList: AllBlog[],
+  currentPage: number,
+  isTabletSize: boolean,
+  isMobileSize: boolean
+) => {
+  let pageSize = PC_PAGE_SIZE;
+  if (isMobileSize) {
+    pageSize = MOBILE_PAGE_SIZE;
+  } else if (isTabletSize) {
+    pageSize = TABLET_PAGE_SIZE;
+  }
+
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+
+  return blogList.slice(startIndex, endIndex);
+};
 
 export function BlogPaginationSection({ key, blogList }: { key: string; blogList: AllBlog[] }) {
   const { isTargetSize: isTabletSize } = useCheckWindowSize('tablet');
@@ -61,14 +85,21 @@ const blogContainerCss = css`
   max-width: 960px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  justify-items: center;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 16px;
+  justify-items: stretch;
+  align-items: stretch;
 
   ${mediaQuery('tablet')} {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    max-width: 800px;
   }
+
   ${mediaQuery('mobile')} {
     grid-template-columns: repeat(1, 1fr);
-    gap: 20px;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 12px;
+    max-width: 400px;
   }
 `;

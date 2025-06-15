@@ -5,7 +5,6 @@ import { m } from 'framer-motion';
 import { ArrowIcon } from '~/components/Icons';
 import { BlogLink } from '~/constant/blog';
 import { defaultFadeInVariants } from '~/constant/motion';
-import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
@@ -34,20 +33,25 @@ export function BlogPostThumbnail({ title, date, img, link, ...props }: Thumbnai
       onClick={handleClickThumbnail}
       {...props}
     >
-      <section css={gradientCss} />
-      <Image css={imageCss} src={img} alt={title} fill quality={100} />
+      {/* 상단 날짜 */}
+      <div css={dateContainerCss}>
+        <span css={dateCss}>{date}</span>
+      </div>
 
-      <div css={wrapperCss}>
-        <div>
-          <h1 css={titleCss} dangerouslySetInnerHTML={{ __html: title as string }} />
-          <h3 css={dateCss}>{date}</h3>
-        </div>
-        <div css={contentsCss}>
-          <div css={linkContainerCss}>
-            <div css={linkCss}>
-              {link.type}
-              <ArrowIcon direction={'right'} color={colors.mint} width={16} height={16} />
-            </div>
+      {/* 중간 제목 */}
+      <div css={titleContainerCss}>
+        <h3 css={titleCss} dangerouslySetInnerHTML={{ __html: title as string }} />
+      </div>
+
+      {/* 하단 썸네일 이미지 */}
+      <div css={imageContainerCss}>
+        <Image css={imageCss} src={img} alt={title} fill quality={100} />
+
+        {/* 이미지 위에 링크 정보 오버레이 */}
+        <div css={overlayContainerCss}>
+          <div css={linkCss}>
+            {link.type}
+            <ArrowIcon direction={'right'} color="white" width={16} height={16} />
           </div>
         </div>
       </div>
@@ -57,103 +61,123 @@ export function BlogPostThumbnail({ title, date, img, link, ...props }: Thumbnai
 
 const articleCss = css`
   position: relative;
-
   width: 100%;
-  height: 208px;
-  min-width: 160px;
-
-  overflow: hidden;
-  border-radius: 12px;
-  background-color: black;
-
-  ${mediaQuery('mobile')} {
-    height: 220px;
-    max-width: 460px;
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  &:hover img {
-    filter: brightness(0.5);
-  }
-`;
-
-const wrapperCss = css`
-  position: relative;
+  height: auto;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-
-  width: 100%;
-  height: 100%;
-  padding: 24px;
+  background: #e3e5ea;
+  border: 1px solid #478af4;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  overflow: hidden;
 
   &:hover {
-    backdrop-filter: blur(5px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
-  &:hover > section {
-    opacity: 0;
-  }
-  &:hover > div {
-    opacity: 1;
+  ${mediaQuery('mobile')} {
+    border-radius: 12px;
   }
 `;
 
-const gradientCss = css`
-  position: absolute;
-  left: 0;
-  top: 0;
+const dateContainerCss = css`
+  padding: 16px 16px 0 16px;
+
+  ${mediaQuery('mobile')} {
+    padding: 12px 12px 0 12px;
+  }
+`;
+
+const dateCss = css`
+  ${theme.typosV2.pretendard.medium13}
+  color: #040C23;
+  line-height: 1.4;
+
+  ${mediaQuery('mobile')} {
+    font-size: 13px;
+  }
+`;
+
+const titleContainerCss = css`
+  padding: 8px 16px 16px 16px;
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+
+  ${mediaQuery('mobile')} {
+    padding: 6px 12px 12px 12px;
+  }
+`;
+
+const titleCss = css`
+  ${theme.typosV2.pretendard.semibold20};
+  color: #000000
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: keep-all;
+
+  ${mediaQuery('mobile')} {
+    ${theme.typosV2.pretendard.semibold16};
+    line-height: 1.3;
+  }
+`;
+
+const imageContainerCss = css`
+  position: relative;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+  height: 200px;
+  overflow: hidden;
+
+  ${mediaQuery('mobile')} {
+    height: 180px;
+  }
 `;
 
 const imageCss = css`
   object-fit: cover;
   object-position: center;
-  z-index: -1;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+  }
 `;
 
-const contentsCss = css`
-  transition: opacity 0.3s ease;
-  opacity: 0;
-`;
-
-const linkContainerCss = css`
-  display: flex;
-  gap: 12px;
-  align-items: center;
-`;
-
-const linkCss = (theme: Theme) => css`
-  margin-right: 2px;
-  display: flex;
-  gap: 4px;
-  align-items: center;
-  color: ${colors.mint};
-  z-index: 10;
-  ${theme.typosV2.pretendard.semibold16}
-`;
-
-const titleCss = css`
-  ${theme.typosV2.pretendard.semibold20};
-  position: relative;
-  color: ${theme.colors.white};
-  z-index: 10;
-  white-space: pre-line;
-`;
-
-const dateCss = css`
-  ${theme.typosV2.pretendard.regular16}
-  position: relative;
-  color: ${theme.colors.grey['100']};
+const overlayContainerCss = css`
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
   z-index: 10;
 
   ${mediaQuery('mobile')} {
-    line-height: 20px;
-    font-size: 0.8rem;
+    bottom: 10px;
+    right: 10px;
+  }
+`;
+
+const linkCss = (theme: Theme) => css`
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 6px 10px;
+  border-radius: 20px;
+  ${theme.typosV2.pretendard.medium12}
+  transition: background 0.2s ease;
+  backdrop-filter: blur(4px);
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  ${mediaQuery('mobile')} {
+    font-size: 11px;
+    padding: 5px 8px;
   }
 `;
