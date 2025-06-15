@@ -174,7 +174,7 @@ const mainTabItemCss = css`
   flex: 1;
   padding: 16px 24px;
   background-color: #e5e7eb;
-  color: ${theme.colors.grey['600']};
+  color: black;
   border: none;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -200,7 +200,7 @@ const mainTabItemCss = css`
 `;
 
 const mainTabItemActiveCss = css`
-  background-color: #3b82f6;
+  background-color: #478af4;
   color: white;
 
   &:hover {
