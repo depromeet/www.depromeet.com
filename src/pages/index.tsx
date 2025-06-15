@@ -9,6 +9,7 @@ import {
   MainRecruitSection,
   MainResultSection,
   MainScheduleSection,
+  MainSessionSection,
   MainSubscribeSection,
   MainSupportSection,
 } from '~/features/Main/sections';
@@ -29,6 +30,7 @@ export default function Root() {
         <MainBrandingSection />
         <MainResultSection />
         <MainReasonSection />
+        <MainSessionSection />
         <MainScheduleSection />
         <DynamicMainProjectSection />
         <MainSupportSection />

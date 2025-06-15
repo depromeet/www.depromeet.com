@@ -379,7 +379,7 @@ export const typosV3 = {
     head3: css`
       font-family: MartianMono;
       font-size: ${pxToRem(26)};
-      font-weight: bold;
+      font-weight: 500;
       line-height: 125%;
       letter-spacing: -5%;
     `,
@@ -438,13 +438,13 @@ export const typosV3 = {
     /* Subtitle */
     sub1Semibold: css`
       font-size: ${pxToRem(20)};
-      font-weight: 600;
+      font-weight: 500;
       line-height: 140%;
       letter-spacing: 0;
     `,
     sub1Medium: css`
       font-size: ${pxToRem(20)};
-      font-weight: 500;
+      font-weight: 400;
       line-height: 140%;
       letter-spacing: 0;
     `,
