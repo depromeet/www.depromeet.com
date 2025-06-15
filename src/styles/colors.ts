@@ -52,7 +52,7 @@ export const colors = {
 
   // NOTE : 17th
   grey: {
-    '00': '#FFFFFF',
+    '0': '#FFFFFF',
     '100': '#E3E3E6',
     '200': '#D5D5D9',
     '300': '#C7C7CE',
