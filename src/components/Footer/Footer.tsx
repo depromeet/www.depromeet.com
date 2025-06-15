@@ -87,7 +87,7 @@ const rowCss = css`
 
 const strongLinkCss = (theme: Theme) => css`
   ${theme.typosV3.pretendard.sub5Medium};
-  color: ${colors.grey[0]};
+  color: ${colors.grey['00']};
   text-align: center;
 
   ${mediaQuery('mobile')} {
@@ -97,7 +97,7 @@ const strongLinkCss = (theme: Theme) => css`
 
 const copyrightCss = (theme: Theme) => css`
   ${theme.typosV3.pretendard.body7Medium};
-  color: ${colors.grey[0]};
+  color: ${colors.grey['00']};
   font-weight: 300;
 
   ${mediaQuery('mobile')} {
