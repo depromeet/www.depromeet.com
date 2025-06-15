@@ -112,10 +112,12 @@ const titleWrapper = css`
   border-width: 1.09px 0;
   border-color: rgba(71, 138, 244, 0.3);
   width: 100%;
+
   align-items: flex-start;
   justify-content: flex-start;
   display: flex;
-  padding-left: 33.3px;
+
+  padding-left: 29.2px;
 `;
 
 const titleCss = css`
@@ -139,7 +141,7 @@ const titleCss = css`
 
   z-index: 40;
 
-  padding: 7px 60px 16px 7px;
+  padding: 7px 36.2px 16px 7px;
 
   ${mediaQuery('mobile')} {
     font-size: ${pxToRem(36)};
