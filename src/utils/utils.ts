@@ -95,12 +95,11 @@ function adjustToUTC({
  * @description
  * 현재 지원 시각에 맞춰 지원 상태를 변경해주는 유틸함수예요
  *
- * @param {import('next/router').NextRouter} router - Next.js의 `useRouter`를 통해 얻은 라우터 객체
- * @param {RecruitState} progressState - 현재 모집 상태. `IN_PROGRESS`, `FINISH`, 또는 기타 상태
+ * @param {import('next/router').NextRouter} _router - Next.js의 `useRouter`를 통해 얻은 라우터 객체 (현재 미사용)
+ * @param {RecruitState} _progressState - 현재 모집 상태 (현재 미사용)
  *
  * @returns {{ action: (() => void), label: string, isDisabled?: boolean }}
  */
-
 function getPathToRecruit(router: ReturnType<typeof useRouter>, progressState: RecruitState) {
   if (progressState === 'IN_PROGRESS') {
     return {

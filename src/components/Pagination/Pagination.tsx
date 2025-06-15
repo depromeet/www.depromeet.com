@@ -78,7 +78,6 @@ const containerCss = css`
 `;
 
 const listCss = css`
-  margin-top: 36px;
   display: flex;
   ${theme.typosV2.pretendard.regular16};
   line-height: 150%;

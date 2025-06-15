@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { css } from '@emotion/react';
 import { AnimatePresence, m } from 'framer-motion';
 
-import { BlogPostThumbnail } from '~/components/Blog';
 import { Pagination } from '~/components/Pagination';
-import { AllBlog } from '~/constant/blog';
+import { ProjectThumbnail } from '~/components/Project';
 import { staggerHalf } from '~/constant/motion';
+import { Project } from '~/constant/project';
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { mediaQuery } from '~/styles/media';
 
@@ -16,7 +16,7 @@ const MOBILE_PAGE_SIZE = 3;
 
 // 페이지별로 데이터를 슬라이스하는 함수
 const sliceByPage = (
-  blogList: AllBlog[],
+  projectList: Project[],
   currentPage: number,
   isTabletSize: boolean,
   isMobileSize: boolean
@@ -31,10 +31,16 @@ const sliceByPage = (
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
 
-  return blogList.slice(startIndex, endIndex);
+  return projectList.slice(startIndex, endIndex);
 };
 
-export function BlogPaginationSection({ key, blogList }: { key: string; blogList: AllBlog[] }) {
+export function ProjectPaginationSection({
+  _key,
+  projectList,
+}: {
+  _key: string;
+  projectList: Project[];
+}) {
   const { isTargetSize: isTabletSize } = useCheckWindowSize('tablet');
   const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
 
@@ -58,21 +64,20 @@ export function BlogPaginationSection({ key, blogList }: { key: string; blogList
     <>
       <AnimatePresence mode="wait" initial={true}>
         <m.div
-          key={key}
-          css={blogContainerCss}
+          css={projectContainerCss}
           initial="initial"
           animate="animate"
           exit="exit"
           variants={staggerHalf}
         >
-          {sliceByPage(blogList, currentPage, isTabletSize, isMobileSize).map(blog => (
-            <BlogPostThumbnail key={blog.title} {...blog} />
+          {sliceByPage(projectList, currentPage, isTabletSize, isMobileSize).map(project => (
+            <ProjectThumbnail key={project.title} {...project} />
           ))}
         </m.div>
       </AnimatePresence>
 
       <Pagination
-        numberOfPages={Math.ceil(blogList.length / getNumberOfPages())}
+        numberOfPages={Math.ceil(projectList.length / getNumberOfPages())}
         currentPage={currentPage}
         handlePageClick={handleClickPage}
       />
@@ -80,7 +85,7 @@ export function BlogPaginationSection({ key, blogList }: { key: string; blogList
   );
 }
 
-const blogContainerCss = css`
+const projectContainerCss = css`
   width: 100%;
   max-width: 960px;
   display: grid;
