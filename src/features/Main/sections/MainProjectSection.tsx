@@ -4,8 +4,7 @@ import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import { AnimatePresence, m } from 'framer-motion';
 
-import { Thumbnail } from '~/components/Thumbnail';
-import { Link } from '~/components/Thumbnail/Thumbnail';
+import { ProjectThumbnail } from '~/components/Project';
 import { staggerHalf } from '~/constant/motion';
 import { PROJECT_LIST } from '~/constant/project';
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
@@ -45,7 +44,7 @@ export const MainProjectSection = () => {
             {isMobileSize && <br />} 다양한 프로젝트를 확인해보세요
           </p>
         </div>
-        <AnimatePresence mode="wait" initial={false}>
+        <AnimatePresence mode="wait" initial={true}>
           <m.div
             css={projectContainerCss}
             initial="initial"
@@ -53,16 +52,8 @@ export const MainProjectSection = () => {
             exit="exit"
             variants={staggerHalf}
           >
-            {/* 추후 프로젝트 페이지에서 컴포넌트 만들어지면 그때 갖다 쓰기 */}
             {sliceByPage(PROJECT_LIST, currentPage, isTabletSize, isMobileSize, 0).map(project => (
-              <Thumbnail
-                key={project.title}
-                img={`/images/project/${project.subTitle}/${project.title}.png`}
-                title={project.title}
-                subTitle={project.subTitle}
-                description={project.description}
-                links={project.links as Link[]}
-              />
+              <ProjectThumbnail key={project.title} {...project} />
             ))}
           </m.div>
         </AnimatePresence>
@@ -190,6 +181,8 @@ const projectContainerCss = css`
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 
+  z-index: 50;
+
   ${mediaQuery('tablet')} {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -219,6 +212,6 @@ const button = {
 
 const iconCss = css`
   position: absolute;
-  bottom: -30px;
-  left: -100px;
+  bottom: 0;
+  left: -80px;
 `;
