@@ -117,10 +117,29 @@ function getPathToRecruit(router: ReturnType<typeof useRouter>, progressState: R
   return { action: () => {}, label: '17기 모집 마감', isDisabled: true };
 }
 
+function getPositionStyleByAngle(angle: number, distance: number) {
+  const x = Math.cos((Math.PI / 180) * angle) * distance;
+  const y = -Math.sin((Math.PI / 180) * angle) * distance;
+  return {
+    left: x,
+    top: y,
+  };
+}
+
+function getNextArrowPosition(currentPosition: string) {
+  const positions = ['ios', 'server', 'web', 'android', 'design'];
+
+  const currentIndex = positions.indexOf(currentPosition);
+  const nextIndex = (currentIndex + 1) % positions.length;
+  return positions[nextIndex];
+}
+
 export {
   adjustToUTC,
   generateModalPositionStyle,
+  getNextArrowPosition,
   getPathToRecruit,
   getPopupCookie,
+  getPositionStyleByAngle,
   setPopupCookie,
 };
