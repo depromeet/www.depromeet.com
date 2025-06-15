@@ -165,8 +165,14 @@ const mainTabWrapperCss = css`
   overflow: hidden;
   border: 1px solid #478af4;
 
+  ${mediaQuery('tablet')} {
+    width: 100%;
+    max-width: 500px;
+  }
   ${mediaQuery('mobile')} {
     flex-direction: column;
+    width: 100%;
+    max-width: 400px;
   }
 `;
 
@@ -216,9 +222,16 @@ const subTabWrapperCss = css`
   justify-content: center;
   gap: 10px;
 
+  ${mediaQuery('tablet')} {
+    width: 100%;
+    max-width: 500px;
+    padding: 0 24px;
+  }
   ${mediaQuery('mobile')} {
     padding: 0 12px;
     overflow-x: auto;
+    width: 100%;
+    max-width: 400px;
 
     &::-webkit-scrollbar {
       display: none;
