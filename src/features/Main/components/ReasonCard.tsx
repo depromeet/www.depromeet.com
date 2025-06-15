@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
@@ -9,53 +10,51 @@ type Props = {
   image: string;
   title: string;
   description: string;
-  index?: number;
+  index: number;
   isTabletSize?: boolean;
   isReverseDirection?: boolean;
 };
-export const ReasonCard = ({
-  image,
-  title,
-  description,
-  index,
-  isTabletSize,
-  isReverseDirection,
-}: Props) => {
-  const [isVisible, setIsVisible] = useState<boolean>(false);
+export const ReasonCard = ({ image, title, description, index, isReverseDirection }: Props) => {
   const ref = useRef<HTMLDivElement>(null);
-  const isRenderArrow = !isTabletSize || index === 0;
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const node = ref.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.disconnect();
         }
       },
-      { threshold: 0.3 }
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px',
+      }
     );
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    if (node) {
+      observer.observe(node);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      if (node) observer.unobserve(node);
+    };
   }, []);
 
   return (
-    <div ref={ref} css={[containerCss(isReverseDirection), isVisible ? fadeInCss : hiddenCss]}>
-      {isRenderArrow && (
-        <div css={arrowWrapperCss}>
-          <Image
-            src={'/images/16th/main/reason/reason_arrow.png'}
-            width={20}
-            height={90}
-            alt="reason arrow"
-          />
-        </div>
-      )}
-
+    <div
+      ref={ref}
+      css={[
+        containerCss(isReverseDirection),
+        css`
+          opacity: ${isVisible ? 1 : 0};
+          transform: ${isVisible ? 'translateY(0)' : 'translateY(76px)'};
+          clip-path: ${isVisible ? 'inset(0% 0% -50% 0%)' : 'inset(0% 0% 50% 0%)'};
+          transition: opacity 0.1s linear, transform 0.5s linear, clip-path 0.6s linear;
+          transition-delay: ${index * 0.1}s;
+        `,
+      ]}
+    >
       <div css={imageWrapperCss}>
         <Image
           src={image}
@@ -66,8 +65,7 @@ export const ReasonCard = ({
           }}
         />
       </div>
-
-      <div css={content.wrapperCss(isReverseDirection)}>
+      <div css={content.wrapperCss}>
         <h1 css={content.titleCss}>{title}</h1>
         <p css={content.descriptionCss}>{description}</p>
       </div>
@@ -75,103 +73,59 @@ export const ReasonCard = ({
   );
 };
 
-const fadeInCss = css`
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-`;
-
-const hiddenCss = css`
-  opacity: 0;
-  transform: translateY(20px);
-`;
-
 const containerCss = (isReverseDirection?: boolean) => css`
-  position: relative;
   display: flex;
-  gap: 58px;
-  width: 1000px;
-  padding: 10px;
-  border-radius: 20px;
-  background-color: white;
+  width: 825px;
+  min-height: 188px;
 
+  background-color: ${colors.primary.gray};
+
+  border: ${colors.primary.blue} 1px solid;
+  box-shadow: 0 0 8px 4px ${colors.primary.blue}24;
+
+  z-index: 50;
   ${isReverseDirection &&
   css`
     flex-direction: row-reverse;
   `}
-
-  ${mediaQuery('tablet')} {
-    padding: 12px 12px 40px;
-    width: 100%;
-    max-width: 500px;
-    flex-direction: column;
-    gap: 24px;
-  }
-`;
-
-const arrowWrapperCss = css`
-  position: absolute;
-  top: -102px;
-  left: calc(50% - 10px);
 `;
 
 const imageWrapperCss = css`
   position: relative;
-  width: 476px;
-  height: 318px;
+  width: 259px;
+  height: auto;
   flex-shrink: 0;
-  border-radius: 20px;
   overflow: hidden;
-
-  ${mediaQuery('tablet')} {
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 476/318;
-  }
 `;
 
 const content = {
-  wrapperCss: (isReverseDirection?: boolean) => css`
+  wrapperCss: css`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    padding: 26px 0;
-    margin-left: 0px;
-    margin-right: 36px;
 
-    ${isReverseDirection &&
-    css`
-      margin-left: 36px;
-      margin-right: 0px;
-    `}
-
-    ${mediaQuery('tablet')} {
-      margin: 0;
-      padding: 0 8px;
-      gap: 16px;
-      justify-content: center;
-    }
+    width: 100%;
+    padding: 24px;
+    gap: 14px;
   `,
 
   titleCss: css`
-    ${theme.typosV2.pretendard.bold32};
-    line-height: 140%;
+    ${theme.typosV3.pretendard.head5};
     white-space: pre-wrap;
+    color: ${colors.primary.darknavy};
 
     ${mediaQuery('mobile')} {
       ${theme.typosV2.pretendard.bold20};
-      line-height: 140%;
     }
   `,
 
   descriptionCss: css`
-    ${theme.typosV2.pretendard.medium18};
-    line-height: 160%;
+    ${theme.typosV3.pretendard.body3Medium};
+
     white-space: pre-wrap;
+    color: ${colors.grey[800]};
 
     ${mediaQuery('mobile')} {
       ${theme.typosV2.pretendard.medium15};
-      line-height: 160%;
     }
   `,
 };
