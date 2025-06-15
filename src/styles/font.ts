@@ -41,9 +41,9 @@ export const fontFace = css`
 
   @font-face {
     font-family: 'MartianMono';
+    src: url('/fonts/MartianMono-VariableFont.ttf') format('truetype');
+    font-weight: 100 900;
     font-style: normal;
-    font-weight: 700;
-    src: local(''), url('/fonts/MartianMono-Medium.ttf') format('truetype');
   }
   @font-face {
     font-family: 'Abel';
@@ -53,7 +53,19 @@ export const fontFace = css`
   @font-face {
     font-family: 'DMMono';
     font-style: normal;
-    font-weight: 700;
+    font-weight: 300;
+    src: local(''), url('/fonts/DMMono-light.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'DMMono';
+    font-style: normal;
+    font-weight: 400;
     src: local(''), url('/fonts/DMMono-Regular.ttf') format('truetype');
+  }
+  @font-face {
+    font-family: 'DMMono';
+    font-style: normal;
+    font-weight: 500;
+    src: local(''), url('/fonts/DMMono-Medium.ttf') format('truetype');
   }
 `;
