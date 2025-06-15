@@ -73,7 +73,7 @@ const layoutCss = css`
   padding: 78px 0;
   width: 100%;
   height: auto;
-  display: flex;50% 0 32px 0;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -82,7 +82,6 @@ const layoutCss = css`
 
   gap: 90px;
   ${sectionBg};
-
 `;
 
 const wrapper = css`
@@ -97,7 +96,7 @@ const wrapper = css`
 const headerWrapper = css`
   display: flex;
   flex-direction: column;
-  justify-center: flex-start;
+  justify-content: flex-start;
   align-items: flex-start;
   gap: 16px;
 
