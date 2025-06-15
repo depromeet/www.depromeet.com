@@ -15,7 +15,7 @@ export const MainSupportSection = () => {
 };
 
 const layoutCss = css`
-  padding: 140px 0;
+  padding: 100px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
