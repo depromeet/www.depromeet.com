@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import CountUp from 'react-countup';
+import { motion } from 'framer-motion';
 
 import { QUANTIFIED_INFO } from '~/constant/aboutInfo';
 import { colors } from '~/styles/colors';
@@ -10,42 +10,67 @@ export const ResultCardList = () => {
   return (
     <div css={containerCss}>
       {QUANTIFIED_INFO.map(({ label, number, unit }, idx) => (
-        <CountUp
-          start={0}
-          end={number}
-          duration={3}
-          key={idx}
-          enableScrollSpy={true}
-          scrollSpyOnce={true}
-          separator=""
-        >
-          {({ countUpRef }) => (
-            <div css={cardCss}>
-              <p css={textCss.label}>{label}</p>
-              <p css={textCss.wrapper}>
-                <span css={textCss.number} ref={countUpRef}>
-                  {number}
-                </span>
-                <span css={textCss.unit}>{unit}</span>
-              </p>
-            </div>
-          )}
-        </CountUp>
+        <div css={cardCss} key={label}>
+          <p css={textCss.wrapper}>
+            <span css={textCss.number}>
+              {String(number)
+                .split('')
+                .map((char, index) => (
+                  <motion.span
+                    key={index}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: false, amount: 0.5 }}
+                    transition={{
+                      delay: 0.2 + index * 0.1,
+                      duration: 0,
+                    }}
+                  >
+                    {char}
+                  </motion.span>
+                ))}
+            </span>
+            <span
+              css={[
+                textCss.unit,
+                idx === 0 &&
+                  css`
+                    font-family: MartianMono;
+                    font-size: 45px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 111%;
+                    letter-spacing: -1.8px;
+                  `,
+              ]}
+            >
+              {unit}
+            </span>
+          </p>
+          <p css={textCss.label}>{label}</p>
+        </div>
+      ))}
+      {Array.from({ length: 4 }).map((_, idx) => (
+        <span className="square" key={idx} />
       ))}
     </div>
   );
 };
 
 const containerCss = css`
+  position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  width: 1040px;
+  gap: 67px;
   height: 240px;
+  padding: 40px 48px;
+  margin: 0 40px;
+  border: 1px solid ${theme.colors.primary.blue};
+  background: ${theme.colors.primary.gray};
+  box-shadow: 0px 0px 8px 0px rgba(24, 86, 255, 0.14);
 
   ${mediaQuery('tablet')} {
     grid-template-columns: repeat(2, 1fr);
-    width: 484px;
     height: auto;
   }
 
@@ -55,19 +80,47 @@ const containerCss = css`
     height: auto;
     padding: 0 24px;
   }
+
+  .square {
+    position: absolute;
+    width: 12.662px;
+    height: 12.662px;
+    background: ${theme.colors.primary.blue};
+    box-shadow: 0px 0px 4px 0px rgba(30, 90, 255, 0.4);
+
+    &:nth-of-type(1) {
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
+    }
+
+    &:nth-of-type(2) {
+      top: 0;
+      right: 0;
+      transform: translate(50%, -50%);
+    }
+
+    &:nth-of-type(3) {
+      bottom: 0;
+      left: 0;
+      transform: translate(-50%, 50%);
+    }
+
+    &:nth-of-type(4) {
+      bottom: 0;
+      right: 0;
+      transform: translate(50%, 50%);
+    }
+  }
 `;
 
 const cardCss = css`
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 16px;
   justify-content: center;
   align-items: center;
-  aspect-ratio: 1/1;
-  background-color: ${colors.grey[100]};
   border-radius: 20px;
-  width: 248px;
-  height: 240px;
 
   ${mediaQuery('tablet')} {
     width: 234px;
@@ -85,28 +138,29 @@ const textCss = {
   wrapper: css`
     display: flex;
     align-items: center;
+    color: ${colors.primary.darknavy};
   `,
   label: css`
-    color: ${colors.grey[600]};
-    ${theme.typosV2.pretendard.semibold20};
+    color: #445071;
+    ${theme.typosV3.pretendard.sub1Semibold};
 
     ${mediaQuery('mobile')} {
-      ${theme.typosV2.pretendard.semibold15};
+      ${theme.typosV3.pretendard.sub1Semibold};
       line-height: 150%;
     }
   `,
   number: css`
-    ${theme.typosV2.pretendard.bold62};
+    ${theme.typosV3.DMMono.Number1};
 
     ${mediaQuery('mobile')} {
-      ${theme.typosV2.pretendard.bold32};
+      ${theme.typosV3.DMMono.Number1};
     }
   `,
   unit: css`
-    ${theme.typosV2.pretendard.semibold48};
+    ${theme.typosV3.DMMono.Number1};
 
     ${mediaQuery('mobile')} {
-      ${theme.typosV2.pretendard.semibold24};
+      ${theme.typosV3.DMMono.Number1};
     }
   `,
 };
