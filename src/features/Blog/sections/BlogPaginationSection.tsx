@@ -92,7 +92,7 @@ const blogContainerCss = css`
 
   ${mediaQuery('tablet')} {
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     max-width: 800px;
   }
 
