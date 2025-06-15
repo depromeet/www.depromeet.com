@@ -57,96 +57,98 @@ const finalSessionData: FinalSessionData = {
 export const SessionSchedule = () => {
   return (
     <div css={containerCss}>
-      <div css={headerCss}>
-        <h2 css={titleCss}>온/오프라인 세션</h2>
-        <p css={descriptionCss}>
-          세션은 매주 토요일 진행되며, 오프라인 세션은 오프라인에서 이뤄집니다
-        </p>
-      </div>
-
-      {/* 온라인 세션 테이블 */}
-      <div css={tableContainerCss}>
-        <table css={tableCss}>
-          <thead>
-            <tr>
-              <th css={[headerCellCss, darkHeaderCss]}>OT</th>
-              <th css={headerCellCss}>아이디어 공유</th>
-              <th css={[headerCellCss, darkHeaderCss]}>워크샵</th>
-              <th css={[headerCellCss, darkHeaderCss]}>현직자와의 만남</th>
-              <th css={headerCellCss}>팀별 작업</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td css={cellCss}>{onlineSessionData.ot}</td>
-              <td css={cellCss}>{onlineSessionData.ideation}</td>
-              <td css={cellCss}>{onlineSessionData.workshop}</td>
-              <td css={cellCss}>{onlineSessionData.currentMeeting}</td>
-              <td css={cellCss}>{onlineSessionData.teamBuilding}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      {/* 오프라인 세션 테이블 */}
-      <div css={tableContainerCss}>
-        <table css={tableCss}>
-          <thead>
-            <tr>
-              <th css={[headerCellCss, darkHeaderCss]}>UT 공유</th>
-              <th css={[headerCellCss, darkHeaderCss]}>해커톤</th>
-              <th css={headerCellCss}>팀별 작업</th>
-              <th css={[headerCellCss, darkHeaderCss]}>프리런칭데이</th>
-              <th css={headerCellCss}>피드백 공유</th>
-              <th css={[headerCellCss, darkHeaderCss]}>반상회</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td css={cellCss}>{offlineSessionData.utSharing}</td>
-              <td css={cellCss}>{offlineSessionData.hackathon}</td>
-              <td css={cellCss}>{offlineSessionData.teamBuilding}</td>
-              <td css={cellCss}>{offlineSessionData.presentationDay}</td>
-              <td css={cellCss}>{offlineSessionData.pictureSharing}</td>
-              <td css={cellCss}>{offlineSessionData.party}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      {/* 최종 세션 테이블 */}
-      <div css={tableContainerCss}>
-        <table css={tableCss}>
-          <thead>
-            <tr>
-              <th css={headerCellCss}>팀별 작업</th>
-              <th css={[headerCellCss, darkHeaderCss]}>워케이션</th>
-              <th css={headerCellCss}>팀별 작업</th>
-              <th css={[headerCellCss, darkHeaderCss]}>런칭데이</th>
-              <th css={[headerCellCss, darkHeaderCss]}>최종 발표</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td css={cellCss}>{finalSessionData.teamBuilding}</td>
-              <td css={cellCss}>{finalSessionData.workOn}</td>
-              <td css={cellCss}>{finalSessionData.teamBuilding2}</td>
-              <td css={cellCss}>{finalSessionData.presentationDay}</td>
-              <td css={cellCss}>{finalSessionData.finalPresentation}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      {/* 세션 타입 표시 */}
-      <div css={sessionTypeCss}>
-        <div css={sessionItemCss}>
-          <div css={filledCircleCss} />
-          <span css={sessionTextCss}>오프라인 세션</span>
+      <div css={contentStyles}>
+        <div css={headerCss}>
+          <h2 css={titleCss}>온/오프라인 세션</h2>
+          <p css={descriptionCss}>
+            세션은 매주 토요일 진행되며, 오프라인 세션은 오프라인에서 이뤄집니다
+          </p>
         </div>
-        <div css={sessionItemCss}>
-          <div css={emptyCircleCss} />
-          <span css={sessionTextCss}>온라인 세션</span>
+
+        {/* 온라인 세션 테이블 */}
+        <div css={tableContainerCss}>
+          <table css={tableCss}>
+            <thead>
+              <tr>
+                <th css={[headerCellCss, darkHeaderCss]}>OT</th>
+                <th css={headerCellCss}>아이디어 공유</th>
+                <th css={[headerCellCss, darkHeaderCss]}>워크샵</th>
+                <th css={[headerCellCss, darkHeaderCss]}>현직자와의 만남</th>
+                <th css={headerCellCss}>팀별 작업</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td css={cellCss}>{onlineSessionData.ot}</td>
+                <td css={cellCss}>{onlineSessionData.ideation}</td>
+                <td css={cellCss}>{onlineSessionData.workshop}</td>
+                <td css={cellCss}>{onlineSessionData.currentMeeting}</td>
+                <td css={cellCss}>{onlineSessionData.teamBuilding}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/* 오프라인 세션 테이블 */}
+        <div css={tableContainerCss}>
+          <table css={tableCss}>
+            <thead>
+              <tr>
+                <th css={[headerCellCss, darkHeaderCss]}>UT 공유</th>
+                <th css={[headerCellCss, darkHeaderCss]}>해커톤</th>
+                <th css={headerCellCss}>팀별 작업</th>
+                <th css={[headerCellCss, darkHeaderCss]}>프리런칭데이</th>
+                <th css={headerCellCss}>피드백 공유</th>
+                <th css={[headerCellCss, darkHeaderCss]}>반상회</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td css={cellCss}>{offlineSessionData.utSharing}</td>
+                <td css={cellCss}>{offlineSessionData.hackathon}</td>
+                <td css={cellCss}>{offlineSessionData.teamBuilding}</td>
+                <td css={cellCss}>{offlineSessionData.presentationDay}</td>
+                <td css={cellCss}>{offlineSessionData.pictureSharing}</td>
+                <td css={cellCss}>{offlineSessionData.party}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/* 최종 세션 테이블 */}
+        <div css={tableContainerCss}>
+          <table css={tableCss}>
+            <thead>
+              <tr>
+                <th css={headerCellCss}>팀별 작업</th>
+                <th css={[headerCellCss, darkHeaderCss]}>워케이션</th>
+                <th css={headerCellCss}>팀별 작업</th>
+                <th css={[headerCellCss, darkHeaderCss]}>런칭데이</th>
+                <th css={[headerCellCss, darkHeaderCss]}>최종 발표</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td css={cellCss}>{finalSessionData.teamBuilding}</td>
+                <td css={cellCss}>{finalSessionData.workOn}</td>
+                <td css={cellCss}>{finalSessionData.teamBuilding2}</td>
+                <td css={cellCss}>{finalSessionData.presentationDay}</td>
+                <td css={cellCss}>{finalSessionData.finalPresentation}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        {/* 세션 타입 표시 */}
+        <div css={sessionTypeCss}>
+          <div css={sessionItemCss}>
+            <div css={filledCircleCss} />
+            <span css={sessionTextCss}>오프라인 세션</span>
+          </div>
+          <div css={sessionItemCss}>
+            <div css={emptyCircleCss} />
+            <span css={sessionTextCss}>온라인 세션</span>
+          </div>
         </div>
       </div>
     </div>
@@ -154,6 +156,9 @@ export const SessionSchedule = () => {
 };
 
 const containerCss = (theme: Theme) => css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   margin: 0 auto;
   padding: 60px 20px;
@@ -162,6 +167,14 @@ const containerCss = (theme: Theme) => css`
   ${mediaQuery('mobile')} {
     padding: 40px 16px;
   }
+`;
+
+const contentStyles = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1100px;
 `;
 
 const headerCss = css`

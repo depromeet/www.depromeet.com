@@ -20,32 +20,36 @@ const recruitmentSteps: RecruitmentStep[] = [
 export const MemberRecruitment = () => {
   return (
     <div css={containerCss}>
-      <div css={headerCss}>
-        <h2 css={titleCss}>멤버 모집</h2>
-      </div>
-
-      {/* 모집 단계 */}
-      <div css={stepsContainerCss}>
-        {recruitmentSteps.map((step, index) => (
-          <div key={index} css={stepBoxCss}>
-            <h3 css={stepTitleCss}>{step.title}</h3>
-            <p css={stepDateCss}>{step.date}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* 지원 방법 */}
-      <div css={applicationSectionCss}>
-        <h3 css={applicationTitleCss}>지원 방법</h3>
-
-        <div css={applicationStepCss}>
-          <h4 css={stepNumberCss}>1차 서류</h4>
-          <p css={stepDescriptionCss}>자기소개서 작성 및 이력서/포트폴리오 제출</p>
+      <div css={contentStyles}>
+        <div css={headerCss}>
+          <h2 css={titleCss}>멤버 모집</h2>
         </div>
 
-        <div css={applicationStepCss}>
-          <h4 css={stepNumberCss}>2차 인터뷰</h4>
-          <p css={stepDescriptionCss}>직무 역량 및 컬처핏 인터뷰</p>
+        {/* 모집 단계 */}
+        <div css={stepsContainerCss}>
+          {recruitmentSteps.map((step, index) => (
+            <div key={index} css={stepBoxCss}>
+              <h3 css={stepTitleCss}>{step.title}</h3>
+              <p css={stepDateCss}>{step.date}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* 지원 방법 */}
+        <div css={applicationSectionCss}>
+          <h3 css={applicationTitleCss}>지원 방법</h3>
+
+          <div css={applicationStepCss}>
+            <h4 css={stepNumberCss}>1차 서류</h4>
+            <p css={stepDescriptionCss}>자기소개서 작성 및 이력서/포트폴리오 제출</p>
+          </div>
+
+          <div css={applicationStepCss}>
+            <h4 css={stepNumberCss}>2차 인터뷰</h4>
+            <p css={stepDescriptionCss}>직무 역량 및 컬처핏 인터뷰</p>
+          </div>
+
+          <div css={rulerCss} />
         </div>
       </div>
     </div>
@@ -53,8 +57,10 @@ export const MemberRecruitment = () => {
 };
 
 const containerCss = (_theme: Theme) => css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
   padding: 80px 20px;
   background-color: ${colors.primary.gray};
@@ -63,6 +69,13 @@ const containerCss = (_theme: Theme) => css`
   ${mediaQuery('mobile')} {
     padding: 60px 16px;
   }
+`;
+
+const contentStyles = css`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1100px;
 `;
 
 const headerCss = css`
@@ -133,6 +146,7 @@ const stepDateCss = css`
 `;
 
 const applicationSectionCss = css`
+  position: relative;
   background-color: ${colors.primary.gray};
   border: 2px solid ${colors.primary.blue};
   padding: 40px;
@@ -166,6 +180,18 @@ const applicationStepCss = css`
   ${mediaQuery('mobile')} {
     margin-bottom: 24px;
   }
+`;
+
+const rulerCss = css`
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 17.2px;
+  background-image: url('/images/17th/scale.png');
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: repeat-x;
 `;
 
 const stepNumberCss = (theme: Theme) => css`
