@@ -11,51 +11,51 @@ export type Support = {
  */
 export const SUPPORTS: Support[] = [
   {
-    title: '인프런',
-    subTitle: 'Inflearn',
-    img: '/images/16th/support/inflearn.png',
-    link: 'https://www.inflearn.com/',
+    title: '스파르타코딩클럽',
+    subTitle: 'SpartaCodingClub',
+    img: '/images/17th/support/sparta.png',
+    link: 'https://spartacodingclub.kr/',
   },
   {
     title: '네이버클라우드',
     subTitle: 'Navercloud',
-    img: '/images/16th/support/naver-cloud.png',
+    img: '/images/17th/support/naver-cloud.png',
     link: 'https://www.ncloud.com/',
+  },
+  {
+    title: '인프런',
+    subTitle: 'Inflearn',
+    img: '/images/17th/support/inflearn.png',
+    link: 'https://www.inflearn.com/',
   },
   {
     title: '엘리스',
     subTitle: 'elice',
-    img: '/images/16th/support/elice.png',
+    img: '/images/17th/support/elice.png',
     link: 'https://elice.io/ko/',
+  },
+  {
+    title: '디스콰이엇',
+    subTitle: 'Disquie',
+    img: '/images/17th/support/disquiet.png',
+    link: 'https://disquiet.io/',
+  },
+  {
+    title: '모두의연구소',
+    subTitle: 'Modulab',
+    img: '/images/17th/support/modu.png',
+    link: 'https://modulabs.co.kr/',
+  },
+  {
+    title: '점핏',
+    subTitle: 'Jumpit',
+    img: '/images/17th/support/jumpit.png',
+    link: 'https://jumpit.saramin.co.kr/',
   },
   {
     title: '서핏',
     subTitle: 'Surfit',
-    img: '/images/16th/support/surfit.png',
+    img: '/images/17th/support/surfit.png',
     link: 'https://www.surfit.io/',
-  },
-  {
-    title: '나인하이어',
-    subTitle: 'Nine Hire',
-    img: '/images/16th/support/nine-hire.png',
-    link: 'https://www.ninehire.com/',
-  },
-  {
-    title: '직행',
-    subTitle: 'Zighang',
-    img: '/images/16th/support/zighang.png',
-    link: 'https://zighang.com/',
-  },
-  {
-    title: '스나이퍼팩토리',
-    subTitle: 'Sniperfactory',
-    img: '/images/16th/support/sniperfactory.png',
-    link: 'https://sniperfactory.com/',
-  },
-  {
-    title: 'Adelab',
-    subTitle: 'Adelab',
-    img: '/images/16th/support/adelab.png',
-    link: 'https://bizcrush.app/en/',
   },
 ];
