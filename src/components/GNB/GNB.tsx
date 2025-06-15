@@ -10,16 +10,20 @@ import { MobileMenuIcon } from '~/components/GNB/MobileMenuIcon';
 import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import { useDropDown } from '~/hooks/useDropdown';
 import useIsInProgress from '~/hooks/useIsInProgress';
+import { sectionBg } from '~/styles/background';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
+import { theme } from '~/styles/theme';
 import { getPathToRecruit } from '~/utils/utils';
 
-const LOGO_IMAGE = `/images/16th/logo/depromeet.svg`;
+const LOGO_IMAGE = `/images/17th/logo/dpm.svg`;
 
 function ApplyButton() {
   const { progressState } = useIsInProgress();
   const router = useRouter();
   const { label, action, isDisabled } = getPathToRecruit(router, progressState);
+
+  console.log(progressState);
 
   return (
     <Button css={linkButtonCss} onClick={action} disabled={isDisabled} suppressHydrationWarning>
@@ -29,10 +33,19 @@ function ApplyButton() {
 }
 
 const linkButtonCss = css`
-  height: 37px;
-  padding: 8px 24px 8px 24px;
-  border-radius: 300px;
-  opacity: 0px;
+  padding: 0 16px;
+  min-height: 34px;
+  border-radius: 8px;
+
+  position: absolute;
+  top: 50%;
+  right: 20px;
+
+  transform: translateY(-50%);
+  ${theme.typosV3.pretendard.sub5Semibold};
+
+  background: ${colors.primary.darknavy};
+  color: ${colors.white};
 
   &:disabled {
     background: ${colors.grey[300]};
@@ -56,7 +69,7 @@ export function GNB() {
       <nav css={navCss}>
         <div css={navWrapperCss}>
           <Link href={'/'}>
-            <Image src={LOGO_IMAGE} alt="로고 이미지" width={112} height={24} />
+            <Image css={logoCss} src={LOGO_IMAGE} alt="로고 이미지" width={45} height={20} />
           </Link>
           <ul css={menuContainerCss}>
             {GNB_MENU_NAME.map(menu => (
@@ -89,18 +102,20 @@ export function GNB() {
 }
 
 const navCommonCss = () => css`
-  background-color: black;
+  background-color: ${colors.primary.gray};
+  ${sectionBg};
+
   position: fixed;
   top: 0;
   left: 0;
   z-index: 9998;
-  width: 100vw;
+  width: 100%;
 `;
 
 const navCss = () => css`
   ${navCommonCss()};
-  padding: 12px 40px;
-  height: 61px;
+
+  padding: 18px;
 
   ${mediaQuery('mobile')} {
     display: none;
@@ -110,9 +125,16 @@ const navCss = () => css`
 const navWrapperCss = css`
   max-width: 1240px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin: 0 auto;
+`;
+
+const logoCss = css`
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
 `;
 
 const menuContainerCss = css`
@@ -132,21 +154,21 @@ const menuCss = css`
   margin: auto 0;
 `;
 
-const activeLinkCss = (theme: Theme) => css`
-  color: ${theme.colors.pink};
+const activeLinkCss = () => css`
+  color: ${colors.primary.darknavy};
 `;
 
-const inActiveLinkCss = (theme: Theme) => css`
-  color: ${theme.colors.white};
+const inActiveLinkCss = () => css`
+  color: ${colors.grey[400]};
 `;
 
 const linkCss = (theme: Theme) => css`
-  ${theme.typosV2.pretendard.semibold15};
+  ${theme.typosV3.pretendard.sub5Medium};
 `;
 
 const mobileMenuGNBCss = () => css`
   ${navCommonCss()};
-  padding: 21px 32px;
+  padding: 21px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
