@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 
 import { sectionGridBg } from '~/styles/background';
+import { theme } from '~/styles/theme';
 
 import { PositionCard } from './PositionCard';
 
@@ -64,7 +65,7 @@ export const PositionGrid = () => {
 
         {/* 두 번째 행: x x o o */}
         <div css={recruitmentMessageStyles}>
-          디프만은 다양개의 직군에서
+          디프만은 다섯개의 직군에서
           <br />
           신규 회원을 모집하고 있습니다.
         </div>
@@ -77,7 +78,7 @@ export const PositionGrid = () => {
 };
 
 const containerStyles = css`
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   padding: 20px;
   ${sectionGridBg};
@@ -101,11 +102,8 @@ const recruitmentMessageStyles = css`
   height: 302px;
   display: flex;
   align-items: center;
-  justify-content: center;
   font-size: 18px;
-  color: #666;
-  text-align: center;
+  color: ${theme.colors.primary.darknavy};
   line-height: 1.5;
-  border: 2px solid transparent;
   background: transparent;
 `;

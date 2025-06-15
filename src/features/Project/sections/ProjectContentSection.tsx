@@ -54,7 +54,7 @@ export const ProjectContentSection = () => {
       <ProjectTabNavigation currentTab={currentTab} tabs={TAB_LIST} onTabClick={handleClickTab} />
 
       <ProjectPaginationSection
-        _key={`${currentTab}-${selectedProjectList.length}`}
+        key={`${currentTab}-${selectedProjectList.length}`}
         projectList={selectedProjectList}
       />
 
