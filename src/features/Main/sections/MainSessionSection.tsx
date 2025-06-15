@@ -13,22 +13,24 @@ import SessionCard from '../components/SessionCard';
 export const MainSessionSection = () => {
   return (
     <section css={containerCss}>
-      <div css={text.wrapperCss}>
-        <h1 css={text.titleCss}>17th Session</h1>
-        <p css={text.subCss}>17주간의 성장과 도전의 모험 중 주요 세션입니다</p>
-      </div>
-      <div css={cardWrapperCss}>
-        {SESSIONS.map(session => {
-          return (
-            <div key={session.title}>
-              <SessionCard
-                src={session.image}
-                title={session.title}
-                description={session.description}
-              />
-            </div>
-          );
-        })}
+      <div css={wrapperCss}>
+        <div css={text.wrapperCss}>
+          <h1 css={text.titleCss}>17th Session</h1>
+          <p css={text.subCss}>17주간의 성장과 도전의 모험 중 주요 세션입니다</p>
+        </div>
+        <div css={cardWrapperCss}>
+          {SESSIONS.map(session => {
+            return (
+              <div key={session.title}>
+                <SessionCard
+                  src={session.image}
+                  title={session.title}
+                  description={session.description}
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
@@ -54,6 +56,28 @@ const containerCss = css`
   }
 `;
 
+const wrapperCss = css`
+  position: relative;
+
+  width: 100%;
+  max-width: 1100px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 68px;
+
+  ${mediaQuery('tablet')} {
+    padding: 140px 64px;
+  }
+
+  ${mediaQuery('mobile')} {
+    padding: 80px 24px 100px;
+    gap: 62px;
+  }
+`;
+
 const text = {
   wrapperCss: css`
     display: flex;
@@ -63,7 +87,6 @@ const text = {
     height: auto;
     gap: 12px;
 
-    margin-bottom: 60px;
     margin-left: 58px;
 
     ${mediaQuery('tablet')} {
@@ -105,7 +128,7 @@ const cardWrapperCss = css`
   overflow-x: auto;
 
   width: 100vw;
-  /* max-width: 100vw; */
+  max-width: 1110px;
   padding: 0 50px;
   box-sizing: border-box;
 
