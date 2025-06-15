@@ -8,9 +8,7 @@ import {
   MainReasonSection,
   MainRecruitSection,
   MainResultSection,
-  MainScheduleSection,
   MainSessionSection,
-  MainSubscribeSection,
   MainSupportSection,
 } from '~/features/Main/sections';
 
@@ -31,12 +29,12 @@ export default function Root() {
         <MainResultSection />
         <MainReasonSection />
         <MainSessionSection />
-        <MainScheduleSection />
+        {/* <MainScheduleSection /> */}
         <DynamicMainProjectSection />
+        <MainBlogSection />
         <MainSupportSection />
         <MainRecruitSection />
-        <MainBlogSection />
-        <MainSubscribeSection />
+        {/* <MainSubscribeSection /> */}
         {/* NOTE: 기존 웹 구조 */}
         {/* <div>
           <Intro
