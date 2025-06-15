@@ -1,11 +1,11 @@
 import { FAQ } from '~/components/FAQ';
-import { Qualification } from '~/components/Qualification';
-import { Schedules } from '~/components/Recruit';
+import { MemberRecruitment } from '~/components/MemberRecruitment';
+import { PositionGrid } from '~/components/PositionGrid/PositionGrid';
 import { Review } from '~/components/Review';
 import { SEO } from '~/components/SEO';
+import { SessionSchedule } from '~/components/SessionSchedule/SessionSchedule';
+import { ValueSection } from '~/components/ValueSection';
 import { IntroSection } from '~/features/Common/sections/IntroSection';
-import { RecruitMarqueeSection } from '~/features/Recruit/sections/RecruitMarqueeSection';
-import { RecuritPosition } from '~/features/Recruit/sections/RecuritPosition';
 
 export default function Recruit() {
   return (
@@ -16,10 +16,14 @@ export default function Recruit() {
           defaultImgUrl={'/images/16th/recruit/recruitment.svg'}
           mobileImgUrl={'/images/16th/recruit/recruitment_m.svg'}
         />
-        <RecruitMarqueeSection />
-        <RecuritPosition />
-        <Qualification />
-        <Schedules />
+        <PositionGrid />
+        <ValueSection />
+        <MemberRecruitment />
+        <SessionSchedule />
+        {/* <RecruitMarqueeSection /> */}
+        {/* <RecuritPosition /> */}
+        {/* <Qualification /> */}
+        {/* <Schedules /> */}
         <Review />
         <FAQ />
       </main>

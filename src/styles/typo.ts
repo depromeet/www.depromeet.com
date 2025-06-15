@@ -363,38 +363,37 @@ export const typosV2 = {
 
 // NOTE : 17th
 export const typosV3 = {
-  Abel: {
-    body1Regular: css`
-      font-family: Abel;
-      font-size: ${pxToRem(18)};
-      font-weight: 400;
-      line-height: 160%;
-      letter-spacing: ${pxToRem(-0.18)};
-    `,
-    body3Regular: css`
-      font-family: Abel;
-      font-size: ${pxToRem(16)};
-      font-weight: 400;
-      line-height: 170%;
-      letter-spacing: ${pxToRem(-0.16)};
-    `,
-  },
   DMMono: {
-    body2: css`
+    Number1: css`
       font-family: DMMono;
-      font-size: ${pxToRem(17)};
-      font-weight: 400;
-      line-height: 170%;
-      letter-spacing: ${pxToRem(-0.17)};
+      font-size: ${pxToRem(54)};
+      font-weight: 500;
+    `,
+    Number2: css`
+      font-family: DMMono;
+      font-size: ${pxToRem(12)};
+      font-weight: 500;
     `,
   },
   MartianMono: {
     head3: css`
       font-family: MartianMono;
       font-size: ${pxToRem(26)};
-      font-weight: bold;
+      font-weight: 500;
       line-height: 125%;
       letter-spacing: -5%;
+    `,
+    body1Regular: css`
+      font-family: MartianMono;
+      font-size: ${pxToRem(14)};
+      font-weight: 300;
+      line-height: 150%;
+      letter-spacing: -4%;
+    `,
+    body2: css`
+      font-family: MartianMono;
+      font-size: ${pxToRem(16)};
+      font-weight: 300;
     `,
   },
   pretendard: {
@@ -414,14 +413,14 @@ export const typosV3 = {
 
     head4: css`
       font-size: ${pxToRem(26)};
-      font-weight: bold;/
+      font-weight: bold;
       line-height: 140%;
       letter-spacing: 1%;
     `,
     head5: css`
       font-size: ${pxToRem(24)};
       font-weight: bold;
-      line-height: 140%;
+      line-height: 150%;
       letter-spacing: 1%;
     `,
     head6: css`
@@ -439,13 +438,13 @@ export const typosV3 = {
     /* Subtitle */
     sub1Semibold: css`
       font-size: ${pxToRem(20)};
-      font-weight: 600;
+      font-weight: 500;
       line-height: 140%;
       letter-spacing: 0;
     `,
     sub1Medium: css`
       font-size: ${pxToRem(20)};
-      font-weight: 500;
+      font-weight: 400;
       line-height: 140%;
       letter-spacing: 0;
     `,
@@ -501,6 +500,12 @@ export const typosV3 = {
     body3Medium: css`
       font-size: ${pxToRem(16)};
       font-weight: 500;
+      line-height: 170%;
+      letter-spacing: ${pxToRem(-0.16)};
+    `,
+    body3Regular: css`
+      font-size: ${pxToRem(16)};
+      font-weight: 400;
       line-height: 170%;
       letter-spacing: ${pxToRem(-0.16)};
     `,

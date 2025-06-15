@@ -1,17 +1,18 @@
 import { css, Theme } from '@emotion/react';
 import Marquee from 'react-fast-marquee';
 
-import { ReviewItem } from '~/components/Review/ReviewItem';
-import { REVIEWS } from '~/constant/review';
+import { StoryItem } from '~/components/Stories/StoryItem';
+import { STORIES } from '~/constant/stories';
 import { sectionBg } from '~/styles/background';
 
 export function Review() {
   return (
     <section css={layoutCss}>
-      <h1>멤버 후기</h1>
+      <h1>디퍼들의 실제 이야기가 궁금하다면?</h1>
+      <h5>뉴스레터와 블로그를 통해 활동 소식을 만나보세요</h5>
       <Marquee>
-        {REVIEWS.map(({ ...info }) => (
-          <ReviewItem key={info.name} {...info} />
+        {STORIES.map(({ ...info }) => (
+          <StoryItem key={info.name} {...info} />
         ))}
       </Marquee>
     </section>

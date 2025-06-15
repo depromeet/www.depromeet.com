@@ -4,7 +4,6 @@ import { css } from '@emotion/react';
 import { m } from 'framer-motion';
 
 import { defaultFadeInVariants } from '~/constant/motion';
-import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
 export type Link = {
@@ -29,7 +28,7 @@ export function SupportThumbnail({ title, img, link }: ThumbnailProps) {
       animate="animate"
       exit="exit"
     >
-      <Link href={link}>
+      <Link href={link} target="_blank">
         <Image
           css={imageCss}
           src={img}
@@ -62,7 +61,6 @@ const articleCss = css`
   height: 120px;
   padding: 24px;
   overflow: hidden;
-  background-color: ${colors.gray[900]};
   cursor: pointer;
 
   ${mediaQuery('mobile')} {
