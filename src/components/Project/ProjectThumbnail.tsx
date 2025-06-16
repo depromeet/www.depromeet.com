@@ -110,19 +110,14 @@ const articleCss = css`
   border: 1px solid #478af4;
   transition: all 0.2s ease;
   overflow: hidden;
-  perspective: 1000px;
 
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
-  &:hover .front-face {
-    transform: rotateY(-180deg);
-  }
-
   &:hover .back-face {
-    transform: rotateY(0deg);
+    opacity: 1;
   }
 
   ${mediaQuery('mobile')} {
@@ -137,10 +132,8 @@ const frontFaceCss = css`
   height: 100%;
   display: flex;
   flex-direction: column;
-  backface-visibility: hidden;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  transform: rotateY(0deg);
+  opacity: 1;
+  transition: opacity 0.3s ease;
 `;
 
 // 뒷면 스타일
@@ -151,10 +144,8 @@ const backFaceCss = css`
   width: 100%;
   height: 100%;
   background: #e3e5ea;
-  backface-visibility: hidden;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  transform: rotateY(180deg);
+  opacity: 0;
+  transition: opacity 0.3s ease;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
