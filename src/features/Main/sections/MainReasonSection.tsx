@@ -43,7 +43,7 @@ export const MainReasonSection = () => {
         />
         <Image
           css={icon.androidCss}
-          src={'/images/17th/3d-icon/android-icon.png'}
+          src={'/images/17th/3d-icon/Android-icon.png'}
           alt={'android-icon'}
           width={400}
           height={400}
