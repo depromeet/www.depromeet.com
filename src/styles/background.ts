@@ -5,6 +5,7 @@ import { colors } from '~/styles/colors';
 import { mediaQuery } from './media';
 
 export const sectionBg = css`
+  background-color: ${colors.primary.gray};
   background-image: linear-gradient(
     to right,
     ${colors.primary.blue}6A 1px,
