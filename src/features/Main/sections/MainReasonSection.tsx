@@ -38,15 +38,15 @@ export const MainReasonSection = () => {
           css={icon.iOSCss}
           src={'/images/17th/3d-icon/iOS-icon.png'}
           alt={'iOS-icon'}
-          width={400}
-          height={400}
+          width={!isTabletSize ? 400 : 300}
+          height={!isTabletSize ? 400 : 300}
         />
         <Image
           css={icon.androidCss}
           src={'/images/17th/3d-icon/Android-icon.png'}
           alt={'android-icon'}
-          width={400}
-          height={400}
+          width={!isTabletSize ? 400 : 300}
+          height={!isTabletSize ? 400 : 300}
         />
       </div>
     </section>
@@ -66,7 +66,8 @@ const containerCss = css`
   ${sectionBg};
 
   ${mediaQuery('tablet')} {
-    gap: 32px;
+    padding: 140px 40px;
+    gap: 60px;
   }
 
   ${mediaQuery('mobile')} {
@@ -86,7 +87,7 @@ const wrapperCss = css`
   gap: 80px;
 
   ${mediaQuery('tablet')} {
-    gap: 32px;
+    gap: 80px;
   }
 `;
 
@@ -95,14 +96,16 @@ const text = {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 100%;
     gap: 12px;
+
+    width: 100%;
     margin-left: 58px;
     margin-bottom: -31px;
+
     color: ${colors.primary.darknavy};
 
     ${mediaQuery('tablet')} {
-      margin-bottom: 98px;
+      margin-left: 0;
     }
   `,
 
@@ -139,11 +142,23 @@ const icon = {
     left: -13%;
     opacity: 60%;
     transform: rotate(-25deg);
+
+    ${mediaQuery('tablet')} {
+      top: -18%;
+      left: -25%;
+      opacity: 100%;
+      transform: rotate(-20deg);
+    }
   `,
   androidCss: css`
     position: absolute;
     bottom: -22%;
     right: -8%;
     transform: rotate(38deg);
+
+    ${mediaQuery('tablet')} {
+      bottom: -17%;
+      right: -20%;
+    }
   `,
 };
