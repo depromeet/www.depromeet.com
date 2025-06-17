@@ -136,11 +136,14 @@ const navCss = () => css`
 `;
 
 const navWrapperCss = css`
-  max-width: 1240px;
+  width: 100%;
+  max-width: 1110px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+
+  position: relative;
 `;
 
 const logoCss = css`
