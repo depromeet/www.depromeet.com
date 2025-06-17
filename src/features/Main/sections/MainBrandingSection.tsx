@@ -16,6 +16,7 @@ import { theme } from '~/styles/theme';
  */
 export const MainBrandingSection = () => {
   const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
+  const { isTargetSize: isTabletSize } = useCheckWindowSize('tablet');
 
   return (
     <section css={layoutCss}>
@@ -42,31 +43,39 @@ export const MainBrandingSection = () => {
               ))}
             </div>
           </div>
-          <p css={sentenceCss}>두려움을 용기로, 상상을 도전으로</p>
+          {!isTabletSize && !isMobileSize && (
+            <p css={sentenceCss}>두려움을 용기로, 상상을 도전으로</p>
+          )}
         </div>
-        <div css={imagesWrapperCss}>
-          <Image
-            src={'/images/17th/3d-icon/web-icon.png'}
-            alt={'web-icon'}
-            width={!isMobileSize ? 300 : 200}
-            height={!isMobileSize ? 300 : 200}
-            id={'icon'}
-          />
-          <Image
-            src={'/images/17th/3d-icon/Android-icon.png'}
-            alt={'android-icon'}
-            width={!isMobileSize ? 300 : 200}
-            height={!isMobileSize ? 300 : 200}
-            id={'icon'}
-          />
-          <Image
-            src={'/images/17th/3d-icon/server-icon.png'}
-            alt={'server-icon'}
-            width={!isMobileSize ? 300 : 200}
-            height={!isMobileSize ? 300 : 200}
-            id={'icon'}
-          />
-        </div>
+        {!isMobileSize && (
+          <div css={imagesWrapperCss}>
+            <Image
+              src={'/images/17th/3d-icon/web-icon.png'}
+              alt={'web-icon'}
+              width={!isTabletSize ? 300 : 250}
+              height={!isTabletSize ? 300 : 250}
+              id={'icon'}
+            />
+            <Image
+              src={
+                !isTabletSize
+                  ? '/images/17th/3d-icon/Android-icon.png'
+                  : '/images/17th/3d-icon/designer-icon.png'
+              }
+              alt={'android-icon'}
+              width={!isTabletSize ? 300 : 250}
+              height={!isTabletSize ? 300 : 250}
+              id={'icon'}
+            />
+            <Image
+              src={'/images/17th/3d-icon/server-icon.png'}
+              alt={'server-icon'}
+              width={!isTabletSize ? 300 : 230}
+              height={!isTabletSize ? 300 : 230}
+              id={'icon'}
+            />
+          </div>
+        )}
       </div>
     </section>
   );
@@ -91,8 +100,12 @@ const wrapper = css`
   width: auto;
   height: auto;
   min-width: 1100px;
+
+  ${mediaQuery('tablet')} {
+    min-width: 768px;
+  }
   ${mediaQuery('mobile')} {
-    min-width: 100%;
+    min-width: 430px;
   }
 `;
 
@@ -118,6 +131,14 @@ const titleWrapper = css`
   display: flex;
 
   padding-left: 29.2px;
+
+  ${mediaQuery('tablet')} {
+    padding-left: 54.7px;
+  }
+
+  ${mediaQuery('mobile')} {
+    padding-left: 38.8px;
+  }
 `;
 
 const titleCss = css`
@@ -127,10 +148,10 @@ const titleCss = css`
   letter-spacing: -3px;
   line-height: 109%;
   text-align: start;
-  position: relative;
 
   white-space: pre;
 
+  position: relative;
   display: inline-block;
   width: auto;
   background: ${colors.primary.gray};
@@ -143,10 +164,19 @@ const titleCss = css`
 
   padding: 7px 36.2px 16px 7px;
 
+  ${mediaQuery('tablet')} {
+    font-size: ${pxToRem(60)};
+    font-weight: medium;
+
+    padding: 7px 69px 12px 7px;
+  }
+
   ${mediaQuery('mobile')} {
-    font-size: ${pxToRem(36)};
-    letter-spacing: -3px;
-    padding: 7px 45px 12px 7px;
+    font-size: ${pxToRem(26)};
+    font-weight: medium;
+    letter-spacing: -1px;
+
+    padding: 7px 11.2px 12px 3px;
   }
 
   #circle {
@@ -216,21 +246,26 @@ const imagesWrapperCss = css`
     top: -35%;
     right: 400px;
 
+    ${mediaQuery('tablet')} {
+      top: -15%;
+      right: 230px;
+    }
+
     ${mediaQuery('mobile')} {
       top: -15%;
       right: 150px;
     }
   }
-  /* android icon */
+  /* android & designer icon */
   #icon:nth-of-type(2) {
     position: absolute;
     top: 25%;
     right: 250px;
     transform: rotate(-10.87deg);
 
-    ${mediaQuery('mobile')} {
-      top: 30%;
-      right: 100px;
+    ${mediaQuery('tablet')} {
+      top: 40%;
+      right: 150px;
     }
   }
 
@@ -240,9 +275,10 @@ const imagesWrapperCss = css`
     right: 75px;
     top: -20%;
     transform: translate(0%) rotate(44.39deg);
-    ${mediaQuery('mobile')} {
-      top: 0;
-      right: -10px;
+
+    ${mediaQuery('tablet')} {
+      top: 10%;
+      right: 20px;
     }
   }
 `;

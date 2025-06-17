@@ -2,19 +2,28 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
+import { DescriptionType, TitleType } from '~/constant/reason';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
 type Props = {
   image: string;
-  title: string;
-  description: string;
+  title: TitleType;
+  description: DescriptionType;
   index: number;
   isTabletSize?: boolean;
+  isMobileSize?: boolean;
   isReverseDirection?: boolean;
 };
-export const ReasonCard = ({ image, title, description, index, isReverseDirection }: Props) => {
+export const ReasonCard = ({
+  image,
+  title,
+  description,
+  index,
+  isMobileSize,
+  isReverseDirection,
+}: Props) => {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -28,7 +37,7 @@ export const ReasonCard = ({ image, title, description, index, isReverseDirectio
       },
       {
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px',
+        rootMargin: isMobileSize ? '0px 0px 0px 0px' : '0px 0px -50px 0px',
       }
     );
 
@@ -39,7 +48,7 @@ export const ReasonCard = ({ image, title, description, index, isReverseDirectio
     return () => {
       if (node) observer.unobserve(node);
     };
-  }, []);
+  }, [isMobileSize]);
 
   return (
     <div
@@ -66,8 +75,12 @@ export const ReasonCard = ({ image, title, description, index, isReverseDirectio
         />
       </div>
       <div css={content.wrapperCss}>
-        <h1 css={content.titleCss}>{title}</h1>
-        <p css={content.descriptionCss}>{description}</p>
+        <h1 css={content.titleCss}>
+          {!isMobileSize ? title.default : title.mobile ?? title.default}
+        </h1>
+        <p css={content.descriptionCss}>
+          {!isMobileSize ? description.default : description.mobile}
+        </p>
       </div>
     </div>
   );
@@ -84,10 +97,26 @@ const containerCss = (isReverseDirection?: boolean) => css`
   box-shadow: 0 0 8px 4px ${colors.primary.blue}24;
 
   z-index: 50;
+
   ${isReverseDirection &&
   css`
     flex-direction: row-reverse;
   `}
+
+  ${mediaQuery('tablet')} {
+    width: 688px;
+    min-height: 158px;
+  }
+
+  ${mediaQuery('mobile')} {
+    flex-direction: column;
+    /* width: 312px; */
+    width: 100%;
+    min-width: 312px;
+
+    height: 100%;
+    /* min-height: unset; */
+  }
 `;
 
 const imageWrapperCss = css`
@@ -96,6 +125,16 @@ const imageWrapperCss = css`
   height: auto;
   flex-shrink: 0;
   overflow: hidden;
+
+  ${mediaQuery('tablet')} {
+    width: 218px;
+    max-height: 158px;
+  }
+
+  ${mediaQuery('mobile')} {
+    width: 100%;
+    min-height: 226px;
+  }
 `;
 
 const content = {
@@ -106,6 +145,10 @@ const content = {
     width: 100%;
     padding: 24px;
     gap: 14px;
+
+    ${mediaQuery('tablet')} {
+      justify-content: center;
+    }
   `,
 
   titleCss: css`
@@ -113,8 +156,11 @@ const content = {
     white-space: pre-wrap;
     color: ${colors.primary.darknavy};
 
+    ${mediaQuery('tablet')} {
+      ${theme.typosV3.pretendard.sub1Semibold};
+    }
     ${mediaQuery('mobile')} {
-      ${theme.typosV2.pretendard.bold20};
+      ${theme.typosV3.pretendard.sub2Bold};
     }
   `,
 
@@ -124,8 +170,11 @@ const content = {
     white-space: pre-wrap;
     color: ${colors.grey[800]};
 
+    ${mediaQuery('tablet')} {
+      ${theme.typosV3.pretendard.body5Medium};
+    }
     ${mediaQuery('mobile')} {
-      ${theme.typosV2.pretendard.medium15};
+      ${theme.typosV3.pretendard.body6Medium};
     }
   `,
 };
