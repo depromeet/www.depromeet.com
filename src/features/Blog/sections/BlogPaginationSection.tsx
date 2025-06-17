@@ -12,7 +12,7 @@ import { mediaQuery } from '~/styles/media';
 // 새로운 페이지 사이즈 상수들 (2행 3열 = 6개)
 const PC_PAGE_SIZE = 6;
 const TABLET_PAGE_SIZE = 6;
-const MOBILE_PAGE_SIZE = 3;
+const MOBILE_PAGE_SIZE = 6;
 
 // 페이지별로 데이터를 슬라이스하는 함수
 const sliceByPage = (
@@ -98,7 +98,7 @@ const blogContainerCss = css`
 
   ${mediaQuery('mobile')} {
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(6, 1fr);
     gap: 12px;
     max-width: 400px;
   }
