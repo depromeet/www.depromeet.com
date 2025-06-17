@@ -6,6 +6,7 @@ import { m } from 'framer-motion';
 
 import { GNB_MOBILE_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import useIsInProgress from '~/hooks/useIsInProgress';
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 import { getPathToRecruit } from '~/utils/utils';
 
@@ -23,7 +24,7 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
   } = getPathToRecruit(router, progressState);
 
   const getActiveLinkcss = (menu: GNBMenu) => {
-    if (router.pathname.startsWith(menu.href)) {
+    if (router.pathname === menu.href) {
       return activeLinkCss;
     }
     return inActiveLinkCss;
@@ -76,19 +77,19 @@ const mobileMenuCss = (_theme: Theme) => css`
   top: 0;
   left: 0;
   margin: auto;
-  background-color: black;
-  padding-top: 72px;
+  background-color: ${colors.primary.darknavy};
+  padding-top: 64px;
 
   overflow: hidden;
 
   li {
-    padding: 12px 32px;
+    padding: 12px 16px;
   }
 `;
 
 const linkCss = (theme: Theme) => css`
-  ${theme.typosV2.pretendard.regular14};
-  color: ${theme.colors.white};
+  ${theme.typosV3.pretendard.sub3Semibold};
+  color: ${colors.white};
 
   ${mediaQuery('mobile')} {
     font-size: 1rem;
@@ -96,7 +97,7 @@ const linkCss = (theme: Theme) => css`
 
   &:hover,
   &:active {
-    color: ${theme.colors.pink};
+    color: ${colors.primary.blue};
   }
 
   &:disabled {
@@ -105,10 +106,10 @@ const linkCss = (theme: Theme) => css`
   }
 `;
 
-const activeLinkCss = (theme: Theme) => css`
-  color: ${theme.colors.pink};
+const activeLinkCss = () => css`
+  color: ${colors.primary.blue};
 `;
 
-const inActiveLinkCss = (theme: Theme) => css`
-  color: ${theme.colors.white};
+const inActiveLinkCss = () => css`
+  color: ${colors.white};
 `;
