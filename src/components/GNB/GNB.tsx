@@ -8,6 +8,7 @@ import { Button } from '~/components/Button';
 import { MobileMenu } from '~/components/GNB/MobileMenu';
 import { MobileMenuIcon } from '~/components/GNB/MobileMenuIcon';
 import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
+import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { useDropDown } from '~/hooks/useDropdown';
 import useIsInProgress from '~/hooks/useIsInProgress';
 import { sectionBg } from '~/styles/background';
@@ -22,8 +23,6 @@ function ApplyButton() {
   const { progressState } = useIsInProgress();
   const router = useRouter();
   const { label, action, isDisabled } = getPathToRecruit(router, progressState);
-
-  console.log(progressState);
 
   return (
     <Button css={linkButtonCss} onClick={action} disabled={isDisabled} suppressHydrationWarning>
@@ -57,6 +56,8 @@ export function GNB() {
   const { pathname } = useRouter();
   const { containerRef, isDropdownOpen, openDropdown, closeDropdown } = useDropDown();
 
+  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
+
   const getActiveLinkcss = (menu: GNBMenu) => {
     if (pathname === menu.href) {
       return activeLinkCss;
@@ -66,37 +67,40 @@ export function GNB() {
 
   return (
     <>
-      <nav css={navCss}>
-        <div css={navWrapperCss}>
-          <Link href={'/'}>
-            <Image css={logoCss} src={LOGO_IMAGE} alt="로고 이미지" width={45} height={20} />
-          </Link>
-          <ul css={menuContainerCss}>
-            {GNB_MENU_NAME.map(menu => (
-              <li css={menuCss} key={menu.name}>
-                <Link css={[linkCss, getActiveLinkcss(menu)]} href={menu.href}>
-                  {menu.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <ApplyButton />
-        </div>
-      </nav>
-      <nav css={mobileNavCss} ref={containerRef}>
-        <div css={mobileMenuGNBCss}>
-          <Link href={'/'}>
-            <Image src={LOGO_IMAGE} alt="로고 이미지" width={112} height={24} />
-          </Link>
-          <MobileMenuIcon
-            onClick={() => (isDropdownOpen ? closeDropdown() : openDropdown())}
-            isChecked={isDropdownOpen}
-          />
-        </div>
-        <AnimatePresence mode="wait">
-          {isDropdownOpen && <MobileMenu onClickMenu={closeDropdown} />}
-        </AnimatePresence>
-      </nav>
+      {!isMobileSize ? (
+        <nav css={navCss}>
+          <div css={navWrapperCss}>
+            <Link href={'/'}>
+              <Image css={logoCss} src={LOGO_IMAGE} alt="로고 이미지" width={45} height={20} />
+            </Link>
+            <ul css={menuContainerCss}>
+              {GNB_MENU_NAME.map(menu => (
+                <li css={menuCss} key={menu.name}>
+                  <Link css={[linkCss, getActiveLinkcss(menu)]} href={menu.href}>
+                    {menu.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <ApplyButton />
+          </div>
+        </nav>
+      ) : (
+        <nav css={mobileNavCss} ref={containerRef}>
+          <div css={mobileMenuGNBCss}>
+            <Link href={'/'}>
+              <Image src={LOGO_IMAGE} alt="로고 이미지" width={112} height={24} />
+            </Link>
+            <MobileMenuIcon
+              onClick={() => (isDropdownOpen ? closeDropdown() : openDropdown())}
+              isChecked={isDropdownOpen}
+            />
+          </div>
+          <AnimatePresence mode="wait">
+            {isDropdownOpen && <MobileMenu onClickMenu={closeDropdown} />}
+          </AnimatePresence>
+        </nav>
+      )}
     </>
   );
 }
