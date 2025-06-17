@@ -105,7 +105,7 @@ const wrapper = css`
     min-width: 768px;
   }
   ${mediaQuery('mobile')} {
-    min-width: 360px;
+    min-width: 430px;
   }
 `;
 
@@ -137,7 +137,7 @@ const titleWrapper = css`
   }
 
   ${mediaQuery('mobile')} {
-    padding-left: 35.8px;
+    padding-left: 38.8px;
   }
 `;
 
