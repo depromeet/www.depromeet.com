@@ -88,6 +88,11 @@ const containerCss = (isReverseDirection?: boolean) => css`
   css`
     flex-direction: row-reverse;
   `}
+
+  ${mediaQuery('tablet')} {
+    width: 688px;
+    min-height: 158px;
+  }
 `;
 
 const imageWrapperCss = css`
@@ -96,6 +101,11 @@ const imageWrapperCss = css`
   height: auto;
   flex-shrink: 0;
   overflow: hidden;
+
+  ${mediaQuery('tablet')} {
+    width: 218px;
+    max-height: 158px;
+  }
 `;
 
 const content = {
@@ -106,6 +116,10 @@ const content = {
     width: 100%;
     padding: 24px;
     gap: 14px;
+
+    ${mediaQuery('tablet')} {
+      justify-content: center;
+    }
   `,
 
   titleCss: css`
@@ -113,8 +127,8 @@ const content = {
     white-space: pre-wrap;
     color: ${colors.primary.darknavy};
 
-    ${mediaQuery('mobile')} {
-      ${theme.typosV2.pretendard.bold20};
+    ${mediaQuery('tablet')} {
+      ${theme.typosV3.pretendard.sub1Semibold};
     }
   `,
 
@@ -124,8 +138,8 @@ const content = {
     white-space: pre-wrap;
     color: ${colors.grey[800]};
 
-    ${mediaQuery('mobile')} {
-      ${theme.typosV2.pretendard.medium15};
+    ${mediaQuery('tablet')} {
+      ${theme.typosV3.pretendard.body5Medium};
     }
   `,
 };
