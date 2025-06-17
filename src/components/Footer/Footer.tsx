@@ -11,26 +11,35 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
   return (
     <footer css={footerCss}>
-      <div css={footerInfoWrapper}>
-        <Image src={'/images/17th/logo/depromeet-white.svg'} alt={'logo'} width={148} height={22} />
-        <ul css={rowCss}>
-          {FIRST_ROW_FOOTER_INFOS.map((footer, idx) => (
-            <li
-              key={footer.name}
-              css={css`
-                display: flex;
-                align-items: center;
-              `}
-            >
-              <Link css={[strongLinkCss]} href={footer.href} target="_blank">
-                {footer.name}
-              </Link>
-              {idx < FIRST_ROW_FOOTER_INFOS.length - 1 && <span id={'divide'} aria-hidden="true" />}
-            </li>
-          ))}
-        </ul>
+      <div css={wrapperCss}>
+        <div css={footerInfoWrapper}>
+          <Image
+            src={'/images/17th/logo/depromeet-white.svg'}
+            alt={'logo'}
+            width={148}
+            height={22}
+          />
+          <ul css={rowCss}>
+            {FIRST_ROW_FOOTER_INFOS.map((footer, idx) => (
+              <li
+                key={footer.name}
+                css={css`
+                  display: flex;
+                  align-items: center;
+                `}
+              >
+                <Link css={[strongLinkCss]} href={footer.href} target="_blank">
+                  {footer.name}
+                </Link>
+                {idx < FIRST_ROW_FOOTER_INFOS.length - 1 && (
+                  <span id={'divide'} aria-hidden="true" />
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <p css={copyrightCss}>© {currentYear} DEPROMEET. ALL RIGHTS RESERVED.</p>
       </div>
-      <p css={copyrightCss}>© {currentYear} DEPROMEET. ALL RIGHTS RESERVED.</p>
     </footer>
   );
 }
@@ -42,11 +51,23 @@ const footerCss = css`
   display: flex;
   flex-direction: column;
   gap: 30px;
-  align-items: flex-start;
+  align-items: center;
 
   ${mediaQuery('mobile')} {
-    padding: 40px 30px;
-    gap: 20px;
+    padding: 32px 40px;
+  }
+`;
+
+const wrapperCss = css`
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: flex-start;
+  max-width: 1100px;
+  width: 100%;
+
+  ${mediaQuery('mobile')} {
+    gap: 0;
   }
 `;
 
@@ -69,10 +90,9 @@ const rowCss = css`
   ${mediaQuery('mobile')} {
     width: 100%;
     gap: 0;
-    column-gap: 24px;
-    row-gap: 4px;
-    flex-wrap: wrap-reverse;
-    justify-content: center;
+    row-gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
   }
 
   #divide {
@@ -89,18 +109,10 @@ const strongLinkCss = (theme: Theme) => css`
   ${theme.typosV3.pretendard.sub5Medium};
   color: ${colors.grey['00']};
   text-align: center;
-
-  ${mediaQuery('mobile')} {
-    font-size: 18px;
-  }
 `;
 
 const copyrightCss = (theme: Theme) => css`
   ${theme.typosV3.pretendard.body7Medium};
   color: ${colors.grey['00']};
   font-weight: 300;
-
-  ${mediaQuery('mobile')} {
-    font-size: 10px;
-  }
 `;
