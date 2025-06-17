@@ -18,6 +18,7 @@ import { theme } from '~/styles/theme';
 import { getPathToRecruit } from '~/utils/utils';
 
 const LOGO_IMAGE = `/images/17th/logo/dpm.svg`;
+const LOGO_WHITE_IMAGE = `/images/17th/logo/depromeet-white.svg`;
 
 function ApplyButton() {
   const { progressState } = useIsInProgress();
@@ -39,6 +40,10 @@ const linkButtonCss = css`
   position: absolute;
   top: 50%;
   right: 20px;
+
+  ${mediaQuery('tablet')} {
+    right: 40px;
+  }
 
   transform: translateY(-50%);
   ${theme.typosV3.pretendard.sub5Semibold};
@@ -86,10 +91,19 @@ export function GNB() {
           </div>
         </nav>
       ) : (
-        <nav css={mobileNavCss} ref={containerRef}>
-          <div css={mobileMenuGNBCss}>
+        <nav ref={containerRef}>
+          <div css={mobileMenuGNBCss(isDropdownOpen)}>
             <Link href={'/'}>
-              <Image src={LOGO_IMAGE} alt="로고 이미지" width={112} height={24} />
+              {isDropdownOpen ? (
+                <Image src={LOGO_WHITE_IMAGE} alt="로고 이미지" width={161} height={24} />
+              ) : (
+                <Image
+                  src={LOGO_IMAGE}
+                  alt="로고 이미지"
+                  width={!isMobileSize ? 112 : 45}
+                  height={24}
+                />
+              )}
             </Link>
             <MobileMenuIcon
               onClick={() => (isDropdownOpen ? closeDropdown() : openDropdown())}
@@ -106,9 +120,6 @@ export function GNB() {
 }
 
 const navCommonCss = () => css`
-  background-color: ${colors.primary.gray};
-  ${sectionBg};
-
   position: fixed;
   top: 0;
   left: 0;
@@ -118,12 +129,10 @@ const navCommonCss = () => css`
 
 const navCss = () => css`
   ${navCommonCss()};
+  ${sectionBg};
+  background-color: ${colors.primary.gray};
 
   padding: 18px;
-
-  ${mediaQuery('mobile')} {
-    display: none;
-  }
 `;
 
 const navWrapperCss = css`
@@ -139,19 +148,18 @@ const logoCss = css`
   top: 50%;
   left: 20px;
   transform: translateY(-50%);
+
+  ${mediaQuery('tablet')} {
+    left: 40px;
+  }
+  ${mediaQuery('mobile')} {
+    left: 20px;
+  }
 `;
 
 const menuContainerCss = css`
   display: flex;
   gap: 40px;
-`;
-
-const mobileNavCss = css`
-  display: none;
-
-  ${mediaQuery('mobile')} {
-    display: block;
-  }
 `;
 
 const menuCss = css`
@@ -170,13 +178,20 @@ const linkCss = (theme: Theme) => css`
   ${theme.typosV3.pretendard.sub5Medium};
 `;
 
-const mobileMenuGNBCss = () => css`
+const mobileMenuGNBCss = (isDropdownOpen: boolean) => css`
   ${navCommonCss()};
-  padding: 21px 20px;
+
+  ${isDropdownOpen
+    ? `
+      background-color: ${colors.primary.darknavy};
+      background-image: none;
+    `
+    : sectionBg}
+
+  padding: 18px ${isDropdownOpen ? `16px` : `20px`};
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   & > a {
     margin-top: 6px;
   }
