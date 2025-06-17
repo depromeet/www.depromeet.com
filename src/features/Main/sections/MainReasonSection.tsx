@@ -174,6 +174,7 @@ const icon = {
     right: -8%;
     transform: rotate(38deg);
 
+    z-index: 10;
     ${mediaQuery('tablet')} {
       bottom: -17%;
       right: -20%;

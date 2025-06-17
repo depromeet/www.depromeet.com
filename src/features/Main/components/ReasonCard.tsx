@@ -87,6 +87,7 @@ export const ReasonCard = ({
 };
 
 const containerCss = (isReverseDirection?: boolean) => css`
+  position: relative;
   display: flex;
   width: 825px;
   min-height: 188px;

@@ -97,7 +97,7 @@ export function GNB() {
               {isDropdownOpen ? (
                 <Image src={LOGO_WHITE_IMAGE} alt="로고 이미지" width={161} height={24} />
               ) : (
-                <Image src={LOGO_IMAGE} alt="로고 이미지" width={112} height={24} />
+                <Image src={LOGO_IMAGE} alt="로고 이미지" width={45} height={24} />
               )}
             </Link>
             <MobileMenuIcon
