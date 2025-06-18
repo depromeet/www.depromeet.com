@@ -18,8 +18,8 @@ export const ProjectTitleSection = () => {
 };
 
 const titleImageContainerCss = css`
-  align-self: flex-start;
-  max-width: 1200px;
+  align-self: center;
+  max-width: 1100px;
   width: 100%;
   padding-inline: 48px;
   padding-top: 47px;
