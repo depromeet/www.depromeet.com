@@ -438,7 +438,7 @@ export const typosV3 = {
     /* Subtitle */
     sub1Semibold: css`
       font-size: ${pxToRem(20)};
-      font-weight: 500;
+      font-weight: 600;
       line-height: 140%;
       letter-spacing: 0;
     `,
@@ -456,7 +456,7 @@ export const typosV3 = {
     `,
     sub2Semibold: css`
       font-size: ${pxToRem(18)};
-      font-weight: 500;
+      font-weight: 600;
       line-height: 140%;
       letter-spacing: 0;
     `,
@@ -468,7 +468,7 @@ export const typosV3 = {
     `,
     sub3Semibold: css`
       font-size: ${pxToRem(16)};
-      font-weight: 500;
+      font-weight: 600;
       line-height: 140%;
       letter-spacing: 0;
     `,
