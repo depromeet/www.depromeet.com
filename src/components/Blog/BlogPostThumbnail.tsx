@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { css, Theme } from '@emotion/react';
+import { css } from '@emotion/react';
 import { m } from 'framer-motion';
 
 import { ArrowIcon } from '~/components/Icons';
@@ -33,25 +33,38 @@ export function BlogPostThumbnail({ title, date, img, link, ...props }: Thumbnai
       onClick={handleClickThumbnail}
       {...props}
     >
-      {/* 상단 날짜 */}
-      <div css={dateContainerCss}>
-        <span css={dateCss}>{date}</span>
+      <div css={frontFaceCss} className="front-face">
+        <div css={dateContainerCss}>
+          <span css={dateCss}>{date}</span>
+        </div>
+
+        <div css={titleContainerCss}>
+          <h3 css={titleCss} dangerouslySetInnerHTML={{ __html: title as string }} />
+        </div>
+
+        <div css={imageContainerCss}>
+          <Image css={imageCss} src={img} alt={title} fill quality={100} />
+        </div>
       </div>
 
-      {/* 중간 제목 */}
-      <div css={titleContainerCss}>
-        <h3 css={titleCss} dangerouslySetInnerHTML={{ __html: title as string }} />
-      </div>
+      <div css={backFaceCss} className="back-face">
+        <div css={dateContainerCss}>
+          <span css={[dateCss, { color: 'black' }]}>{date}</span>
+        </div>
 
-      {/* 하단 썸네일 이미지 */}
-      <div css={imageContainerCss}>
-        <Image css={imageCss} src={img} alt={title} fill quality={100} />
+        <div css={titleContainerCss}>
+          <h3
+            css={[titleCss, { color: 'black' }]}
+            dangerouslySetInnerHTML={{ __html: title as string }}
+          />
+        </div>
 
-        {/* 이미지 위에 링크 정보 오버레이 */}
-        <div css={overlayContainerCss}>
-          <div css={linkCss}>
-            {link.type}
-            <ArrowIcon direction={'right'} color="white" width={16} height={16} />
+        <div css={backLinksAreaCss}>
+          <div css={linksContainerCss}>
+            <button css={linkButtonCss} onClick={e => e.stopPropagation()}>
+              {link.type}
+              <ArrowIcon direction={'right'} color="white" width={16} height={16} />
+            </button>
           </div>
         </div>
       </div>
@@ -59,6 +72,7 @@ export function BlogPostThumbnail({ title, date, img, link, ...props }: Thumbnai
   );
 }
 
+// 메인 카드 스타일
 const articleCss = css`
   position: relative;
   width: 100%;
@@ -76,8 +90,83 @@ const articleCss = css`
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
+  &:hover .back-face {
+    opacity: 1;
+  }
+
   ${mediaQuery('mobile')} {
     border-radius: 12px;
+  }
+`;
+
+// 앞면 스타일
+const frontFaceCss = css`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+`;
+
+// 뒷면 스타일
+const backFaceCss = css`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #e3e5ea;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+`;
+
+const backLinksAreaCss = css`
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background: #040c23;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 21px;
+  box-sizing: border-box;
+
+  ${mediaQuery('mobile')} {
+    height: 180px;
+  }
+`;
+
+const linksContainerCss = css`
+  display: flex;
+  gap: 16.5px;
+  align-items: center;
+  justify-content: center;
+`;
+
+const linkButtonCss = css`
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  color: white;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  ${theme.typosV3.MartianMono.body1Regular};
+  font-weight: 200;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  ${mediaQuery('tablet')} {
   }
 `;
 
@@ -112,7 +201,7 @@ const titleContainerCss = css`
 
 const titleCss = css`
   ${theme.typosV2.pretendard.semibold20};
-  color: #000000
+  color: #000000;
   line-height: 1.4;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -145,39 +234,5 @@ const imageCss = css`
 
   &:hover {
     transform: scale(1.02);
-  }
-`;
-
-const overlayContainerCss = css`
-  position: absolute;
-  bottom: 12px;
-  right: 12px;
-  z-index: 10;
-
-  ${mediaQuery('mobile')} {
-    bottom: 10px;
-    right: 10px;
-  }
-`;
-
-const linkCss = (theme: Theme) => css`
-  display: flex;
-  gap: 4px;
-  align-items: center;
-  color: white;
-  background: rgba(0, 0, 0, 0.7);
-  padding: 6px 10px;
-  border-radius: 20px;
-  ${theme.typosV2.pretendard.medium13}
-  transition: background 0.2s ease;
-  backdrop-filter: blur(4px);
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.8);
-  }
-
-  ${mediaQuery('mobile')} {
-    font-size: 11px;
-    padding: 5px 8px;
   }
 `;
