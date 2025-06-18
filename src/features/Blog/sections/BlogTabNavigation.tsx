@@ -118,10 +118,6 @@ const mainTabItemCss = css`
     border-right: 1px solid #d1d5db;
   }
 
-  &:hover {
-    background-color: #d1d5db;
-  }
-
   ${mediaQuery('mobile')} {
     padding: 14px 20px;
     ${theme.typosV2.pretendard.medium14};
@@ -136,10 +132,6 @@ const mainTabItemCss = css`
 const mainTabItemActiveCss = css`
   background-color: #478af4;
   color: white;
-
-  &:hover {
-    background-color: #2563eb;
-  }
 `;
 
 const subTabWrapperCss = css`
@@ -182,10 +174,6 @@ const subTabItemCss = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  &:hover {
-    color: black;
-  }
 
   ${mediaQuery('mobile')} {
     padding: 14px 12px;
