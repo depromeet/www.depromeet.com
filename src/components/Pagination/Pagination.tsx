@@ -92,10 +92,13 @@ const centeredListCss = css`
 `;
 
 const listItemCss = (selected: boolean) => css`
+  ${theme.typosV2.pretendard.medium16};
+  line-height: 170%;
+  letter-spacing: -1px;
   width: 56px;
   height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${selected ? theme.colors.grey[900] : theme.colors.grey[300]};
+  color: ${selected ? theme.colors.grey[900] : theme.colors.grey[500]};
 `;
