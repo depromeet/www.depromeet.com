@@ -23,7 +23,14 @@ export const Supports = () => {
           <SupportThumbnail key={support.title} {...support} />
         ))}
       </ul>
-      <button css={supportButtonCss}>후원 문의하기</button>
+      <button
+        css={supportButtonCss}
+        onClick={() => {
+          window.location.href = 'mailto:depromeet@gmail.com';
+        }}
+      >
+        후원 문의하기
+      </button>
     </div>
   );
 };
