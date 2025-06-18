@@ -179,8 +179,7 @@ const cardWrapperCss = css`
     gap: 36px;
   }
   ${mediaQuery('mobile')} {
-    padding-left: calc(50vw - 139px);
-    padding-right: calc(50vw - 139px);
+    padding: 10px calc(50% - 139px);
     gap: 12px;
   }
 `;
