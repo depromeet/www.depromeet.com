@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 
 import { Supports } from '~/components/Supports';
 import { sectionBg } from '~/styles/background';
+import { mediaQuery } from '~/styles/media';
 
 /**
  * * Main 페이지 후원사 section
@@ -21,4 +22,8 @@ const layoutCss = css`
   align-items: center;
   width: 100%;
   ${sectionBg};
+
+  ${mediaQuery('mobile')} {
+    padding: 60px 0;
+  }
 `;

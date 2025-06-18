@@ -67,7 +67,7 @@ const articleCss = css`
     max-width: 100%;
     padding: 18px;
     height: auto;
-    aspect-ratio: 160/64;
+    aspect-ratio: 152/96;
   }
 `;
 

@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 
 import { Result } from '~/components/Result';
 import { sectionBg } from '~/styles/background';
+import { mediaQuery } from '~/styles/media';
 
 export const MainResultSection = () => {
   return (
@@ -22,6 +23,14 @@ const layoutCss = css`
   align-items: center;
 
   ${sectionBg};
+
+  ${mediaQuery('tablet')} {
+    padding: 80px 40px;
+  }
+
+  ${mediaQuery('mobile')} {
+    padding: 0px;
+  }
 `;
 
 const resultWrapper = css`

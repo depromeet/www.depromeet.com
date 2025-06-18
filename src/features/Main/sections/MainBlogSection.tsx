@@ -37,7 +37,7 @@ const containerCss = css`
   ${sectionBg};
 
   ${mediaQuery('mobile')} {
-    padding: 80px 0 80px 0;
+    padding: 60px 0;
   }
 `;
 
@@ -45,18 +45,27 @@ const text = {
   wrapperCss: css`
     display: flex;
     flex-direction: column;
+    align-self: center;
     row-gap: 8px;
     width: 100%;
     max-width: 1100px;
     padding: 0 58px;
     margin-bottom: 48px;
+
+    ${mediaQuery('tablet')} {
+      padding: 0 40px;
+      margin-bottom: 60px;
+    }
+    ${mediaQuery('mobile')} {
+      padding: 0 24px;
+      margin-bottom: 40px;
+    }
   `,
   subCss: css`
     ${theme.typosV2.pretendard.semibold20};
 
     ${mediaQuery('mobile')} {
-      ${theme.typosV2.pretendard.semibold18};
-      line-height: 150%;
+      ${theme.typosV3.pretendard.body3Medium};
     }
   `,
 
