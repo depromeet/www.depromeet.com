@@ -6,6 +6,7 @@ import { m } from 'framer-motion';
 import { ArrowIcon } from '~/components/Icons';
 import { defaultFadeInVariants } from '~/constant/motion';
 import { Project } from '~/constant/project';
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
@@ -38,11 +39,6 @@ export function ProjectThumbnail({
     >
       {/* 앞면 - 기본 상태 */}
       <div css={frontFaceCss} className="front-face">
-        {/* 상단 기수 정보 */}
-        <div css={subTitleContainerCss}>
-          <span css={subTitleCss}>{subTitle}</span>
-        </div>
-
         {/* 중간 제목과 설명 */}
         <div css={titleContainerCss}>
           <h3 css={titleCss}>{title}</h3>
@@ -63,11 +59,6 @@ export function ProjectThumbnail({
 
       {/* 뒷면 - 호버 시 나타나는 링크들 */}
       <div css={backFaceCss} className="back-face">
-        {/* 상단 기수 정보 */}
-        <div css={subTitleContainerCss}>
-          <span css={[subTitleCss, { color: 'black' }]}>{subTitle}</span>
-        </div>
-
         {/* 중간 제목과 설명 */}
         <div css={titleContainerCss}>
           <h3 css={[titleCss, { color: 'black' }]}>{title}</h3>
@@ -103,6 +94,7 @@ export function ProjectThumbnail({
 const articleCss = css`
   position: relative;
   width: 100%;
+  max-width: 312px;
   height: auto;
   display: flex;
   flex-direction: column;
@@ -118,10 +110,6 @@ const articleCss = css`
 
   &:hover .back-face {
     opacity: 1;
-  }
-
-  ${mediaQuery('mobile')} {
-    border-radius: 12px;
   }
 `;
 
@@ -155,26 +143,21 @@ const backFaceCss = css`
 const backLinksAreaCss = css`
   position: relative;
   width: 100%;
-  height: 240px;
-  background: #040c23;
+  height: 245px;
+  background: ${colors.primary.darknavy};
+
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 21px;
   box-sizing: border-box;
-
-  ${mediaQuery('mobile')} {
-    height: 200px;
-    padding: 16px;
-  }
 `;
 
 const linksContainerCss = css`
   display: flex;
-  gap: 16px;
+  gap: 16.5px;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
 `;
 
 const linkButtonCss = css`
@@ -185,67 +168,41 @@ const linkButtonCss = css`
   background: transparent;
   border: none;
   padding: 0;
-  font-family: MartianMono;
   font-weight: 200;
   cursor: pointer;
   transition: all 0.2s ease;
+
+  ${theme.typosV3.MartianMono.body1Regular};
+  font-weight: 200;
+  font-size: 13px;
+  letter-spacing: -0.5px;
 
   &:hover {
     opacity: 0.8;
   }
 
-  ${mediaQuery('mobile')} {
-    ${theme.typosV2.pretendard.semibold14};
-  }
-`;
-
-// 앞면 요소들 스타일
-const subTitleContainerCss = css`
-  padding: 16px 16px 0 16px;
-
-  ${mediaQuery('mobile')} {
-    padding: 12px 12px 0 12px;
-  }
-`;
-
-const subTitleCss = css`
-  ${theme.typosV2.pretendard.medium13};
-  color: #040c23;
-  line-height: 1.4;
-
-  ${mediaQuery('mobile')} {
-    font-size: 13px;
+  ${mediaQuery('tablet')} {
   }
 `;
 
 const titleContainerCss = css`
-  padding: 8px 16px 16px 16px;
-  flex: 1;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  gap: 4px;
 
-  ${mediaQuery('mobile')} {
-    padding: 6px 12px 12px 12px;
-  }
+  height: 112px;
 `;
 
 const titleCss = css`
-  ${theme.typosV2.pretendard.semibold20};
-  color: #000000;
-  line-height: 1.4;
-  margin: 0;
-
-  ${mediaQuery('mobile')} {
-    ${theme.typosV2.pretendard.semibold16};
-    line-height: 1.3;
-  }
+  ${theme.typosV3.pretendard.sub1Semibold};
+  color: ${colors.black};
 `;
 
 const descriptionCss = css`
-  ${theme.typosV2.pretendard.medium14};
-  color: #666666;
+  ${theme.typosV3.pretendard.body5Medium};
+  color: ${colors.primary.darknavy};
   line-height: 1.4;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -253,23 +210,13 @@ const descriptionCss = css`
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: keep-all;
-  margin: 0;
-
-  ${mediaQuery('mobile')} {
-    ${theme.typosV2.pretendard.medium13};
-    line-height: 1.3;
-  }
 `;
 
 const imageContainerCss = css`
   position: relative;
   width: 100%;
-  height: 240px;
+  height: 245px;
   overflow: hidden;
-
-  ${mediaQuery('mobile')} {
-    height: 200px;
-  }
 `;
 
 const imageCss = css`

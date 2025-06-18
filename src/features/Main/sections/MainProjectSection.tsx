@@ -38,7 +38,7 @@ export const MainProjectSection = () => {
     <section css={sectionCss(isMaxCurrentPage)}>
       <div css={wrapperCss}>
         <div css={text.wrapperCss}>
-          <h1 css={text.titleCss}>Project</h1>
+          <h1 css={text.titleCss}>Projects</h1>
           <p css={text.subCss}>
             디프만 멤버 &apos;디퍼(DEEPER)&apos; 들의
             {isMobileSize && <br />} 다양한 프로젝트를 확인해보세요
@@ -76,8 +76,8 @@ export const MainProjectSection = () => {
           css={iconCss}
           src={'/images/17th/3d-icon/designer-icon.png'}
           alt={'iOS-icon'}
-          width={300}
-          height={300}
+          width={!isMobileSize ? 300 : 168}
+          height={!isMobileSize ? 300 : 168}
         />
       </div>
     </section>
@@ -125,12 +125,12 @@ const wrapperCss = css`
   gap: 68px;
 
   ${mediaQuery('tablet')} {
-    padding: 140px 64px;
+    max-width: 960px;
+    padding: 80px 40px;
   }
 
   ${mediaQuery('mobile')} {
-    padding: 80px 24px 100px;
-    gap: 62px;
+    padding: 40px 24px 100px;
   }
 `;
 
@@ -142,10 +142,6 @@ const text = {
     width: 100%;
     gap: 12px;
     color: ${colors.primary.darknavy};
-
-    ${mediaQuery('tablet')} {
-      margin-bottom: 98px;
-    }
   `,
 
   titleCss: css`
@@ -160,7 +156,8 @@ const text = {
 
     ${mediaQuery('mobile')} {
       ${theme.typosV3.MartianMono.head3};
-      font-size: ${pxToRem(28)};
+      font-size: ${pxToRem(26)};
+      letter-spacing: -1px;
     }
   `,
   subCss: css`
@@ -169,31 +166,45 @@ const text = {
     z-index: 100;
 
     ${mediaQuery('mobile')} {
-      ${theme.typosV3.pretendard.sub4Semibold};
+      ${theme.typosV3.pretendard.body3Medium};
     }
   `,
 };
 
 const projectContainerCss = css`
   width: 100%;
-  max-width: 960px;
+  max-width: 994px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 29px;
+
+  justify-content: center;
+
+  justify-items: center;
+  align-items: center;
+
+  margin-left: auto;
+  margin-right: auto;
 
   z-index: 50;
 
   ${mediaQuery('tablet')} {
     grid-template-columns: repeat(2, 1fr);
+    max-width: 688px;
+    padding: 0 20px;
+    gap: 24px;
   }
   ${mediaQuery('mobile')} {
     grid-template-columns: repeat(1, 1fr);
+    margin-top: -24px;
+    padding: 0;
   }
 `;
 
 const button = {
   containerCss: css`
     padding: 14px 26px 13px 26px;
+    margin-top: -32px;
     border-radius: 100px;
     background-color: ${colors.primary.gray};
     border: 1px ${colors.primary.blue} solid;
@@ -205,8 +216,13 @@ const button = {
 
     z-index: 50;
 
-    color: black;
+    color: ${colors.primary.darknavy};
     ${theme.typosV3.pretendard.sub3Semibold};
+
+    ${mediaQuery('mobile')} {
+      padding: 8px 20px;
+      ${theme.typosV3.pretendard.sub5Medium};
+    }
   `,
 };
 
@@ -214,4 +230,14 @@ const iconCss = css`
   position: absolute;
   bottom: 0;
   left: -80px;
+
+  ${mediaQuery('tablet')} {
+    bottom: -1%;
+    left: -96px;
+  }
+
+  ${mediaQuery('mobile')} {
+    bottom: 1.6%;
+    left: -34px;
+  }
 `;
