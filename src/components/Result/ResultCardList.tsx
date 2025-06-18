@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import { motion } from 'framer-motion';
+import CountUp from 'react-countup';
 
 import { QUANTIFIED_INFO } from '~/constant/aboutInfo';
 import { colors } from '~/styles/colors';
@@ -12,24 +12,21 @@ export const ResultCardList = () => {
       {QUANTIFIED_INFO.map(({ label, number, unit }, idx) => (
         <div css={cardCss} key={label}>
           <p css={textCss.wrapper}>
-            <span css={textCss.number}>
-              {String(number)
-                .split('')
-                .map((char, index) => (
-                  <motion.span
-                    key={index}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: false, amount: 0.5 }}
-                    transition={{
-                      delay: 0.2 + index * 0.1,
-                      duration: 0,
-                    }}
-                  >
-                    {char}
-                  </motion.span>
-                ))}
-            </span>
+            <CountUp
+              start={0}
+              end={number}
+              duration={3}
+              key={idx}
+              enableScrollSpy={true}
+              scrollSpyOnce={true}
+              separator=""
+            >
+              {({ countUpRef }) => (
+                <span css={textCss.number} ref={countUpRef}>
+                  {number}
+                </span>
+              )}
+            </CountUp>
             <span
               css={[
                 textCss.unit,
