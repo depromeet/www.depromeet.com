@@ -45,6 +45,7 @@ const text = {
   wrapperCss: css`
     display: flex;
     flex-direction: column;
+    align-self: center;
     row-gap: 8px;
     width: 100%;
     max-width: 1100px;
