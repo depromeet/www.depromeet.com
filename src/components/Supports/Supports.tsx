@@ -14,7 +14,7 @@ export const Supports = () => {
     <div css={[layoutCss]}>
       <h1 css={introCss.headline()}>Sponsor</h1>
       <p css={introCss.description()}>
-        디프만은 IT 비영리 단체로 후원을 통해 {isMobileSize && <br />}더 많은 교육 기회에 도움을
+        디프만은 IT 비영리 단체로{isMobileSize && <br />} 후원을 통해 더 많은 교육 기회에 도움을
         받고 있습니다.
       </p>
 
@@ -65,7 +65,7 @@ const introCss = {
     margin-top: 8px;
 
     ${mediaQuery('mobile')} {
-      ${theme.typosV2.pretendard.semibold18}
+      ${theme.typosV3.pretendard.sub1Semibold}
     }
   `,
 };
@@ -74,16 +74,16 @@ const supportContainerCss = css`
   display: grid;
   width: 100%;
   max-width: 880px;
-  margin: 48px auto;
+  margin-top: 48px;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   justify-items: center;
   justify-content: center;
   justify-self: center;
+  align-self: center;
 
   ${mediaQuery('tablet')} {
-    grid-template-columns: repeat(2, 1fr);
-    max-width: 580px;
+    margin-top: 60px;
   }
 
   ${mediaQuery('mobile')} {
@@ -91,6 +91,7 @@ const supportContainerCss = css`
     row-gap: 8px;
     column-gap: 0px;
     padding: 0 20px;
+    margin-top: 40px;
   }
 `;
 
@@ -107,4 +108,10 @@ const supportButtonCss = css`
   border: 1px solid ${theme.colors.primary.blue};
   background: ${theme.colors.primary.gray};
   cursor: pointer;
+
+  ${mediaQuery('mobile')} {
+    ${theme.typosV3.pretendard.sub5Medium}
+    padding: 8px 20px;
+    margin-top: 40px;
+  }
 `;
