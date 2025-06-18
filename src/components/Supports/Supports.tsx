@@ -41,6 +41,14 @@ const layoutCss = css`
   width: 100%;
   max-width: 1100px;
   padding: 0 58px;
+
+  ${mediaQuery('tablet')} {
+    padding: 0 40px;
+  }
+
+  ${mediaQuery('mobile')} {
+    padding: 0 24px;
+  }
 `;
 
 const introCss = {
@@ -90,7 +98,6 @@ const supportContainerCss = css`
     grid-template-columns: repeat(2, 1fr);
     row-gap: 8px;
     column-gap: 0px;
-    padding: 0 20px;
     margin-top: 40px;
   }
 `;
