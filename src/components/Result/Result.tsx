@@ -25,8 +25,13 @@ const layoutCss = () => css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 84px;
+  gap: 47px;
   color: black;
+
+  ${mediaQuery('tablet')} {
+    padding: 12px 16px 60px;
+    gap: 38px;
+  }
 `;
 
 const title = {
@@ -38,9 +43,13 @@ const title = {
       text-align: center;
       height: fit-content;
 
+      ${mediaQuery('tablet')} {
+        ${theme.typosV3.pretendard.head5};
+      }
+
       ${mediaQuery('mobile')} {
-        ${theme.typosV3.pretendard.head4};
-        line-height: 150%;
+        width: 211px;
+        ${theme.typosV3.pretendard.sub2Semibold};
       }
     }
   `,
