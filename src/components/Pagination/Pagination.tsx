@@ -97,5 +97,5 @@ const listItemCss = (selected: boolean) => css`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${selected ? theme.colors.grey[900] : theme.colors.grey[300]};
+  color: ${selected ? theme.colors.grey[900] : theme.colors.grey[500]};
 `;
