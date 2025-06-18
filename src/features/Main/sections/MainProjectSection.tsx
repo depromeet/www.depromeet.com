@@ -178,10 +178,19 @@ const projectContainerCss = css`
   grid-template-columns: repeat(3, 1fr);
   gap: 29px;
 
+  justify-content: center;
+
+  justify-items: center;
+  align-items: center;
+
+  margin-left: auto;
+  margin-right: auto;
+
   z-index: 50;
 
   ${mediaQuery('tablet')} {
     grid-template-columns: repeat(2, 1fr);
+    max-width: 688px;
     padding: 0 20px;
     gap: 24px;
   }
