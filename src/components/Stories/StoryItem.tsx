@@ -2,6 +2,7 @@ import { css, Theme } from '@emotion/react';
 
 import { StoryItemType } from '~/constant/stories';
 import { mediaQuery } from '~/styles/media';
+import { theme } from '~/styles/theme';
 
 interface StoryItemProps extends StoryItemType {}
 
@@ -26,15 +27,23 @@ const cardCss = css`
   width: 245px;
   height: 322px;
   background-color: white;
-  border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin-right: 40px;
   flex-shrink: 0;
+  border: 1px solid ${theme.colors.primary.blue};
+
+  ${mediaQuery('tablet')} {
+    width: 200px;
+    height: 262px;
+  }
 
   ${mediaQuery('mobile')} {
+    width: 182px;
+    height: 238.42px;
+
     &:hover {
       transform: none;
     }
@@ -69,8 +78,12 @@ const contentCss = css`
   padding: 20px;
   color: white;
 
+  ${mediaQuery('tablet')} {
+    padding: 20px;
+  }
+
   ${mediaQuery('mobile')} {
-    padding: 16px;
+    padding: 18.2px;
   }
 `;
 
