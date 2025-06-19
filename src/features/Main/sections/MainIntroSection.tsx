@@ -5,6 +5,7 @@ import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
 import { ARROW_URLS, LANDING_PART_POSITIONS } from '~/constant/landing';
+import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 // TODO: 반응형 대응 시 사용 필요
 // import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import useIsInProgress from '~/hooks/useIsInProgress';
@@ -24,13 +25,27 @@ export const MainIntroSection = () => {
   const [isClientReady, setIsClientReady] = useState<boolean>(false);
   const [currentPosition, setCurrentPosition] = useState('ios');
   const router = useRouter();
+  const { isTargetSize: isTabletSize } = useCheckWindowSize('tablet');
+  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
   const { progressState } = useIsInProgress();
   const { label, action, isDisabled } = getPathToRecruit(router, progressState);
+
+  const getLogoSize = () => {
+    if (isMobileSize) return { width: 267.41, height: 40.74 };
+    if (isTabletSize) return { width: 425.29, height: 64.8 };
+    return { width: 525.042, height: 80 };
+  };
+
+  const getVersionSize = () => {
+    if (isMobileSize) return { width: 115.58, height: 41.41 };
+    if (isTabletSize) return { width: 183.01, height: 65.05 };
+    return { width: 226.939, height: 81.314 };
+  };
 
   useEffect(() => {
     setIsClientReady(true);
 
-    let id: NodeJS.Timeout;
+    let id: ReturnType<typeof setTimeout>;
     id = setTimeout(function tick() {
       setCurrentPosition(prev => getNextArrowPosition(prev));
       id = setTimeout(tick, 3000);
@@ -44,10 +59,15 @@ export const MainIntroSection = () => {
       {isClientReady && (
         <article css={articleCss}>
           <div css={titleContainerCss}>
-            <Image width={525.042} height={80} src="/images/17th/dpm-logo.svg" alt="디프만 로고" />
             <Image
-              width={226.939}
-              height={81.314}
+              width={getLogoSize().width}
+              height={getLogoSize().height}
+              src="/images/17th/dpm-logo.svg"
+              alt="디프만 로고"
+            />
+            <Image
+              width={getVersionSize().width}
+              height={getVersionSize().height}
               src="/images/17th/dpm-version.svg"
               alt="디프만 기수"
             />
@@ -73,13 +93,7 @@ export const MainIntroSection = () => {
               }}
               src="/images/17th/circle.png"
               alt="나침반 테두리"
-              style={{
-                width: '560px',
-                height: '560px',
-                scaleX: -1,
-                scaleY: -1,
-                willChange: 'transform',
-              }}
+              css={compassCss}
             />
             <Image
               width={361}
@@ -87,9 +101,7 @@ export const MainIntroSection = () => {
               src="/images/17th/compass-item.png"
               alt="나침반 요소"
               quality={70}
-              style={{
-                position: 'absolute',
-              }}
+              css={compassItemCss}
             />
             <motion.img
               css={arrowCss}
@@ -116,11 +128,15 @@ export const MainIntroSection = () => {
                 willChange: 'transform',
               }}
             />
-            {LANDING_PART_POSITIONS.map(position => (
-              <span css={partCss(position, position.name === currentPosition)} key={position.name}>
-                {position.name}
-              </span>
-            ))}
+            {!isTabletSize &&
+              LANDING_PART_POSITIONS.map(position => (
+                <span
+                  css={partCss(position, position.name === currentPosition)}
+                  key={position.name}
+                >
+                  {position.name}
+                </span>
+              ))}
           </div>
           <div id="sphere">
             <Image fill src="/images/17th/sphere.png" alt="구체" />
@@ -157,7 +173,13 @@ const titleContainerCss = () => css`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 78.38px;
   padding: 44px 40px 33px;
+
+  ${mediaQuery('mobile')} {
+    flex-wrap: wrap;
+    gap: 24.37px;
+  }
 `;
 
 const descriptionCss = () => css`
@@ -168,6 +190,15 @@ const descriptionCss = () => css`
   font-weight: 500;
   line-height: 142%;
   letter-spacing: -0.56px;
+
+  ${mediaQuery('tablet')} {
+    font-size: 24px;
+    letter-spacing: -0.48px;
+  }
+  ${mediaQuery('mobile')} {
+    font-size: 16px;
+    letter-spacing: -0.32px;
+  }
 `;
 
 const floatingContainerCss = () => css`
@@ -188,6 +219,10 @@ const floatingContainerCss = () => css`
     line-height: 150%;
     letter-spacing: -0.56px;
   }
+
+  ${mediaQuery('mobile')} {
+    display: none;
+  }
 `;
 
 const mainImageWrapperCss = () => css`
@@ -200,11 +235,37 @@ const mainImageWrapperCss = () => css`
   height: 100%;
 `;
 
+const compassCss = () => css`
+  width: 560px;
+  height: 560px;
+  transform: scale(-1, -1);
+  will-change: transform;
+
+  ${mediaQuery('mobile')} {
+    width: 360px;
+    height: 360px;
+  }
+`;
+
+const compassItemCss = () => css`
+  position: absolute;
+
+  ${mediaQuery('mobile')} {
+    width: 204.716px;
+    height: 168.028px;
+  }
+`;
+
 const arrowCss = () => css`
   width: 414.65px;
   height: 414.65px;
   transform: scale(-1, -1);
   z-index: 10;
+
+  ${mediaQuery('mobile')} {
+    width: 200px;
+    height: 200px;
+  }
 `;
 
 const scaleWrapperCss = () => css`
@@ -255,6 +316,10 @@ const articleCss = () => css`
     height: 132px;
     left: 40px;
     bottom: 109px;
+
+    ${mediaQuery('mobile')} {
+      display: none;
+    }
   }
 
   #ruler {
@@ -263,6 +328,10 @@ const articleCss = () => css`
     height: 50px;
     right: 42px;
     bottom: 109px;
+
+    ${mediaQuery('mobile')} {
+      display: none;
+    }
   }
 
   #title {
