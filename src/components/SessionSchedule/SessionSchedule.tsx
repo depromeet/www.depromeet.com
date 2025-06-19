@@ -161,7 +161,7 @@ const containerCss = (theme: Theme) => css`
   align-items: center;
   width: 100%;
   margin: 0 auto;
-  padding: 60px 20px;
+  padding: 80px 20px;
   background-color: ${theme.colors.primary.gray};
   ${sectionBg};
   ${mediaQuery('mobile')} {
