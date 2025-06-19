@@ -87,13 +87,13 @@ const blogContainerCss = css`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 16px;
-  justify-items: stretch;
+  justify-items: center;
   align-items: stretch;
 
   ${mediaQuery('tablet')} {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    max-width: 800px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    max-width: 640px;
   }
 
   ${mediaQuery('mobile')} {

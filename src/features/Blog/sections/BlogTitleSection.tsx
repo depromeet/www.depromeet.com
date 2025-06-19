@@ -25,8 +25,12 @@ const titleImageContainerCss = css`
   padding-top: 47px;
   padding-bottom: 26px;
 
+  ${mediaQuery('tablet')} {
+    padding-left: 0;
+  }
+
   ${mediaQuery('mobile')} {
-    padding-left: 20px;
+    padding-left: 0;
   }
 `;
 

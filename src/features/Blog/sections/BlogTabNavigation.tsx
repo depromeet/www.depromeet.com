@@ -98,7 +98,7 @@ const mainTabWrapperCss = css`
     max-width: 500px;
   }
   ${mediaQuery('mobile')} {
-    flex-direction: column;
+    flex-direction: row;
     width: 100%;
     max-width: 400px;
   }
@@ -120,7 +120,7 @@ const mainTabItemCss = css`
 
   ${mediaQuery('mobile')} {
     padding: 14px 20px;
-    ${theme.typosV2.pretendard.medium14};
+    ${theme.typosV2.pretendard.medium16};
 
     &:not(:last-child) {
       border-right: none;
@@ -148,7 +148,7 @@ const subTabWrapperCss = css`
     padding: 0 24px;
   }
   ${mediaQuery('mobile')} {
-    padding: 0 12px;
+    padding: 0 34px;
     overflow-x: auto;
     width: 100%;
     max-width: 400px;
@@ -176,8 +176,8 @@ const subTabItemCss = css`
   align-items: center;
 
   ${mediaQuery('mobile')} {
-    padding: 14px 12px;
-    ${theme.typosV2.pretendard.medium13};
+    padding: 16px 18.5px;
+    ${theme.typosV2.pretendard.semibold16};
     flex-shrink: 0;
   }
 `;
