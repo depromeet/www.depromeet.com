@@ -24,13 +24,13 @@ export function FAQItem({ isOpen, onClickOpenButton, question, answer }: FAQItem
         <motion.div
           variants={arrowIconVariants}
           transition={{ duration: 0.3, ease: 'easeOut' }}
-          css={theme => arrowContainerCss(theme, isOpen)}
+          css={arrowContainerCss}
         >
           <Icon icon={isOpen ? 'arrow_white' : 'arrow_blue'} size={24} />
         </motion.div>
       </motion.div>
       <motion.div
-        css={bodyCss}
+        css={theme => bodyCss(theme)}
         animate={isOpen ? 'open' : 'closed'}
         variants={bodyVariants}
         transition={{ duration: 0.3, height: 0, ease: 'easeOut' }}
