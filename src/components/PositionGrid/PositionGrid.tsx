@@ -74,8 +74,8 @@ export const PositionGrid = () => {
           <PositionCard {...positions[3]} />
           <PositionCard {...positions[4]} />
         </div>
+        <div css={rulerCss} />
       </div>
-      <div css={rulerCss} />
     </>
   );
 };
@@ -114,13 +114,14 @@ const recruitmentMessageStyles = css`
 `;
 
 const rulerCss = css`
+  position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 17.2px;
-  background-image: url('/images/17th/scale.png');
+  height: 20px;
+  background-image: url('/images/project/17기/footer-ruler.png');
   background-size: cover;
   background-position: bottom;
   background-repeat: repeat-x;
-  background-color: ${theme.colors.primary.gray};
+  /* background-color: ${theme.colors.primary.gray}; */
 `;
