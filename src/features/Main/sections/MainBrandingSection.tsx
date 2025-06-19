@@ -57,11 +57,7 @@ export const MainBrandingSection = () => {
               id={'icon'}
             />
             <Image
-              src={
-                !isTabletSize
-                  ? '/images/17th/3d-icon/Android-icon.png'
-                  : '/images/17th/3d-icon/designer-icon.png'
-              }
+              src={'/images/17th/3d-icon/designer-icon.png'}
               alt={'android-icon'}
               width={!isTabletSize ? 300 : 250}
               height={!isTabletSize ? 300 : 250}
@@ -97,9 +93,8 @@ const layoutCss = css`
 `;
 
 const wrapper = css`
-  width: auto;
+  width: 100%;
   height: auto;
-  min-width: 1100px;
 
   ${mediaQuery('tablet')} {
     min-width: 768px;
@@ -129,16 +124,6 @@ const titleWrapper = css`
   align-items: flex-start;
   justify-content: flex-start;
   display: flex;
-
-  padding-left: 29.2px;
-
-  ${mediaQuery('tablet')} {
-    padding-left: 54.7px;
-  }
-
-  ${mediaQuery('mobile')} {
-    padding-left: 38.8px;
-  }
 `;
 
 const titleCss = css`
@@ -152,9 +137,11 @@ const titleCss = css`
   white-space: pre;
 
   position: relative;
-  display: inline-block;
-  width: auto;
+  display: block;
   background: ${colors.primary.gray};
+
+  margin-left: auto;
+  margin-right: auto;
 
   border-style: solid;
   border-width: 0 1.09px;
@@ -163,12 +150,14 @@ const titleCss = css`
   z-index: 40;
 
   padding: 7px 36.2px 16px 7px;
+  transform: translateX(-137.2px);
 
   ${mediaQuery('tablet')} {
     font-size: ${pxToRem(60)};
     font-weight: medium;
 
     padding: 7px 69px 12px 7px;
+    transform: translateX(-65.2px);
   }
 
   ${mediaQuery('mobile')} {
@@ -177,6 +166,7 @@ const titleCss = css`
     letter-spacing: -1px;
 
     padding: 7px 11.2px 12px 3px;
+    transform: translateX(-47.2px);
   }
 
   #circle {
@@ -224,11 +214,10 @@ const sentenceCss = css`
   letter-spacing: -1px;
   text-align: start;
 
-  padding-left: 39px;
-
-  ${mediaQuery('mobile')} {
-    ${theme.typosV3.pretendard.body1Medium};
-  }
+  width: auto;
+  max-width: 1110px;
+  margin: 0 auto;
+  transform: translateX(-96%);
 `;
 
 const imagesWrapperCss = css`
