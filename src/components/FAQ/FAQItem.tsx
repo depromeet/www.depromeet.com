@@ -2,7 +2,6 @@ import { css, Theme } from '@emotion/react';
 import { motion, Variants } from 'framer-motion';
 
 import { Icon } from '~/components/Icon/Icon';
-import { theme } from '~/styles/theme';
 
 interface FAQItemProps {
   isOpen: boolean;
@@ -42,8 +41,8 @@ export function FAQItem({ isOpen, onClickOpenButton, question, answer }: FAQItem
 }
 
 const headerVariants: Variants = {
-  open: { backgroundColor: theme.colors.primary.blue },
-  closed: { backgroundColor: theme.colors.primary.gray },
+  open: { backgroundColor: '#6366F1' },
+  closed: { backgroundColor: '#F3F4F6' },
 };
 
 const bodyVariants: Variants = {
@@ -53,8 +52,8 @@ const bodyVariants: Variants = {
 };
 
 const arrowIconVariants: Variants = {
-  open: { backgroundColor: theme.colors.primary.blue },
-  closed: { backgroundColor: theme.colors.primary.gray },
+  open: { backgroundColor: '#6366F1' },
+  closed: { backgroundColor: '#F3F4F6' },
 };
 
 const liCss = css`
