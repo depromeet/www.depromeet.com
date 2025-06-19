@@ -146,10 +146,10 @@ const text = {
 
   titleCss: css`
     ${theme.typosV3.MartianMono.head3};
-    font-size: ${pxToRem(42)};
-    font-weight: 500;
-    letter-spacing: -3px;
+    font-size: 42px;
+    font-weight: 400;
     line-height: 109%;
+    letter-spacing: -2.1px;
     text-align: start;
 
     z-index: 100;
@@ -203,7 +203,7 @@ const projectContainerCss = css`
 
 const button = {
   containerCss: css`
-    padding: 14px 26px 13px 26px;
+    padding: 14px 20px 13px 26px;
     margin-top: -32px;
     border-radius: 100px;
     background-color: ${colors.primary.gray};
@@ -220,7 +220,7 @@ const button = {
     ${theme.typosV3.pretendard.sub3Semibold};
 
     ${mediaQuery('mobile')} {
-      padding: 8px 20px;
+      padding: 8px 16px 8px 20px;
       ${theme.typosV3.pretendard.sub5Medium};
     }
   `,

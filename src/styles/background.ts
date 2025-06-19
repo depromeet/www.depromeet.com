@@ -11,8 +11,10 @@ export const sectionBg = css`
     ${colors.primary.blue}6A 1px,
     ${colors.primary.gray} 1px
   );
-  background-position: calc(50% - 17.7px) 0;
-  background-size: 47.93px 100%;
+  /* background-position: calc(50% - 24.2px) 0;
+  background-size: 47.93px 100%; */
+  background-size: 64px 100%;
+  background-position: calc(50% - 32px) 0;
 
   ${mediaQuery('mobile')} {
     background-position: 50% 0;

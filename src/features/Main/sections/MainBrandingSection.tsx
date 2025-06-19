@@ -50,25 +50,11 @@ export const MainBrandingSection = () => {
         {!isMobileSize && (
           <div css={imagesWrapperCss}>
             <Image
-              src={'/images/17th/3d-icon/web-icon.png'}
-              alt={'web-icon'}
-              width={!isTabletSize ? 300 : 250}
-              height={!isTabletSize ? 300 : 250}
-              id={'icon'}
-            />
-            <Image
-              src={'/images/17th/3d-icon/designer-icon.png'}
-              alt={'android-icon'}
-              width={!isTabletSize ? 300 : 250}
-              height={!isTabletSize ? 300 : 250}
-              id={'icon'}
-            />
-            <Image
-              src={'/images/17th/3d-icon/server-icon.png'}
-              alt={'server-icon'}
-              width={!isTabletSize ? 300 : 230}
-              height={!isTabletSize ? 300 : 230}
-              id={'icon'}
+              css={imgCss}
+              src={'/images/17th/main/branding.png'}
+              alt={'icon'}
+              width={!isTabletSize ? 600 : 550}
+              height={!isTabletSize ? 600 : 550}
             />
           </div>
         )}
@@ -78,15 +64,14 @@ export const MainBrandingSection = () => {
 };
 
 const layoutCss = css`
-  padding: 78px 0;
+  padding-top: 78px;
   width: 100%;
   height: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
   overflow: hidden;
+
+  ${mediaQuery('mobile')} {
+    padding-bottom: 32px;
+  }
 
   gap: 90px;
   ${sectionBg};
@@ -96,11 +81,16 @@ const wrapper = css`
   width: 100%;
   height: auto;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
   ${mediaQuery('tablet')} {
     min-width: 768px;
   }
   ${mediaQuery('mobile')} {
-    min-width: 430px;
+    min-width: 360px;
   }
 `;
 
@@ -149,15 +139,15 @@ const titleCss = css`
 
   z-index: 40;
 
-  padding: 7px 36.2px 16px 7px;
-  transform: translateX(-137.2px);
+  padding: 7px 38px 16px 7px;
+  transform: translateX(-127.4px);
 
   ${mediaQuery('tablet')} {
     font-size: ${pxToRem(60)};
     font-weight: medium;
 
-    padding: 7px 69px 12px 7px;
-    transform: translateX(-65.2px);
+    padding: 7px 86.2px 12px 7px;
+    transform: translateX(0.2px);
   }
 
   ${mediaQuery('mobile')} {
@@ -222,52 +212,21 @@ const sentenceCss = css`
 
 const imagesWrapperCss = css`
   position: relative;
-  align-self: flex-end;
 
   width: 100%;
-  height: 300px;
+  max-width: 1110px;
+  height: 500px;
+`;
 
+const imgCss = css`
   z-index: 100;
+  object-fit: cover;
 
-  /* web icon */
-  #icon:nth-of-type(1) {
-    position: absolute;
-    top: -35%;
-    right: 400px;
+  position: absolute;
+  bottom: 0%;
+  right: 10%;
 
-    ${mediaQuery('tablet')} {
-      top: -15%;
-      right: 230px;
-    }
-
-    ${mediaQuery('mobile')} {
-      top: -15%;
-      right: 150px;
-    }
-  }
-  /* android & designer icon */
-  #icon:nth-of-type(2) {
-    position: absolute;
-    top: 25%;
-    right: 250px;
-    transform: rotate(-10.87deg);
-
-    ${mediaQuery('tablet')} {
-      top: 40%;
-      right: 150px;
-    }
-  }
-
-  /* server icon */
-  #icon:nth-of-type(3) {
-    position: absolute;
-    right: 75px;
-    top: -20%;
-    transform: translate(0%) rotate(44.39deg);
-
-    ${mediaQuery('tablet')} {
-      top: 10%;
-      right: 20px;
-    }
+  ${mediaQuery('tablet')} {
+    right: 5%;
   }
 `;
