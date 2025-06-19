@@ -93,10 +93,6 @@ const articleCss = css`
   &:hover .back-face {
     opacity: 1;
   }
-
-  ${mediaQuery('mobile')} {
-    border-radius: 12px;
-  }
 `;
 
 // 앞면 스타일

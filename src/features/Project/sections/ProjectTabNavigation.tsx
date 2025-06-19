@@ -69,6 +69,7 @@ const tabContainerCss = css`
 
 const tabWrapperCss = css`
   display: flex;
+  flex-wrap: nowrap;
   width: auto;
   background-color: #e3e5ea;
   padding: 0;
@@ -81,10 +82,12 @@ const tabWrapperCss = css`
     padding: 0 24px;
   }
   ${mediaQuery('mobile')} {
+    margin: 0 -12px;
     padding: 0 12px;
     overflow-x: auto;
-    width: 100%;
-    max-width: 400px;
+    width: calc(100% + 40px);
+    max-width: none;
+    justify-content: flex-start;
 
     &::-webkit-scrollbar {
       display: none;
@@ -113,8 +116,8 @@ const tabItemCss = css`
   }
 
   ${mediaQuery('mobile')} {
-    padding: 14px 12px;
-    ${theme.typosV2.pretendard.medium13};
+    padding: 20px 16px;
+    ${theme.typosV2.pretendard.semibold16};
     flex-shrink: 0;
   }
 `;
