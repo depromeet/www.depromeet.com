@@ -24,11 +24,11 @@ export const ReasonCard = ({
   isMobileSize,
   isReverseDirection,
 }: Props) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const node = ref.current;
+    const trigger = triggerRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -37,54 +37,65 @@ export const ReasonCard = ({
       },
       {
         threshold: 0.1,
-        rootMargin: isMobileSize ? '0px 0px 0px 0px' : '0px 0px -50px 0px',
+        // rootMargin: '0px 0px 0px 0px',
       }
     );
 
-    if (node) {
-      observer.observe(node);
-    }
-
+    if (trigger) observer.observe(trigger);
     return () => {
-      if (node) observer.unobserve(node);
+      if (trigger) observer.unobserve(trigger);
     };
-  }, [isMobileSize]);
+  }, []);
 
   return (
-    <div
-      ref={ref}
-      css={[
-        containerCss(isReverseDirection),
-        css`
-          opacity: ${isVisible ? 1 : 0};
-          transform: ${isVisible ? 'translateY(0)' : 'translateY(76px)'};
-          clip-path: ${isVisible ? 'inset(0% 0% -50% 0%)' : 'inset(0% 0% 50% 0%)'};
-          transition: opacity 0.1s linear, transform 0.5s linear, clip-path 0.6s linear;
-          transition-delay: ${index * 0.1}s;
-        `,
-      ]}
-    >
-      <div css={imageWrapperCss}>
-        <Image
-          src={image}
-          alt="디프만 참여 이유"
-          fill
-          style={{
-            objectFit: 'cover',
-          }}
-        />
-      </div>
-      <div css={content.wrapperCss}>
-        <h1 css={content.titleCss}>
-          {!isMobileSize ? title.default : title.mobile ?? title.default}
-        </h1>
-        <p css={content.descriptionCss}>
-          {!isMobileSize ? description.default : description.mobile}
-        </p>
+    <div css={clipWrapperCss}>
+      <div ref={triggerRef} css={triggerLineCss} />
+      <div css={[containerCss(isReverseDirection), animatedCardCss(isVisible, index)]}>
+        <div css={imageWrapperCss}>
+          <Image src={image} alt="디프만 참여 이유" fill style={{ objectFit: 'cover' }} />
+        </div>
+        <div css={content.wrapperCss}>
+          <h1 css={content.titleCss}>
+            {!isMobileSize ? title.default : title.mobile ?? title.default}
+          </h1>
+          <p css={content.descriptionCss}>
+            {!isMobileSize ? description.default : description.mobile}
+          </p>
+        </div>
       </div>
     </div>
   );
 };
+
+const clipWrapperCss = css`
+  position: relative;
+  height: 188px; /* 카드 전체 높이 */
+  overflow: hidden;
+
+  ${mediaQuery('tablet')} {
+    height: 158px;
+  }
+  ${mediaQuery('mobile')} {
+    height: auto;
+  }
+`;
+
+const triggerLineCss = css`
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+`;
+
+const animatedCardCss = (isVisible: boolean, index: number) => css`
+  position: relative;
+  transform: ${isVisible ? 'translateY(0)' : 'translateY(94px)'};
+  opacity: ${isVisible ? 1 : 0};
+  transition: opacity 0.3s ease-in-out, transform 0.6s ease-in-out;
+  transition-delay: ${index * 0.1}s;
+`;
 
 const containerCss = (isReverseDirection?: boolean) => css`
   position: relative;
@@ -93,7 +104,6 @@ const containerCss = (isReverseDirection?: boolean) => css`
   min-height: 188px;
 
   background-color: ${colors.primary.gray};
-
   border: ${colors.primary.blue} 1px solid;
   box-shadow: 0 0 8px 4px ${colors.primary.blue}24;
 
@@ -111,12 +121,9 @@ const containerCss = (isReverseDirection?: boolean) => css`
 
   ${mediaQuery('mobile')} {
     flex-direction: column;
-    /* width: 312px; */
     width: 100%;
     min-width: 312px;
-
     height: 100%;
-    /* min-height: unset; */
   }
 `;
 
@@ -142,7 +149,6 @@ const content = {
   wrapperCss: css`
     display: flex;
     flex-direction: column;
-
     width: 100%;
     padding: 24px;
     gap: 14px;
@@ -160,6 +166,7 @@ const content = {
     ${mediaQuery('tablet')} {
       ${theme.typosV3.pretendard.sub1Semibold};
     }
+
     ${mediaQuery('mobile')} {
       ${theme.typosV3.pretendard.sub2Bold};
     }
@@ -167,13 +174,13 @@ const content = {
 
   descriptionCss: css`
     ${theme.typosV3.pretendard.body3Medium};
-
     white-space: pre-wrap;
     color: ${colors.grey[800]};
 
     ${mediaQuery('tablet')} {
       ${theme.typosV3.pretendard.body5Medium};
     }
+
     ${mediaQuery('mobile')} {
       ${theme.typosV3.pretendard.body6Medium};
     }
