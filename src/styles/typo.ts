@@ -400,45 +400,45 @@ export const typosV3 = {
     /* Headline */
     head1: css`
       font-size: ${pxToRem(36)};
-      font-weight: bold;
+      font-weight: 600;
       line-height: 140%;
-      letter-spacing: 1%;
+      letter-spacing: 0.5px;
     `,
     head2: css`
       font-size: ${pxToRem(32)};
-      font-weight: bold;
+      font-weight: 600;
       line-height: 140%;
-      letter-spacing: 1%;
+      letter-spacing: 0.5px;
     `,
 
     head4: css`
       font-size: ${pxToRem(26)};
-      font-weight: bold;
+      font-weight: 600;
       line-height: 140%;
-      letter-spacing: 1%;
+      letter-spacing: 0.5px;
     `,
     head5: css`
       font-size: ${pxToRem(24)};
-      font-weight: bold;
+      font-weight: 600;
       line-height: 150%;
-      letter-spacing: 1%;
+      letter-spacing: 0.5px;
     `,
     head6: css`
       font-size: ${pxToRem(22)};
-      font-weight: bold;
+      font-weight: 600;
       line-height: 140%;
-      letter-spacing: 1%;
+      letter-spacing: 0.5px;
     `,
     head7: css`
       font-size: ${pxToRem(20)};
-      font-weight: bold;
+      font-weight: 600;
       line-height: 140%;
-      letter-spacing: 1%;
+      letter-spacing: 0.5px;
     `,
     /* Subtitle */
     sub1Semibold: css`
       font-size: ${pxToRem(20)};
-      font-weight: 600;
+      font-weight: 500;
       line-height: 140%;
       letter-spacing: 0;
     `,
@@ -456,7 +456,7 @@ export const typosV3 = {
     `,
     sub2Semibold: css`
       font-size: ${pxToRem(18)};
-      font-weight: 600;
+      font-weight: 500;
       line-height: 140%;
       letter-spacing: 0;
     `,
@@ -468,7 +468,7 @@ export const typosV3 = {
     `,
     sub3Semibold: css`
       font-size: ${pxToRem(16)};
-      font-weight: 600;
+      font-weight: 500;
       line-height: 140%;
       letter-spacing: 0;
     `,
@@ -480,7 +480,7 @@ export const typosV3 = {
     `,
     sub5Semibold: css`
       font-size: ${pxToRem(14)};
-      font-weight: 500;
+      font-weight: 400;
       line-height: 140%;
       letter-spacing: 0;
     `,
