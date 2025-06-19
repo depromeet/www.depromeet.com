@@ -40,8 +40,8 @@ export const MainProjectSection = () => {
         <div css={text.wrapperCss}>
           <h1 css={text.titleCss}>Projects</h1>
           <p css={text.subCss}>
-            디프만 멤버 &apos;디퍼(DEEPER)&apos; 들의
-            {isMobileSize && <br />} 다양한 프로젝트를 확인해보세요
+            디프만 멤버 &apos;디퍼(DEEPER)&apos;들의
+            {isMobileSize && <br />} 다양한 프로젝트를 확인해 보세요
           </p>
         </div>
         <AnimatePresence mode="wait" initial={true}>

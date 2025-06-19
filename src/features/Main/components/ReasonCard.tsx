@@ -153,7 +153,7 @@ const content = {
   `,
 
   titleCss: css`
-    ${theme.typosV3.pretendard.head5};
+    ${theme.typosV3.pretendard.head6};
     white-space: pre-wrap;
     color: ${colors.primary.darknavy};
 
