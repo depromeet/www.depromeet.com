@@ -11,9 +11,7 @@ import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { useDropDown } from '~/hooks/useDropdown';
 import useIsInProgress from '~/hooks/useIsInProgress';
-import { sectionBg } from '~/styles/background';
 import { colors } from '~/styles/colors';
-import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 import { getPathToRecruit } from '~/utils/utils';
 
@@ -40,10 +38,6 @@ const linkButtonCss = css`
   position: absolute;
   top: 50%;
   right: 20px;
-
-  ${mediaQuery('tablet')} {
-    right: 40px;
-  }
 
   transform: translateY(-50%);
   ${theme.typosV3.pretendard.sub5Semibold};
@@ -124,10 +118,13 @@ const navCommonCss = () => css`
 
 const navCss = () => css`
   ${navCommonCss()};
-  ${sectionBg};
-  background-color: ${colors.primary.gray};
-
+  background-color: rgba(227, 229, 234, 0.7);
+  backdrop-filter: blur(80px);
   padding: 18px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const navWrapperCss = css`
@@ -136,7 +133,6 @@ const navWrapperCss = css`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
 
   position: relative;
 `;
@@ -146,13 +142,6 @@ const logoCss = css`
   top: 50%;
   left: 20px;
   transform: translateY(-50%);
-
-  ${mediaQuery('tablet')} {
-    left: 40px;
-  }
-  ${mediaQuery('mobile')} {
-    left: 20px;
-  }
 `;
 
 const menuContainerCss = css`
@@ -184,7 +173,10 @@ const mobileMenuGNBCss = (isDropdownOpen: boolean) => css`
       background-color: ${colors.primary.darknavy};
       background-image: none;
     `
-    : sectionBg}
+    : `
+      background-color: rgba(227, 229, 234, 0.7);
+      backdrop-filter: blur(80px);
+  `}
 
   padding: 18px ${isDropdownOpen ? `16px` : `20px`};
   display: flex;
