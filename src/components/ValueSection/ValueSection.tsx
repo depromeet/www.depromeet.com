@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 
-import { sectionGridBg } from '~/styles/background';
+import { sectionBg } from '~/styles/background';
 
 import { colors } from '../../styles/colors';
 
@@ -45,7 +45,7 @@ const containerStyles = css`
   gap: 16px;
   margin: 0 auto;
   padding: 40px 20px;
-  ${sectionGridBg};
+  ${sectionBg};
 `;
 
 const contentStyles = css`

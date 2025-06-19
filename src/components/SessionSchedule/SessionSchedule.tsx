@@ -1,6 +1,6 @@
 import { css, Theme } from '@emotion/react';
 
-import { sectionGridBg } from '~/styles/background';
+import { sectionBg } from '~/styles/background';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
@@ -163,7 +163,7 @@ const containerCss = (theme: Theme) => css`
   margin: 0 auto;
   padding: 60px 20px;
   background-color: ${theme.colors.primary.gray};
-  ${sectionGridBg};
+  ${sectionBg};
   ${mediaQuery('mobile')} {
     padding: 40px 16px;
   }
