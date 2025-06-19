@@ -3,12 +3,15 @@ import Link from 'next/link';
 import { css, Theme } from '@emotion/react';
 
 import { FIRST_ROW_FOOTER_INFOS } from '~/constant/contactInfo';
+import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
+
   return (
     <footer css={footerCss}>
       <div css={wrapperCss}>
@@ -20,22 +23,25 @@ export function Footer() {
             height={22}
           />
           <ul css={rowCss}>
-            {FIRST_ROW_FOOTER_INFOS.map((footer, idx) => (
-              <li
-                key={footer.name}
-                css={css`
-                  display: flex;
-                  align-items: center;
-                `}
-              >
-                <Link css={[strongLinkCss]} href={footer.href} target="_blank">
-                  {footer.name}
-                </Link>
-                {idx < FIRST_ROW_FOOTER_INFOS.length - 1 && (
-                  <span id={'divide'} aria-hidden="true" />
-                )}
-              </li>
-            ))}
+            {FIRST_ROW_FOOTER_INFOS.map((footer, idx) => {
+              const isLast = idx === FIRST_ROW_FOOTER_INFOS.length - 1;
+              const shouldShowDivider = !isLast && (isMobileSize ? footer.name !== 'Github' : true);
+
+              return (
+                <li
+                  key={footer.name}
+                  css={css`
+                    display: flex;
+                    align-items: center;
+                  `}
+                >
+                  <Link css={strongLinkCss} href={footer.href} target="_blank">
+                    {footer.name}
+                  </Link>
+                  {shouldShowDivider && <span id="divide" aria-hidden="true" />}
+                </li>
+              );
+            })}
           </ul>
         </div>
         <p css={copyrightCss}>© {currentYear} DEPROMEET. ALL RIGHTS RESERVED.</p>
@@ -85,14 +91,16 @@ const footerInfoWrapper = css`
 
 const rowCss = css`
   display: flex;
+  flex-wrap: wrap;
   margin: 0 auto;
 
   ${mediaQuery('mobile')} {
-    width: 100%;
+    max-width: 300px;
     gap: 0;
     row-gap: 8px;
     flex-wrap: wrap;
     justify-content: flex-start;
+    margin: 0;
   }
 
   #divide {
@@ -102,6 +110,9 @@ const rowCss = css`
     background: ${theme.colors.grey[700]};
     margin: 0 16px;
     vertical-align: middle;
+
+    ${mediaQuery('tablet')} {
+    }
   }
 `;
 
