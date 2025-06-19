@@ -68,7 +68,7 @@ export const PositionGrid = () => {
           <div css={recruitmentMessageStyles}>
             디프만은 다섯개의 직군에서
             <br />
-            신규 회원을 모집하고 있습니다.
+            신규 회원을 모집하고 있습니다
           </div>
           <div css={emptySlotStyles}></div>
           <PositionCard {...positions[3]} />

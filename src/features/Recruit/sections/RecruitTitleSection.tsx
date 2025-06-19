@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
-import { sectionBg } from '~/styles/background';
+import { sectionGridBg } from '~/styles/background';
 import { theme } from '~/styles/theme';
 
 export function RecruitTitleSection() {
@@ -18,7 +18,7 @@ export function RecruitTitleSection() {
         </h1>
       </div>
       <div css={descriptionCss}>
-        <div>2025.07.01 - 07.11</div>
+        <div>2025.06.30 - 07.06</div>
         <div>
           <span>depromeet 17.0</span>
         </div>
@@ -32,7 +32,7 @@ const sectionCss = css`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  ${sectionBg}
+  ${sectionGridBg}
 
   & > div {
     width: 100%;

@@ -60,9 +60,7 @@ export const SessionSchedule = () => {
       <div css={contentStyles}>
         <div css={headerCss}>
           <h2 css={titleCss}>온/오프라인 세션</h2>
-          <p css={descriptionCss}>
-            세션은 매주 토요일 진행되며, 오프라인 세션은 오프라인에서 이뤄집니다
-          </p>
+          <p css={descriptionCss}>세션은 매주 토요일 진행되며, 오프라인 세션은 서울에서 열립니다</p>
         </div>
 
         {/* 온라인 세션 테이블 */}
@@ -156,6 +154,7 @@ export const SessionSchedule = () => {
 };
 
 const containerCss = (theme: Theme) => css`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -164,12 +163,26 @@ const containerCss = (theme: Theme) => css`
   padding: 80px 20px;
   background-color: ${theme.colors.primary.gray};
   ${sectionBg};
-  ${mediaQuery('mobile')} {
-    padding: 40px 16px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+    width: 353px;
+    height: 353px;
+    background-image: url('/images/17th/3d-icon/web-icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    z-index: 0;
+    opacity: 1;
   }
 `;
 
 const contentStyles = css`
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
