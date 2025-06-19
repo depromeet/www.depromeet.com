@@ -93,7 +93,7 @@ const animatedCardCss = (isVisible: boolean, index: number) => css`
   position: relative;
   transform: ${isVisible ? 'translateY(0)' : 'translateY(94px)'};
   opacity: ${isVisible ? 1 : 0};
-  transition: opacity 0.3s ease-in-out, transform 0.6s ease-in-out;
+  transition: opacity 0.3s ease, transform 0.6s ease;
   transition-delay: ${index * 0.1}s;
 `;
 
