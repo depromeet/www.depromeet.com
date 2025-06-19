@@ -21,7 +21,7 @@ const rulerImageContainerCss = css`
   z-index: 1;
 
   ${mediaQuery('mobile')} {
-    height: 15px;
+    height: 30px;
   }
 `;
 
