@@ -126,7 +126,7 @@ function getPositionStyleByAngle(angle: number, distance: number) {
 }
 
 function getNextArrowPosition(currentPosition: string) {
-  const positions = ['ios', 'server', 'web', 'android', 'design'];
+  const positions = ['ios', 'android', 'web', 'design', 'server'];
 
   const currentIndex = positions.indexOf(currentPosition);
   const nextIndex = (currentIndex + 1) % positions.length;

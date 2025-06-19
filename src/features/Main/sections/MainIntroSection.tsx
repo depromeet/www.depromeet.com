@@ -20,8 +20,6 @@ import { getNextArrowPosition, getPathToRecruit, getPositionStyleByAngle } from 
 export const MainIntroSection = () => {
   const randomArrowIndex = Math.floor(Math.random() * ARROW_URLS.length);
   const arrowUrl = useRef(ARROW_URLS[randomArrowIndex]);
-  // TODO: 반응형 대응 시 사용 필요
-  // const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
   const [isClientReady, setIsClientReady] = useState<boolean>(false);
   const [currentPosition, setCurrentPosition] = useState('ios');
   const router = useRouter();
