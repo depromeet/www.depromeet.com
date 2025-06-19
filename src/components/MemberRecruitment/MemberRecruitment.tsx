@@ -1,6 +1,6 @@
 import { css, Theme } from '@emotion/react';
 
-import { sectionGridBg } from '~/styles/background';
+import { sectionBg } from '~/styles/background';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
@@ -11,10 +11,10 @@ interface RecruitmentStep {
 
 const recruitmentSteps: RecruitmentStep[] = [
   { title: '서류 접수 시작', date: '06.30' },
-  { title: '서류 마감', date: '06.30' },
-  { title: '서류 발표', date: '06.30' },
-  { title: '온라인 인터뷰', date: '06.30' },
-  { title: '최종 합격', date: '06.30' },
+  { title: '서류 마감', date: '07.06' },
+  { title: '서류 발표', date: '07.13' },
+  { title: '온라인 인터뷰', date: '07.19-20' },
+  { title: '최종 합격', date: '07.26' },
 ];
 
 export const MemberRecruitment = () => {
@@ -57,25 +57,49 @@ export const MemberRecruitment = () => {
 };
 
 const containerCss = (_theme: Theme) => css`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   margin: 0 auto;
-  padding: 80px 20px;
+  padding: 120px 20px 80px 20px;
   background-color: ${colors.primary.gray};
-  ${sectionGridBg};
+  ${sectionBg};
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -130px;
+    right: 0;
+    width: 304.5px;
+    height: 304.5px;
+    background-image: url('/images/17th/3d-icon/iOS-icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    z-index: 2;
+    opacity: 1;
+    transform: rotate(250deg);
+  }
 
   ${mediaQuery('mobile')} {
     padding: 60px 16px;
+
+    &::after {
+      width: 150px;
+      height: 150px;
+    }
   }
 `;
 
 const contentStyles = css`
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1100px;
+  max-width: 918px;
 `;
 
 const headerCss = css`
@@ -107,8 +131,8 @@ const stepsContainerCss = css`
 
 const stepBoxCss = css`
   background-color: ${colors.primary.gray};
-  border: 2px solid ${colors.primary.blue};
-  padding: 24px 16px;
+  border: 1px solid ${colors.primary.blue};
+  padding: 28px 26px;
   text-align: center;
   min-height: 120px;
   display: flex;
@@ -147,10 +171,16 @@ const stepDateCss = css`
 
 const applicationSectionCss = css`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: ${colors.primary.gray};
-  border: 2px solid ${colors.primary.blue};
+  border: 1px solid ${colors.primary.blue};
   padding: 40px;
   text-align: center;
+  max-width: 918px;
+  height: 265px;
 
   ${mediaQuery('mobile')} {
     padding: 30px 20px;
@@ -171,14 +201,10 @@ const applicationTitleCss = (theme: Theme) => css`
 `;
 
 const applicationStepCss = css`
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 
   &:last-child {
     margin-bottom: 0;
-  }
-
-  ${mediaQuery('mobile')} {
-    margin-bottom: 24px;
   }
 `;
 

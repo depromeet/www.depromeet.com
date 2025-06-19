@@ -1,3 +1,4 @@
+import { ContactSection } from '~/components/ContactSection/ContactSection';
 import { FAQ } from '~/components/FAQ';
 import { MemberRecruitment } from '~/components/MemberRecruitment';
 import { PositionGrid } from '~/components/PositionGrid/PositionGrid';
@@ -12,21 +13,14 @@ export default function Recruit() {
     <>
       <SEO title="디프만 - Recruit" />
       <main>
-        {/* <IntroSection
-          defaultImgUrl={'/images/16th/recruit/recruitment.svg'}
-          mobileImgUrl={'/images/16th/recruit/recruitment_m.svg'}
-        /> */}
         <RecruitTitleSection />
         <PositionGrid />
         <ValueSection />
         <MemberRecruitment />
         <SessionSchedule />
-        {/* <RecruitMarqueeSection /> */}
-        {/* <RecuritPosition /> */}
-        {/* <Qualification /> */}
-        {/* <Schedules /> */}
         <Review />
         <FAQ />
+        <ContactSection />
       </main>
     </>
   );
