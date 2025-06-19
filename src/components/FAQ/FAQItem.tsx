@@ -2,6 +2,7 @@ import { css, Theme } from '@emotion/react';
 import { motion, Variants } from 'framer-motion';
 
 import { Icon } from '~/components/Icon/Icon';
+import { theme } from '~/styles/theme';
 
 interface FAQItemProps {
   isOpen: boolean;
@@ -25,7 +26,7 @@ export function FAQItem({ isOpen, onClickOpenButton, question, answer }: FAQItem
           transition={{ duration: 0.3, ease: 'easeOut' }}
           css={theme => arrowContainerCss(theme, isOpen)}
         >
-          <Icon icon={isOpen ? 'ic_arrow_white_accordion' : 'ic_arrow_black_accordion'} size={24} />
+          <Icon icon={isOpen ? 'arrow_white' : 'arrow_blue'} size={24} />
         </motion.div>
       </motion.div>
       <motion.div
@@ -41,8 +42,8 @@ export function FAQItem({ isOpen, onClickOpenButton, question, answer }: FAQItem
 }
 
 const headerVariants: Variants = {
-  open: { backgroundColor: 'black' },
-  closed: { backgroundColor: 'white' },
+  open: { backgroundColor: theme.colors.primary.blue },
+  closed: { backgroundColor: theme.colors.primary.gray },
 };
 
 const bodyVariants: Variants = {
@@ -52,8 +53,8 @@ const bodyVariants: Variants = {
 };
 
 const arrowIconVariants: Variants = {
-  open: { stroke: 'black' },
-  closed: { stroke: 'white' },
+  open: { backgroundColor: theme.colors.primary.blue },
+  closed: { backgroundColor: theme.colors.primary.gray },
 };
 
 const liCss = css`
@@ -61,13 +62,12 @@ const liCss = css`
 `;
 
 const headerCss = (theme: Theme, isOpen: boolean) => css`
-  background-color: ${isOpen ? 'black' : 'white'};
+  background-color: ${isOpen ? theme.colors.primary.gray : theme.colors.primary.blue};
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 16px 30px;
-  border-radius: ${isOpen ? '12px 12px 0 0' : '12px'};
-
+  border: 1px solid ${theme.colors.primary.blue};
   > h4 {
     color: ${isOpen ? 'white' : 'black'};
     text-align: left;
@@ -75,16 +75,16 @@ const headerCss = (theme: Theme, isOpen: boolean) => css`
   }
 `;
 
-const arrowContainerCss = (theme: Theme, isOpen: boolean) => css`
+const arrowContainerCss = () => css`
   border-radius: 400px;
   width: 24px;
   height: 24px;
-  background-color: ${isOpen ? 'white' : 'black'};
 `;
 
 const bodyCss = (theme: Theme) => css`
   background-color: white;
-  border-radius: 0 0 12px 12px;
+  border: 1px solid ${theme.colors.primary.blue};
+
   > p {
     padding: 16px 30px;
     color: black;

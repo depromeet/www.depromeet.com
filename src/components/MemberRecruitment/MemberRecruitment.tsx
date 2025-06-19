@@ -107,7 +107,7 @@ const stepsContainerCss = css`
 
 const stepBoxCss = css`
   background-color: ${colors.primary.gray};
-  border: 2px solid ${colors.primary.blue};
+  border: 1px solid ${colors.primary.blue};
   padding: 24px 16px;
   text-align: center;
   min-height: 120px;
@@ -148,7 +148,7 @@ const stepDateCss = css`
 const applicationSectionCss = css`
   position: relative;
   background-color: ${colors.primary.gray};
-  border: 2px solid ${colors.primary.blue};
+  border: 1px solid ${colors.primary.blue};
   padding: 40px;
   text-align: center;
 
