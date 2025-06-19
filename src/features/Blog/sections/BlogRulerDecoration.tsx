@@ -1,12 +1,19 @@
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
+import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { mediaQuery } from '~/styles/media';
 
 export const BlogRulerDecoration = () => {
+  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
+
+  const imageSrc = isMobileSize
+    ? '/images/blog/footer-ruler_mobile.png'
+    : '/images/blog/footer-ruler.png';
+
   return (
     <div css={rulerImageContainerCss}>
-      <Image src="/images/blog/footer-ruler.png" alt="ruler decoration" fill css={rulerImageCss} />
+      <Image src={imageSrc} alt="ruler decoration" fill css={rulerImageCss} />
     </div>
   );
 };
@@ -17,7 +24,7 @@ const rulerImageContainerCss = css`
   left: 0;
   right: 0;
   width: 100%;
-  height: 20px;
+  height: 30px;
   z-index: 1;
 
   ${mediaQuery('mobile')} {
