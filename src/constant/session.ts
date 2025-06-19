@@ -4,6 +4,7 @@ type Session = {
   description: string;
   ps?: string;
 };
+
 export const SESSIONS: Session[] = [
   {
     image: '/images/17th/main/session/pre-launching.png',
@@ -46,4 +47,4 @@ export const SESSIONS: Session[] = [
     description:
       '팀원들과 함께 멀리 워케이션을 떠나요! \n출시를 위해 집중해서 작업도 하고, \n친목도 다져요',
   },
-] as const;
+];
