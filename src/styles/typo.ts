@@ -456,7 +456,7 @@ export const typosV3 = {
     `,
     sub2Semibold: css`
       font-size: ${pxToRem(18)};
-      font-weight: 500;
+      font-weight: 600;
       line-height: 140%;
       letter-spacing: 0;
     `,
