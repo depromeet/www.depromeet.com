@@ -80,7 +80,7 @@ export const MainSessionSection = () => {
       <div css={wrapperCss}>
         <div css={text.wrapperCss}>
           <h1 css={text.titleCss}>17th Session</h1>
-          <p css={text.subCss}>{`17주간의 성장과 도전의 모험 중 \n주요 세션입니다`}</p>
+          <p css={text.subCss}>{`17주간의 모험 중 주요 세션이에요`}</p>
         </div>
       </div>
       <div css={cardWrapperCss} ref={scrollRef}>
