@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 
 import { sectionBg } from '~/styles/background';
+import { theme } from '~/styles/theme';
 
 import { colors } from '../../styles/colors';
 
@@ -29,7 +30,7 @@ export const ValueSection = () => {
         <div css={titleStyles}>17기의 인재상</div>
         {values.map(value => (
           <div key={value.id} css={valueCardStyles}>
-            <h3 css={titleStyles}>{value.title}</h3>
+            <h3 css={semititleStyles}>{value.title}</h3>
             <p css={descriptionStyles}>{value.description}</p>
           </div>
         ))}
@@ -39,44 +40,87 @@ export const ValueSection = () => {
 };
 
 const containerStyles = css`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
   margin: 0 auto;
-  padding: 40px 20px;
+  padding: 120px 20px;
   ${sectionBg};
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 282px;
+    height: 282px;
+    background-image: url('/images/17th/shapes/compass.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top right;
+    z-index: 0;
+    opacity: 1;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 312px;
+    height: 312px;
+    background-image: url('/images/17th/3d-icon/designer-icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    z-index: 3;
+    opacity: 1;
+    transform: rotate(18deg);
+  }
 `;
 
 const contentStyles = css`
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   gap: 16px;
   width: 100%;
   max-width: 1100px;
+  align-items: center;
 `;
 
 const valueCardStyles = css`
   background: ${colors.white};
-  border: 2px solid ${colors.blue500};
+  border: 1px solid ${colors.blue500};
   padding: 32px;
   text-align: center;
   transition: all 0.2s ease;
+  min-width: 730px;
   background: ${colors.primary.gray};
 `;
 
 const titleStyles = css`
-  font-size: 32px;
-  font-weight: bold;
-  color: ${colors.black};
+  ${theme.typosV3.pretendard.head1};
+  font-weight: 600;
+  margin: 0 0 16px 0;
+  text-align: center;
+`;
+
+const semititleStyles = css`
+  ${theme.typosV3.MartianMono.head3};
+  font-weight: 500;
+  letter-spacing: -3px;
+  line-height: 109%;
   margin: 0 0 16px 0;
   line-height: 1.2;
   text-align: center;
 `;
 
 const descriptionStyles = css`
-  font-size: 18px;
-  color: ${colors.gray300};
+  ${theme.typosV3.pretendard.sub2Semibold};
   margin: 0;
   line-height: 1.5;
 `;

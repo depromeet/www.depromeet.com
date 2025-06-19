@@ -1,5 +1,7 @@
 import { css } from '@emotion/react';
 
+import { theme } from '~/styles/theme';
+
 import { colors } from '../../styles/colors';
 
 interface PositionCardProps {
@@ -8,6 +10,7 @@ interface PositionCardProps {
   subtitle: string;
   color: string;
   isActive: boolean;
+  backgroundImage: string;
   hoverDescription: string;
 }
 
@@ -16,17 +19,16 @@ export const PositionCard = ({
   subtitle,
   color,
   isActive,
+  backgroundImage,
   hoverDescription,
 }: PositionCardProps) => {
   return (
-    <div css={cardStyles(color, isActive)} className="position-card">
+    <div css={cardStyles(color, isActive, backgroundImage)} className="position-card">
       <div css={defaultContentStyles}>
         <div css={contentStyles}>
           <h3 css={titleStyles}>{title}</h3>
           <p css={subtitleStyles}>{subtitle}</p>
         </div>
-
-        <div css={decorativeShapeStyles(color)} />
 
         <button css={applyButtonStyles}>
           지원하기
@@ -46,10 +48,14 @@ export const PositionCard = ({
   );
 };
 
-const cardStyles = (color: string, isActive: boolean) => css`
+const cardStyles = (color: string, isActive: boolean, backgroundImage: string) => css`
   position: relative;
   background: ${colors.primary.gray};
-  border: 2px solid ${isActive ? colors.blue500 : '#E0E0E0'};
+  background-image: url(${backgroundImage});
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid ${isActive ? colors.blue500 : '#E0E0E0'};
   border-radius: 0;
   padding: 24px;
   width: 240px;
@@ -59,14 +65,25 @@ const cardStyles = (color: string, isActive: boolean) => css`
   justify-content: space-between;
   overflow: hidden;
   cursor: ${isActive ? 'pointer' : 'default'};
-  opacity: ${isActive ? 1 : 0.6};
-  transition: all 0.2s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    transition: background 0.3s ease;
+  }
 
   &:hover {
-    transform: ${isActive ? 'translateY(-4px)' : 'none'};
     box-shadow: ${isActive ? '0 8px 25px rgba(0,0,0,0.15)' : 'none'};
-    background: ${isActive ? '#1a1a1a' : 'white'};
     border-color: ${isActive ? '#1a1a1a' : isActive ? colors.blue500 : '#E0E0E0'};
+
+    &::before {
+      background: rgba(26, 26, 26, 1);
+    }
   }
 `;
 
@@ -80,7 +97,7 @@ const defaultContentStyles = css`
   flex-direction: column;
   justify-content: space-between;
   opacity: 1;
-  transition: opacity 0.2s ease;
+  transition: opacity 0.3s ease;
 
   .position-card:hover & {
     opacity: 0;
@@ -93,6 +110,8 @@ const contentStyles = css`
 `;
 
 const titleStyles = css`
+  ${theme.typosV3.MartianMono.head3};
+
   font-size: 24px;
   font-weight: bold;
   margin: 0 0 8px 0;
@@ -100,21 +119,11 @@ const titleStyles = css`
 `;
 
 const subtitleStyles = css`
+  ${theme.typosV3.pretendard.sub1Medium};
+
   font-size: 14px;
   color: #666;
   margin: 0;
-`;
-
-const decorativeShapeStyles = (color: string) => css`
-  position: absolute;
-  top: 50%;
-  right: -20px;
-  width: 120px;
-  height: 120px;
-  background: ${color};
-  opacity: 0.1;
-  border-radius: 50%;
-  transform: translateY(-50%);
 `;
 
 const applyButtonStyles = css`
@@ -157,7 +166,6 @@ const hoverContentStyles = css`
   flex-direction: column;
   justify-content: space-between;
   opacity: 0;
-  transition: opacity 0.2s ease;
 
   .position-card:hover & {
     opacity: 1;
@@ -165,10 +173,10 @@ const hoverContentStyles = css`
 `;
 
 const hoverTextStyles = css`
+  ${theme.typosV3.pretendard.sub5Medium};
+
   color: white;
-  font-size: 16px;
-  line-height: 1.6;
-  font-weight: 400;
+  font-size: 14px;
   z-index: 2;
   position: relative;
 `;
@@ -185,6 +193,7 @@ const hoverApplyButtonStyles = css`
   cursor: pointer;
   z-index: 2;
   position: relative;
+  transition: opacity 0.2s ease;
 
   &:hover {
     color: #ccc;

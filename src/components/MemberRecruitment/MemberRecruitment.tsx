@@ -57,21 +57,45 @@ export const MemberRecruitment = () => {
 };
 
 const containerCss = (_theme: Theme) => css`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   margin: 0 auto;
-  padding: 80px 20px;
+  padding: 120px 20px 80px 20px;
   background-color: ${colors.primary.gray};
   ${sectionBg};
 
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -40px;
+    right: 0;
+    width: 304.5px;
+    height: 304.5px;
+    background-image: url('/images/17th/3d-icon/iOS-icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    z-index: 2;
+    opacity: 1;
+    transform: rotate(250deg);
+  }
+
   ${mediaQuery('mobile')} {
     padding: 60px 16px;
+
+    &::after {
+      width: 150px;
+      height: 150px;
+    }
   }
 `;
 
 const contentStyles = css`
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   width: 100%;

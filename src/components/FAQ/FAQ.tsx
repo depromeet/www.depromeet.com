@@ -41,7 +41,6 @@ export function FAQ() {
         {activeTab === '면접 관련' && <FAQList label="면접 관련" FAQList={면접질문들} />}
         {activeTab === '활동 관련' && <FAQList label="활동 관련" FAQList={활동질문들} />}
       </div>
-      <div css={rulerCss} />
     </section>
   );
 }
@@ -102,16 +101,4 @@ const listCss = css`
   padding: 0 16px;
   width: 100%;
   max-width: 944px;
-`;
-
-const rulerCss = css`
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 17.2px;
-  background-image: url('/images/17th/scale.png');
-  background-size: cover;
-  background-position: bottom;
-  background-repeat: repeat-x;
 `;
