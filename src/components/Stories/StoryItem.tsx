@@ -1,4 +1,4 @@
-import { css, Theme } from '@emotion/react';
+import { css } from '@emotion/react';
 
 import { StoryItemType } from '~/constant/stories';
 import { mediaQuery } from '~/styles/media';
@@ -62,12 +62,7 @@ const overlayCss = css`
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.3) 70%,
-    rgba(0, 0, 0, 0.6) 100%
-  );
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 54.5%, rgba(0, 0, 0, 0.7) 100%);
 `;
 
 const contentCss = css`
@@ -87,15 +82,18 @@ const contentCss = css`
   }
 `;
 
-const titleCss = (theme: Theme) => css`
-  ${theme.typosV2.pretendard.regular14};
-  font-size: 16px;
+const titleCss = () => css`
+  font-family: Pretendard;
+  font-size: 20px;
   font-weight: 600;
-  line-height: 1.4;
-  margin: 0;
-  color: white;
+  line-height: 150%;
+  letter-spacing: -0.8px;
+  word-break: break-all;
 
+  ${mediaQuery('tablet')} {
+    ${theme.typosV3.pretendard.sub5Medium}
+  }
   ${mediaQuery('mobile')} {
-    font-size: 14px;
+    ${theme.typosV3.pretendard.body6Medium}
   }
 `;
