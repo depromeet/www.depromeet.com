@@ -162,7 +162,7 @@ const containerCss = () => css`
   align-items: flex-start;
   justify-content: center;
   overflow: hidden;
-  background-image: url('/images/17th/section01_bg_3x.png');
+  background-image: url('/images/17th/section01_bg_ver02_2x.png');
   background-size: cover;
   background-position: center;
 `;
