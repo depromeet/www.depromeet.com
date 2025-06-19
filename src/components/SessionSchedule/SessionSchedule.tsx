@@ -200,8 +200,8 @@ const headerCss = css`
 `;
 
 const titleCss = (theme: Theme) => css`
-  ${theme.typosV2.bebas.regular24};
-  color: ${theme.colors.grey['900']};
+  ${theme.typosV3.pretendard.head1};
+  color: ${theme.colors.primary.darknavy};
   margin-bottom: 16px;
   font-size: 36px;
   font-weight: 600;
@@ -212,8 +212,8 @@ const titleCss = (theme: Theme) => css`
 `;
 
 const descriptionCss = (theme: Theme) => css`
-  ${theme.typosV2.pretendard.regular14};
-  color: ${theme.colors.grey['700']};
+  ${theme.typosV3.pretendard.sub1Semibold};
+  color: ${theme.colors.primary.darknavy};
   font-size: 20px;
   font-weight: 500;
   ${mediaQuery('mobile')} {
@@ -242,14 +242,16 @@ const tableCss = css`
 `;
 
 const headerCellCss = (theme: Theme) => css`
+  ${theme.typosV3.pretendard.sub3Semibold};
+
   width: 134.86px;
   min-width: 134.86px;
   max-width: 134.86px;
   padding: 16px 12px;
   text-align: center;
   font-weight: 600;
-  background-color: ${theme.colors.grey['100']};
-  color: ${theme.colors.grey['900']};
+  background-color: ${theme.colors.primary.gray};
+  color: ${theme.colors.primary.darknavy};
   border: 1px solid ${colors.primary.darknavy};
 
   ${mediaQuery('mobile')} {
@@ -265,13 +267,15 @@ const darkHeaderCss = css`
 `;
 
 const cellCss = (theme: Theme) => css`
+  ${theme.typosV3.pretendard.body3Medium};
+
   width: 134.86px;
   min-width: 134.86px;
   max-width: 134.86px;
   padding: 16px 12px;
   text-align: center;
   background: ${colors.primary.gray};
-  color: ${theme.colors.grey['900']};
+  color: ${theme.colors.primary.darknavy};
 
   ${mediaQuery('mobile')} {
     padding: 12px 8px;
