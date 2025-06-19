@@ -142,7 +142,7 @@ export const MainIntroSection = () => {
           <div id="ruler">
             <Image fill src="/images/17th/ruler.svg" alt="눈금" />
           </div>
-
+          <div css={emptySpaceCss} />
           <button css={buttonCss} onClick={action} disabled={isDisabled}>
             {label}
           </button>
@@ -211,6 +211,7 @@ const floatingContainerCss = () => css`
   & > div {
     padding: 9px;
     color: ${colors.primary.blue};
+    background-color: ${colors.primary.gray};
     font-family: MartianMono;
     font-size: 14px;
     font-weight: 300;
@@ -337,11 +338,19 @@ const articleCss = () => css`
   }
 `;
 
+const emptySpaceCss = () => css`
+  height: 100px;
+
+  ${mediaQuery('mobile')} {
+    height: 80px;
+  }
+`;
+
 const buttonCss = () => css`
   /* ${theme.typosV2.pretendard.bold24} */
   position: absolute;
   left: 50%;
-  bottom: 95px;
+  bottom: 40px;
   transform: translateX(-50%);
   width: fit-content;
   height: auto;
@@ -350,6 +359,7 @@ const buttonCss = () => css`
   padding: 20px 40px;
   justify-content: center;
   align-items: center;
+  align-self: center;
 
   border-radius: 65px;
   border: 1px solid #9db0f7;
@@ -368,20 +378,16 @@ const buttonCss = () => css`
   letter-spacing: 0.2px;
   cursor: pointer;
   z-index: 1;
+  white-space: nowrap;
 
   &:disabled {
     background: ${colors.grey[300]};
     color: ${colors.grey[500]};
   }
 
-  ${mediaQuery('tablet')} {
-    bottom: 141px;
-  }
-
   ${mediaQuery('mobile')} {
     /* ${theme.typosV2.pretendard.bold18} */
     padding: 16px 32px;
-    bottom: 85px;
   }
 `;
 
