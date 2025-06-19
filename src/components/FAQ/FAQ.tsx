@@ -93,7 +93,7 @@ const tabContainerCss = (theme: Theme, isActive: boolean) => css`
 
 const tabCss = (theme: Theme, isActive: boolean) => css`
   ${theme.typosV2.pretendard.semibold16}
-  color: ${isActive ? theme.colors.grey['900'] : theme.colors.gray};
+  color: ${isActive ? '#000000' : theme.colors.gray};
   cursor: pointer;
 `;
 
