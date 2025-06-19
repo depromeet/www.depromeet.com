@@ -215,7 +215,7 @@ const imagesWrapperCss = css`
 
   width: 100%;
   max-width: 1110px;
-  height: 600px;
+  height: 500px;
 `;
 
 const imgCss = css`
@@ -223,11 +223,10 @@ const imgCss = css`
   object-fit: cover;
 
   position: absolute;
-  bottom: 20%;
+  bottom: 0%;
   right: 10%;
 
   ${mediaQuery('tablet')} {
-    bottom: 10%;
     right: 5%;
   }
 `;
