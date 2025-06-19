@@ -95,7 +95,7 @@ const contentStyles = css`
 const valueCardStyles = css`
   background: ${colors.white};
   border: 1px solid ${colors.blue500};
-  padding: 32px;
+  padding: 28px 26px;
   text-align: center;
   transition: all 0.2s ease;
   min-width: 730px;
