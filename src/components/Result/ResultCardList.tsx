@@ -45,7 +45,7 @@ export const ResultCardList = () => {
                     }
 
                     ${mediaQuery('mobile')} {
-                      font-size: 30px;
+                      font-size: 21px;
                       letter-spacing: -1.2px;
                     }
                   `,
@@ -169,7 +169,7 @@ const textCss = {
     }
 
     ${mediaQuery('mobile')} {
-      font-size: 32px;
+      font-size: 22px;
     }
   `,
   unit: css`
@@ -180,7 +180,7 @@ const textCss = {
     }
 
     ${mediaQuery('mobile')} {
-      font-size: 32px;
+      font-size: 22px;
     }
   `,
 };
