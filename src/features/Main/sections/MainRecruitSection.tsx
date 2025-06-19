@@ -130,9 +130,13 @@ const scaleCss = css`
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 17.2px;
-  background-image: url('/images/17th/scale.png');
+  height: 20px;
+  background-image: url('/images/project/17기/footer-ruler.png');
   background-size: cover;
   background-position: bottom;
   background-repeat: repeat-x;
+
+  ${mediaQuery('mobile')} {
+    height: 15px;
+  }
 `;

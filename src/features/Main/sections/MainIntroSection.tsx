@@ -271,8 +271,8 @@ const scaleWrapperCss = () => css`
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 17.2px;
-  background-image: url('/images/17th/scale.png');
+  height: 20px;
+  background-image: url('/images/project/17기/footer-ruler.png');
   background-size: cover;
   background-position: bottom;
   background-repeat: repeat-x;
@@ -339,8 +339,10 @@ const articleCss = () => css`
 
 const buttonCss = () => css`
   /* ${theme.typosV2.pretendard.bold24} */
-  position: relative;
-  margin: auto auto 80px;
+  position: absolute;
+  left: 50%;
+  bottom: 95px;
+  transform: translateX(-50%);
   width: fit-content;
   height: auto;
 
@@ -365,15 +367,21 @@ const buttonCss = () => css`
   line-height: 140%; /* 28px */
   letter-spacing: 0.2px;
   cursor: pointer;
+  z-index: 1;
 
   &:disabled {
     background: ${colors.grey[300]};
     color: ${colors.grey[500]};
   }
 
+  ${mediaQuery('tablet')} {
+    bottom: 141px;
+  }
+
   ${mediaQuery('mobile')} {
     /* ${theme.typosV2.pretendard.bold18} */
     padding: 16px 32px;
+    bottom: 85px;
   }
 `;
 
@@ -397,6 +405,7 @@ const partCss = (position: { distance: number; angle: number }, isSelected: bool
     ${getPositionStyleByAngle(position.angle, position.distance).top}px
   );
   transition: all 0.3s ease-in-out;
+  z-index: 1;
 
   ${isSelected &&
   css`
