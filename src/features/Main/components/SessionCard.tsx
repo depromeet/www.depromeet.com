@@ -11,10 +11,11 @@ type SessionCardProps = {
   src: string;
   title: string;
   description: string;
+  ps?: string;
   index: number;
 };
 
-const SessionCard = ({ src, title, description, index }: SessionCardProps) => {
+const SessionCard = ({ src, title, description, ps, index }: SessionCardProps) => {
   return (
     <div css={containerCss}>
       {/* NOTE : 현재 목데이터 사진 사용, 추후 세션 사진으로 수정하기 */}
@@ -22,7 +23,10 @@ const SessionCard = ({ src, title, description, index }: SessionCardProps) => {
       <Image css={imgCss} src={src} alt={title} width={438} height={278} />
       <div css={text.wrapperCss}>
         <p css={text.titleCss}>{title}</p>
-        <p css={text.subCss}>{description}</p>
+        <div css={text.descWrapperCss}>
+          <p css={text.subCss}>{description}</p>
+          {title === 'Launching Day' && <p css={text.psCss}>{ps}</p>}
+        </div>
       </div>
     </div>
   );
@@ -55,7 +59,7 @@ const containerCss = css`
 
 const imgCss = css`
   width: 100%;
-  height: 100%;
+  height: 270px;
 
   object-fit: cover;
 
@@ -115,12 +119,15 @@ const text = {
       padding: 32px;
     }
     ${mediaQuery('mobile')} {
-      padding: 24px;
+      padding: 20px;
       height: 138px;
+      gap: 4px;
     }
   `,
   titleCss: css`
     ${theme.typosV3.MartianMono.head3};
+    font-size: ${pxToRem(28)};
+    letter-spacing: -1px;
 
     ${mediaQuery('tablet')} {
       font-size: ${pxToRem(24)};
@@ -133,7 +140,24 @@ const text = {
   `,
 
   subCss: css`
-    ${theme.typosV3.pretendard.sub1Medium};
+    ${theme.typosV3.pretendard.sub2Semibold};
+    font-weight: 400;
+
+    ${mediaQuery('tablet')} {
+      ${theme.typosV3.pretendard.body5Medium};
+    }
+    ${mediaQuery('mobile')} {
+      ${theme.typosV3.pretendard.body6Medium};
+    }
+  `,
+  descWrapperCss: css`
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  `,
+  psCss: css`
+    ${theme.typosV3.pretendard.body3Medium}
+    color: ${colors.grey[500]};
 
     ${mediaQuery('tablet')} {
       ${theme.typosV3.pretendard.body5Medium};
