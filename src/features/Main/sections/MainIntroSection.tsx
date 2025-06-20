@@ -185,7 +185,7 @@ const descriptionCss = () => css`
   color: #040c23;
   font-family: MartianMono;
   font-size: 28px;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 142%;
   letter-spacing: -0.56px;
 
