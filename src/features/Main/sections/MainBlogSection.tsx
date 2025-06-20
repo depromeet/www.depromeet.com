@@ -34,6 +34,7 @@ const containerCss = css`
   background: white;
   overflow: hidden;
 
+  z-index: 20;
   ${sectionBg};
 
   ${mediaQuery('mobile')} {
