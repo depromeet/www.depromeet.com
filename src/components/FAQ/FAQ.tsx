@@ -53,7 +53,7 @@ const 활동질문들 = FAQS.filter(x => x.group === '활동 관련');
 
 const layoutCss = (theme: Theme) => css`
   position: relative;
-  padding: 120px 0;
+  padding: 80px 0;
   display: flex;
   flex-direction: column;
   align-items: center;

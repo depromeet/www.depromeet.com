@@ -171,5 +171,4 @@ const rulerCss = css`
   background-size: cover;
   background-position: bottom;
   background-repeat: repeat-x;
-  /* background-color: ${theme.colors.primary.gray}; */
 `;
