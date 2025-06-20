@@ -5,6 +5,7 @@ import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
 import { ARROW_URLS, LANDING_PART_POSITIONS } from '~/constant/landing';
+import { BlogRulerDecoration } from '~/features/Blog/sections/BlogRulerDecoration';
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 // TODO: 반응형 대응 시 사용 필요
 // import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
@@ -148,7 +149,7 @@ export const MainIntroSection = () => {
           </button>
         </article>
       )}
-      <div css={scaleWrapperCss} />
+      <BlogRulerDecoration />
     </section>
   );
 };
@@ -265,18 +266,6 @@ const arrowCss = () => css`
     width: 200px;
     height: 200px;
   }
-`;
-
-const scaleWrapperCss = () => css`
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 20px;
-  background-image: url('/images/project/17기/footer-ruler.png');
-  background-size: cover;
-  background-position: bottom;
-  background-repeat: repeat-x;
 `;
 
 const articleCss = () => css`

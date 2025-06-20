@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 
+import { BlogRulerDecoration } from '~/features/Blog/sections/BlogRulerDecoration';
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import useIsInProgress from '~/hooks/useIsInProgress';
 import { sectionBg } from '~/styles/background';
@@ -37,7 +38,7 @@ export const MainRecruitSection = () => {
           alt={'17기 디퍼 모집을 위한 오브제'}
         />
       </div>
-      <div css={scaleCss} />
+      <BlogRulerDecoration />
     </section>
   );
 };
@@ -122,21 +123,5 @@ const buttonCss = () => css`
 
   ${mediaQuery('tablet')} {
     margin: 40px 0;
-  }
-`;
-
-const scaleCss = css`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 20px;
-  background-image: url('/images/project/17기/footer-ruler.png');
-  background-size: cover;
-  background-position: bottom;
-  background-repeat: repeat-x;
-
-  ${mediaQuery('mobile')} {
-    height: 15px;
   }
 `;
