@@ -83,6 +83,13 @@ const containerStyles = css`
     z-index: 3;
     opacity: 1;
     transform: rotate(18deg);
+
+    ${mediaQuery('mobile')} {
+      width: 200px;
+      height: 200px;
+      bottom: -20px;
+      left: -50px;
+    }
   }
 `;
 
