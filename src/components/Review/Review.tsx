@@ -9,14 +9,8 @@ import { mediaQuery } from '~/styles/media';
 export function Review() {
   return (
     <section css={layoutCss}>
-      <h1>
-        디퍼들의 실제 이야기가
-        <br /> 궁금하다면?
-      </h1>
-      <h5>
-        뉴스레터와 블로그를 통해
-        <br /> 활동 소식을 만나보세요
-      </h5>
+      <h1>{`디퍼들의 실제 이야기가 \n궁금하다면?`}</h1>
+      <h5>{`뉴스레터와 블로그를 통해 \n활동 소식을 만나보세요`}</h5>
       <Marquee>
         {STORIES.map(({ ...info }) => (
           <StoryItem key={info.name} {...info} />
@@ -30,7 +24,7 @@ const layoutCss = (theme: Theme) => css`
   padding: 120px 0;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 8px;
   align-items: center;
   overflow: hidden;
   ${sectionBg};
@@ -42,6 +36,7 @@ const layoutCss = (theme: Theme) => css`
 
     ${mediaQuery('mobile')} {
       ${theme.typosV3.pretendard.head3};
+      white-space: pre-wrap;
     }
   }
 
@@ -49,9 +44,11 @@ const layoutCss = (theme: Theme) => css`
     ${theme.typosV3.pretendard.sub1Medium};
     text-align: center;
     color: ${theme.colors.primary.darknavy};
+    margin-bottom: 30px;
 
     ${mediaQuery('mobile')} {
-      ${theme.typosV3.pretendard.sub5Medium};
+      ${theme.typosV3.pretendard.body3Medium};
+      white-space: pre-wrap;
     }
   }
 `;
