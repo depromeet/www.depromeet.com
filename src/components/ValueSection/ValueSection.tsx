@@ -54,7 +54,7 @@ const containerStyles = css`
     content: '';
     position: absolute;
     top: 0;
-    right: 0;
+    right: 50px;
     width: 282px;
     height: 282px;
     background-image: url('/images/17th/shapes/compass.png');
@@ -69,7 +69,7 @@ const containerStyles = css`
     content: '';
     position: absolute;
     bottom: -120px;
-    left: -100px;
+    left: -50px;
     width: 312px;
     height: 312px;
     background-image: url('/images/17th/3d-icon/designer-icon.png');

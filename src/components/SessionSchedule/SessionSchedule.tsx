@@ -7,7 +7,7 @@ import { mediaQuery } from '~/styles/media';
 
 interface SessionData {
   ot: string;
-  ideation: string;
+  mini: string;
   workshop: string;
   currentMeeting: string;
   teamBuilding: string;
@@ -18,8 +18,8 @@ interface OfflineSessionData {
   hackathon: string;
   teamBuilding: string;
   presentationDay: string;
-  pictureSharing: string;
-  party: string;
+  feedback: string;
+  networking: string;
 }
 
 interface FinalSessionData {
@@ -32,27 +32,27 @@ interface FinalSessionData {
 
 const onlineSessionData: SessionData = {
   ot: '08.02',
-  ideation: '08.16~17',
-  workshop: '08.23',
+  mini: '08.09',
   currentMeeting: '08.16',
-  teamBuilding: '09.06',
+  workshop: '08.23-24',
+  teamBuilding: '08.30',
 };
 
 const offlineSessionData: OfflineSessionData = {
   utSharing: '09.06',
-  hackathon: '9.13',
-  teamBuilding: '10.18',
+  hackathon: '09.13',
+  teamBuilding: '09.20',
   presentationDay: '09.27',
-  pictureSharing: '10.11',
-  party: '11.08',
+  feedback: '10.11',
+  networking: '10.18',
 };
 
 const finalSessionData: FinalSessionData = {
-  teamBuilding: '08.02',
-  workOn: '08.09',
-  teamBuilding2: '08.16~17',
-  presentationDay: '08.30',
-  finalPresentation: '08.30',
+  teamBuilding: '10.25',
+  workOn: '11.01',
+  teamBuilding2: '11.08',
+  presentationDay: '11.15',
+  finalPresentation: '11.22',
 };
 
 export const SessionSchedule = () => {
@@ -77,18 +77,18 @@ export const SessionSchedule = () => {
                 <thead>
                   <tr>
                     <th css={[headerCellCss, darkHeaderCss]}>OT</th>
-                    <th css={headerCellCss}>아이디어 공유</th>
-                    <th css={[headerCellCss, darkHeaderCss]}>워크샵</th>
+                    <th css={headerCellCss}>미니 디프콘</th>
                     <th css={[headerCellCss, darkHeaderCss]}>현직자와의 만남</th>
+                    <th css={[headerCellCss, darkHeaderCss]}>디프만 워크샵</th>
                     <th css={headerCellCss}>팀별 작업</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td css={cellCss}>{onlineSessionData.ot}</td>
-                    <td css={cellCss}>{onlineSessionData.ideation}</td>
-                    <td css={cellCss}>{onlineSessionData.workshop}</td>
+                    <td css={cellCss}>{onlineSessionData.mini}</td>
                     <td css={cellCss}>{onlineSessionData.currentMeeting}</td>
+                    <td css={cellCss}>{onlineSessionData.workshop}</td>
                     <td css={cellCss}>{onlineSessionData.teamBuilding}</td>
                   </tr>
                 </tbody>
@@ -114,8 +114,8 @@ export const SessionSchedule = () => {
                     <td css={cellCss}>{offlineSessionData.hackathon}</td>
                     <td css={cellCss}>{offlineSessionData.teamBuilding}</td>
                     <td css={cellCss}>{offlineSessionData.presentationDay}</td>
-                    <td css={cellCss}>{offlineSessionData.pictureSharing}</td>
-                    <td css={cellCss}>{offlineSessionData.party}</td>
+                    <td css={cellCss}>{offlineSessionData.feedback}</td>
+                    <td css={cellCss}>{offlineSessionData.networking}</td>
                   </tr>
                 </tbody>
               </table>
@@ -175,15 +175,15 @@ export const SessionSchedule = () => {
                 <thead>
                   <tr>
                     <th css={[headerCellCss, darkHeaderCss]}>OT</th>
-                    <th css={headerCellCss}>아이디어 공유</th>
-                    <th css={[headerCellCss, darkHeaderCss]}>워크샵</th>
+                    <th css={headerCellCss}>미니 디프콘</th>
+                    <th css={[headerCellCss, darkHeaderCss]}>현직자와의 만남</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td css={cellCss}>{onlineSessionData.ot}</td>
-                    <td css={cellCss}>{onlineSessionData.ideation}</td>
-                    <td css={cellCss}>{onlineSessionData.workshop}</td>
+                    <td css={cellCss}>{onlineSessionData.mini}</td>
+                    <td css={cellCss}>{onlineSessionData.currentMeeting}</td>
                   </tr>
                 </tbody>
               </table>
@@ -194,14 +194,14 @@ export const SessionSchedule = () => {
               <table css={tableCss}>
                 <thead>
                   <tr>
-                    <th css={[headerCellCss, darkHeaderCss]}>현직자와의 만남</th>
+                    <th css={[headerCellCss, darkHeaderCss]}>디프만 워크샵</th>
                     <th css={headerCellCss}>팀별 작업</th>
                     <th css={[headerCellCss, darkHeaderCss]}>UT 공유</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td css={cellCss}>{onlineSessionData.currentMeeting}</td>
+                    <td css={cellCss}>{onlineSessionData.workshop}</td>
                     <td css={cellCss}>{onlineSessionData.teamBuilding}</td>
                     <td css={cellCss}>{offlineSessionData.utSharing}</td>
                   </tr>
@@ -241,8 +241,8 @@ export const SessionSchedule = () => {
                 </thead>
                 <tbody>
                   <tr>
-                    <td css={cellCss}>{offlineSessionData.pictureSharing}</td>
-                    <td css={cellCss}>{offlineSessionData.party}</td>
+                    <td css={cellCss}>{offlineSessionData.feedback}</td>
+                    <td css={cellCss}>{offlineSessionData.networking}</td>
                     <td css={cellCss}>{finalSessionData.teamBuilding}</td>
                   </tr>
                 </tbody>
