@@ -18,11 +18,13 @@ export const MainSessionSection = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setScrollable(entry.isIntersecting); // true or false 자동 전환
+        if (entry.isIntersecting) {
+          setScrollable(true);
+        }
       },
       {
-        threshold: 0.9,
-        root: null,
+        threshold: [0.8],
+        rootMargin: '8% 0px -8% 0px',
       }
     );
 
@@ -105,8 +107,7 @@ const scrollSectionCss = (isScrollable: boolean) => css`
   top: 0;
   ${sectionBg}
 
-  height: 100dvh;
-  /* height: 100dvh; */
+  height: 120dvh;
 
   overflow: hidden;
   display: flex;
@@ -219,13 +220,3 @@ const cardWrapperCss = css`
     gap: 24px;
   }
 `;
-
-// const cardItemCss = css`
-//   flex-shrink: 0;
-//   scroll-snap-align: start;
-//   min-width: 300px;
-
-//   ${mediaQuery('mobile')} {
-//     min-width: 240px;
-//   }
-// `;
