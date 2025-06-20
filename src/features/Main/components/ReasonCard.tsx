@@ -73,7 +73,7 @@ const clipWrapperCss = css`
   overflow: hidden;
 
   ${mediaQuery('tablet')} {
-    height: 158px;
+    height: 188px;
   }
   ${mediaQuery('mobile')} {
     height: auto;
