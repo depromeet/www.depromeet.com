@@ -45,7 +45,7 @@ const containerCss = css`
   background: ${colors.primary.gray};
   box-shadow: 0 0 8px 4px ${colors.primary.blue}24;
 
-  border: ${colors.primary.blue} 1px solid;
+  border: ${colors.primary.blue} 1.5px solid;
 
   ${mediaQuery('tablet')} {
     width: 400px;
@@ -54,6 +54,7 @@ const containerCss = css`
   ${mediaQuery('mobile')} {
     width: 280px;
     height: 385px;
+    border: ${colors.primary.blue} 1px solid;
   }
 `;
 
@@ -65,10 +66,11 @@ const imgCss = css`
 
   border-color: ${colors.primary.blue};
   border-style: solid;
-  border-width: 0 0 1px 0;
+  border-width: 0 0 1.5px 0;
 
   ${mediaQuery('mobile')} {
     max-height: 233px;
+    border-width: 0 0 1px 0;
   }
 `;
 
