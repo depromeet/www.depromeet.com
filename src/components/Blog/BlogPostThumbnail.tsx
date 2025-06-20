@@ -22,6 +22,11 @@ export function BlogPostThumbnail({ title, date, img, link, ...props }: Thumbnai
     window.open(link.href);
   };
 
+  const handleLinkClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // 카드 클릭 이벤트 방지
+    window.open(link.href, '_blank'); // 새 탭에서 링크 열기
+  };
+
   return (
     <m.article
       css={articleCss}
@@ -61,7 +66,7 @@ export function BlogPostThumbnail({ title, date, img, link, ...props }: Thumbnai
 
         <div css={backLinksAreaCss}>
           <div css={linksContainerCss}>
-            <button css={linkButtonCss} onClick={e => e.stopPropagation()}>
+            <button css={linkButtonCss} onClick={handleLinkClick}>
               {link.type}
               <ArrowIcon direction={'right'} color="white" width={16} height={16} />
             </button>
