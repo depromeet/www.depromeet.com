@@ -63,6 +63,10 @@ const containerStyles = css`
     background-position: top right;
     z-index: 0;
     opacity: 1;
+
+    ${mediaQuery('mobile')} {
+      display: none;
+    }
   }
 
   &::after {
