@@ -111,8 +111,8 @@ export function Pagination({ handlePageClick, numberOfPages, currentPage }: Pagi
                 : '/images/pagination/left-arrow.svg'
             }
             alt="이전"
-            width="15"
-            height="15"
+            width="16"
+            height="16"
             css={arrowIconCss}
           />
         </button>
@@ -146,8 +146,8 @@ export function Pagination({ handlePageClick, numberOfPages, currentPage }: Pagi
                 : '/images/pagination/right-arrow.svg'
             }
             alt="다음"
-            width="15"
-            height="15"
+            width="16"
+            height="16"
             css={arrowIconCss}
           />
         </button>
@@ -228,6 +228,6 @@ const arrowButtonCss = (disabled: boolean) => css`
 `;
 
 const arrowIconCss = css`
-  width: 24px;
-  height: 24px;
+  width: 16px;
+  height: 16px;
 `;

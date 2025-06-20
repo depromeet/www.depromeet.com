@@ -268,7 +268,7 @@ const applicationTitleCss = (theme: Theme) => css`
 `;
 
 const applicationStepCss = css`
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 
   &:last-child {
     margin-bottom: 0;

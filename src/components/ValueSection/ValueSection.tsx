@@ -54,7 +54,7 @@ const containerStyles = css`
     content: '';
     position: absolute;
     top: 0;
-    right: 0;
+    right: 50px;
     width: 282px;
     height: 282px;
     background-image: url('/images/17th/shapes/compass.png');
@@ -69,7 +69,7 @@ const containerStyles = css`
     content: '';
     position: absolute;
     bottom: -120px;
-    left: -100px;
+    left: -50px;
     width: 312px;
     height: 312px;
     background-image: url('/images/17th/3d-icon/designer-icon.png');
@@ -120,7 +120,7 @@ const titleStyles = css`
 const semititleStyles = css`
   ${theme.typosV3.MartianMono.head3};
   font-weight: 500;
-  letter-spacing: -3px;
+  letter-spacing: -4%;
   line-height: 109%;
   margin: 0 0 16px 0;
   line-height: 1.2;
@@ -128,23 +128,29 @@ const semititleStyles = css`
 
   ${mediaQuery('tablet')} {
     ${theme.typosV3.MartianMono.body2};
+    font-weight: 500;
     font-size: 17px;
   }
   ${mediaQuery('mobile')} {
     ${theme.typosV3.MartianMono.body2};
+    font-weight: 500;
     font-size: 17px;
   }
 `;
 
 const descriptionStyles = css`
   ${theme.typosV3.pretendard.sub2Semibold};
+  font-weight: 500;
+
   margin: 0;
   line-height: 1.5;
 
   ${mediaQuery('tablet')} {
     ${theme.typosV3.pretendard.sub4Semibold};
+    font-weight: 500;
   }
   ${mediaQuery('mobile')} {
     ${theme.typosV3.pretendard.sub4Semibold};
+    font-weight: 500;
   }
 `;
