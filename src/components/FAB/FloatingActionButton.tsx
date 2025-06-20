@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import { css } from '@emotion/react';
 
 import { DEPROMEET_EMAIL, DEPROMEET_KAKAO_PLUS_FRIEND } from '~/constant/depromeet';
+import { colors } from '~/styles/colors';
 import { theme } from '~/styles/theme';
-
-import { Icon } from '../Icon/Icon';
 
 const FloatingActionButton = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +43,7 @@ const FloatingActionButton = () => {
         onMouseEnter={() => toggleMenu}
         onMouseLeave={() => setHoveredButton(null)}
       >
-        <Icon icon="ic_question" />
+        <Image src={'/images/17th/fab/question.svg'} alt="question" width={36} height={36} />
       </button>
 
       {isOpen && (
@@ -53,7 +53,7 @@ const FloatingActionButton = () => {
             onMouseEnter={() => setHoveredButton('email')}
             onMouseLeave={() => setHoveredButton(null)}
           >
-            <Icon icon="ic_mail" />
+            <Image src={'/images/17th/fab/mail.svg'} alt="mail" width={20} height={20} />
             <a href={DEPROMEET_EMAIL}> 이메일 문의 </a>
           </button>
           <button
@@ -61,7 +61,7 @@ const FloatingActionButton = () => {
             onMouseEnter={() => setHoveredButton('kakao')}
             onMouseLeave={() => setHoveredButton(null)}
           >
-            <Icon icon="ic_chat" />
+            <Image src={'/images/17th/fab/chat.svg'} alt="chat" width={20} height={20} />
             <a href={DEPROMEET_KAKAO_PLUS_FRIEND} target="_blank" rel="noreferrer">
               카카오톡 문의
             </a>
@@ -83,43 +83,44 @@ const fabContainerStyle = css`
 `;
 
 const fabButtonStyle = css`
-  background-color: #333;
-  color: #fff;
+  background-color: ${colors.primary.blue};
+  color: ${colors.white};
   border: none;
-  border-radius: 50%;
-  width: 52px;
-  height: 52px;
+  width: 54px;
+  height: 54px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-
-  &:hover {
-    background-color: #555;
-  }
 `;
 
 const menuStyle = css`
   position: absolute;
   bottom: 70px;
   right: 0;
-  background-color: #333;
-  border-radius: 8px;
+  background-color: ${colors.white};
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid ${colors.primary.blue};
   display: flex;
   flex-direction: column;
-  padding: 8px 0;
+  /* padding: 8px 0; */
   gap: 1px;
 `;
 
 const menuItemStyle = css`
   ${theme.typosV2.pretendard.semibold14}
-  background-color: #333;
-  color: #fff;
-  padding: 12px 24px;
+
+  color: ${colors.primary.darknavy};
+
+  &:nth-of-type(1) {
+    padding: 16px 24px 12px 24px;
+  }
+  &:nth-of-type(2) {
+    padding: 12px 24px 16px 24px;
+  }
   border: none;
   width: 165px;
   display: flex;
@@ -130,7 +131,8 @@ const menuItemStyle = css`
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #555;
+    background-color: ${colors.grey[100]};
+    opacity: 40;
   }
 `;
 
