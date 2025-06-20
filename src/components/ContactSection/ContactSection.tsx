@@ -6,30 +6,33 @@ import { theme } from '~/styles/theme';
 
 export const ContactSection = () => {
   return (
-    <div css={containerStyles}>
-      <div css={contentStyles}>
-        <h2 css={titleStyles}>궁금한 점이 있으신가요?</h2>
-        <div css={cardGridStyles}>
-          <a href="https://pf.kakao.com/_xoxmcxed" target="_blank" rel="noreferrer">
-            <div css={cardStyles}>
-              <div css={cardHeaderStyles}>
-                <h3 css={cardTitleStyles}>카카오톡 문의</h3>
+    <>
+      <div css={containerStyles}>
+        <div css={contentStyles}>
+          <h2 css={titleStyles}>궁금한 점이 있으신가요?</h2>
+          <div css={cardGridStyles}>
+            <a href="https://pf.kakao.com/_xoxmcxed" target="_blank" rel="noreferrer">
+              <div css={cardStyles}>
+                <div css={cardHeaderStyles}>
+                  <h3 css={cardTitleStyles}>카카오톡 문의</h3>
+                </div>
+                <p css={contactInfoStyles}>@depromeet</p>
               </div>
-              <p css={contactInfoStyles}>@depromeet</p>
-            </div>
-          </a>
+            </a>
 
-          <a href={DEPROMEET_EMAIL}>
-            <div css={cardStyles}>
-              <div css={cardHeaderStyles}>
-                <h3 css={cardTitleStyles}>이메일 문의</h3>
+            <a href={DEPROMEET_EMAIL}>
+              <div css={cardStyles}>
+                <div css={cardHeaderStyles}>
+                  <h3 css={cardTitleStyles}>이메일 문의</h3>
+                </div>
+                <p css={contactInfoStyles}>depromeet@gmail.com</p>
               </div>
-              <p css={contactInfoStyles}>depromeet@gmail.com</p>
-            </div>
-          </a>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
+      <div css={rulerCss} />
+    </>
   );
 };
 
@@ -110,4 +113,16 @@ const contactInfoStyles = css`
   @media (max-width: 768px) {
     font-size: 14px;
   }
+`;
+
+const rulerCss = css`
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 20px;
+  background-image: url('/images/project/17기/footer-ruler.png');
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: repeat-x;
+  background-color: ${theme.colors.primary.gray};
 `;
