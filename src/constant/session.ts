@@ -36,8 +36,8 @@ export const SESSIONS: Session[] = [
       '1박 2일 워크샵을 떠나요 \n최고의 프로덕트를 만들어 내기 위해 \n팀워크를 다지는 시간이에요',
   },
   {
-    image: '/images/17th/main/session/role-based.png',
-    title: 'Role-based Networking',
+    image: '/images/17th/main/session/part-networking.png',
+    title: 'Part Networking',
     description:
       '같은 파트 디퍼들과 모여 네트워킹을 진행해요 \n파트별로 할 수 있는 이야기를 나누는 시간을 가져요',
   },
