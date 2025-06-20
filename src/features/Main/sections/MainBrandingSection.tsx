@@ -54,7 +54,7 @@ export const MainBrandingSection = () => {
               src={'/images/17th/main/branding.png'}
               alt={'icon'}
               width={!isTabletSize ? 600 : 550}
-              height={!isTabletSize ? 600 : 550}
+              height={!isTabletSize ? 500 : 450}
             />
           </div>
         )}
@@ -224,7 +224,7 @@ const imgCss = css`
   object-fit: cover;
 
   position: absolute;
-  bottom: 0%;
+  bottom: 10%;
   right: 10%;
 
   ${mediaQuery('tablet')} {
