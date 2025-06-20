@@ -75,7 +75,7 @@ const containerCss = css`
   }
 
   ${mediaQuery('mobile')} {
-    padding: 100px 20px 70px 20px;
+    padding: 100px 24px 70px 24px;
     gap: 32px;
   }
 `;
@@ -95,7 +95,7 @@ const wrapperCss = css`
     gap: 80px;
   }
   ${mediaQuery('mobile')} {
-    max-width: 475px;
+    /* max-width: 475px; */
     gap: 80px;
   }
 `;
@@ -108,23 +108,22 @@ const text = {
     gap: 12px;
 
     width: 100%;
-    margin-left: 58px;
+    padding-left: 58px;
     margin-bottom: -31px;
 
     color: ${colors.primary.darknavy};
 
     ${mediaQuery('tablet')} {
-      margin-left: 0;
-      max-width: 768px;
+      padding-left: 0;
     }
   `,
 
   titleCss: css`
     ${theme.typosV3.MartianMono.head3};
-    font-size: ${pxToRem(42)};
-    font-weight: 500;
-    letter-spacing: -3px;
+    font-size: 42px;
+    font-weight: 400;
     line-height: 109%;
+    letter-spacing: -2.1px;
     text-align: start;
 
     z-index: 100;
@@ -163,7 +162,7 @@ const icon = {
 
     ${mediaQuery('mobile')} {
       top: -6.3%;
-      left: -30%;
+      left: -19%;
       opacity: 100%;
       transform: rotate(-20deg);
     }

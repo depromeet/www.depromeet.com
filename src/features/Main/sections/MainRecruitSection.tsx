@@ -25,7 +25,7 @@ export const MainRecruitSection = () => {
       <div css={text.wrapperCss}>
         <p css={text.subCss}>두려움을 용기로, 상상을 도전으로</p>
         <h1 css={text.titleCss}>
-          디프만과 함께 성장 할 <br /> 17기 디퍼를 모집합니다
+          디프만과 함께 성장할 <br /> 17기 디퍼를 모집합니다
         </h1>
         <button css={buttonCss} onClick={action} disabled={isDisabled}>
           {label}
@@ -130,9 +130,13 @@ const scaleCss = css`
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 17.2px;
-  background-image: url('/images/17th/scale.png');
+  height: 20px;
+  background-image: url('/images/project/17기/footer-ruler.png');
   background-size: cover;
   background-position: bottom;
   background-repeat: repeat-x;
+
+  ${mediaQuery('mobile')} {
+    height: 15px;
+  }
 `;

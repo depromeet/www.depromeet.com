@@ -90,6 +90,7 @@ const mobileMenuCss = (_theme: Theme) => css`
 const linkCss = (theme: Theme) => css`
   ${theme.typosV3.pretendard.sub3Semibold};
   color: ${colors.white};
+  font-weight: 400;
 
   ${mediaQuery('mobile')} {
     font-size: 1rem;
