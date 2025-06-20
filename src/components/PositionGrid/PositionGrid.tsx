@@ -163,7 +163,6 @@ const recruitmentMobileMessageStyles = css`
 `;
 
 const rulerCss = css`
-  position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
