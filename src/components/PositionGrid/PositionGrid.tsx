@@ -125,7 +125,7 @@ const mobileContainerStyles = css`
   flex-direction: column;
   align-items: center;
   padding-top: 24px;
-  gap: 24px;
+  gap: 20px;
 `;
 
 const gridStyles = css`
@@ -160,6 +160,8 @@ const recruitmentMobileMessageStyles = css`
   padding-left: 24px;
   font-size: 18px;
   color: ${theme.colors.primary.darknavy};
+  line-height: 140%;
+  margin-top: 40px;
 `;
 
 const rulerCss = css`

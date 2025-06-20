@@ -122,6 +122,7 @@ const contentStyles = css`
 
 const titleStyles = css`
   ${theme.typosV3.MartianMono.head3};
+  letter-spacing: -5%;
 
   margin: 0 0 8px 0;
   color: ${theme.colors.primary.darknavy};

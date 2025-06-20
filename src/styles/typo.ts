@@ -410,7 +410,12 @@ export const typosV3 = {
       line-height: 140%;
       letter-spacing: 0.5px;
     `,
-
+    head3: css`
+      font-size: ${pxToRem(28)};
+      font-weight: 600;
+      line-height: 140%;
+      letter-spacing: 0.5px;
+    `,
     head4: css`
       font-size: ${pxToRem(26)};
       font-weight: 600;

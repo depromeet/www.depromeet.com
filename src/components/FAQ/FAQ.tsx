@@ -63,6 +63,10 @@ const layoutCss = (theme: Theme) => css`
   h1 {
     ${theme.typosV3.pretendard.head1};
     color: ${theme.colors.primary.darknavy};
+
+    ${mediaQuery('mobile')} {
+      ${theme.typosV3.pretendard.head3};
+    }
   }
 `;
 
