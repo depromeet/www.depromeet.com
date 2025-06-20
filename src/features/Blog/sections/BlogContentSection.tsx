@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 
 import { AllBlog, DEEPER_BLOG_LIST, OFFICIAL_BLOG_LIST } from '~/constant/blog';
-import { sectionGridBg } from '~/styles/background';
 import { mediaQuery } from '~/styles/media';
 
 import { BlogPaginationSection } from './BlogPaginationSection';
@@ -96,15 +95,21 @@ const sectionCss = css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  ${sectionGridBg};
+  background-image: url('/images/project/17기/17th-project-background.png');
+  background-size: 100% auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+  min-height: 100vh;
   padding: 56px 0;
   gap: 36px;
 
   ${mediaQuery('tablet')} {
     padding: 56px 48px;
+    background-size: 1200px auto;
   }
   ${mediaQuery('mobile')} {
     padding: 56px 20px;
     gap: 32px;
+    background-size: 700px auto;
   }
 `;
