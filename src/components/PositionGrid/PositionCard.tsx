@@ -126,10 +126,19 @@ const titleStyles = css`
 
   margin: 0 0 8px 0;
   color: ${theme.colors.primary.darknavy};
+
+  ${mediaQuery('tablet')} {
+    ${theme.typosV3.MartianMono.head3};
+    font-size: 26px;
+    line-height: 125%;
+    letter-spacing: -1px;
+    white-space: pre-wrap;
+  }
 `;
 
 const subtitleStyles = css`
   ${theme.typosV3.pretendard.sub5Medium};
+  ${colors.grey[900]}
 `;
 
 const applyButtonStyles = css`

@@ -113,6 +113,10 @@ const containerCss = (_theme: Theme) => css`
   ${sectionBg};
   overflow: hidden;
 
+  ${mediaQuery('tablet')} {
+    padding: 30px 20px 140px 20px;
+  }
+
   &::after {
     content: '';
     position: absolute;
@@ -127,6 +131,14 @@ const containerCss = (_theme: Theme) => css`
     z-index: 2;
     opacity: 1;
     transform: rotate(350deg);
+
+    ${mediaQuery('tablet')} {
+      bottom: -40px;
+      right: -40px;
+      width: 260px;
+      height: 260px;
+      transform: rotate(0deg);
+    }
   }
 
   ${mediaQuery('mobile')} {
@@ -207,6 +219,10 @@ const stepBoxCss = css`
   justify-content: center;
   gap: 8px;
 
+  ${mediaQuery('tablet')} {
+    padding: 28px 0;
+    min-height: 100px;
+  }
   ${mediaQuery('mobile')} {
     padding: 20px 12px;
     min-height: 100px;

@@ -41,6 +41,7 @@ export const ValueSection = () => {
 };
 
 const containerStyles = css`
+  width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -49,6 +50,16 @@ const containerStyles = css`
   margin: 0 auto;
   padding: 120px 20px;
   ${sectionBg};
+
+  ${mediaQuery('tablet')} {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 120px 20px 200px 20px;
+  }
+  ${mediaQuery('mobile')} {
+    overflow: auto;
+    padding: 120px 20px;
+  }
 
   &::before {
     content: '';
@@ -67,6 +78,12 @@ const containerStyles = css`
     ${mediaQuery('mobile')} {
       display: none;
     }
+    ${mediaQuery('tablet')} {
+      top: 0;
+      right: -50px;
+      width: 280px;
+      height: 280px;
+    }
   }
 
   &::after {
@@ -82,7 +99,13 @@ const containerStyles = css`
     background-position: bottom left;
     z-index: 3;
     opacity: 1;
-    transform: rotate(18deg);
+
+    ${mediaQuery('tablet')} {
+      bottom: 0px;
+      left: -60px;
+      width: 260px;
+      height: 260px;
+    }
 
     ${mediaQuery('mobile')} {
       width: 200px;
@@ -114,7 +137,8 @@ const valueCardStyles = css`
   background: ${colors.primary.gray};
 
   ${mediaQuery('tablet')} {
-    width: 328px;
+    width: 100%;
+    margin: 0 40.5px;
   }
   ${mediaQuery('mobile')} {
     width: 328px;
@@ -138,9 +162,9 @@ const semititleStyles = css`
   text-align: center;
 
   ${mediaQuery('tablet')} {
-    ${theme.typosV3.MartianMono.body2};
-    font-weight: 500;
-    font-size: 17px;
+    font-weight: 400;
+    font-size: 28px;
+    letter-spacing: -1px;
   }
   ${mediaQuery('mobile')} {
     ${theme.typosV3.MartianMono.body2};
@@ -157,8 +181,7 @@ const descriptionStyles = css`
   line-height: 1.5;
 
   ${mediaQuery('tablet')} {
-    ${theme.typosV3.pretendard.sub4Semibold};
-    font-weight: 500;
+    font-weight: 400;
   }
   ${mediaQuery('mobile')} {
     ${theme.typosV3.pretendard.sub4Semibold};

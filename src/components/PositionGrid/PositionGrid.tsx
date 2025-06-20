@@ -2,6 +2,7 @@ import { css } from '@emotion/react';
 
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { sectionGridBg } from '~/styles/background';
+import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
 import { PositionCard } from './PositionCard';
@@ -12,7 +13,7 @@ export const PositionGrid = () => {
   const positions = [
     {
       id: 'product-designer',
-      title: 'Product Designer',
+      title: 'Product \nDesigner',
       subtitle: '리서치·UX·UI·디자인시스템',
       isActive: true,
       backgroundImage: !isMobileSize ? '/images/17th/sliced/i1.png' : '/images/17th/sliced/f1.png',
@@ -21,7 +22,7 @@ export const PositionGrid = () => {
     },
     {
       id: 'android-developer',
-      title: 'Android Developer',
+      title: 'Android \nDeveloper',
       subtitle: 'Android·Kotlin·Git',
       isActive: true,
       backgroundImage: !isMobileSize ? '/images/17th/sliced/i2.png' : '/images/17th/sliced/f2.png',
@@ -30,7 +31,7 @@ export const PositionGrid = () => {
     },
     {
       id: 'ios-developer',
-      title: 'iOS Developer',
+      title: 'iOS \nDeveloper',
       subtitle: 'iOS·Swift·Git',
       isActive: true,
       backgroundImage: !isMobileSize ? '/images/17th/sliced/i3.png' : '/images/17th/sliced/f3.png',
@@ -39,7 +40,7 @@ export const PositionGrid = () => {
     },
     {
       id: 'server-developer',
-      title: 'Server Developer',
+      title: 'Server \nDeveloper',
       subtitle: 'Backend·Infra·Git',
       isActive: true,
       backgroundImage: !isMobileSize ? '/images/17th/sliced/i4.png' : '/images/17th/sliced/f4.png',
@@ -48,7 +49,7 @@ export const PositionGrid = () => {
     },
     {
       id: 'web-developer',
-      title: 'Web Developer',
+      title: 'Web \nDeveloper',
       subtitle: 'Frontend·React·Git',
       isActive: true,
       backgroundImage: !isMobileSize ? '/images/17th/sliced/i5.png' : '/images/17th/sliced/f5.png',
@@ -59,7 +60,33 @@ export const PositionGrid = () => {
 
   return (
     <>
-      {!isTabletSize && !isMobileSize && (
+      {isTabletSize || isMobileSize ? (
+        <>
+          <section css={sectionStyles}>
+            <div css={mobileContainerStyles}>
+              <PositionCard {...positions[0]} />
+              <PositionCard {...positions[1]} />
+              <PositionCard {...positions[2]} />
+              <PositionCard {...positions[3]} />
+              <PositionCard {...positions[4]} />
+
+              {isMobileSize && (
+                <div css={recruitmentMobileMessageStyles}>
+                  디프만은 다섯개의 직군에서
+                  <br />
+                  신규 회원을 모집하고 있습니다
+                </div>
+              )}
+            </div>
+            {!isMobileSize && isTabletSize && (
+              <div css={recruitmentMobileMessageStyles}>
+                디프만은 다섯개의 직군에서 신규 회원을 모집하고 있습니다
+              </div>
+            )}
+            <div css={rulerCss} />
+          </section>
+        </>
+      ) : (
         <>
           <section css={sectionStyles}>
             <div css={containerStyles}>
@@ -85,26 +112,6 @@ export const PositionGrid = () => {
           </section>
         </>
       )}
-      {(isMobileSize || isTabletSize) && (
-        <>
-          <section css={sectionStyles}>
-            <div css={mobileContainerStyles}>
-              <PositionCard {...positions[0]} />
-              <PositionCard {...positions[1]} />
-              <PositionCard {...positions[2]} />
-              <PositionCard {...positions[3]} />
-              <PositionCard {...positions[4]} />
-
-              <div css={recruitmentMobileMessageStyles}>
-                디프만은 다섯개의 직군에서
-                <br />
-                신규 회원을 모집하고 있습니다
-              </div>
-            </div>
-            <div css={rulerCss} />
-          </section>
-        </>
-      )}
     </>
   );
 };
@@ -121,11 +128,25 @@ const containerStyles = css`
 `;
 
 const mobileContainerStyles = css`
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(3, auto);
+
   align-items: center;
-  padding-top: 24px;
+
+  justify-items: center;
+  justify-content: center;
+
+  padding: 24px 40px 0 40px;
   gap: 20px;
+
+  ${mediaQuery('mobile')} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 24px;
+    gap: 20px;
+  }
 `;
 
 const gridStyles = css`
@@ -154,14 +175,26 @@ const recruitmentMessageStyles = css`
 `;
 
 const recruitmentMobileMessageStyles = css`
-  width: 100%;
-  height: 100px;
-  display: flex;
-  padding-left: 24px;
   font-size: 18px;
   color: ${theme.colors.primary.darknavy};
-  line-height: 140%;
-  margin-top: 40px;
+
+  ${mediaQuery('tablet')} {
+    ${theme.typosV3.pretendard.sub1Medium};
+    width: 100%;
+    height: 100px;
+    display: flex;
+    padding-left: 62px;
+    margin-top: 40px;
+  }
+
+  ${mediaQuery('mobile')} {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    padding-left: 24px;
+    line-height: 140%;
+    margin-top: 40px;
+  }
 `;
 
 const rulerCss = css`
