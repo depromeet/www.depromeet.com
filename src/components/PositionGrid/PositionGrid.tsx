@@ -1,11 +1,14 @@
 import { css } from '@emotion/react';
 
+import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { sectionGridBg } from '~/styles/background';
 import { theme } from '~/styles/theme';
 
 import { PositionCard } from './PositionCard';
 
 export const PositionGrid = () => {
+  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
+  const { isTargetSize: isTabletSize } = useCheckWindowSize('tablet');
   const positions = [
     {
       id: 'product-designer',
@@ -56,36 +59,73 @@ export const PositionGrid = () => {
 
   return (
     <>
-      <div css={containerStyles}>
-        <div css={gridStyles}>
-          {/* 첫 번째 행: o o o x */}
-          <PositionCard {...positions[0]} />
-          <PositionCard {...positions[1]} />
-          <PositionCard {...positions[2]} />
-          <div css={emptySlotStyles}></div>
+      {!isTabletSize && !isMobileSize && (
+        <>
+          <section css={sectionStyles}>
+            <div css={containerStyles}>
+              <div css={gridStyles}>
+                {/* 첫 번째 행: o o o x */}
+                <PositionCard {...positions[0]} />
+                <PositionCard {...positions[1]} />
+                <PositionCard {...positions[2]} />
+                <div css={emptySlotStyles}></div>
 
-          {/* 두 번째 행: x x o o */}
-          <div css={recruitmentMessageStyles}>
-            디프만은 다섯개의 직군에서
-            <br />
-            신규 회원을 모집하고 있습니다
-          </div>
-          <div css={emptySlotStyles}></div>
-          <PositionCard {...positions[3]} />
-          <PositionCard {...positions[4]} />
-        </div>
-      </div>
-      <div css={rulerCss} />
+                {/* 두 번째 행: x x o o */}
+                <div css={recruitmentMessageStyles}>
+                  디프만은 다섯개의 직군에서
+                  <br />
+                  신규 회원을 모집하고 있습니다
+                </div>
+                <div css={emptySlotStyles}></div>
+                <PositionCard {...positions[3]} />
+                <PositionCard {...positions[4]} />
+              </div>
+            </div>
+            <div css={rulerCss} />
+          </section>
+        </>
+      )}
+      {(isMobileSize || isTabletSize) && (
+        <>
+          <section css={sectionStyles}>
+            <div css={mobileContainerStyles}>
+              <PositionCard {...positions[0]} />
+              <PositionCard {...positions[1]} />
+              <PositionCard {...positions[2]} />
+              <PositionCard {...positions[3]} />
+              <PositionCard {...positions[4]} />
+
+              <div css={recruitmentMobileMessageStyles}>
+                디프만은 다섯개의 직군에서
+                <br />
+                신규 회원을 모집하고 있습니다
+              </div>
+            </div>
+            <div css={rulerCss} />
+          </section>
+        </>
+      )}
     </>
   );
 };
+
+const sectionStyles = css`
+  ${sectionGridBg};
+`;
 
 const containerStyles = css`
   width: 100%;
   margin: 0 auto;
   padding: 20px;
   padding-bottom: 120px;
-  ${sectionGridBg};
+`;
+
+const mobileContainerStyles = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 24px;
+  gap: 24px;
 `;
 
 const gridStyles = css`
@@ -111,6 +151,15 @@ const recruitmentMessageStyles = css`
   line-height: 1.5;
   font-weight: 500;
   background: transparent;
+`;
+
+const recruitmentMobileMessageStyles = css`
+  width: 100%;
+  height: 100px;
+  display: flex;
+  padding-left: 24px;
+  font-size: 18px;
+  color: ${theme.colors.primary.darknavy};
 `;
 
 const rulerCss = css`

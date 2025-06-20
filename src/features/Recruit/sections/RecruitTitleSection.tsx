@@ -1,16 +1,19 @@
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
+import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { sectionGridBg } from '~/styles/background';
 import { theme } from '~/styles/theme';
 
 export function RecruitTitleSection() {
+  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
+
   return (
     <section css={sectionCss}>
       <div>
         <h1 id="title">
           <Image
-            width={530}
+            width={!isMobileSize ? 530 : 300}
             height={84}
             src="/images/17th/recruitment-title.svg"
             alt="디프만 17기 모집 안내"

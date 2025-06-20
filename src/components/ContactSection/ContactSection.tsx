@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 
+import { DEPROMEET_EMAIL } from '~/constant/depromeet';
 import { sectionBg } from '~/styles/background';
 import { theme } from '~/styles/theme';
 
@@ -9,19 +10,23 @@ export const ContactSection = () => {
       <div css={contentStyles}>
         <h2 css={titleStyles}>궁금한 점이 있으신가요?</h2>
         <div css={cardGridStyles}>
-          <div css={cardStyles}>
-            <div css={cardHeaderStyles}>
-              <h3 css={cardTitleStyles}>카카오톡 문의</h3>
+          <a href="https://pf.kakao.com/_xoxmcxed" target="_blank" rel="noreferrer">
+            <div css={cardStyles}>
+              <div css={cardHeaderStyles}>
+                <h3 css={cardTitleStyles}>카카오톡 문의</h3>
+              </div>
+              <p css={contactInfoStyles}>@depromeet</p>
             </div>
-            <p css={contactInfoStyles}>@depromeet</p>
-          </div>
+          </a>
 
-          <div css={cardStyles}>
-            <div css={cardHeaderStyles}>
-              <h3 css={cardTitleStyles}>이메일 문의</h3>
+          <a href={DEPROMEET_EMAIL}>
+            <div css={cardStyles}>
+              <div css={cardHeaderStyles}>
+                <h3 css={cardTitleStyles}>이메일 문의</h3>
+              </div>
+              <p css={contactInfoStyles}>depromeet@gmail.com</p>
             </div>
-            <p css={contactInfoStyles}>depromeet@gmail.com</p>
-          </div>
+          </a>
         </div>
       </div>
     </div>

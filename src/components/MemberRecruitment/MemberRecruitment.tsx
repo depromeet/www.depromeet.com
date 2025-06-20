@@ -1,5 +1,6 @@
 import { css, Theme } from '@emotion/react';
 
+import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { sectionBg } from '~/styles/background';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
@@ -18,41 +19,84 @@ const recruitmentSteps: RecruitmentStep[] = [
 ];
 
 export const MemberRecruitment = () => {
+  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
+  const { isTargetSize: isTabletSize } = useCheckWindowSize('tablet');
+
   return (
-    <div css={containerCss}>
-      <div css={contentStyles}>
-        <div css={headerCss}>
-          <h2 css={titleCss}>멤버 모집</h2>
-        </div>
-
-        {/* 모집 단계 */}
-        <div css={stepsContainerCss}>
-          {recruitmentSteps.map((step, index) => (
-            <div key={index} css={stepBoxCss}>
-              <h3 css={stepTitleCss}>{step.title}</h3>
-              <p css={stepDateCss}>{step.date}</p>
+    <>
+      {!isTabletSize && !isMobileSize && (
+        <div css={containerCss}>
+          <div css={contentStyles}>
+            <div css={headerCss}>
+              <h2 css={titleCss}>멤버 모집</h2>
             </div>
-          ))}
-        </div>
 
-        {/* 지원 방법 */}
-        <div css={applicationSectionCss}>
-          <h3 css={applicationTitleCss}>지원 방법</h3>
+            {/* 모집 단계 */}
+            <div css={stepsContainerCss}>
+              {recruitmentSteps.map((step, index) => (
+                <div key={index} css={stepBoxCss}>
+                  <h3 css={stepTitleCss}>{step.title}</h3>
+                  <p css={stepDateCss}>{step.date}</p>
+                </div>
+              ))}
+            </div>
 
-          <div css={applicationStepCss}>
-            <h4 css={stepNumberCss}>1차 서류</h4>
-            <p css={stepDescriptionCss}>자기소개서 작성 및 이력서/포트폴리오 제출</p>
+            {/* 지원 방법 */}
+            <div css={applicationSectionCss}>
+              <h3 css={applicationTitleCss}>지원 방법</h3>
+
+              <div css={applicationStepCss}>
+                <h4 css={stepNumberCss}>1차 서류</h4>
+                <p css={stepDescriptionCss}>자기소개서 작성 및 이력서/포트폴리오 제출</p>
+              </div>
+
+              <div css={applicationStepCss}>
+                <h4 css={stepNumberCss}>2차 인터뷰</h4>
+                <p css={stepDescriptionCss}>직무 역량 및 컬처핏 인터뷰</p>
+              </div>
+
+              <div css={rulerCss} />
+            </div>
           </div>
-
-          <div css={applicationStepCss}>
-            <h4 css={stepNumberCss}>2차 인터뷰</h4>
-            <p css={stepDescriptionCss}>직무 역량 및 컬처핏 인터뷰</p>
-          </div>
-
-          <div css={rulerCss} />
         </div>
-      </div>
-    </div>
+      )}
+      {(isTabletSize || isMobileSize) && (
+        <div css={containerCss}>
+          <div css={contentStyles}>
+            <div css={headerCss}>
+              <h2 css={titleCss}>멤버 모집</h2>
+            </div>
+
+            {/* 모집 단계 */}
+            <div css={stepsContainerCss}>
+              {recruitmentSteps.map((step, index) => (
+                <div key={index} css={stepBoxCss}>
+                  <h3 css={stepTitleCss}>{step.title}</h3>
+                  <p css={stepDateCss}>{step.date}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* 지원 방법 */}
+            <div css={applicationSectionCss}>
+              <h3 css={applicationTitleCss}>지원 방법</h3>
+
+              <div css={applicationStepCss}>
+                <h4 css={stepNumberCss}>1차 서류</h4>
+                <p css={stepDescriptionCss}>자기소개서 작성 및 이력서/포트폴리오 제출</p>
+              </div>
+
+              <div css={applicationStepCss}>
+                <h4 css={stepNumberCss}>2차 인터뷰</h4>
+                <p css={stepDescriptionCss}>직무 역량 및 컬처핏 인터뷰</p>
+              </div>
+
+              <div css={rulerCss} />
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
@@ -66,12 +110,13 @@ const containerCss = (_theme: Theme) => css`
   padding: 120px 20px 80px 20px;
   background-color: ${colors.primary.gray};
   ${sectionBg};
+  overflow: hidden;
 
   &::after {
     content: '';
     position: absolute;
-    bottom: -130px;
-    right: 0;
+    bottom: -20px;
+    right: -50px;
     width: 304.5px;
     height: 304.5px;
     background-image: url('/images/17th/3d-icon/iOS-icon.png');
@@ -87,8 +132,7 @@ const containerCss = (_theme: Theme) => css`
     padding: 60px 16px;
 
     &::after {
-      width: 150px;
-      height: 150px;
+      display: none;
     }
   }
 `;
@@ -99,7 +143,6 @@ const contentStyles = css`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 918px;
 `;
 
 const headerCss = css`
@@ -127,6 +170,31 @@ const stepsContainerCss = css`
   grid-template-columns: repeat(5, 1fr);
   gap: 16px;
   margin-bottom: 16px;
+
+  ${mediaQuery('mobile')} {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+
+    & > div:nth-of-type(1) {
+      grid-column: 1 / 3;
+    }
+
+    & > div:nth-of-type(2) {
+      grid-column: 3 / 5;
+    }
+
+    & > div:nth-of-type(3) {
+      grid-column: 5 / 7;
+    }
+
+    & > div:nth-of-type(4) {
+      grid-column: 1 / 4;
+    }
+
+    & > div:nth-of-type(5) {
+      grid-column: 4 / 7;
+    }
+  }
 `;
 
 const stepBoxCss = css`
@@ -179,7 +247,6 @@ const applicationSectionCss = css`
   border: 1px solid ${colors.primary.blue};
   padding: 40px;
   text-align: center;
-  max-width: 918px;
   height: 265px;
 
   ${mediaQuery('mobile')} {
