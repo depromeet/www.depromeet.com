@@ -123,18 +123,12 @@ const contentStyles = css`
 const titleStyles = css`
   ${theme.typosV3.MartianMono.head3};
 
-  font-size: 24px;
-  font-weight: 600;
   margin: 0 0 8px 0;
-  color: #333;
+  color: ${theme.colors.primary.darknavy};
 `;
 
 const subtitleStyles = css`
-  ${theme.typosV3.pretendard.sub1Medium};
-
-  font-size: 14px;
-  color: ${colors.gray900};
-  margin: 0;
+  ${theme.typosV3.pretendard.sub5Medium};
 `;
 
 const applyButtonStyles = css`
