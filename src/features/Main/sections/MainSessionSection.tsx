@@ -197,7 +197,7 @@ const cardWrapperCss = css`
 
   width: 100vw;
   height: auto;
-  min-height: 497px;
+  min-height: 520px;
 
   padding: 0 calc(50% - 219px);
 
