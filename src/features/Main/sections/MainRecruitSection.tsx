@@ -18,8 +18,21 @@ import { getPathToRecruit } from '~/utils/utils';
 export const MainRecruitSection = () => {
   const router = useRouter();
   const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
+  const { isTargetSize: isTabletSize } = useCheckWindowSize('mobile');
   const { progressState } = useIsInProgress();
   const { action, label, isDisabled } = getPathToRecruit(router, progressState);
+
+  const getImage = () => {
+    if (isMobileSize) {
+      return '/images/17th/objet-mobile.png';
+    }
+
+    if (isTabletSize) {
+      return '/images/17th/objet-tablet.png';
+    }
+
+    return '/images/17th/objet-pc.png';
+  };
 
   return (
     <section css={containerCss}>
@@ -31,12 +44,9 @@ export const MainRecruitSection = () => {
         <button css={buttonCss} onClick={action} disabled={isDisabled}>
           {label}
         </button>
-        <Image
-          width={isMobileSize ? 294 : 606}
-          height={isMobileSize ? 196 : 404}
-          src={'/images/17th/objet.png'}
-          alt={'17기 디퍼 모집을 위한 오브제'}
-        />
+        <div css={imageWrapperCss}>
+          <Image fill src={getImage()} alt={'17기 디퍼 모집을 위한 오브제'} />
+        </div>
       </div>
       <BlogRulerDecoration />
     </section>
@@ -123,5 +133,15 @@ const buttonCss = () => css`
 
   ${mediaQuery('tablet')} {
     margin: 40px 0;
+  }
+`;
+
+const imageWrapperCss = css`
+  position: relative;
+  width: calc(100vw - 80px);
+  aspect-ratio: 1020 / 375;
+
+  ${mediaQuery('tablet')} {
+    width: calc(140vw);
   }
 `;
