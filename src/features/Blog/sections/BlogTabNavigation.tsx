@@ -124,7 +124,6 @@ const mainTabItemCss = css`
 
     &:not(:last-child) {
       border-right: none;
-      border-bottom: 1px solid #d1d5db;
     }
   }
 `;
