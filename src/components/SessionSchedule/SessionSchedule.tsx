@@ -166,8 +166,7 @@ export const SessionSchedule = () => {
             <div css={headerCss}>
               <h2 css={titleCss}>온/오프라인 세션</h2>
               <p css={descriptionCss}>
-                세션은 매주 토요일 진행되며,
-                <br /> 오프라인 세션은 서울에서 열립니다
+                {`세션은 매주 토요일 진행되며, \n오프라인 세션은 서울에서 열립니다`}
               </p>
             </div>
 
@@ -369,9 +368,7 @@ const descriptionCss = (theme: Theme) => css`
   font-weight: 400;
   ${mediaQuery('mobile')} {
     font-size: 0.875rem;
-  }
-  ${mediaQuery('tablet')} {
-    font-size: 0.875rem;
+    white-space: pre-wrap;
   }
 `;
 
