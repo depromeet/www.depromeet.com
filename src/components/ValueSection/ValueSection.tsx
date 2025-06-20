@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 
 import { sectionBg } from '~/styles/background';
+import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
 import { colors } from '../../styles/colors';
@@ -67,8 +68,8 @@ const containerStyles = css`
   &::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: -120px;
+    left: -100px;
     width: 312px;
     height: 312px;
     background-image: url('/images/17th/3d-icon/designer-icon.png');
@@ -98,8 +99,15 @@ const valueCardStyles = css`
   padding: 28px 26px;
   text-align: center;
   transition: all 0.2s ease;
-  min-width: 730px;
+  width: 730px;
   background: ${colors.primary.gray};
+
+  ${mediaQuery('tablet')} {
+    width: 328px;
+  }
+  ${mediaQuery('mobile')} {
+    width: 328px;
+  }
 `;
 
 const titleStyles = css`
@@ -117,10 +125,26 @@ const semititleStyles = css`
   margin: 0 0 16px 0;
   line-height: 1.2;
   text-align: center;
+
+  ${mediaQuery('tablet')} {
+    ${theme.typosV3.MartianMono.body2};
+    font-size: 17px;
+  }
+  ${mediaQuery('mobile')} {
+    ${theme.typosV3.MartianMono.body2};
+    font-size: 17px;
+  }
 `;
 
 const descriptionStyles = css`
   ${theme.typosV3.pretendard.sub2Semibold};
   margin: 0;
   line-height: 1.5;
+
+  ${mediaQuery('tablet')} {
+    ${theme.typosV3.pretendard.sub4Semibold};
+  }
+  ${mediaQuery('mobile')} {
+    ${theme.typosV3.pretendard.sub4Semibold};
+  }
 `;

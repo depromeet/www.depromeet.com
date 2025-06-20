@@ -4,7 +4,7 @@ import { MemberRecruitment } from '~/components/MemberRecruitment';
 import { PositionGrid } from '~/components/PositionGrid/PositionGrid';
 import { Review } from '~/components/Review';
 import { SEO } from '~/components/SEO';
-import { SessionSchedule } from '~/components/SessionSchedule/SessionSchedule';
+import { SessionSchedule } from '~/components/SessionSchedule';
 import { ValueSection } from '~/components/ValueSection';
 import { RecruitTitleSection } from '~/features/Recruit/sections/RecruitTitleSection';
 

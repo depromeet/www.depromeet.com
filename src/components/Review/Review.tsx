@@ -29,6 +29,14 @@ const layoutCss = (theme: Theme) => css`
   ${sectionBg};
 
   h1 {
-    ${theme.typosV2.pretendard.bold32}
+    ${theme.typosV3.pretendard.head2};
+    color: ${theme.colors.primary.darknavy};
+    text-align: center;
+  }
+
+  h5 {
+    ${theme.typosV3.pretendard.body3Medium};
+    text-align: center;
+    color: ${theme.colors.primary.darknavy};
   }
 `;

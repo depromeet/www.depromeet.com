@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 
+import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
 import { colors } from '../../styles/colors';
@@ -84,6 +85,16 @@ const cardStyles = (isActive: boolean, backgroundImage: string) => css`
     &::before {
       background: rgba(26, 26, 26, 1);
     }
+  }
+
+  ${mediaQuery('mobile')} {
+    width: 312px;
+    height: 300px;
+  }
+
+  ${mediaQuery('tablet')} {
+    width: 312px;
+    height: 300px;
   }
 `;
 
