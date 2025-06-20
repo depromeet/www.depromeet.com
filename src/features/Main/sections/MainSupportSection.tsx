@@ -16,6 +16,8 @@ export const MainSupportSection = () => {
 };
 
 const layoutCss = css`
+  position: relative;
+
   padding: 100px 0;
   display: flex;
   flex-direction: column;

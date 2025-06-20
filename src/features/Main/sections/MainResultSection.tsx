@@ -15,12 +15,16 @@ export const MainResultSection = () => {
 };
 
 const layoutCss = css`
+  position: relative;
+
   padding: 32px 0 106.34px;
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 90px;
   align-items: center;
+
+  position: relative;
 
   ${sectionBg};
 
