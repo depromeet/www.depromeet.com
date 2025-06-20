@@ -159,6 +159,9 @@ const containerCss = () => css`
   height: 100dvh;
   padding-top: 61px;
 
+  position: sticky;
+  top: 0;
+
   display: flex;
   align-items: flex-start;
   justify-content: center;

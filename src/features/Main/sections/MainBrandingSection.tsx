@@ -64,6 +64,7 @@ export const MainBrandingSection = () => {
 };
 
 const layoutCss = css`
+  position: relative;
   padding-top: 78px;
   width: 100%;
   height: auto;
