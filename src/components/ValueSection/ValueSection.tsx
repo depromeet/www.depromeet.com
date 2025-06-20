@@ -72,7 +72,7 @@ const containerStyles = css`
     left: -50px;
     width: 312px;
     height: 312px;
-    background-image: url('/images/17th/3d-icon/designer-icon.png');
+    background-image: url('/images/17th/shapes/pink_arrow.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom left;

@@ -307,7 +307,7 @@ const containerCss = (theme: Theme) => css`
     left: 0;
     width: 353px;
     height: 353px;
-    background-image: url('/images/17th/3d-icon/web-icon.png');
+    background-image: url('/images/17th/shapes/yellow.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom left;

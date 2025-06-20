@@ -120,13 +120,13 @@ const containerCss = (_theme: Theme) => css`
     right: -50px;
     width: 304.5px;
     height: 304.5px;
-    background-image: url('/images/17th/3d-icon/iOS-icon.png');
+    background-image: url('/images/17th/shapes/blue_arrow.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom right;
     z-index: 2;
     opacity: 1;
-    transform: rotate(250deg);
+    transform: rotate(350deg);
   }
 
   ${mediaQuery('mobile')} {
