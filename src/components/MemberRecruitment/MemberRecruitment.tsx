@@ -4,6 +4,7 @@ import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { sectionBg } from '~/styles/background';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
+import { theme } from '~/styles/theme';
 
 interface RecruitmentStep {
   title: string;
@@ -155,10 +156,8 @@ const headerCss = css`
 `;
 
 const titleCss = (theme: Theme) => css`
-  ${theme.typosV2.bebas.regular24};
-  color: ${theme.colors.grey['900']};
-  font-size: 36px;
-  font-weight: 600;
+  ${theme.typosV3.pretendard.head1};
+  color: ${theme.colors.primary.darknavy};
 
   ${mediaQuery('mobile')} {
     font-size: 28px;
@@ -215,11 +214,8 @@ const stepBoxCss = css`
 `;
 
 const stepTitleCss = (theme: Theme) => css`
-  ${theme.typosV2.pretendard.regular14};
-  color: ${theme.colors.grey['900']};
-  font-size: 16px;
-  font-weight: 600;
-  margin: 0;
+  ${theme.typosV3.pretendard.sub1Semibold};
+  color: ${theme.colors.primary.darknavy};
 
   ${mediaQuery('mobile')} {
     font-size: 14px;
@@ -227,10 +223,9 @@ const stepTitleCss = (theme: Theme) => css`
 `;
 
 const stepDateCss = css`
+  ${theme.typosV3.pretendard.sub2Semibold};
   color: ${colors.primary.blue};
-  font-size: 18px;
-  font-weight: 700;
-  margin: 0;
+  font-weight: 400;
 
   ${mediaQuery('mobile')} {
     font-size: 16px;
@@ -255,11 +250,9 @@ const applicationSectionCss = css`
 `;
 
 const applicationTitleCss = (theme: Theme) => css`
-  ${theme.typosV2.pretendard.regular14};
-  color: ${theme.colors.grey['900']};
-  font-size: 24px;
-  font-weight: 700;
-  margin: 0 0 40px 0;
+  ${theme.typosV3.pretendard.head6};
+  color: ${theme.colors.primary.darknavy};
+  margin: 0 0 20px 0;
 
   ${mediaQuery('mobile')} {
     font-size: 20px;
@@ -288,10 +281,9 @@ const rulerCss = css`
 `;
 
 const stepNumberCss = (theme: Theme) => css`
-  ${theme.typosV2.pretendard.regular14};
-  color: ${theme.colors.grey['900']};
-  font-size: 18px;
-  font-weight: 700;
+  ${theme.typosV3.pretendard.sub2Semibold};
+  color: ${theme.colors.primary.darknavy};
+  font-weight: 400;
   margin: 0 0 8px 0;
 
   ${mediaQuery('mobile')} {
@@ -300,9 +292,9 @@ const stepNumberCss = (theme: Theme) => css`
 `;
 
 const stepDescriptionCss = css`
+  ${theme.typosV3.pretendard.body1Medium};
   color: ${colors.primary.blue};
-  font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
   margin: 0;
 
   ${mediaQuery('mobile')} {

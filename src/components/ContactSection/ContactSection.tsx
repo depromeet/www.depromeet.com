@@ -49,8 +49,7 @@ const contentStyles = css`
 `;
 
 const titleStyles = css`
-  font-size: 32px;
-  font-weight: 700;
+  ${theme.typosV3.pretendard.head1};
   color: ${theme.colors.primary.darknavy};
   margin-bottom: 60px;
 

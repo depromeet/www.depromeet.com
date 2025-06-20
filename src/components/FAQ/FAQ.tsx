@@ -61,7 +61,8 @@ const layoutCss = (theme: Theme) => css`
   ${sectionBg};
 
   h1 {
-    ${theme.typosV2.pretendard.bold32}
+    ${theme.typosV3.pretendard.head1};
+    color: ${theme.colors.primary.darknavy};
   }
 `;
 
