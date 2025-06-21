@@ -3,12 +3,12 @@ import dynamic from 'next/dynamic';
 import { SEO } from '~/components/SEO';
 import {
   MainBlogSection,
+  MainBrandingSection,
   MainIntroSection,
   MainReasonSection,
   MainRecruitSection,
   MainResultSection,
-  MainScheduleSection,
-  MainSubscribeSection,
+  MainSessionSection,
   MainSupportSection,
 } from '~/features/Main/sections';
 
@@ -25,14 +25,16 @@ export default function Root() {
       <SEO />
       <main>
         <MainIntroSection />
+        <MainBrandingSection />
         <MainResultSection />
         <MainReasonSection />
-        <MainScheduleSection />
+        <MainSessionSection />
+        {/* <MainScheduleSection /> */}
         <DynamicMainProjectSection />
+        <MainBlogSection />
         <MainSupportSection />
         <MainRecruitSection />
-        <MainBlogSection />
-        <MainSubscribeSection />
+        {/* <MainSubscribeSection /> */}
         {/* NOTE: 기존 웹 구조 */}
         {/* <div>
           <Intro

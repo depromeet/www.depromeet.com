@@ -8,13 +8,15 @@ import { Button } from '~/components/Button';
 import { MobileMenu } from '~/components/GNB/MobileMenu';
 import { MobileMenuIcon } from '~/components/GNB/MobileMenuIcon';
 import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
+import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { useDropDown } from '~/hooks/useDropdown';
 import useIsInProgress from '~/hooks/useIsInProgress';
 import { colors } from '~/styles/colors';
-import { mediaQuery } from '~/styles/media';
+import { theme } from '~/styles/theme';
 import { getPathToRecruit } from '~/utils/utils';
 
-const LOGO_IMAGE = `/images/16th/logo/depromeet.svg`;
+const LOGO_IMAGE = `/images/17th/logo/dpm.svg`;
+const LOGO_WHITE_IMAGE = `/images/17th/logo/depromeet-white.svg`;
 
 function ApplyButton() {
   const { progressState } = useIsInProgress();
@@ -29,10 +31,19 @@ function ApplyButton() {
 }
 
 const linkButtonCss = css`
-  height: 37px;
-  padding: 8px 24px 8px 24px;
-  border-radius: 300px;
-  opacity: 0px;
+  padding: 0 16px;
+  min-height: 34px;
+  border-radius: 8px;
+
+  position: absolute;
+  top: 50%;
+  right: 20px;
+
+  transform: translateY(-50%);
+  ${theme.typosV3.pretendard.sub5Semibold};
+
+  background: ${colors.primary.darknavy};
+  color: ${colors.white};
 
   &:disabled {
     background: ${colors.grey[300]};
@@ -44,8 +55,10 @@ export function GNB() {
   const { pathname } = useRouter();
   const { containerRef, isDropdownOpen, openDropdown, closeDropdown } = useDropDown();
 
+  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
+
   const getActiveLinkcss = (menu: GNBMenu) => {
-    if (pathname.startsWith(menu.href)) {
+    if (pathname === menu.href) {
       return activeLinkCss;
     }
     return inActiveLinkCss;
@@ -53,66 +66,82 @@ export function GNB() {
 
   return (
     <>
-      <nav css={navCss}>
-        <div css={navWrapperCss}>
-          <Link href={'/'}>
-            <Image src={LOGO_IMAGE} alt="로고 이미지" width={112} height={24} />
-          </Link>
-          <ul css={menuContainerCss}>
-            {GNB_MENU_NAME.map(menu => (
-              <li css={menuCss} key={menu.name}>
-                <Link css={[linkCss, getActiveLinkcss(menu)]} href={menu.href}>
-                  {menu.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <ApplyButton />
-        </div>
-      </nav>
-      <nav css={mobileNavCss} ref={containerRef}>
-        <div css={mobileMenuGNBCss}>
-          <Link href={'/'}>
-            <Image src={LOGO_IMAGE} alt="로고 이미지" width={112} height={24} />
-          </Link>
-          <MobileMenuIcon
-            onClick={() => (isDropdownOpen ? closeDropdown() : openDropdown())}
-            isChecked={isDropdownOpen}
-          />
-        </div>
-        <AnimatePresence mode="wait">
-          {isDropdownOpen && <MobileMenu onClickMenu={closeDropdown} />}
-        </AnimatePresence>
-      </nav>
+      {!isMobileSize ? (
+        <nav css={navCss}>
+          <div css={navWrapperCss}>
+            <Link href={'/'}>
+              <Image css={logoCss} src={LOGO_IMAGE} alt="로고 이미지" width={45} height={20} />
+            </Link>
+            <ul css={menuContainerCss}>
+              {GNB_MENU_NAME.map(menu => (
+                <li css={menuCss} key={menu.name}>
+                  <Link css={[linkCss, getActiveLinkcss(menu)]} href={menu.href}>
+                    {menu.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+            <ApplyButton />
+          </div>
+        </nav>
+      ) : (
+        <nav ref={containerRef}>
+          <div css={mobileMenuGNBCss(isDropdownOpen)}>
+            <Link href={'/'}>
+              {isDropdownOpen ? (
+                <Image src={LOGO_WHITE_IMAGE} alt="로고 이미지" width={161} height={24} />
+              ) : (
+                <Image src={LOGO_IMAGE} alt="로고 이미지" width={45} height={24} />
+              )}
+            </Link>
+            <MobileMenuIcon
+              onClick={() => (isDropdownOpen ? closeDropdown() : openDropdown())}
+              isChecked={isDropdownOpen}
+            />
+          </div>
+          <AnimatePresence mode="wait">
+            {isDropdownOpen && <MobileMenu onClickMenu={closeDropdown} />}
+          </AnimatePresence>
+        </nav>
+      )}
     </>
   );
 }
 
 const navCommonCss = () => css`
-  background-color: black;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 9998;
-  width: 100vw;
+  width: 100%;
 `;
 
 const navCss = () => css`
   ${navCommonCss()};
-  padding: 12px 40px;
-  height: 61px;
+  background-color: rgba(227, 229, 234, 0.7);
+  backdrop-filter: blur(80px);
+  padding: 18px;
 
-  ${mediaQuery('mobile')} {
-    display: none;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const navWrapperCss = css`
-  max-width: 1240px;
+  width: 100%;
+  max-width: 1110px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  margin: 0 auto;
+
+  position: relative;
+`;
+
+const logoCss = css`
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
 `;
 
 const menuContainerCss = css`
@@ -120,37 +149,39 @@ const menuContainerCss = css`
   gap: 40px;
 `;
 
-const mobileNavCss = css`
-  display: none;
-
-  ${mediaQuery('mobile')} {
-    display: block;
-  }
-`;
-
 const menuCss = css`
   margin: auto 0;
 `;
 
-const activeLinkCss = (theme: Theme) => css`
-  color: ${theme.colors.pink};
+const activeLinkCss = () => css`
+  color: ${colors.primary.darknavy};
 `;
 
-const inActiveLinkCss = (theme: Theme) => css`
-  color: ${theme.colors.white};
+const inActiveLinkCss = () => css`
+  color: ${colors.grey[400]};
 `;
 
 const linkCss = (theme: Theme) => css`
-  ${theme.typosV2.pretendard.semibold15};
+  ${theme.typosV3.pretendard.sub5Medium};
 `;
 
-const mobileMenuGNBCss = () => css`
+const mobileMenuGNBCss = (isDropdownOpen: boolean) => css`
   ${navCommonCss()};
-  padding: 21px 32px;
+
+  ${isDropdownOpen
+    ? `
+      background-color: ${colors.primary.darknavy};
+      background-image: none;
+    `
+    : `
+      background-color: rgba(227, 229, 234, 0.7);
+      backdrop-filter: blur(80px);
+  `}
+
+  padding: 18px ${isDropdownOpen ? `16px` : `20px`};
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   & > a {
     margin-top: 6px;
   }

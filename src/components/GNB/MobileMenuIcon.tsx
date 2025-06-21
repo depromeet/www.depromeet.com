@@ -1,5 +1,7 @@
 import { css } from '@emotion/react';
 
+import { colors } from '~/styles/colors';
+
 interface Props {
   onClick?: () => void;
   isChecked?: boolean;
@@ -36,7 +38,7 @@ const containerCss = css`
     min-width: 100px;
     transition: 0.5s ease;
     z-index: 1;
-    background-color: #eee;
+    background-color: ${colors.primary.darknavy};
   }
 
   .burger-icon {
@@ -51,7 +53,7 @@ const containerCss = css`
     width: auto;
 
     .burger-sticks {
-      background: #d9d9d9;
+      background: ${colors.primary.darknavy};
       display: block;
       height: 3px;
       position: relative;
@@ -60,7 +62,7 @@ const containerCss = css`
 
       &:before,
       &:after {
-        background: #d9d9d9;
+        background: ${colors.primary.darknavy};
         content: '';
         display: block;
         height: 100%;
@@ -85,11 +87,17 @@ const containerCss = css`
 
   .burger-check:checked ~ .burger-icon .burger-sticks {
     background: transparent;
+    left: -5px;
+
     &:before {
+      background: ${colors.grey[100]};
       transform: rotate(-45deg);
+      /* left: -5px; */
     }
     &:after {
+      background: ${colors.grey[100]};
       transform: rotate(45deg);
+      /* left: -5px; */
     }
   }
 

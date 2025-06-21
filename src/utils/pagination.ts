@@ -2,7 +2,7 @@ import { Project } from '~/constant/project';
 
 export const MOBILE_PAGE_SIZE = 6;
 export const TABLET_PAGE_SIZE = 6;
-export const PC_PAGE_SIZE = 9;
+export const PC_PAGE_SIZE = 6;
 
 export const sliceByPage = <T>(
   projects: T[],

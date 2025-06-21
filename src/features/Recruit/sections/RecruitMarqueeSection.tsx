@@ -2,6 +2,8 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 import Marquee from 'react-fast-marquee';
 
+import { sectionGridBg } from '~/styles/background';
+
 export const RecruitMarqueeSection = () => {
   const MARQUEE_SIZE = { width: 392, height: 26 };
   const MARQUEE_DEPROMEET = '/images/16th/recruit/marquee_depromeet.svg';
@@ -45,4 +47,5 @@ const containerCss = () => css`
   width: 100%;
   display: flex;
   column-gap: 110px;
+  ${sectionGridBg};
 `;

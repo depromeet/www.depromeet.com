@@ -1,10 +1,9 @@
 import { css } from '@emotion/react';
-import { AnimatePresence, m } from 'framer-motion';
 import Marquee from 'react-fast-marquee';
 
-import { BlogPostThumbnail } from '~/components/Blog/BlogPostThumbnail';
-import { OFFICIAL_BLOG_LIST } from '~/constant/blog';
-import { staggerHalf } from '~/constant/motion';
+import { StoryItem } from '~/components/Stories/StoryItem';
+import { STORIES } from '~/constant/stories';
+import { sectionBg } from '~/styles/background';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
@@ -15,34 +14,14 @@ export const MainBlogSection = () => {
   return (
     <section css={containerCss}>
       <div css={text.wrapperCss}>
-        <h1 css={text.titleCss}>디프만의 이야기가 궁금하다면</h1>
-        <p css={text.subCss}>뉴스레터와 블로그를 통해 활동 소식을 만나보세요</p>
+        <h1 css={text.titleCss}>Depromeet Stories</h1>
+        <p css={text.subCss}>디프만 공식 블로그를 통해 활동 소식을 만나보세요</p>
       </div>
-      <AnimatePresence mode="wait" initial={false}>
-        <Marquee>
-          <m.div
-            css={blogContainerCss}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            variants={staggerHalf}
-          >
-            {OFFICIAL_BLOG_LIST.map(blog => (
-              <BlogPostThumbnail
-                key={blog.title}
-                img={blog.img}
-                title={blog.title}
-                date={blog.date}
-                link={blog.link}
-                css={css`
-                  width: 245px !important;
-                  height: 322px !important;
-                `}
-              />
-            ))}
-          </m.div>
-        </Marquee>
-      </AnimatePresence>
+      <Marquee>
+        {STORIES.map(({ ...info }) => (
+          <StoryItem key={info.name} {...info} />
+        ))}
+      </Marquee>
     </section>
   );
 };
@@ -51,13 +30,15 @@ const containerCss = css`
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 120px 0 140px 0;
+  padding: 100px 0;
   background: white;
   overflow: hidden;
 
+  z-index: 20;
+  ${sectionBg};
+
   ${mediaQuery('mobile')} {
-    padding: 80px 0 80px 0;
+    padding: 60px 0;
   }
 `;
 
@@ -65,32 +46,40 @@ const text = {
   wrapperCss: css`
     display: flex;
     flex-direction: column;
-    row-gap: 24px;
-    align-items: center;
-    text-align: center;
+    align-self: center;
+    row-gap: 8px;
+    width: 100%;
+    max-width: 1100px;
+    padding: 0 58px;
+    margin-bottom: 48px;
+
+    ${mediaQuery('tablet')} {
+      padding: 0 40px;
+      margin-bottom: 60px;
+    }
+    ${mediaQuery('mobile')} {
+      padding: 0 24px;
+      margin-bottom: 40px;
+    }
   `,
   subCss: css`
     ${theme.typosV2.pretendard.semibold20};
 
     ${mediaQuery('mobile')} {
-      ${theme.typosV2.pretendard.semibold18};
-      line-height: 150%;
+      ${theme.typosV3.pretendard.body3Medium};
     }
   `,
 
   titleCss: css`
-    ${theme.typosV2.pretendard.bold44};
+    color: ${theme.colors.primary.darknavy};
+    font-family: MartianMono;
+    font-size: 42px;
+    font-weight: 400;
+    line-height: 109%;
+    letter-spacing: -2.1px;
 
     ${mediaQuery('mobile')} {
       ${theme.typosV2.pretendard.bold28};
     }
   `,
 };
-
-const blogContainerCss = css`
-  width: 100%;
-  display: flex;
-  column-gap: 40px;
-  margin-top: 92px;
-  margin-left: 50px;
-`;

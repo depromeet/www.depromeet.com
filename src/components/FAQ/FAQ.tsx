@@ -3,6 +3,7 @@ import { css, Theme } from '@emotion/react';
 
 import { FAQList } from '~/components/FAQ/FAQList';
 import { FAQ_GROUP, FAQGroupType, FAQS } from '~/constant/faq';
+import { sectionBg } from '~/styles/background';
 import { mediaQuery } from '~/styles/media';
 
 export function FAQ() {
@@ -51,15 +52,21 @@ const 면접질문들 = FAQS.filter(x => x.group === '면접 관련');
 const 활동질문들 = FAQS.filter(x => x.group === '활동 관련');
 
 const layoutCss = (theme: Theme) => css`
-  padding: 120px 0;
+  position: relative;
+  padding: 80px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: ${theme.colors.lightGray};
+  ${sectionBg};
 
   h1 {
-    ${theme.typosV2.pretendard.bold32}
+    ${theme.typosV3.pretendard.head1};
+    color: ${theme.colors.primary.darknavy};
+
+    ${mediaQuery('mobile')} {
+      ${theme.typosV3.pretendard.head3};
+    }
   }
 `;
 
@@ -91,7 +98,7 @@ const tabContainerCss = (theme: Theme, isActive: boolean) => css`
 
 const tabCss = (theme: Theme, isActive: boolean) => css`
   ${theme.typosV2.pretendard.semibold16}
-  color: ${isActive ? theme.colors.grey['900'] : theme.colors.gray};
+  color: ${isActive ? '#000000' : theme.colors.gray};
   cursor: pointer;
 `;
 

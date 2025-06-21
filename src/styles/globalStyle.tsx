@@ -15,7 +15,6 @@ const globalCss = css`
   :root {
     max-width: 100vw;
     overflow-x: hidden;
-    background-color: black;
 
     font-family: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue',
       'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji',

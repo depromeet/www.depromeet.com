@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { css, Theme } from '@emotion/react';
 
 import { Icon } from '~/components/Icon/Icon';
+import { sectionGridBg } from '~/styles/background';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
@@ -23,7 +24,7 @@ export function BlogSubscribeSection() {
   );
 }
 
-const containerCss = (theme: Theme) => css`
+const containerCss = () => css`
   height: 530px;
   display: flex;
   flex-direction: column;
@@ -31,7 +32,7 @@ const containerCss = (theme: Theme) => css`
   gap: 40px;
   align-items: center;
   justify-content: center;
-  background-color: ${theme.colors.white};
+  ${sectionGridBg};
 
   ${mediaQuery('mobile')} {
     padding: 80px 20px;

@@ -1,27 +1,24 @@
+import { ContactSection } from '~/components/ContactSection/ContactSection';
 import { FAQ } from '~/components/FAQ';
-import { Qualification } from '~/components/Qualification';
-import { Schedules } from '~/components/Recruit';
+import { MemberRecruitment } from '~/components/MemberRecruitment';
 import { Review } from '~/components/Review';
 import { SEO } from '~/components/SEO';
-import { IntroSection } from '~/features/Common/sections/IntroSection';
-import { RecruitMarqueeSection } from '~/features/Recruit/sections/RecruitMarqueeSection';
-import { RecuritPosition } from '~/features/Recruit/sections/RecuritPosition';
+import { SessionSchedule } from '~/components/SessionSchedule';
+import { ValueSection } from '~/components/ValueSection';
+import { RecruitIntroSection } from '~/features/Recruit/sections/RecruitIntroSection';
 
 export default function Recruit() {
   return (
     <>
       <SEO title="디프만 - Recruit" />
       <main>
-        <IntroSection
-          defaultImgUrl={'/images/16th/recruit/recruitment.svg'}
-          mobileImgUrl={'/images/16th/recruit/recruitment_m.svg'}
-        />
-        <RecruitMarqueeSection />
-        <RecuritPosition />
-        <Qualification />
-        <Schedules />
+        <RecruitIntroSection />
+        <ValueSection />
+        <MemberRecruitment />
+        <SessionSchedule />
         <Review />
         <FAQ />
+        <ContactSection />
       </main>
     </>
   );

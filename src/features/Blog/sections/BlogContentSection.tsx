@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 
-import { ProjectSubTabItem } from '~/components/ProjectTab/ProjectSubTabItem';
-import { ProjectTabItem } from '~/components/ProjectTab/ProjectTabItem';
 import { AllBlog, DEEPER_BLOG_LIST, OFFICIAL_BLOG_LIST } from '~/constant/blog';
 import { mediaQuery } from '~/styles/media';
 
 import { BlogPaginationSection } from './BlogPaginationSection';
+import { BlogRulerDecoration } from './BlogRulerDecoration';
+import { BlogTabNavigation } from './BlogTabNavigation';
+import { BlogTitleSection } from './BlogTitleSection';
 
 const OFFICIAL_SUB_TABS = [
   { key: 'entire', name: '전체' },
-  { key: 'session', name: '세션 이야기' },
+  { key: 'session', name: '세션' },
   { key: 'interview', name: '인터뷰' },
   { key: 'etc', name: '기타' },
 ];
@@ -68,98 +69,47 @@ export const BlogContentSection = () => {
 
   return (
     <section css={sectionCss}>
-      <div css={tabContainerCss}>
-        <div css={mainTabWrapperCss}>
-          {Object.values(mainTabs).map(({ name }) => (
-            <ProjectTabItem
-              key={name}
-              tab={name}
-              isActive={mainTab.name === name}
-              onClickTab={() => handleClickMainTab(name)}
-            />
-          ))}
-        </div>
+      <BlogTitleSection />
 
-        <div css={subTabWrapperCss}>
-          {mainTab.subTabs.map(({ name }) => (
-            <ProjectSubTabItem
-              key={name}
-              tab={name}
-              isActive={currentSubTab.name === name}
-              onClickTab={() => handleClickSubTab(name)}
-            />
-          ))}
-        </div>
-      </div>
+      <BlogTabNavigation
+        currentMainTab={mainTab.name}
+        currentSubTab={currentSubTab}
+        mainTabs={mainTabs}
+        onMainTabClick={handleClickMainTab}
+        onSubTabClick={handleClickSubTab}
+      />
 
       <BlogPaginationSection
         key={`${currentMainTab}-${currentSubTab.key}-${filteredBlogList.length}`}
         blogList={filteredBlogList}
       />
+
+      <BlogRulerDecoration />
     </section>
   );
 };
 
 const sectionCss = css`
+  position: relative;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: white;
-  padding: 80px 0;
-  gap: 24px;
+  background-image: url('/images/project/17기/17th-project-background.png');
+  background-size: 100% auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  padding: 56px 0;
+  gap: 36px;
 
   ${mediaQuery('tablet')} {
-    padding: 80px 48px;
+    padding: 56px 48px;
+    background-size: 1200px auto;
   }
   ${mediaQuery('mobile')} {
-    padding: 80px 20px;
-    gap: 20px;
-  }
-`;
-
-const tabContainerCss = css`
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  width: 100%;
-  max-width: 960px;
-  margin: 0 auto;
-  align-self: flex-start;
-
-  ${mediaQuery('mobile')} {
-    gap: 4px;
-  }
-`;
-
-const sharedTabWrapperCss = css`
-  display: flex;
-  > button {
-    flex-shrink: 0;
-  }
-
-  ${mediaQuery('mobile')} {
-    width: 100%;
-    overflow-x: scroll;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-`;
-
-const mainTabWrapperCss = css`
-  ${sharedTabWrapperCss};
-  ${mediaQuery('mobile')} {
-    gap: 4px;
-  }
-`;
-
-const subTabWrapperCss = css`
-  ${sharedTabWrapperCss};
-  gap: 4px;
-
-  ${mediaQuery('mobile')} {
-    padding: 10px 0;
+    padding: 56px 20px;
+    gap: 32px;
+    background-size: 700px auto;
   }
 `;

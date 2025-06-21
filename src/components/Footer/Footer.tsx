@@ -1,63 +1,87 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { css, Theme } from '@emotion/react';
 
-import { FIRST_ROW_FOOTER_INFOS, SECOND_ROW_FOOTER_INFOS } from '~/constant/contactInfo';
+import { FIRST_ROW_FOOTER_INFOS } from '~/constant/contactInfo';
+import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
+
   return (
     <footer css={footerCss}>
-      <div css={footerInfoWrapper}>
-        <ul css={rowCss}>
-          {FIRST_ROW_FOOTER_INFOS.map(footer => (
-            <li key={footer.name}>
-              <Link css={[strongLinkCss]} href={footer.href} target="_blank">
-                {footer.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <ul css={[secondRowCss]}>
-          {SECOND_ROW_FOOTER_INFOS.map(footer => (
-            <li key={footer.name}>
-              <Link css={linkCss} href={footer.href} target="_blank">
-                <span id="footer-name">{footer.name}</span>
-                <span id="footer-detail">{footer.detail}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
+      <div css={wrapperCss}>
+        <div css={footerInfoWrapper}>
+          <Image
+            src={'/images/17th/logo/depromeet-white.svg'}
+            alt={'logo'}
+            width={148}
+            height={22}
+          />
+          <ul css={rowCss}>
+            {FIRST_ROW_FOOTER_INFOS.map((footer, idx) => {
+              const isLast = idx === FIRST_ROW_FOOTER_INFOS.length - 1;
+              const shouldShowDivider = !isLast && (isMobileSize ? footer.name !== 'Github' : true);
+
+              return (
+                <li
+                  key={footer.name}
+                  css={css`
+                    display: flex;
+                    align-items: center;
+                  `}
+                >
+                  <Link css={strongLinkCss} href={footer.href} target="_blank">
+                    {footer.name}
+                  </Link>
+                  {shouldShowDivider && <span id="divide" aria-hidden="true" />}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+        <p css={copyrightCss}>© {currentYear} DEPROMEET. ALL RIGHTS RESERVED.</p>
       </div>
-      <p css={copyrightCss}>© {currentYear} DEPROMEET. ALL RIGHTS RESERVED.</p>
     </footer>
   );
 }
 
 const footerCss = css`
-  background-color: black;
-  padding: 60px 30px;
+  background-color: ${colors.primary.darknavy};
+  padding: 40px;
   width: 100vw;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 30px;
   align-items: center;
 
   ${mediaQuery('mobile')} {
-    padding: 40px 30px;
-    gap: 20px;
+    padding: 32px 40px;
+  }
+`;
+
+const wrapperCss = css`
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: flex-start;
+  max-width: 1100px;
+  width: 100%;
+
+  ${mediaQuery('mobile')} {
+    gap: 0;
   }
 `;
 
 const footerInfoWrapper = css`
   max-width: 1240px;
-  margin: 0 auto;
   display: flex;
-  gap: 12px;
+  gap: 18px;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
   ${mediaQuery('mobile')} {
     height: 130px;
@@ -67,72 +91,39 @@ const footerInfoWrapper = css`
 
 const rowCss = css`
   display: flex;
-  gap: 24px;
+  flex-wrap: wrap;
   margin: 0 auto;
 
   ${mediaQuery('mobile')} {
-    width: 100%;
+    max-width: 300px;
     gap: 0;
-    column-gap: 24px;
-    row-gap: 4px;
-    flex-wrap: wrap-reverse;
-    justify-content: center;
-  }
-`;
-
-const secondRowCss = css`
-  display: flex;
-  gap: 24px;
-
-  span + span {
-    margin-left: 12px;
+    row-gap: 8px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0;
   }
 
-  #footer-name {
-    // TODO: 디자인 컬러셋 PR 반영 확인 후 수정
-    color: ${theme.colors.grey['00']};
-    opacity: 0.6;
-  }
+  #divide {
+    display: inline-block;
+    width: 1px;
+    height: 8px;
+    background: ${theme.colors.grey[700]};
+    margin: 0 16px;
+    vertical-align: middle;
 
-  ${mediaQuery('mobile')} {
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    margin-top: 8px;
-
-    span + span {
-      margin-left: 16px;
+    ${mediaQuery('tablet')} {
     }
   }
 `;
 
 const strongLinkCss = (theme: Theme) => css`
-  ${theme.typosV2.pretendard.semibold20};
-  color: white;
-
-  ${mediaQuery('mobile')} {
-    font-size: 18px;
-  }
-`;
-
-const linkCss = (theme: Theme) => css`
-  ${theme.typosV2.pretendard.regular14};
-  letter-spacing: inherit;
-  color: white;
-
-  ${mediaQuery('mobile')} {
-    font-size: 11px;
-  }
+  ${theme.typosV3.pretendard.sub5Medium};
+  color: ${colors.grey['00']};
+  text-align: center;
 `;
 
 const copyrightCss = (theme: Theme) => css`
-  ${theme.typosV2.pretendard.regular9};
-  opacity: 0.8;
-  color: white;
-
-  ${mediaQuery('mobile')} {
-    font-size: 10px;
-  }
+  ${theme.typosV3.pretendard.body7Medium};
+  color: ${colors.grey['00']};
+  font-weight: 300;
 `;
