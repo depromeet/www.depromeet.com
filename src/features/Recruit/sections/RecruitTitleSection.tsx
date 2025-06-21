@@ -13,7 +13,7 @@ export function RecruitTitleSection() {
       <div>
         <h1 id="title">
           <Image
-            width={isMobileSize ? 248.438 : 300}
+            width={isMobileSize ? 248.438 : 530}
             height={isMobileSize ? 39.375 : 84}
             src={
               isMobileSize
