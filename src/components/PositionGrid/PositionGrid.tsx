@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
-import { sectionGridBg } from '~/styles/background';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
@@ -117,7 +116,17 @@ export const PositionGrid = () => {
 };
 
 const sectionStyles = css`
-  ${sectionGridBg};
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url('/images/project/17기/17th-project-background.png');
+  background-size: 100% auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  gap: 36px;
 `;
 
 const containerStyles = css`

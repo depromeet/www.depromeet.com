@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
-import { sectionGridBg } from '~/styles/background';
 import { theme } from '~/styles/theme';
 
 export function RecruitTitleSection() {
@@ -31,8 +30,13 @@ const sectionCss = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
   width: 100%;
-  ${sectionGridBg}
+  background-image: url('/images/project/17기/17th-project-background.png');
+  background-size: 100% auto;
+  background-position: center top;
+  background-repeat: no-repeat;
+  gap: 36px;
 
   & > div {
     width: 100%;
