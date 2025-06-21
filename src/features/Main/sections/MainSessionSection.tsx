@@ -107,8 +107,6 @@ const scrollSectionCss = (isScrollable: boolean) => css`
   top: 0;
   ${sectionBg}
 
-  height: 120dvh;
-
   overflow: hidden;
   display: flex;
   flex-direction: column;

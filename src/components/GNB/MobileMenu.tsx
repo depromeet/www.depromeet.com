@@ -83,7 +83,6 @@ const mobileMenuCss = (_theme: Theme) => css`
   overflow: hidden;
 
   li {
-    padding: 12px 16px;
   }
 `;
 
@@ -91,6 +90,12 @@ const linkCss = (theme: Theme) => css`
   ${theme.typosV3.pretendard.sub3Semibold};
   color: ${colors.white};
   font-weight: 400;
+
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 12px 16px;
 
   ${mediaQuery('mobile')} {
     font-size: 1rem;
