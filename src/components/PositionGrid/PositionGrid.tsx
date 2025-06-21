@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
 
+import { BlogRulerDecoration } from '~/features/Blog/sections/BlogRulerDecoration';
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
@@ -82,7 +83,7 @@ export const PositionGrid = () => {
                 디프만은 다섯개의 직군에서 신규 회원을 모집하고 있습니다
               </div>
             )}
-            <div css={rulerCss} />
+            <BlogRulerDecoration />
           </section>
         </>
       ) : (
@@ -107,7 +108,7 @@ export const PositionGrid = () => {
                 <PositionCard {...positions[4]} />
               </div>
             </div>
-            <div css={rulerCss} />
+            <BlogRulerDecoration />
           </section>
         </>
       )}
@@ -202,15 +203,4 @@ const recruitmentMobileMessageStyles = css`
     margin-top: 40px;
     font-size: 16px;
   }
-`;
-
-const rulerCss = css`
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 20px;
-  background-image: url('/images/project/17기/footer-ruler.png');
-  background-size: cover;
-  background-position: bottom;
-  background-repeat: repeat-x;
 `;
