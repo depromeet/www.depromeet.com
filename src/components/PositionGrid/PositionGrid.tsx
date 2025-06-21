@@ -121,10 +121,6 @@ const sectionStyles = css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url('/images/project/17기/17th-project-background.png');
-  background-size: 100% auto;
-  background-position: center top;
-  background-repeat: no-repeat;
   min-height: 100vh;
   gap: 36px;
 `;
@@ -138,6 +134,7 @@ const containerStyles = css`
 
 const mobileContainerStyles = css`
   display: grid;
+  width: 100%;
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(3, auto);
 

@@ -40,10 +40,6 @@ const sectionCss = css`
   align-items: center;
   position: relative;
   width: 100%;
-  background-image: url('/images/project/17기/17th-project-background.png');
-  background-size: 100% auto;
-  background-position: center top;
-  background-repeat: no-repeat;
   gap: 36px;
 
   & > div {
@@ -58,6 +54,10 @@ const sectionCss = css`
       padding: 76px 24px 16px;
     }
   }
+
+  ${mediaQuery('mobile')} {
+    gap: 0px;
+  }
 `;
 
 const descriptionCss = css`
@@ -69,13 +69,19 @@ const descriptionCss = css`
   color: ${theme.colors.primary.darknavy};
   ${theme.typosV3.MartianMono.body2}
 
+  & > div {
+    width: fit-content;
+    padding: 4px 0;
+    background-color: ${theme.colors.primary.gray};
+  }
+
   & > span {
     padding: 9px;
   }
 
   ${mediaQuery('mobile')} {
     flex-direction: column;
-    gap: 12px;
+    gap: 4px;
     padding: 0 24px;
   }
 `;
