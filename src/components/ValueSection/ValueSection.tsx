@@ -57,7 +57,7 @@ const containerStyles = css`
     padding: 120px 20px 200px 20px;
   }
   ${mediaQuery('mobile')} {
-    overflow: auto;
+    /* overflow: auto; */
     padding: 120px 20px;
   }
 
