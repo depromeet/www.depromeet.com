@@ -156,11 +156,9 @@ export const MainIntroSection = () => {
 
 const containerCss = () => css`
   width: 100dvw;
-  height: 100dvh;
   padding-top: 61px;
 
-  position: sticky;
-  top: 0;
+  position: relative;
 
   display: flex;
   align-items: flex-start;
