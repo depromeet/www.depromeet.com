@@ -166,9 +166,17 @@ const containerCss = () => css`
   align-items: flex-start;
   justify-content: center;
   overflow: hidden;
-  background-image: url('/images/17th/section01_bg_ver02_2x.png');
-  background-size: cover;
+  background-image: url('/images/project/17기/17th-project-background.png');
+  background-size: 100% auto;
   background-position: center;
+
+  ${mediaQuery('tablet')} {
+    background-size: 1200px auto;
+  }
+
+  ${mediaQuery('mobile')} {
+    background-size: 700px auto;
+  }
 `;
 
 const titleContainerCss = () => css`
