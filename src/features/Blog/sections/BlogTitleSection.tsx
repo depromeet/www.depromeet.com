@@ -10,7 +10,7 @@ export const BlogTitleSection = () => {
         src="/images/blog/17th-blog.png"
         alt="Blog"
         width={190}
-        height={84}
+        height={64}
         css={titleImageCss}
       />
     </div>
@@ -31,14 +31,22 @@ const titleImageContainerCss = css`
 
   ${mediaQuery('mobile')} {
     padding-left: 0;
+    padding-top: 55px;
   }
 `;
 
 const titleImageCss = css`
   object-fit: contain;
+  width: auto;
+  height: 90px;
+
+  ${mediaQuery('tablet')} {
+    width: auto;
+    height: 85px;
+  }
 
   ${mediaQuery('mobile')} {
-    width: 150px;
-    height: 60px;
+    width: auto;
+    height: 40px;
   }
 `;
