@@ -200,6 +200,7 @@ const recruitmentMobileMessageStyles = css`
     padding-left: 24px;
     line-height: 140%;
     margin-top: 40px;
+    font-size: 16px;
   }
 `;
 
