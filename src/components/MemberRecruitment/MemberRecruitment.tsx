@@ -156,6 +156,7 @@ const contentStyles = css`
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 900px;
 `;
 
 const headerCss = css`
