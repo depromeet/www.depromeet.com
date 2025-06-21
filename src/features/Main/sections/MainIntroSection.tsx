@@ -373,7 +373,7 @@ const buttonCss = () => css`
   font-family: Pretendard;
   font-size: 20px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 140%; /* 28px */
   letter-spacing: 0.2px;
   cursor: pointer;
@@ -386,8 +386,8 @@ const buttonCss = () => css`
   }
 
   ${mediaQuery('mobile')} {
-    /* ${theme.typosV2.pretendard.bold18} */
-    padding: 16px 32px;
+    ${theme.typosV3.pretendard.sub3Semibold}
+    padding: 14px 26px;
   }
 `;
 
