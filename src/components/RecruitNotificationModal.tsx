@@ -57,7 +57,7 @@ function RecruitNotificationModal() {
         준비가 완료되면 알려드릴게요!
       </p>
       <div css={bellIconCss}>
-        <Image src="/images/17th/ring.svg" alt="알림" width={100} height={100} />
+        <Image src="/images/17th/ring2.svg" alt="알림" width={130} height={130} />
       </div>
       <div css={buttonWrapperCss}>
         <Button size={isMobile ? 'lg' : 'md'} onClick={onApplyClick}>
