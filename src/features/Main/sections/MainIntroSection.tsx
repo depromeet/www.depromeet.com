@@ -10,6 +10,7 @@ import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 // TODO: 반응형 대응 시 사용 필요
 // import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import useIsInProgress from '~/hooks/useIsInProgress';
+import { sectionGridBg } from '~/styles/background';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
@@ -164,17 +165,8 @@ const containerCss = () => css`
   align-items: flex-start;
   justify-content: center;
   overflow: hidden;
-  background-image: url('/images/project/17기/17th-project-background.png');
-  background-size: 100% auto;
-  background-position: center;
 
-  ${mediaQuery('tablet')} {
-    background-size: 1200px auto;
-  }
-
-  ${mediaQuery('mobile')} {
-    background-size: 700px auto;
-  }
+  ${sectionGridBg}
 `;
 
 const titleContainerCss = () => css`
