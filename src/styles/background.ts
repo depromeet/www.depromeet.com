@@ -14,7 +14,7 @@ export const sectionBg = css`
   background-size: 64px 100%;
 
   ${mediaQuery('mobile')} {
-    background-position: calc(50% - 16px) 0;
+    background-position: calc(50% - 2px) 0;
     background-size: 32px 100%;
   }
 `;
@@ -67,6 +67,6 @@ export const sectionGridBg = css`
 
     background-size: 32px 32px, 32px 32px, 128px 128px;
 
-    background-position: calc(50% - 16px) -50px, calc(50% - 16px) -50px, 50% -50px;
+    background-position: calc(50% - 2px) -50px, calc(50% - 2px) -50px, calc(50% - 17.5px) -49.5px;
   }
 `;
