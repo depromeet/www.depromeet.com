@@ -1,26 +1,20 @@
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
-import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
 export function RecruitTitleSection() {
-  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
-
   return (
     <section css={sectionCss}>
       <div>
         <h1 id="title">
           <Image
-            width={isMobileSize ? 248.438 : 530}
-            height={isMobileSize ? 39.375 : 84}
-            src={
-              isMobileSize
-                ? '/images/17th/recruitment-title-mobile.svg'
-                : '/images/17th/recruitment-title.svg'
-            }
+            width={530}
+            height={84}
+            src="/images/17th/recruitment-title.svg"
             alt="디프만 17기 모집 안내"
+            css={imageCss}
           />
         </h1>
       </div>
@@ -57,6 +51,13 @@ const sectionCss = css`
 
   ${mediaQuery('mobile')} {
     gap: 0px;
+  }
+`;
+
+const imageCss = css`
+  ${mediaQuery('mobile')} {
+    width: 248.438px;
+    height: 39.375px;
   }
 `;
 
