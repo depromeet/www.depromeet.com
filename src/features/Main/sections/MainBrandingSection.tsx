@@ -157,7 +157,7 @@ const titleCss = css`
     letter-spacing: -1px;
 
     padding: 7px 11.2px 12px 3px;
-    transform: translateX(-47.2px);
+    transform: translateX(-31.5px);
   }
 
   #circle {
