@@ -14,7 +14,7 @@ export const sectionBg = css`
   background-size: 64px 100%;
 
   ${mediaQuery('mobile')} {
-    background-position: 50% 0;
+    background-position: calc(50% - 16px) 0;
     background-size: 32px 100%;
   }
 `;
