@@ -80,7 +80,7 @@ export const SessionSchedule = () => {
                     <th css={[headerCellCss, darkHeaderCss]}>OT</th>
                     <th css={headerCellCss}>미니 디프콘</th>
                     <th css={[headerCellCss, darkHeaderCss]}>현직자와의 만남</th>
-                    <th css={[headerCellCss, darkHeaderCss]}>디프만 워크샵</th>
+                    <th css={[headerCellCss, darkHeaderCss]}>딮크샵</th>
                     <th css={headerCellCss}>팀별 작업</th>
                   </tr>
                 </thead>
@@ -101,8 +101,8 @@ export const SessionSchedule = () => {
               <table css={tableCss}>
                 <thead>
                   <tr>
-                    <th css={[headerCellCss, darkHeaderCss]}>UT 공유</th>
-                    <th css={[headerCellCss, darkHeaderCss]}>해커톤</th>
+                    <th css={[headerCellCss, darkHeaderCss]}>UT 결과 공유</th>
+                    <th css={[headerCellCss, darkHeaderCss]}>딮커톤</th>
                     <th css={headerCellCss}>팀별 작업</th>
                     <th css={[headerCellCss, darkHeaderCss]}>프리런칭데이</th>
                     <th css={headerCellCss}>피드백 공유</th>
@@ -128,7 +128,7 @@ export const SessionSchedule = () => {
                 <thead>
                   <tr>
                     <th css={headerCellCss}>팀별 작업</th>
-                    <th css={[headerCellCss, darkHeaderCss]}>워케이션</th>
+                    <th css={[headerCellCss, darkHeaderCss]}>딮케이션</th>
                     <th css={headerCellCss}>팀별 작업</th>
                     <th css={[headerCellCss, darkHeaderCss]}>런칭데이</th>
                     <th css={[headerCellCss, darkHeaderCss]}>최종 발표</th>
@@ -190,14 +190,14 @@ export const SessionSchedule = () => {
               </table>
             </div>
 
-            {/* 두 번째 테이블: 현직자와의 만남, 팀별 작업, UT 공유 */}
+            {/* 두 번째 테이블: 현직자와의 만남, 팀별 작업, UT 결과 공유 */}
             <div css={tableContainerCss}>
               <table css={tableCss}>
                 <thead>
                   <tr>
-                    <th css={[headerCellCss, darkHeaderCss]}>디프만 워크샵</th>
+                    <th css={[headerCellCss, darkHeaderCss]}>딮크샵</th>
                     <th css={headerCellCss}>팀별 작업</th>
-                    <th css={[headerCellCss, darkHeaderCss]}>UT 공유</th>
+                    <th css={[headerCellCss, darkHeaderCss]}>UT 결과 공유</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -210,12 +210,12 @@ export const SessionSchedule = () => {
               </table>
             </div>
 
-            {/* 세 번째 테이블: 해커톤, 팀별 작업, 프리런칭데이 */}
+            {/* 세 번째 테이블: 딮커톤, 팀별 작업, 프리런칭데이 */}
             <div css={tableContainerCss}>
               <table css={tableCss}>
                 <thead>
                   <tr>
-                    <th css={[headerCellCss, darkHeaderCss]}>해커톤</th>
+                    <th css={[headerCellCss, darkHeaderCss]}>딮커톤</th>
                     <th css={headerCellCss}>팀별 작업</th>
                     <th css={[headerCellCss, darkHeaderCss]}>프리런칭데이</th>
                   </tr>
@@ -250,12 +250,12 @@ export const SessionSchedule = () => {
               </table>
             </div>
 
-            {/* 다섯 번째 테이블: 워케이션, 팀별 작업, 런칭데이, 최종 발표 */}
+            {/* 다섯 번째 테이블: 딮케이션, 팀별 작업, 런칭데이, 최종 발표 */}
             <div css={tableContainerCss}>
               <table css={finalTableCss}>
                 <thead>
                   <tr>
-                    <th css={[headerCellCss, darkHeaderCss]}>워케이션</th>
+                    <th css={[headerCellCss, darkHeaderCss]}>딮케이션</th>
                     <th css={headerCellCss}>팀별 작업</th>
                     <th css={[headerCellCss, darkHeaderCss]}>런칭데이</th>
                     <th css={[headerCellCss, darkHeaderCss]}>최종 발표</th>
