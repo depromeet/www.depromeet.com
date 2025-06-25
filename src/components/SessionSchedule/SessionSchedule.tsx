@@ -80,7 +80,7 @@ export const SessionSchedule = () => {
                     <th css={[headerCellCss, darkHeaderCss]}>OT</th>
                     <th css={headerCellCss}>미니 디프콘</th>
                     <th css={[headerCellCss, darkHeaderCss]}>현직자와의 만남</th>
-                    <th css={[headerCellCss, darkHeaderCss]}>딮크샵</th>
+                    <th css={[headerCellCss, darkHeaderCss, whiteLineCss]}>딮크샵</th>
                     <th css={headerCellCss}>팀별 작업</th>
                   </tr>
                 </thead>
@@ -102,7 +102,7 @@ export const SessionSchedule = () => {
                 <thead>
                   <tr>
                     <th css={[headerCellCss, darkHeaderCss]}>UT 결과 공유</th>
-                    <th css={[headerCellCss, darkHeaderCss]}>딮커톤</th>
+                    <th css={[headerCellCss, darkHeaderCss, whiteLineCss]}>딮커톤</th>
                     <th css={headerCellCss}>팀별 작업</th>
                     <th css={[headerCellCss, darkHeaderCss]}>프리런칭데이</th>
                     <th css={headerCellCss}>피드백 공유</th>
@@ -131,7 +131,7 @@ export const SessionSchedule = () => {
                     <th css={[headerCellCss, darkHeaderCss]}>딮케이션</th>
                     <th css={headerCellCss}>팀별 작업</th>
                     <th css={[headerCellCss, darkHeaderCss]}>런칭데이</th>
-                    <th css={[headerCellCss, darkHeaderCss]}>최종 발표</th>
+                    <th css={[headerCellCss, darkHeaderCss, whiteLineCss]}>최종 발표</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -258,7 +258,7 @@ export const SessionSchedule = () => {
                     <th css={[headerCellCss, darkHeaderCss]}>딮케이션</th>
                     <th css={headerCellCss}>팀별 작업</th>
                     <th css={[headerCellCss, darkHeaderCss]}>런칭데이</th>
-                    <th css={[headerCellCss, darkHeaderCss]}>최종 발표</th>
+                    <th css={[headerCellCss, darkHeaderCss, whiteLineCss]}>최종 발표</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -447,6 +447,21 @@ const darkHeaderCss = css`
   background-color: ${colors.primary.darknavy};
   color: white;
   border: 1px solid ${colors.primary.darknavy};
+`;
+
+const whiteLineCss = css`
+  position: relative;
+  border-left: none !important;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 2px;
+    bottom: 2px;
+    width: 1px;
+    background-color: ${colors.primary.gray};
+  }
 `;
 
 const cellCss = (theme: Theme) => css`
