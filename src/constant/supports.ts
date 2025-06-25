@@ -22,7 +22,12 @@ export const SUPPORTS: Support[] = [
     img: '/images/17th/support/sponsor-elice.png',
     link: 'https://elice.io/ko/',
   },
-
+  {
+    title: '서핏',
+    subTitle: 'surfit',
+    img: '/images/17th/support/sponsor-surfit.png',
+    link: 'https://surfit.io/',
+  },
   {
     title: '게더',
     subTitle: 'Gather',
