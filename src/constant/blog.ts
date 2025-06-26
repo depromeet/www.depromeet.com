@@ -483,6 +483,66 @@ export const DEEPER_BLOG_LIST: Array<Blog<DeeperBlogType>> = [
 
 export const OFFICIAL_BLOG_LIST: Array<Blog<OfficialBlogType>> = [
   {
+    title: '[Interview] 택시비 아끼는 유일무이 막차 알림 서비스 : 앗차(ATCHA)',
+    date: '25.06.26',
+    img: '/images/17th/blog/medium/16th_atcha.png',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/interview-%ED%83%9D%EC%8B%9C%EB%B9%84-%EC%95%84%EB%81%BC%EB%8A%94-%EC%9C%A0%EC%9D%BC%EB%AC%B4%EC%9D%B4-%EB%A7%89%EC%B0%A8-%EC%95%8C%EB%A6%BC-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%95%97%EC%B0%A8-atcha-e311292a47cb',
+    },
+    type: 'interview',
+  },
+  {
+    title: '[Interview]기록부터 성장까지 한눈에 : 클라이밍 영상 기록 서비스, Clog(클로그)',
+    date: '25.06.25',
+    img: '/images/17th/blog/medium/16th_clog.png',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/interview-%EA%B8%B0%EB%A1%9D%EB%B6%80%ED%84%B0-%EC%84%B1%EC%9E%A5%EA%B9%8C%EC%A7%80-%ED%95%9C%EB%88%88%EC%97%90-%ED%81%B4%EB%9D%BC%EC%9D%B4%EB%B0%8D-%EC%98%81%EC%83%81-%EA%B8%B0%EB%A1%9D-%EC%84%9C%EB%B9%84%EC%8A%A4-clog-%ED%81%B4%EB%A1%9C%EA%B7%B8-54c8e930a21b',
+    },
+    type: 'interview',
+  },
+  {
+    title: '[Interwiew] 모두에게 만족스러운 중간 지점을 찾아서 : 중간 지점 탐색 서비스, 콕(kok)',
+    date: '25.06.23',
+    img: '/images/17th/blog/medium/16th_kok.png',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/interwiew-%EB%AA%A8%EB%91%90%EC%97%90%EA%B2%8C-%EB%A7%8C%EC%A1%B1%EC%8A%A4%EB%9F%AC%EC%9A%B4-%EC%A4%91%EA%B0%84%EC%A7%80%EC%A0%90%EC%9D%84-%EC%B0%BE%EC%95%84%EC%84%9C-%EC%A4%91%EA%B0%84%EC%A7%80%EC%A0%90-%ED%83%90%EC%83%89-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%BD%95-kook-85decf976cff',
+    },
+    type: 'interview',
+  },
+  {
+    title: '디프만 16기 16주의 활동 그 마지막, 최종 발표.',
+    date: '25.05.10',
+    img: '/images/16th/blog/medium/16th_final.png',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%94%94%ED%94%84%EB%A7%8C-16%EA%B8%B0-16%EC%A3%BC%EC%9D%98-%ED%99%9C%EB%8F%99-%EA%B7%B8-%EB%A7%88%EC%A7%80%EB%A7%89-%EC%B5%9C%EC%A2%85-%EB%B0%9C%ED%91%9C-d3e8fd1b763d',
+    },
+    type: 'session',
+  },
+  {
+    title: '우리의 아이디어를 현실로, 디프만 런칭데이 현장 스케치',
+    date: '25.05.03',
+    img: '/images/16th/blog/medium/16th_launchingday.png',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EC%9A%B0%EB%A6%AC%EC%9D%98-%EC%95%84%EC%9D%B4%EB%94%94%EC%96%B4%EB%A5%BC-%ED%98%84%EC%8B%A4%EB%A1%9C-%EB%94%94%ED%94%84%EB%A7%8C-%EB%9F%B0%EC%B9%AD%EB%8D%B0%EC%9D%B4-%ED%98%84%EC%9E%A5-%EC%8A%A4%EC%BC%80%EC%B9%98-b6ddc337e2a1',
+    },
+    type: 'session',
+  },
+  {
+    title: '따뜻한 연결, 디프만 커피챗 이야기',
+    date: '25.04.26',
+    img: '/images/16th/blog/medium/16th_coffeechat.png',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%94%B0%EB%9C%BB%ED%95%9C-%EC%97%B0%EA%B2%B0-%EB%94%94%ED%94%84%EB%A7%8C-%EC%BB%A4%ED%94%BC%EC%B1%97-%EC%9D%B4%EC%95%BC%EA%B8%B0-6b46c9007406',
+    },
+    type: 'etc',
+  },
+  {
     title: '디프만 해커톤, 집중의 시간과 프로젝트 완성도 높이기',
     date: '25.04.02',
     img: '/images/16th/blog/medium/16th_hackathon.webp',
