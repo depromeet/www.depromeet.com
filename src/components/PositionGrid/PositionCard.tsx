@@ -5,6 +5,15 @@ import { theme } from '~/styles/theme';
 
 import { colors } from '../../styles/colors';
 
+// 한국시간 기준으로 2025년 6월 30일 00시 이후인지 확인하는 함수
+const isAfterRecruitmentDate = (): boolean => {
+  const now = new Date();
+  const koreaTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
+  const recruitmentDate = new Date('2025-06-30T00:00:00');
+
+  return koreaTime >= recruitmentDate;
+};
+
 interface PositionCardProps {
   id: string;
   title: string;
@@ -29,6 +38,8 @@ export const PositionCard = ({
     }
   };
 
+  const canApply = isAfterRecruitmentDate();
+
   return (
     <div
       css={cardStyles(isActive, backgroundImage)}
@@ -41,19 +52,27 @@ export const PositionCard = ({
           <p css={subtitleStyles}>{subtitle}</p>
         </div>
 
-        <button css={applyButtonStyles}>
-          지원하기
-          <span css={arrowStyles}>→</span>
-        </button>
+        {canApply ? (
+          <button css={applyButtonStyles}>
+            지원하기
+            <span css={arrowStyles}>→</span>
+          </button>
+        ) : (
+          <div css={beforeApplyButtonStyles}>지원은 30일부터 가능해요</div>
+        )}
       </div>
 
       <div css={hoverContentStyles}>
         <div css={hoverTextStyles}>{hoverDescription}</div>
 
-        <button css={hoverApplyButtonStyles}>
-          지원하기
-          <span css={hoverArrowStyles}>→</span>
-        </button>
+        {canApply ? (
+          <button css={hoverApplyButtonStyles}>
+            지원하기
+            <span css={hoverArrowStyles}>→</span>
+          </button>
+        ) : (
+          <div css={beforeApplyButtonStyles}>지원은 30일부터 가능해요</div>
+        )}
       </div>
     </div>
   );
@@ -163,6 +182,25 @@ const applyButtonStyles = css`
   cursor: pointer;
   z-index: 2;
   position: relative;
+
+  &:hover {
+    color: #000;
+  }
+`;
+
+const beforeApplyButtonStyles = css`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  z-index: 2;
+  position: relative;
+  color: #9591a1;
 
   &:hover {
     color: #000;
