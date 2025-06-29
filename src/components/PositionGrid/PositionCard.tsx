@@ -32,13 +32,13 @@ export const PositionCard = ({
   hoverDescription,
   applyUrl,
 }: PositionCardProps) => {
+  const canApply = isAfterRecruitmentDate();
+
   const handleCardClick = () => {
-    if (isActive && applyUrl) {
+    if (isActive && applyUrl && canApply) {
       window.open(applyUrl, '_blank', 'noopener,noreferrer');
     }
   };
-
-  const canApply = isAfterRecruitmentDate();
 
   return (
     <div
