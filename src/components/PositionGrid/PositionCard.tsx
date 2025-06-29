@@ -5,6 +5,15 @@ import { theme } from '~/styles/theme';
 
 import { colors } from '../../styles/colors';
 
+// 한국시간 기준으로 2025년 6월 30일 00시 이후인지 확인하는 함수
+const isAfterRecruitmentDate = (): boolean => {
+  const now = new Date();
+  const koreaTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
+  const recruitmentDate = new Date('2025-06-30T00:00:00');
+
+  return koreaTime >= recruitmentDate;
+};
+
 interface PositionCardProps {
   id: string;
   title: string;
@@ -12,6 +21,7 @@ interface PositionCardProps {
   isActive: boolean;
   backgroundImage: string;
   hoverDescription: string;
+  applyUrl: string;
 }
 
 export const PositionCard = ({
@@ -20,30 +30,49 @@ export const PositionCard = ({
   isActive,
   backgroundImage,
   hoverDescription,
+  applyUrl,
 }: PositionCardProps) => {
+  const handleCardClick = () => {
+    if (isActive && applyUrl) {
+      window.open(applyUrl, '_blank', 'noopener,noreferrer');
+    }
+  };
+
+  const canApply = isAfterRecruitmentDate();
+
   return (
-    <div css={cardStyles(isActive, backgroundImage)} className="position-card">
+    <div
+      css={cardStyles(isActive, backgroundImage)}
+      className="position-card"
+      onClick={handleCardClick}
+    >
       <div css={defaultContentStyles}>
         <div css={contentStyles}>
           <h3 css={titleStyles}>{title}</h3>
           <p css={subtitleStyles}>{subtitle}</p>
         </div>
 
-        {/* <button css={applyButtonStyles}>
-          지원하기
-          <span css={arrowStyles}>→</span>
-        </button> */}
-        <div css={applyButtonStyles}>지원은 30일부터 가능해요</div>
+        {canApply ? (
+          <button css={applyButtonStyles}>
+            지원하기
+            <span css={arrowStyles}>→</span>
+          </button>
+        ) : (
+          <div css={beforeApplyButtonStyles}>지원은 30일부터 가능해요</div>
+        )}
       </div>
 
       <div css={hoverContentStyles}>
         <div css={hoverTextStyles}>{hoverDescription}</div>
 
-        {/* <button css={hoverApplyButtonStyles}>
-          지원하기
-          <span css={hoverArrowStyles}>→</span>
-        </button> */}
-        <div css={applyButtonStyles}>지원은 30일부터 가능해요</div>
+        {canApply ? (
+          <button css={hoverApplyButtonStyles}>
+            지원하기
+            <span css={hoverArrowStyles}>→</span>
+          </button>
+        ) : (
+          <div css={beforeApplyButtonStyles}>지원은 30일부터 가능해요</div>
+        )}
       </div>
     </div>
   );
@@ -138,10 +167,28 @@ const titleStyles = css`
 
 const subtitleStyles = css`
   ${theme.typosV3.pretendard.sub5Medium};
-  ${colors.grey[900]}
+  color: ${colors.gray900};
 `;
 
 const applyButtonStyles = css`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  ${theme.typosV3.pretendard.sub1Medium};
+
+  color: ${colors.gray900};
+  cursor: pointer;
+  z-index: 2;
+  position: relative;
+
+  &:hover {
+    color: #000;
+  }
+`;
+
+const beforeApplyButtonStyles = css`
   display: flex;
   align-items: center;
   gap: 8px;
@@ -159,19 +206,6 @@ const applyButtonStyles = css`
     color: #000;
   }
 `;
-
-// 이후 지원 버튼 추가 시 사용
-// const arrowStyles = css`
-//   display: inline-flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: 24px;
-//   height: 24px;
-//   background: #333;
-//   color: white;
-//   border-radius: 50%;
-//   font-size: 12px;
-// `;
 
 const hoverContentStyles = css`
   position: absolute;
@@ -199,33 +233,45 @@ const hoverTextStyles = css`
 `;
 
 // 이후 지원 버튼 추가 시 사용
-// const hoverApplyButtonStyles = css`
-//   display: flex;
-//   align-items: center;
-//   gap: 8px;
-//   background: none;
-//   border: none;
-//   font-size: 16px;
-//   font-weight: 500;
-//   color: white;
-//   cursor: pointer;
-//   z-index: 2;
-//   position: relative;
-//   transition: opacity 0.2s ease;
+const hoverApplyButtonStyles = css`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  ${theme.typosV3.pretendard.sub1Medium};
 
-//   &:hover {
-//     color: #ccc;
-//   }
-// `;
+  color: white;
+  cursor: pointer;
+  z-index: 2;
+  position: relative;
+  transition: opacity 0.2s ease;
 
-// const hoverArrowStyles = css`
-//   display: inline-flex;
-//   align-items: center;
-//   justify-content: center;
-//   width: 24px;
-//   height: 24px;
-//   background: white;
-//   color: #333;
-//   border-radius: 50%;
-//   font-size: 12px;
-// `;
+  &:hover {
+    color: #ccc;
+  }
+`;
+
+const hoverArrowStyles = css`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: white;
+  color: ${colors.gray900};
+  border-radius: 50%;
+  font-size: 16px;
+`;
+
+const arrowStyles = css`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: ${colors.gray900};
+  color: white;
+  border-radius: 50%;
+  font-size: 16px;
+`;
