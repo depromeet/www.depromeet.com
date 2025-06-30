@@ -4,14 +4,8 @@
  */
 
 export type GNBMenu = {
-  name: '소개' | '모집 안내' | '프로젝트' | '블로그' | '지원하기' | '17기 모집 알림 신청';
-  href:
-    | '/'
-    | '/recruit'
-    | '/recruit#apply'
-    | '/project'
-    | '/blog'
-    | 'https://forms.gle/Fn1i6zoipWXb3G5Q8';
+  name: '소개' | '모집 안내' | '프로젝트' | '블로그' | '지원하기' | '17기 지원하기';
+  href: '/' | '/recruit' | '/recruit#apply' | '/project' | '/blog';
   type: 'text' | 'button';
   isNewTab?: boolean;
 };
@@ -67,9 +61,8 @@ export const GNB_MOBILE_MENU_NAME: GNBMenu[] = [
   //   type: 'button',
   // },
   {
-    name: '17기 모집 알림 신청',
-    href: 'https://forms.gle/Fn1i6zoipWXb3G5Q8',
+    name: '17기 지원하기',
+    href: '/recruit#apply',
     type: 'button',
-    isNewTab: true,
   },
 ];
