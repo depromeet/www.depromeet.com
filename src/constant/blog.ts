@@ -183,7 +183,7 @@ export const DEEPER_BLOG_LIST: Array<Blog<DeeperBlogType>> = [
     img: '/images/16th/blog/deeper/16th_project_5.png',
     link: {
       type: 'Blog',
-      href: 'https://heojooon.vercel.app/develop/pn-rule',
+      href: 'https://heojooon.dev/post/pn-rule',
     },
     type: 'project',
   },
