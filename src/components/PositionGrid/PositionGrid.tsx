@@ -77,15 +77,13 @@ export const PositionGrid = () => {
 
               {isMobileSize && (
                 <div css={recruitmentMobileMessageStyles}>
-                  디프만은 다섯개의 직군에서
-                  <br />
-                  신규 회원을 모집하고 있습니다
+                  디프만은 다섯개의 직군으로 구성되어 있어요.
                 </div>
               )}
             </div>
             {!isMobileSize && isTabletSize && (
               <div css={recruitmentMobileMessageStyles}>
-                디프만은 다섯개의 직군에서 신규 회원을 모집하고 있습니다
+                디프만은 다섯개의 직군으로 구성되어 있어요.
               </div>
             )}
             <BlogRulerDecoration />
@@ -104,9 +102,7 @@ export const PositionGrid = () => {
 
                 {/* 두 번째 행: x x o o */}
                 <div css={recruitmentMessageStyles}>
-                  디프만은 다섯개의 직군에서
-                  <br />
-                  신규 회원을 모집하고 있습니다
+                  디프만은 다섯개의 직군으로 구성되어 있어요.
                 </div>
                 <div css={emptySlotStyles}></div>
                 <PositionCard {...positions[3]} />

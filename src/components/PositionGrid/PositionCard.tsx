@@ -1,18 +1,10 @@
 import { css } from '@emotion/react';
 
+import useIsInProgress from '~/hooks/useIsInProgress';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
 import { colors } from '../../styles/colors';
-
-// 한국시간 기준으로 2025년 6월 30일 00시 이후인지 확인하는 함수
-const isAfterRecruitmentDate = (): boolean => {
-  const now = new Date();
-  const koreaTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
-  const recruitmentDate = new Date('2025-06-30T00:00:00');
-
-  return koreaTime >= recruitmentDate;
-};
 
 interface PositionCardProps {
   id: string;
@@ -32,10 +24,11 @@ export const PositionCard = ({
   hoverDescription,
   applyUrl,
 }: PositionCardProps) => {
-  const canApply = isAfterRecruitmentDate();
+  const { isInProgress } = useIsInProgress();
+  // const canApply = isAfterRecruitmentDate();
 
   const handleCardClick = () => {
-    if (isActive && applyUrl && canApply) {
+    if (isActive && applyUrl && isInProgress) {
       window.open(applyUrl, '_blank', 'noopener,noreferrer');
     }
   };
@@ -52,26 +45,26 @@ export const PositionCard = ({
           <p css={subtitleStyles}>{subtitle}</p>
         </div>
 
-        {canApply ? (
+        {isInProgress ? (
           <button css={applyButtonStyles}>
             지원하기
             <span css={arrowStyles}>→</span>
           </button>
         ) : (
-          <div css={beforeApplyButtonStyles}>지원은 30일부터 가능해요</div>
+          <div css={beforeApplyButtonStyles}>지금은 지원 기간이 아니에요.</div>
         )}
       </div>
 
       <div css={hoverContentStyles}>
         <div css={hoverTextStyles}>{hoverDescription}</div>
 
-        {canApply ? (
+        {isInProgress ? (
           <button css={hoverApplyButtonStyles}>
             지원하기
             <span css={hoverArrowStyles}>→</span>
           </button>
         ) : (
-          <div css={beforeApplyButtonStyles}>지원은 30일부터 가능해요</div>
+          <div css={beforeApplyButtonStyles}>지금은 지원 기간이 아니에요.</div>
         )}
       </div>
     </div>
