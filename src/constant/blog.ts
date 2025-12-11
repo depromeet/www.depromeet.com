@@ -17,6 +17,167 @@ export type AllBlog = Blog<OfficialBlogType | DeeperBlogType>;
 
 export const DEEPER_BLOG_LIST: Array<Blog<DeeperBlogType>> = [
   {
+    title: '카카오 로그인 애플 로그인 보안 - Frontend를 고려하는 안전한 소셜 로그인 개발하기',
+    date: '25.11.22',
+    img: '/images/17th/blog/deeper/team4.png',
+    link: {
+      type: 'Blog',
+      href: 'https://littlemobs.com/blog/social-login-implementation/#google_vignette',
+    },
+    type: 'project',
+  },
+  {
+    title:
+      'Hedge 프로젝트 상태 관리 아키텍처: Flow를 활용한 HedgeState와 HedgeUiState의 설계 및 구현',
+    date: '25.11.21',
+    img: '/images/17th/blog/deeper/team5.png',
+    link: {
+      type: 'Blog',
+      href: 'https://www.notion.so/Hedge-28cc11ba3de080289fe2cea4e51b6ff5',
+    },
+    type: 'project',
+  },
+  {
+    title: '[Docker] Vercel 없이 Next.js를 배포한다고?',
+    date: '25.11.21',
+    img: '/images/17th/blog/deeper/team3.png',
+    link: {
+      type: 'Tistory',
+      href: 'https://journey1019.tistory.com/entry/Docker-Vercel-%EC%97%86%EC%9D%B4-Nextjs%EB%A5%BC-%EB%B0%B0%ED%8F%AC%ED%95%9C%EB%8B%A4%EA%B3%A0',
+    },
+    type: 'project',
+  },
+  {
+    title: '[디프만] 바텀시트 드래그를 통해 이벤트와 친해지기 1편',
+    date: '25.11.21',
+    img: '/images/17th/blog/deeper/team2.png',
+    link: {
+      type: 'Blog',
+      href: 'https://north-hat-308.notion.site/1-2b282a0b712e809b86c2e2dd748a2731',
+    },
+    type: 'project',
+  },
+  {
+    title: '웹뷰 기반 앱을 네이티브처럼 만들 수 있을까? 밥토리의 모바일 UX 최적화 여정',
+    date: '25.11.21',
+    img: '/images/17th/blog/deeper/team2.png',
+    link: {
+      type: 'Velog',
+      href: 'https://velog.io/@kyman19940214/%EC%9B%B9%EB%B7%B0-%EA%B8%B0%EB%B0%98-%EC%95%B1%EC%9D%84-%EB%84%A4%EC%9D%B4%ED%8B%B0%EB%B8%8C%EC%B2%98%EB%9F%BC-%EB%B0%A5%ED%86%A0%EB%A6%AC-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%9D%98-%EB%AA%A8%EB%B0%94%EC%9D%BC-UX-%EC%B5%9C%EC%A0%81%ED%99%94-%EC%97%AC%EC%A0%95',
+    },
+    type: 'project',
+  },
+  {
+    title: '[디프만] 밥토리 프로젝트 Design System 적용기',
+    date: '25.11.21',
+    img: '/images/17th/blog/deeper/team2.png',
+    link: {
+      type: 'Velog',
+      href: 'https://velog.io/@javadocq/%EB%B0%A5%ED%86%A0%EB%A6%AC-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-Design-System-%EC%A0%81%EC%9A%A9%EA%B8%B0',
+    },
+    type: 'project',
+  },
+  {
+    title: '[디프만] 임베딩으로 검색 기능 구현하기',
+    date: '25.11.21',
+    img: '/images/17th/blog/deeper/team2.png',
+    link: {
+      type: 'Tistory',
+      href: 'https://bluesparrow.tistory.com/112',
+    },
+    type: 'project',
+  },
+  {
+    title: 'PostgreSQL + Redis 기반 여행 도시 검색 엔진 구조 개선기',
+    date: '25.11.21',
+    img: '/images/17th/blog/deeper/team1.png',
+    link: {
+      type: 'Blog',
+      href: 'https://adaptable-leaf-eea.notion.site/PostgreSQL-Redis-2b0f4c0a88dc804fa9ded083b307e8ac',
+    },
+    type: 'project',
+  },
+  {
+    title: 'Reverse Geocoding 최적화: 캐싱과 비동기 병렬 처리로 성능 개선하기',
+    date: '25.11.21',
+    img: '/images/17th/blog/deeper/team6.png',
+    link: {
+      type: 'Tistory',
+      href: 'https://hz26.tistory.com/2',
+    },
+    type: 'project',
+  },
+  {
+    title: '두런두런 안드로이드팀의 Orbit 라이브러리 후기 (feat. AI 에이전트)',
+    date: '25.11.21',
+    img: '/images/17th/blog/deeper/team6.png',
+    link: {
+      type: 'Velog',
+      href: 'https://velog.io/@miller198/%EB%91%90%EB%9F%B0%EB%91%90%EB%9F%B0-%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%ED%8C%80%EC%9D%98-Orbit-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%ED%9B%84%EA%B8%B0-feat.-AI-%EC%97%90%EC%9D%B4%EC%A0%84%ED%8A%B8',
+    },
+    type: 'project',
+  },
+  {
+    title: '[Spring AI] 주식 회고 피드백 생성 AI 개발',
+    date: '25.11.21',
+    img: '/images/17th/blog/deeper/team5.png',
+    link: {
+      type: 'Tistory',
+      href: 'https://juanxiu.tistory.com/5',
+    },
+    type: 'project',
+  },
+  {
+    title: '🌍 지구본 위에 여행 기록을 심다: 3D 지도 개발기',
+    date: '25.11.21',
+    img: '/images/17th/blog/deeper/team1.png',
+    link: {
+      type: 'Blog',
+      href: 'https://depromeet.notion.site/3D-2b245b4338b380808858dc3fb9489641',
+    },
+    type: 'project',
+  },
+  {
+    title: 'PR 분할 전략과 git 머지 플로우',
+    date: '25.11.21',
+    img: '/images/17th/blog/deeper/team4.png',
+    link: {
+      type: 'Tistory',
+      href: 'https://dragon-developer.tistory.com/82',
+    },
+    type: 'project',
+  },
+  {
+    title: '[DPM] 코루틴으로 외부 API 요청 TPS 개선하기',
+    date: '25.11.16',
+    img: '/images/17th/blog/deeper/project-team3.avif',
+    link: {
+      type: 'Blog',
+      href: 'https://www.nextblog.me/parkmineum/2ad303e2-5222-8049-a61f-ddda853814f1',
+    },
+    type: 'project',
+  },
+  {
+    title: '[디프만, 밥토리] Hibernate 벡터, "묻고 double[]로 가!" 가 아니라.. float[]로 가!',
+    date: '25.11.07',
+    img: '/images/17th/blog/deeper/team2.png',
+    link: {
+      type: 'Tistory',
+      href: 'https://jsw5913.tistory.com/304',
+    },
+    type: 'project',
+  },
+  {
+    title: '[Depromeet] 디프만 16기 회고',
+    date: '25.04.20',
+    img: '/images/16th/blog/deeper/review_14.webp',
+    link: {
+      type: 'Blog',
+      href: 'https://0ju428-blog.vercel.app/depromeet-16th',
+    },
+    type: 'review',
+  },
+  {
     title: 'FCM + 잠금화면 으로 제공하는 정확한 막차 알림!',
     date: '25.04.18',
     img: '/images/16th/blog/deeper/16th_project_13.png',
@@ -482,6 +643,96 @@ export const DEEPER_BLOG_LIST: Array<Blog<DeeperBlogType>> = [
 ];
 
 export const OFFICIAL_BLOG_LIST: Array<Blog<OfficialBlogType>> = [
+  {
+    title: '모험과 성장의 17기, 첫 검증! 프리-런칭데이 세션',
+    date: '25.11.02',
+    img: '/images/17th/blog/medium/medium-9.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%AA%A8%ED%97%98%EA%B3%BC-%EC%84%B1%EC%9E%A5%EC%9D%98-17%EA%B8%B0-%EC%B2%AB-%EA%B2%80%EC%A6%9D-%ED%94%84%EB%A6%AC-%EB%9F%B0%EC%B9%AD%EB%8D%B0%EC%9D%B4-%EC%84%B8%EC%85%98-2c99bdf1ed0e',
+    },
+    type: 'session',
+  },
+  {
+    title: '빠른 실패와 개선을 위한 디프만의 해커톤, 딮커톤',
+    date: '25.10.18',
+    img: '/images/17th/blog/medium/medium-8.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%B9%A0%EB%A5%B8-%EC%8B%A4%ED%8C%A8%EC%99%80-%EA%B0%9C%EC%84%A0%EC%9D%84-%EC%9C%84%ED%95%9C-%EB%94%94%ED%94%84%EB%A7%8C%EC%9D%98-%ED%95%B4%EC%BB%A4%ED%86%A4-%EB%94%AE%EC%BB%A4%ED%86%A4-941e45aa0288',
+    },
+    type: 'session',
+  },
+  {
+    title: '디프만의 꽃, UT 인사이트 쉐어링 세션',
+    date: '25.09.20',
+    img: '/images/17th/blog/medium/medium-7.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%94%94%ED%94%84%EB%A7%8C%EC%9D%98-%EA%BD%83-ut-%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8-%EC%89%90%EC%96%B4%EB%A7%81-%EC%84%B8%EC%85%98-717979b2c7de',
+    },
+    type: 'session',
+  },
+  {
+    title: '커리어의 나침반, 디프만 17기 현직자와의 만남',
+    date: '25.09.15',
+    img: '/images/17th/blog/medium/medium-6.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EC%BB%A4%EB%A6%AC%EC%96%B4%EC%9D%98-%EB%82%98%EC%B9%A8%EB%B0%98-%EB%94%94%ED%94%84%EB%A7%8C-17%EA%B8%B0-%ED%98%84%EC%A7%81%EC%9E%90%EC%99%80%EC%9D%98-%EB%A7%8C%EB%82%A8-37ff37914024',
+    },
+    type: 'session',
+  },
+  {
+    title: '모험과 성장의 17기, 디자인을 소개해요',
+    date: '25.09.13',
+    img: '/images/17th/blog/medium/medium-5.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%AA%A8%ED%97%98%EA%B3%BC-%EC%84%B1%EC%9E%A5%EC%9D%98-17%EA%B8%B0-%EB%94%94%EC%9E%90%EC%9D%B8%EC%9D%84-%EC%86%8C%EA%B0%9C%ED%95%B4%EC%9A%94-78c182aea27a',
+    },
+    type: 'etc',
+  },
+  {
+    title: 'DEPROCON, 그 두번째 이야기',
+    date: '25.09.09',
+    img: '/images/17th/blog/medium/medium-4.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/deprocon-%EA%B7%B8-%EB%91%90%EB%B2%88%EC%A7%B8-%EC%9D%B4%EC%95%BC%EA%B8%B0-e387b01c6f3f',
+    },
+    type: 'session',
+  },
+  {
+    title: '[Recruiting] 디프만 리크루팅, 그리고 나인하이어를 선택한 이유',
+    date: '25.08.22',
+    img: '/images/17th/blog/medium/medium-3.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/recruiting-%EB%94%94%ED%94%84%EB%A7%8C-%EB%A6%AC%ED%81%AC%EB%A3%A8%ED%8C%85-%EA%B7%B8%EB%A6%AC%EA%B3%A0-%EB%82%98%EC%9D%B8%ED%95%98%EC%9D%B4%EC%96%B4%EB%A5%BC-%EC%84%A0%ED%83%9D%ED%95%9C-%EC%9D%B4%EC%9C%A0-cbf6dac09fef',
+    },
+    type: 'etc',
+  },
+  {
+    title: '17기 모험의 시작, OT세션',
+    date: '25.08.12',
+    img: '/images/17th/blog/medium/medium-2.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/17%EA%B8%B0-%EB%AA%A8%ED%97%98%EC%9D%98-%EC%8B%9C%EC%9E%91-ot%EC%84%B8%EC%85%98-1ce4ea07da69',
+    },
+    type: 'session',
+  },
+  {
+    title: '디프만 17기, 모집을 시작했어요!',
+    date: '25.06.30',
+    img: '/images/17th/blog/medium/medium-1.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%94%94%ED%94%84%EB%A7%8C-17%EA%B8%B0-%EB%AA%A8%EC%A7%91%EC%9D%84-%EC%8B%9C%EC%9E%91%ED%96%88%EC%96%B4%EC%9A%94-732fbba1b2e8',
+    },
+    type: 'etc',
+  },
   {
     title: '[Interview] 택시비 아끼는 유일무이 막차 알림 서비스 : 앗차(ATCHA)',
     date: '25.06.26',

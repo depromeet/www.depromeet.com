@@ -158,6 +158,7 @@ const linksContainerCss = css`
   gap: 16.5px;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
 `;
 
 const linkButtonCss = css`
