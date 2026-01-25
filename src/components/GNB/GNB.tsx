@@ -21,10 +21,10 @@ const LOGO_WHITE_IMAGE = `/images/17th/logo/depromeet-white.svg`;
 function ApplyButton() {
   const { progressState } = useIsInProgress();
   const router = useRouter();
-  const { label, action, isDisabled } = getPathToRecruit(router, progressState);
+  const { label, action } = getPathToRecruit(router, progressState);
 
   return (
-    <Button css={linkButtonCss} onClick={action} disabled={isDisabled} suppressHydrationWarning>
+    <Button css={linkButtonCss} onClick={action} suppressHydrationWarning>
       {label}
     </Button>
   );
