@@ -20,7 +20,7 @@ export const MainRecruitSection = () => {
   const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
   const { isTargetSize: isTabletSize } = useCheckWindowSize('mobile');
   const { progressState } = useIsInProgress();
-  const { action, label, isDisabled } = getPathToRecruit(router, progressState);
+  const { action, label } = getPathToRecruit(router, progressState);
 
   const getImage = () => {
     if (isMobileSize) {
@@ -41,7 +41,7 @@ export const MainRecruitSection = () => {
         <h1 css={text.titleCss}>
           디프만과 함께 성장할 <br /> 17기 디퍼를 모집합니다
         </h1>
-        <button css={buttonCss} onClick={action} disabled={isDisabled}>
+        <button css={buttonCss} onClick={action}>
           {label}
         </button>
         <div css={imageWrapperCss}>
