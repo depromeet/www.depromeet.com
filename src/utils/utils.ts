@@ -108,12 +108,21 @@ function getPathToRecruit(router: ReturnType<typeof useRouter>, progressState: R
     };
   } else if (progressState === 'PREVIOUS') {
     return {
-      action: () => window.open('https://forms.gle/Fn1i6zoipWXb3G5Q8'),
-      label: '17기 모집 알림 신청',
+      action: () =>
+        window.open(
+          'https://docs.google.com/forms/d/1nU0znFiPjPGjp3_Wkif6dOGpgn8h2dYwh_5wByfBhlc/viewform'
+        ),
+      label: '18기 모집 알림 받기',
     };
   }
 
-  return { action: () => {}, label: '17기 모집 마감', isDisabled: true };
+  return {
+    action: () =>
+      window.open(
+        'https://docs.google.com/forms/d/1nU0znFiPjPGjp3_Wkif6dOGpgn8h2dYwh_5wByfBhlc/viewform'
+      ),
+    label: '18기 모집 알림 받기',
+  };
 }
 
 function getPositionStyleByAngle(angle: number, distance: number) {
