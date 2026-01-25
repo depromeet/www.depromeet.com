@@ -21,7 +21,12 @@ const LOGO_WHITE_IMAGE = `/images/17th/logo/depromeet-white.svg`;
 function ApplyButton() {
   const { progressState } = useIsInProgress();
   const router = useRouter();
-  const { label, action, isDisabled } = getPathToRecruit(router, progressState);
+  const recruitData = getPathToRecruit(router, progressState);
+  const { label, action } = recruitData;
+  const isDisabled =
+    'isDisabled' in recruitData && typeof recruitData.isDisabled === 'boolean'
+      ? recruitData.isDisabled
+      : false;
 
   return (
     <Button css={linkButtonCss} onClick={action} disabled={isDisabled} suppressHydrationWarning>
