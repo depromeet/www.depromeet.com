@@ -28,7 +28,7 @@ export const MainIntroSection = () => {
   const { isTargetSize: isTabletSize } = useCheckWindowSize('tablet');
   const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
   const { progressState } = useIsInProgress();
-  const { label, action, isDisabled } = getPathToRecruit(router, progressState);
+  const { label, action } = getPathToRecruit(router, progressState);
 
   const getLogoSize = () => {
     if (isMobileSize) return { width: 267.41, height: 40.74 };
@@ -145,7 +145,7 @@ export const MainIntroSection = () => {
             <Image fill src="/images/17th/ruler.svg" alt="눈금" />
           </div>
           <div css={emptySpaceCss} />
-          <button css={buttonCss} onClick={action} disabled={isDisabled}>
+          <button css={buttonCss} onClick={action}>
             {label}
           </button>
         </article>
