@@ -56,7 +56,16 @@ export default function Document() {
         )}
       </Head>
 
-      <body>
+      <body className="js-loading">
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              html, body { background-color: #5aafff; }
+              .js-loading nav { visibility: hidden; }
+              .js-loading [data-section="branding"] { visibility: hidden; }
+            `,
+          }}
+        />
         <Main />
         <NextScript />
       </body>

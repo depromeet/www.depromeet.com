@@ -7,7 +7,7 @@ import useIsInProgress from '~/hooks/useIsInProgress';
 import { colors } from '~/styles/colors';
 import { getPathToRecruit } from '~/utils/utils';
 
-export const HeroSection = () => {
+const CTAButton = () => {
   const [isClientReady, setIsClientReady] = useState(false);
   const router = useRouter();
   const { progressState } = useIsInProgress();
@@ -19,6 +19,14 @@ export const HeroSection = () => {
 
   if (!isClientReady) return null;
 
+  return (
+    <button css={ctaButtonCss} onClick={action}>
+      {label}
+    </button>
+  );
+};
+
+export const HeroSection = () => {
   return (
     <section css={sectionCss}>
       <div css={contentCss}>
@@ -61,9 +69,7 @@ export const HeroSection = () => {
           />
         </div>
 
-        <button css={ctaButtonCss} onClick={action}>
-          {label}
-        </button>
+        <CTAButton />
       </div>
     </section>
   );

@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import type { AppContext, AppProps } from 'next/app';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
@@ -21,6 +22,10 @@ export default function App({ Component, pageProps }: AppProps & InitialProps) {
   const currentUrl = BASE_URL + router.route;
 
   useRecordPageView();
+
+  useEffect(() => {
+    document.body.classList.remove('js-loading');
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
