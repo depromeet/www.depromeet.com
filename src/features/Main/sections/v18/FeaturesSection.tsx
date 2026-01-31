@@ -250,6 +250,11 @@ const sliderContainerCss = css`
 const imagesContainerCss = css`
   overflow: hidden;
   width: 100%;
+  height: 180px;
+
+  @media (min-width: 768px) {
+    height: 339px;
+  }
 `;
 
 const imageTrackCss = css`
