@@ -1,7 +1,4 @@
-import { ContactSection } from '~/components/ContactSection/ContactSection';
-import { FAQ } from '~/components/FAQ';
 import { MemberRecruitment } from '~/components/MemberRecruitment';
-import { Review } from '~/components/Review';
 import { SEO } from '~/components/SEO';
 import { SessionSchedule } from '~/components/SessionSchedule';
 import { ValueSection } from '~/components/ValueSection';
@@ -16,9 +13,6 @@ export default function Recruit() {
         <ValueSection />
         <MemberRecruitment />
         <SessionSchedule />
-        <Review />
-        <FAQ />
-        <ContactSection />
       </main>
     </>
   );
