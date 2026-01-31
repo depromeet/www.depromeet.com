@@ -142,19 +142,21 @@ export const FeaturesSection = () => {
           </div>
 
           <div css={infoContainerCss}>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-                css={textContentCss}
-              >
-                <h3 css={featureTitleCss}>{currentFeature.title}</h3>
-                <p css={featureDescriptionCss}>{currentFeature.description}</p>
-              </motion.div>
-            </AnimatePresence>
+            <div css={textWrapperCss}>
+              <AnimatePresence mode="popLayout">
+                <motion.div
+                  key={currentIndex}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                  css={textContentCss}
+                >
+                  <h3 css={featureTitleCss}>{currentFeature.title}</h3>
+                  <p css={featureDescriptionCss}>{currentFeature.description}</p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
 
             <div css={navigationCss}>
               <button css={navButtonCss} onClick={handlePrev} aria-label="이전">
@@ -315,6 +317,16 @@ const infoContainerCss = css`
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
+  }
+`;
+
+const textWrapperCss = css`
+  position: relative;
+  min-height: 120px;
+  flex: 1;
+
+  @media (min-width: 768px) {
+    min-height: 98px;
   }
 `;
 
