@@ -88,5 +88,6 @@ export const colors = {
     strong: '#0078E7',
     normal: '#59AEFE',
     light: '#DFEEFE',
+    'extra-light': '#F9FBFF',
   },
 } as const;
