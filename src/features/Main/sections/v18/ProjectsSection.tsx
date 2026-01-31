@@ -1,55 +1,22 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
+import { ProjectThumbnail } from '~/components/Project';
+import { CONTENT_WIDTH } from '~/constant/layout';
+import { PROJECT_LIST } from '~/constant/project';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
-interface ProjectItem {
-  image: string;
-  name: string;
-  description: string;
-  link?: string;
-}
-
-const PROJECTS: ProjectItem[] = [
-  {
-    image: '/images/project/17기/Globber.png',
-    name: 'Globber',
-    description: '다녀온 여행지를 지구본 위에 기록하고, 지인에게 나의 여행을 자랑할 수 있는 서비스',
-  },
-  {
-    image: '/images/project/17기/밥토리.png',
-    name: '밥토리',
-    description: '식당 찾기 스트레스 없이 혼밥을 더 자유롭고 편하게',
-  },
-  {
-    image: '/images/project/17기/모무찌.png',
-    name: '모무찌',
-    description: '모두의 취향을 모아 바로 추천받는 모임 식당',
-  },
-  {
-    image: '/images/project/17기/Kkruk (꾸룩).png',
-    name: 'Kkruk',
-    description: '씹읍수록 건강해지는 기록 꾸룩과 함께 장 건강을 관리해보세요!',
-  },
-  {
-    image: '/images/project/17기/Hedge.png',
-    name: 'Hedge',
-    description: '실수를 성장 자산으로! 돈 버는 투자 습관을 위한, 투자 회고 서비스',
-  },
-  {
-    image: '/images/project/17기/두런두런.png',
-    name: '두런두런',
-    description: '함께하면 즐거움이 두 배! 친구와 찾아가는 러닝 인증 서비스',
-  },
-];
+const MAIN_PROJECT_COUNT = 6;
 
 export const ProjectsSection = () => {
+  const displayProjects = PROJECT_LIST.slice(0, MAIN_PROJECT_COUNT);
+
   return (
     <section css={sectionCss}>
       <div css={contentCss}>
+        {/* 메인 페이지 전용 타이틀/서브타이틀 */}
         <div css={headerCss}>
           <motion.h2
             css={titleCss}
@@ -70,30 +37,23 @@ export const ProjectsSection = () => {
             디프만 멤버 &apos;디퍼(DEEPER)&apos;들의 다양한 프로젝트를 확인해보세요
           </motion.p>
         </div>
+
+        {/* 프로젝트 페이지와 동일한 ProjectThumbnail 사용 */}
         <div css={gridCss}>
-          {PROJECTS.map((project, index) => (
-            <motion.article
-              key={project.name}
-              css={cardCss}
+          {displayProjects.map((project, index) => (
+            <motion.div
+              key={project.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              css={cardWrapperCss}
             >
-              <div css={imageContainerCss}>
-                <Image
-                  src={project.image}
-                  alt={project.name}
-                  fill
-                  css={imageCss}
-                  sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
-                />
-              </div>
-              <h3 css={projectNameCss}>{project.name}</h3>
-              <p css={projectDescriptionCss}>{project.description}</p>
-            </motion.article>
+              <ProjectThumbnail {...project} />
+            </motion.div>
           ))}
         </div>
+
         <div css={buttonContainerCss}>
           <Link href="/project" css={viewAllButtonCss}>
             프로젝트 전체 보기
@@ -129,106 +89,68 @@ const sectionCss = css`
 `;
 
 const contentCss = css`
-  max-width: 1200px;
+  width: 100%;
+  max-width: ${CONTENT_WIDTH.desktop}px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const headerCss = css`
-  margin-bottom: 48px;
-
-  ${mediaQuery('mobile')} {
-    margin-bottom: 32px;
-  }
+  width: 100%;
+  margin-bottom: 40px;
 `;
 
 const titleCss = css`
   font-family: Pretendard, sans-serif;
-  font-size: 32px;
+  font-size: 2.25rem;
   font-weight: 700;
+  line-height: 1.4;
   color: ${colors.grey18['900']};
-  margin-bottom: 12px;
-
-  ${mediaQuery('tablet')} {
-    font-size: 28px;
-  }
+  margin: 0 0 12px 0;
 
   ${mediaQuery('mobile')} {
-    font-size: 20px;
+    font-size: 1.25rem;
     margin-bottom: 8px;
   }
 `;
 
 const subtitleCss = css`
   font-family: Pretendard, sans-serif;
-  font-size: 16px;
+  font-size: 1.25rem;
   font-weight: 400;
+  line-height: 1.6;
   color: ${colors.grey18['600']};
+  margin: 0;
 
   ${mediaQuery('mobile')} {
-    font-size: 14px;
+    font-size: 1rem;
   }
 `;
 
+/* 프로젝트 페이지와 동일한 그리드 스타일 */
 const gridCss = css`
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  column-gap: 16px;
+  row-gap: 60px;
+  justify-items: stretch;
+  align-items: start;
 
-  ${mediaQuery('tablet')} {
+  @media (min-width: 768px) and (max-width: 1279px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  ${mediaQuery('mobile')} {
+  @media (max-width: 767px) {
     grid-template-columns: 1fr;
-    gap: 32px;
+    row-gap: 28px;
   }
 `;
 
-const cardCss = css`
-  display: flex;
-  flex-direction: column;
-`;
-
-const imageContainerCss = css`
-  position: relative;
+const cardWrapperCss = css`
   width: 100%;
-  aspect-ratio: 389 / 280;
-  border-radius: 16px;
-  overflow: hidden;
-  margin-bottom: 16px;
-
-  ${mediaQuery('mobile')} {
-    border-radius: 12px;
-  }
-`;
-
-const imageCss = css`
-  object-fit: cover;
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.05);
-  }
-`;
-
-const projectNameCss = css`
-  font-family: Pretendard, sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  color: ${colors.grey18['900']};
-  margin-bottom: 8px;
-
-  ${mediaQuery('mobile')} {
-    font-size: 18px;
-  }
-`;
-
-const projectDescriptionCss = css`
-  font-family: Pretendard, sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: ${colors.grey18['600']};
-  line-height: 1.6;
 `;
 
 const buttonContainerCss = css`
