@@ -34,8 +34,7 @@ const FAQ_DATA: FAQItem[] = [
   {
     category: '지원자격',
     question: '외국 거주자도 지원할 수 있나요?',
-    answer:
-      '오프라인 세션 참여가 필수이기 때문에 서울 근교에 거주하시는 분들만 지원 가능합니다.',
+    answer: '오프라인 세션 참여가 필수이기 때문에 서울 근교에 거주하시는 분들만 지원 가능합니다.',
   },
   {
     category: '지원자격',
@@ -137,7 +136,13 @@ export const FAQSection = () => {
 const ArrowIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="12" cy="12" r="11" stroke="currentColor" strokeWidth="1" />
-    <path d="M10 8L14 12L10 16" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M10 8L14 12L10 16"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
