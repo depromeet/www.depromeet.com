@@ -118,8 +118,7 @@ const navCommonCss = () => css`
 
 const navCss = () => css`
   ${navCommonCss()};
-  background-color: rgba(227, 229, 234, 0.7);
-  backdrop-filter: blur(80px);
+  background-color: transparent;
   padding: 18px;
 
   display: flex;
@@ -174,8 +173,7 @@ const mobileMenuGNBCss = (isDropdownOpen: boolean) => css`
       background-image: none;
     `
     : `
-      background-color: rgba(227, 229, 234, 0.7);
-      backdrop-filter: blur(80px);
+      background-color: transparent;
   `}
 
   padding: 18px ${isDropdownOpen ? `16px` : `20px`};
