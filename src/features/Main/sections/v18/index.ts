@@ -1,9 +1,9 @@
-export { HeroSection } from './HeroSection';
 export { BrandingSection } from './BrandingSection';
-export { StatsSection } from './StatsSection';
-export { FeaturesSection } from './FeaturesSection';
-export { SessionsSection } from './SessionsSection';
-export { ProjectsSection } from './ProjectsSection';
-export { FAQSection } from './FAQSection';
 export { ContactSection } from './ContactSection';
+export { FAQSection } from './FAQSection';
+export { FeaturesSection } from './FeaturesSection';
+export { HeroSection } from './HeroSection';
+export { ProjectsSection } from './ProjectsSection';
+export { SessionsSection } from './SessionsSection';
 export { SponsorsSection } from './SponsorsSection';
+export { StatsSection } from './StatsSection';

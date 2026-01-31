@@ -11,7 +11,6 @@ import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { useDropDown } from '~/hooks/useDropdown';
 import useIsInProgress from '~/hooks/useIsInProgress';
 import { colors } from '~/styles/colors';
-import { theme } from '~/styles/theme';
 import { getPathToRecruit } from '~/utils/utils';
 
 function ApplyButton() {

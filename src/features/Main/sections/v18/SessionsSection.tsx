@@ -1,52 +1,39 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
-import { AnimatePresence, motion } from 'framer-motion';
 
 import { colors } from '~/styles/colors';
-import { mediaQuery } from '~/styles/media';
 
 interface SessionItem {
   image: string;
   title: string;
-  description: string;
+  description: string[];
 }
 
 const SESSIONS: SessionItem[] = [
   {
-    image: '/images/18th/home/session.png',
-    title: 'Part Networking',
-    description: '같은 파트 디퍼들과 모여 네트워킹을 진행해요\n파트별로 할 수 있는 이야기를 나누는 시간을 가져요',
+    image: '/images/18th/home/session-idea.jpg',
+    title: '아이디어 공유/피드백',
+    description: [
+      '어떻게 하면 4개월간 좋은 서비스를 만들어나갈 수 있을까요?',
+      '디프만이 모신 두 연사 분들의 특별 세션을 통해 힌트를 얻어보아요.',
+    ],
   },
   {
-    image: '/images/18th/session-2.png',
-    title: 'Pre-Launching Day',
-    description: '빠르게 MVP를 출시하고 다양한 피드백을 받을 수 있어요',
+    image: '/images/18th/home/session-networking.jpg',
+    title: '현직자와의 만남',
+    description: [
+      '취업·이직·실무·협업·커리어 방향성까지!',
+      '현실적인 질문과 경험을 직접 나누는 자리를 가져요.',
+    ],
   },
   {
-    image: '/images/18th/session-3.png',
-    title: 'Final Launching Day',
-    description: '최종 프로덕트를 선보이고 유저들의 생생한 반응을 확인해요',
-  },
-  {
-    image: '/images/18th/session-4.png',
-    title: 'Hackathon',
-    description: '짧은 시간 동안 집중적으로 아이디어를 구현하고 발표하는 시간이에요',
-  },
-  {
-    image: '/images/18th/session-5.png',
-    title: 'Workshop',
-    description: '다양한 주제로 함께 배우고 성장하는 워크샵을 진행해요',
-  },
-  {
-    image: '/images/18th/session-6.png',
-    title: 'Networking Day',
-    description: '디프만 전체가 모여 네트워킹하고 친해지는 시간이에요',
-  },
-  {
-    image: '/images/18th/session-7.png',
-    title: 'MT',
-    description: '함께 떠나는 MT에서 팀워크를 다지고 추억을 만들어요',
+    image: '/images/18th/home/session-focus.jpg',
+    title: '포커스 위크',
+    description: [
+      '팀 별 작업에 집중하는 주차예요.',
+      '오프라인 모각작, 온라인 모임 등을 통해 열심히 작업해요.',
+    ],
   },
 ];
 
@@ -61,59 +48,101 @@ export const SessionsSection = () => {
     setCurrentIndex(prev => (prev === SESSIONS.length - 1 ? 0 : prev + 1));
   };
 
-  const currentSession = SESSIONS[currentIndex];
-
   return (
     <section css={sectionCss}>
       <div css={contentCss}>
         <h2 css={titleCss}>18기 세션</h2>
-        <div css={sliderContainerCss}>
-          <div css={imageContainerCss}>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                css={imageWrapperCss}
-              >
+
+        {/* Desktop: Show all items */}
+        <div css={desktopListCss}>
+          {SESSIONS.map((session, index) => (
+            <div key={index} css={sessionItemCss}>
+              <div css={imageContainerCss}>
                 <Image
-                  src={currentSession.image}
-                  alt={currentSession.title}
+                  src={session.image}
+                  alt={session.title}
                   fill
                   css={imageCss}
-                  sizes="(max-width: 767px) 100vw, 664px"
+                  sizes="(max-width: 1279px) 100vw, 533px"
                 />
-              </motion.div>
-            </AnimatePresence>
-          </div>
-          <div css={infoContainerCss}>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-              >
-                <h3 css={sessionTitleCss}>{currentSession.title}</h3>
-                <p css={sessionDescriptionCss}>{currentSession.description}</p>
-              </motion.div>
-            </AnimatePresence>
-            <div css={stepperCss}>
-              <button css={stepperButtonCss} onClick={handlePrev} aria-label="이전">
-                <ChevronLeft />
-              </button>
-              <span css={stepperTextCss}>
-                <span css={currentNumberCss}>{String(currentIndex + 1).padStart(2, '0')}</span>
-                <span css={dividerCss}>/</span>
-                <span>{String(SESSIONS.length).padStart(2, '0')}</span>
-              </span>
-              <button css={stepperButtonCss} onClick={handleNext} aria-label="다음">
-                <ChevronRight />
-              </button>
+              </div>
+              <div css={infoContainerCss}>
+                <h3 css={sessionTitleCss}>{session.title}</h3>
+                <p css={sessionDescriptionCss}>
+                  {session.description.map((line, i) => (
+                    <span key={i}>
+                      {line}
+                      {i < session.description.length - 1 && <br />}
+                    </span>
+                  ))}
+                </p>
+              </div>
             </div>
+          ))}
+        </div>
+
+        {/* Tablet/Mobile: Carousel with stepper */}
+        <div css={mobileSliderCss}>
+          <div css={mobileImageContainerCss}>
+            {SESSIONS.map((session, index) => (
+              <div
+                key={index}
+                css={css`
+                  position: absolute;
+                  inset: 0;
+                  opacity: ${index === currentIndex ? 1 : 0};
+                  transition: opacity 0.3s ease;
+                `}
+              >
+                <Image
+                  src={session.image}
+                  alt={session.title}
+                  fill
+                  css={imageCss}
+                  sizes="(max-width: 767px) 100vw, 688px"
+                />
+              </div>
+            ))}
+          </div>
+          <div css={mobileInfoContainerCss}>
+            {SESSIONS.map((session, index) => (
+              <div
+                key={index}
+                css={css`
+                  position: absolute;
+                  inset: 0;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 16px;
+                  opacity: ${index === currentIndex ? 1 : 0};
+                  transition: opacity 0.3s ease;
+                  pointer-events: ${index === currentIndex ? 'auto' : 'none'};
+                `}
+              >
+                <h3 css={sessionTitleCss}>{session.title}</h3>
+                <p css={sessionDescriptionCss}>
+                  {session.description.map((line, i) => (
+                    <span key={i}>
+                      {line}
+                      {i < session.description.length - 1 && <br />}
+                    </span>
+                  ))}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div css={stepperCss}>
+            <button css={stepperButtonCss} onClick={handlePrev} aria-label="이전">
+              <ChevronLeft />
+            </button>
+            <span css={stepperTextCss}>
+              <span css={currentNumberCss}>{String(currentIndex + 1).padStart(2, '0')}</span>
+              <span css={dividerCss}>/</span>
+              <span>{String(SESSIONS.length).padStart(2, '0')}</span>
+            </span>
+            <button css={stepperButtonCss} onClick={handleNext} aria-label="다음">
+              <ChevronRight />
+            </button>
           </div>
         </div>
       </div>
@@ -123,23 +152,39 @@ export const SessionsSection = () => {
 
 const ChevronLeft = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M15 18L9 12L15 6"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
 const ChevronRight = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M9 18L15 12L9 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M9 18L15 12L9 6"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
 const sectionCss = css`
   width: 100%;
-  padding: 120px 40px;
+  padding: 40px 24px;
   background: ${colors.grey18['00']};
 
-  ${mediaQuery('mobile')} {
-    padding: 60px 20px;
+  @media (min-width: 768px) {
+    padding: 120px 40px;
+  }
+
+  @media (min-width: 1920px) {
+    padding: 240px 40px 280px;
   }
 `;
 
@@ -150,53 +195,43 @@ const contentCss = css`
 
 const titleCss = css`
   font-family: Pretendard, sans-serif;
-  font-size: 32px;
+  font-size: 20px;
   font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.2px;
   color: ${colors.grey18['900']};
-  margin-bottom: 48px;
+  margin-bottom: 20px;
 
-  ${mediaQuery('tablet')} {
-    font-size: 28px;
-  }
-
-  ${mediaQuery('mobile')} {
-    font-size: 20px;
-    margin-bottom: 32px;
+  @media (min-width: 768px) {
+    font-size: 36px;
+    letter-spacing: -0.36px;
+    margin-bottom: 40px;
   }
 `;
 
-const sliderContainerCss = css`
-  display: flex;
-  gap: 32px;
-  align-items: flex-start;
+const desktopListCss = css`
+  display: none;
+  flex-direction: column;
+  gap: 40px;
 
-  ${mediaQuery('mobile')} {
-    flex-direction: column;
-    gap: 24px;
+  @media (min-width: 1280px) {
+    display: flex;
   }
+`;
+
+const sessionItemCss = css`
+  display: flex;
+  gap: 40px;
+  align-items: flex-end;
 `;
 
 const imageContainerCss = css`
   position: relative;
-  width: 664px;
-  aspect-ratio: 664 / 374;
-  border-radius: 16px;
+  width: 533px;
+  height: 300px;
+  border-radius: 12px;
   overflow: hidden;
   flex-shrink: 0;
-
-  ${mediaQuery('tablet')} {
-    width: 50%;
-  }
-
-  ${mediaQuery('mobile')} {
-    width: 100%;
-    border-radius: 12px;
-  }
-`;
-
-const imageWrapperCss = css`
-  position: absolute;
-  inset: 0;
 `;
 
 const imageCss = css`
@@ -207,48 +242,70 @@ const infoContainerCss = css`
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  min-height: 300px;
-
-  ${mediaQuery('mobile')} {
-    min-height: auto;
-    gap: 24px;
-  }
+  gap: 16px;
+  justify-content: flex-end;
+  padding: 20px 0;
 `;
 
 const sessionTitleCss = css`
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 48px;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: -0.8px;
   color: ${colors.grey18['900']};
-  margin-bottom: 24px;
 
-  ${mediaQuery('tablet')} {
-    font-size: 36px;
-  }
-
-  ${mediaQuery('mobile')} {
-    font-size: 28px;
-    margin-bottom: 16px;
+  @media (min-width: 768px) {
+    font-family: Pretendard, sans-serif;
+    font-size: 32px;
+    line-height: 1.4;
+    letter-spacing: -0.64px;
   }
 `;
 
 const sessionDescriptionCss = css`
   font-family: Pretendard, sans-serif;
-  font-size: 18px;
-  font-weight: 400;
-  color: ${colors.grey18['600']};
-  line-height: 1.6;
-  white-space: pre-line;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: ${colors.grey18['900']};
 
-  ${mediaQuery('mobile')} {
-    font-size: 14px;
+  @media (min-width: 768px) {
+    font-size: 20px;
   }
+`;
+
+const mobileSliderCss = css`
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @media (min-width: 768px) {
+    gap: 40px;
+  }
+
+  @media (min-width: 1280px) {
+    display: none;
+  }
+`;
+
+const mobileImageContainerCss = css`
+  position: relative;
+  width: 100%;
+  aspect-ratio: 688 / 387;
+  border-radius: 12px;
+  overflow: hidden;
+`;
+
+const mobileInfoContainerCss = css`
+  position: relative;
+  min-height: 130px;
 `;
 
 const stepperCss = css`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
 `;
 
@@ -258,15 +315,15 @@ const stepperButtonCss = css`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid ${colors.grey18['200']};
-  border-radius: 50%;
+  padding: 10px;
+  border: none;
   background: transparent;
-  color: ${colors.grey18['900']};
+  color: ${colors.grey18['800']};
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover {
-    background: ${colors.grey18['100']};
+    color: ${colors.grey18['600']};
   }
 `;
 
@@ -275,15 +332,16 @@ const stepperTextCss = css`
   align-items: center;
   gap: 4px;
   font-family: Pretendard, sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  color: ${colors.grey18['500']};
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: ${colors.grey18['300']};
   min-width: 60px;
   justify-content: center;
 `;
 
 const currentNumberCss = css`
-  color: ${colors.grey18['900']};
+  color: ${colors.grey18['800']};
 `;
 
 const dividerCss = css`

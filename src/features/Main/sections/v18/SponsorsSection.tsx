@@ -15,7 +15,12 @@ interface Sponsor {
 const SPONSORS: Sponsor[] = [
   { name: 'elice', logo: '/images/17th/support/sponsor-elice.png', width: 198, height: 59 },
   { name: 'Gather', logo: '/images/17th/support/sponsor-gather.png', width: 180, height: 50 },
-  { name: 'Naver Cloud Platform', logo: '/images/17th/support/sponsor-naver-cloud.png', width: 180, height: 50 },
+  {
+    name: 'Naver Cloud Platform',
+    logo: '/images/17th/support/sponsor-naver-cloud.png',
+    width: 180,
+    height: 50,
+  },
   { name: 'Adelab', logo: '/images/17th/support/sponsor-adelab.png', width: 160, height: 50 },
   { name: '직행', logo: '/images/17th/support/sponsor-zighang.png', width: 120, height: 50 },
   { name: 'NineHire', logo: '/images/17th/support/sponsor-ninehire.png', width: 160, height: 40 },
@@ -89,7 +94,13 @@ export const SponsorsSection = () => {
 const ArrowIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
     <circle cx="12" cy="12" r="11" stroke={colors.primary18.strong} strokeWidth="1.5" />
-    <path d="M10 8L14 12L10 16" stroke={colors.primary18.strong} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <path
+      d="M10 8L14 12L10 16"
+      stroke={colors.primary18.strong}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
   </svg>
 );
 
