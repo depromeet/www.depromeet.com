@@ -62,9 +62,9 @@ export const HeroSection = () => {
 const GNB_HEIGHT = 56;
 
 // Breakpoints:
-// Mobile: <= 360px
-// Tablet: 361px - 768px
-// Desktop: >= 769px
+// Mobile: <= 767px
+// Tablet: 768px - 1279px
+// Desktop: 1280px - 1919px
 // Large Desktop: >= 1920px
 
 const sectionCss = css`
@@ -74,11 +74,11 @@ const sectionCss = css`
   overflow: hidden;
   background: linear-gradient(141deg, #5AAFFF 22.58%, #DFEEFF 86.28%);
 
-  @media (min-width: 361px) {
+  @media (min-width: 768px) {
     height: 1024px;
   }
 
-  @media (min-width: 769px) {
+  @media (min-width: 1280px) {
     height: 800px;
   }
 
@@ -97,9 +97,9 @@ const contentCss = css`
 
 const taglineCss = (position: 'left' | 'right') => css`
   position: absolute;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 24px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1;
   color: ${colors.grey18['00']};
   letter-spacing: -0.02em;
@@ -117,14 +117,14 @@ const taglineCss = (position: 'left' | 'right') => css`
     text-align: right;
   `}
 
-  @media (min-width: 361px) {
+  @media (min-width: 768px) {
     font-size: 36px;
     top: ${GNB_HEIGHT + 53}px;
     left: ${position === 'left' ? '40px' : 'auto'};
     right: ${position === 'right' ? '40px' : 'auto'};
   }
 
-  @media (min-width: 769px) {
+  @media (min-width: 1280px) {
     font-size: 48px;
     top: auto;
     bottom: 166px;
@@ -142,7 +142,7 @@ const keyringContainerCss = css`
   transform: translateX(-50%);
   z-index: 3;
 
-  @media (min-width: 769px) {
+  @media (min-width: 1280px) {
     top: -221px;
   }
 
@@ -156,12 +156,12 @@ const keyringImageCss = css`
   width: 458px;
   height: 534px;
 
-  @media (min-width: 361px) {
+  @media (min-width: 768px) {
     width: 645px;
     height: 752px;
   }
 
-  @media (min-width: 769px) {
+  @media (min-width: 1280px) {
     width: 814px;
     height: 949px;
   }
@@ -180,11 +180,11 @@ const logoContainerCss = css`
   width: 100%;
   bottom: 141px;
 
-  @media (min-width: 361px) {
-    bottom: 141px;
+  @media (min-width: 768px) {
+    bottom: 92px;
   }
 
-  @media (min-width: 769px) {
+  @media (min-width: 1280px) {
     bottom: auto;
     top: 50%;
     transform: translateY(-50%);
@@ -195,13 +195,13 @@ const logoCss = css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Bebas Neue', sans-serif;
-  font-weight: 400;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 500;
   line-height: 1;
   color: ${colors.grey18['00']};
   text-align: center;
 
-  @media (min-width: 769px) {
+  @media (min-width: 1280px) {
     flex-direction: row;
     justify-content: center;
   }
@@ -211,11 +211,11 @@ const logoTextCss = css`
   font-size: 72px;
   letter-spacing: -0.02em;
 
-  @media (min-width: 361px) {
+  @media (min-width: 768px) {
     font-size: 120px;
   }
 
-  @media (min-width: 769px) {
+  @media (min-width: 1280px) {
     font-size: 160px;
   }
 `;
@@ -230,14 +230,15 @@ const ctaButtonCss = css`
   left: 50%;
   transform: translateX(-50%);
   bottom: 52px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-flex;
   height: 60px;
-  padding: 0 40px;
-  border-radius: 100px;
+  padding: 12px 40px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  border-radius: 50px;
   border: none;
-  background: ${colors.grey18['900']};
+  background: #050505;
   color: ${colors.grey18['00']};
   font-family: Pretendard, sans-serif;
   font-size: 16px;
@@ -250,7 +251,7 @@ const ctaButtonCss = css`
     background: ${colors.grey18['800']};
   }
 
-  @media (min-width: 361px) {
+  @media (min-width: 768px) {
     display: none;
   }
 `;

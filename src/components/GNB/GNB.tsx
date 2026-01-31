@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { css, Theme } from '@emotion/react';
@@ -15,9 +14,6 @@ import { colors } from '~/styles/colors';
 import { theme } from '~/styles/theme';
 import { getPathToRecruit } from '~/utils/utils';
 
-const LOGO_IMAGE = `/images/17th/logo/dpm.svg`;
-const LOGO_WHITE_IMAGE = `/images/17th/logo/depromeet-white.svg`;
-
 function ApplyButton() {
   const { progressState } = useIsInProgress();
   const router = useRouter();
@@ -31,19 +27,22 @@ function ApplyButton() {
 }
 
 const linkButtonCss = css`
-  padding: 0 16px;
-  min-height: 34px;
-  border-radius: 8px;
+  display: flex;
+  height: 52px;
+  padding: 12px 40px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  border-radius: 50px;
+  background: #050505;
+  color: ${colors.white};
 
   position: absolute;
   top: 50%;
   right: 20px;
-
   transform: translateY(-50%);
-  ${theme.typosV3.pretendard.sub5Semibold};
 
-  background: ${colors.primary.darknavy};
-  color: ${colors.white};
+  ${theme.typosV3.pretendard.sub5Semibold};
 
   &:disabled {
     background: ${colors.grey[300]};
@@ -69,8 +68,8 @@ export function GNB() {
       {!isMobileSize ? (
         <nav css={navCss}>
           <div css={navWrapperCss}>
-            <Link href={'/'}>
-              <Image css={logoCss} src={LOGO_IMAGE} alt="로고 이미지" width={45} height={20} />
+            <Link href={'/'} css={logoLinkCss}>
+              DPM
             </Link>
             <ul css={menuContainerCss}>
               {GNB_MENU_NAME.map(menu => (
@@ -87,12 +86,8 @@ export function GNB() {
       ) : (
         <nav ref={containerRef}>
           <div css={mobileMenuGNBCss(isDropdownOpen)}>
-            <Link href={'/'}>
-              {isDropdownOpen ? (
-                <Image src={LOGO_WHITE_IMAGE} alt="로고 이미지" width={161} height={24} />
-              ) : (
-                <Image src={LOGO_IMAGE} alt="로고 이미지" width={45} height={24} />
-              )}
+            <Link href={'/'} css={mobileLogoLinkCss(isDropdownOpen)}>
+              DPM
             </Link>
             <MobileMenuIcon
               onClick={() => (isDropdownOpen ? closeDropdown() : openDropdown())}
@@ -136,11 +131,32 @@ const navWrapperCss = css`
   position: relative;
 `;
 
-const logoCss = css`
+const logoLinkCss = css`
   position: absolute;
   top: 50%;
   left: 20px;
   transform: translateY(-50%);
+  color: #000000;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -1.92px;
+  text-transform: uppercase;
+  text-decoration: none;
+`;
+
+const mobileLogoLinkCss = (isDropdownOpen: boolean) => css`
+  color: ${isDropdownOpen ? '#ffffff' : '#000000'};
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -1.92px;
+  text-transform: uppercase;
+  text-decoration: none;
 `;
 
 const menuContainerCss = css`
@@ -153,11 +169,21 @@ const menuCss = css`
 `;
 
 const activeLinkCss = () => css`
-  color: ${colors.primary.darknavy};
+  color: #000000;
+  font-family: Pretendard, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
 `;
 
 const inActiveLinkCss = () => css`
-  color: ${colors.grey[400]};
+  color: #000000;
+  font-family: Pretendard, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 `;
 
 const linkCss = (theme: Theme) => css`

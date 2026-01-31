@@ -60,9 +60,9 @@ const contentCss = css`
 `;
 
 const headingCss = css`
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 80px;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1.2;
   color: ${colors.primary18.strong};
   text-align: center;

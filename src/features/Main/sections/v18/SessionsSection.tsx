@@ -217,9 +217,9 @@ const infoContainerCss = css`
 `;
 
 const sessionTitleCss = css`
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 48px;
-  font-weight: 400;
+  font-weight: 500;
   color: ${colors.grey18['900']};
   margin-bottom: 24px;
 
