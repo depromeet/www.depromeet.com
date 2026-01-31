@@ -7,9 +7,6 @@ import useIsInProgress from '~/hooks/useIsInProgress';
 import { colors } from '~/styles/colors';
 import { getPathToRecruit } from '~/utils/utils';
 
-import HeroTextSvg from '../../../../../public/images/18th/home/heroText.svg';
-import HeroText2Svg from '../../../../../public/images/18th/home/heroText2.svg';
-
 export const HeroSection = () => {
   const [isClientReady, setIsClientReady] = useState(false);
   const router = useRouter();
@@ -48,8 +45,20 @@ export const HeroSection = () => {
         </div>
 
         <div css={logoContainerCss}>
-          <HeroTextSvg css={heroTextCss} aria-label="DEPROMEET 18" />
-          <HeroText2Svg css={heroText2Css} aria-label="DEPROMEET 18" />
+          <Image
+            src="/images/18th/home/depromeet18.png"
+            alt="DEPROMEET 18"
+            width={5500}
+            height={517}
+            css={heroTextCss}
+          />
+          <Image
+            src="/images/18th/home/depromeet18_2.png"
+            alt="DEPROMEET 18"
+            width={893}
+            height={395}
+            css={heroText2Css}
+          />
         </div>
 
         <button css={ctaButtonCss} onClick={action}>
