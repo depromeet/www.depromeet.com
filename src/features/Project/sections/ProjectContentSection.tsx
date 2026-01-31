@@ -70,16 +70,19 @@ const sectionCss = css`
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  padding: 56px 0;
   gap: 36px;
 
   ${sectionGridBg}
 
-  ${mediaQuery('tablet')} {
-    padding: 56px 48px;
+  @media (min-width: 1280px) {
+    padding: 80px 40px;
   }
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    padding: 80px 40px;
+  }
+
   ${mediaQuery('mobile')} {
     padding: 56px 20px;
-    gap: 32px;
   }
 `;

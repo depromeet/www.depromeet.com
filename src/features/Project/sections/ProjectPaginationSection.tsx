@@ -55,7 +55,7 @@ export function ProjectPaginationSection({ projectList }: { projectList: Project
   };
 
   return (
-    <>
+    <div css={wrapperCss}>
       <AnimatePresence mode="wait" initial={true}>
         <m.div
           css={projectContainerCss}
@@ -75,30 +75,60 @@ export function ProjectPaginationSection({ projectList }: { projectList: Project
         currentPage={currentPage}
         handlePageClick={handleClickPage}
       />
-    </>
+    </div>
   );
 }
 
+const wrapperCss = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+
+  @media (min-width: 1920px) {
+    width: 1280px;
+  }
+
+  @media (min-width: 1280px) and (max-width: 1919px) {
+    width: 880px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    width: 688px;
+  }
+
+  ${mediaQuery('mobile')} {
+    max-width: 320px;
+    width: 100%;
+  }
+`;
+
 const projectContainerCss = css`
-  width: 100%;
-  max-width: 960px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 16px;
   justify-items: center;
   align-items: stretch;
+  width: 100%;
 
-  ${mediaQuery('tablet')} {
+  @media (min-width: 1920px) {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+    row-gap: 100px;
+  }
+
+  @media (min-width: 1280px) and (max-width: 1919px) {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    max-width: 640px;
+    column-gap: 20px;
+    row-gap: 100px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    row-gap: 100px;
   }
 
   ${mediaQuery('mobile')} {
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    gap: 12px;
-    max-width: 400px;
+    gap: 28px;
   }
 `;

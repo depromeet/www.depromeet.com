@@ -1,44 +1,50 @@
-import Image from 'next/image';
 import { css } from '@emotion/react';
 
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
 export const ProjectTitleSection = () => {
   return (
-    <div css={titleImageContainerCss}>
-      <Image
-        src="/images/project/17기/17th-project-logo.png"
-        alt="Project"
-        width={330}
-        height={84}
-        css={titleImageCss}
-      />
+    <div css={titleContainerCss}>
+      <h1 css={titleCss}>Project</h1>
     </div>
   );
 };
 
-const titleImageContainerCss = css`
-  align-self: center;
-  max-width: 1100px;
-  width: 100%;
-  padding-inline: 48px;
-  padding-top: 47px;
-  padding-bottom: 26px;
+const titleContainerCss = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
-  ${mediaQuery('tablet')} {
-    padding-left: 0;
+  @media (min-width: 1920px) {
+    width: 1280px;
+  }
+
+  @media (min-width: 1280px) and (max-width: 1919px) {
+    width: 880px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    width: 688px;
   }
 
   ${mediaQuery('mobile')} {
-    padding-left: 0;
+    max-width: 320px;
+    width: 100%;
   }
 `;
 
-const titleImageCss = css`
-  object-fit: contain;
+const titleCss = css`
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 1.4;
+  letter-spacing: 0.6px;
+  color: ${colors.grey18['900']};
+  white-space: nowrap;
 
   ${mediaQuery('mobile')} {
-    width: 150px;
-    height: 60px;
+    font-size: 40px;
+    letter-spacing: -0.4px;
   }
 `;
