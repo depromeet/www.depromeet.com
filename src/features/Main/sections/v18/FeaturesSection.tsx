@@ -160,10 +160,10 @@ export const FeaturesSection = () => {
 
             <div css={navigationCss}>
               <button css={navButtonCss} onClick={handlePrev} aria-label="이전">
-                <ChevronLeft />
+                <ArrowLeft />
               </button>
               <button css={navButtonCss} onClick={handleNext} aria-label="다음">
-                <ChevronRight />
+                <ArrowRight />
               </button>
             </div>
           </div>
@@ -173,10 +173,10 @@ export const FeaturesSection = () => {
   );
 };
 
-const ChevronLeft = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+const ArrowLeft = () => (
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
-      d="M15 18L9 12L15 6"
+      d="M6 14H22M6 14L12 8M6 14L12 20"
       stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
@@ -185,10 +185,10 @@ const ChevronLeft = () => (
   </svg>
 );
 
-const ChevronRight = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+const ArrowRight = () => (
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path
-      d="M9 18L15 12L9 6"
+      d="M22 14H6M22 14L16 8M22 14L16 20"
       stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
@@ -322,6 +322,13 @@ const infoContainerCss = css`
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
+    /* 태블릿: (676 - 600) / 2 = 38px */
+    padding-left: 38px;
+  }
+
+  @media (min-width: 1280px) {
+    /* 데스크탑: (1200 - 600) / 2 = 300px */
+    padding-left: 300px;
   }
 `;
 
