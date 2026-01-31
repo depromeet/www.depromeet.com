@@ -1,6 +1,37 @@
-import dynamic from 'next/dynamic';
-
 import { SEO } from '~/components/SEO';
+import {
+  BrandingSection,
+  ContactSection,
+  FAQSection,
+  FeaturesSection,
+  HeroSection,
+  ProjectsSection,
+  SessionsSection,
+  SponsorsSection,
+  StatsSection,
+} from '~/features/Main/sections/v18';
+
+export default function Root() {
+  return (
+    <>
+      <SEO />
+      <main>
+        <HeroSection />
+        <BrandingSection />
+        <StatsSection />
+        <FeaturesSection />
+        <SessionsSection />
+        <ProjectsSection />
+        <FAQSection />
+        <ContactSection />
+        <SponsorsSection />
+      </main>
+    </>
+  );
+}
+
+/* NOTE: 17기 기존 코드 백업
+import dynamic from 'next/dynamic';
 import {
   MainBlogSection,
   MainBrandingSection,
@@ -14,9 +45,7 @@ import {
 
 const DynamicMainProjectSection = dynamic(
   () => import('~/features/Main/sections').then(({ MainProjectSection }) => MainProjectSection),
-  {
-    ssr: false,
-  }
+  { ssr: false }
 );
 
 export default function Root() {
@@ -29,28 +58,12 @@ export default function Root() {
         <MainResultSection />
         <MainReasonSection />
         <MainSessionSection />
-        {/* <MainScheduleSection /> */}
         <DynamicMainProjectSection />
         <MainBlogSection />
         <MainSupportSection />
         <MainRecruitSection />
-        {/* <MainSubscribeSection /> */}
-        {/* NOTE: 기존 웹 구조 */}
-        {/* <div>
-          <Intro
-            imageUrl="/images/main/recruit-img.svg"
-            title="15기 모집 인트로"
-            width={1024}
-            height={780}
-            color={'blue'}
-          />
-          <JourneyEntrance hasLinkButton />
-          <RecruitEntrance />
-          <ProjectCarousel />
-          <Ending />
-          <Subscribe />
-        </div> */}
       </main>
     </>
   );
 }
+*/
