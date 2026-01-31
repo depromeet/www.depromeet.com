@@ -1,52 +1,40 @@
-import Image from 'next/image';
 import { css } from '@emotion/react';
 
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
+import { theme } from '~/styles/theme';
 
 export const BlogTitleSection = () => {
   return (
-    <div css={titleImageContainerCss}>
-      <Image
-        src="/images/blog/17th-blog.png"
-        alt="Blog"
-        width={190}
-        height={64}
-        css={titleImageCss}
-      />
+    <div css={titleContainerCss}>
+      <h1 css={titleCss}>Blog</h1>
     </div>
   );
 };
 
-const titleImageContainerCss = css`
-  align-self: center;
-  max-width: 1100px;
+const titleContainerCss = css`
   width: 100%;
-  padding-inline: 48px;
-  padding-top: 47px;
-  padding-bottom: 26px;
+  padding: 0 0 24px 0;
 
   ${mediaQuery('tablet')} {
-    padding-left: 0;
+    padding: 0 0 20px 0;
   }
 
   ${mediaQuery('mobile')} {
-    padding-left: 0;
-    padding-top: 55px;
+    padding: 0 0 16px 0;
   }
 `;
 
-const titleImageCss = css`
-  object-fit: contain;
-  width: auto;
-  height: 90px;
+const titleCss = css`
+  ${theme.typosV2.pretendard.bold44};
+  color: ${colors.grey18['900']};
+  margin: 0;
 
   ${mediaQuery('tablet')} {
-    width: auto;
-    height: 85px;
+    ${theme.typosV2.pretendard.bold32};
   }
 
   ${mediaQuery('mobile')} {
-    width: auto;
-    height: 40px;
+    ${theme.typosV2.pretendard.bold28};
   }
 `;

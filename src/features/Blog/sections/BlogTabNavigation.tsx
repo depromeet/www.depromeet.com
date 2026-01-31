@@ -1,6 +1,6 @@
-import { useEffect, useRef } from 'react';
 import { css } from '@emotion/react';
 
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
@@ -19,28 +19,7 @@ export const BlogTabNavigation = ({
   onMainTabClick,
   onSubTabClick,
 }: TabNavigationProps) => {
-  const activeTabRefs = useRef<{ [key: string]: HTMLButtonElement | null }>({});
   const currentMainTabData = Object.values(mainTabs).find(tab => tab.name === currentMainTab);
-
-  // 언더라인 길이 조정
-  useEffect(() => {
-    const activeButton = activeTabRefs.current[currentSubTab.name];
-    if (activeButton) {
-      const span = document.createElement('span');
-      span.textContent = currentSubTab.name;
-      span.style.visibility = 'hidden';
-      span.style.position = 'absolute';
-      span.style.fontSize = '16px';
-      span.style.fontFamily = 'Pretendard';
-      span.style.fontWeight = '600';
-      document.body.appendChild(span);
-
-      const textWidth = span.offsetWidth;
-      document.body.removeChild(span);
-
-      activeButton.style.setProperty('--text-width', `${textWidth}px`);
-    }
-  }, [currentSubTab]);
 
   return (
     <div css={tabContainerCss}>
@@ -62,13 +41,11 @@ export const BlogTabNavigation = ({
         {currentMainTabData?.subTabs.map(({ name }) => (
           <button
             key={name}
-            ref={el => {
-              activeTabRefs.current[name] = el;
-            }}
             css={[subTabItemCss, currentSubTab.name === name && subTabItemActiveCss]}
+            data-active={currentSubTab.name === name || undefined}
             onClick={() => onSubTabClick(name)}
           >
-            {name}
+            <span css={subTabTextCss}>{name}</span>
           </button>
         ))}
       </div>
@@ -79,78 +56,85 @@ export const BlogTabNavigation = ({
 const tabContainerCss = css`
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 36px;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  align-items: center;
+  align-items: flex-start;
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    gap: 28px;
+  }
+
+  ${mediaQuery('mobile')} {
+    gap: 12px;
+  }
 `;
 
+/* Figma: 메인 탭 - Pill shaped, 선택: 파란배경+흰글씨, 비선택: 흰배경+파란테두리+파란글씨 */
 const mainTabWrapperCss = css`
   display: flex;
-  width: 578px;
-  border-radius: 0;
-  overflow: hidden;
-  border: 1px solid #478af4;
+  gap: 12px;
 
   ${mediaQuery('tablet')} {
     width: 100%;
-    max-width: 500px;
   }
   ${mediaQuery('mobile')} {
-    flex-direction: row;
     width: 100%;
-    max-width: 400px;
-  }
-`;
+    overflow-x: auto;
+    padding-bottom: 4px;
 
-const mainTabItemCss = css`
-  flex: 1;
-  padding: 16px 24px;
-  background-color: #e5e7eb;
-  color: black;
-  border: none;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  ${theme.typosV2.pretendard.medium16};
-
-  &:not(:last-child) {
-    border-right: 1px solid #d1d5db;
-  }
-
-  ${mediaQuery('mobile')} {
-    padding: 14px 20px;
-    ${theme.typosV2.pretendard.medium16};
-
-    &:not(:last-child) {
-      border-right: none;
+    &::-webkit-scrollbar {
+      display: none;
     }
   }
 `;
 
-const mainTabItemActiveCss = css`
-  background-color: #478af4;
-  color: white;
+/* Figma: 1280~ 212x60, 768~1279 166x46, ~767 112x34 */
+const mainTabItemCss = css`
+  width: 212px;
+  height: 60px;
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${colors.white};
+  color: ${colors.primary18.normal};
+  border: 1px solid ${colors.primary18.normal};
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 20px;
+  font-weight: 500;
+  white-space: nowrap;
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    width: 166px;
+    height: 46px;
+    padding: 12px 24px;
+    font-size: 16px;
+  }
+
+  ${mediaQuery('mobile')} {
+    width: 112px;
+    height: 34px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
 `;
 
+const mainTabItemActiveCss = css`
+  background-color: ${colors.primary18.normal};
+  color: ${colors.white};
+  border-color: ${colors.primary18.normal};
+`;
+
+/* Figma: 서브 탭 - 텍스트만, 선택: 언더라인+진한글씨, 비선택: 회색글씨 */
 const subTabWrapperCss = css`
   display: flex;
-  width: 578px;
-  background-color: #e3e5ea;
-  padding: 0 48px;
-  justify-content: center;
-  gap: 10px;
 
-  ${mediaQuery('tablet')} {
-    width: 100%;
-    max-width: 500px;
-    padding: 0 24px;
-  }
   ${mediaQuery('mobile')} {
-    padding: 0 34px;
     overflow-x: auto;
     width: 100%;
-    max-width: 400px;
+    padding-bottom: 4px;
 
     &::-webkit-scrollbar {
       display: none;
@@ -160,44 +144,35 @@ const subTabWrapperCss = css`
 
 const subTabItemCss = css`
   padding: 16px 20px;
-  background: #e3e5ea;
-  color: #9595a1;
+  background: transparent;
+  color: ${colors.grey18['500']};
   border: none;
   cursor: pointer;
   position: relative;
   transition: all 0.2s ease;
   ${theme.typosV2.pretendard.semibold16};
   white-space: nowrap;
-  flex: 1 0 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
   ${mediaQuery('mobile')} {
-    padding: 16px 18.5px;
-    ${theme.typosV2.pretendard.semibold16};
-    flex-shrink: 0;
+    ${theme.typosV2.pretendard.semibold14};
+  }
+`;
+
+const subTabTextCss = css`
+  display: inline-block;
+  position: relative;
+
+  button[data-active] &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: ${colors.grey18['900']};
   }
 `;
 
 const subTabItemActiveCss = css`
-  color: ${theme.colors.grey['900']};
-  font-weight: 600;
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: var(--text-width, 40px);
-    height: 2px;
-    background-color: ${theme.colors.grey['900']};
-    transition: width 0.2s ease;
-
-    ${mediaQuery('mobile')} {
-      bottom: 12px;
-    }
-  }
+  color: ${colors.grey18['900']};
 `;
