@@ -189,6 +189,7 @@ const gridCss = css`
 
 const cardCss = css`
   display: flex;
+  width: 152px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -199,13 +200,17 @@ const cardCss = css`
   text-align: center;
 
   @media (min-width: 768px) {
+    width: auto;
     height: 230px;
     padding: 40px 24px;
     gap: 20px;
   }
 
   @media (min-width: 1280px) {
+    width: auto;
     height: auto;
+    padding: 40px 24px;
+    gap: 20px;
     flex: 1 0 0;
     background: #fff;
     box-shadow: 0 8px 32px 0 rgba(47, 51, 55, 0.1);
@@ -281,6 +286,6 @@ const suffixCss = css`
 
   @media (min-width: 768px) {
     font-size: 36px;
-    letter-spacing: 0.36px;
+    letter-spacing: -0.36px;
   }
 `;
