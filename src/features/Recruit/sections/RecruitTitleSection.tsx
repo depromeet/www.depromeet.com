@@ -1,27 +1,17 @@
-import Image from 'next/image';
 import { css } from '@emotion/react';
 
-import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
 export function RecruitTitleSection() {
   return (
     <section css={sectionCss}>
-      <div>
-        <h1 id="title">
-          <Image
-            width={530}
-            height={84}
-            src="/images/17th/recruitment-title.svg"
-            alt="디프만 17기 모집 안내"
-            css={imageCss}
-          />
+      <div css={contentWrapperCss}>
+        <h1 id="title" css={titleTextCss}>
+          Recruitment
         </h1>
-      </div>
-      <div css={descriptionCss}>
-        <div>2025.06.30 - 07.06</div>
-        <div>
-          <span>depromeet 17.0</span>
+        <div css={descriptionCss}>
+          <span>2026.02.12 - 02.18</span>
+          <span>depromeet 18.0</span>
         </div>
       </div>
     </section>
@@ -30,59 +20,74 @@ export function RecruitTitleSection() {
 
 const sectionCss = css`
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
+  justify-content: center;
   width: 100%;
-  gap: 36px;
+  padding: 100px 20px 40px;
 
-  & > div {
-    width: 100%;
-    max-width: 1100px;
-  }
-
-  & #title {
-    padding: 103px 48px 26px;
-
-    ${mediaQuery('mobile')} {
-      padding: 76px 24px 16px;
-    }
-  }
-
-  ${mediaQuery('mobile')} {
-    gap: 0px;
+  @media (max-width: 768px) {
+    padding: 60px 20px 30px;
   }
 `;
 
-const imageCss = css`
-  ${mediaQuery('mobile')} {
-    width: 248.438px;
-    height: 39.375px;
+const contentWrapperCss = css`
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+
+  @media (min-width: 1280px) and (max-width: 1919px) {
+    max-width: 880px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    max-width: 688px;
+  }
+
+  @media (min-width: 360px) and (max-width: 767px) {
+    max-width: 688px;
+  }
+`;
+
+const titleTextCss = css`
+  font-family: 'Helvetica Neue', 'Pretendard', sans-serif;
+  font-size: 88px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: ${theme.colors.white};
+  margin: 0;
+  letter-spacing: -0.04em;
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    font-size: 60px;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+  }
+
+  @media (min-width: 360px) and (max-width: 767px) {
+    font-size: 40px;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
   }
 `;
 
 const descriptionCss = css`
   display: flex;
-  gap: 68px;
-  width: 100%;
-  max-width: 1100px;
-  padding: 0 48px;
-  color: ${theme.colors.primary.darknavy};
-  ${theme.typosV3.MartianMono.body2}
+  align-items: center;
+  gap: 28px;
+  color: ${theme.colors.white};
+  font-family: 'Helvetica Neue', 'Pretendard', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
 
-  & > div {
-    width: fit-content;
-    padding: 4px 0;
-    background-color: ${theme.colors.primary.gray};
-  }
-
-  & > span {
-    padding: 9px;
-  }
-
-  ${mediaQuery('mobile')} {
+  @media (min-width: 360px) and (max-width: 767px) {
     flex-direction: column;
+    align-items: flex-start;
     gap: 4px;
-    padding: 0 24px;
+    font-size: 20px;
+    letter-spacing: 0;
   }
 `;
