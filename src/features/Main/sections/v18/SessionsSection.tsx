@@ -176,8 +176,12 @@ const ChevronRight = () => (
 
 const sectionCss = css`
   width: 100%;
-  padding: 120px 40px;
+  padding: 40px 24px;
   background: ${colors.grey18['00']};
+
+  @media (min-width: 768px) {
+    padding: 120px 40px;
+  }
 
   @media (min-width: 1920px) {
     padding: 240px 40px 280px;
@@ -191,12 +195,18 @@ const contentCss = css`
 
 const titleCss = css`
   font-family: Pretendard, sans-serif;
-  font-size: 36px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 1.4;
-  letter-spacing: -0.36px;
+  letter-spacing: -0.2px;
   color: ${colors.grey18['900']};
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+
+  @media (min-width: 768px) {
+    font-size: 36px;
+    letter-spacing: -0.36px;
+    margin-bottom: 40px;
+  }
 `;
 
 const desktopListCss = css`
@@ -238,26 +248,41 @@ const infoContainerCss = css`
 `;
 
 const sessionTitleCss = css`
-  font-family: Pretendard, sans-serif;
-  font-size: 32px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 20px;
   font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: -0.64px;
+  line-height: 1.5;
+  letter-spacing: -0.8px;
   color: ${colors.grey18['900']};
+
+  @media (min-width: 768px) {
+    font-family: Pretendard, sans-serif;
+    font-size: 32px;
+    line-height: 1.4;
+    letter-spacing: -0.64px;
+  }
 `;
 
 const sessionDescriptionCss = css`
   font-family: Pretendard, sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 1.4;
   color: ${colors.grey18['900']};
+
+  @media (min-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
 const mobileSliderCss = css`
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 32px;
+
+  @media (min-width: 768px) {
+    gap: 40px;
+  }
 
   @media (min-width: 1280px) {
     display: none;
