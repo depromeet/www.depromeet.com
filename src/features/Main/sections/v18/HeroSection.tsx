@@ -46,17 +46,17 @@ export const HeroSection = () => {
 
         <div css={logoContainerCss}>
           <Image
-            src="/images/18th/home/depromeet18.png"
+            src="/images/18th/home/depromeet18.webp"
             alt="DEPROMEET 18"
-            width={5500}
+            width={5519}
             height={517}
             css={heroTextCss}
           />
           <Image
             src="/images/18th/home/depromeet18_2.png"
             alt="DEPROMEET 18"
-            width={893}
-            height={395}
+            width={877}
+            height={396}
             css={heroText2Css}
           />
         </div>
