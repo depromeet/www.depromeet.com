@@ -134,7 +134,7 @@ const dateContainerCss = css`
 
 const dateCss = css`
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
   color: ${colors.grey18['900']};
   line-height: 1.4;
 `;
