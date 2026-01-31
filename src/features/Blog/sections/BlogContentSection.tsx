@@ -2,13 +2,13 @@ import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 
 import { AllBlog, DEEPER_BLOG_LIST, OFFICIAL_BLOG_LIST } from '~/constant/blog';
+import { CONTENT_WIDTH, SECTION_TOP_PADDING } from '~/constant/layout';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
 import { BlogPaginationSection } from './BlogPaginationSection';
 import { BlogTabNavigation } from './BlogTabNavigation';
 import { BlogTitleSection } from './BlogTitleSection';
-import { BLOG_CONTENT_WIDTH } from '../constants/layout';
 
 const OFFICIAL_SUB_TABS = [
   { key: 'entire', name: '전체' },
@@ -90,8 +90,6 @@ export const BlogContentSection = () => {
   );
 };
 
-const SECTION_TOP_PADDING = 172;
-
 const contentWrapperCss = css`
   width: 100%;
   display: flex;
@@ -100,20 +98,20 @@ const contentWrapperCss = css`
   gap: 36px;
 
   @media (min-width: 1280px) {
-    width: ${BLOG_CONTENT_WIDTH.desktop}px;
+    width: ${CONTENT_WIDTH.desktop}px;
   }
 
   @media (min-width: 768px) and (max-width: 1279px) {
-    width: ${BLOG_CONTENT_WIDTH.tablet}px;
+    width: ${CONTENT_WIDTH.tablet}px;
   }
 
   @media (min-width: 360px) and (max-width: 767px) {
-    width: ${BLOG_CONTENT_WIDTH.mobile}px;
+    width: ${CONTENT_WIDTH.mobile}px;
   }
 
   @media (max-width: 359px) {
     width: 100%;
-    max-width: ${BLOG_CONTENT_WIDTH.mobile}px;
+    max-width: ${CONTENT_WIDTH.mobile}px;
   }
 
   ${mediaQuery('tablet')} {
