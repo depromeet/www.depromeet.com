@@ -18,12 +18,13 @@ const STATS: StatItem[] = [
   { label: '누적 멤버 수', value: 1000, suffix: '+' },
 ];
 
-const useCountUp = (end: number, duration: number = 2000, start: boolean = false) => {
+const useCountUp = (end: number, duration: number = 2000, shouldStart: boolean = false) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (!start) return;
+    if (!shouldStart) return;
 
+    setCount(0);
     let startTime: number | null = null;
     let animationFrame: number;
 
@@ -40,15 +41,21 @@ const useCountUp = (end: number, duration: number = 2000, start: boolean = false
 
     animationFrame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(animationFrame);
-  }, [end, duration, start]);
+  }, [end, duration, shouldStart]);
 
   return count;
 };
 
-const StatCard = ({ stat, index }: { stat: StatItem; index: number }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, amount: 0.5 });
-  const count = useCountUp(stat.value, 2000, isInView);
+const StatCard = ({
+  stat,
+  index,
+  shouldAnimate,
+}: {
+  stat: StatItem;
+  index: number;
+  shouldAnimate: boolean;
+}) => {
+  const count = useCountUp(stat.value, 2000, shouldAnimate);
 
   const formatValue = (value: number) => {
     if (value >= 1000) {
@@ -59,7 +66,6 @@ const StatCard = ({ stat, index }: { stat: StatItem; index: number }) => {
 
   return (
     <motion.div
-      ref={ref}
       css={cardCss}
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -76,8 +82,25 @@ const StatCard = ({ stat, index }: { stat: StatItem; index: number }) => {
 };
 
 export const StatsSection = () => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { amount: 0.3 });
+  const isOutOfView = useInView(sectionRef, { amount: 0 });
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    if (isInView && !hasAnimated) {
+      setShouldAnimate(true);
+      setHasAnimated(true);
+    }
+    if (!isOutOfView && hasAnimated) {
+      setShouldAnimate(false);
+      setHasAnimated(false);
+    }
+  }, [isInView, isOutOfView, hasAnimated]);
+
   return (
-    <section css={sectionCss}>
+    <section css={sectionCss} ref={sectionRef}>
       <div css={contentCss}>
         <motion.p
           css={descriptionCss}
@@ -92,7 +115,7 @@ export const StatsSection = () => {
         </motion.p>
         <div css={gridCss}>
           {STATS.map((stat, index) => (
-            <StatCard key={stat.label} stat={stat} index={index} />
+            <StatCard key={stat.label} stat={stat} index={index} shouldAnimate={shouldAnimate} />
           ))}
         </div>
       </div>
@@ -102,35 +125,41 @@ export const StatsSection = () => {
 
 const sectionCss = css`
   width: 100%;
-  padding: 120px 40px;
-  background: ${colors.grey18['100']};
-
-  ${mediaQuery('mobile')} {
-    padding: 60px 20px;
-  }
+  background: #fff;
 `;
 
 const contentCss = css`
   max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120px 40px;
+  gap: 40px;
+
+  ${mediaQuery('mobile')} {
+    padding: 40px 24px;
+  }
 `;
 
 const descriptionCss = css`
   font-family: Pretendard, sans-serif;
-  font-size: 32px;
-  font-weight: 600;
-  line-height: 1.5;
-  color: ${colors.grey18['900']};
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 140%;
+  letter-spacing: 0.36px;
+  color: #040c23;
   text-align: center;
-  margin-bottom: 60px;
 
-  ${mediaQuery('tablet')} {
-    font-size: 24px;
+  @media (max-width: 1279px) {
+    font-size: 32px;
+    letter-spacing: -0.64px;
+    color: ${colors.grey18['900']};
   }
 
   ${mediaQuery('mobile')} {
-    font-size: 18px;
-    margin-bottom: 40px;
+    font-size: 16px;
+    letter-spacing: normal;
 
     br {
       display: none;
