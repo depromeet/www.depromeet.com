@@ -159,10 +159,18 @@ export const FeaturesSection = () => {
             </div>
 
             <div css={navigationCss}>
-              <button css={navButtonCss} onClick={handlePrev} aria-label="이전">
+              <button
+                css={[navButtonCss, currentIndex === 0 && navButtonDisabledCss]}
+                onClick={handlePrev}
+                aria-label="이전"
+              >
                 <ArrowLeft />
               </button>
-              <button css={navButtonCss} onClick={handleNext} aria-label="다음">
+              <button
+                css={[navButtonCss, currentIndex === FEATURES.length - 1 && navButtonDisabledCss]}
+                onClick={handleNext}
+                aria-label="다음"
+              >
                 <ArrowRight />
               </button>
             </div>
@@ -423,4 +431,10 @@ const navButtonCss = css`
       height: 24px;
     }
   }
+`;
+
+const navButtonDisabledCss = css`
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
 `;
