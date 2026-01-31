@@ -12,6 +12,10 @@ import { mediaQuery } from '~/styles/media';
 type ProjectThumbnailProps = Project & {
   showInfoDefault?: boolean;
   backgroundShow?: boolean;
+  /** 메인 페이지용: 텍스트 래퍼에 상단 제외 좌우하 20px 패딩 */
+  textWrapperPadding?: boolean;
+  /** 메인 페이지용: 카드에 #fff 배경 + box-shadow 적용 */
+  mainPageCard?: boolean;
 };
 
 export function ProjectThumbnail({
@@ -19,6 +23,8 @@ export function ProjectThumbnail({
   subTitle,
   description,
   links,
+  textWrapperPadding,
+  mainPageCard,
   ...props
 }: ProjectThumbnailProps) {
   const handleLinkClick = (href: string, e: React.MouseEvent) => {
@@ -28,7 +34,7 @@ export function ProjectThumbnail({
 
   return (
     <m.article
-      css={articleCss}
+      css={[articleCss, mainPageCard && mainPageCardCss]}
       initial="initial"
       animate="animate"
       exit="exit"
@@ -36,7 +42,7 @@ export function ProjectThumbnail({
       variants={defaultFadeInVariants}
       {...props}
     >
-      <div css={frontFaceCss} className="front-face">
+      <div css={[frontFaceCss, mainPageCard && mainPageFrontFaceCss]} className="front-face">
         {/* 썸네일 이미지 + 호버 시 오버레이 (블로그와 동일) */}
         <div css={imageContainerCss}>
           <Image
@@ -64,7 +70,13 @@ export function ProjectThumbnail({
         </div>
 
         {/* 텍스트 영역 - 호버 시 변경 없음 */}
-        <div css={textContainerCss}>
+        <div
+          css={[
+            textContainerCss,
+            textWrapperPadding && textContainerPaddingCss,
+            mainPageCard && mainPageTextContainerCss,
+          ]}
+        >
           <h3 css={titleCss}>{title}</h3>
           <p css={descriptionCss} dangerouslySetInnerHTML={{ __html: description }} />
         </div>
@@ -87,6 +99,15 @@ const articleCss = css`
   &:hover .thumbnail-overlay {
     opacity: 1;
   }
+`;
+
+/* Figma 82-4736: 메인 페이지 카드 - #fff 배경 + box-shadow, 같은 행의 가장 높은 카드에 맞춤 */
+const mainPageCardCss = css`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(47, 51, 55, 0.08);
 `;
 
 // 앞면 스타일
@@ -170,6 +191,10 @@ const textContainerCss = css`
   gap: 8px;
 `;
 
+const textContainerPaddingCss = css`
+  padding: 0 20px 20px 20px;
+`;
+
 const titleCss = css`
   font-family: 'Pretendard', sans-serif;
   font-weight: 700;
@@ -188,6 +213,17 @@ const descriptionCss = css`
   color: ${colors.grey18['900']};
   margin: 0;
   white-space: pre-wrap;
+`;
+
+/* 메인 페이지: frontFace가 article 높이 채움 */
+const mainPageFrontFaceCss = css`
+  flex: 1;
+  min-height: 0;
+`;
+
+/* 메인 페이지: 텍스트 영역이 남은 공간 채워 같은 행 카드 높이 맞춤 */
+const mainPageTextContainerCss = css`
+  flex: 1;
 `;
 
 const imageContainerCss = css`

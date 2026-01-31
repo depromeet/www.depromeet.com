@@ -49,7 +49,7 @@ export const ProjectsSection = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               css={cardWrapperCss}
             >
-              <ProjectThumbnail {...project} />
+              <ProjectThumbnail {...project} textWrapperPadding mainPageCard />
             </motion.div>
           ))}
         </div>
@@ -57,7 +57,10 @@ export const ProjectsSection = () => {
         <div css={buttonContainerCss}>
           <Link href="/project" css={viewAllButtonCss}>
             프로젝트 전체 보기
-            <ArrowRightIcon />
+            <ArrowRightIconDesktop />
+            <ArrowRightIconDesktopHover />
+            <ArrowRightIconMobile />
+            <ArrowRightIconMobileHover />
           </Link>
         </div>
       </div>
@@ -65,26 +68,137 @@ export const ProjectsSection = () => {
   );
 };
 
-const ArrowRightIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="12" cy="12" r="11" stroke="currentColor" strokeWidth="2" />
-    <path
-      d="M10 8L14 12L10 16"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
+const ArrowRightIconDesktop = () => (
+  <span css={desktopIconCss} data-icon="desktop-default">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <path
+        d="M16.0003 29.3337C23.3641 29.3337 29.3337 23.3641 29.3337 16.0003C29.3337 8.63653 23.3641 2.66699 16.0003 2.66699C8.63653 2.66699 2.66699 8.63653 2.66699 16.0003C2.66699 23.3641 8.63653 29.3337 16.0003 29.3337Z"
+        fill="#0078E7"
+      />
+      <path
+        d="M16 21.3337L21.3333 16.0003L16 10.667"
+        stroke="white"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M10.667 16H21.3337"
+        stroke="white"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </span>
 );
+
+const ArrowRightIconDesktopHover = () => (
+  <span css={desktopIconHoverCss} data-icon="desktop-hover">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <path
+        d="M16.0003 29.3337C23.3641 29.3337 29.3337 23.3641 29.3337 16.0003C29.3337 8.63653 23.3641 2.66699 16.0003 2.66699C8.63653 2.66699 2.66699 8.63653 2.66699 16.0003C2.66699 23.3641 8.63653 29.3337 16.0003 29.3337Z"
+        fill="white"
+      />
+      <path
+        d="M16 21.3337L21.3333 16.0003L16 10.667"
+        stroke="#0078E7"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M10.667 16H21.3337"
+        stroke="#0078E7"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </span>
+);
+
+const ArrowRightIconMobile = () => (
+  <span css={mobileIconCss} data-icon="mobile-default">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path
+        d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+        fill="#0078E7"
+      />
+      <path
+        d="M12 16L16 12L12 8"
+        stroke="white"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8 12H16"
+        stroke="white"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </span>
+);
+
+const ArrowRightIconMobileHover = () => (
+  <span css={mobileIconHoverCss} data-icon="mobile-hover">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path
+        d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+        fill="white"
+      />
+      <path
+        d="M12 16L16 12L12 8"
+        stroke="#0078E7"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8 12H16"
+        stroke="#0078E7"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </span>
+);
+
+const desktopIconCss = css`
+  display: none;
+
+  @media (min-width: 768px) {
+    display: flex;
+  }
+`;
+
+const desktopIconHoverCss = css`
+  display: none;
+`;
+
+const mobileIconCss = css`
+  display: flex;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+const mobileIconHoverCss = css`
+  display: none;
+`;
 
 const sectionCss = css`
   width: 100%;
-  padding: 120px 40px;
-  background: ${colors.grey18['00']};
+  padding: 120px 30px;
+  background: ${colors.primary18['extra-light']};
 
   ${mediaQuery('mobile')} {
-    padding: 60px 20px;
+    padding: 40px 20px;
   }
 `;
 
@@ -129,7 +243,7 @@ const subtitleCss = css`
   }
 `;
 
-/* 프로젝트 페이지와 동일한 그리드 스타일 */
+/* 프로젝트 페이지와 동일한 그리드 스타일, 같은 행 카드 높이 맞춤 */
 const gridCss = css`
   width: 100%;
   display: grid;
@@ -137,7 +251,7 @@ const gridCss = css`
   column-gap: 16px;
   row-gap: 60px;
   justify-items: stretch;
-  align-items: start;
+  align-items: stretch;
 
   @media (min-width: 768px) and (max-width: 1279px) {
     grid-template-columns: repeat(2, 1fr);
@@ -151,40 +265,63 @@ const gridCss = css`
 
 const cardWrapperCss = css`
   width: 100%;
+  height: 100%;
+  min-height: 0;
 `;
 
 const buttonContainerCss = css`
   display: flex;
   justify-content: center;
-  margin-top: 48px;
-
-  ${mediaQuery('mobile')} {
-    margin-top: 32px;
-  }
+  margin-top: 40px;
 `;
 
 const viewAllButtonCss = css`
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 16px 32px;
-  border: 1px solid ${colors.grey18['200']};
+  justify-content: center;
+  gap: 12px;
+  width: 287px;
+  height: 80px;
+  padding: 20px 30px;
+  border: 2px solid #e3e5e7;
   border-radius: 100px;
-  background: transparent;
+  background: #fff;
   color: ${colors.grey18['900']};
   font-family: Pretendard, sans-serif;
-  font-size: 16px;
+  font-size: 1.5rem;
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;
   transition: all 0.2s ease;
+  box-sizing: border-box;
 
   &:hover {
-    background: ${colors.grey18['100']};
+    background: #0078e7;
+    color: #fff;
+  }
+
+  @media (min-width: 768px) {
+    &:hover [data-icon='desktop-default'] {
+      display: none;
+    }
+    &:hover [data-icon='desktop-hover'] {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 767px) {
+    &:hover [data-icon='mobile-default'] {
+      display: none;
+    }
+    &:hover [data-icon='mobile-hover'] {
+      display: flex;
+    }
   }
 
   ${mediaQuery('mobile')} {
-    font-size: 14px;
-    padding: 12px 24px;
+    width: 199px;
+    height: 48px;
+    padding: 12px 20px;
+    font-size: 1rem;
   }
 `;
