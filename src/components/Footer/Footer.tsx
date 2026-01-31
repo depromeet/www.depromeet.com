@@ -34,10 +34,10 @@ export function Footer() {
         <div css={contentCss}>
           <div css={logoSectionCss}>
             <Image
-              src={'/images/17th/logo/depromeet-white.svg'}
+              src={'/images/18th/home/depromeet-white.png'}
               alt={'DEPROMEET'}
               width={200}
-              height={26}
+              height={42}
             />
             <div css={emailRowCss}>
               <span css={emailLabelCss}>Email</span>
