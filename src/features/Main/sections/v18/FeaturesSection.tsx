@@ -38,50 +38,46 @@ const FEATURES: FeatureItem[] = [
   },
 ];
 
-// Calculate track offset based on current index
-// Desktop: active=600px, inactive=400px, gap=56px
-// When index changes, previous images become inactive (400px)
+// Calculate track offset to always center the active image
+// Desktop: container ~1200px, active=600px, inactive=400px, gap=56px
 const getTrackOffset = (index: number) => {
+  const containerWidth = 1200;
+  const activeWidth = 600;
   const inactiveWidth = 400;
   const gap = 56;
 
-  // Slide 0: active at left edge
-  if (index === 0) return 0;
+  // Target: center the active image in the container
+  const targetX = (containerWidth - activeWidth) / 2; // 300px
+  // Position of active image in track (all previous are inactive)
+  const actualX = index * (inactiveWidth + gap);
 
-  // Slides 1, 2, 3: all images before active are inactive (400px each)
-  // We want to show partial inactive on the left for middle slides
-  const baseOffset = index * (inactiveWidth + gap);
-
-  // For middle slides, add extra offset to show part of previous image
-  // This centers the active image visually
-  if (index > 0 && index < FEATURES.length - 1) {
-    // Show about 200px of the previous inactive image on the left
-    return -(baseOffset - 200);
-  }
-
-  return -baseOffset;
+  return targetX - actualX;
 };
 
 const getTrackOffsetTablet = (index: number) => {
+  // Tablet: container ~676px (768 - 46*2 padding), active=600px
+  const containerWidth = 676;
+  const activeWidth = 600;
   const inactiveWidth = 400;
   const gap = 56;
 
-  if (index === 0) return 0;
+  const targetX = (containerWidth - activeWidth) / 2; // 38px
+  const actualX = index * (inactiveWidth + gap);
 
-  const baseOffset = index * (inactiveWidth + gap);
-
-  if (index > 0 && index < FEATURES.length - 1) {
-    return -(baseOffset - 150);
-  }
-
-  return -baseOffset;
+  return targetX - actualX;
 };
 
 const getTrackOffsetMobile = (index: number) => {
-  // Mobile: single image visible at a time
-  const imageWidth = 320;
+  // Mobile: container ~320px (360 - 20*2 padding), active=320px
+  const containerWidth = 320;
+  const activeWidth = 320;
+  const inactiveWidth = 320;
   const gap = 56;
-  return -(index * (imageWidth + gap));
+
+  const targetX = (containerWidth - activeWidth) / 2; // 0px (centered)
+  const actualX = index * (inactiveWidth + gap);
+
+  return targetX - actualX;
 };
 
 export const FeaturesSection = () => {
