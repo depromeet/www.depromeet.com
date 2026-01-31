@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
+import { colors } from '~/styles/colors';
 import { theme } from '~/styles/theme';
 
 type PaginationProps = {
@@ -158,7 +159,6 @@ export function Pagination({ handlePageClick, numberOfPages, currentPage }: Pagi
 
 const containerCss = css`
   width: 100%;
-  margin: 0 20px;
   display: flex;
   align-items: center;
   overflow-x: scroll;
@@ -204,7 +204,7 @@ const listItemCss = (selected: boolean) => css`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${selected ? theme.colors.grey[900] : theme.colors.grey[500]};
+  color: ${selected ? colors.grey18['900'] : colors.grey18['300']};
 `;
 
 const arrowButtonCss = (disabled: boolean) => css`
