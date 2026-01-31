@@ -89,14 +89,10 @@ const desktopIconCss = css`
 const sectionCss = css`
   width: 100%;
   padding: 40px 24px;
-  background: ${colors.grey18['00']};
+  background: ${colors.primary18['extra-light']};
 
   @media (min-width: 768px) {
     padding: 120px 40px;
-  }
-
-  @media (min-width: 1280px) {
-    background: ${colors.primary18['extra-light']};
   }
 `;
 

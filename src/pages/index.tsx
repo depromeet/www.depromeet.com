@@ -1,7 +1,6 @@
 import { SEO } from '~/components/SEO';
 import {
   BrandingSection,
-  ContactSection,
   FAQSection,
   FeaturesSection,
   HeroSection,
@@ -23,7 +22,6 @@ export default function Root() {
         <SessionsSection />
         <ProjectsSection />
         <FAQSection />
-        <ContactSection />
         <SponsorsSection />
       </main>
     </>
