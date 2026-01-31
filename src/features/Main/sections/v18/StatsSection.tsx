@@ -64,6 +64,8 @@ const StatCard = ({
     return value;
   };
 
+  const finalFormatted = formatValue(stat.value);
+
   return (
     <motion.div
       css={cardCss}
@@ -74,7 +76,10 @@ const StatCard = ({
     >
       <span css={labelCss}>{stat.label}</span>
       <div css={valueCss}>
-        <span css={numberCss}>{formatValue(count)}</span>
+        <span css={numberWrapperCss}>
+          <span css={numberHiddenCss}>{finalFormatted}</span>
+          <span css={numberCss}>{formatValue(count)}</span>
+        </span>
         <span css={suffixCss}>{stat.suffix}</span>
       </div>
     </motion.div>
@@ -187,26 +192,38 @@ const cardCss = css`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 32px 24px;
-  background: ${colors.grey18['00']};
-  border-radius: 16px;
+  padding: 28px 0;
+  gap: 10px;
+  border-radius: 12px;
+  background: ${colors.grey18['100']};
   text-align: center;
 
-  ${mediaQuery('mobile')} {
-    padding: 24px 16px;
+  @media (min-width: 768px) {
+    height: 230px;
+    padding: 40px 24px;
+    gap: 20px;
+  }
+
+  @media (min-width: 1280px) {
+    height: auto;
+    flex: 1 0 0;
+    background: #fff;
+    box-shadow: 0 8px 32px 0 rgba(47, 51, 55, 0.1);
   }
 `;
 
 const labelCss = css`
   font-family: Pretendard, sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
-  color: ${colors.grey18['600']};
-  margin-bottom: 12px;
+  line-height: 150%;
+  letter-spacing: -0.12px;
+  color: ${colors.grey18['800']};
 
-  ${mediaQuery('mobile')} {
-    font-size: 12px;
-    margin-bottom: 8px;
+  @media (min-width: 768px) {
+    font-size: 20px;
+    line-height: 140%;
+    letter-spacing: normal;
   }
 `;
 
@@ -216,25 +233,54 @@ const valueCss = css`
   gap: 4px;
 `;
 
-const numberCss = css`
-  font-family: Pretendard, sans-serif;
-  font-size: 48px;
-  font-weight: 700;
-  color: ${colors.grey18['900']};
-  line-height: 1;
+const numberWrapperCss = css`
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+`;
 
-  ${mediaQuery('mobile')} {
-    font-size: 32px;
+const numberHiddenCss = css`
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 140%;
+  letter-spacing: -0.4px;
+  font-variant-numeric: tabular-nums;
+  visibility: hidden;
+
+  @media (min-width: 768px) {
+    font-size: 88px;
+    line-height: 100%;
+    letter-spacing: -3.52px;
+  }
+`;
+
+const numberCss = css`
+  position: absolute;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 140%;
+  letter-spacing: -0.4px;
+  color: ${colors.grey18['900']};
+  font-variant-numeric: tabular-nums;
+
+  @media (min-width: 768px) {
+    font-size: 88px;
+    line-height: 100%;
+    letter-spacing: -3.52px;
   }
 `;
 
 const suffixCss = css`
   font-family: Pretendard, sans-serif;
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 140%;
   color: ${colors.grey18['900']};
 
-  ${mediaQuery('mobile')} {
-    font-size: 18px;
+  @media (min-width: 768px) {
+    font-size: 36px;
+    letter-spacing: 0.36px;
   }
 `;
