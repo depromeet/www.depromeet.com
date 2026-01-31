@@ -3,16 +3,13 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 
-import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import useIsInProgress from '~/hooks/useIsInProgress';
 import { colors } from '~/styles/colors';
-import { mediaQuery } from '~/styles/media';
 import { getPathToRecruit } from '~/utils/utils';
 
 export const HeroSection = () => {
   const [isClientReady, setIsClientReady] = useState(false);
   const router = useRouter();
-  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
   const { progressState } = useIsInProgress();
   const { label, action } = getPathToRecruit(router, progressState);
 
@@ -40,8 +37,8 @@ export const HeroSection = () => {
           <Image
             src="/images/18th/home/keyring.png"
             alt="키링"
-            width={isMobileSize ? 458 : 814}
-            height={isMobileSize ? 534 : 949}
+            width={1042}
+            height={1215}
             priority
             css={keyringImageCss}
           />
@@ -50,8 +47,7 @@ export const HeroSection = () => {
         <div css={logoContainerCss}>
           <h1 css={logoCss}>
             <span css={logoTextCss}>DEPRO</span>
-            <span css={logoTextCss}>MEET</span>
-            <span css={logoNumberCss}>18</span>
+            <span css={logoTextCss}>MEET<span css={logoNumberCss}>18</span></span>
           </h1>
         </div>
 
@@ -63,178 +59,198 @@ export const HeroSection = () => {
   );
 };
 
+const GNB_HEIGHT = 56;
+
+// Breakpoints:
+// Mobile: <= 360px
+// Tablet: 361px - 768px
+// Desktop: >= 769px
+// Large Desktop: >= 1920px
+
 const sectionCss = css`
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  height: 812px;
   overflow: hidden;
-  background: linear-gradient(180deg, #a8d4ff 0%, #d4e9ff 50%, #e8f4ff 100%);
+  background: linear-gradient(141deg, #5AAFFF 22.58%, #DFEEFF 86.28%);
+
+  @media (min-width: 361px) {
+    height: 1024px;
+  }
+
+  @media (min-width: 769px) {
+    height: 800px;
+  }
+
+  @media (min-width: 1920px) {
+    height: 937px;
+  }
 `;
 
 const contentCss = css`
   position: relative;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   max-width: 1920px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  padding-bottom: 40px;
-
-  ${mediaQuery('mobile')} {
-    padding-bottom: 32px;
-  }
 `;
 
 const taglineCss = (position: 'left' | 'right') => css`
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 48px;
+  font-size: 24px;
   font-weight: 400;
   line-height: 1;
-  color: ${colors.grey18['900']};
+  color: ${colors.grey18['00']};
   letter-spacing: -0.02em;
+  top: ${GNB_HEIGHT + 20}px;
 
   ${position === 'left' &&
   css`
-    left: 40px;
+    left: 20px;
     text-align: left;
   `}
 
   ${position === 'right' &&
   css`
-    right: 40px;
+    right: 20px;
     text-align: right;
   `}
 
-  ${mediaQuery('tablet')} {
+  @media (min-width: 361px) {
     font-size: 36px;
+    top: ${GNB_HEIGHT + 53}px;
+    left: ${position === 'left' ? '40px' : 'auto'};
+    right: ${position === 'right' ? '40px' : 'auto'};
   }
 
-  ${mediaQuery('mobile')} {
-    font-size: 24px;
-    top: 92px;
-    transform: none;
+  @media (min-width: 769px) {
+    font-size: 48px;
+    top: auto;
+    bottom: 166px;
+  }
 
-    ${position === 'left' &&
-    css`
-      left: 20px;
-    `}
-
-    ${position === 'right' &&
-    css`
-      right: 20px;
-    `}
+  @media (min-width: 1920px) {
+    bottom: 152px;
   }
 `;
 
 const keyringContainerCss = css`
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 50%;
-  transform: translate(-50%, -55%);
-  z-index: 1;
+  transform: translateX(-50%);
+  z-index: 3;
 
-  ${mediaQuery('mobile')} {
-    transform: translate(-50%, -50%);
-    top: 45%;
+  @media (min-width: 769px) {
+    top: -221px;
+  }
+
+  @media (min-width: 1920px) {
+    top: -310px;
   }
 `;
 
 const keyringImageCss = css`
   object-fit: contain;
-  max-width: 100%;
-  height: auto;
+  width: 458px;
+  height: 534px;
 
-  ${mediaQuery('mobile')} {
-    width: 100%;
-    max-width: 360px;
+  @media (min-width: 361px) {
+    width: 645px;
+    height: 752px;
+  }
+
+  @media (min-width: 769px) {
+    width: 814px;
+    height: 949px;
+  }
+
+  @media (min-width: 1920px) {
+    width: 1042px;
+    height: 1215px;
   }
 `;
 
 const logoContainerCss = css`
-  position: relative;
+  position: absolute;
   z-index: 2;
-  margin-bottom: 40px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  bottom: 141px;
 
-  ${mediaQuery('mobile')} {
-    margin-bottom: 24px;
+  @media (min-width: 361px) {
+    bottom: 141px;
+  }
+
+  @media (min-width: 769px) {
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%);
   }
 `;
 
 const logoCss = css`
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: baseline;
-  gap: 0 24px;
+  flex-direction: column;
+  align-items: center;
   font-family: 'Bebas Neue', sans-serif;
   font-weight: 400;
   line-height: 1;
-  color: ${colors.grey18['900']};
+  color: ${colors.grey18['00']};
+  text-align: center;
 
-  ${mediaQuery('mobile')} {
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
+  @media (min-width: 769px) {
+    flex-direction: row;
+    justify-content: center;
   }
 `;
 
 const logoTextCss = css`
-  font-size: 160px;
+  font-size: 72px;
   letter-spacing: -0.02em;
 
-  ${mediaQuery('tablet')} {
+  @media (min-width: 361px) {
     font-size: 120px;
   }
 
-  ${mediaQuery('mobile')} {
-    font-size: 72px;
+  @media (min-width: 769px) {
+    font-size: 160px;
   }
 `;
 
 const logoNumberCss = css`
-  font-size: 160px;
   letter-spacing: -0.02em;
-
-  ${mediaQuery('tablet')} {
-    font-size: 120px;
-  }
-
-  ${mediaQuery('mobile')} {
-    font-size: 72px;
-  }
 `;
 
 const ctaButtonCss = css`
-  position: relative;
+  position: absolute;
   z-index: 10;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 52px;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 48px;
+  height: 60px;
+  padding: 0 40px;
   border-radius: 100px;
   border: none;
   background: ${colors.grey18['900']};
   color: ${colors.grey18['00']};
   font-family: Pretendard, sans-serif;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
-  line-height: 1.4;
+  white-space: nowrap;
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover {
     background: ${colors.grey18['800']};
-    transform: translateY(-2px);
   }
 
-  ${mediaQuery('mobile')} {
-    padding: 16px 40px;
-    font-size: 16px;
+  @media (min-width: 361px) {
+    display: none;
   }
 `;
