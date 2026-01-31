@@ -107,25 +107,31 @@ export const SessionsSection = () => {
             </AnimatePresence>
           </div>
           <div css={mobileInfoContainerCss}>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
+            {SESSIONS.map((session, index) => (
+              <div
+                key={index}
+                css={css`
+                  position: absolute;
+                  inset: 0;
+                  display: flex;
+                  flex-direction: column;
+                  gap: 16px;
+                  opacity: ${index === currentIndex ? 1 : 0};
+                  transition: opacity 0.3s ease;
+                  pointer-events: ${index === currentIndex ? 'auto' : 'none'};
+                `}
               >
-                <h3 css={sessionTitleCss}>{currentSession.title}</h3>
+                <h3 css={sessionTitleCss}>{session.title}</h3>
                 <p css={sessionDescriptionCss}>
-                  {currentSession.description.map((line, i) => (
+                  {session.description.map((line, i) => (
                     <span key={i}>
                       {line}
-                      {i < currentSession.description.length - 1 && <br />}
+                      {i < session.description.length - 1 && <br />}
                     </span>
                   ))}
                 </p>
-              </motion.div>
-            </AnimatePresence>
+              </div>
+            ))}
           </div>
           <div css={stepperCss}>
             <button css={stepperButtonCss} onClick={handlePrev} aria-label="이전">
@@ -274,9 +280,8 @@ const mobileImageContainerCss = css`
 `;
 
 const mobileInfoContainerCss = css`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+  position: relative;
+  min-height: 130px;
 `;
 
 const stepperCss = css`
