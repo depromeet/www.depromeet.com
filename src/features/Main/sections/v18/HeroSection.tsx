@@ -7,6 +7,9 @@ import useIsInProgress from '~/hooks/useIsInProgress';
 import { colors } from '~/styles/colors';
 import { getPathToRecruit } from '~/utils/utils';
 
+import HeroTextSvg from '../../../../../public/images/18th/home/heroText.svg';
+import HeroText2Svg from '../../../../../public/images/18th/home/heroText2.svg';
+
 export const HeroSection = () => {
   const [isClientReady, setIsClientReady] = useState(false);
   const router = useRouter();
@@ -45,10 +48,8 @@ export const HeroSection = () => {
         </div>
 
         <div css={logoContainerCss}>
-          <h1 css={logoCss}>
-            <span css={logoTextCss}>DEPRO</span>
-            <span css={logoTextCss}>MEET<span css={logoNumberCss}>18</span></span>
-          </h1>
+          <HeroTextSvg css={heroTextCss} aria-label="DEPROMEET 18" />
+          <HeroText2Svg css={heroText2Css} aria-label="DEPROMEET 18" />
         </div>
 
         <button css={ctaButtonCss} onClick={action}>
@@ -72,7 +73,7 @@ const sectionCss = css`
   width: 100%;
   height: 812px;
   overflow: hidden;
-  background: linear-gradient(141deg, #5AAFFF 22.58%, #DFEEFF 86.28%);
+  background: linear-gradient(141deg, #5aafff 22.58%, #dfeeff 86.28%);
 
   @media (min-width: 768px) {
     height: 1024px;
@@ -175,53 +176,48 @@ const keyringImageCss = css`
 const logoContainerCss = css`
   position: absolute;
   z-index: 2;
-  left: 0;
-  right: 0;
-  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 54px);
   bottom: 141px;
+  display: flex;
+  justify-content: center;
 
   @media (min-width: 768px) {
+    width: calc(100% - 278px);
     bottom: 92px;
   }
 
   @media (min-width: 1280px) {
+    width: calc(100% - 80px);
     bottom: auto;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translate(-50%, -50%);
   }
 `;
 
-const logoCss = css`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 500;
-  line-height: 1;
-  color: ${colors.grey18['00']};
-  text-align: center;
+const heroTextCss = css`
+  display: none;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  flex-shrink: 0;
 
   @media (min-width: 1280px) {
-    flex-direction: row;
-    justify-content: center;
+    display: block;
   }
 `;
 
-const logoTextCss = css`
-  font-size: 72px;
-  letter-spacing: -0.02em;
-
-  @media (min-width: 768px) {
-    font-size: 120px;
-  }
+const heroText2Css = css`
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  flex-shrink: 0;
 
   @media (min-width: 1280px) {
-    font-size: 160px;
+    display: none;
   }
-`;
-
-const logoNumberCss = css`
-  letter-spacing: -0.02em;
 `;
 
 const ctaButtonCss = css`
