@@ -14,7 +14,7 @@ const globalCss = css`
 
   html,
   body {
-    background-color: #5AAFFF;
+    background-color: #5aafff;
   }
 
   :root {
