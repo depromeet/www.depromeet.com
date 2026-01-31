@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
 interface Sponsor {
@@ -87,15 +88,15 @@ export const SponsorsSection = () => {
 
 const ArrowIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="12" cy="12" r="11" stroke="#2196F3" strokeWidth="1.5" />
-    <path d="M10 8L14 12L10 16" stroke="#2196F3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <circle cx="12" cy="12" r="11" stroke={colors.primary18.strong} strokeWidth="1.5" />
+    <path d="M10 8L14 12L10 16" stroke={colors.primary18.strong} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
 const sectionCss = css`
   width: 100%;
   padding: 120px 40px;
-  background: #ffffff;
+  background: ${colors.grey18['00']};
 
   ${mediaQuery('mobile')} {
     padding: 60px 20px;
@@ -112,7 +113,7 @@ const titleCss = css`
   font-family: Pretendard, sans-serif;
   font-size: 32px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: ${colors.grey18['900']};
   margin-bottom: 16px;
 
   ${mediaQuery('tablet')} {
@@ -129,7 +130,7 @@ const subtitleCss = css`
   font-family: Pretendard, sans-serif;
   font-size: 16px;
   font-weight: 400;
-  color: #666666;
+  color: ${colors.grey18['600']};
   margin-bottom: 60px;
 
   ${mediaQuery('mobile')} {
@@ -191,7 +192,7 @@ const inquiryButtonCss = css`
   align-items: center;
   gap: 8px;
   padding: 16px 32px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid ${colors.grey18['200']};
   border-radius: 100px;
   background: transparent;
   cursor: pointer;
@@ -199,10 +200,10 @@ const inquiryButtonCss = css`
   font-family: Pretendard, sans-serif;
   font-size: 16px;
   font-weight: 500;
-  color: #1a1a1a;
+  color: ${colors.grey18['900']};
 
   &:hover {
-    background: #f5f5f5;
+    background: ${colors.grey18['100']};
   }
 
   ${mediaQuery('mobile')} {

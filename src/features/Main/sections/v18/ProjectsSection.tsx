@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
 interface ProjectItem {
@@ -114,7 +115,7 @@ const ArrowRightIcon = () => (
 const sectionCss = css`
   width: 100%;
   padding: 120px 40px;
-  background: #ffffff;
+  background: ${colors.grey18['00']};
 
   ${mediaQuery('mobile')} {
     padding: 60px 20px;
@@ -138,7 +139,7 @@ const titleCss = css`
   font-family: Pretendard, sans-serif;
   font-size: 32px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: ${colors.grey18['900']};
   margin-bottom: 12px;
 
   ${mediaQuery('tablet')} {
@@ -155,7 +156,7 @@ const subtitleCss = css`
   font-family: Pretendard, sans-serif;
   font-size: 16px;
   font-weight: 400;
-  color: #666666;
+  color: ${colors.grey18['600']};
 
   ${mediaQuery('mobile')} {
     font-size: 14px;
@@ -208,7 +209,7 @@ const projectNameCss = css`
   font-family: Pretendard, sans-serif;
   font-size: 20px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: ${colors.grey18['900']};
   margin-bottom: 8px;
 
   ${mediaQuery('mobile')} {
@@ -220,7 +221,7 @@ const projectDescriptionCss = css`
   font-family: Pretendard, sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: #666666;
+  color: ${colors.grey18['600']};
   line-height: 1.6;
 `;
 
@@ -239,10 +240,10 @@ const viewAllButtonCss = css`
   align-items: center;
   gap: 8px;
   padding: 16px 32px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid ${colors.grey18['200']};
   border-radius: 100px;
   background: transparent;
-  color: #1a1a1a;
+  color: ${colors.grey18['900']};
   font-family: Pretendard, sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -251,7 +252,7 @@ const viewAllButtonCss = css`
   transition: all 0.2s ease;
 
   &:hover {
-    background: #f5f5f5;
+    background: ${colors.grey18['100']};
   }
 
   ${mediaQuery('mobile')} {

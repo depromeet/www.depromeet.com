@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
 interface FeatureItem {
@@ -82,7 +83,7 @@ export const FeaturesSection = () => {
 const sectionCss = css`
   width: 100%;
   padding: 120px 40px;
-  background: #ffffff;
+  background: ${colors.grey18['00']};
 
   ${mediaQuery('mobile')} {
     padding: 60px 20px;
@@ -98,7 +99,7 @@ const titleCss = css`
   font-family: Pretendard, sans-serif;
   font-size: 32px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: ${colors.grey18['900']};
   margin-bottom: 48px;
 
   ${mediaQuery('tablet')} {
@@ -162,7 +163,7 @@ const cardTitleCss = css`
   font-family: Pretendard, sans-serif;
   font-size: 18px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: ${colors.grey18['900']};
   line-height: 1.4;
   margin-bottom: 12px;
 
@@ -176,7 +177,7 @@ const cardDescriptionCss = css`
   font-family: Pretendard, sans-serif;
   font-size: 14px;
   font-weight: 400;
-  color: #666666;
+  color: ${colors.grey18['600']};
   line-height: 1.6;
 
   ${mediaQuery('mobile')} {

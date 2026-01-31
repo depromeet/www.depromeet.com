@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
 export const BrandingSection = () => {
@@ -42,7 +43,7 @@ export const BrandingSection = () => {
 const sectionCss = css`
   width: 100%;
   padding: 120px 40px;
-  background: #ffffff;
+  background: ${colors.grey18['00']};
 
   ${mediaQuery('mobile')} {
     padding: 80px 20px;
@@ -63,7 +64,7 @@ const headingCss = css`
   font-size: 80px;
   font-weight: 400;
   line-height: 1.2;
-  color: #2196f3;
+  color: ${colors.primary18.strong};
   text-align: center;
   letter-spacing: -0.02em;
 
@@ -82,7 +83,7 @@ const subheadingCss = css`
   font-size: 24px;
   font-weight: 500;
   line-height: 1.5;
-  color: #2196f3;
+  color: ${colors.primary18.strong};
   text-align: center;
 
   ${mediaQuery('tablet')} {

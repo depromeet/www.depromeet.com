@@ -5,6 +5,7 @@ import { css } from '@emotion/react';
 
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import useIsInProgress from '~/hooks/useIsInProgress';
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 import { getPathToRecruit } from '~/utils/utils';
 
@@ -95,7 +96,7 @@ const taglineCss = (position: 'left' | 'right') => css`
   font-size: 48px;
   font-weight: 400;
   line-height: 1;
-  color: #1a1a1a;
+  color: ${colors.grey18['900']};
   letter-spacing: -0.02em;
 
   ${position === 'left' &&
@@ -174,7 +175,7 @@ const logoCss = css`
   font-family: 'Bebas Neue', sans-serif;
   font-weight: 400;
   line-height: 1;
-  color: #1a1a1a;
+  color: ${colors.grey18['900']};
 
   ${mediaQuery('mobile')} {
     flex-direction: column;
@@ -218,8 +219,8 @@ const ctaButtonCss = css`
   padding: 20px 48px;
   border-radius: 100px;
   border: none;
-  background: #1a1a1a;
-  color: #ffffff;
+  background: ${colors.grey18['900']};
+  color: ${colors.grey18['00']};
   font-family: Pretendard, sans-serif;
   font-size: 20px;
   font-weight: 600;
@@ -228,7 +229,7 @@ const ctaButtonCss = css`
   transition: all 0.2s ease;
 
   &:hover {
-    background: #333333;
+    background: ${colors.grey18['800']};
     transform: translateY(-2px);
   }
 

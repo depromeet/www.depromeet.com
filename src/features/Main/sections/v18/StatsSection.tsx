@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { css } from '@emotion/react';
 import { motion, useInView } from 'framer-motion';
 
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
 interface StatItem {
@@ -102,7 +103,7 @@ export const StatsSection = () => {
 const sectionCss = css`
   width: 100%;
   padding: 120px 40px;
-  background: #f5f5f5;
+  background: ${colors.grey18['100']};
 
   ${mediaQuery('mobile')} {
     padding: 60px 20px;
@@ -119,7 +120,7 @@ const descriptionCss = css`
   font-size: 32px;
   font-weight: 600;
   line-height: 1.5;
-  color: #1a1a1a;
+  color: ${colors.grey18['900']};
   text-align: center;
   margin-bottom: 60px;
 
@@ -158,7 +159,7 @@ const cardCss = css`
   align-items: center;
   justify-content: center;
   padding: 32px 24px;
-  background: #ffffff;
+  background: ${colors.grey18['00']};
   border-radius: 16px;
   text-align: center;
 
@@ -171,7 +172,7 @@ const labelCss = css`
   font-family: Pretendard, sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: #666666;
+  color: ${colors.grey18['600']};
   margin-bottom: 12px;
 
   ${mediaQuery('mobile')} {
@@ -190,7 +191,7 @@ const numberCss = css`
   font-family: Pretendard, sans-serif;
   font-size: 48px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: ${colors.grey18['900']};
   line-height: 1;
 
   ${mediaQuery('mobile')} {
@@ -202,7 +203,7 @@ const suffixCss = css`
   font-family: Pretendard, sans-serif;
   font-size: 24px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: ${colors.grey18['900']};
 
   ${mediaQuery('mobile')} {
     font-size: 18px;

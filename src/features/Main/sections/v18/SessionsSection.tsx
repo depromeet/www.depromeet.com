@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 import { AnimatePresence, motion } from 'framer-motion';
 
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
 interface SessionItem {
@@ -135,7 +136,7 @@ const ChevronRight = () => (
 const sectionCss = css`
   width: 100%;
   padding: 120px 40px;
-  background: #ffffff;
+  background: ${colors.grey18['00']};
 
   ${mediaQuery('mobile')} {
     padding: 60px 20px;
@@ -151,7 +152,7 @@ const titleCss = css`
   font-family: Pretendard, sans-serif;
   font-size: 32px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: ${colors.grey18['900']};
   margin-bottom: 48px;
 
   ${mediaQuery('tablet')} {
@@ -219,7 +220,7 @@ const sessionTitleCss = css`
   font-family: 'Bebas Neue', sans-serif;
   font-size: 48px;
   font-weight: 400;
-  color: #1a1a1a;
+  color: ${colors.grey18['900']};
   margin-bottom: 24px;
 
   ${mediaQuery('tablet')} {
@@ -236,7 +237,7 @@ const sessionDescriptionCss = css`
   font-family: Pretendard, sans-serif;
   font-size: 18px;
   font-weight: 400;
-  color: #666666;
+  color: ${colors.grey18['600']};
   line-height: 1.6;
   white-space: pre-line;
 
@@ -257,15 +258,15 @@ const stepperButtonCss = css`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #e0e0e0;
+  border: 1px solid ${colors.grey18['200']};
   border-radius: 50%;
   background: transparent;
-  color: #1a1a1a;
+  color: ${colors.grey18['900']};
   cursor: pointer;
   transition: all 0.2s ease;
 
   &:hover {
-    background: #f5f5f5;
+    background: ${colors.grey18['100']};
   }
 `;
 
@@ -276,13 +277,13 @@ const stepperTextCss = css`
   font-family: Pretendard, sans-serif;
   font-size: 16px;
   font-weight: 500;
-  color: #999999;
+  color: ${colors.grey18['500']};
   min-width: 60px;
   justify-content: center;
 `;
 
 const currentNumberCss = css`
-  color: #1a1a1a;
+  color: ${colors.grey18['900']};
 `;
 
 const dividerCss = css`

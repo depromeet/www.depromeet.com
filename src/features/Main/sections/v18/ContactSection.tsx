@@ -1,6 +1,7 @@
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
 const KAKAO_CHANNEL_URL = 'https://pf.kakao.com/_xoxmcxjs';
@@ -77,15 +78,15 @@ const EmailIcon = () => (
 
 const ArrowIcon = () => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="12" cy="12" r="11" stroke="#2196F3" strokeWidth="1.5" />
-    <path d="M10 8L14 12L10 16" stroke="#2196F3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+    <circle cx="12" cy="12" r="11" stroke={colors.primary18.strong} strokeWidth="1.5" />
+    <path d="M10 8L14 12L10 16" stroke={colors.primary18.strong} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
 const sectionCss = css`
   width: 100%;
   padding: 80px 40px;
-  background: #ffffff;
+  background: ${colors.grey18['00']};
 
   ${mediaQuery('mobile')} {
     padding: 60px 20px;
@@ -102,7 +103,7 @@ const titleCss = css`
   font-family: Pretendard, sans-serif;
   font-size: 32px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: ${colors.grey18['900']};
   margin-bottom: 40px;
 
   ${mediaQuery('tablet')} {
@@ -131,19 +132,19 @@ const contactButtonCss = css`
   align-items: center;
   gap: 12px;
   padding: 20px 32px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid ${colors.grey18['200']};
   border-radius: 100px;
-  background: #ffffff;
+  background: ${colors.grey18['00']};
   cursor: pointer;
   transition: all 0.2s ease;
   font-family: Pretendard, sans-serif;
   font-size: 16px;
   font-weight: 500;
-  color: #1a1a1a;
+  color: ${colors.grey18['900']};
 
   &:hover {
-    background: #f5f5f5;
-    border-color: #d0d0d0;
+    background: ${colors.grey18['100']};
+    border-color: ${colors.grey18['300']};
   }
 
   ${mediaQuery('mobile')} {

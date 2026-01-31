@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { css } from '@emotion/react';
 import { AnimatePresence, motion } from 'framer-motion';
 
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
 type FAQCategory = '지원자격' | '면접관련' | '활동관련';
@@ -143,7 +144,7 @@ const ArrowIcon = () => (
 const sectionCss = css`
   width: 100%;
   padding: 120px 40px;
-  background: #ffffff;
+  background: ${colors.grey18['00']};
 
   ${mediaQuery('mobile')} {
     padding: 60px 20px;
@@ -159,7 +160,7 @@ const titleCss = css`
   font-family: Pretendard, sans-serif;
   font-size: 32px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: ${colors.grey18['900']};
   text-align: center;
   margin-bottom: 48px;
 
@@ -177,7 +178,7 @@ const tabsCss = css`
   display: flex;
   gap: 0;
   margin-bottom: 24px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid ${colors.grey18['200']};
 `;
 
 const tabCss = (isActive: boolean) => css`
@@ -187,7 +188,7 @@ const tabCss = (isActive: boolean) => css`
   font-family: Pretendard, sans-serif;
   font-size: 16px;
   font-weight: ${isActive ? 600 : 400};
-  color: ${isActive ? '#1a1a1a' : '#999999'};
+  color: ${isActive ? colors.grey18['900'] : colors.grey18['500']};
   cursor: pointer;
   position: relative;
   transition: color 0.2s ease;
@@ -199,12 +200,12 @@ const tabCss = (isActive: boolean) => css`
     left: 24px;
     right: 24px;
     height: 2px;
-    background: ${isActive ? '#1a1a1a' : 'transparent'};
+    background: ${isActive ? colors.grey18['900'] : 'transparent'};
     transition: background 0.2s ease;
   }
 
   &:hover {
-    color: #1a1a1a;
+    color: ${colors.grey18['900']};
   }
 
   ${mediaQuery('mobile')} {
@@ -225,7 +226,7 @@ const faqListCss = css`
 `;
 
 const faqItemCss = css`
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid ${colors.grey18['100']};
 `;
 
 const faqQuestionCss = css`
@@ -241,11 +242,11 @@ const faqQuestionCss = css`
   font-family: Pretendard, sans-serif;
   font-size: 16px;
   font-weight: 500;
-  color: #1a1a1a;
+  color: ${colors.grey18['900']};
   transition: background 0.2s ease;
 
   &:hover {
-    background: #fafafa;
+    background: ${colors.grey18['100']};
   }
 
   ${mediaQuery('mobile')} {
@@ -258,7 +259,7 @@ const arrowCss = css`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #999999;
+  color: ${colors.grey18['500']};
   flex-shrink: 0;
 `;
 
@@ -270,7 +271,7 @@ const faqAnswerCss = css`
     font-family: Pretendard, sans-serif;
     font-size: 14px;
     font-weight: 400;
-    color: #666666;
+    color: ${colors.grey18['600']};
     line-height: 1.6;
 
     ${mediaQuery('mobile')} {
