@@ -39,42 +39,49 @@ const FEATURES: FeatureItem[] = [
 ];
 
 // Calculate track offset based on current index
+// Desktop: active=600px, inactive=400px, gap=56px
+// When index changes, previous images become inactive (400px)
 const getTrackOffset = (index: number) => {
-  // Desktop: active image is 600px, inactive is 400px, gap is 56px
-  // Position 0: offset 0 (first image active)
-  // Position 1: offset -(600 + 56) = -656 (second image active)
-  // Position 2: offset -(600 + 56 + 400 + 56) = -1112 (third image active)
-  // Position 3: offset -(600 + 56 + 400 + 56 + 400 + 56) = -1568 (fourth image active)
-  const activeWidth = 600;
   const inactiveWidth = 400;
   const gap = 56;
 
+  // Slide 0: active at left edge
   if (index === 0) return 0;
-  // First move past the first image (which becomes inactive) + gap
-  let offset = activeWidth + gap;
-  // Then add inactive widths + gaps for each subsequent position
-  for (let i = 1; i < index; i++) {
-    offset += inactiveWidth + gap;
+
+  // Slides 1, 2, 3: all images before active are inactive (400px each)
+  // We want to show partial inactive on the left for middle slides
+  const baseOffset = index * (inactiveWidth + gap);
+
+  // For middle slides, add extra offset to show part of previous image
+  // This centers the active image visually
+  if (index > 0 && index < FEATURES.length - 1) {
+    // Show about 200px of the previous inactive image on the left
+    return -(baseOffset - 200);
   }
-  return -offset;
+
+  return -baseOffset;
 };
 
 const getTrackOffsetTablet = (index: number) => {
-  const activeWidth = 600;
   const inactiveWidth = 400;
   const gap = 56;
 
   if (index === 0) return 0;
-  let offset = activeWidth + gap;
-  for (let i = 1; i < index; i++) {
-    offset += inactiveWidth + gap;
+
+  const baseOffset = index * (inactiveWidth + gap);
+
+  if (index > 0 && index < FEATURES.length - 1) {
+    return -(baseOffset - 150);
   }
-  return -offset;
+
+  return -baseOffset;
 };
 
 const getTrackOffsetMobile = (index: number) => {
-  // Mobile: single image 320px + gap 56px
-  return -(index * (320 + 56));
+  // Mobile: single image visible at a time
+  const imageWidth = 320;
+  const gap = 56;
+  return -(index * (imageWidth + gap));
 };
 
 export const FeaturesSection = () => {
