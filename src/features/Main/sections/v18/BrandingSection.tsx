@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { css } from '@emotion/react';
 import { motion, useInView } from 'framer-motion';
 
@@ -18,37 +18,55 @@ const revealVariants = {
   },
 };
 
-const transition = {
+const enterTransition = {
   duration: 0.9,
   ease: [0.25, 0.1, 0.25, 1],
+};
+
+const exitTransition = {
+  duration: 0,
 };
 
 export const BrandingSection = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { amount: 0.4 });
+  const isOutOfView = useInView(sectionRef, { amount: 0 });
+  const [shouldAnimate, setShouldAnimate] = useState(false);
+  const [hasAnimated, setHasAnimated] = useState(false);
+
+  useEffect(() => {
+    if (isInView && !hasAnimated) {
+      setShouldAnimate(true);
+      setHasAnimated(true);
+    }
+    if (!isOutOfView && hasAnimated) {
+      setShouldAnimate(false);
+      setHasAnimated(false);
+    }
+  }, [isInView, isOutOfView, hasAnimated]);
 
   return (
     <section css={sectionCss} ref={sectionRef}>
       <div css={innerCss}>
         <div css={contentCss}>
           <motion.div
-            animate={isInView ? 'visible' : 'hidden'}
+            animate={shouldAnimate ? 'visible' : 'hidden'}
             variants={revealVariants}
-            transition={transition}
+            transition={shouldAnimate ? enterTransition : exitTransition}
           >
             <h2 css={headingCss}>Connect the ring</h2>
           </motion.div>
           <motion.div
-            animate={isInView ? 'visible' : 'hidden'}
+            animate={shouldAnimate ? 'visible' : 'hidden'}
             variants={revealVariants}
-            transition={{ ...transition, delay: 0.15 }}
+            transition={shouldAnimate ? { ...enterTransition, delay: 0.15 } : exitTransition}
           >
             <h2 css={headingCss}>Find your key&nbsp;</h2>
           </motion.div>
           <motion.div
-            animate={isInView ? 'visible' : 'hidden'}
+            animate={shouldAnimate ? 'visible' : 'hidden'}
             variants={revealVariants}
-            transition={{ ...transition, delay: 0.3 }}
+            transition={shouldAnimate ? { ...enterTransition, delay: 0.3 } : exitTransition}
           >
             <p css={subheadingCss}>연결의 가치를 성장의 열쇠로</p>
           </motion.div>
