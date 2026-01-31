@@ -1,9 +1,0 @@
-export { BrandingSection } from './BrandingSection';
-export { ContactSection } from './ContactSection';
-export { FAQSection } from './FAQSection';
-export { FeaturesSection } from './FeaturesSection';
-export { HeroSection } from './HeroSection';
-export { ProjectsSection } from './ProjectsSection';
-export { SessionsSection } from './SessionsSection';
-export { SponsorsSection } from './SponsorsSection';
-export { StatsSection } from './StatsSection';

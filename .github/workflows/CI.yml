@@ -1,0 +1,38 @@
+name: CI
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  run-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Check lint
+        run: yarn lint
+
+  run-bundle-analysis:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build
+        run: yarn build
+
+      - name: Analyze bundle sizes
+        uses: transferwise/actions-next-bundle-analyzer@master
+        with:
+          workflow-id: CI.yml
+          base-branch: main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
