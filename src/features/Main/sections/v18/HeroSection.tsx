@@ -59,7 +59,7 @@ export const HeroSection = () => {
   );
 };
 
-const GNB_HEIGHT = 56;
+const GNB_HEIGHT = 80;
 
 // Breakpoints:
 // Mobile: <= 767px

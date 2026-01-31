@@ -30,19 +30,17 @@ const linkButtonCss = css`
   display: flex;
   height: 52px;
   padding: 12px 40px;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   gap: 10px;
   border-radius: 50px;
   background: #050505;
-  color: ${colors.white};
-
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-
-  ${theme.typosV3.pretendard.sub5Semibold};
+  color: #fff;
+  font-family: Pretendard, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 
   &:disabled {
     background: ${colors.grey[300]};
@@ -114,28 +112,25 @@ const navCommonCss = () => css`
 const navCss = () => css`
   ${navCommonCss()};
   background-color: transparent;
-  padding: 18px;
+  padding: 40px 20px 0 20px;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (min-width: 768px) {
+    padding: 40px 40px 0 40px;
+  }
 `;
 
 const navWrapperCss = css`
   width: 100%;
-  max-width: 1110px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-
-  position: relative;
 `;
 
 const logoLinkCss = css`
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  transform: translateY(-50%);
   color: #000000;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 24px;
@@ -202,11 +197,8 @@ const mobileMenuGNBCss = (isDropdownOpen: boolean) => css`
       background-color: transparent;
   `}
 
-  padding: 18px ${isDropdownOpen ? `16px` : `20px`};
+  padding: 40px 20px 0 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  & > a {
-    margin-top: 6px;
-  }
 `;

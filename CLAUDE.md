@@ -43,6 +43,20 @@ npm run storybook    # Storybook 실행 (포트 6006)
 - `mediaQuery('tablet')` - max-width: 1023px
 - `mediaQuery('pc')` - min-width: 1024px
 
+#### 18기 브레이크포인트 (v18 sections)
+min-width 기반 미디어 쿼리 사용:
+- **Mobile**: <= 767px (기본 스타일)
+- **Tablet**: 768px - 1279px (`@media (min-width: 768px)`)
+- **Desktop**: 1280px - 1919px (`@media (min-width: 1280px)`)
+- **Large Desktop**: >= 1920px (`@media (min-width: 1920px)`)
+
+#### 스타일 명세 순서
+사용자가 스타일을 제공할 때 다음 순서로 제공됨:
+1. Large Desktop (1920px+)
+2. Desktop (1280px-1919px)
+3. Tablet (768px-1279px)
+4. Mobile (<=767px)
+
 ### SVG
 SVG 파일은 `@svgr/webpack`을 통해 React 컴포넌트로 import 가능
 
