@@ -7,7 +7,6 @@ import { ProjectThumbnail } from '~/components/Project';
 import { staggerHalf } from '~/constant/motion';
 import { Project } from '~/constant/project';
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
-import { mediaQuery } from '~/styles/media';
 
 // 새로운 페이지 사이즈 상수들 (2행 3열 = 6개)
 const PC_PAGE_SIZE = 6;
@@ -83,52 +82,25 @@ const wrapperCss = css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0;
-
-  @media (min-width: 1920px) {
-    width: 1280px;
-  }
-
-  @media (min-width: 1280px) and (max-width: 1919px) {
-    width: 880px;
-  }
-
-  @media (min-width: 768px) and (max-width: 1279px) {
-    width: 688px;
-  }
-
-  ${mediaQuery('mobile')} {
-    max-width: 320px;
-    width: 100%;
-  }
+  gap: 40px;
+  width: 100%;
 `;
 
 const projectContainerCss = css`
-  display: grid;
-  justify-items: center;
-  align-items: stretch;
   width: 100%;
-
-  @media (min-width: 1920px) {
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 20px;
-    row-gap: 100px;
-  }
-
-  @media (min-width: 1280px) and (max-width: 1919px) {
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 20px;
-    row-gap: 100px;
-  }
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 16px;
+  row-gap: 60px;
+  justify-items: stretch;
+  align-items: start;
 
   @media (min-width: 768px) and (max-width: 1279px) {
     grid-template-columns: repeat(2, 1fr);
-    column-gap: 20px;
-    row-gap: 100px;
   }
 
-  ${mediaQuery('mobile')} {
-    grid-template-columns: repeat(1, 1fr);
-    gap: 28px;
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    row-gap: 28px;
   }
 `;

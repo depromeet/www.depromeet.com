@@ -12,39 +12,17 @@ export const ProjectTitleSection = () => {
 };
 
 const titleContainerCss = css`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  @media (min-width: 1920px) {
-    width: 1280px;
-  }
-
-  @media (min-width: 1280px) and (max-width: 1919px) {
-    width: 880px;
-  }
-
-  @media (min-width: 768px) and (max-width: 1279px) {
-    width: 688px;
-  }
-
-  ${mediaQuery('mobile')} {
-    max-width: 320px;
-    width: 100%;
-  }
+  width: 100%;
 `;
 
 const titleCss = css`
-  font-family: 'Helvetica Neue', sans-serif;
-  font-weight: 700;
   font-size: 60px;
-  line-height: 1.4;
-  letter-spacing: 0.6px;
+  font-weight: 700;
+  line-height: 1.2;
   color: ${colors.grey18['900']};
-  white-space: nowrap;
+  margin: 0;
 
   ${mediaQuery('mobile')} {
     font-size: 40px;
-    letter-spacing: -0.4px;
   }
 `;
