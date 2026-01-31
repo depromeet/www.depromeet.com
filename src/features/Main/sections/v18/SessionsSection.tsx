@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
-import { AnimatePresence, motion } from 'framer-motion';
 
 import { colors } from '~/styles/colors';
 
@@ -49,8 +48,6 @@ export const SessionsSection = () => {
     setCurrentIndex(prev => (prev === SESSIONS.length - 1 ? 0 : prev + 1));
   };
 
-  const currentSession = SESSIONS[currentIndex];
-
   return (
     <section css={sectionCss}>
       <div css={contentCss}>
@@ -87,24 +84,25 @@ export const SessionsSection = () => {
         {/* Tablet/Mobile: Carousel with stepper */}
         <div css={mobileSliderCss}>
           <div css={mobileImageContainerCss}>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                css={imageWrapperCss}
+            {SESSIONS.map((session, index) => (
+              <div
+                key={index}
+                css={css`
+                  position: absolute;
+                  inset: 0;
+                  opacity: ${index === currentIndex ? 1 : 0};
+                  transition: opacity 0.3s ease;
+                `}
               >
                 <Image
-                  src={currentSession.image}
-                  alt={currentSession.title}
+                  src={session.image}
+                  alt={session.title}
                   fill
                   css={imageCss}
                   sizes="(max-width: 767px) 100vw, 688px"
                 />
-              </motion.div>
-            </AnimatePresence>
+              </div>
+            ))}
           </div>
           <div css={mobileInfoContainerCss}>
             {SESSIONS.map((session, index) => (
@@ -224,11 +222,6 @@ const imageContainerCss = css`
   border-radius: 12px;
   overflow: hidden;
   flex-shrink: 0;
-`;
-
-const imageWrapperCss = css`
-  position: absolute;
-  inset: 0;
 `;
 
 const imageCss = css`
