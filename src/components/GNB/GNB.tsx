@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { css, Theme } from '@emotion/react';
@@ -33,7 +34,7 @@ const linkButtonCss = css`
   align-items: center;
   gap: 10px;
   border-radius: 50px;
-  background: #050505;
+  background: ${colors.grey18['900']};
   color: #fff;
   font-family: Pretendard, sans-serif;
   font-size: 18px;
@@ -47,11 +48,25 @@ const linkButtonCss = css`
   }
 `;
 
+const HERO_SECTION_HEIGHT = 800;
+
 export function GNB() {
   const { pathname } = useRouter();
   const { containerRef, isDropdownOpen, openDropdown, closeDropdown } = useDropDown();
+  const [isPastHero, setIsPastHero] = useState(false);
 
   const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsPastHero(window.scrollY > HERO_SECTION_HEIGHT);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const getActiveLinkcss = (menu: GNBMenu) => {
     if (pathname === menu.href) {
@@ -63,7 +78,7 @@ export function GNB() {
   return (
     <>
       {!isMobileSize ? (
-        <nav css={navCss}>
+        <nav css={navCss(isPastHero)}>
           <div css={navWrapperCss}>
             <Link href={'/'} css={logoLinkCss}>
               DPM
@@ -82,7 +97,7 @@ export function GNB() {
         </nav>
       ) : (
         <nav ref={containerRef}>
-          <div css={mobileMenuGNBCss(isDropdownOpen)}>
+          <div css={mobileMenuGNBCss(isDropdownOpen, isPastHero)}>
             <Link href={'/'} css={mobileLogoLinkCss(isDropdownOpen)}>
               DPM
             </Link>
@@ -108,10 +123,12 @@ const navCommonCss = () => css`
   width: 100%;
 `;
 
-const navCss = () => css`
+const navCss = (isPastHero: boolean) => css`
   ${navCommonCss()};
-  background-color: transparent;
+  background: ${isPastHero ? 'rgba(255, 255, 255, 0.1)' : 'transparent'};
+  backdrop-filter: ${isPastHero ? 'blur(10px)' : 'none'};
   padding: 40px 20px 0 20px;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
 
   display: flex;
   justify-content: center;
@@ -155,7 +172,7 @@ const mobileLogoLinkCss = (isDropdownOpen: boolean) => css`
 
 const menuContainerCss = css`
   display: flex;
-  gap: 40px;
+  gap: 48px;
 `;
 
 const menuCss = css`
@@ -163,7 +180,7 @@ const menuCss = css`
 `;
 
 const activeLinkCss = () => css`
-  color: #000000;
+  color: ${colors.grey18['900']};
   font-family: Pretendard, sans-serif;
   font-size: 20px;
   font-style: normal;
@@ -172,32 +189,36 @@ const activeLinkCss = () => css`
 `;
 
 const inActiveLinkCss = () => css`
-  color: #000000;
+  color: ${colors.grey18['700']};
   font-family: Pretendard, sans-serif;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+  opacity: 0.8;
 `;
 
 const linkCss = (theme: Theme) => css`
   ${theme.typosV3.pretendard.sub5Medium};
 `;
 
-const mobileMenuGNBCss = (isDropdownOpen: boolean) => css`
+const mobileMenuGNBCss = (isDropdownOpen: boolean, isPastHero: boolean) => css`
   ${navCommonCss()};
 
   ${isDropdownOpen
     ? `
       background-color: ${colors.primary.darknavy};
       background-image: none;
+      backdrop-filter: none;
     `
     : `
-      background-color: transparent;
+      background: ${isPastHero ? 'rgba(255, 255, 255, 0.1)' : 'transparent'};
+      backdrop-filter: ${isPastHero ? 'blur(10px)' : 'none'};
   `}
 
   padding: 40px 20px 0 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: background 0.3s ease, backdrop-filter 0.3s ease;
 `;
