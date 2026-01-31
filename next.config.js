@@ -7,9 +7,6 @@ const CompressionPlugin = require('compression-webpack-plugin');
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   compiler: {
     emotion: true,
   },

@@ -70,23 +70,4 @@ export const colors = {
     blue: '#478AF4',
     gray: '#E3E5EA',
   },
-
-  // NOTE: 18th
-  grey18: {
-    '00': '#FFFFFF',
-    '100': '#F1F2F3',
-    '200': '#E3E5E7',
-    '300': '#C9CBCF',
-    '400': '#ACB2B9',
-    '500': '#9198A1',
-    '600': '#757E89',
-    '700': '#5E656E',
-    '800': '#464C52',
-    '900': '#2F3337',
-  },
-  primary18: {
-    strong: '#0078E7',
-    normal: '#59AEFE',
-    light: '#DFEEFE',
-  },
 } as const;
