@@ -46,7 +46,7 @@ export const BrandingSection = () => {
   }, [isInView, isOutOfView, hasAnimated]);
 
   return (
-    <section css={sectionCss} ref={sectionRef}>
+    <section css={sectionCss} ref={sectionRef} data-section="branding">
       <div css={innerCss}>
         <div css={contentCss}>
           <motion.div

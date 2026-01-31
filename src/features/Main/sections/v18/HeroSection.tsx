@@ -7,7 +7,7 @@ import useIsInProgress from '~/hooks/useIsInProgress';
 import { colors } from '~/styles/colors';
 import { getPathToRecruit } from '~/utils/utils';
 
-export const HeroSection = () => {
+const CTAButton = () => {
   const [isClientReady, setIsClientReady] = useState(false);
   const router = useRouter();
   const { progressState } = useIsInProgress();
@@ -19,6 +19,14 @@ export const HeroSection = () => {
 
   if (!isClientReady) return null;
 
+  return (
+    <button css={ctaButtonCss} onClick={action}>
+      {label}
+    </button>
+  );
+};
+
+export const HeroSection = () => {
   return (
     <section css={sectionCss}>
       <div css={contentCss}>
@@ -34,14 +42,16 @@ export const HeroSection = () => {
         </span>
 
         <div css={keyringContainerCss}>
-          <Image
-            src="/images/18th/home/keyring.png"
-            alt="키링"
-            width={1042}
-            height={1215}
-            priority
-            css={keyringImageCss}
-          />
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            css={keyringVideoCss}
+            poster="/images/18th/home/keyring.png"
+          >
+            <source src="/images/18th/keyring/keyring.webm" type="video/webm" />
+          </video>
         </div>
 
         <div css={logoContainerCss}>
@@ -61,9 +71,7 @@ export const HeroSection = () => {
           />
         </div>
 
-        <button css={ctaButtonCss} onClick={action}>
-          {label}
-        </button>
+        <CTAButton />
       </div>
     </section>
   );
@@ -161,23 +169,23 @@ const keyringContainerCss = css`
   }
 `;
 
-const keyringImageCss = css`
+const keyringVideoCss = css`
   object-fit: contain;
-  width: 458px;
+  width: 534px;
   height: 534px;
 
   @media (min-width: 768px) {
-    width: 645px;
+    width: 752px;
     height: 752px;
   }
 
   @media (min-width: 1280px) {
-    width: 814px;
+    width: 949px;
     height: 949px;
   }
 
   @media (min-width: 1920px) {
-    width: 1042px;
+    width: 1215px;
     height: 1215px;
   }
 `;

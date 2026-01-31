@@ -8,7 +8,6 @@ import { Button } from '~/components/Button';
 import { MobileMenu } from '~/components/GNB/MobileMenu';
 import { MobileMenuIcon } from '~/components/GNB/MobileMenuIcon';
 import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
-import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { useDropDown } from '~/hooks/useDropdown';
 import useIsInProgress from '~/hooks/useIsInProgress';
 import { colors } from '~/styles/colors';
@@ -55,8 +54,6 @@ export function GNB() {
   const { containerRef, isDropdownOpen, openDropdown, closeDropdown } = useDropDown();
   const [isPastHero, setIsPastHero] = useState(false);
 
-  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
-
   useEffect(() => {
     const handleScroll = () => {
       setIsPastHero(window.scrollY > HERO_SECTION_HEIGHT);
@@ -77,40 +74,40 @@ export function GNB() {
 
   return (
     <>
-      {!isMobileSize ? (
-        <nav css={navCss(isPastHero)}>
-          <div css={navWrapperCss}>
-            <Link href={'/'} css={logoLinkCss}>
-              DPM
-            </Link>
-            <ul css={menuContainerCss}>
-              {GNB_MENU_NAME.map(menu => (
-                <li css={menuCss} key={menu.name}>
-                  <Link css={[linkCss, getActiveLinkcss(menu)]} href={menu.href}>
-                    {menu.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <ApplyButton />
-          </div>
-        </nav>
-      ) : (
-        <nav ref={containerRef}>
-          <div css={mobileMenuGNBCss(isDropdownOpen, isPastHero)}>
-            <Link href={'/'} css={mobileLogoLinkCss(isDropdownOpen)}>
-              DPM
-            </Link>
-            <MobileMenuIcon
-              onClick={() => (isDropdownOpen ? closeDropdown() : openDropdown())}
-              isChecked={isDropdownOpen}
-            />
-          </div>
-          <AnimatePresence mode="wait">
-            {isDropdownOpen && <MobileMenu onClickMenu={closeDropdown} />}
-          </AnimatePresence>
-        </nav>
-      )}
+      {/* Desktop GNB */}
+      <nav css={navCss(isPastHero)}>
+        <div css={navWrapperCss}>
+          <Link href={'/'} css={logoLinkCss}>
+            DPM
+          </Link>
+          <ul css={menuContainerCss}>
+            {GNB_MENU_NAME.map(menu => (
+              <li css={menuCss} key={menu.name}>
+                <Link css={[linkCss, getActiveLinkcss(menu)]} href={menu.href}>
+                  {menu.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <ApplyButton />
+        </div>
+      </nav>
+
+      {/* Mobile GNB */}
+      <nav ref={containerRef} css={mobileNavCss}>
+        <div css={mobileMenuGNBCss(isDropdownOpen, isPastHero)}>
+          <Link href={'/'} css={mobileLogoLinkCss(isDropdownOpen)}>
+            DPM
+          </Link>
+          <MobileMenuIcon
+            onClick={() => (isDropdownOpen ? closeDropdown() : openDropdown())}
+            isChecked={isDropdownOpen}
+          />
+        </div>
+        <AnimatePresence mode="wait">
+          {isDropdownOpen && <MobileMenu onClickMenu={closeDropdown} />}
+        </AnimatePresence>
+      </nav>
     </>
   );
 }
@@ -130,12 +127,21 @@ const navCss = (isPastHero: boolean) => css`
   padding: 40px 20px 0 20px;
   transition: background 0.3s ease, backdrop-filter 0.3s ease;
 
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 
   @media (min-width: 768px) {
+    display: flex;
     padding: 40px 40px 0 40px;
+  }
+`;
+
+const mobileNavCss = css`
+  display: block;
+
+  @media (min-width: 768px) {
+    display: none;
   }
 `;
 
