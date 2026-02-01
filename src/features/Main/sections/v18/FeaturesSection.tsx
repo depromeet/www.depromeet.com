@@ -39,6 +39,7 @@ const FEATURES: FeatureItem[] = [
 ];
 
 // Calculate track offset to always center the active image
+// Large Desktop (1920px+): container ~1200px (1512 max-width - 156*2 padding), active=600px, inactive=400px, gap=56px
 // Desktop: container ~1200px, active=600px, inactive=400px, gap=56px
 const getTrackOffset = (index: number) => {
   const containerWidth = 1200;
@@ -223,6 +224,11 @@ const contentCss = css`
   @media (min-width: 1280px) {
     padding: 100px 0;
   }
+
+  @media (min-width: 1920px) {
+    max-width: 1512px;
+    padding: 100px 156px;
+  }
 `;
 
 const titleCss = css`
@@ -337,6 +343,11 @@ const infoContainerCss = css`
   @media (min-width: 1280px) {
     /* 데스크탑: (1200 - 600) / 2 = 300px */
     padding-left: 300px;
+  }
+
+  @media (min-width: 1920px) {
+    /* 1920px: 피그마 기준 460px - 156px(padding) = 304px */
+    padding-left: 304px;
   }
 `;
 
