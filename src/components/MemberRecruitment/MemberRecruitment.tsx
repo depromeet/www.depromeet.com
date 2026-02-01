@@ -1,6 +1,6 @@
+import { Fragment } from 'react';
 import { css, Theme } from '@emotion/react';
 
-import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { colors } from '~/styles/colors';
 import { theme } from '~/styles/theme';
 
@@ -35,9 +35,6 @@ const recruitmentSteps: RecruitmentStep[] = [
 ];
 
 export const MemberRecruitment = () => {
-  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
-  const { isTargetSize: _isTabletSize } = useCheckWindowSize('tablet');
-
   return (
     <div css={containerCss}>
       <div css={contentStyles}>
@@ -52,63 +49,34 @@ export const MemberRecruitment = () => {
           {/* 모집 타임라인 */}
           <div css={timelineContainerCss}>
             {recruitmentSteps.map((step, index) => (
-              <div key={index} css={timelineItemCss}>
-                <h3 css={stepTitleCss}>{step.title}</h3>
-                <p css={stepDateCss}>{step.date}</p>
-                {step.subtext && <p css={stepSubtextCss}>{step.subtext}</p>}
-              </div>
-            ))}
-
-            {/* 화살표들 - absolute positioning */}
-            {!isMobileSize && (
-              <>
-                {recruitmentSteps.slice(0, -1).map((step, index) =>
-                  step.showArrow ? (
-                    <div key={`arrow-${index}`} css={arrowContainerCss(index)}>
-                      <svg
-                        width="40"
-                        height="40"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M9 18l6-6-6-6"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </div>
-                  ) : null
+              <Fragment key={index}>
+                <div css={timelineItemCss}>
+                  <h3 css={stepTitleCss}>{step.title}</h3>
+                  <p css={stepDateCss}>{step.date}</p>
+                  {step.subtext && <p css={stepSubtextCss}>{step.subtext}</p>}
+                </div>
+                {index < recruitmentSteps.length - 1 && (
+                  <div css={arrowCss}>
+                    <svg
+                      width="40"
+                      height="40"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M9 18l6-6-6-6"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
                 )}
-              </>
-            )}
+              </Fragment>
+            ))}
           </div>
-
-          {/* 모바일 화살표 */}
-          {isMobileSize && (
-            <>
-              <div css={mobileArrowContainerCss}>
-                <svg
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M18 9l-6 6-6-6"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </div>
-            </>
-          )}
 
           {/* 전형 절차 */}
           <div css={applicationSectionCss}>
@@ -222,21 +190,35 @@ const infoContainerCss = css`
 `;
 
 const timelineContainerCss = css`
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
   width: 100%;
 
-  @media (min-width: 768px) and (max-width: 1279px) {
-    gap: 8px;
-  }
-
   @media (min-width: 360px) and (max-width: 767px) {
+    position: relative;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    column-gap: 8px;
+    row-gap: 8px;
+
+    & > :nth-child(4) {
+      display: none;
+    }
+
+    & > :nth-child(2),
+    & > :nth-child(6) {
+      position: absolute;
+      left: calc(50% - 18px);
+    }
+
+    & > :nth-child(2) {
+      top: 82px;
+    }
+
+    & > :nth-child(6) {
+      top: 290px;
+    }
   }
 `;
 
@@ -302,19 +284,17 @@ const stepDateCss = css`
   font-size: 26px;
   font-weight: 700;
   line-height: 1.25;
-  letter-spacing: -1.3px;
-  color: ${colors.primary.blue};
+  letter-spacing: -0.05em;
+  color: ${colors.primary18.strong};
   margin: 0;
   white-space: pre-line;
 
-  /* 768px ~ 1279px */
   @media (min-width: 768px) and (max-width: 1279px) {
     font-size: 20px;
-    letter-spacing: -0.2px;
+    letter-spacing: -0.01em;
     line-height: 1.4;
   }
 
-  /* 360px ~ 767px */
   @media (min-width: 360px) and (max-width: 767px) {
     font-size: 18px;
     line-height: 1.4;
@@ -340,49 +320,41 @@ const stepSubtextCss = css`
   }
 `;
 
-const arrowContainerCss = (index: number) => css`
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+const arrowCss = css`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
   background-color: ${colors.white};
   border: 1px solid ${colors.grey18[200]};
   border-radius: 50%;
-  color: ${colors.primary.blue};
+  color: ${colors.grey18[900]};
   box-shadow: 0px 8px 32px 0px rgba(47, 51, 55, 0.06);
   width: 56px;
   height: 56px;
+  flex-shrink: 0;
   z-index: 10;
-
-  @media (min-width: 1280px) {
-    ${index === 0 && `left: calc(290px + 12px / 2 - 56px / 2);`}
-    ${index === 1 && `left: calc(290px + 12px + 33.33% + 12px / 2 - 56px / 2);`}
-    ${index === 2 && `left: calc(290px + 12px + 66.66% + 12px / 2 - 56px / 2);`}
-  }
+  margin-inline: -22px;
 
   @media (min-width: 768px) and (max-width: 1279px) {
-    width: 48px;
-    height: 48px;
-    ${index === 0 && `left: calc(25% - 48px / 2 - 8px / 2);`}
-    ${index === 1 && `left: calc(50% - 48px / 2);`}
-    ${index === 2 && `left: calc(75% + 48px / 2 + 8px / 2);`}
+    width: auto;
+    height: auto;
+    border-radius: 34px;
+    padding: 14px 14px 14px 16px;
+    margin-inline: -31px;
   }
-`;
 
-const mobileArrowContainerCss = css`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 14px 14px 16px;
-  background-color: ${colors.white};
-  border: 1px solid ${colors.grey18[200]};
-  border-radius: 34px;
-  color: ${colors.primary.blue};
-  margin: 0 auto;
-  box-shadow: 0px 8px 32px 0px rgba(47, 51, 55, 0.06);
+  @media (min-width: 360px) and (max-width: 767px) {
+    width: auto;
+    height: auto;
+    border-radius: 34px;
+    padding: 8px 7px 8px 9px;
+    margin-inline: 0;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
 `;
 
 const applicationSectionCss = css`
