@@ -3,23 +3,34 @@ import { css } from '@emotion/react';
 import { motion, useInView } from 'framer-motion';
 
 import { colors } from '~/styles/colors';
-import { mediaQuery } from '~/styles/media';
 
 const revealVariants = {
   hidden: {
     opacity: 0,
     y: 40,
-    filter: 'blur(8px)',
   },
   visible: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
+  },
+};
+
+const shadowVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
   },
 };
 
 const enterTransition = {
   duration: 0.9,
+  ease: [0.25, 0.1, 0.25, 1],
+};
+
+const shadowEnterTransition = {
+  duration: 2,
   ease: [0.25, 0.1, 0.25, 1],
 };
 
@@ -61,7 +72,7 @@ export const BrandingSection = () => {
             variants={revealVariants}
             transition={shouldAnimate ? { ...enterTransition, delay: 0.15 } : exitTransition}
           >
-            <h2 css={headingCss}>Find your key&nbsp;</h2>
+            <h2 css={headingCss}>Find your key</h2>
           </motion.div>
           <motion.div
             animate={shouldAnimate ? 'visible' : 'hidden'}
@@ -70,6 +81,12 @@ export const BrandingSection = () => {
           >
             <p css={subheadingCss}>연결의 가치를 성장의 열쇠로</p>
           </motion.div>
+          <motion.div
+            css={shadowEllipseCss}
+            animate={shouldAnimate ? 'visible' : 'hidden'}
+            variants={shadowVariants}
+            transition={shouldAnimate ? shadowEnterTransition : exitTransition}
+          />
         </div>
       </div>
     </section>
@@ -85,7 +102,7 @@ const sectionCss = css`
 
 const innerCss = css`
   max-width: 1280px;
-  min-height: 745px;
+  min-height: 1000px;
   margin: 0 auto;
   padding: 100px 40px;
   display: flex;
@@ -96,24 +113,24 @@ const innerCss = css`
   @media (max-width: 1279px) {
     max-width: 100%;
     min-height: auto;
-    padding: 220px 40px;
+    padding: 250px 40px;
   }
 
-  ${mediaQuery('mobile')} {
+  @media (max-width: 767px) {
     padding: 220px 20px;
   }
 `;
 
 const contentCss = css`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
   overflow: visible;
 
-  @media (max-width: 1279px) {
-    gap: 24px;
-    align-self: stretch;
+  @media (max-width: 767px) {
+    gap: 4px;
   }
 `;
 
@@ -124,38 +141,50 @@ const headingCss = css`
   line-height: 120%;
   text-align: center;
   letter-spacing: -3.52px;
-  background: linear-gradient(90deg, #0078e7 0%, #59aefe 100%);
+  background: linear-gradient(90deg, #0078e7 30%, #59aefe 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  padding-bottom: 0.1em;
 
-  ${mediaQuery('mobile')} {
-    font-size: 40px;
-    line-height: 140%;
-    letter-spacing: -0.4px;
+  @media (max-width: 767px) {
+    font-size: 42px;
+    line-height: 120%;
+    letter-spacing: -1.68px;
   }
 `;
 
 const subheadingCss = css`
-  margin-top: 28px;
+  margin-top: 32px; /* 40px total - 8px gap = 32px */
   font-family: Pretendard, sans-serif;
   font-size: 32px;
   font-weight: 700;
   line-height: 140%;
   letter-spacing: -0.64px;
   text-align: center;
-  background: linear-gradient(90deg, #0078e7 0%, #59aefe 100%);
+  background: linear-gradient(90deg, #0078e7 30%, #59aefe 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 
-  @media (max-width: 1279px) {
-    margin-top: 0;
+  @media (max-width: 767px) {
+    margin-top: 16px; /* 20px total - 4px gap = 16px */
+    font-size: 16px;
+    letter-spacing: -0.32px;
   }
+`;
 
-  ${mediaQuery('mobile')} {
-    font-size: 22px;
-    letter-spacing: 0.22px;
+const shadowEllipseCss = css`
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 924px;
+  height: 104px;
+  background: radial-gradient(50% 50% at 50% 50%, rgba(89, 175, 254, 0.4) 0%, transparent 100%);
+  pointer-events: none;
+
+  @media (max-width: 767px) {
+    width: 462px;
+    height: 52px;
   }
 `;
