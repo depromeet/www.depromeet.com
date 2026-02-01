@@ -29,6 +29,11 @@ const enterTransition = {
   ease: [0.25, 0.1, 0.25, 1],
 };
 
+const shadowEnterTransition = {
+  duration: 2,
+  ease: [0.25, 0.1, 0.25, 1],
+};
+
 const exitTransition = {
   duration: 0,
 };
@@ -80,7 +85,7 @@ export const BrandingSection = () => {
             css={shadowEllipseCss}
             animate={shouldAnimate ? 'visible' : 'hidden'}
             variants={shadowVariants}
-            transition={shouldAnimate ? enterTransition : exitTransition}
+            transition={shouldAnimate ? shadowEnterTransition : exitTransition}
           />
         </div>
       </div>
