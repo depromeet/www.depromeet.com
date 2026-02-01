@@ -63,6 +63,7 @@ const containerStyles = css`
   gap: 16px;
   margin: 0 auto;
   padding: 120px 20px;
+  background-color: #ffffff;
 
   ${mediaQuery('tablet')} {
     overflow-x: hidden;
@@ -157,13 +158,13 @@ const titleStyles = css`
 
 const subtitleStyles = css`
   ${theme.typosV3.pretendard.sub1Semibold};
-  font-size: 18px;
-  font-weight: 400;
+  font-size: 24px;
+  font-weight: 500;
   margin: 0;
-  color: ${theme.colors.primary.darknavy};
+  color: ${theme.colors.grey18[600]};
 
   ${mediaQuery('mobile')} {
-    font-size: 14px;
+    font-size: 18px;
   }
 `;
 
