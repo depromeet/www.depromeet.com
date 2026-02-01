@@ -219,7 +219,7 @@ const legendWrapperCss = css`
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 16px;
+  margin-bottom: 32px;
 
   @media (max-width: 767px) {
     margin-bottom: 12px;
@@ -236,8 +236,8 @@ const legendBadgeCss = css`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background-color: ${colors.primary18.strong};
   flex-shrink: 0;
@@ -249,7 +249,7 @@ const legendBadgeCss = css`
 `;
 
 const legendBadgeTextCss = css`
-  font-size: 10.909px;
+  font-size: 18px;
   font-weight: 700;
   line-height: 1.4;
   letter-spacing: 0.01em;
@@ -257,10 +257,10 @@ const legendBadgeTextCss = css`
   text-align: center;
 
   @media (max-width: 767px) {
-    font-size: 8.1px;
-    font-weight: 500;
-    line-height: 1.5;
-    letter-spacing: -0.02em;
+    font-size: 8px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
   }
 `;
 
@@ -269,6 +269,7 @@ const legendTextCss = css`
   font-weight: 700;
   line-height: 1.4;
   color: ${colors.white};
+  padding-right: 20px;
 
   @media (max-width: 767px) {
     font-size: 12px;
