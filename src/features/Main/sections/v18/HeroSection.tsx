@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
@@ -27,6 +27,17 @@ const CTAButton = () => {
 };
 
 export const HeroSection = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      video.play().catch(() => {
+        // Autoplay blocked, will show poster
+      });
+    }
+  }, []);
+
   return (
     <section css={sectionCss}>
       <div css={contentCss}>
@@ -43,6 +54,7 @@ export const HeroSection = () => {
 
         <div css={keyringContainerCss}>
           <video
+            ref={videoRef}
             autoPlay
             loop
             muted
