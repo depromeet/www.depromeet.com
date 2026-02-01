@@ -41,6 +41,11 @@ const linkButtonCss = css`
   font-weight: 700;
   line-height: normal;
 
+  /* Tablet: Push button to right */
+  @media (min-width: 768px) and (max-width: 1279px) {
+    margin-left: auto;
+  }
+
   &:disabled {
     background: ${colors.grey[300]};
     color: ${colors.grey[500]};
@@ -124,7 +129,8 @@ const navCss = (isPastHero: boolean) => css`
   ${navCommonCss()};
   background: ${isPastHero ? 'rgba(255, 255, 255, 0.1)' : 'transparent'};
   backdrop-filter: ${isPastHero ? 'blur(10px)' : 'none'};
-  padding: 40px 20px 0 20px;
+  height: 80px;
+  padding: 0 40px;
   transition: background 0.3s ease, backdrop-filter 0.3s ease;
 
   display: none;
@@ -133,7 +139,6 @@ const navCss = (isPastHero: boolean) => css`
 
   @media (min-width: 768px) {
     display: flex;
-    padding: 40px 40px 0 40px;
   }
 `;
 
@@ -148,8 +153,18 @@ const mobileNavCss = css`
 const navWrapperCss = css`
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+
+  /* Tablet: Logo and Menu grouped on left */
+  @media (min-width: 768px) and (max-width: 1279px) {
+    justify-content: flex-start;
+    gap: 40px;
+  }
+
+  /* Desktop: Logo left, Menu center, Button right */
+  @media (min-width: 1280px) {
+    justify-content: space-between;
+  }
 `;
 
 const logoLinkCss = css`
@@ -222,7 +237,8 @@ const mobileMenuGNBCss = (isDropdownOpen: boolean, isPastHero: boolean) => css`
       backdrop-filter: ${isPastHero ? 'blur(10px)' : 'none'};
   `}
 
-  padding: 40px 20px 0 20px;
+  height: 80px;
+  padding: 0 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
