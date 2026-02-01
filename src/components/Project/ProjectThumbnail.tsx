@@ -149,7 +149,7 @@ const thumbnailOverlayCss = css`
 const linksContainerCss = (linkCount: number) => css`
   display: flex;
   flex-direction: column;
-  gap: ${linkCount > 3 ? '4px' : '12px'};
+  gap: ${linkCount > 3 ? '4px' : '8px'};
   align-items: center;
   justify-content: center;
 `;
@@ -165,9 +165,9 @@ const linkButtonCss = css`
   cursor: pointer;
   transition: all 0.2s ease;
   font-family: 'Helvetica Neue', sans-serif;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 1.4;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.7;
   letter-spacing: 0;
   text-align: center;
 
