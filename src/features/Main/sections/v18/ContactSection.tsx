@@ -118,11 +118,11 @@ const titleCss = css`
   color: ${colors.grey18['900']};
   margin-bottom: 40px;
 
-  ${mediaQuery('tablet')} {
+  @media (max-width: 1279px) {
     font-size: 28px;
   }
 
-  ${mediaQuery('mobile')} {
+  @media (max-width: 767px) {
     font-size: 20px;
     margin-bottom: 32px;
   }

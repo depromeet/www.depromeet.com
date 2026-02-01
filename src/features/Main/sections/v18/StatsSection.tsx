@@ -3,7 +3,6 @@ import { css } from '@emotion/react';
 import { motion, useInView } from 'framer-motion';
 
 import { colors } from '~/styles/colors';
-import { mediaQuery } from '~/styles/media';
 
 interface StatItem {
   label: string;
@@ -142,7 +141,15 @@ const contentCss = css`
   padding: 120px 40px;
   gap: 40px;
 
-  ${mediaQuery('mobile')} {
+  @media (min-width: 768px) {
+    padding: 120px 46px;
+  }
+
+  @media (min-width: 1280px) {
+    padding: 120px 0;
+  }
+
+  @media (max-width: 767px) {
     padding: 40px 24px;
   }
 `;
@@ -162,7 +169,7 @@ const descriptionCss = css`
     color: ${colors.grey18['900']};
   }
 
-  ${mediaQuery('mobile')} {
+  @media (max-width: 767px) {
     font-size: 16px;
     letter-spacing: normal;
 
@@ -176,20 +183,20 @@ const gridCss = css`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
+  width: 100%;
 
-  ${mediaQuery('tablet')} {
+  @media (max-width: 1279px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  ${mediaQuery('mobile')} {
-    grid-template-columns: repeat(2, 1fr);
+  @media (max-width: 767px) {
     gap: 16px;
   }
 `;
 
 const cardCss = css`
   display: flex;
-  width: 152px;
+  width: auto;
   flex-direction: column;
   align-items: center;
   justify-content: center;
