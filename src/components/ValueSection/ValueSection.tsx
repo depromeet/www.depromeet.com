@@ -42,7 +42,6 @@ export const ValueSection = () => {
           {values.map(value => (
             <div key={value.id} css={valueCardStyles}>
               <div css={numberStyles}>{value.number}</div>
-              {/* <div css={cardImagePlaceholderStyles}></div> */}
               <h3 css={semititleStyles}>{value.title}</h3>
               <p css={cardSubtitleStyles}>{value.subtitle}</p>
               <p css={descriptionStyles}>{value.description}</p>
@@ -249,11 +248,11 @@ const semititleStyles = css`
   color: ${theme.colors.primary18.strong};
   margin: 0;
   line-height: 1.4;
-  letter-spacing: -0.36px;
+  letter-spacing: -0.01em;
 
-  @media (min-width: 768px) and (max-width: 1279px) {
+  @media (max-width: 1279px) {
     font-size: 32px;
-    letter-spacing: -0.64px;
+    letter-spacing: -0.02em;
   }
 `;
 
@@ -269,7 +268,7 @@ const cardSubtitleStyles = css`
     font-size: 18px;
     font-weight: 500;
     line-height: 1.6;
-    letter-spacing: -0.18px;
+    letter-spacing: -0.01em;
   }
 `;
 

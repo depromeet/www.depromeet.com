@@ -14,23 +14,23 @@ interface RecruitmentStep {
 const recruitmentSteps: RecruitmentStep[] = [
   {
     title: '서류 접수',
-    date: '02.12 (목) -\n02.18 (수)',
+    date: '02 . 12 (목) -\n02 . 18 (수)',
     subtext: '02.18 수요일\n23:59:59까지 제출',
     showArrow: true,
   },
   {
     title: '서류 발표',
-    date: '02.23 (월)',
+    date: '02 . 23 (월)',
     showArrow: true,
   },
   {
     title: '온라인 인터뷰',
-    date: '02.28 (토) -\n03.02 (월)',
+    date: '02 . 28 (토) -\n03 . 02 (월)',
     showArrow: true,
   },
   {
     title: '최종 발표',
-    date: '03.05 (목)',
+    date: '03 . 05 (목)',
   },
 ];
 
