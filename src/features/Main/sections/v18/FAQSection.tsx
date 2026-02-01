@@ -437,6 +437,14 @@ const tabsCss = css`
   justify-content: flex-start;
   gap: 0;
   margin-bottom: 28px;
+
+  ${mediaQuery('mobile')} {
+    overflow-x: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 `;
 
 const tabCss = () => css`
@@ -597,7 +605,8 @@ const baseButtonCss = css`
   transition: all 0.2s ease;
 
   ${mediaQuery('mobile')} {
-    width: 320px;
+    width: 100%;
+    max-width: 320px;
     height: 56px;
     padding: 0 30px;
     justify-content: space-between;
