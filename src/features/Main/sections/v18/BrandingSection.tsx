@@ -80,7 +80,7 @@ export const BrandingSection = () => {
             css={shadowEllipseCss}
             animate={shouldAnimate ? 'visible' : 'hidden'}
             variants={shadowVariants}
-            transition={shouldAnimate ? { ...enterTransition, delay: 0.4 } : exitTransition}
+            transition={shouldAnimate ? enterTransition : exitTransition}
           />
         </div>
       </div>
