@@ -57,9 +57,9 @@ export const SessionSchedule = () => {
         <div css={headerCss}>
           <h2 css={titleCss}>온/오프라인 세션</h2>
           <p css={descriptionCss}>
-            세션은 매주 토요일 진행되며,
+            세션은 매주 토요일에 진행되며,
             <br />
-            오프라인 세션은 서울에서 열립니다
+            오프라인 세션은 수도권 내에서 진행됩니다.
           </p>
         </div>
 
@@ -95,7 +95,7 @@ export const SessionSchedule = () => {
               </div>
               <div css={columnCss}>
                 {secondColumn.map((session, index) => (
-                  <div key={index} css={sessionItemCss(index === secondColumn.length - 1)}>
+                  <div key={index} css={sessionItemCss(false)}>
                     <div css={dateWeekContainerCss}>
                       <p css={dateTextCss}>{session.date}</p>
                       <p css={weekTextCss}>{session.week}</p>
@@ -239,7 +239,7 @@ const legendBadgeCss = css`
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background-color: ${colors.primary.blue};
+  background-color: ${colors.primary18.strong};
   flex-shrink: 0;
 
   @media (max-width: 767px) {
@@ -406,7 +406,7 @@ const onlineBadgeCss = css`
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: ${colors.primary.blue};
+  background-color: ${colors.primary18.strong};
   flex-shrink: 0;
 
   @media (max-width: 767px) {
