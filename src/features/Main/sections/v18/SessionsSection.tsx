@@ -260,7 +260,7 @@ const desktopLayoutCss = css`
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding: 124px 80px;
+    padding: 124px 40px;
     gap: 80px;
   }
 

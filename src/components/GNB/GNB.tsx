@@ -123,6 +123,7 @@ const navCommonCss = () => css`
   left: 0;
   z-index: 9998;
   width: 100%;
+  overflow: hidden;
 `;
 
 const navCss = (isPastHero: boolean) => css`

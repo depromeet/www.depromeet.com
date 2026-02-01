@@ -15,6 +15,8 @@ const globalCss = css`
   html,
   body {
     background-color: #5aafff;
+    max-width: 100vw;
+    overflow-x: hidden;
   }
 
   :root {
