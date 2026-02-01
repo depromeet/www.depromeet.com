@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
@@ -6,6 +6,20 @@ import { css } from '@emotion/react';
 import useIsInProgress from '~/hooks/useIsInProgress';
 import { colors } from '~/styles/colors';
 import { getPathToRecruit } from '~/utils/utils';
+
+const useIsChrome = () => {
+  const [isChrome, setIsChrome] = useState(false);
+
+  useEffect(() => {
+    const userAgent = navigator.userAgent;
+    // Chrome이지만 Edge, Opera, Samsung Browser 등은 제외
+    const isChromeBrowser =
+      /Chrome/.test(userAgent) && !/Edge|Edg|OPR|Opera|SamsungBrowser/.test(userAgent);
+    setIsChrome(isChromeBrowser);
+  }, []);
+
+  return isChrome;
+};
 
 const CTAButton = () => {
   const [isClientReady, setIsClientReady] = useState(false);
@@ -27,6 +41,18 @@ const CTAButton = () => {
 };
 
 export const HeroSection = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const isChrome = useIsChrome();
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video && isChrome) {
+      video.play().catch(() => {
+        // Autoplay blocked, will show poster
+      });
+    }
+  }, [isChrome]);
+
   return (
     <section css={sectionCss}>
       <div css={contentCss}>
@@ -42,16 +68,28 @@ export const HeroSection = () => {
         </span>
 
         <div css={keyringContainerCss}>
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            css={keyringVideoCss}
-            poster="/images/18th/home/keyring.png"
-          >
-            <source src="/images/18th/keyring/keyring.webm" type="video/webm" />
-          </video>
+          {isChrome ? (
+            <video
+              ref={videoRef}
+              autoPlay
+              loop
+              muted
+              playsInline
+              css={keyringVideoCss}
+              poster="/images/18th/home/keyring.png"
+            >
+              <source src="/images/18th/keyring/keyring.webm" type="video/webm" />
+            </video>
+          ) : (
+            <Image
+              src="/images/18th/home/keyring.png"
+              alt="Keyring"
+              width={1215}
+              height={1215}
+              css={keyringVideoCss}
+              priority
+            />
+          )}
         </div>
 
         <div css={logoContainerCss}>

@@ -196,7 +196,8 @@ const cardCss = css`
   padding: 28px 0;
   gap: 10px;
   border-radius: 12px;
-  background: ${colors.grey18['100']};
+  background: #fff;
+  box-shadow: 0 8px 32px 0 rgba(47, 51, 55, 0.1);
   text-align: center;
 
   @media (min-width: 768px) {
@@ -212,8 +213,6 @@ const cardCss = css`
     padding: 40px 24px;
     gap: 20px;
     flex: 1 0 0;
-    background: #fff;
-    box-shadow: 0 8px 32px 0 rgba(47, 51, 55, 0.1);
   }
 `;
 
