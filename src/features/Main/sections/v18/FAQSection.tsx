@@ -481,6 +481,10 @@ const tabTextCss = (isActive: boolean) => css`
 const faqListCss = css`
   display: flex;
   flex-direction: column;
+
+  ${mediaQuery('mobile')} {
+    margin: 0 20px;
+  }
 `;
 
 const faqItemCss = css`
