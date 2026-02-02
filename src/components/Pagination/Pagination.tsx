@@ -29,9 +29,9 @@ export function Pagination({ handlePageClick, numberOfPages, currentPage }: Pagi
   }, []);
 
   useEffect(() => {
-    if (isMobile && numberOfPages > 3) {
-      const maxVisiblePages = 3;
-      let startPage = Math.max(1, currentPage - 1);
+    if (isMobile && numberOfPages > 4) {
+      const maxVisiblePages = 4;
+      let startPage = Math.max(1, currentPage - 2);
       const endPage = Math.min(numberOfPages, startPage + maxVisiblePages - 1);
 
       if (endPage - startPage + 1 < maxVisiblePages) {
@@ -95,7 +95,7 @@ export function Pagination({ handlePageClick, numberOfPages, currentPage }: Pagi
     }
   };
 
-  const showArrows = isMobile && numberOfPages > 3;
+  const showArrows = isMobile && numberOfPages > 4;
 
   return (
     <div css={[containerCss, isCentered && !showArrows && centeredListCss]} ref={containerRef}>
@@ -187,7 +187,7 @@ const mobileListCss = css`
   @media (max-width: 768px) {
     flex: 1;
     justify-content: center;
-    max-width: 150px;
+    max-width: 224px;
   }
 `;
 

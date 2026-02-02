@@ -486,6 +486,7 @@ const mobileSessionDescriptionCss = css`
   font-size: 16px;
   font-weight: 500;
   line-height: 1.4;
+  min-height: 89.59px;
   color: ${colors.grey18['900']};
 
   @media (min-width: 768px) {

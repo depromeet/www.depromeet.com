@@ -54,16 +54,18 @@ export function ProjectThumbnail({
           />
           <div css={thumbnailOverlayCss} className="thumbnail-overlay">
             {links && links.length > 0 && (
-              <div css={linksContainerCss(links.length)}>
-                {links.map((link, index) => (
-                  <React.Fragment key={index}>
-                    <button css={linkButtonCss} onClick={e => handleLinkClick(link.href, e)}>
-                      {link.type}
-                      <ArrowIcon direction={'right'} color="white" width={20} height={20} />
-                    </button>
-                    {index < links.length - 1 && <div css={dividerCss}>∙</div>}
-                  </React.Fragment>
-                ))}
+              <div css={overlayInnerCss}>
+                <div css={linksContainerCss(links.length)}>
+                  {links.map((link, index) => (
+                    <React.Fragment key={index}>
+                      <button css={linkButtonCss} onClick={e => handleLinkClick(link.href, e)}>
+                        {link.type}
+                        <ArrowIcon direction={'right'} color="white" width={20} height={20} />
+                      </button>
+                      {index < links.length - 1 && <div css={dividerCss}>∙</div>}
+                    </React.Fragment>
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -140,10 +142,19 @@ const thumbnailOverlayCss = css`
   height: 100%;
   background: ${colors.grey18['900']};
   display: flex;
-  align-items: center;
-  justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
+`;
+
+const overlayInnerCss = css`
+  width: 100%;
+  height: 100%;
+  padding: 28px 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 `;
 
 const linksContainerCss = (linkCount: number) => css`
@@ -230,7 +241,7 @@ const imageContainerCss = css`
   position: relative;
   width: 100%;
   flex-shrink: 0;
-  aspect-ratio: 16 / 10;
+  height: 283px;
   overflow: hidden;
 `;
 
