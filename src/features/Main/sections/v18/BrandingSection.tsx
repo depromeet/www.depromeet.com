@@ -15,22 +15,8 @@ const revealVariants = {
   },
 };
 
-const shadowVariants = {
-  hidden: {
-    opacity: 0,
-  },
-  visible: {
-    opacity: 1,
-  },
-};
-
 const enterTransition = {
   duration: 0.9,
-  ease: [0.25, 0.1, 0.25, 1],
-};
-
-const shadowEnterTransition = {
-  duration: 2,
   ease: [0.25, 0.1, 0.25, 1],
 };
 
@@ -81,12 +67,6 @@ export const BrandingSection = () => {
           >
             <p css={subheadingCss}>연결의 가치를 성장의 열쇠로</p>
           </motion.div>
-          <motion.div
-            css={shadowEllipseCss}
-            animate={shouldAnimate ? 'visible' : 'hidden'}
-            variants={shadowVariants}
-            transition={shouldAnimate ? shadowEnterTransition : exitTransition}
-          />
         </div>
       </div>
     </section>
@@ -170,21 +150,5 @@ const subheadingCss = css`
     margin-top: 16px; /* 20px total - 4px gap = 16px */
     font-size: 16px;
     letter-spacing: -0.32px;
-  }
-`;
-
-const shadowEllipseCss = css`
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 924px;
-  height: 104px;
-  background: radial-gradient(50% 50% at 50% 50%, rgba(89, 175, 254, 0.4) 0%, transparent 100%);
-  pointer-events: none;
-
-  @media (max-width: 767px) {
-    width: 462px;
-    height: 52px;
   }
 `;

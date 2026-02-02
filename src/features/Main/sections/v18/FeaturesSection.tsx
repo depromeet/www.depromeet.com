@@ -366,6 +366,7 @@ const textContentCss = css`
   flex-direction: column;
   gap: 16px;
   max-width: 592px;
+  min-height: 143.21px;
 `;
 
 const featureTitleCss = css`
@@ -404,6 +405,7 @@ const navigationCss = css`
   display: flex;
   gap: 20px;
   align-items: center;
+  justify-content: flex-end;
 `;
 
 const navButtonCss = css`
