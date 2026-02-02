@@ -276,7 +276,6 @@ const leftPanelCss = css`
   flex-direction: column;
   justify-content: space-between;
   height: 669px;
-  padding-left: 24px;
   padding-right: 40px;
 `;
 

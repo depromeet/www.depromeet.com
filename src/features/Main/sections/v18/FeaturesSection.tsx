@@ -215,7 +215,7 @@ const sectionCss = css`
 const contentCss = css`
   max-width: 1200px;
   margin: 0 auto;
-  padding: 100px 40px;
+  padding: 100px 40px 114px 40px;
 
   @media (min-width: 768px) {
     padding: 100px 46px;
