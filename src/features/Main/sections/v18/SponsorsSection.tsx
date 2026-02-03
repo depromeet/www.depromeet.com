@@ -45,10 +45,12 @@ export const SponsorsSection = () => {
           <button css={inquiryButtonCss} onClick={handleInquiry}>
             후원 문의하기
             <span css={mobileIconCss}>
-              <ArrowIcon color={colors.primary18.strong} />
+              <ArrowRightIconMobile />
+              <ArrowRightIconMobileHover />
             </span>
             <span css={desktopIconCss}>
-              <ArrowIcon color={colors.grey18['00']} />
+              <ArrowRightIconDesktop />
+              <ArrowRightIconDesktopHover />
             </span>
           </button>
         </div>
@@ -57,23 +59,119 @@ export const SponsorsSection = () => {
   );
 };
 
-const ArrowIcon = ({ color }: { color: string }) => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="12" cy="12" r="10" stroke={color} strokeWidth="1.5" />
-    <path
-      d="M10 8L14 12L10 16"
-      stroke={color}
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
+const ArrowRightIconDesktop = () => (
+  <span css={arrowDefaultCss} data-icon="default">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <path
+        d="M16.0003 29.3337C23.3641 29.3337 29.3337 23.3641 29.3337 16.0003C29.3337 8.63653 23.3641 2.66699 16.0003 2.66699C8.63653 2.66699 2.66699 8.63653 2.66699 16.0003C2.66699 23.3641 8.63653 29.3337 16.0003 29.3337Z"
+        fill="#0078E7"
+      />
+      <path
+        d="M16 21.3337L21.3333 16.0003L16 10.667"
+        stroke="white"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M10.667 16H21.3337"
+        stroke="white"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </span>
 );
 
+const ArrowRightIconDesktopHover = () => (
+  <span css={arrowHoverCss} data-icon="hover">
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <path
+        d="M16.0003 29.3337C23.3641 29.3337 29.3337 23.3641 29.3337 16.0003C29.3337 8.63653 23.3641 2.66699 16.0003 2.66699C8.63653 2.66699 2.66699 8.63653 2.66699 16.0003C2.66699 23.3641 8.63653 29.3337 16.0003 29.3337Z"
+        fill="white"
+      />
+      <path
+        d="M16 21.3337L21.3333 16.0003L16 10.667"
+        stroke="#0078E7"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M10.667 16H21.3337"
+        stroke="#0078E7"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </span>
+);
+
+const ArrowRightIconMobile = () => (
+  <span css={arrowDefaultCss} data-icon="default">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path
+        d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+        fill="#0078E7"
+      />
+      <path
+        d="M12 16L16 12L12 8"
+        stroke="white"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8 12H16"
+        stroke="white"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </span>
+);
+
+const ArrowRightIconMobileHover = () => (
+  <span css={arrowHoverCss} data-icon="hover">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path
+        d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+        fill="white"
+      />
+      <path
+        d="M12 16L16 12L12 8"
+        stroke="#0078E7"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M8 12H16"
+        stroke="#0078E7"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  </span>
+);
+
+const arrowDefaultCss = css`
+  display: flex;
+`;
+
+const arrowHoverCss = css`
+  display: none;
+`;
+
+/* FAQSection과 동일: 768px 기준으로 24px/32px 아이콘 전환 */
 const mobileIconCss = css`
   display: flex;
 
-  @media (min-width: 1280px) {
+  @media (min-width: 768px) {
     display: none;
   }
 `;
@@ -81,7 +179,7 @@ const mobileIconCss = css`
 const desktopIconCss = css`
   display: none;
 
-  @media (min-width: 1280px) {
+  @media (min-width: 768px) {
     display: flex;
   }
 `;
@@ -199,6 +297,7 @@ const logoImageCss = css`
   }
 `;
 
+/* 카카오톡/이메일 문의하기 버튼과 동일: 흰 배경·회색 테두리, 호버 시에만 파란색 */
 const inquiryButtonCss = css`
   display: inline-flex;
   align-items: center;
@@ -206,9 +305,9 @@ const inquiryButtonCss = css`
   gap: 12px;
   height: 56px;
   padding: 12px 36px 12px 40px;
-  border: 2px solid ${colors.grey18['200']};
+  border: 2px solid #e3e5e7;
   border-radius: 100px;
-  background: ${colors.grey18['00']};
+  background: #fff;
   cursor: pointer;
   transition: all 0.2s ease;
   font-family: Pretendard, sans-serif;
@@ -218,7 +317,15 @@ const inquiryButtonCss = css`
   color: ${colors.grey18['900']};
 
   &:hover {
-    background: ${colors.grey18['100']};
+    background: #0078e7;
+    color: #fff;
+
+    & [data-icon='default'] {
+      display: none;
+    }
+    & [data-icon='hover'] {
+      display: flex;
+    }
   }
 
   @media (min-width: 768px) {
@@ -227,13 +334,7 @@ const inquiryButtonCss = css`
     font-size: 24px;
   }
 
-  @media (min-width: 1280px) {
-    border: none;
-    background: ${colors.primary18.strong};
-    color: ${colors.grey18['00']};
-
-    &:hover {
-      background: ${colors.primary18.normal};
-    }
+  @media (max-width: 767px) {
+    border-width: 1px;
   }
 `;

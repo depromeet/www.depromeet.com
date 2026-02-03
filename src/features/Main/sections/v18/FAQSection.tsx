@@ -558,7 +558,7 @@ const faqAnswerCss = css`
 
     ${mediaQuery('mobile')} {
       padding: 16px 0;
-      font-size: 0.8125rem;
+      font-size: 0.75rem;
     }
   }
 `;
