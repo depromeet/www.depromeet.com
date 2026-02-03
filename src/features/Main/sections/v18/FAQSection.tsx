@@ -481,10 +481,6 @@ const tabTextCss = (isActive: boolean) => css`
 const faqListCss = css`
   display: flex;
   flex-direction: column;
-
-  ${mediaQuery('mobile')} {
-    margin: 0 20px;
-  }
 `;
 
 const faqItemCss = css`
@@ -496,6 +492,10 @@ const faqItemCss = css`
 
   &[data-expanded] {
     background: #f1f2f3;
+  }
+
+  ${mediaQuery('mobile')} {
+    padding: 0 20px;
   }
 `;
 
