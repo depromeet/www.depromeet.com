@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -16,25 +16,25 @@ const FEATURES: FeatureItem[] = [
     image: '/images/18th/home/experience1.png',
     title: '서로 다른 고리가 만나 열리는 새로운 가능성',
     description:
-      '17주간 단순한 협업을 넘어 스스로의 한계를 여는 과정이에요. 이곳에서 함께 성장의 문을 열어갈 마스터키 같은 동료들을 만나보세요',
+      '17주간 단순한 협업을 넘어 스스로의 한계를 여는 과정이에요.\n이곳에서 함께 성장의 문을 열어갈 마스터키 같은 동료들을 만나보세요.',
   },
   {
     image: '/images/18th/home/experience2.png',
     title: '연결의 가치를 성장으로, 함께하는 네트워킹',
     description:
-      '현직자와의 만남, 디프만 워크샵, 파트 별 반상회 등 다양한 네트워킹 세션을 통해 소중한 동료들을 만날 수 있어요',
+      '현직자와의 만남, 디프만 워크샵, 파트 별 반상회 등\n다양한 네트워킹 세션을 통해 소중한 동료들을 만날 수 있어요.',
   },
   {
     image: '/images/18th/home/experience3.png',
     title: '유저의 목소리로 완성되는 우리만의 프로덕트',
     description:
-      '두 번의 런칭 행사는 단순한 전시가 아닌 유저와의 진정한 연결입니다. 현업의 기준에서 내 프로덕트를 증명해 보세요',
+      '두 번의 런칭 행사는 단순한 전시가 아닌 유저와의 진정한 연결입니다.\n현업의 기준에서 내 프로덕트를 증명해 보세요.',
   },
   {
     image: '/images/18th/home/experience4.png',
     title: '성장의 문을 여는 마지막 열쇠, 프로덕트 릴리즈 100%',
     description:
-      '아이디어 선정부터 MVP 출시, 유저 피드백을 통한 개선까지. 모든 고리를 견고하게 연결하여 마침내 시장의 문을 열 프로덕트를 완성해요',
+      '아이디어 선정부터 MVP 출시, 유저 피드백을 통한 개선까지,\n모든 고리를 견고하게 연결하여 마침내 시장의 문을 열 프로덕트를 완성해요.',
   },
 ];
 
@@ -83,6 +83,18 @@ const getTrackOffsetMobile = (index: number) => {
 
 export const FeaturesSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isUnder360, setIsUnder360] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (typeof window === 'undefined') return;
+      setIsUnder360(window.innerWidth < 360);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handlePrev = () => {
     setCurrentIndex(prev => (prev === 0 ? FEATURES.length - 1 : prev - 1));
@@ -155,7 +167,16 @@ export const FeaturesSection = () => {
                   css={textContentCss}
                 >
                   <h3 css={featureTitleCss}>{currentFeature.title}</h3>
-                  <p css={featureDescriptionCss}>{currentFeature.description}</p>
+                  <p css={featureDescriptionCss}>
+                    {isUnder360
+                      ? currentFeature.description.replace(/\n/g, ' ')
+                      : currentFeature.description.split('\n').map((line, i, arr) => (
+                          <span key={i}>
+                            {line}
+                            {i < arr.length - 1 && <br />}
+                          </span>
+                        ))}
+                  </p>
                 </motion.div>
               </AnimatePresence>
             </div>
