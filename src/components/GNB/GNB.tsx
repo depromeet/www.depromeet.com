@@ -128,11 +128,13 @@ const navCommonCss = () => css`
 
 const navCss = (isPastHero: boolean) => css`
   ${navCommonCss()};
-  background: ${isPastHero ? 'rgba(255, 255, 255, 0.1)' : 'transparent'};
-  backdrop-filter: ${isPastHero ? 'blur(10px)' : 'none'};
+  background: ${isPastHero ? '#ffffff' : 'transparent'};
+  backdrop-filter: none;
   height: 80px;
   padding: 0 40px;
-  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease;
+  border: 1px solid transparent;
+  border-bottom-color: ${isPastHero ? '#E3E5E7' : 'transparent'};
 
   display: none;
   justify-content: center;
@@ -232,10 +234,14 @@ const mobileMenuGNBCss = (isDropdownOpen: boolean, isPastHero: boolean) => css`
       background-color: ${colors.primary.darknavy};
       background-image: none;
       backdrop-filter: none;
+      border: 1px solid transparent;
+      border-bottom-color: transparent;
     `
     : `
-      background: ${isPastHero ? 'rgba(255, 255, 255, 0.1)' : 'transparent'};
-      backdrop-filter: ${isPastHero ? 'blur(10px)' : 'none'};
+      background: ${isPastHero ? '#ffffff' : 'transparent'};
+      backdrop-filter: none;
+      border: 1px solid transparent;
+      border-bottom-color: ${isPastHero ? '#E3E5E7' : 'transparent'};
   `}
 
   height: 80px;
@@ -243,5 +249,5 @@ const mobileMenuGNBCss = (isDropdownOpen: boolean, isPastHero: boolean) => css`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  transition: background 0.3s ease, border-color 0.3s ease;
 `;
