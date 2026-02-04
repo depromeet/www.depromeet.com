@@ -10,82 +10,22 @@ export type Project = {
 export const TAB_LIST = ['전체', '17기', '16기', '15기', '14기', '13기', '12기', '11기', '~10기'];
 export const PROJECT_LIST: Project[] = [
   {
-    title: '두런두런',
+    title: 'Globber',
     subTitle: '17기',
-    description: '함께하면 즐거움이 두 배! 친구와 쌓아가는 러닝 인증 서비스',
+    description:
+      '다녀온 여행지를 지구본 위에 기록하고,<br/>지인에게 나의 여행을 자랑할 수 있는 서비스',
     links: [
       {
         type: 'Behance',
-        href: 'https://www.behance.net/gallery/237957953/_',
+        href: 'https://www.behance.net/gallery/239034963/Globber-',
       },
       {
         type: 'Github',
-        href: 'https://github.com/depromeet/17th-team6-android',
-      },
-      {
-        type: 'iOS',
-        href: 'https://apps.apple.com/kr/app/두런두런/id6755256356',
-      },
-      {
-        type: 'Android',
-        href: 'https://play.google.com/store/apps/details?id=com.dpm.sixpack&hl=ko',
-      },
-    ],
-  },
-  {
-    title: 'Hedge',
-    subTitle: '17기',
-    description: '실수를 성장 자산으로! 돈 버는 투자 습관을 위한, 투자 회고 서비스',
-    links: [
-      {
-        type: 'Behance',
-        href: 'https://www.behance.net/gallery/238904541/Hedge-',
-      },
-      {
-        type: 'Github',
-        href: 'https://github.com/depromeet/17th-team5-iOS',
-      },
-      {
-        type: 'iOS',
-        href: 'https://apps.apple.com/kr/app/햇제/id6754460382',
-      },
-    ],
-  },
-  {
-    title: 'Kkruk (꾸룩)',
-    subTitle: '17기',
-    description: '쌓일수록 건강해지는 기록 꾸룩과 함께 장 건강을 관리해보세요!',
-    links: [
-      {
-        type: 'Behance',
-        href: 'https://www.behance.net/gallery/239022415/Kkruk-',
-      },
-      {
-        type: 'Github',
-        href: 'https://github.com/depromeet/dpm17-team4-client',
-      },
-      {
-        type: 'iOS',
-        href: 'https://apps.apple.com/kr/app/kkruk/id6755083964',
-      },
-    ],
-  },
-  {
-    title: '모무찌',
-    subTitle: '17기',
-    description: '모두의 취향을 모아 바로 추천받는 모임 식당',
-    links: [
-      {
-        type: 'Behance',
-        href: 'https://www.behance.net/gallery/238960561/_',
-      },
-      {
-        type: 'Github',
-        href: 'https://github.com/depromeet/momuzzi-web',
+        href: 'https://github.com/depromeet/17th-team1-client',
       },
       {
         type: 'Web',
-        href: 'https://www.momuzzi.site',
+        href: 'https://www.globber.world',
       },
     ],
   },
@@ -109,22 +49,82 @@ export const PROJECT_LIST: Project[] = [
     ],
   },
   {
-    title: 'Globber',
+    title: '모무찌',
     subTitle: '17기',
-    description:
-      '다녀온 여행지를 지구본 위에 기록하고,<br/>지인에게 나의 여행을 자랑할 수 있는 서비스',
+    description: '모두의 취향을 모아 바로 추천받는 모임 식당',
     links: [
       {
         type: 'Behance',
-        href: 'https://www.behance.net/gallery/239034963/Globber-',
+        href: 'https://www.behance.net/gallery/238960561/_',
       },
       {
         type: 'Github',
-        href: 'https://github.com/depromeet/17th-team1-client',
+        href: 'https://github.com/depromeet/momuzzi-web',
       },
       {
         type: 'Web',
-        href: 'https://www.globber.world',
+        href: 'https://www.momuzzi.site',
+      },
+    ],
+  },
+  {
+    title: 'Kkruk (꾸룩)',
+    subTitle: '17기',
+    description: '쌓일수록 건강해지는 기록 꾸룩과 함께 장 건강을 관리해보세요!',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/239022415/Kkruk-',
+      },
+      {
+        type: 'Github',
+        href: 'https://github.com/depromeet/dpm17-team4-client',
+      },
+      {
+        type: 'iOS',
+        href: 'https://apps.apple.com/kr/app/kkruk/id6755083964',
+      },
+    ],
+  },
+  {
+    title: 'Hedge',
+    subTitle: '17기',
+    description: '실수를 성장 자산으로! 돈 버는 투자 습관을 위한, 투자 회고 서비스',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/238904541/Hedge-',
+      },
+      {
+        type: 'Github',
+        href: 'https://github.com/depromeet/17th-team5-iOS',
+      },
+      {
+        type: 'iOS',
+        href: 'https://apps.apple.com/kr/app/햇제/id6754460382',
+      },
+    ],
+  },
+  {
+    title: '두런두런',
+    subTitle: '17기',
+    description: '함께하면 즐거움이 두 배! 친구와 쌓아가는 러닝 인증 서비스',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/237957953/_',
+      },
+      {
+        type: 'Github',
+        href: 'https://github.com/depromeet/17th-team6-android',
+      },
+      {
+        type: 'iOS',
+        href: 'https://apps.apple.com/kr/app/두런두런/id6755256356',
+      },
+      {
+        type: 'Android',
+        href: 'https://play.google.com/store/apps/details?id=com.dpm.sixpack&hl=ko',
       },
     ],
   },

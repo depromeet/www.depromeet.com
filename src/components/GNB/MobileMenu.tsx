@@ -73,7 +73,7 @@ const mobileMenuCss = (_theme: Theme) => css`
   top: 0;
   left: 0;
   margin: auto;
-  background-color: ${colors.primary.darknavy};
+  background-color: ${colors.grey18[900]};
   padding-top: 64px;
 
   overflow: hidden;
@@ -91,7 +91,7 @@ const linkCss = (theme: Theme) => css`
   align-items: center;
   width: 100%;
   height: 100%;
-  padding: 12px 16px;
+  padding: 12px 20px;
 
   ${mediaQuery('mobile')} {
     font-size: 1rem;

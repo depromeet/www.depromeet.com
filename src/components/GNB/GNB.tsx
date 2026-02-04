@@ -28,7 +28,7 @@ function ApplyButton() {
 const linkButtonCss = css`
   display: flex;
   height: 52px;
-  padding: 12px 40px;
+  padding: 12px 20px;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -224,6 +224,7 @@ const inActiveLinkCss = () => css`
 
 const linkCss = (theme: Theme) => css`
   ${theme.typosV3.pretendard.sub5Medium};
+  white-space: nowrap;
 `;
 
 const mobileMenuGNBCss = (isDropdownOpen: boolean, isPastHero: boolean) => css`
@@ -231,7 +232,7 @@ const mobileMenuGNBCss = (isDropdownOpen: boolean, isPastHero: boolean) => css`
 
   ${isDropdownOpen
     ? `
-      background-color: ${colors.primary.darknavy};
+      background-color: ${colors.grey18[900]};
       background-image: none;
       backdrop-filter: none;
       border: 1px solid transparent;

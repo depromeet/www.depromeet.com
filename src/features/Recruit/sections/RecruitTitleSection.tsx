@@ -83,6 +83,10 @@ const descriptionCss = css`
   line-height: 1.4;
   letter-spacing: -0.01em;
 
+  span {
+    white-space: nowrap;
+  }
+
   @media (min-width: 360px) and (max-width: 767px) {
     flex-direction: column;
     align-items: flex-start;
