@@ -219,7 +219,7 @@ const titleCss = css`
 const descriptionCss = css`
   font-family: 'Pretendard', sans-serif;
   font-weight: 400;
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.6;
   color: ${colors.grey18['900']};
   margin: 0;
