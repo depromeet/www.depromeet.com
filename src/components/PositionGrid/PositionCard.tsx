@@ -215,8 +215,8 @@ const hoverTitleStyles = css`
 
 const hoverDescriptionStyles = css`
   font-family: 'Pretendard', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 400;
   line-height: 1.4;
   margin: 0;
   color: #f1f2f3;
