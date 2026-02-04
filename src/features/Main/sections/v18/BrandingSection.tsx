@@ -54,6 +54,7 @@ export const BrandingSection = () => {
             <h2 css={headingCss}>Connect the ring</h2>
           </motion.div>
           <motion.div
+            css={motionWrapperCss}
             animate={shouldAnimate ? 'visible' : 'hidden'}
             variants={revealVariants}
             transition={shouldAnimate ? { ...enterTransition, delay: 0.15 } : exitTransition}
@@ -108,10 +109,16 @@ const contentCss = css`
   align-items: center;
   gap: 8px;
   overflow: visible;
+  width: 100%;
 
   @media (max-width: 767px) {
     gap: 4px;
   }
+`;
+
+const motionWrapperCss = css`
+  overflow: visible;
+  width: fit-content;
 `;
 
 const headingCss = css`
@@ -125,11 +132,14 @@ const headingCss = css`
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  padding-right: 4px;
+  box-sizing: border-box;
 
   @media (max-width: 767px) {
     font-size: 42px;
     line-height: 120%;
     letter-spacing: -1.68px;
+    padding-right: 2px;
   }
 `;
 
