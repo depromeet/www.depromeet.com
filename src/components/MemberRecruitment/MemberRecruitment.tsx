@@ -336,11 +336,16 @@ const arrowCss = css`
   margin-inline: -22px;
 
   @media (min-width: 768px) and (max-width: 1279px) {
-    width: auto;
-    height: auto;
-    border-radius: 34px;
-    padding: 14px 14px 14px 16px;
-    margin-inline: -31px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    padding: 0;
+    margin-inline: -22px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   @media (min-width: 360px) and (max-width: 767px) {
