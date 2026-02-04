@@ -203,7 +203,7 @@ const keyringContainerCss = css`
   }
 
   @media (min-width: 1920px) {
-    top: -310px;
+    top: -370px;
   }
 `;
 
@@ -224,7 +224,7 @@ const keyringVideoCss = css`
 
   @media (min-width: 1920px) {
     width: 1215px;
-    height: 1215px;
+    height: 1335px;
   }
 `;
 
