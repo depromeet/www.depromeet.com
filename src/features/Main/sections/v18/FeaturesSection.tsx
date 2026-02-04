@@ -93,9 +93,10 @@ export const FeaturesSection = () => {
   };
 
   const currentFeature = FEATURES[currentIndex];
+  const isAltBackground = currentIndex === 1 || currentIndex === 3;
 
   return (
-    <section css={sectionCss}>
+    <section css={sectionCss} style={{ backgroundColor: isAltBackground ? '#0078E7' : '#59aefe' }}>
       <div css={contentCss}>
         <motion.h2
           css={titleCss}
@@ -210,6 +211,7 @@ const sectionCss = css`
   width: 100%;
   background: #59aefe;
   overflow: hidden;
+  transition: background-color 0.5s ease;
 `;
 
 const contentCss = css`

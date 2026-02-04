@@ -6,22 +6,25 @@ import { theme } from '~/styles/theme';
 
 import { colors } from '../../styles/colors';
 
+interface ImageConfig {
+  src: string;
+}
+
 interface PositionCardProps {
   id: string;
   title: string;
   subtitle: string;
   isActive: boolean;
-  backgroundImage?: string;
+  imageConfig?: ImageConfig;
   hoverDescription: string;
   applyUrl?: string;
 }
 
 export const PositionCard = ({
-  // id,
   title,
   subtitle,
   isActive,
-  // backgroundImage,
+  imageConfig,
   hoverDescription,
   applyUrl,
 }: PositionCardProps) => {
@@ -42,20 +45,22 @@ export const PositionCard = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div css={contentWrapperStyles}>
-        {isHovered ? (
-          <>
-            <h3 css={hoverTitleStyles}>{title}</h3>
-            <p css={hoverDescriptionStyles}>{hoverDescription}</p>
-          </>
-        ) : (
-          <>
+      {isHovered ? (
+        <div css={hoverContentWrapperStyles}>
+          <h3 css={hoverTitleStyles}>{title}</h3>
+          <p css={hoverDescriptionStyles}>{hoverDescription}</p>
+        </div>
+      ) : (
+        <div css={defaultContentWrapperStyles}>
+          <div css={textAreaStyles}>
             <h3 css={titleStyles}>{title}</h3>
             <p css={subtitleStyles}>{subtitle}</p>
-            <div css={iconPlaceholderStyles} />
-          </>
-        )}
-      </div>
+          </div>
+          <div css={imageAreaStyles}>
+            {imageConfig && <img src={imageConfig.src} alt={title} css={imageStyles} />}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
@@ -64,7 +69,6 @@ const cardStyles = (isActive: boolean, isHovered: boolean) => css`
   position: relative;
   background: ${isHovered ? '#2f3337' : colors.white};
   border-radius: 12px;
-  padding: 24px;
   width: 230px;
   height: 320px;
   display: flex;
@@ -72,7 +76,8 @@ const cardStyles = (isActive: boolean, isHovered: boolean) => css`
   cursor: ${isActive ? 'pointer' : 'default'};
   transition: all 0.2s ease;
   box-shadow: 0px 8px 32px 0px rgba(47, 51, 55, 0.1);
-  overflow: visible;
+  overflow: hidden;
+  padding: 0;
 
   &:hover {
     transform: ${isActive ? 'translateY(-4px)' : 'none'};
@@ -81,29 +86,94 @@ const cardStyles = (isActive: boolean, isHovered: boolean) => css`
       : '0px 8px 32px 0px rgba(47, 51, 55, 0.1)'};
   }
 
+  /* 카드 고정 사이즈: 하단 텍스트 영역 위에 이미지가 겹치는 구조 */
   @media (min-width: 1280px) and (max-width: 1919px) {
     width: 285px;
     height: 320px;
   }
 
   @media (min-width: 768px) and (max-width: 1279px) {
-    width: 340px;
+    width: 338px;
     height: 320px;
   }
 
   @media (min-width: 360px) and (max-width: 767px) {
-    width: 100%;
-    max-width: 340px;
+    width: 320px;
     height: 320px;
   }
 `;
 
-const contentWrapperStyles = css`
+const hoverContentWrapperStyles = css`
   display: flex;
   flex-direction: column;
   height: 100%;
   gap: 12px;
-  align-items: flex-end;
+  align-items: flex-start;
+  padding: 24px;
+`;
+
+const defaultContentWrapperStyles = css`
+  position: relative;
+  height: 100%;
+  width: 100%;
+`;
+
+/* 하단에 깔리는 텍스트 영역 (전체 카드) */
+const textAreaStyles = css`
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  background: ${colors.white};
+  border-radius: 12px;
+`;
+
+/* 그 위에 겹쳐지는 이미지 영역 (우상단) */
+const imageAreaStyles = css`
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: visible;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  pointer-events: none;
+`;
+
+const imageStyles = css`
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+  flex-shrink: 0;
+
+  /* 100% = 160x160 기준. 각 브레이크포인트별 스케일 + 오른쪽 정렬 */
+  @media (min-width: 360px) and (max-width: 767px) {
+    width: 192px;
+    height: 192px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    width: 208px;
+    height: 208px;
+  }
+
+  @media (min-width: 1280px) and (max-width: 1919px) {
+    width: 176px;
+    height: 176px;
+  }
+
+  @media (min-width: 1920px) {
+    width: 160px;
+    height: 160px;
+  }
 `;
 
 const titleStyles = css`
@@ -115,9 +185,6 @@ const titleStyles = css`
   color: ${theme.colors.primary.darknavy};
   white-space: pre-line;
   letter-spacing: 0;
-  width: 100%;
-  min-width: 100%;
-  flex-shrink: 0;
 `;
 
 const subtitleStyles = css`
@@ -128,31 +195,12 @@ const subtitleStyles = css`
   margin: 0;
   color: ${theme.colors.primary.darknavy};
   letter-spacing: 0;
-  width: 100%;
-  height: 56px;
-  flex-shrink: 0;
+
+  /* 1920~ 이상: subtitle 2줄 높이 고정 → title이 모든 카드에서 같은 선상에 오도록 */
+  @media (min-width: 1920px) {
+    min-height: 2.8em;
+  }
 `;
-
-// const imageContainerStyles = css`
-//   position: absolute;
-//   bottom: -10px;
-//   right: 0;
-//   left: 0;
-//   height: 180px;
-//   display: flex;
-//   align-items: flex-end;
-//   justify-content: center;
-//   padding-left: 20%;
-//   pointer-events: none;
-//   overflow: visible;
-// `;
-
-// const imageStyles = css`
-//   width: 160px;
-//   height: 160px;
-//   object-fit: contain;
-//   object-position: center;
-// `;
 
 const hoverTitleStyles = css`
   font-family: 'Pretendard', sans-serif;
@@ -163,9 +211,6 @@ const hoverTitleStyles = css`
   color: #f1f2f3;
   letter-spacing: 0;
   white-space: pre-line;
-  width: 100%;
-  min-width: 100%;
-  flex-shrink: 0;
 `;
 
 const hoverDescriptionStyles = css`
@@ -177,13 +222,4 @@ const hoverDescriptionStyles = css`
   color: #f1f2f3;
   letter-spacing: 0;
   white-space: pre-wrap;
-  width: 100%;
-  flex-shrink: 0;
-`;
-
-const iconPlaceholderStyles = css`
-  width: 116px;
-  height: 116px;
-  background: black;
-  flex-shrink: 0;
 `;
