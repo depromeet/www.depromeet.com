@@ -172,7 +172,6 @@ const titleCss = (theme: Theme) => css`
 `;
 
 const infoContainerCss = css`
-  max-width: 1200px;
   padding: 0 40px;
   display: flex;
   flex-direction: column;
