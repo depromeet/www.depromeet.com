@@ -270,6 +270,9 @@ const logoContainerCss = css`
   bottom: 141px;
   display: flex;
   justify-content: center;
+  /* Safari HEVC alpha 영상 컴포지팅 이슈 방지 */
+  isolation: isolate;
+  backface-visibility: hidden;
 
   @media (min-width: 768px) {
     width: calc(100% - 278px);
