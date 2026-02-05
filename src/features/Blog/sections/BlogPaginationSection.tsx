@@ -7,7 +7,6 @@ import { Pagination } from '~/components/Pagination';
 import { AllBlog } from '~/constant/blog';
 import { staggerHalf } from '~/constant/motion';
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
-import { mediaQuery } from '~/styles/media';
 
 // 새로운 페이지 사이즈 상수들 (2행 3열 = 6개)
 const PC_PAGE_SIZE = 6;
@@ -55,7 +54,7 @@ export function BlogPaginationSection({ key, blogList }: { key: string; blogList
   };
 
   return (
-    <>
+    <div css={wrapperCss}>
       <AnimatePresence mode="wait" initial={true}>
         <m.div
           key={key}
@@ -76,30 +75,33 @@ export function BlogPaginationSection({ key, blogList }: { key: string; blogList
         currentPage={currentPage}
         handlePageClick={handleClickPage}
       />
-    </>
+    </div>
   );
 }
 
+const wrapperCss = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+`;
+
 const blogContainerCss = css`
   width: 100%;
-  max-width: 960px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 16px;
-  justify-items: center;
-  align-items: stretch;
+  column-gap: 16px;
+  row-gap: 60px;
+  justify-items: stretch;
+  align-items: start;
 
-  ${mediaQuery('tablet')} {
+  @media (min-width: 768px) and (max-width: 1279px) {
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-    max-width: 640px;
   }
 
-  ${mediaQuery('mobile')} {
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(6, 1fr);
-    gap: 12px;
-    max-width: 400px;
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+    row-gap: 28px;
   }
 `;

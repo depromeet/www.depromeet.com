@@ -23,6 +23,11 @@ export default function Document() {
         />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="ko_KR" />
+        <meta property="og:image" content="/images/18th/sessions/og-main.png" />
+        <meta property="og:image:width" content="1536" />
+        <meta property="og:image:height" content="768" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="/images/18th/sessions/og-main.png" />
         <meta name="twitter:creator" content="디프만 - Depromeet" />
 
         {IS_PRODUCTION && (
@@ -56,7 +61,16 @@ export default function Document() {
         )}
       </Head>
 
-      <body>
+      <body className="js-loading">
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              html, body { background-color: #5aafff; }
+              .js-loading nav { visibility: hidden; }
+              .js-loading [data-section="branding"] { visibility: hidden; }
+            `,
+          }}
+        />
         <Main />
         <NextScript />
       </body>

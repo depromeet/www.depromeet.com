@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 
+import { CONTENT_WIDTH, SECTION_TOP_PADDING } from '~/constant/layout';
 import { PROJECT_LIST, TAB_LIST } from '~/constant/project';
-import { sectionGridBg } from '~/styles/background';
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
 import { ProjectPaginationSection } from './ProjectPaginationSection';
-import { ProjectRulerDecoration } from './ProjectRulerDecoration';
 import { ProjectTabNavigation } from './ProjectTabNavigation';
 import { ProjectTitleSection } from './ProjectTitleSection';
 
@@ -49,19 +49,48 @@ export const ProjectContentSection = () => {
 
   return (
     <section css={sectionCss}>
-      <ProjectTitleSection />
+      <div css={contentWrapperCss}>
+        <ProjectTitleSection />
 
-      <ProjectTabNavigation currentTab={currentTab} tabs={TAB_LIST} onTabClick={handleClickTab} />
+        <ProjectTabNavigation currentTab={currentTab} tabs={TAB_LIST} onTabClick={handleClickTab} />
 
-      <ProjectPaginationSection
-        key={`${currentTab}-${selectedProjectList.length}`}
-        projectList={selectedProjectList}
-      />
-
-      <ProjectRulerDecoration />
+        <ProjectPaginationSection
+          key={`${currentTab}-${selectedProjectList.length}`}
+          projectList={selectedProjectList}
+        />
+      </div>
     </section>
   );
 };
+
+const contentWrapperCss = css`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+
+  @media (min-width: 1280px) {
+    width: ${CONTENT_WIDTH.desktop}px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    width: ${CONTENT_WIDTH.tablet}px;
+  }
+
+  @media (min-width: 360px) and (max-width: 767px) {
+    width: ${CONTENT_WIDTH.mobile}px;
+  }
+
+  @media (max-width: 359px) {
+    width: 100%;
+    max-width: ${CONTENT_WIDTH.mobile}px;
+  }
+
+  ${mediaQuery('tablet')} {
+    gap: 32px;
+  }
+`;
 
 const sectionCss = css`
   position: relative;
@@ -70,16 +99,18 @@ const sectionCss = css`
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  padding: 56px 0;
-  gap: 36px;
-
-  ${sectionGridBg}
+  padding: ${SECTION_TOP_PADDING}px 0 80px 0;
+  background-color: ${colors.white};
 
   ${mediaQuery('tablet')} {
-    padding: 56px 48px;
+    padding: ${SECTION_TOP_PADDING}px 0 64px 0;
   }
   ${mediaQuery('mobile')} {
-    padding: 56px 20px;
-    gap: 32px;
+    padding: ${SECTION_TOP_PADDING}px 0 64px 0;
+  }
+
+  @media (max-width: 359px) {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 `;

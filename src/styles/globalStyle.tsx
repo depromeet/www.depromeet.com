@@ -12,6 +12,13 @@ const globalCss = css`
   ${resetCss}
   ${fontFace}
 
+  html,
+  body {
+    background-color: #5aafff;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
   :root {
     max-width: 100vw;
     overflow-x: hidden;

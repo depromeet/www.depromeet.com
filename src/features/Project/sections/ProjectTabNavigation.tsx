@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { css } from '@emotion/react';
 
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
-import { theme } from '~/styles/theme';
 
 interface ProjectTabNavigationProps {
   currentTab: string;
@@ -61,33 +61,35 @@ export const ProjectTabNavigation = ({
 const tabContainerCss = css`
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
   align-items: center;
+
+  @media (min-width: 1920px) {
+    width: 1280px;
+  }
+
+  @media (min-width: 1280px) and (max-width: 1919px) {
+    width: 880px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    width: 688px;
+  }
+
+  ${mediaQuery('mobile')} {
+    max-width: 320px;
+    width: 100%;
+  }
 `;
 
 const tabWrapperCss = css`
   display: flex;
   flex-wrap: nowrap;
-  width: auto;
-  background-color: #e3e5ea;
   padding: 0;
-  justify-content: center;
-  gap: 10px;
+  height: 56px;
 
-  ${mediaQuery('tablet')} {
-    width: 100%;
-    max-width: 500px;
-    padding: 0 24px;
-  }
   ${mediaQuery('mobile')} {
-    margin: 0 -12px;
-    padding: 0 12px;
+    width: 100%;
     overflow-x: auto;
-    width: calc(100% + 40px);
-    max-width: none;
-    justify-content: flex-start;
 
     &::-webkit-scrollbar {
       display: none;
@@ -97,34 +99,35 @@ const tabWrapperCss = css`
 
 const tabItemCss = css`
   padding: 16px 20px;
-  background: #e3e5ea;
-  color: #9595a1;
+  background: transparent;
+  color: ${colors.grey18['500']};
   border: none;
   cursor: pointer;
   position: relative;
   transition: all 0.2s ease;
-  ${theme.typosV2.pretendard.semibold16};
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
   white-space: nowrap;
-  flex: 1 0 0;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   &:hover {
-    color: black;
+    color: ${colors.grey18['900']};
   }
 
   ${mediaQuery('mobile')} {
-    padding: 20px 16px;
-    ${theme.typosV2.pretendard.semibold16};
-    flex-shrink: 0;
+    padding: 16px 20px;
   }
 `;
 
 const tabItemActiveCss = css`
-  color: ${theme.colors.grey['900']};
-  font-weight: 600;
+  color: ${colors.grey18['900']};
+  font-weight: 700;
 
   &::after {
     content: '';
@@ -134,7 +137,7 @@ const tabItemActiveCss = css`
     transform: translateX(-50%);
     width: var(--text-width, 40px);
     height: 2px;
-    background-color: ${theme.colors.grey['900']};
+    background-color: ${colors.grey18['900']};
     transition: width 0.2s ease;
 
     ${mediaQuery('mobile')} {

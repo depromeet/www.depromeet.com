@@ -1,31 +1,35 @@
+import { useState } from 'react';
 import { css } from '@emotion/react';
 
 import useIsInProgress from '~/hooks/useIsInProgress';
-import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
 import { colors } from '../../styles/colors';
+
+interface ImageConfig {
+  src: string;
+}
 
 interface PositionCardProps {
   id: string;
   title: string;
   subtitle: string;
   isActive: boolean;
-  backgroundImage: string;
+  imageConfig?: ImageConfig;
   hoverDescription: string;
-  applyUrl: string;
+  applyUrl?: string;
 }
 
 export const PositionCard = ({
   title,
   subtitle,
   isActive,
-  backgroundImage,
+  imageConfig,
   hoverDescription,
   applyUrl,
 }: PositionCardProps) => {
   const { isInProgress } = useIsInProgress();
-  // const canApply = isAfterRecruitmentDate();
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleCardClick = () => {
     if (isActive && applyUrl && isInProgress) {
@@ -35,236 +39,186 @@ export const PositionCard = ({
 
   return (
     <div
-      css={cardStyles(isActive, backgroundImage)}
+      css={cardStyles(isActive, isHovered)}
       className="position-card"
       onClick={handleCardClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      <div css={defaultContentStyles}>
-        <div css={contentStyles}>
-          <h3 css={titleStyles}>{title}</h3>
-          <p css={subtitleStyles}>{subtitle}</p>
+      {isHovered ? (
+        <div css={hoverContentWrapperStyles}>
+          <h3 css={hoverTitleStyles}>{title}</h3>
+          <p css={hoverDescriptionStyles}>{hoverDescription}</p>
         </div>
-
-        {isInProgress ? (
-          <button css={applyButtonStyles}>
-            지원하기
-            <span css={arrowStyles}>→</span>
-          </button>
-        ) : (
-          <div css={beforeApplyButtonStyles}>지금은 지원 기간이 아니에요.</div>
-        )}
-      </div>
-
-      <div css={hoverContentStyles}>
-        <div css={hoverTextStyles}>{hoverDescription}</div>
-
-        {isInProgress ? (
-          <button css={hoverApplyButtonStyles}>
-            지원하기
-            <span css={hoverArrowStyles}>→</span>
-          </button>
-        ) : (
-          <div css={beforeApplyButtonStyles}>지금은 지원 기간이 아니에요.</div>
-        )}
-      </div>
+      ) : (
+        <div css={defaultContentWrapperStyles}>
+          <div css={textAreaStyles}>
+            <h3 css={titleStyles}>{title}</h3>
+            <p css={subtitleStyles}>{subtitle}</p>
+          </div>
+          <div css={imageAreaStyles}>
+            {imageConfig && <img src={imageConfig.src} alt={title} css={imageStyles} />}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
-const cardStyles = (isActive: boolean, backgroundImage: string) => css`
+const cardStyles = (isActive: boolean, isHovered: boolean) => css`
   position: relative;
-  background: ${colors.primary.gray};
-  background-image: url(${backgroundImage});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  border: 1px solid ${isActive ? colors.blue500 : '#E0E0E0'};
-  border-radius: 0;
-  padding: 20px 22px;
-  width: 240px;
-  height: 302px;
+  background: ${isHovered ? '#2f3337' : colors.white};
+  border-radius: 12px;
+  width: 230px;
+  height: 320px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
   cursor: ${isActive ? 'pointer' : 'default'};
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
-    transition: background 0.3s ease;
-  }
+  transition: all 0.2s ease;
+  box-shadow: 0px 8px 32px 0px rgba(47, 51, 55, 0.1);
+  overflow: hidden;
+  padding: 0;
 
   &:hover {
-    box-shadow: ${isActive ? '0 8px 25px rgba(0,0,0,0.15)' : 'none'};
-    border-color: ${isActive ? '#1a1a1a' : isActive ? colors.blue500 : '#E0E0E0'};
-
-    &::before {
-      background: rgba(26, 26, 26, 1);
-    }
+    transform: ${isActive ? 'translateY(-4px)' : 'none'};
+    box-shadow: ${isActive
+      ? '0 8px 20px rgba(0, 100, 255, 0.15)'
+      : '0px 8px 32px 0px rgba(47, 51, 55, 0.1)'};
   }
 
-  ${mediaQuery('mobile')} {
-    width: 312px;
-    height: 300px;
+  /* 카드 고정 사이즈: 하단 텍스트 영역 위에 이미지가 겹치는 구조 */
+  @media (min-width: 1280px) and (max-width: 1919px) {
+    width: 285px;
+    height: 320px;
   }
 
-  ${mediaQuery('tablet')} {
-    width: 312px;
-    height: 300px;
+  @media (min-width: 768px) and (max-width: 1279px) {
+    width: 338px;
+    height: 320px;
+  }
+
+  @media (min-width: 360px) and (max-width: 767px) {
+    width: 320px;
+    height: 320px;
   }
 `;
 
-const defaultContentStyles = css`
-  position: absolute;
-  top: 24px;
-  left: 24px;
-  right: 24px;
-  bottom: 24px;
+const hoverContentWrapperStyles = css`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-
-  .position-card:hover & {
-    opacity: 0;
-  }
+  height: 100%;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 24px;
 `;
 
-const contentStyles = css`
-  z-index: 2;
+const defaultContentWrapperStyles = css`
   position: relative;
+  height: 100%;
+  width: 100%;
+`;
+
+/* 하단에 깔리는 텍스트 영역 (전체 카드) */
+const textAreaStyles = css`
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  background: ${colors.white};
+  border-radius: 12px;
+`;
+
+/* 그 위에 겹쳐지는 이미지 영역 (우상단) */
+const imageAreaStyles = css`
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: visible;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  pointer-events: none;
+`;
+
+const imageStyles = css`
+  width: 160px;
+  height: 160px;
+  object-fit: contain;
+  object-position: center center;
+  display: block;
+  flex-shrink: 0;
+
+  /* 100% = 160x160 기준. 각 브레이크포인트별 스케일 + 오른쪽 정렬 */
+  @media (min-width: 360px) and (max-width: 767px) {
+    width: 192px;
+    height: 192px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    width: 208px;
+    height: 208px;
+  }
+
+  @media (min-width: 1280px) and (max-width: 1919px) {
+    width: 176px;
+    height: 176px;
+  }
+
+  @media (min-width: 1920px) {
+    width: 160px;
+    height: 160px;
+  }
 `;
 
 const titleStyles = css`
-  ${theme.typosV3.MartianMono.head3};
-  letter-spacing: -5%;
-
-  margin: 0 0 8px 0;
+  font-family: 'Helvetica Neue', 'Helvetica', 'Pretendard', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
   color: ${theme.colors.primary.darknavy};
-
-  ${mediaQuery('tablet')} {
-    ${theme.typosV3.MartianMono.head3};
-    font-size: 26px;
-    line-height: 125%;
-    letter-spacing: -1px;
-    white-space: pre-wrap;
-  }
+  white-space: pre-line;
+  letter-spacing: 0;
 `;
 
 const subtitleStyles = css`
-  ${theme.typosV3.pretendard.sub5Medium};
-  color: ${colors.gray900};
-`;
-
-const applyButtonStyles = css`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: none;
-  border: none;
-  ${theme.typosV3.pretendard.sub1Medium};
-
-  color: ${colors.gray900};
-  cursor: pointer;
-  z-index: 2;
-  position: relative;
-
-  &:hover {
-    color: #000;
-  }
-`;
-
-const beforeApplyButtonStyles = css`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: none;
-  border: none;
-  font-size: 16px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 20px;
   font-weight: 500;
-  color: #333;
-  cursor: pointer;
-  z-index: 2;
-  position: relative;
-  color: #9591a1;
+  line-height: 1.4;
+  margin: 0;
+  color: ${theme.colors.primary.darknavy};
+  letter-spacing: 0;
 
-  &:hover {
-    color: #000;
+  /* 1920~ 이상: subtitle 2줄 높이 고정 → title이 모든 카드에서 같은 선상에 오도록 */
+  @media (min-width: 1920px) {
+    min-height: 2.8em;
   }
 `;
 
-const hoverContentStyles = css`
-  position: absolute;
-  top: 24px;
-  left: 24px;
-  right: 24px;
-  bottom: 24px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  opacity: 0;
-
-  .position-card:hover & {
-    opacity: 1;
-  }
+const hoverTitleStyles = css`
+  font-family: 'Pretendard', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin: 0;
+  color: #f1f2f3;
+  letter-spacing: 0;
+  white-space: pre-line;
 `;
 
-const hoverTextStyles = css`
-  ${theme.typosV3.pretendard.sub5Medium};
-
-  color: white;
+const hoverDescriptionStyles = css`
+  font-family: 'Pretendard', sans-serif;
   font-size: 14px;
-  z-index: 2;
-  position: relative;
-`;
-
-// 이후 지원 버튼 추가 시 사용
-const hoverApplyButtonStyles = css`
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: none;
-  border: none;
-  ${theme.typosV3.pretendard.sub1Medium};
-
-  color: white;
-  cursor: pointer;
-  z-index: 2;
-  position: relative;
-  transition: opacity 0.2s ease;
-
-  &:hover {
-    color: #ccc;
-  }
-`;
-
-const hoverArrowStyles = css`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  background: white;
-  color: ${colors.gray900};
-  border-radius: 50%;
-  font-size: 16px;
-`;
-
-const arrowStyles = css`
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  background: ${colors.gray900};
-  color: white;
-  border-radius: 50%;
-  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 0;
+  color: #f1f2f3;
+  letter-spacing: 0;
 `;

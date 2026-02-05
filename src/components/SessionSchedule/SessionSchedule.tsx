@@ -1,328 +1,155 @@
+import { useEffect, useState } from 'react';
 import { css, Theme } from '@emotion/react';
 
-import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
-import { sectionBg } from '~/styles/background';
 import { colors } from '~/styles/colors';
-import { mediaQuery } from '~/styles/media';
 
-interface SessionData {
-  ot: string;
-  mini: string;
-  workshop: string;
-  currentMeeting: string;
-  teamBuilding: string;
+interface SessionItem {
+  date: string;
+  week: string;
+  title: string;
+  isOnline?: boolean;
 }
 
-interface OfflineSessionData {
-  utSharing: string;
-  hackathon: string;
-  teamBuilding: string;
-  presentationDay: string;
-  feedback: string;
-  networking: string;
-}
-
-interface FinalSessionData {
-  teamBuilding: string;
-  workOn: string;
-  teamBuilding2: string;
-  presentationDay: string;
-  finalPresentation: string;
-}
-
-const onlineSessionData: SessionData = {
-  ot: '08.02',
-  mini: '08.09',
-  currentMeeting: '08.16',
-  workshop: '08.23-24',
-  teamBuilding: '08.30',
-};
-
-const offlineSessionData: OfflineSessionData = {
-  utSharing: '09.06',
-  hackathon: '09.13',
-  teamBuilding: '09.20',
-  presentationDay: '09.27',
-  feedback: '10.11',
-  networking: '10.18',
-};
-
-const finalSessionData: FinalSessionData = {
-  teamBuilding: '10.25',
-  workOn: '11.01',
-  teamBuilding2: '11.08',
-  presentationDay: '11.15',
-  finalPresentation: '11.22',
-};
+const sessionScheduleData: SessionItem[] = [
+  { date: '03.14', week: '1주차', title: 'OT' },
+  { date: '03.21', week: '2주차', title: '아이디어 공유/피드백', isOnline: true },
+  { date: '03.28', week: '3주차', title: '현직자와의 만남' },
+  { date: '04.04', week: '4주차', title: '포커스 위크', isOnline: true },
+  { date: '04.11', week: '5주차', title: '중간 발표', isOnline: true },
+  { date: '04.18', week: '6주차', title: '캐주얼 네트워킹 세션' },
+  { date: '04.25', week: '7주차', title: '딮커톤' },
+  { date: '05.02', week: '8주차', title: '방학 🏄' },
+  { date: '05.09', week: '9주차', title: '프리 런칭 데이' },
+  { date: '05.16', week: '10주차', title: '딮크샵' },
+  { date: '05.23', week: '11주차', title: '포커스 위크', isOnline: true },
+  { date: '05.30', week: '12주차', title: '커리어 성장 세션' },
+  { date: '06.06', week: '13주차', title: '동문회' },
+  { date: '06.13', week: '14주차', title: '딮케이션' },
+  { date: '06.20', week: '15주차', title: '포커스 위크', isOnline: true },
+  { date: '06.27', week: '16주차', title: '런칭 데이' },
+  { date: '07.04', week: '17주차', title: '최종 발표' },
+];
 
 export const SessionSchedule = () => {
-  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
-  const { isTargetSize: isTabletSize } = useCheckWindowSize('tablet');
+  const [isLargeDesktop, setIsLargeDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsLargeDesktop(window.innerWidth >= 1920);
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => {
+      window.removeEventListener('resize', checkScreenSize);
+    };
+  }, []);
+
+  const shouldShowTwoColumns = isLargeDesktop;
+  const midPoint = Math.ceil(sessionScheduleData.length / 2);
+  const firstColumn = sessionScheduleData.slice(0, midPoint);
+  const secondColumn = sessionScheduleData.slice(midPoint);
 
   return (
-    <>
-      {!isTabletSize && !isMobileSize && (
-        <div css={containerCss}>
-          <div css={contentStyles}>
-            <div css={headerCss}>
-              <h2 css={titleCss}>온/오프라인 세션</h2>
-              <p css={descriptionCss}>
-                세션은 매주 토요일 진행되며,
-                <br /> 오프라인 세션은 서울에서 열립니다
-              </p>
-            </div>
+    <div css={containerCss}>
+      <div css={contentStyles}>
+        <div css={headerCss}>
+          <h2 css={titleCss}>온/오프라인 세션</h2>
+          <p css={descriptionCss}>
+            세션은 매주 토요일에 진행되며,
+            <br />
+            오프라인 세션은 수도권 내에서 진행됩니다.
+          </p>
+        </div>
 
-            {/* 온라인 세션 테이블 */}
-            <div css={tableContainerCss}>
-              <table css={tableCss}>
-                <thead>
-                  <tr>
-                    <th css={[headerCellCss, darkHeaderCss]}>OT</th>
-                    <th css={headerCellCss}>미니 디프콘</th>
-                    <th css={[headerCellCss, darkHeaderCss]}>현직자와의 만남</th>
-                    <th css={[headerCellCss, darkHeaderCss, whiteLineCss]}>딮크샵</th>
-                    <th css={headerCellCss}>팀별 작업</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td css={cellCss}>{onlineSessionData.ot}</td>
-                    <td css={cellCss}>{onlineSessionData.mini}</td>
-                    <td css={cellCss}>{onlineSessionData.currentMeeting}</td>
-                    <td css={cellCss}>{onlineSessionData.workshop}</td>
-                    <td css={cellCss}>{onlineSessionData.teamBuilding}</td>
-                  </tr>
-                </tbody>
-              </table>
+        <div css={legendWrapperCss}>
+          <div css={onlineLegendCss}>
+            <div css={legendBadgeCss}>
+              <span css={legendBadgeTextCss}>온</span>
             </div>
-
-            {/* 오프라인 세션 테이블 */}
-            <div css={tableContainerCss}>
-              <table css={tableCss}>
-                <thead>
-                  <tr>
-                    <th css={[headerCellCss, darkHeaderCss]}>UT 결과 공유</th>
-                    <th css={[headerCellCss, darkHeaderCss, whiteLineCss]}>딮커톤</th>
-                    <th css={headerCellCss}>팀별 작업</th>
-                    <th css={[headerCellCss, darkHeaderCss]}>프리런칭데이</th>
-                    <th css={headerCellCss}>피드백 공유</th>
-                    <th css={[headerCellCss, darkHeaderCss]}>반상회</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td css={cellCss}>{offlineSessionData.utSharing}</td>
-                    <td css={cellCss}>{offlineSessionData.hackathon}</td>
-                    <td css={cellCss}>{offlineSessionData.teamBuilding}</td>
-                    <td css={cellCss}>{offlineSessionData.presentationDay}</td>
-                    <td css={cellCss}>{offlineSessionData.feedback}</td>
-                    <td css={cellCss}>{offlineSessionData.networking}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            {/* 최종 세션 테이블 */}
-            <div css={tableContainerCss}>
-              <table css={tableCss}>
-                <thead>
-                  <tr>
-                    <th css={headerCellCss}>팀별 작업</th>
-                    <th css={[headerCellCss, darkHeaderCss]}>딮케이션</th>
-                    <th css={headerCellCss}>팀별 작업</th>
-                    <th css={[headerCellCss, darkHeaderCss]}>런칭데이</th>
-                    <th css={[headerCellCss, darkHeaderCss, whiteLineCss]}>최종 발표</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td css={cellCss}>{finalSessionData.teamBuilding}</td>
-                    <td css={cellCss}>{finalSessionData.workOn}</td>
-                    <td css={cellCss}>{finalSessionData.teamBuilding2}</td>
-                    <td css={cellCss}>{finalSessionData.presentationDay}</td>
-                    <td css={cellCss}>{finalSessionData.finalPresentation}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            {/* 세션 타입 표시 */}
-            <div css={sessionTypeCss}>
-              <div css={sessionItemCss}>
-                <div css={filledCircleCss} />
-                <span css={sessionTextCss}>오프라인 세션</span>
-              </div>
-              <div css={sessionItemCss}>
-                <div css={emptyCircleCss} />
-                <span css={sessionTextCss}>온라인 세션</span>
-              </div>
-            </div>
+            <span css={legendTextCss}>: 온라인 세션</span>
           </div>
         </div>
-      )}
-      {(isTabletSize || isMobileSize) && (
-        <div css={containerCss}>
-          <div css={contentStyles}>
-            <div css={headerCss}>
-              <h2 css={titleCss}>온/오프라인 세션</h2>
-              <p css={descriptionCss}>
-                {`세션은 매주 토요일 진행되며, \n오프라인 세션은 서울에서 열립니다`}
-              </p>
-            </div>
 
-            {/* 첫 번째 테이블: OT, 아이디어 공유, 워크샵 */}
-            <div css={tableContainerCss}>
-              <table css={tableCss}>
-                <thead>
-                  <tr>
-                    <th css={[headerCellCss, darkHeaderCss]}>OT</th>
-                    <th css={headerCellCss}>미니 디프콘</th>
-                    <th css={[headerCellCss, darkHeaderCss]}>현직자와의 만남</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td css={cellCss}>{onlineSessionData.ot}</td>
-                    <td css={cellCss}>{onlineSessionData.mini}</td>
-                    <td css={cellCss}>{onlineSessionData.currentMeeting}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            {/* 두 번째 테이블: 현직자와의 만남, 팀별 작업, UT 결과 공유 */}
-            <div css={tableContainerCss}>
-              <table css={tableCss}>
-                <thead>
-                  <tr>
-                    <th css={[headerCellCss, darkHeaderCss]}>딮크샵</th>
-                    <th css={headerCellCss}>팀별 작업</th>
-                    <th css={[headerCellCss, darkHeaderCss]}>UT 결과 공유</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td css={cellCss}>{onlineSessionData.workshop}</td>
-                    <td css={cellCss}>{onlineSessionData.teamBuilding}</td>
-                    <td css={cellCss}>{offlineSessionData.utSharing}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            {/* 세 번째 테이블: 딮커톤, 팀별 작업, 프리런칭데이 */}
-            <div css={tableContainerCss}>
-              <table css={tableCss}>
-                <thead>
-                  <tr>
-                    <th css={[headerCellCss, darkHeaderCss]}>딮커톤</th>
-                    <th css={headerCellCss}>팀별 작업</th>
-                    <th css={[headerCellCss, darkHeaderCss]}>프리런칭데이</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td css={cellCss}>{offlineSessionData.hackathon}</td>
-                    <td css={cellCss}>{offlineSessionData.teamBuilding}</td>
-                    <td css={cellCss}>{offlineSessionData.presentationDay}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            {/* 네 번째 테이블: 피드백 공유, 반상회, 팀별 작업 */}
-            <div css={tableContainerCss}>
-              <table css={tableCss}>
-                <thead>
-                  <tr>
-                    <th css={headerCellCss}>피드백 공유</th>
-                    <th css={[headerCellCss, darkHeaderCss]}>반상회</th>
-                    <th css={headerCellCss}>팀별 작업</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td css={cellCss}>{offlineSessionData.feedback}</td>
-                    <td css={cellCss}>{offlineSessionData.networking}</td>
-                    <td css={cellCss}>{finalSessionData.teamBuilding}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            {/* 다섯 번째 테이블: 딮케이션, 팀별 작업, 런칭데이, 최종 발표 */}
-            <div css={tableContainerCss}>
-              <table css={finalTableCss}>
-                <thead>
-                  <tr>
-                    <th css={[headerCellCss, darkHeaderCss]}>딮케이션</th>
-                    <th css={headerCellCss}>팀별 작업</th>
-                    <th css={[headerCellCss, darkHeaderCss]}>런칭데이</th>
-                    <th css={[headerCellCss, darkHeaderCss, whiteLineCss]}>최종 발표</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td css={cellCss}>{finalSessionData.workOn}</td>
-                    <td css={cellCss}>{finalSessionData.teamBuilding2}</td>
-                    <td css={cellCss}>{finalSessionData.presentationDay}</td>
-                    <td css={cellCss}>{finalSessionData.finalPresentation}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            {/* 세션 타입 표시 */}
-            <div css={sessionTypeCss}>
-              <div css={sessionItemCss}>
-                <div css={filledCircleCss} />
-                <span css={sessionTextCss}>오프라인 세션</span>
+        <div css={sessionCardCss}>
+          {shouldShowTwoColumns ? (
+            <div css={twoColumnGridCss}>
+              <div css={columnCss}>
+                {firstColumn.map((session, index) => (
+                  <div key={index} css={sessionItemCss(index === firstColumn.length - 1)}>
+                    <div css={dateWeekContainerCss}>
+                      <p css={dateTextCss}>{session.date}</p>
+                      <p css={weekTextCss}>{session.week}</p>
+                    </div>
+                    <div css={programContainerCss}>
+                      <p css={titleTextCss}>{session.title}</p>
+                      {session.isOnline && (
+                        <div css={onlineBadgeCss}>
+                          <span css={badgeTextCss}>온</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div css={sessionItemCss}>
-                <div css={emptyCircleCss} />
-                <span css={sessionTextCss}>온라인 세션</span>
+              <div css={columnCss}>
+                {secondColumn.map((session, index) => (
+                  <div key={index} css={sessionItemCss(false)}>
+                    <div css={dateWeekContainerCss}>
+                      <p css={dateTextCss}>{session.date}</p>
+                      <p css={weekTextCss}>{session.week}</p>
+                    </div>
+                    <div css={programContainerCss}>
+                      <p css={titleTextCss}>{session.title}</p>
+                      {session.isOnline && (
+                        <div css={onlineBadgeCss}>
+                          <span css={badgeTextCss}>온</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
+          ) : (
+            <div css={singleColumnCss}>
+              {sessionScheduleData.map((session, index) => (
+                <div key={index} css={sessionItemCss(index === sessionScheduleData.length - 1)}>
+                  <div css={dateWeekContainerCss}>
+                    <p css={dateTextCss}>{session.date}</p>
+                    <p css={weekTextCss}>{session.week}</p>
+                  </div>
+                  <div css={programContainerCss}>
+                    <p css={titleTextCss}>{session.title}</p>
+                    {session.isOnline && (
+                      <div css={onlineBadgeCss}>
+                        <span css={badgeTextCss}>온</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
-      )}
-    </>
+      </div>
+    </div>
   );
 };
 
-const containerCss = (theme: Theme) => css`
+const containerCss = (_theme: Theme) => css`
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   margin: 0 auto;
-  padding: 80px 20px;
-  background-color: ${theme.colors.primary.gray};
-  ${sectionBg};
+  padding: 120px 20px;
+  background-color: ${colors.grey18[900]};
 
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -100px;
-    left: 0;
-    width: 353px;
-    height: 353px;
-    background-image: url('/images/17th/shapes/yellow.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: bottom left;
-    z-index: 0;
-    opacity: 1;
-
-    ${mediaQuery('mobile')} {
-      width: 200px;
-      height: 200px;
-    }
-    ${mediaQuery('tablet')} {
-      width: 200px;
-      height: 200px;
-    }
+  @media (max-width: 767px) {
+    padding: 80px 20px;
   }
 `;
 
@@ -333,210 +160,274 @@ const contentStyles = css`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1200px;
+
+  @media (min-width: 1920px) {
+    max-width: 1200px;
+  }
+
+  @media (min-width: 1280px) and (max-width: 1919px) {
+    max-width: 600px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    max-width: 600px;
+  }
+
+  @media (max-width: 767px) {
+    max-width: 100%;
+  }
 `;
 
 const headerCss = css`
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 
-  ${mediaQuery('mobile')} {
-    margin-bottom: 40px;
+  @media (max-width: 767px) {
+    margin-bottom: 30px;
   }
 `;
 
-const titleCss = (theme: Theme) => css`
-  ${theme.typosV3.pretendard.head1};
-  color: ${theme.colors.primary.darknavy};
+const titleCss = css`
+  color: ${colors.white};
   margin-bottom: 16px;
   font-size: 36px;
-  font-weight: 600;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
 
-  ${mediaQuery('mobile')} {
-    font-size: 1.5rem;
-  }
-
-  ${mediaQuery('tablet')} {
-    font-size: 1.5rem;
-  }
-`;
-
-const descriptionCss = (theme: Theme) => css`
-  ${theme.typosV3.pretendard.sub1Semibold};
-  color: ${theme.colors.primary.darknavy};
-  font-size: 20px;
-  font-weight: 400;
-  ${mediaQuery('mobile')} {
-    font-size: 0.875rem;
-    white-space: pre-wrap;
+  @media (max-width: 767px) {
+    font-size: 26px;
+    line-height: 1.25;
+    letter-spacing: -0.05em;
   }
 `;
 
-const tableContainerCss = css`
-  margin-bottom: 40px;
-  overflow-x: auto;
+const descriptionCss = css`
+  color: ${colors.white};
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 0;
 
-  ${mediaQuery('mobile')} {
-    margin-bottom: 30px;
-  }
-
-  ${mediaQuery('tablet')} {
-    margin-bottom: 30px;
+  @media (max-width: 767px) {
+    font-size: 14px;
   }
 `;
 
-const tableCss = css`
+const legendWrapperCss = css`
   width: 100%;
-  border-collapse: collapse;
-  background-color: white;
-  border: 1px solid ${colors.primary.darknavy};
-
-  ${mediaQuery('mobile')} {
-    width: 328px;
-  }
-  ${mediaQuery('tablet')} {
-    width: 328px;
-  }
-`;
-
-const finalTableCss = css`
-  width: 100%;
-  border-collapse: collapse;
-  background-color: white;
-  border: 1px solid ${colors.primary.darknavy};
-
-  ${mediaQuery('mobile')} {
-    width: 328px;
-  }
-  ${mediaQuery('tablet')} {
-    width: 328px;
-  }
-`;
-
-const headerCellCss = (theme: Theme) => css`
-  ${theme.typosV3.pretendard.sub3Semibold};
-
-  width: 134.86px;
-  min-width: 134.86px;
-  max-width: 134.86px;
-  padding: 16px 12px;
-  text-align: center;
-  font-weight: 600;
-  background-color: ${theme.colors.primary.gray};
-  color: ${theme.colors.primary.darknavy};
-  border: 1px solid ${colors.primary.darknavy};
-
-  ${mediaQuery('mobile')} {
-    width: 110px;
-    min-width: 110px;
-    max-width: 110px;
-    padding: 12px 8px;
-    font-size: 0.875rem;
-  }
-
-  ${mediaQuery('tablet')} {
-    width: 82px;
-    min-width: 82px;
-    max-width: 82px;
-    padding: 12px 8px;
-    font-size: 0.875rem;
-  }
-`;
-
-const darkHeaderCss = css`
-  background-color: ${colors.primary.darknavy};
-  color: white;
-  border: 1px solid ${colors.primary.darknavy};
-`;
-
-const whiteLineCss = css`
-  position: relative;
-  border-left: none !important;
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 2px;
-    bottom: 2px;
-    width: 1px;
-    background-color: ${colors.primary.gray};
-  }
-`;
-
-const cellCss = (theme: Theme) => css`
-  ${theme.typosV3.pretendard.body3Medium};
-
-  width: 134.86px;
-  min-width: 134.86px;
-  max-width: 134.86px;
-  padding: 16px 12px;
-  text-align: center;
-  background: ${colors.primary.gray};
-  color: ${theme.colors.primary.darknavy};
-
-  ${mediaQuery('mobile')} {
-    padding: 12px 8px;
-    font-size: 0.875rem;
-    width: 110px;
-    min-width: 82px;
-    max-width: 110px;
-  }
-  ${mediaQuery('tablet')} {
-    padding: 12px 8px;
-    font-size: 0.875rem;
-    width: 110px;
-    min-width: 82px;
-    max-width: 110px;
-  }
-`;
-
-const sessionTypeCss = css`
   display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-top: 40px;
+  justify-content: flex-end;
+  margin-bottom: 32px;
 
-  ${mediaQuery('mobile')} {
-    gap: 20px;
-    margin-top: 30px;
-  }
-  ${mediaQuery('tablet')} {
-    gap: 20px;
-    margin-top: 30px;
+  @media (max-width: 767px) {
+    margin-bottom: 12px;
   }
 `;
 
-const sessionItemCss = css`
+const onlineLegendCss = css`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 `;
 
-const filledCircleCss = css`
-  width: 20px;
-  height: 20px;
+const legendBadgeCss = css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  background-color: ${colors.primary.darknavy};
-`;
+  background-color: ${colors.primary18.strong};
+  flex-shrink: 0;
 
-const emptyCircleCss = css`
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 2px solid ${colors.primary.darknavy};
-  background-color: ${colors.primary.gray};
-`;
-
-const sessionTextCss = (theme: Theme) => css`
-  ${theme.typosV2.pretendard.regular14};
-  color: ${theme.colors.grey['900']};
-  font-weight: 500;
-
-  ${mediaQuery('mobile')} {
-    font-size: 0.875rem;
+  @media (max-width: 767px) {
+    width: 18px;
+    height: 18px;
   }
-  ${mediaQuery('tablet')} {
-    font-size: 0.875rem;
+`;
+
+const legendBadgeTextCss = css`
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: ${colors.white};
+  text-align: center;
+
+  @media (max-width: 767px) {
+    font-size: 8px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+  }
+`;
+
+const legendTextCss = css`
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: ${colors.white};
+  padding-right: 20px;
+
+  @media (max-width: 767px) {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+  }
+`;
+
+const sessionCardCss = css`
+  background: ${colors.white};
+  border-radius: 48px;
+  padding: 56px 72px;
+  width: 100%;
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    border-radius: 40px;
+    padding: 56px 72px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 16px 20px;
+    border-radius: 20px;
+  }
+`;
+
+const twoColumnGridCss = css`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  width: 100%;
+`;
+
+const columnCss = css`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const singleColumnCss = css`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+
+const sessionItemCss = (isLast: boolean) => css`
+  display: flex;
+  align-items: flex-end;
+  gap: 40px;
+  padding: 24px 40px 20px 0;
+  border-bottom: ${isLast ? 'none' : `1px solid ${colors.grey18[300]}`};
+
+  @media (min-width: 360px) and (max-width: 767px) {
+    gap: 24px;
+    padding: 12px 0;
+  }
+`;
+
+const dateWeekContainerCss = css`
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 105px;
+  flex-shrink: 0;
+
+  @media (max-width: 767px) {
+    width: 48px;
+  }
+`;
+
+const dateTextCss = css`
+  font-family: 'Pretendard', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: ${colors.grey18[900]};
+  text-align: left;
+  margin: 0;
+
+  @media (min-width: 360px) and (max-width: 767px) {
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: -0.12px;
+  }
+`;
+
+const weekTextCss = css`
+  font-family: 'Pretendard', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.64px;
+  color: ${colors.grey18[700]};
+  margin: 0;
+
+  @media (min-width: 360px) and (max-width: 767px) {
+    font-size: 15px;
+    line-height: 1.4;
+    letter-spacing: 0;
+  }
+`;
+
+const programContainerCss = css`
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  flex: 1;
+
+  @media (max-width: 767px) {
+    gap: 8px;
+    align-items: center;
+  }
+`;
+
+const titleTextCss = css`
+  font-family: 'Pretendard', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.64px;
+  color: ${colors.grey18[900]};
+  margin: 0;
+
+  @media (min-width: 360px) and (max-width: 767px) {
+    font-size: 15px;
+    line-height: 1.4;
+    letter-spacing: 0;
+  }
+`;
+
+const onlineBadgeCss = css`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: ${colors.primary18.strong};
+  flex-shrink: 0;
+
+  @media (max-width: 767px) {
+    width: 18px;
+    height: 18px;
+  }
+`;
+
+const badgeTextCss = css`
+  font-size: 18.182px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: ${colors.white};
+  text-align: center;
+
+  @media (max-width: 767px) {
+    font-size: 8.1px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
   }
 `;

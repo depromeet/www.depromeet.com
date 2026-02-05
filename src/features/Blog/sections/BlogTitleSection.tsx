@@ -1,52 +1,28 @@
-import Image from 'next/image';
 import { css } from '@emotion/react';
 
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
 export const BlogTitleSection = () => {
   return (
-    <div css={titleImageContainerCss}>
-      <Image
-        src="/images/blog/17th-blog.png"
-        alt="Blog"
-        width={190}
-        height={64}
-        css={titleImageCss}
-      />
+    <div css={titleContainerCss}>
+      <h1 css={titleCss}>Blog</h1>
     </div>
   );
 };
 
-const titleImageContainerCss = css`
-  align-self: center;
-  max-width: 1100px;
+const titleContainerCss = css`
   width: 100%;
-  padding-inline: 48px;
-  padding-top: 47px;
-  padding-bottom: 26px;
-
-  ${mediaQuery('tablet')} {
-    padding-left: 0;
-  }
-
-  ${mediaQuery('mobile')} {
-    padding-left: 0;
-    padding-top: 55px;
-  }
 `;
 
-const titleImageCss = css`
-  object-fit: contain;
-  width: auto;
-  height: 90px;
-
-  ${mediaQuery('tablet')} {
-    width: auto;
-    height: 85px;
-  }
+const titleCss = css`
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: ${colors.grey18['900']};
+  margin: 0;
 
   ${mediaQuery('mobile')} {
-    width: auto;
-    height: 40px;
+    font-size: 40px;
   }
 `;

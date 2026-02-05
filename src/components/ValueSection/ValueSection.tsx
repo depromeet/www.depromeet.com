@@ -1,40 +1,53 @@
 import { css } from '@emotion/react';
 
-import { sectionBg } from '~/styles/background';
 import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
-import { colors } from '../../styles/colors';
+const CARD_GRADIENT_START = '#DFEEFE';
+const CARD_GRADIENT_END = '#F9FBFF';
 
 export const ValueSection = () => {
   const values = [
     {
       id: 'responsibility',
-      title: 'Responsibility & Ownership',
-      description: '서비스에 책임감을 갖고, 주인의식을 바탕으로 끝까지 해내는 사람',
+      number: '01',
+      title: '책임감',
+      subtitle: 'Responsibility',
+      description: '맡은 일의 크기와 상관없이\n끝까지 완수하려는 태도',
     },
     {
-      id: 'collaboration',
-      title: 'Collaboration & Sharing',
-      description: '의견을 존중하며 적극적으로 소통하고, 지식과 경험을 나누며 함께 성장하는 사람',
+      id: 'ownership',
+      number: '02',
+      title: '오너쉽',
+      subtitle: 'Ownership',
+      description: '문제와 결과를 내 일처럼\n받아들이는 태도',
     },
     {
-      id: 'passion',
-      title: 'Passion & Adventure',
-      description: '새로운 도전을 즐기며, 열정을 가지고 주도적으로 해결책을 찾아나가는 사람',
+      id: 'flexibility',
+      number: '03',
+      title: '유연성',
+      subtitle: 'Flexibility',
+      description: '완벽한 계획보다 빠른 실행과\n실험을 통해 배우는 태도',
     },
   ];
 
   return (
     <div css={containerStyles}>
       <div css={contentStyles}>
-        <div css={titleStyles}>17기의 인재상</div>
-        {values.map(value => (
-          <div key={value.id} css={valueCardStyles}>
-            <h3 css={semititleStyles}>{value.title}</h3>
-            <p css={descriptionStyles}>{value.description}</p>
-          </div>
-        ))}
+        <div css={headerContainerStyles}>
+          <div css={titleStyles}>18기의 인재상</div>
+          <div css={subtitleStyles}>디프만은 이런 디퍼를 원해요</div>
+        </div>
+        <div css={cardsContainerStyles}>
+          {values.map(value => (
+            <div key={value.id} css={valueCardStyles}>
+              <div css={numberStyles}>{value.number}</div>
+              <h3 css={semititleStyles}>{value.title}</h3>
+              <p css={cardSubtitleStyles}>{value.subtitle}</p>
+              <p css={descriptionStyles}>{value.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -49,7 +62,7 @@ const containerStyles = css`
   gap: 16px;
   margin: 0 auto;
   padding: 120px 20px;
-  ${sectionBg};
+  background-color: #ffffff;
 
   ${mediaQuery('tablet')} {
     overflow-x: hidden;
@@ -57,7 +70,6 @@ const containerStyles = css`
     padding: 120px 20px 200px 20px;
   }
   ${mediaQuery('mobile')} {
-    /* overflow: auto; */
     padding: 120px 20px;
   }
 
@@ -68,10 +80,6 @@ const containerStyles = css`
     right: 50px;
     width: 282px;
     height: 282px;
-    background-image: url('/images/17th/shapes/compass.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: top right;
     z-index: 0;
     opacity: 1;
 
@@ -93,10 +101,6 @@ const containerStyles = css`
     left: -50px;
     width: 312px;
     height: 312px;
-    background-image: url('/images/17th/shapes/pink_arrow.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: bottom left;
     z-index: 3;
     opacity: 1;
 
@@ -121,70 +125,163 @@ const contentStyles = css`
   z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 40px;
   width: 100%;
   max-width: 1100px;
   align-items: center;
+
+  ${mediaQuery('mobile')} {
+    gap: 30px;
+  }
 `;
 
-const valueCardStyles = css`
-  background: ${colors.white};
-  border: 1px solid ${colors.blue500};
-  padding: 28px 26px;
+const headerContainerStyles = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
   text-align: center;
-  transition: all 0.2s ease;
-  width: 730px;
-  background: ${colors.primary.gray};
-
-  ${mediaQuery('tablet')} {
-    width: 100%;
-    margin: 0 40.5px;
-  }
-  ${mediaQuery('mobile')} {
-    width: 328px;
-  }
 `;
 
 const titleStyles = css`
   ${theme.typosV3.pretendard.head1};
+  font-size: 36px;
   font-weight: 600;
-  margin: 0 0 16px 0;
+  margin: 0;
+  color: ${theme.colors.primary.darknavy};
+
+  ${mediaQuery('mobile')} {
+    font-size: 28px;
+  }
+`;
+
+const subtitleStyles = css`
+  ${theme.typosV3.pretendard.sub1Semibold};
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
+  color: ${theme.colors.grey18[600]};
+
+  ${mediaQuery('mobile')} {
+    font-size: 18px;
+  }
+`;
+
+const cardsContainerStyles = css`
+  display: grid;
+  grid-template-columns: repeat(3, 392px);
+  gap: 12px;
+  width: 100%;
+  justify-content: center;
+
+  @media (min-width: 1280px) and (max-width: 1919px) {
+    grid-template-columns: repeat(3, 285px);
+  }
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    grid-template-columns: repeat(3, 224px);
+  }
+
+  @media (min-width: 360px) and (max-width: 767px) {
+    grid-template-columns: 320px;
+  }
+`;
+
+const valueCardStyles = css`
+  background: linear-gradient(to bottom right, ${CARD_GRADIENT_START}, ${CARD_GRADIENT_END});
+  clip-path: polygon(70px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 70px);
+  border-radius: 16px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+  position: relative;
+  width: 392px;
+  height: 400px;
+
+  @media (min-width: 1280px) and (max-width: 1919px) {
+    width: 285px;
+    height: 380px;
+    padding: 32px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    width: 224px;
+    height: 320px;
+    padding: 28px;
+    border-radius: 12px;
+  }
+
+  @media (min-width: 360px) and (max-width: 767px) {
+    width: 320px;
+    height: 320px;
+    padding: 28px;
+    border-radius: 12px;
+  }
+`;
+
+const numberStyles = css`
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: ${theme.colors.grey18[400]};
+  line-height: 1.4;
+  letter-spacing: -0.4px;
+  position: absolute;
+  top: 20px;
+  right: 42.5px;
+  transform: translateX(50%);
   text-align: center;
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    font-size: 32px;
+    line-height: 1.2;
+    right: 38px;
+  }
 `;
 
 const semititleStyles = css`
-  ${theme.typosV3.MartianMono.head3};
-  font-weight: 500;
-  letter-spacing: -4%;
-  line-height: 109%;
-  margin: 0 0 16px 0;
-  line-height: 1.2;
-  text-align: center;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: ${theme.colors.primary18.strong};
+  margin: 0;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
 
-  ${mediaQuery('tablet')} {
-    font-weight: 400;
-    font-size: 28px;
-    letter-spacing: -1px;
+  @media (max-width: 1279px) {
+    font-size: 32px;
+    letter-spacing: -0.02em;
   }
-  ${mediaQuery('mobile')} {
-    ${theme.typosV3.MartianMono.body2};
+`;
+
+const cardSubtitleStyles = css`
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: ${theme.colors.grey18[900]};
+  margin: 0;
+  line-height: 1.4;
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    font-size: 18px;
     font-weight: 500;
-    font-size: 17px;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
   }
 `;
 
 const descriptionStyles = css`
-  ${theme.typosV3.pretendard.sub2Semibold};
+  font-family: 'Pretendard', sans-serif;
+  font-size: 24px;
   font-weight: 500;
-
+  color: ${theme.colors.grey18[900]};
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.4;
+  white-space: pre-line;
 
-  ${mediaQuery('tablet')} {
-    font-weight: 400;
-  }
-  ${mediaQuery('mobile')} {
-    ${theme.typosV3.pretendard.sub4Semibold};
-    font-weight: 500;
+  @media (min-width: 768px) and (max-width: 1279px) {
+    font-size: 18px;
   }
 `;

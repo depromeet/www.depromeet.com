@@ -5,7 +5,7 @@ import { m } from 'framer-motion';
 import { ArrowIcon } from '~/components/Icons';
 import { BlogLink } from '~/constant/blog';
 import { defaultFadeInVariants } from '~/constant/motion';
-import { mediaQuery } from '~/styles/media';
+import { colors } from '~/styles/colors';
 import { theme } from '~/styles/theme';
 
 type ThumbnailProps = {
@@ -39,63 +39,41 @@ export function BlogPostThumbnail({ title, date, img, link, ...props }: Thumbnai
       {...props}
     >
       <div css={frontFaceCss} className="front-face">
-        <div css={dateContainerCss}>
-          <span css={dateCss}>{date}</span>
-        </div>
-
-        <div css={titleContainerCss}>
-          <h3 css={titleCss} dangerouslySetInnerHTML={{ __html: title as string }} />
-        </div>
-
         <div css={imageContainerCss}>
           <Image css={imageCss} src={img} alt={title} fill quality={100} />
-        </div>
-      </div>
-
-      <div css={backFaceCss} className="back-face">
-        <div css={dateContainerCss}>
-          <span css={[dateCss, { color: 'black' }]}>{date}</span>
-        </div>
-
-        <div css={titleContainerCss}>
-          <h3
-            css={[titleCss, { color: 'black' }]}
-            dangerouslySetInnerHTML={{ __html: title as string }}
-          />
-        </div>
-
-        <div css={backLinksAreaCss}>
-          <div css={linksContainerCss}>
+          <div css={thumbnailOverlayCss} className="thumbnail-overlay">
             <button css={linkButtonCss} onClick={handleLinkClick}>
               {link.type}
               <ArrowIcon direction={'right'} color="white" width={16} height={16} />
             </button>
           </div>
         </div>
+
+        <div css={titleContainerCss}>
+          <h3 css={titleCss} dangerouslySetInnerHTML={{ __html: title as string }} />
+        </div>
+
+        <div css={dateContainerCss}>
+          <span css={dateCss}>{date}</span>
+        </div>
       </div>
     </m.article>
   );
 }
 
-// 메인 카드 스타일
+/* hover시 썸네일 영역만 회색+텍스트 표시, 그 외 효과 없음 */
 const articleCss = css`
   position: relative;
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
-  background: #e3e5ea;
-  border: 1px solid #478af4;
+  background: ${colors.white};
+  border: none;
   cursor: pointer;
-  transition: all 0.2s ease;
   overflow: hidden;
 
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-
-  &:hover .back-face {
+  &:hover .thumbnail-overlay {
     opacity: 1;
   }
 `;
@@ -111,49 +89,11 @@ const frontFaceCss = css`
   transition: opacity 0.3s ease;
 `;
 
-// 뒷면 스타일
-const backFaceCss = css`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #e3e5ea;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-`;
-
-const backLinksAreaCss = css`
-  position: relative;
-  width: 100%;
-  height: 200px;
-  background: #040c23;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 21px;
-  box-sizing: border-box;
-
-  ${mediaQuery('mobile')} {
-    height: 180px;
-  }
-`;
-
-const linksContainerCss = css`
-  display: flex;
-  gap: 16.5px;
-  align-items: center;
-  justify-content: center;
-`;
-
 const linkButtonCss = css`
   display: flex;
   gap: 6px;
   align-items: center;
-  color: white;
+  color: ${colors.white};
   background: transparent;
   border: none;
   padding: 0;
@@ -166,74 +106,62 @@ const linkButtonCss = css`
   &:hover {
     opacity: 0.8;
   }
-
-  ${mediaQuery('tablet')} {
-  }
-`;
-
-const dateContainerCss = css`
-  padding: 16px 16px 0 16px;
-
-  ${mediaQuery('mobile')} {
-    padding: 12px 12px 0 12px;
-  }
-`;
-
-const dateCss = css`
-  ${theme.typosV2.pretendard.medium13}
-  color: #040C23;
-  line-height: 1.4;
-
-  ${mediaQuery('mobile')} {
-    font-size: 13px;
-  }
 `;
 
 const titleContainerCss = css`
-  padding: 8px 16px 16px 16px;
+  padding: 20px 0 8px 0;
   flex: 1;
   display: flex;
   align-items: flex-start;
-
-  ${mediaQuery('mobile')} {
-    padding: 6px 12px 12px 12px;
-  }
 `;
 
 const titleCss = css`
-  ${theme.typosV2.pretendard.semibold20};
-  color: #000000;
-  line-height: 1.4;
+  font-size: 22px;
+  font-weight: 600;
+  color: ${colors.grey18['900']};
+  line-height: 1.5;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: keep-all;
+`;
 
-  ${mediaQuery('mobile')} {
-    ${theme.typosV2.pretendard.semibold16};
-    line-height: 1.3;
-  }
+const dateContainerCss = css`
+  padding: 0;
+`;
+
+const dateCss = css`
+  font-size: 14px;
+  font-weight: 400;
+  color: ${colors.grey18['900']};
+  line-height: 1.4;
 `;
 
 const imageContainerCss = css`
   position: relative;
   width: 100%;
-  height: 200px;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
-
-  ${mediaQuery('mobile')} {
-    height: 180px;
-  }
 `;
 
 const imageCss = css`
   object-fit: cover;
   object-position: center;
-  transition: transform 0.3s ease;
+`;
 
-  &:hover {
-    transform: scale(1.02);
-  }
+/* hover시 썸네일 영역만 회색 오버레이 + 링크 텍스트 */
+const thumbnailOverlayCss = css`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: ${colors.grey18['900']};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 `;

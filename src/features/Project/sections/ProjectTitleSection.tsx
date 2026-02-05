@@ -1,44 +1,28 @@
-import Image from 'next/image';
 import { css } from '@emotion/react';
 
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
 export const ProjectTitleSection = () => {
   return (
-    <div css={titleImageContainerCss}>
-      <Image
-        src="/images/project/17기/17th-project-logo.png"
-        alt="Project"
-        width={330}
-        height={84}
-        css={titleImageCss}
-      />
+    <div css={titleContainerCss}>
+      <h1 css={titleCss}>Project</h1>
     </div>
   );
 };
 
-const titleImageContainerCss = css`
-  align-self: center;
-  max-width: 1100px;
+const titleContainerCss = css`
   width: 100%;
-  padding-inline: 48px;
-  padding-top: 47px;
-  padding-bottom: 26px;
-
-  ${mediaQuery('tablet')} {
-    padding-left: 0;
-  }
-
-  ${mediaQuery('mobile')} {
-    padding-left: 0;
-  }
 `;
 
-const titleImageCss = css`
-  object-fit: contain;
+const titleCss = css`
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: ${colors.grey18['900']};
+  margin: 0;
 
   ${mediaQuery('mobile')} {
-    width: 150px;
-    height: 60px;
+    font-size: 40px;
   }
 `;

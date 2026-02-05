@@ -2,6 +2,7 @@ import { useEffect, useId, useRef, useState } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
+import { colors } from '~/styles/colors';
 import { theme } from '~/styles/theme';
 
 type PaginationProps = {
@@ -28,9 +29,9 @@ export function Pagination({ handlePageClick, numberOfPages, currentPage }: Pagi
   }, []);
 
   useEffect(() => {
-    if (isMobile && numberOfPages > 3) {
-      const maxVisiblePages = 3;
-      let startPage = Math.max(1, currentPage - 1);
+    if (isMobile && numberOfPages > 4) {
+      const maxVisiblePages = 4;
+      let startPage = Math.max(1, currentPage - 2);
       const endPage = Math.min(numberOfPages, startPage + maxVisiblePages - 1);
 
       if (endPage - startPage + 1 < maxVisiblePages) {
@@ -94,7 +95,7 @@ export function Pagination({ handlePageClick, numberOfPages, currentPage }: Pagi
     }
   };
 
-  const showArrows = isMobile && numberOfPages > 3;
+  const showArrows = isMobile && numberOfPages > 4;
 
   return (
     <div css={[containerCss, isCentered && !showArrows && centeredListCss]} ref={containerRef}>
@@ -158,7 +159,6 @@ export function Pagination({ handlePageClick, numberOfPages, currentPage }: Pagi
 
 const containerCss = css`
   width: 100%;
-  margin: 0 20px;
   display: flex;
   align-items: center;
   overflow-x: scroll;
@@ -187,7 +187,7 @@ const mobileListCss = css`
   @media (max-width: 768px) {
     flex: 1;
     justify-content: center;
-    max-width: 150px;
+    max-width: 224px;
   }
 `;
 
@@ -204,7 +204,7 @@ const listItemCss = (selected: boolean) => css`
   display: flex;
   align-items: center;
   justify-content: center;
-  color: ${selected ? theme.colors.grey[900] : theme.colors.grey[500]};
+  color: ${selected ? colors.grey18['900'] : colors.grey18['300']};
 `;
 
 const arrowButtonCss = (disabled: boolean) => css`

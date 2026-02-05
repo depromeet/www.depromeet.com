@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 
 import { AllBlog, DEEPER_BLOG_LIST, OFFICIAL_BLOG_LIST } from '~/constant/blog';
-import { sectionGridBg } from '~/styles/background';
+import { CONTENT_WIDTH, SECTION_TOP_PADDING } from '~/constant/layout';
+import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
 
 import { BlogPaginationSection } from './BlogPaginationSection';
-import { BlogRulerDecoration } from './BlogRulerDecoration';
 import { BlogTabNavigation } from './BlogTabNavigation';
 import { BlogTitleSection } from './BlogTitleSection';
 
@@ -70,25 +70,54 @@ export const BlogContentSection = () => {
 
   return (
     <section css={sectionCss}>
-      <BlogTitleSection />
+      <div css={contentWrapperCss}>
+        <BlogTitleSection />
 
-      <BlogTabNavigation
-        currentMainTab={mainTab.name}
-        currentSubTab={currentSubTab}
-        mainTabs={mainTabs}
-        onMainTabClick={handleClickMainTab}
-        onSubTabClick={handleClickSubTab}
-      />
+        <BlogTabNavigation
+          currentMainTab={mainTab.name}
+          currentSubTab={currentSubTab}
+          mainTabs={mainTabs}
+          onMainTabClick={handleClickMainTab}
+          onSubTabClick={handleClickSubTab}
+        />
 
-      <BlogPaginationSection
-        key={`${currentMainTab}-${currentSubTab.key}-${filteredBlogList.length}`}
-        blogList={filteredBlogList}
-      />
-
-      <BlogRulerDecoration />
+        <BlogPaginationSection
+          key={`${currentMainTab}-${currentSubTab.key}-${filteredBlogList.length}`}
+          blogList={filteredBlogList}
+        />
+      </div>
     </section>
   );
 };
+
+const contentWrapperCss = css`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+
+  @media (min-width: 1280px) {
+    width: ${CONTENT_WIDTH.desktop}px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    width: ${CONTENT_WIDTH.tablet}px;
+  }
+
+  @media (min-width: 360px) and (max-width: 767px) {
+    width: ${CONTENT_WIDTH.mobile}px;
+  }
+
+  @media (max-width: 359px) {
+    width: 100%;
+    max-width: ${CONTENT_WIDTH.mobile}px;
+  }
+
+  ${mediaQuery('tablet')} {
+    gap: 32px;
+  }
+`;
 
 const sectionCss = css`
   position: relative;
@@ -97,16 +126,18 @@ const sectionCss = css`
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  padding: 56px 0;
-  gap: 36px;
-
-  ${sectionGridBg}
+  padding: ${SECTION_TOP_PADDING}px 0 80px 0;
+  background-color: ${colors.white};
 
   ${mediaQuery('tablet')} {
-    padding: 56px 48px;
+    padding: ${SECTION_TOP_PADDING}px 0 64px 0;
   }
   ${mediaQuery('mobile')} {
-    padding: 56px 20px;
-    gap: 32px;
+    padding: ${SECTION_TOP_PADDING}px 0 64px 0;
+  }
+
+  @media (max-width: 359px) {
+    padding-left: 20px;
+    padding-right: 20px;
   }
 `;

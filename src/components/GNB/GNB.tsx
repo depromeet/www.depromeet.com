@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -8,15 +9,10 @@ import { Button } from '~/components/Button';
 import { MobileMenu } from '~/components/GNB/MobileMenu';
 import { MobileMenuIcon } from '~/components/GNB/MobileMenuIcon';
 import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
-import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
 import { useDropDown } from '~/hooks/useDropdown';
 import useIsInProgress from '~/hooks/useIsInProgress';
 import { colors } from '~/styles/colors';
-import { theme } from '~/styles/theme';
 import { getPathToRecruit } from '~/utils/utils';
-
-const LOGO_IMAGE = `/images/17th/logo/dpm.svg`;
-const LOGO_WHITE_IMAGE = `/images/17th/logo/depromeet-white.svg`;
 
 function ApplyButton() {
   const { progressState } = useIsInProgress();
@@ -31,19 +27,25 @@ function ApplyButton() {
 }
 
 const linkButtonCss = css`
-  padding: 0 16px;
-  min-height: 34px;
-  border-radius: 8px;
+  display: flex;
+  height: 52px;
+  padding: 12px 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 50px;
+  background: ${colors.grey18['900']};
+  color: #fff;
+  font-family: Pretendard, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 
-  position: absolute;
-  top: 50%;
-  right: 20px;
-
-  transform: translateY(-50%);
-  ${theme.typosV3.pretendard.sub5Semibold};
-
-  background: ${colors.primary.darknavy};
-  color: ${colors.white};
+  /* Tablet: Push button to right */
+  @media (min-width: 768px) and (max-width: 1279px) {
+    margin-left: auto;
+  }
 
   &:disabled {
     background: ${colors.grey[300]};
@@ -51,11 +53,23 @@ const linkButtonCss = css`
   }
 `;
 
+const HERO_SECTION_HEIGHT = 800;
+
 export function GNB() {
   const { pathname } = useRouter();
   const { containerRef, isDropdownOpen, openDropdown, closeDropdown } = useDropDown();
+  const [isPastHero, setIsPastHero] = useState(false);
 
-  const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsPastHero(window.scrollY > HERO_SECTION_HEIGHT);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const getActiveLinkcss = (menu: GNBMenu) => {
     if (pathname === menu.href) {
@@ -66,44 +80,57 @@ export function GNB() {
 
   return (
     <>
-      {!isMobileSize ? (
-        <nav css={navCss}>
-          <div css={navWrapperCss}>
-            <Link href={'/'}>
-              <Image css={logoCss} src={LOGO_IMAGE} alt="로고 이미지" width={45} height={20} />
-            </Link>
-            <ul css={menuContainerCss}>
-              {GNB_MENU_NAME.map(menu => (
-                <li css={menuCss} key={menu.name}>
-                  <Link css={[linkCss, getActiveLinkcss(menu)]} href={menu.href}>
-                    {menu.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-            <ApplyButton />
-          </div>
-        </nav>
-      ) : (
-        <nav ref={containerRef}>
-          <div css={mobileMenuGNBCss(isDropdownOpen)}>
-            <Link href={'/'}>
-              {isDropdownOpen ? (
-                <Image src={LOGO_WHITE_IMAGE} alt="로고 이미지" width={161} height={24} />
-              ) : (
-                <Image src={LOGO_IMAGE} alt="로고 이미지" width={45} height={24} />
-              )}
-            </Link>
-            <MobileMenuIcon
-              onClick={() => (isDropdownOpen ? closeDropdown() : openDropdown())}
-              isChecked={isDropdownOpen}
-            />
-          </div>
-          <AnimatePresence mode="wait">
-            {isDropdownOpen && <MobileMenu onClickMenu={closeDropdown} />}
-          </AnimatePresence>
-        </nav>
-      )}
+      {/* Desktop GNB */}
+      <nav css={navCss(isPastHero)}>
+        <div css={navWrapperCss}>
+          <Link href={'/'} css={logoLinkCss}>
+            DPM
+          </Link>
+          <div css={spacerOneCss} />
+          <ul css={menuContainerCss}>
+            {GNB_MENU_NAME.map(menu => (
+              <li css={menuCss} key={menu.name}>
+                <Link css={[linkCss, getActiveLinkcss(menu)]} href={menu.href}>
+                  {menu.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div css={spacerTwoCss} />
+          <ApplyButton />
+        </div>
+      </nav>
+
+      {/* Mobile GNB */}
+      <nav ref={containerRef} css={mobileNavCss}>
+        <div css={mobileMenuGNBCss(isDropdownOpen, isPastHero)}>
+          <Link href={'/'} css={mobileLogoLinkCss(isDropdownOpen)}>
+            {isDropdownOpen ? (
+              <Image
+                src="/images/18th/home/mobile-logo.png"
+                alt="DEPROMEET"
+                width={120}
+                height={24}
+                css={mobileLogoImageCss}
+              />
+            ) : (
+              'DPM'
+            )}
+          </Link>
+          <MobileMenuIcon
+            key={isDropdownOpen ? 'open' : 'closed'}
+            onClick={e => {
+              e.stopPropagation();
+              isDropdownOpen ? closeDropdown() : openDropdown();
+            }}
+            isChecked={isDropdownOpen}
+            iconColor={isDropdownOpen ? '#ffffff' : '#000000'}
+          />
+        </div>
+        <AnimatePresence mode="wait">
+          {isDropdownOpen && <MobileMenu onClickMenu={closeDropdown} />}
+        </AnimatePresence>
+      </nav>
     </>
   );
 }
@@ -114,39 +141,95 @@ const navCommonCss = () => css`
   left: 0;
   z-index: 9998;
   width: 100%;
+  overflow: hidden;
 `;
 
-const navCss = () => css`
+const navCss = (isPastHero: boolean) => css`
   ${navCommonCss()};
-  background-color: rgba(227, 229, 234, 0.7);
-  backdrop-filter: blur(80px);
-  padding: 18px;
+  background: ${isPastHero ? '#ffffff' : 'transparent'};
+  backdrop-filter: none;
+  height: 80px;
+  padding: 0 40px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+  border: 1px solid transparent;
+  border-bottom-color: ${isPastHero ? '#E3E5E7' : 'transparent'};
 
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
+
+  @media (min-width: 768px) {
+    display: flex;
+  }
+`;
+
+const mobileNavCss = css`
+  display: block;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 
 const navWrapperCss = css`
   width: 100%;
-  max-width: 1110px;
   display: flex;
-  justify-content: center;
   align-items: center;
-
-  position: relative;
 `;
 
-const logoCss = css`
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  transform: translateY(-50%);
+const spacerOneCss = css`
+  flex: 1;
+  min-width: 40px;
+  max-width: 269px;
+  height: 1px;
+`;
+
+const spacerTwoCss = css`
+  flex: 1;
+  min-width: 44px;
+  height: 1px;
+`;
+
+const logoLinkCss = css`
+  color: #000000;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -1.92px;
+  text-transform: uppercase;
+  text-decoration: none;
+`;
+
+const mobileLogoLinkCss = (isDropdownOpen: boolean) => css`
+  color: ${isDropdownOpen ? '#ffffff' : '#000000'};
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -1.92px;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  ${isDropdownOpen &&
+  css`
+    display: flex;
+    align-items: center;
+  `}
+`;
+
+const mobileLogoImageCss = css`
+  display: block;
+  height: 24px;
+  width: auto;
+  object-fit: contain;
 `;
 
 const menuContainerCss = css`
   display: flex;
-  gap: 40px;
+  gap: 48px;
 `;
 
 const menuCss = css`
@@ -154,35 +237,51 @@ const menuCss = css`
 `;
 
 const activeLinkCss = () => css`
-  color: ${colors.primary.darknavy};
+  color: ${colors.grey18['900']};
+  font-family: Pretendard, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
 `;
 
 const inActiveLinkCss = () => css`
-  color: ${colors.grey[400]};
+  color: ${colors.grey18['700']};
+  font-family: Pretendard, sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  opacity: 0.8;
 `;
 
 const linkCss = (theme: Theme) => css`
   ${theme.typosV3.pretendard.sub5Medium};
+  white-space: nowrap;
 `;
 
-const mobileMenuGNBCss = (isDropdownOpen: boolean) => css`
+const mobileMenuGNBCss = (isDropdownOpen: boolean, isPastHero: boolean) => css`
   ${navCommonCss()};
 
   ${isDropdownOpen
     ? `
-      background-color: ${colors.primary.darknavy};
+      background-color: ${colors.grey18[900]};
       background-image: none;
+      backdrop-filter: none;
+      border: 1px solid transparent;
+      border-bottom-color: transparent;
     `
     : `
-      background-color: rgba(227, 229, 234, 0.7);
-      backdrop-filter: blur(80px);
+      background: ${isPastHero ? '#ffffff' : 'transparent'};
+      backdrop-filter: none;
+      border: 1px solid transparent;
+      border-bottom-color: ${isPastHero ? '#E3E5E7' : 'transparent'};
   `}
 
-  padding: 18px ${isDropdownOpen ? `16px` : `20px`};
+  height: 80px;
+  padding: 0 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  & > a {
-    margin-top: 6px;
-  }
+  transition: background 0.3s ease, border-color 0.3s ease;
 `;

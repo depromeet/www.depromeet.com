@@ -8,11 +8,14 @@ import { defaultFadeInVariants } from '~/constant/motion';
 import { Project } from '~/constant/project';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
-import { theme } from '~/styles/theme';
 
 type ProjectThumbnailProps = Project & {
   showInfoDefault?: boolean;
   backgroundShow?: boolean;
+  /** 메인 페이지용: 텍스트 래퍼에 상단 제외 좌우하 20px 패딩 */
+  textWrapperPadding?: boolean;
+  /** 메인 페이지용: 카드에 #fff 배경 + box-shadow 적용 */
+  mainPageCard?: boolean;
 };
 
 export function ProjectThumbnail({
@@ -20,6 +23,8 @@ export function ProjectThumbnail({
   subTitle,
   description,
   links,
+  textWrapperPadding,
+  mainPageCard,
   ...props
 }: ProjectThumbnailProps) {
   const handleLinkClick = (href: string, e: React.MouseEvent) => {
@@ -29,7 +34,7 @@ export function ProjectThumbnail({
 
   return (
     <m.article
-      css={articleCss}
+      css={[articleCss, mainPageCard && mainPageCardCss]}
       initial="initial"
       animate="animate"
       exit="exit"
@@ -37,15 +42,8 @@ export function ProjectThumbnail({
       variants={defaultFadeInVariants}
       {...props}
     >
-      {/* 앞면 - 기본 상태 */}
-      <div css={frontFaceCss} className="front-face">
-        {/* 중간 제목과 설명 */}
-        <div css={titleContainerCss}>
-          <h3 css={titleCss}>{title}</h3>
-          <p css={descriptionCss} dangerouslySetInnerHTML={{ __html: description }} />
-        </div>
-
-        {/* 하단 썸네일 이미지 */}
+      <div css={[frontFaceCss, mainPageCard && mainPageFrontFaceCss]} className="front-face">
+        {/* 썸네일 이미지 + 호버 시 오버레이 (블로그와 동일) */}
         <div css={imageContainerCss}>
           <Image
             css={imageCss}
@@ -54,63 +52,64 @@ export function ProjectThumbnail({
             fill
             quality={100}
           />
+          <div css={thumbnailOverlayCss} className="thumbnail-overlay">
+            {links && links.length > 0 && (
+              <div css={overlayInnerCss}>
+                <div css={linksContainerCss(links.length)}>
+                  {links.map((link, index) => (
+                    <React.Fragment key={index}>
+                      <button css={linkButtonCss} onClick={e => handleLinkClick(link.href, e)}>
+                        {link.type}
+                        <ArrowIcon direction={'right'} color="white" width={20} height={20} />
+                      </button>
+                      {index < links.length - 1 && <div css={dividerCss}>∙</div>}
+                    </React.Fragment>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
 
-      {/* 뒷면 - 호버 시 나타나는 링크들 */}
-      <div css={backFaceCss} className="back-face">
-        {/* 중간 제목과 설명 */}
-        <div css={titleContainerCss}>
-          <h3 css={[titleCss, { color: 'black' }]}>{title}</h3>
-          <p
-            css={[descriptionCss, { color: 'black' }]}
-            dangerouslySetInnerHTML={{ __html: description }}
-          />
-        </div>
-
-        {/* 하단 링크들 (이미지 영역 대신) */}
-        <div css={backLinksAreaCss}>
-          {links && links.length > 0 && (
-            <div css={linksContainerCss}>
-              {links.map((link, index) => (
-                <button
-                  key={index}
-                  css={linkButtonCss}
-                  onClick={e => handleLinkClick(link.href, e)}
-                >
-                  {link.type}
-                  <ArrowIcon direction={'right'} color="white" width={16} height={16} />
-                </button>
-              ))}
-            </div>
-          )}
+        {/* 텍스트 영역 - 호버 시 변경 없음 */}
+        <div
+          css={[
+            textContainerCss,
+            textWrapperPadding && textContainerPaddingCss,
+            mainPageCard && mainPageTextContainerCss,
+          ]}
+        >
+          <h3 css={titleCss}>{title}</h3>
+          <p css={descriptionCss} dangerouslySetInnerHTML={{ __html: description }} />
         </div>
       </div>
     </m.article>
   );
 }
 
-// 메인 카드 스타일
+/* hover시 썸네일 영역만 회색+링크 표시, 텍스트 영역 효과 없음 (블로그와 동일) */
 const articleCss = css`
   position: relative;
   width: 100%;
-  max-width: 312px;
   height: auto;
   display: flex;
   flex-direction: column;
-  background: #e3e5ea;
-  border: 1px solid #478af4;
-  transition: all 0.2s ease;
+  background: transparent;
+  border: none;
   overflow: hidden;
 
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-
-  &:hover .back-face {
+  &:hover .thumbnail-overlay {
     opacity: 1;
   }
+`;
+
+/* Figma 82-4736: 메인 페이지 카드 - #fff 배경 + box-shadow, 같은 행의 가장 높은 카드에 맞춤 */
+const mainPageCardCss = css`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(47, 51, 55, 0.08);
 `;
 
 // 앞면 스타일
@@ -120,45 +119,50 @@ const frontFaceCss = css`
   height: 100%;
   display: flex;
   flex-direction: column;
-  opacity: 1;
-  transition: opacity 0.3s ease;
+
+  @media (min-width: 1280px) {
+    gap: 20px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    gap: 12px;
+  }
+
+  ${mediaQuery('mobile')} {
+    gap: 12px;
+  }
 `;
 
-// 뒷면 스타일
-const backFaceCss = css`
+/* hover시 썸네일 영역만 회색 오버레이 + 링크 (블로그와 동일) */
+const thumbnailOverlayCss = css`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: #e3e5ea;
+  background: ${colors.grey18['900']};
+  display: flex;
   opacity: 0;
   transition: opacity 0.3s ease;
+`;
+
+const overlayInnerCss = css`
+  width: 100%;
+  height: 100%;
+  padding: 28px 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+`;
+
+const linksContainerCss = (linkCount: number) => css`
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
-`;
-
-// 뒷면 링크 영역 (이미지 영역과 같은 위치와 크기)
-const backLinksAreaCss = css`
-  position: relative;
-  width: 100%;
-  height: 245px;
-  background: ${colors.primary.darknavy};
-
-  display: flex;
+  gap: ${linkCount > 3 ? '4px' : '8px'};
   align-items: center;
   justify-content: center;
-  padding: 21px;
-  box-sizing: border-box;
-`;
-
-const linksContainerCss = css`
-  display: flex;
-  gap: 16.5px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
 `;
 
 const linkButtonCss = css`
@@ -169,59 +173,79 @@ const linkButtonCss = css`
   background: transparent;
   border: none;
   padding: 0;
-  font-weight: 200;
   cursor: pointer;
   transition: all 0.2s ease;
-
-  ${theme.typosV3.MartianMono.body1Regular};
-  font-weight: 200;
-  font-size: 13px;
-  letter-spacing: -0.5px;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.7;
+  letter-spacing: 0;
+  text-align: center;
 
   &:hover {
     opacity: 0.8;
   }
-
-  ${mediaQuery('tablet')} {
-  }
 `;
 
-const titleContainerCss = css`
-  padding: 20px;
+const dividerCss = css`
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.7;
+  letter-spacing: -0.16px;
+  color: white;
+`;
+
+const textContainerCss = css`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 4px;
+  gap: 8px;
+`;
 
-  height: 112px;
+const textContainerPaddingCss = css`
+  padding: 0 20px 20px 20px;
 `;
 
 const titleCss = css`
-  ${theme.typosV3.pretendard.sub1Semibold};
-  color: ${colors.black};
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.4;
+  color: ${colors.grey18['900']};
+  margin: 0;
+  white-space: pre-wrap;
 `;
 
 const descriptionCss = css`
-  ${theme.typosV3.pretendard.body5Medium};
-  color: ${colors.primary.darknavy};
-  line-height: 1.4;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  word-break: keep-all;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: ${colors.grey18['900']};
+  margin: 0;
+  white-space: pre-wrap;
+`;
+
+/* 메인 페이지: frontFace가 article 높이 채움 */
+const mainPageFrontFaceCss = css`
+  flex: 1;
+  min-height: 0;
+`;
+
+/* 메인 페이지: 텍스트 영역이 남은 공간 채워 같은 행 카드 높이 맞춤 */
+const mainPageTextContainerCss = css`
+  flex: 1;
 `;
 
 const imageContainerCss = css`
   position: relative;
   width: 100%;
-  height: 245px;
+  flex-shrink: 0;
+  height: 283px;
   overflow: hidden;
 `;
 
 const imageCss = css`
   object-fit: cover;
   object-position: center;
-  transition: transform 0.3s ease;
 `;
