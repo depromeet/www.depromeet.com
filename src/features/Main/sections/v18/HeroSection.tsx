@@ -80,20 +80,8 @@ export const HeroSection = () => {
     }
 
     if (browserType === 'safari') {
-      // Safari: HEVC with alpha MOV 사용 (투명 배경 지원)
-      return (
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          css={keyringVideoCss}
-          poster="/images/18th/home/keyring.png"
-        >
-          <source src="/images/18th/keyring/keyring.mov" type="video/quicktime" />
-        </video>
-      );
+      // Safari: animated WebP 사용 (투명 배경 지원)
+      return <img src="/images/18th/keyring/keyring.webp" alt="Keyring" css={keyringVideoCss} />;
     }
 
     // 기타 브라우저: 정적 이미지
