@@ -161,9 +161,7 @@ const sectionCss = css`
   width: 100%;
   height: 812px;
   overflow: hidden;
-  /* 테스트: 배경색 임시 제거 */
-  /* background: linear-gradient(141deg, #5aafff 22.58%, #dfeeff 86.28%); */
-  background: transparent;
+  background: linear-gradient(141deg, #5aafff 22.58%, #dfeeff 86.28%);
 
   @media (min-width: 768px) {
     height: 1024px;
