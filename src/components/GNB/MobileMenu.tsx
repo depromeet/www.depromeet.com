@@ -109,7 +109,12 @@ const linkCss = (theme: Theme) => css`
 `;
 
 const activeLinkCss = () => css`
-  color: ${colors.primary.blue};
+  color: #59aefe !important;
+
+  &:hover,
+  &:active {
+    color: #59aefe !important;
+  }
 `;
 
 const inActiveLinkCss = () => css`
