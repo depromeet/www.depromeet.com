@@ -80,20 +80,8 @@ export const HeroSection = () => {
     }
 
     if (browserType === 'safari') {
-      // Safari: HEVC with alpha MOV 사용 (투명 배경 지원)
-      return (
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          css={keyringVideoCss}
-          poster="/images/18th/home/keyring.png"
-        >
-          <source src="/images/18th/keyring/keyring.mov" type="video/quicktime" />
-        </video>
-      );
+      // Safari: animated WebP 사용 (투명 배경 지원)
+      return <img src="/images/18th/keyring/keyring.webp" alt="Keyring" css={keyringVideoCss} />;
     }
 
     // 기타 브라우저: 정적 이미지
@@ -230,6 +218,9 @@ const keyringContainerCss = css`
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
+  /* Safari HEVC alpha 영상 로드 시 컴포지팅 이슈 방지 */
+  isolation: isolate;
+  will-change: transform;
 
   @media (min-width: 1280px) {
     top: -221px;
@@ -244,6 +235,10 @@ const keyringVideoCss = css`
   object-fit: contain;
   width: 534px;
   height: 534px;
+  /* Safari alpha 영상 렌더링 */
+  background: transparent;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 
   @media (min-width: 768px) {
     width: 752px;
@@ -270,6 +265,9 @@ const logoContainerCss = css`
   bottom: 141px;
   display: flex;
   justify-content: center;
+  /* Safari HEVC alpha 영상 컴포지팅 이슈 방지 */
+  isolation: isolate;
+  backface-visibility: hidden;
 
   @media (min-width: 768px) {
     width: calc(100% - 278px);
