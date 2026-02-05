@@ -82,19 +82,25 @@ export function GNB() {
       {/* Desktop GNB */}
       <nav css={navCss(isPastHero)}>
         <div css={navWrapperCss}>
-          <Link href={'/'} css={logoLinkCss}>
-            DPM
-          </Link>
-          <ul css={menuContainerCss}>
-            {GNB_MENU_NAME.map(menu => (
-              <li css={menuCss} key={menu.name}>
-                <Link css={[linkCss, getActiveLinkcss(menu)]} href={menu.href}>
-                  {menu.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <ApplyButton />
+          <div css={navLeftGroupCss}>
+            <div css={logoAreaCss}>
+              <Link href={'/'} css={logoLinkCss}>
+                DPM
+              </Link>
+            </div>
+            <ul css={menuContainerCss}>
+              {GNB_MENU_NAME.map(menu => (
+                <li css={menuCss} key={menu.name}>
+                  <Link css={[linkCss, getActiveLinkcss(menu)]} href={menu.href}>
+                    {menu.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div css={navRightAreaCss}>
+            <ApplyButton />
+          </div>
         </div>
       </nav>
 
@@ -157,16 +163,51 @@ const navWrapperCss = css`
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
-  /* Tablet: Logo and Menu grouped on left */
+  /* 768~1279: 로고-메뉴, 메뉴-CTA 사이 40px 간격 */
   @media (min-width: 768px) and (max-width: 1279px) {
-    justify-content: flex-start;
     gap: 40px;
   }
+`;
 
-  /* Desktop: Logo left, Menu center, Button right */
+/* 768~1279: display contents → 로고 | 메뉴 | CTA 세 개가 space-between. 1280~: 로고 293px + 메뉴(추가 간격 없음) */
+const navLeftGroupCss = css`
+  display: flex;
+  align-items: center;
+  gap: 48px;
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    display: contents;
+  }
+
   @media (min-width: 1280px) {
-    justify-content: space-between;
+    gap: 0;
+  }
+`;
+
+/* 768~1279: 로고 크기만큼만 너비. 1280~: 로고 영역 293px 고정 */
+const logoAreaCss = css`
+  @media (min-width: 768px) and (max-width: 1279px) {
+    flex-shrink: 0;
+  }
+
+  @media (min-width: 1280px) {
+    width: 293px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+`;
+
+/* 768~1279: 오른쪽 영역 flex:1 + flex-end로 로고|메뉴|CTA space-between 시 메뉴 정가운데 */
+const navRightAreaCss = css`
+  @media (min-width: 768px) and (max-width: 1279px) {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 `;
 
