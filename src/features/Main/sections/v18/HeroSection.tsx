@@ -247,7 +247,8 @@ const keyringVideoCss = css`
   object-fit: contain;
   width: 534px;
   height: 534px;
-  /* Safari alpha 영상 렌더링 분리 */
+  /* Safari alpha 영상 렌더링 */
+  background: transparent;
   transform: translateZ(0);
   backface-visibility: hidden;
 
