@@ -230,6 +230,9 @@ const keyringContainerCss = css`
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
+  /* Safari HEVC alpha 영상 로드 시 컴포지팅 이슈 방지 */
+  isolation: isolate;
+  will-change: transform;
 
   @media (min-width: 1280px) {
     top: -221px;
@@ -244,6 +247,9 @@ const keyringVideoCss = css`
   object-fit: contain;
   width: 534px;
   height: 534px;
+  /* Safari alpha 영상 렌더링 분리 */
+  transform: translateZ(0);
+  backface-visibility: hidden;
 
   @media (min-width: 768px) {
     width: 752px;
