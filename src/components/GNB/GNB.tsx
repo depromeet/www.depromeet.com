@@ -274,7 +274,7 @@ const menuCss = css`
 `;
 
 const activeLinkCss = () => css`
-  color: #59aefe;
+  color: ${colors.grey18['900']};
   font-family: Pretendard, sans-serif;
   font-size: 20px;
   font-style: normal;
