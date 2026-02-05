@@ -1,8 +1,9 @@
 import { css } from '@emotion/react';
 
 interface Props {
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   isChecked?: boolean;
+  iconColor?: string;
 }
 
 const MenuIcon = ({ color = '#000000' }: { color?: string }) => (
@@ -17,10 +18,16 @@ const CloseIcon = ({ color = '#ffffff' }: { color?: string }) => (
   </svg>
 );
 
-export function MobileMenuIcon({ onClick, isChecked }: Props) {
+export function MobileMenuIcon({ onClick, isChecked = false, iconColor }: Props) {
+  const color = iconColor ?? (isChecked ? '#ffffff' : '#000000');
   return (
-    <button css={containerCss} onClick={onClick} aria-label={isChecked ? '메뉴 닫기' : '메뉴 열기'}>
-      {isChecked ? <CloseIcon /> : <MenuIcon />}
+    <button
+      type="button"
+      css={containerCss}
+      onClick={e => onClick?.(e)}
+      aria-label={isChecked ? '메뉴 닫기' : '메뉴 열기'}
+    >
+      {isChecked ? <CloseIcon color={color} /> : <MenuIcon color={color} />}
     </button>
   );
 }

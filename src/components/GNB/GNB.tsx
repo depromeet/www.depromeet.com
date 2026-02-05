@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { css, Theme } from '@emotion/react';
@@ -108,11 +109,26 @@ export function GNB() {
       <nav ref={containerRef} css={mobileNavCss}>
         <div css={mobileMenuGNBCss(isDropdownOpen, isPastHero)}>
           <Link href={'/'} css={mobileLogoLinkCss(isDropdownOpen)}>
-            DPM
+            {isDropdownOpen ? (
+              <Image
+                src="/images/18th/home/mobile-logo.png"
+                alt="DEPROMEET"
+                width={120}
+                height={24}
+                css={mobileLogoImageCss}
+              />
+            ) : (
+              'DPM'
+            )}
           </Link>
           <MobileMenuIcon
-            onClick={() => (isDropdownOpen ? closeDropdown() : openDropdown())}
+            key={isDropdownOpen ? 'open' : 'closed'}
+            onClick={e => {
+              e.stopPropagation();
+              isDropdownOpen ? closeDropdown() : openDropdown();
+            }}
             isChecked={isDropdownOpen}
+            iconColor={isDropdownOpen ? '#ffffff' : '#000000'}
           />
         </div>
         <AnimatePresence mode="wait">
@@ -233,6 +249,19 @@ const mobileLogoLinkCss = (isDropdownOpen: boolean) => css`
   letter-spacing: -1.92px;
   text-transform: uppercase;
   text-decoration: none;
+
+  ${isDropdownOpen &&
+  css`
+    display: flex;
+    align-items: center;
+  `}
+`;
+
+const mobileLogoImageCss = css`
+  display: block;
+  height: 24px;
+  width: auto;
+  object-fit: contain;
 `;
 
 const menuContainerCss = css`
@@ -245,7 +274,7 @@ const menuCss = css`
 `;
 
 const activeLinkCss = () => css`
-  color: ${colors.grey18['900']};
+  color: #59aefe;
   font-family: Pretendard, sans-serif;
   font-size: 20px;
   font-style: normal;
