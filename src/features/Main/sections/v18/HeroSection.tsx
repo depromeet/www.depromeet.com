@@ -7,27 +7,18 @@ import useIsInProgress from '~/hooks/useIsInProgress';
 import { colors } from '~/styles/colors';
 import { getPathToRecruit } from '~/utils/utils';
 
-const useBrowserType = () => {
-  const [browserType, setBrowserType] = useState<'chrome' | 'safari' | 'other'>('other');
+const useIsChrome = () => {
+  const [isChrome, setIsChrome] = useState(false);
 
   useEffect(() => {
     const userAgent = navigator.userAgent;
     // Chrome이지만 Edge, Opera, Samsung Browser 등은 제외
     const isChromeBrowser =
       /Chrome/.test(userAgent) && !/Edge|Edg|OPR|Opera|SamsungBrowser/.test(userAgent);
-    // Safari이지만 Chrome이 아닌 경우 (Chrome UA에도 Safari가 포함됨)
-    const isSafariBrowser = /Safari/.test(userAgent) && !/Chrome/.test(userAgent);
-
-    if (isChromeBrowser) {
-      setBrowserType('chrome');
-    } else if (isSafariBrowser) {
-      setBrowserType('safari');
-    } else {
-      setBrowserType('other');
-    }
+    setIsChrome(isChromeBrowser);
   }, []);
 
-  return browserType;
+  return isChrome;
 };
 
 const CTAButton = () => {
@@ -51,63 +42,16 @@ const CTAButton = () => {
 
 export const HeroSection = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const browserType = useBrowserType();
+  const isChrome = useIsChrome();
 
   useEffect(() => {
     const video = videoRef.current;
-    if (video && (browserType === 'chrome' || browserType === 'safari')) {
+    if (video && isChrome) {
       video.play().catch(() => {
         // Autoplay blocked, will show poster
       });
     }
-  }, [browserType]);
-
-  const renderKeyring = () => {
-    if (browserType === 'chrome') {
-      return (
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          css={keyringVideoCss}
-          poster="/images/18th/home/keyring.png"
-        >
-          <source src="/images/18th/keyring/keyring.webm" type="video/webm" />
-        </video>
-      );
-    }
-
-    if (browserType === 'safari') {
-      // Safari: HEVC with alpha MOV 사용 (투명 배경 지원)
-      return (
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          css={keyringVideoCss}
-          poster="/images/18th/home/keyring.png"
-        >
-          <source src="/images/18th/keyring/keyring.mov" type="video/quicktime" />
-        </video>
-      );
-    }
-
-    // 기타 브라우저: 정적 이미지
-    return (
-      <Image
-        src="/images/18th/home/keyring.png"
-        alt="Keyring"
-        width={1215}
-        height={1215}
-        css={keyringVideoCss}
-        priority
-      />
-    );
-  };
+  }, [isChrome]);
 
   return (
     <section css={sectionCss}>
@@ -123,7 +67,30 @@ export const HeroSection = () => {
           KEY
         </span>
 
-        <div css={keyringContainerCss}>{renderKeyring()}</div>
+        <div css={keyringContainerCss}>
+          {isChrome ? (
+            <video
+              ref={videoRef}
+              autoPlay
+              loop
+              muted
+              playsInline
+              css={keyringVideoCss}
+              poster="/images/18th/home/keyring.png"
+            >
+              <source src="/images/18th/keyring/keyring.webm" type="video/webm" />
+            </video>
+          ) : (
+            <Image
+              src="/images/18th/home/keyring.png"
+              alt="Keyring"
+              width={1215}
+              height={1215}
+              css={keyringVideoCss}
+              priority
+            />
+          )}
+        </div>
 
         <div css={logoContainerCss}>
           <Image
