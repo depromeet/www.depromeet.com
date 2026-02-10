@@ -10,14 +10,16 @@ import { MobileMenu } from '~/components/GNB/MobileMenu';
 import { MobileMenuIcon } from '~/components/GNB/MobileMenuIcon';
 import { GNB_MENU_NAME, GNBMenu } from '~/constant/gnb';
 import { useDropDown } from '~/hooks/useDropdown';
+import useIsApplyTime from '~/hooks/useIsApplyTime';
 import useIsInProgress from '~/hooks/useIsInProgress';
 import { colors } from '~/styles/colors';
 import { getPathToRecruit } from '~/utils/utils';
 
 function ApplyButton() {
-  const { progressState } = useIsInProgress();
   const router = useRouter();
-  const { label, action } = getPathToRecruit(router, progressState);
+  const { progressState } = useIsInProgress();
+  const isApplyTime = useIsApplyTime();
+  const { label, action } = getPathToRecruit(router, progressState, isApplyTime);
 
   return (
     <Button css={linkButtonCss} onClick={action} suppressHydrationWarning>

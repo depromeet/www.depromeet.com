@@ -5,6 +5,7 @@ import { css } from '@emotion/react';
 import { m } from 'framer-motion';
 
 import { GNB_MOBILE_MENU_NAME, GNBMenu } from '~/constant/gnb';
+import useIsApplyTime from '~/hooks/useIsApplyTime';
 import useIsInProgress from '~/hooks/useIsInProgress';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
@@ -17,7 +18,12 @@ interface MobileMenuProps {
 export function MobileMenu({ onClickMenu }: MobileMenuProps) {
   const router = useRouter();
   const { progressState } = useIsInProgress();
-  const { label: _label, action: _action } = getPathToRecruit(router, progressState);
+  const isApplyTime = useIsApplyTime();
+  const { label: applyLabel, action: applyAction } = getPathToRecruit(
+    router,
+    progressState,
+    isApplyTime
+  );
 
   const getActiveLinkcss = (menu: GNBMenu) => {
     if (router.pathname === menu.href) {
@@ -44,11 +50,14 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
           >
             {menu.type === 'button' ? (
               <button
-                onClick={() => (menu.isNewTab ? window.open(menu.href) : router.push(menu.href))}
+                onClick={() => {
+                  applyAction();
+                  onClickMenu();
+                }}
                 css={linkCss}
                 suppressHydrationWarning
               >
-                {menu.name}
+                {applyLabel}
               </button>
             ) : (
               <Link

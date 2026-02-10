@@ -93,20 +93,33 @@ function adjustToUTC({
 
 /**
  * @description
- * 현재 지원 시각에 맞춰 지원 상태를 변경해주는 유틸함수예요
+ * 현재 지원 시각에 맞춰 지원 상태를 변경해주는 유틸함수예요.
+ * isApplyTime(18기 지원 오픈)이면 '18기 지원하기' + /recruit 이동.
  *
- * @param {import('next/router').NextRouter} _router - Next.js의 `useRouter`를 통해 얻은 라우터 객체 (현재 미사용)
- * @param {RecruitState} _progressState - 현재 모집 상태 (현재 미사용)
+ * @param {import('next/router').NextRouter} router - Next.js의 `useRouter`를 통해 얻은 라우터 객체
+ * @param {RecruitState} progressState - 현재 모집 상태
+ * @param {boolean} isApplyTime - 18기 지원 오픈 여부 (APPLY_START_DATE 이후)
  *
  * @returns {{ action: (() => void), label: string, isDisabled?: boolean }}
  */
-function getPathToRecruit(router: ReturnType<typeof useRouter>, progressState: RecruitState) {
+function getPathToRecruit(
+  router: ReturnType<typeof useRouter>,
+  progressState: RecruitState,
+  isApplyTime?: boolean
+) {
+  if (isApplyTime) {
+    return {
+      action: () => router.push('/recruit'),
+      label: '18기 지원하기',
+    };
+  }
   if (progressState === 'IN_PROGRESS') {
     return {
       action: () => router.push('/recruit#apply'),
       label: '17기 지원하기',
     };
-  } else if (progressState === 'PREVIOUS') {
+  }
+  if (progressState === 'PREVIOUS') {
     return {
       action: () =>
         window.open(
