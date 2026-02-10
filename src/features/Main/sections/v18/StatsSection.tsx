@@ -11,7 +11,7 @@ interface StatItem {
 }
 
 const STATS: StatItem[] = [
-  { label: '디프만이 탄생한지', value: 9, suffix: '년' },
+  { label: '디프만이 탄생한지', value: 10, suffix: '년' },
   { label: '10~17기 런칭 성공률', value: 100, suffix: '%' },
   { label: '5~17기 런칭 서비스', value: 76, suffix: '+' },
   { label: '누적 멤버 수', value: 1000, suffix: '+' },
