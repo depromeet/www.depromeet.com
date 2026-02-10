@@ -20,3 +20,6 @@ export const END_DATE = adjustToUTC({ dateString: '2025-07-06T23:59:59.000Z' });
 // export const END_DATE = '2025-03-04T20:00:00.000Z'; // test
 
 export const DEADLINE_DATE = '2024-05-14T14:59:59.000Z'; // NOTE: 마감일(?) 05.15
+
+/** 18기 지원 오픈 시각 (이후부터 헤더·모집 카드 등에서 지원하기 노출) 2026-02-12 00:00 KST */
+export const APPLY_START_DATE = new Date('2026-02-12T00:00:00+09:00');

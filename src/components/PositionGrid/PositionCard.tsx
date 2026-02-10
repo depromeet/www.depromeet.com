@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { css } from '@emotion/react';
 
-import useIsInProgress from '~/hooks/useIsInProgress';
 import { theme } from '~/styles/theme';
 
 import { colors } from '../../styles/colors';
@@ -28,11 +27,10 @@ export const PositionCard = ({
   hoverDescription,
   applyUrl,
 }: PositionCardProps) => {
-  const { isInProgress } = useIsInProgress();
   const [isHovered, setIsHovered] = useState(false);
 
   const handleCardClick = () => {
-    if (isActive && applyUrl && isInProgress) {
+    if (isActive && applyUrl) {
       window.open(applyUrl, '_blank', 'noopener,noreferrer');
     }
   };
