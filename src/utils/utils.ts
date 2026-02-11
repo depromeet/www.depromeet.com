@@ -53,7 +53,10 @@ const generateModalPositionStyle = ({ position = 'center center' }: { position?:
  * @params {string} cookieName
  * */
 function getPopupCookie({ cookieName }: { cookieName: string }) {
-  return !Cookies.get(cookieName);
+  if (!Cookies.get(cookieName)) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -62,11 +65,9 @@ function getPopupCookie({ cookieName }: { cookieName: string }) {
  *
  * @params {string} cookieName
  * @params {number} expires
- *
- */
-
+ * */
 function setPopupCookie({ cookieName, expires = 1 }: { cookieName: string; expires?: number }) {
-  Cookies.set(cookieName, 'true', { expires });
+  Cookies.set(cookieName, 'true', { expires: expires });
 }
 
 /**
@@ -77,6 +78,7 @@ function setPopupCookie({ cookieName, expires = 1 }: { cookieName: string; expir
  * @params {string} dateString
  * @params {number} offsetHours
  */
+
 function adjustToUTC({
   dateString,
   offsetHours = 9,
@@ -111,7 +113,6 @@ function getPathToRecruit(
       label: '18기 지원하기',
     };
   }
-
   if (progressState === 'IN_PROGRESS') {
     return {
       action: () => router.push('/recruit#apply'),
@@ -126,14 +127,11 @@ function getPathToRecruit(
   }
 
   return {
-    action: () => router.push('/recruit'),
+    action: () => window.open('https://www.depromeet.com/recruit'),
     label: '18기 지원하기',
   };
 }
 
-/**
- * 각도 기반 포지션 계산
- */
 function getPositionStyleByAngle(angle: number, distance: number) {
   const x = Math.cos((Math.PI / 180) * angle) * distance;
   const y = -Math.sin((Math.PI / 180) * angle) * distance;
@@ -145,6 +143,7 @@ function getPositionStyleByAngle(angle: number, distance: number) {
 
 function getNextArrowPosition(currentPosition: string) {
   const positions = ['ios', 'android', 'web', 'design', 'server'];
+
   const currentIndex = positions.indexOf(currentPosition);
   const nextIndex = (currentIndex + 1) % positions.length;
   return positions[nextIndex];
