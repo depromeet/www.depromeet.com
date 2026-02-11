@@ -12,7 +12,7 @@ interface ImageConfig {
 interface PositionCardProps {
   id: string;
   title: string;
-  subtitle: string;
+  subtitle?: string;
   isActive: boolean;
   imageConfig?: ImageConfig;
   hoverDescription: string;
@@ -21,7 +21,6 @@ interface PositionCardProps {
 
 export const PositionCard = ({
   title,
-  subtitle,
   isActive,
   imageConfig,
   hoverDescription,
@@ -29,30 +28,50 @@ export const PositionCard = ({
 }: PositionCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleCardClick = () => {
-    if (isActive && applyUrl) {
-      window.open(applyUrl, '_blank', 'noopener,noreferrer');
-    }
-  };
-
   return (
     <div
       css={cardStyles(isActive, isHovered)}
       className="position-card"
-      onClick={handleCardClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {isHovered ? (
         <div css={hoverContentWrapperStyles}>
-          <h3 css={hoverTitleStyles}>{title}</h3>
-          <p css={hoverDescriptionStyles}>{hoverDescription}</p>
+          <div>
+            <h3 css={hoverTitleStyles}>{title}</h3>
+            <p css={hoverDescriptionStyles}>{hoverDescription}</p>
+          </div>
+          {isActive && applyUrl && (
+            <button
+              type="button"
+              css={applyButtonGhostStyles}
+              onClick={event => {
+                event.stopPropagation();
+                window.open(applyUrl, '_blank', 'noopener,noreferrer');
+              }}
+            >
+              지원하기
+            </button>
+          )}
         </div>
       ) : (
         <div css={defaultContentWrapperStyles}>
           <div css={textAreaStyles}>
-            <h3 css={titleStyles}>{title}</h3>
-            <p css={subtitleStyles}>{subtitle}</p>
+            <div>
+              <h3 css={titleStyles}>{title}</h3>
+            </div>
+            {isActive && applyUrl && (
+              <button
+                type="button"
+                css={applyButtonStyles}
+                onClick={event => {
+                  event.stopPropagation();
+                  window.open(applyUrl, '_blank', 'noopener,noreferrer');
+                }}
+              >
+                지원하기
+              </button>
+            )}
           </div>
           <div css={imageAreaStyles}>
             {imageConfig && <img src={imageConfig.src} alt={title} css={imageStyles} />}
@@ -71,7 +90,7 @@ const cardStyles = (isActive: boolean, isHovered: boolean) => css`
   height: 320px;
   display: flex;
   flex-direction: column;
-  cursor: ${isActive ? 'pointer' : 'default'};
+  cursor: default;
   transition: all 0.2s ease;
   box-shadow: 0px 8px 32px 0px rgba(47, 51, 55, 0.1);
   overflow: hidden;
@@ -104,10 +123,11 @@ const cardStyles = (isActive: boolean, isHovered: boolean) => css`
 const hoverContentWrapperStyles = css`
   display: flex;
   flex-direction: column;
-  height: 100%;
-  gap: 12px;
+  justify-content: space-between;
   align-items: flex-start;
+  height: 100%;
   padding: 24px;
+  background-color: ${colors.grey18['900']};
 `;
 
 const defaultContentWrapperStyles = css`
@@ -127,7 +147,8 @@ const textAreaStyles = css`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 8px;
+  align-items: flex-start;
+  gap: 16px;
   background: ${colors.white};
   border-radius: 12px;
 `;
@@ -174,6 +195,66 @@ const imageStyles = css`
   }
 `;
 
+const applyButtonStyles = css`
+  padding: 12px 24px;
+  border-radius: 50px;
+  width: 111px;
+  height: 45px;
+  border: none;
+  background-color: ${colors.grey18['900']};
+  color: ${colors.grey18['00']};
+  font-family: 'Pretendard', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: ${colors.grey18['800']};
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    background-color: ${colors.grey18['300']};
+    color: ${colors.grey18['700']};
+    cursor: default;
+  }
+`;
+
+const applyButtonGhostStyles = css`
+  padding: 12px 24px;
+  border-radius: 50px;
+  border: 1px solid ${colors.grey18['300']};
+  background-color: ${colors.grey18['00']};
+  color: ${colors.grey18['900']};
+  font-family: 'Pretendard', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: ${colors.grey18['100']};
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    background-color: ${colors.grey18['300']};
+    color: ${colors.grey18['700']};
+    cursor: default;
+  }
+`;
+
 const titleStyles = css`
   font-family: 'Helvetica Neue', 'Helvetica', 'Pretendard', sans-serif;
   font-size: 32px;
@@ -185,20 +266,21 @@ const titleStyles = css`
   letter-spacing: 0;
 `;
 
-const subtitleStyles = css`
-  font-family: 'Pretendard', sans-serif;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.4;
-  margin: 0;
-  color: ${theme.colors.primary.darknavy};
-  letter-spacing: 0;
+// 사용하지 않아 주석 처리
+// const subtitleStyles = css`
+//   font-family: 'Pretendard', sans-serif;
+//   font-size: 20px;
+//   font-weight: 500;
+//   line-height: 1.4;
+//   margin: 0;
+//   color: ${theme.colors.primary.darknavy};
+//   letter-spacing: 0;
 
-  /* 1920~ 이상: subtitle 2줄 높이 고정 → title이 모든 카드에서 같은 선상에 오도록 */
-  @media (min-width: 1920px) {
-    min-height: 2.8em;
-  }
-`;
+//   /* 1920~ 이상: subtitle 2줄 높이 고정 → title이 모든 카드에서 같은 선상에 오도록 */
+//   @media (min-width: 1920px) {
+//     min-height: 2.8em;
+//   }
+// `;
 
 const hoverTitleStyles = css`
   font-family: 'Pretendard', sans-serif;
