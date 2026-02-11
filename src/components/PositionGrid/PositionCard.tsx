@@ -229,7 +229,6 @@ const applyButtonStyles = css`
 const applyButtonGhostStyles = css`
   padding: 12px 24px;
   border-radius: 50px;
-  border: 1px solid ${colors.grey18['300']};
   background-color: ${colors.grey18['00']};
   color: ${colors.grey18['900']};
   font-family: 'Pretendard', sans-serif;
@@ -301,4 +300,9 @@ const hoverDescriptionStyles = css`
   margin: 0;
   color: #f1f2f3;
   letter-spacing: 0;
+
+  @media (min-width: 1920px) {
+    font-size: 12px;
+    margin-top: 12px;
+  }
 `;
