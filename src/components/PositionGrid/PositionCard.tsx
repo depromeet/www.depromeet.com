@@ -297,12 +297,11 @@ const hoverDescriptionStyles = css`
   font-size: 14px;
   font-weight: 400;
   line-height: 1.4;
-  margin: 0;
+  margin-top: 12px;
   color: #f1f2f3;
   letter-spacing: 0;
 
   @media (min-width: 1920px) {
     font-size: 12px;
-    margin-top: 12px;
   }
 `;
