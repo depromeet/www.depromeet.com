@@ -121,20 +121,14 @@ function getPathToRecruit(
   }
   if (progressState === 'PREVIOUS') {
     return {
-      action: () =>
-        window.open(
-          'https://docs.google.com/forms/d/1nU0znFiPjPGjp3_Wkif6dOGpgn8h2dYwh_5wByfBhlc/viewform'
-        ),
-      label: '18기 모집 알림 받기',
+      action: () => window.open('https://www.depromeet.com/recruit'),
+      label: '18기 지원하기',
     };
   }
 
   return {
-    action: () =>
-      window.open(
-        'https://docs.google.com/forms/d/1nU0znFiPjPGjp3_Wkif6dOGpgn8h2dYwh_5wByfBhlc/viewform'
-      ),
-    label: '18기 모집 알림 받기',
+    action: () => window.open('https://www.depromeet.com/recruit'),
+    label: '18기 지원하기',
   };
 }
 
