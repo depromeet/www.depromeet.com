@@ -15,7 +15,9 @@ export default function Document() {
         <meta httpEquiv="Content-type" content="text/html; charset=utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
 
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico?v=18" />
+        {/* Safari iOS: 홈화면·탭 아이콘 (apple-touch-icon 없으면 옛날 아이콘 캐시 유지). ?v=18으로 캐시 갱신 */}
+        <link rel="apple-touch-icon" href="/favicon.ico?v=18" />
 
         <meta
           name="keywords"
