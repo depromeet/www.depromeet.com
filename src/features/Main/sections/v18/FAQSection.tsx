@@ -25,7 +25,7 @@ const FAQ_DATA: FAQItem[] = [
     category: '지원자격',
     question: '관련 경험이 없어도 지원 가능한가요?',
     answer:
-      '관련 직무 경험이 없어도 지원 가능하지만, Product Designer 직군은 지원 시 포트폴리오 제출이 필수입니다.',
+      '관련 직무 경험이 없어도 지원 가능하지만, Product Designer와 Server Developer 직군은 지원 시 포트폴리오 제출이 필수입니다.',
   },
   {
     category: '지원자격',
