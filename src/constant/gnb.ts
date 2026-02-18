@@ -4,7 +4,7 @@
  */
 
 export type GNBMenu = {
-  name: '소개' | '모집 안내' | '프로젝트' | '블로그' | '지원하기' | '18기 지원하기';
+  name: '소개' | '모집 안내' | '프로젝트' | '블로그' | '지원하기' | '18기 지원하기' | '모집 마감';
   href:
     | '/'
     | '/recruit'
@@ -62,7 +62,7 @@ export const GNB_MOBILE_MENU_NAME: GNBMenu[] = [
     type: 'text',
   },
   {
-    name: '지원하기',
+    name: '모집 마감',
     href: '/recruit#apply',
     type: 'button',
   },

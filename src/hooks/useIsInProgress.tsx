@@ -1,4 +1,4 @@
-import { END_DATE, START_DATE } from '~/constant/common';
+import { END_DATE, RECRUIT_CLOSE_DATE, START_DATE } from '~/constant/common';
 
 export type RecruitState = 'PREVIOUS' | 'IN_PROGRESS' | 'FINISH';
 
@@ -31,10 +31,13 @@ export default function useIsInProgress() {
     return dDay;
   };
 
+  /** 18기 모집 마감 여부 (RECRUIT_CLOSE_DATE 이후면 true) */
+  const isRecruitClosed = new Date() >= RECRUIT_CLOSE_DATE;
+
   const isInProgress = getCurrentState() === 'IN_PROGRESS';
   const progressState = getCurrentState();
   const remainDay = getRemainDay();
   const dDay = getDDay();
 
-  return { isInProgress, progressState, remainDay, dDay };
+  return { isInProgress, progressState, remainDay, dDay, isRecruitClosed };
 }

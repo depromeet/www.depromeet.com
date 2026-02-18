@@ -15,7 +15,10 @@ interface MobilePositionsItemProps {
 }
 
 export function MobilePositionItem({ type, title, link }: MobilePositionsItemProps) {
-  const { isInProgress } = useIsInProgress();
+  const { isInProgress, isRecruitClosed } = useIsInProgress();
+
+  const showButton = link && isInProgress;
+  const buttonLabel = isRecruitClosed ? '모집 마감' : '지원하기';
 
   return (
     <div css={theme => layoutCss(theme, type)}>
@@ -32,12 +35,19 @@ export function MobilePositionItem({ type, title, link }: MobilePositionsItemPro
           <h1 css={titleCss}>{type === 'design' ? 'DESIGN' : title}</h1>
         )}
 
-        {link && isInProgress && (
-          <Link href={link} css={linkCss} target="_blank">
-            지원하기
-            <span css={arrowIconCss}>
-              <NarrowArrowIcon direction="right" fill="white" />
-            </span>
+        {showButton && (
+          <Link
+            href={isRecruitClosed ? '#' : link}
+            css={linkCss}
+            target={isRecruitClosed ? undefined : '_blank'}
+            onClick={e => isRecruitClosed && e.preventDefault()}
+          >
+            {buttonLabel}
+            {!isRecruitClosed && (
+              <span css={arrowIconCss}>
+                <NarrowArrowIcon direction="right" fill="white" />
+              </span>
+            )}
           </Link>
         )}
       </div>

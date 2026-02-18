@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { css } from '@emotion/react';
 
+import useIsInProgress from '~/hooks/useIsInProgress';
 import { theme } from '~/styles/theme';
 
 import { colors } from '../../styles/colors';
@@ -27,6 +28,16 @@ export const PositionCard = ({
   applyUrl,
 }: PositionCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { isRecruitClosed } = useIsInProgress();
+
+  const showButton = isActive && applyUrl;
+  const buttonLabel = isRecruitClosed ? '모집 마감' : '지원하기';
+  const handleClick = isRecruitClosed
+    ? (event: React.MouseEvent) => event.stopPropagation()
+    : (event: React.MouseEvent) => {
+        event.stopPropagation();
+        window.open(applyUrl, '_blank', 'noopener,noreferrer');
+      };
 
   return (
     <div
@@ -41,16 +52,14 @@ export const PositionCard = ({
             <h3 css={hoverTitleStyles}>{title}</h3>
             <p css={hoverDescriptionStyles}>{hoverDescription}</p>
           </div>
-          {isActive && applyUrl && (
+          {showButton && (
             <button
               type="button"
               css={applyButtonGhostStyles}
-              onClick={event => {
-                event.stopPropagation();
-                window.open(applyUrl, '_blank', 'noopener,noreferrer');
-              }}
+              onClick={handleClick}
+              disabled={isRecruitClosed}
             >
-              지원하기
+              {buttonLabel}
             </button>
           )}
         </div>
@@ -60,16 +69,14 @@ export const PositionCard = ({
             <div>
               <h3 css={titleStyles}>{title}</h3>
             </div>
-            {isActive && applyUrl && (
+            {showButton && (
               <button
                 type="button"
                 css={applyButtonStyles}
-                onClick={event => {
-                  event.stopPropagation();
-                  window.open(applyUrl, '_blank', 'noopener,noreferrer');
-                }}
+                onClick={handleClick}
+                disabled={isRecruitClosed}
               >
-                지원하기
+                {buttonLabel}
               </button>
             )}
           </div>

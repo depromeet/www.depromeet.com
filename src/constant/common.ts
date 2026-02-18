@@ -23,3 +23,6 @@ export const DEADLINE_DATE = '2024-05-14T14:59:59.000Z'; // NOTE: 마감일(?) 0
 
 /** 18기 지원 오픈 시각 (이후부터 헤더·모집 카드 등에서 지원하기 노출) 2026-02-12 00:00 KST */
 export const APPLY_START_DATE = new Date('2026-02-12T00:00:00+09:00');
+
+/** 18기 모집 마감 시각 2026-02-19 00:00 KST (자정 이후 모집 마감) */
+export const RECRUIT_CLOSE_DATE = new Date('2026-02-19T00:00:00+09:00');

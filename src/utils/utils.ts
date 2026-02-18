@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { css } from '@emotion/react';
 import Cookies from 'js-cookie';
 
+import { RECRUIT_CLOSE_DATE } from '~/constant/common';
 import { RecruitState } from '~/hooks/useIsInProgress';
 
 /**
@@ -95,6 +96,7 @@ function adjustToUTC({
  * @description
  * 현재 지원 시각에 맞춰 지원 상태를 변경해주는 유틸함수예요.
  * isApplyTime(18기 지원 오픈)이면 '18기 지원하기' + /recruit 이동.
+ * RECRUIT_CLOSE_DATE 이후면 '모집 마감' 표시.
  *
  * @param {import('next/router').NextRouter} router - Next.js의 `useRouter`를 통해 얻은 라우터 객체
  * @param {RecruitState} progressState - 현재 모집 상태
@@ -107,6 +109,15 @@ function getPathToRecruit(
   progressState: RecruitState,
   isApplyTime?: boolean
 ) {
+  // 모집 마감 시각 이후면 모집 마감
+  const isRecruitClosed = new Date() >= RECRUIT_CLOSE_DATE;
+  if (isRecruitClosed) {
+    return {
+      action: () => {},
+      label: '모집 마감',
+    };
+  }
+
   if (isApplyTime) {
     return {
       action: () => router.push('/recruit'),

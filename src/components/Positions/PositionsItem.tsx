@@ -21,10 +21,16 @@ interface PositionsItemProps {
 }
 
 export function PositionsItem({ type, title, link, description, keyword }: PositionsItemProps) {
-  const { progressState, isInProgress } = useIsInProgress();
+  const { progressState, isInProgress, isRecruitClosed } = useIsInProgress();
 
   const renderContent = ({ state = 'default' }: { state?: 'hover' | 'default' }) => {
     if (!link) return null;
+
+    // 모집 마감 시
+    if (isRecruitClosed) {
+      return '모집 마감';
+    }
+
     if (progressState === 'IN_PROGRESS') {
       return (
         <Fragment>
@@ -87,9 +93,9 @@ export function PositionsItem({ type, title, link, description, keyword }: Posit
           <div css={linkContainerCss}>
             <Link
               css={linkCss}
-              href={isInProgress ? link : ''}
+              href={isInProgress && !isRecruitClosed ? link : ''}
               target="_blank"
-              onClick={e => !isInProgress && e.preventDefault()}
+              onClick={e => (!isInProgress || isRecruitClosed) && e.preventDefault()}
             >
               {renderContent({ state: 'hover' })}
             </Link>
