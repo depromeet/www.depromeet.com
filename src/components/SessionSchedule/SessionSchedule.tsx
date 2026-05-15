@@ -25,9 +25,8 @@ const sessionScheduleData: SessionItem[] = [
   { date: '05.30', week: '12주차', title: '커리어 성장 세션' },
   { date: '06.06', week: '13주차', title: '동문회' },
   { date: '06.13', week: '14주차', title: '딮케이션' },
-  { date: '06.20', week: '15주차', title: '포커스 위크', isOnline: true },
-  { date: '06.27', week: '16주차', title: '런칭 데이' },
-  { date: '07.04', week: '17주차', title: '최종 발표' },
+  { date: '06.20', week: '15주차', title: '런칭 데이' },
+  { date: '06.27', week: '16주차', title: '최종 발표' },
 ];
 
 export const SessionSchedule = () => {
