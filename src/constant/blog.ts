@@ -644,6 +644,96 @@ export const DEEPER_BLOG_LIST: Array<Blog<DeeperBlogType>> = [
 
 export const OFFICIAL_BLOG_LIST: Array<Blog<OfficialBlogType>> = [
   {
+    title: '함께 만든 14시간의 몰입, 디프만 18기 딮커톤',
+    date: '26.05.03',
+    img: '/images/18th/blog/medium/medium-5.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%ED%95%A8%EA%BB%98-%EB%A7%8C%EB%93%A0-14%EC%8B%9C%EA%B0%84%EC%9D%98-%EB%AA%B0%EC%9E%85-%EB%94%94%ED%94%84%EB%A7%8C-18%EA%B8%B0-%EB%94%AE%EC%BB%A4%ED%86%A4-4d96518b0498',
+    },
+    type: 'session',
+  },
+  {
+    title: '연결이 열쇠가 되는 순간, 디프만 18기 브랜딩',
+    date: '26.04.17',
+    img: '/images/18th/blog/medium/medium-4.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EC%97%B0%EA%B2%B0%EC%9D%B4-%EC%97%B4%EC%87%A0%EA%B0%80-%EB%90%98%EB%8A%94-%EC%88%9C%EA%B0%84-%EB%94%94%ED%94%84%EB%A7%8C-18%EA%B8%B0-%EB%B8%8C%EB%9E%9C%EB%94%A9-c32658e529b8',
+    },
+    type: 'session',
+  },
+  {
+    title: '답이 아닌 방향을 찾는 시간, 디프만 18기 현직자와의 만남',
+    date: '26.04.05',
+    img: '/images/18th/blog/medium/medium-3.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%8B%B5%EC%9D%B4-%EC%95%84%EB%8B%8C-%EB%B0%A9%ED%96%A5%EC%9D%84-%EC%B0%BE%EB%8A%94-%EC%8B%9C%EA%B0%84-%EB%94%94%ED%94%84%EB%A7%8C-18%EA%B8%B0-%ED%98%84%EC%A7%81%EC%9E%90%EC%99%80%EC%9D%98-%EB%A7%8C%EB%82%A8-4df4eb621599',
+    },
+    type: 'session',
+  },
+  {
+    title: '연결의 가치를 성장의 열쇠로, 18기 OT 세션',
+    date: '26.03.22',
+    img: '/images/18th/blog/medium/medium-2.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EC%97%B0%EA%B2%B0%EC%9D%98-%EA%B0%80%EC%B9%98%EB%A5%BC-%EC%84%B1%EC%9E%A5%EC%9D%98-%EC%97%B4%EC%87%A0%EB%A1%9C-18%EA%B8%B0ot-%EC%84%B8%EC%85%98-e12d9f33add0',
+    },
+    type: 'session',
+  },
+  {
+    title: '디프만 18기, 모집을 시작해요!',
+    date: '26.02.10',
+    img: '/images/18th/blog/medium/medium-1.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%94%94%ED%94%84%EB%A7%8C-18%EA%B8%B0-%EB%AA%A8%EC%A7%91%EC%9D%84-%EC%8B%9C%EC%9E%91%ED%95%B4%EC%9A%94-0b4dd68ca7ef',
+    },
+    type: 'etc',
+  },
+  {
+    title: '모험의 대장정 마무리! 디프만 17기 최종 발표',
+    date: '25.12.21',
+    img: '/images/17th/blog/medium/medium-13.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%AA%A8%ED%97%98%EC%9D%98-%EB%8C%80%EC%9E%A5%EC%A0%95-%EB%A7%88%EB%AC%B4%EB%A6%AC-%EB%94%94%ED%94%84%EB%A7%8C-17%EA%B8%B0-%EC%B5%9C%EC%A2%85-%EB%B0%9C%ED%91%9C-2ca8aebff733',
+    },
+    type: 'session',
+  },
+  {
+    title: '16주간 달려온 프로덕트를 소개하는 시간, 런칭데이',
+    date: '25.12.21',
+    img: '/images/17th/blog/medium/medium-12.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/16%EC%A3%BC%EA%B0%84-%EB%8B%AC%EB%A0%A4%EC%98%A8-%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%EB%A5%BC-%EC%86%8C%EA%B0%9C%ED%95%98%EB%8A%94-%EC%8B%9C%EA%B0%84-%EB%9F%B0%EC%B9%AD%EB%8D%B0%EC%9D%B4-64f2f87363f3',
+    },
+    type: 'session',
+  },
+  {
+    title: '디프만 직군별 반상회: 파트별 네트워킹 후기',
+    date: '25.12.18',
+    img: '/images/17th/blog/medium/medium-11.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%94%94%ED%94%84%EB%A7%8C-%EC%A7%81%EA%B5%B0%EB%B3%84-%EB%B0%98%EC%83%81%ED%9A%8C-%ED%8C%8C%ED%8A%B8%EB%B3%84-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%82%B9-%ED%9B%84%EA%B8%B0-f34529712822',
+    },
+    type: 'session',
+  },
+  {
+    title: '프로덕트의 성장을 위한 인사이트를 나눠요, 피드백 인사이트 쉐어링 세션',
+    date: '25.12.17',
+    img: '/images/17th/blog/medium/medium-10.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%EC%9D%98-%EC%84%B1%EC%9E%A5%EC%9D%84-%EC%9C%84%ED%95%9C-%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8%EB%A5%BC-%EB%82%98%EB%88%A0%EC%9A%94-%ED%94%BC%EB%93%9C%EB%B0%B1-%EC%9D%B8%EC%82%AC%EC%9D%B4%ED%8A%B8-%EC%89%90%EC%96%B4%EB%A7%81-%EC%84%B8%EC%85%98-ae637776f3d1',
+    },
+    type: 'session',
+  },
+  {
     title: '모험과 성장의 17기, 첫 검증! 프리-런칭데이 세션',
     date: '25.11.02',
     img: '/images/17th/blog/medium/medium-9.webp',
