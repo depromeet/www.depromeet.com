@@ -4,14 +4,23 @@
  */
 
 export type GNBMenu = {
-  name: '소개' | '모집 안내' | '프로젝트' | '블로그' | '지원하기' | '18기 지원하기' | '모집 마감';
+  name:
+    | '소개'
+    | '모집 안내'
+    | '프로젝트'
+    | '블로그'
+    | '지원하기'
+    | '18기 지원하기'
+    | '모집 마감'
+    | '19기 모집알림받기';
   href:
     | '/'
     | '/recruit'
     | '/recruit#apply'
     | '/project'
     | '/blog'
-    | 'https://docs.google.com/forms/d/1nU0znFiPjPGjp3_Wkif6dOGpgn8h2dYwh_5wByfBhlc/viewform';
+    | 'https://docs.google.com/forms/d/1nU0znFiPjPGjp3_Wkif6dOGpgn8h2dYwh_5wByfBhlc/viewform'
+    | 'https://docs.google.com/forms/d/e/1FAIpQLSfOGnt3dakaC9mIcxUHkXGjaNhLZIDPjTewB0nqm-VvCtrIvw/viewform';
   type: 'text' | 'button';
   isNewTab?: boolean;
 };
@@ -62,14 +71,9 @@ export const GNB_MOBILE_MENU_NAME: GNBMenu[] = [
     type: 'text',
   },
   {
-    name: '모집 마감',
-    href: '/recruit#apply',
+    name: '19기 모집알림받기',
+    href: 'https://docs.google.com/forms/d/e/1FAIpQLSfOGnt3dakaC9mIcxUHkXGjaNhLZIDPjTewB0nqm-VvCtrIvw/viewform',
     type: 'button',
+    isNewTab: true,
   },
-  // {
-  //   name: '18기 모집 알림 받기',
-  //   href: 'https://docs.google.com/forms/d/1nU0znFiPjPGjp3_Wkif6dOGpgn8h2dYwh_5wByfBhlc/viewform',
-  //   type: 'button',
-  //   isNewTab: true,
-  // },
 ];

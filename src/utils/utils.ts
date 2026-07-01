@@ -113,8 +113,11 @@ function getPathToRecruit(
   const isRecruitClosed = new Date() >= RECRUIT_CLOSE_DATE;
   if (isRecruitClosed) {
     return {
-      action: () => {},
-      label: '모집 마감',
+      action: () =>
+        window.open(
+          'https://docs.google.com/forms/d/e/1FAIpQLSfOGnt3dakaC9mIcxUHkXGjaNhLZIDPjTewB0nqm-VvCtrIvw/viewform'
+        ),
+      label: '19기 모집알림받기',
     };
   }
 
@@ -132,14 +135,20 @@ function getPathToRecruit(
   }
   if (progressState === 'PREVIOUS') {
     return {
-      action: () => window.open('https://www.depromeet.com/recruit'),
-      label: '18기 지원하기',
+      action: () =>
+        window.open(
+          'https://docs.google.com/forms/d/e/1FAIpQLSfOGnt3dakaC9mIcxUHkXGjaNhLZIDPjTewB0nqm-VvCtrIvw/viewform'
+        ),
+      label: '19기 모집알림받기',
     };
   }
 
   return {
-    action: () => window.open('https://www.depromeet.com/recruit'),
-    label: '18기 지원하기',
+    action: () =>
+      window.open(
+        'https://docs.google.com/forms/d/e/1FAIpQLSfOGnt3dakaC9mIcxUHkXGjaNhLZIDPjTewB0nqm-VvCtrIvw/viewform'
+      ),
+    label: '19기 모집알림받기',
   };
 }
 
