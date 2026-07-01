@@ -23,5 +23,20 @@ const config: StorybookConfig = {
     options.presets!.push('@emotion/babel-preset-css-prop');
     return options;
   },
+  webpackFinal: async config => {
+    // Remove existing SVG rules (Next.js treats SVGs as image assets)
+    config.module!.rules = config.module!.rules!.map((rule: any) => {
+      if (rule && rule.test instanceof RegExp && rule.test.test('.svg')) {
+        return { ...rule, exclude: /\.svg$/ };
+      }
+      return rule;
+    });
+    // Add SVGR to handle SVG files as React components
+    config.module!.rules!.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+    return config;
+  },
 };
 export default config;
