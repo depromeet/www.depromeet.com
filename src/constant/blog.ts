@@ -17,6 +17,207 @@ export type AllBlog = Blog<OfficialBlogType | DeeperBlogType>;
 
 export const DEEPER_BLOG_LIST: Array<Blog<DeeperBlogType>> = [
   {
+    title: 'DB를 안 쓰는 줄 알았던 실시간 API에서 커넥션 풀이 고갈된 이유',
+    date: '26.06.26',
+    img: '/images/18th/blog/deeper/team2.png',
+    link: {
+      type: 'Tistory',
+      href: 'https://swimming-developer.tistory.com/entry/DB%EB%A5%BC-%EC%95%88-%EC%93%B0%EB%8A%94-%EC%A4%84-%EC%95%8C%EC%95%98%EB%8D%98-%EC%8B%A4%EC%8B%9C%EA%B0%84-API%EC%97%90%EC%84%9C-%EC%BB%A4%EB%84%A5%EC%85%98-%ED%92%80%EC%9D%B4-%EA%B3%A0%EA%B0%88%EB%90%9C-%EC%9D%B4%EC%9C%A0',
+    },
+    type: 'project',
+  },
+  {
+    title: '"이 파일, 어디에 두지?"에서 시작한 FSD 도입기',
+    date: '26.06.26',
+    img: '/images/18th/blog/deeper/team1.png',
+    link: {
+      type: 'Medium',
+      href: 'https://medium.com/@gongsona/%EC%9D%B4-%ED%8C%8C%EC%9D%BC-%EC%96%B4%EB%94%94%EC%97%90-%EB%91%90%EC%A7%80-%EC%97%90%EC%84%9C-%EC%8B%9C%EC%9E%91%ED%95%9C-fsd-%EB%8F%84%EC%9E%85%EA%B8%B0-721a7a076dc8',
+    },
+    type: 'project',
+  },
+  {
+    title: '[iOS] CD 파이프라인에서 만난 SPM Experimental Feature 누락 문제',
+    date: '26.06.26',
+    img: '/images/18th/blog/deeper/team5.png',
+    link: {
+      type: 'Velog',
+      href: 'https://velog.io/@jincode93/dpmcdpipelinetroubleshooting',
+    },
+    type: 'project',
+  },
+  {
+    title: '[디프만] Gemini API 연동, 프리티어 한도 안에서 사용자 경험 개선하기',
+    date: '26.06.26',
+    img: '/images/18th/blog/deeper/team6.png',
+    link: {
+      type: 'Medium',
+      href: 'https://medium.com/@wlxn4920/gemini-api-%EC%97%B0%EB%8F%99-%ED%94%84%EB%A6%AC%ED%8B%B0%EC%96%B4-%ED%95%9C%EB%8F%84-%EC%95%88%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%EC%9E%90-%EA%B2%BD%ED%97%98-%EA%B0%9C%EC%84%A0%ED%95%98%EA%B8%B0-4d3227b24745?postPublishedType=repub',
+    },
+    type: 'project',
+  },
+  {
+    title: '[디프만] Claude와 KMP로 Android, iOS 동시에 개발하기 2— KMP, MVI편',
+    date: '26.06.26',
+    img: '/images/18th/blog/deeper/team6.png',
+    link: {
+      type: 'Medium',
+      href: 'https://medium.com/@milone2307/%EB%94%94%ED%94%84%EB%A7%8C-claude%EC%99%80-kmp%EB%A1%9C-android-ios-%EB%8F%99%EC%8B%9C%EC%97%90-%EA%B0%9C%EB%B0%9C%ED%95%98%EA%B8%B0-2-kmp-mvi%ED%8E%B8-2da223433518',
+    },
+    type: 'project',
+  },
+  {
+    title: '[디프만] Claude와 KMP로 Android, iOS 동시에 개발하기 1— Claude편',
+    date: '26.06.26',
+    img: '/images/18th/blog/deeper/team6.png',
+    link: {
+      type: 'Medium',
+      href: 'https://medium.com/@milone2307/%EB%94%94%ED%94%84%EB%A7%8C-claude%EC%99%80-kmp%EB%A1%9C-android-ios-%EB%8F%99%EC%8B%9C%EC%97%90-%EA%B0%9C%EB%B0%9C%ED%95%98%EA%B8%B0-1-claude%ED%8E%B8-e4d5d7add153',
+    },
+    type: 'project',
+  },
+  {
+    title: 'Next.js App Router에서 prefetch를 page 최상단에 두면 안 되는 이유',
+    date: '26.06.25',
+    img: '/images/18th/blog/deeper/team3.png',
+    link: {
+      type: 'Velog',
+      href: 'https://velog.io/@iodio89/Next.js-App-Router%EC%97%90%EC%84%9C-prefetch%EB%A5%BC-page-%EC%B5%9C%EC%83%81%EB%8B%A8%EC%97%90-%EB%91%90%EB%A9%B4-%EC%95%88-%EB%90%98%EB%8A%94-%EC%9D%B4%EC%9C%A0',
+    },
+    type: 'project',
+  },
+  {
+    title: 'FCM Silent Push로 앱 아이콘 뱃지 실시간 업데이트하기',
+    date: '26.06.25',
+    img: '/images/18th/blog/deeper/team3.png',
+    link: {
+      type: 'Velog',
+      href: 'https://velog.io/@xgkg0330/Expo-WebView-%EC%95%B1%EC%97%90%EC%84%9C-FCM-Silent-Push%EB%A1%9C-%EC%95%B1-%EC%95%84%EC%9D%B4%EC%BD%98-%EB%B1%83%EC%A7%80-%EC%8B%A4%EC%8B%9C%EA%B0%84-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8%ED%95%98%EA%B8%B0',
+    },
+    type: 'project',
+  },
+  {
+    title: '[디프만 18기] iOS 26 Safari 의 노치 색상 이슈 - `theme-color` 가 더 이상 답이 아니다',
+    date: '26.06.25',
+    img: '/images/18th/blog/deeper/team3.png',
+    link: {
+      type: 'Velog',
+      href: 'https://velog.io/@ychany/%EB%94%94%ED%94%84%EB%A7%8C-18%EA%B8%B0-iOS-26-Safari-%EC%9D%98-%EB%85%B8%EC%B9%98-%EC%83%89%EC%83%81-%EC%9D%B4%EC%8A%88-theme-color-%EA%B0%80-%EB%8D%94-%EC%9D%B4%EC%83%81-%EB%8B%B5%EC%9D%B4-%EC%95%84%EB%8B%88%EB%8B%A4',
+    },
+    type: 'project',
+  },
+  {
+    title:
+      '[디프만 18기] Apple 로그인 3중 이슈 트러블슈팅: form_post, 307 Redirect, SameSite Cookie까지',
+    date: '26.06.25',
+    img: '/images/18th/blog/deeper/team3.png',
+    link: {
+      type: 'Velog',
+      href: 'https://velog.io/@soyeong/%EB%94%94%ED%94%84%EB%A7%8C-18%EA%B8%B0-Apple-%EB%A1%9C%EA%B7%B8%EC%9D%B8-3%EC%A4%91-%EC%9D%B4%EC%8A%88-%ED%8A%B8%EB%9F%AC%EB%B8%94%EC%8A%88%ED%8C%85-formpost-307-Redirect-SameSite-Cookie%EA%B9%8C%EC%A7%80',
+    },
+    type: 'project',
+  },
+  {
+    title: '"상태"를 기준으로 복구하기',
+    date: '26.06.25',
+    img: '/images/18th/blog/deeper/team2.png',
+    link: {
+      type: 'Velog',
+      href: 'https://velog.io/@lhj2778/%EC%83%81%ED%83%9C%EB%A5%BC-%EA%B8%B0%EC%A4%80%EC%9C%BC%EB%A1%9C-%EB%B3%B5%EA%B5%AC%ED%95%98%EA%B8%B0',
+    },
+    type: 'project',
+  },
+  {
+    title: '[Senti 프로젝트] LLM 추천 API 응답시간 줄이기: 기다리지 말고 겹쳐 실행하기',
+    date: '26.06.25',
+    img: '/images/18th/blog/deeper/team1.png',
+    link: {
+      type: 'Medium',
+      href: 'https://medium.com/@ohyhohyl/senti-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-llm-%EC%B6%94%EC%B2%9C-api-%EC%9D%91%EB%8B%B5%EC%8B%9C%EA%B0%84-%EC%A4%84%EC%9D%B4%EA%B8%B0-%EA%B8%B0%EB%8B%A4%EB%A6%AC%EC%A7%80-%EB%A7%90%EA%B3%A0-%EA%B2%B9%EC%B3%90-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0-2bdb595fc114',
+    },
+    type: 'project',
+  },
+  {
+    title: 'INSERT가 연달아 실패하게 된 이유, REPEATABLE READ + SKIP LOCKED가 만든 gap lock의 함정',
+    date: '26.06.24',
+    img: '/images/18th/blog/deeper/team4.png',
+    link: {
+      type: 'Velog',
+      href: 'https://velog.io/@uykm/INSERT%EA%B0%80-50%EC%B4%88%EB%A5%BC-%EA%B8%B0%EB%8B%A4%EB%A6%AC%EB%8B%A4-%EC%A3%BD%EC%97%88%EB%8B%A4-REPEATABLE-READ-SKIP-LOCKED%EA%B0%80-%EB%A7%8C%EB%93%A0-gap-lock-%ED%95%A8%EC%A0%95',
+    },
+    type: 'project',
+  },
+  {
+    title: 'Transactional Outbox 개선기 (2) — 커넥션 점유와 복구 로직 걷어내기',
+    date: '26.06.24',
+    img: '/images/18th/blog/deeper/team5.png',
+    link: {
+      type: 'Velog',
+      href: 'https://velog.io/@heeun_98/Transaction-Outbox-%EB%8F%84%EC%9E%85%EA%B8%B0-2',
+    },
+    type: 'project',
+  },
+  {
+    title: '[SwiftUI] UIkit을 SwiftUI에 도입할 때 유의할 점',
+    date: '26.06.24',
+    img: '/images/18th/blog/deeper/team5.png',
+    link: {
+      type: 'Tistory',
+      href: 'https://ios-adventure-with-aphelios.tistory.com/m/87',
+    },
+    type: 'project',
+  },
+  {
+    title: '매일 새벽, 수천 개의 감상문 생성 작업을 외부 LLM API로 안전하게 처리해보기',
+    date: '26.06.24',
+    img: '/images/18th/blog/deeper/team4.png',
+    link: {
+      type: 'Velog',
+      href: 'https://velog.io/@uykm/%EB%A7%A4%EC%9D%BC-%EC%83%88%EB%B2%BD-%EC%88%98%EC%B2%9C-%EA%B0%9C%EC%9D%98-%EA%B0%90%EC%83%81%EB%AC%B8-%EC%83%9D%EC%84%B1-%EC%9E%91%EC%97%85%EC%9D%84-%EC%99%B8%EB%B6%80-LLM-API%EB%A1%9C-%EC%95%88%EC%A0%84%ED%95%98%EA%B2%8C-%EC%B2%98%EB%A6%AC%ED%95%B4%EB%B3%B4%EA%B8%B0',
+    },
+    type: 'project',
+  },
+  {
+    title: '비밀번호 없는 admin 페이지, 슬랙으로 내 IP를 등록해 여는 PiKi 운영 백오피스',
+    date: '26.06.18',
+    img: '/images/18th/blog/deeper/team3.png',
+    link: {
+      type: 'Blog',
+      href: 'https://blog.sevin.dev/posts/piki-admin-slack-ip-gate',
+    },
+    type: 'project',
+  },
+  {
+    title: '[iOS] 사이드 프로젝트에 Tuist 도입하기',
+    date: '26.05.19',
+    img: '/images/18th/blog/deeper/team5.png',
+    link: {
+      type: 'Velog',
+      href: 'https://velog.io/@jincode93/iOS-Tuist',
+    },
+    type: 'project',
+  },
+  {
+    title: 'Transactional Outbox 적용기 (1)',
+    date: '26.05.17',
+    img: '/images/18th/blog/deeper/team5.png',
+    link: {
+      type: 'Velog',
+      href: 'https://velog.io/@heeun_98/Transaction-Outbox-%EB%8F%84%EC%9E%85%EA%B8%B0',
+    },
+    type: 'project',
+  },
+  {
+    title: '[iOS] TCA 프로젝트에서 UseCase 없이 Data 모듈 설계하기',
+    date: '26.04.29',
+    img: '/images/18th/blog/deeper/team5.png',
+    link: {
+      type: 'Velog',
+      href: 'https://velog.io/@jincode93/dpmtcaarchitecture',
+    },
+    type: 'project',
+  },
+  {
     title: '카카오 로그인 애플 로그인 보안 - Frontend를 고려하는 안전한 소셜 로그인 개발하기',
     date: '25.11.22',
     img: '/images/17th/blog/deeper/team4.png',
@@ -643,6 +844,46 @@ export const DEEPER_BLOG_LIST: Array<Blog<DeeperBlogType>> = [
 ];
 
 export const OFFICIAL_BLOG_LIST: Array<Blog<OfficialBlogType>> = [
+  {
+    title: '16주간의 결실을 세상에 보여주는, 런칭데이',
+    date: '26.07.04',
+    img: '/images/18th/blog/medium/medium-9.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EC%A7%80%EB%82%9C-6%EC%9B%94-20%EC%9D%BC-%ED%86%A0-%EC%84%9C%EC%9A%B8%EC%B0%BD%EC%97%85%ED%97%88%EB%B8%8C%EC%97%90%EC%84%9C-%EB%94%94%ED%94%84%EB%A7%8C-18%EA%B8%B0%EC%9D%98-%EB%9F%B0%EC%B9%AD%EB%8D%B0%EC%9D%B4%EA%B0%80-%EC%A7%84%ED%96%89%EB%90%98%EC%97%88%EC%96%B4%EC%9A%94-16%EC%A3%BC%EA%B0%84-%EC%99%84%EC%84%B1%ED%95%9C-%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%EB%A5%BC-%EB%94%94%ED%8D%BC%EC%99%80-%EC%99%B8%EB%B6%80%EC%9D%B8%EC%97%90%EA%B2%8C-%EC%B2%98%EC%9D%8C%EC%9C%BC%EB%A1%9C-%EC%86%8C%EA%B0%9C%ED%95%98%EB%8A%94-%EC%9E%90%EB%A6%AC%EC%98%80%EC%96%B4%EC%9A%94-00500feb61e5',
+    },
+    type: 'session',
+  },
+  {
+    title: '다시 연결되는 시간, 동문회',
+    date: '26.06.10',
+    img: '/images/18th/blog/medium/medium-8.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%8B%A4%EC%8B%9C-%EC%97%B0%EA%B2%B0%EB%90%98%EB%8A%94-%EC%8B%9C%EA%B0%84-%EB%8F%99%EB%AC%B8%ED%9A%8C-470f9ea91ad3',
+    },
+    type: 'session',
+  },
+  {
+    title: '서로의 가능성을 발견하는 시간, 18기 커리어 성장 세션',
+    date: '26.06.07',
+    img: '/images/18th/blog/medium/medium-7.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EC%84%9C%EB%A1%9C%EC%9D%98-%EA%B0%80%EB%8A%A5%EC%84%B1%EC%9D%84-%EB%B0%9C%EA%B2%AC%ED%95%98%EB%8A%94-%EC%8B%9C%EA%B0%84-18%EA%B8%B0-%EC%BB%A4%EB%A6%AC%EC%96%B4-%EC%84%B1%EC%9E%A5-%EC%84%B8%EC%85%98-21f5784da1a2',
+    },
+    type: 'session',
+  },
+  {
+    title: '연결이 만든 우리의 성장, 18기 중간점검 프리런칭데이',
+    date: '26.05.19',
+    img: '/images/18th/blog/medium/medium-6.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EC%97%B0%EA%B2%B0%EC%9D%B4-%EB%A7%8C%EB%93%A0-%EC%9A%B0%EB%A6%AC%EC%9D%98-%EC%84%B1%EC%9E%A5-18%EA%B8%B0-%EC%A4%91%EA%B0%84%EC%A0%90%EA%B2%80-%ED%94%84%EB%A6%AC%EB%9F%B0%EC%B9%AD%EB%8D%B0%EC%9D%B4-45e3907063d4',
+    },
+    type: 'session',
+  },
   {
     title: '함께 만든 14시간의 몰입, 디프만 18기 딮커톤',
     date: '26.05.03',
