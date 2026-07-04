@@ -644,6 +644,46 @@ export const DEEPER_BLOG_LIST: Array<Blog<DeeperBlogType>> = [
 
 export const OFFICIAL_BLOG_LIST: Array<Blog<OfficialBlogType>> = [
   {
+    title: '16주간의 결실을 세상에 보여주는, 런칭데이',
+    date: '26.07.04',
+    img: '/images/18th/blog/medium/medium-9.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EC%A7%80%EB%82%9C-6%EC%9B%94-20%EC%9D%BC-%ED%86%A0-%EC%84%9C%EC%9A%B8%EC%B0%BD%EC%97%85%ED%97%88%EB%B8%8C%EC%97%90%EC%84%9C-%EB%94%94%ED%94%84%EB%A7%8C-18%EA%B8%B0%EC%9D%98-%EB%9F%B0%EC%B9%AD%EB%8D%B0%EC%9D%B4%EA%B0%80-%EC%A7%84%ED%96%89%EB%90%98%EC%97%88%EC%96%B4%EC%9A%94-16%EC%A3%BC%EA%B0%84-%EC%99%84%EC%84%B1%ED%95%9C-%ED%94%84%EB%A1%9C%EB%8D%95%ED%8A%B8%EB%A5%BC-%EB%94%94%ED%8D%BC%EC%99%80-%EC%99%B8%EB%B6%80%EC%9D%B8%EC%97%90%EA%B2%8C-%EC%B2%98%EC%9D%8C%EC%9C%BC%EB%A1%9C-%EC%86%8C%EA%B0%9C%ED%95%98%EB%8A%94-%EC%9E%90%EB%A6%AC%EC%98%80%EC%96%B4%EC%9A%94-00500feb61e5',
+    },
+    type: 'session',
+  },
+  {
+    title: '다시 연결되는 시간, 동문회',
+    date: '26.06.10',
+    img: '/images/18th/blog/medium/medium-8.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EB%8B%A4%EC%8B%9C-%EC%97%B0%EA%B2%B0%EB%90%98%EB%8A%94-%EC%8B%9C%EA%B0%84-%EB%8F%99%EB%AC%B8%ED%9A%8C-470f9ea91ad3',
+    },
+    type: 'session',
+  },
+  {
+    title: '서로의 가능성을 발견하는 시간, 18기 커리어 성장 세션',
+    date: '26.06.07',
+    img: '/images/18th/blog/medium/medium-7.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EC%84%9C%EB%A1%9C%EC%9D%98-%EA%B0%80%EB%8A%A5%EC%84%B1%EC%9D%84-%EB%B0%9C%EA%B2%AC%ED%95%98%EB%8A%94-%EC%8B%9C%EA%B0%84-18%EA%B8%B0-%EC%BB%A4%EB%A6%AC%EC%96%B4-%EC%84%B1%EC%9E%A5-%EC%84%B8%EC%85%98-21f5784da1a2',
+    },
+    type: 'session',
+  },
+  {
+    title: '연결이 만든 우리의 성장, 18기 중간점검 프리런칭데이',
+    date: '26.05.19',
+    img: '/images/18th/blog/medium/medium-6.webp',
+    link: {
+      type: 'Medium',
+      href: 'https://depromeet.medium.com/%EC%97%B0%EA%B2%B0%EC%9D%B4-%EB%A7%8C%EB%93%A0-%EC%9A%B0%EB%A6%AC%EC%9D%98-%EC%84%B1%EC%9E%A5-18%EA%B8%B0-%EC%A4%91%EA%B0%84%EC%A0%90%EA%B2%80-%ED%94%84%EB%A6%AC%EB%9F%B0%EC%B9%AD%EB%8D%B0%EC%9D%B4-45e3907063d4',
+    },
+    type: 'session',
+  },
+  {
     title: '함께 만든 14시간의 몰입, 디프만 18기 딮커톤',
     date: '26.05.03',
     img: '/images/18th/blog/medium/medium-5.webp',
