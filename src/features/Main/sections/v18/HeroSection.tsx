@@ -20,9 +20,9 @@ export const HeroSection = () => {
       >
         <Image
           src="/images/core/recruit-3rd-hero.png"
-          alt="디프만 코어 3기 모집 - 26일 18시 마감"
-          width={1080}
-          height={1080}
+          alt="디프만 코어 3기 모집 - 26일 18시 마감, 웹 프론트 & 디자이너 모집"
+          width={2676}
+          height={1503}
           css={imageCss}
           priority
         />
@@ -35,13 +35,14 @@ const sectionCss = css`
   width: 100%;
   display: flex;
   justify-content: center;
+  padding-top: 80px;
   background: #ffffff;
 `;
 
 const linkCss = css`
   display: block;
   width: 100%;
-  max-width: 1080px;
+  max-width: 2676px;
 `;
 
 const imageCss = css`
