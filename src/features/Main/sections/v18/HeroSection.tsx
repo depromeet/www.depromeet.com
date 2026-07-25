@@ -1,3 +1,56 @@
+/**
+ * TEMP: 디프만 코어 요청으로 인한 임시 Hero 영역 대체 코드입니다.
+ * 최상단을 코어 3기 모집 배너 이미지 한 장으로 대체하고, 클릭 시 노션 모집 페이지로 이동시킵니다.
+ * 원복 시 아래 하단에 주석으로 보존해둔 기존 18기 HeroSection 코드를 복원해주세요.
+ */
+import Image from 'next/image';
+import { css } from '@emotion/react';
+
+const CORE_RECRUIT_URL = 'https://depromeet.notion.site/recruit-3th-open';
+
+export const HeroSection = () => {
+  return (
+    <section css={sectionCss}>
+      <a
+        href={CORE_RECRUIT_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        css={linkCss}
+        aria-label="디프만 코어 3기 모집 지원하러 가기"
+      >
+        <Image
+          src="/images/core/recruit-3rd-hero.png"
+          alt="디프만 코어 3기 모집 - 26일 18시 마감"
+          width={1080}
+          height={1080}
+          css={imageCss}
+          priority
+        />
+      </a>
+    </section>
+  );
+};
+
+const sectionCss = css`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: #ffffff;
+`;
+
+const linkCss = css`
+  display: block;
+  width: 100%;
+  max-width: 1080px;
+`;
+
+const imageCss = css`
+  width: 100%;
+  height: auto;
+  display: block;
+`;
+
+/* NOTE: 기존 18기 HeroSection 코드 백업 - 디프만 코어 임시 배너 종료 후 아래 코드를 복원해주세요.
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -218,7 +271,7 @@ const keyringContainerCss = css`
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
-  /* Safari HEVC alpha 영상 로드 시 컴포지팅 이슈 방지 */
+  // Safari HEVC alpha 영상 로드 시 컴포지팅 이슈 방지
   isolation: isolate;
   will-change: transform;
 
@@ -235,7 +288,7 @@ const keyringVideoCss = css`
   object-fit: contain;
   width: 534px;
   height: 534px;
-  /* Safari alpha 영상 렌더링 */
+  // Safari alpha 영상 렌더링
   background: transparent;
   transform: translateZ(0);
   backface-visibility: hidden;
@@ -265,7 +318,7 @@ const logoContainerCss = css`
   bottom: 141px;
   display: flex;
   justify-content: center;
-  /* Safari HEVC alpha 영상 컴포지팅 이슈 방지 */
+  // Safari HEVC alpha 영상 컴포지팅 이슈 방지
   isolation: isolate;
   backface-visibility: hidden;
 
@@ -337,3 +390,4 @@ const ctaButtonCss = css`
     display: none;
   }
 `;
+*/
