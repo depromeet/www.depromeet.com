@@ -5,25 +5,56 @@ import { css } from '@emotion/react';
 import { m } from 'framer-motion';
 
 import { GNB_MOBILE_MENU_NAME, GNBMenu } from '~/constant/gnb';
-import useIsApplyTime from '~/hooks/useIsApplyTime';
-import useIsInProgress from '~/hooks/useIsInProgress';
+import { useRecruitPhase } from '~/hooks/useRecruitPhase';
 import { colors } from '~/styles/colors';
 import { mediaQuery } from '~/styles/media';
-import { getPathToRecruit } from '~/utils/utils';
+import { getRecruitCta } from '~/utils/recruit';
 
 interface MobileMenuProps {
   onClickMenu: () => void;
 }
 
+function ApplyMenuItem({ onClickMenu }: MobileMenuProps) {
+  const phase = useRecruitPhase();
+
+  // 마운트 전에는 라벨을 확정할 수 없다(계획 §0.6).
+  if (phase === null) {
+    return (
+      <span css={[linkCss, placeholderCss]} aria-hidden>
+        {getRecruitCta('BEFORE').label}
+      </span>
+    );
+  }
+
+  const cta = getRecruitCta(phase);
+
+  if (cta.kind === 'disabled') {
+    return (
+      <button type="button" css={linkCss} disabled>
+        {cta.label}
+      </button>
+    );
+  }
+
+  return cta.external ? (
+    <a
+      css={linkCss}
+      href={cta.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={onClickMenu}
+    >
+      {cta.label}
+    </a>
+  ) : (
+    <Link css={linkCss} href={cta.href} onClick={onClickMenu}>
+      {cta.label}
+    </Link>
+  );
+}
+
 export function MobileMenu({ onClickMenu }: MobileMenuProps) {
   const router = useRouter();
-  const { progressState } = useIsInProgress();
-  const isApplyTime = useIsApplyTime();
-  const { label: applyLabel, action: applyAction } = getPathToRecruit(
-    router,
-    progressState,
-    isApplyTime
-  );
 
   const getActiveLinkcss = (menu: GNBMenu) => {
     if (router.pathname === menu.href) {
@@ -48,28 +79,14 @@ export function MobileMenu({ onClickMenu }: MobileMenuProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            {menu.type === 'button' ? (
-              <button
-                onClick={() => {
-                  applyAction();
-                  onClickMenu();
-                }}
-                css={linkCss}
-                suppressHydrationWarning
-              >
-                {applyLabel}
-              </button>
-            ) : (
-              <Link
-                href={menu.href}
-                css={[linkCss, getActiveLinkcss(menu)]}
-                target={menu.isNewTab ? '_blank' : '_self'}
-              >
-                {menu.name}
-              </Link>
-            )}
+            <Link href={menu.href} css={[linkCss, getActiveLinkcss(menu)]}>
+              {menu.name}
+            </Link>
           </m.li>
         ))}
+        <m.li initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <ApplyMenuItem onClickMenu={onClickMenu} />
+        </m.li>
       </ul>
     </m.article>
   );
@@ -82,7 +99,7 @@ const mobileMenuCss = (_theme: Theme) => css`
   top: 0;
   left: 0;
   margin: auto;
-  background-color: ${colors.grey18[900]};
+  background-color: ${colors.v19.coolGray800};
   padding-top: 64px;
 
   overflow: hidden;
@@ -93,8 +110,7 @@ const mobileMenuCss = (_theme: Theme) => css`
 
 const linkCss = (theme: Theme) => css`
   ${theme.typosV3.pretendard.sub3Semibold};
-  color: ${colors.white};
-  font-weight: 400;
+  color: ${colors.v19.white100};
 
   display: flex;
   align-items: center;
@@ -108,24 +124,28 @@ const linkCss = (theme: Theme) => css`
 
   &:hover,
   &:active {
-    color: ${colors.primary.blue};
+    color: ${colors.v19.blue300};
   }
 
   &:disabled {
-    color: ${theme.colors.gray200};
+    color: ${colors.v19.coolGray400};
     cursor: not-allowed;
   }
 `;
 
+const placeholderCss = css`
+  visibility: hidden;
+`;
+
 const activeLinkCss = () => css`
-  color: #59aefe !important;
+  color: ${colors.v19.blue300} !important;
 
   &:hover,
   &:active {
-    color: #59aefe !important;
+    color: ${colors.v19.blue300} !important;
   }
 `;
 
 const inActiveLinkCss = () => css`
-  color: ${colors.white};
+  color: ${colors.v19.white100};
 `;

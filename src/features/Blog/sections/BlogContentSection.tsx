@@ -69,7 +69,7 @@ export const BlogContentSection = () => {
       : (blogList as AllBlog[]).filter(({ type }) => type === currentSubTab.key);
 
   return (
-    <section css={sectionCss}>
+    <section css={sectionCss} data-gnb-theme="light">
       <div css={contentWrapperCss}>
         <BlogTitleSection />
 
