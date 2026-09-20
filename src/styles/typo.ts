@@ -554,3 +554,194 @@ export const typosV3 = {
     `,
   },
 };
+
+/**
+ * NOTE: 19th — Figma `203:583`(Instrument Sans) · `203:3595`(Space Grotesk / Space Mono).
+ *
+ * 영문과 숫자는 Instrument Sans를 쓴다(시안 규칙). 한글은 Pretendard(`typosV3.pretendard`)가
+ * 맡는다. letter-spacing은 시안의 % 값을 em으로 옮겼고, Slogan만 px 지정이라 그대로 둔다.
+ */
+export const typosV4 = {
+  instrumentSans: {
+    display1: css`
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: ${pxToRem(88)};
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.04em;
+    `,
+    head1: css`
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: ${pxToRem(60)};
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+    `,
+    head2: css`
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: ${pxToRem(48)};
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: -0.04em;
+    `,
+    head3: css`
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: ${pxToRem(40)};
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+    `,
+    head4: css`
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: ${pxToRem(36)};
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+    `,
+    head5: css`
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: ${pxToRem(34)};
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+    `,
+    sub1: css`
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: ${pxToRem(32)};
+      font-weight: 600;
+      line-height: 1.4;
+    `,
+    sub2: css`
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: ${pxToRem(28)};
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+    `,
+    sub3: css`
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: ${pxToRem(24)};
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+    `,
+    sub4: css`
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: ${pxToRem(22)};
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+    `,
+    sub5: css`
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: ${pxToRem(18)};
+      font-weight: 600;
+      line-height: 1.4;
+    `,
+    body1: css`
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: ${pxToRem(18)};
+      font-weight: 500;
+      line-height: 1.6;
+      letter-spacing: -0.01em;
+    `,
+    body3: css`
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: ${pxToRem(16)};
+      font-weight: 500;
+      line-height: 1.7;
+      letter-spacing: -0.01em;
+    `,
+    body4: css`
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: ${pxToRem(14)};
+      font-weight: 400;
+      line-height: 1.6;
+      letter-spacing: -0.01em;
+    `,
+    body7: css`
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: ${pxToRem(9)};
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: -0.02em;
+    `,
+    caption1: css`
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: ${pxToRem(14)};
+      font-weight: 500;
+      line-height: 1.5;
+    `,
+    caption2: css`
+      font-family: 'Instrument Sans', sans-serif;
+      font-size: ${pxToRem(10)};
+      font-weight: 600;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+    `,
+  },
+  spaceGrotesk: {
+    display1: css`
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: ${pxToRem(88)};
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    `,
+    display2: css`
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: ${pxToRem(80)};
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    `,
+    display3: css`
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: ${pxToRem(52)};
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    `,
+    head1: css`
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: ${pxToRem(40)};
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+    `,
+    head2: css`
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: ${pxToRem(36)};
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    `,
+  },
+  /** 슬로건 전용. italic 고정, letter-spacing은 px 지정이다. */
+  spaceMono: {
+    sloganPc: css`
+      font-family: 'Space Mono', monospace;
+      font-style: italic;
+      font-size: ${pxToRem(22)};
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: ${pxToRem(-1.4)};
+    `,
+    sloganTablet: css`
+      font-family: 'Space Mono', monospace;
+      font-style: italic;
+      font-size: ${pxToRem(15)};
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: ${pxToRem(-1.4)};
+    `,
+    sloganMobile: css`
+      font-family: 'Space Mono', monospace;
+      font-style: italic;
+      font-size: ${pxToRem(8)};
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: ${pxToRem(-1.4)};
+    `,
+  },
+};
