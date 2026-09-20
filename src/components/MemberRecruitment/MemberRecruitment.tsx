@@ -1,48 +1,43 @@
 import { Fragment } from 'react';
 import { css, Theme } from '@emotion/react';
 
+import { RECRUIT } from '~/constant/recruit';
 import { colors } from '~/styles/colors';
-import { theme } from '~/styles/theme';
+import { displayEnd, formatKoreanDate } from '~/utils/date';
 
 interface RecruitmentStep {
   title: string;
   date: string;
   subtext?: string;
-  showArrow?: boolean;
 }
 
+/** 하루면 `10 . 02 (금)`, 기간이면 `10 . 02 (금) -` 다음 줄에 `10 . 08 (목)`. */
+const period = (start: string, exclusiveEnd?: string) =>
+  exclusiveEnd
+    ? `${formatKoreanDate(start, 'step')} -
+${formatKoreanDate(displayEnd(exclusiveEnd), 'step')}`
+    : formatKoreanDate(start, 'step');
+
+/** 서류 접수는 `applyWindow`에서 파생한다(중복 저장 금지). 나머지는 `steps` 그대로. */
 const recruitmentSteps: RecruitmentStep[] = [
   {
     title: '서류 접수',
-    date: '02 . 12 (목) -\n02 . 18 (수)',
-    subtext: '02.18 수요일\n23:59:59까지 제출',
-    showArrow: true,
+    date: period(RECRUIT.applyWindow.start, RECRUIT.applyWindow.end),
+    subtext: `${formatKoreanDate(displayEnd(RECRUIT.applyWindow.end), 'dot')} ${formatKoreanDate(
+      displayEnd(RECRUIT.applyWindow.end),
+      'weekdayLong'
+    )}
+23:59:59까지 제출`,
   },
-  {
-    title: '서류 발표',
-    date: '02 . 23 (월)',
-    showArrow: true,
-  },
-  {
-    title: '온라인 인터뷰',
-    date: '02 . 28 (토) -\n03 . 02 (월)',
-    showArrow: true,
-  },
-  {
-    title: '최종 발표',
-    date: '03 . 05 (목)',
-  },
+  ...RECRUIT.steps.map(step => ({ title: step.title, date: period(step.start, step.end) })),
 ];
 
 export const MemberRecruitment = () => {
   return (
-    <div css={containerCss}>
+    <div css={containerCss} data-gnb-theme="light">
       <div css={contentStyles}>
         <div css={headerCss}>
-          <h2 css={titleCss}>
-            <span className="desktop-text">18기 모집 일정</span>
-            <span className="mobile-text">모집 일정</span>
-          </h2>
+          <h2 css={titleCss}>{RECRUIT.generation}기 모집 일정</h2>
         </div>
 
         <div css={infoContainerCss}>
@@ -58,16 +53,16 @@ export const MemberRecruitment = () => {
                 {index < recruitmentSteps.length - 1 && (
                   <div css={arrowCss}>
                     <svg
-                      width="40"
-                      height="40"
-                      viewBox="0 0 24 24"
+                      width="16"
+                      height="28"
+                      viewBox="0 0 16 28"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        d="M9 18l6-6-6-6"
+                        d="M2 26L14 14L2 2"
                         stroke="currentColor"
-                        strokeWidth="2"
+                        strokeWidth="4"
                         strokeLinecap="round"
                         strokeLinejoin="round"
                       />
@@ -100,6 +95,7 @@ export const MemberRecruitment = () => {
   );
 };
 
+// Figma `203:2424`(1920) · `203:3093`(360)
 const containerCss = (_theme: Theme) => css`
   position: relative;
   display: flex;
@@ -107,16 +103,19 @@ const containerCss = (_theme: Theme) => css`
   align-items: center;
   width: 100%;
   margin: 0 auto;
-  padding: 160px 0;
-  background-color: #f9fbff;
-  overflow: hidden;
+  background-color: ${colors.v19.coolGray100};
+  padding: 60px 20px;
 
-  @media (min-width: 768px) and (max-width: 1279px) {
-    padding: 80px 0;
+  @media (min-width: 768px) {
+    padding: 100px 20px;
   }
 
-  @media (max-width: 767px) {
-    padding: 40px 0;
+  @media (min-width: 1280px) {
+    padding: 130px 40px;
+  }
+
+  @media (min-width: 1920px) {
+    padding: 160px 40px;
   }
 `;
 
@@ -131,191 +130,202 @@ const contentStyles = css`
 
 const headerCss = css`
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 24px;
 
-  @media (min-width: 768px) and (max-width: 1279px) {
+  @media (min-width: 768px) {
     margin-bottom: 60px;
   }
 
-  @media (max-width: 767px) {
-    margin-bottom: 24px;
+  @media (min-width: 1280px) {
+    margin-bottom: 70px;
+  }
+
+  @media (min-width: 1920px) {
+    margin-bottom: 80px;
   }
 `;
 
-const titleCss = (theme: Theme) => css`
-  font-size: 36px;
+const titleCss = css`
+  font-family: 'Pretendard', sans-serif;
+  font-size: 22px;
   font-weight: 700;
   line-height: 1.4;
-  letter-spacing: -0.01em;
-  color: ${theme.colors.grey18[900]};
+  letter-spacing: 0.01em;
+  color: ${colors.v19.coolGray900};
   margin: 0;
 
-  .mobile-text {
-    display: none;
-  }
-  .desktop-text {
-    display: inline;
-  }
-
-  @media (max-width: 767px) {
+  @media (min-width: 768px) {
     font-size: 26px;
-    line-height: 1.25;
-    letter-spacing: -0.05em;
+  }
 
-    .desktop-text {
-      display: none;
-    }
-    .mobile-text {
-      display: inline;
-    }
+  @media (min-width: 1280px) {
+    font-size: 32px;
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 40px;
   }
 `;
 
 const infoContainerCss = css`
-  padding: 0 40px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 
-  @media (min-width: 768px) and (max-width: 1279px) {
-    padding: 0 40px;
-    gap: 8px;
-  }
-
-  @media (max-width: 767px) {
-    padding: 0 20px;
-    gap: 8px;
+  @media (min-width: 768px) {
+    gap: 12px;
   }
 `;
 
 const timelineContainerCss = css`
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 8px;
+  row-gap: 8px;
   width: 100%;
 
-  @media (min-width: 360px) and (max-width: 767px) {
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 8px;
-    row-gap: 8px;
+  & > :nth-of-type(4) {
+    display: none;
+  }
 
-    & > :nth-child(4) {
-      display: none;
+  & > :nth-of-type(2),
+  & > :nth-of-type(6) {
+    position: absolute;
+    left: calc(50% - 16px);
+  }
+
+  & > :nth-of-type(2) {
+    top: 84px;
+  }
+
+  & > :nth-of-type(6) {
+    top: 292px;
+  }
+
+  @media (min-width: 768px) {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & > :nth-of-type(4) {
+      display: flex;
     }
 
-    & > :nth-child(2),
-    & > :nth-child(6) {
-      position: absolute;
-      left: calc(50% - 18px);
-    }
-
-    & > :nth-child(2) {
-      top: 82px;
-    }
-
-    & > :nth-child(6) {
-      top: 290px;
+    & > :nth-of-type(2),
+    & > :nth-of-type(6) {
+      position: static;
+      left: auto;
     }
   }
 `;
 
 const timelineItemCss = css`
-  background-color: ${colors.white};
-  border: 1px solid ${colors.grey18[200]};
+  background-color: ${colors.v19.white100};
+  border: 1px solid ${colors.v19.coolGray200};
   border-radius: 12px;
-  padding: 32px;
+  padding: 20px 16px;
   text-align: left;
-  height: 320px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 12px;
-  box-shadow: 0px 8px 32px 0px rgba(47, 51, 55, 0.06);
+  gap: 8px;
+  box-shadow: 0px 8px 16px 0px rgba(47, 51, 55, 0.1);
   flex: 1;
 
+  @media (min-width: 768px) {
+    height: 240px;
+    padding: 24px 16px;
+  }
+
   @media (min-width: 1280px) {
+    height: 300px;
+    padding: 28px;
+
     &:first-of-type {
       flex: 0 0 290px;
     }
   }
 
-  @media (min-width: 768px) and (max-width: 1279px) {
-    height: 240px;
-    padding: 20px 16px;
-    gap: 8px;
-  }
-
-  @media (min-width: 360px) and (max-width: 767px) {
-    height: 200px;
-    padding: 20px 16px;
-    gap: 8px;
-    width: 100%;
-    flex: none;
+  @media (min-width: 1920px) {
+    height: 320px;
+    padding: 32px;
+    box-shadow: 0px 8px 32px 0px rgba(47, 51, 55, 0.1);
   }
 `;
 
-const stepTitleCss = (theme: Theme) => css`
+/* 시안은 "온라인 인터뷰"가 어느 폭에서도 한 줄이다. 768에서 22px이면 상자를 넘겨 접힌다. */
+const stepTitleCss = css`
   font-family: 'Pretendard', sans-serif;
-  font-size: 32px;
+  font-size: 20px;
   font-weight: 700;
   line-height: 1.4;
-  letter-spacing: -0.64px;
-  color: ${theme.colors.grey18[900]};
+  color: ${colors.v19.coolGray900};
   margin: 0;
+  white-space: nowrap;
 
-  /* 768px ~ 1279px */
-  @media (min-width: 768px) and (max-width: 1279px) {
-    font-size: 22px;
-    letter-spacing: -0.22px;
+  @media (min-width: 768px) {
+    font-size: 19px;
   }
 
-  /* 360px ~ 767px */
-  @media (min-width: 360px) and (max-width: 767px) {
-    font-size: 20px;
-    letter-spacing: -0.2px;
+  @media (min-width: 1280px) {
+    font-size: 26px;
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 32px;
+    letter-spacing: 0.01em;
   }
 `;
 
 const stepDateCss = css`
   font-family: 'Pretendard', sans-serif;
-  font-size: 26px;
+  font-size: 18px;
   font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -0.05em;
-  color: ${colors.primary18.strong};
+  line-height: 1.4;
+  color: ${colors.v19.blue500};
   margin: 0;
-  white-space: pre-line;
+  /*
+   * pre-line이면 줄바꿈은 살지만 각 줄이 또 접힌다 — 768에서 "10 . 02 (금) -"의 끝
+   * 하이픈이 혼자 다음 줄로 넘어갔다. pre는 넣어 둔 줄바꿈만 살리고 그 외에는 접지 않는다.
+   */
+  white-space: pre;
 
-  @media (min-width: 768px) and (max-width: 1279px) {
+  @media (min-width: 768px) {
     font-size: 20px;
-    letter-spacing: -0.01em;
-    line-height: 1.4;
   }
 
-  @media (min-width: 360px) and (max-width: 767px) {
-    font-size: 18px;
-    line-height: 1.4;
-    letter-spacing: 0;
+  @media (min-width: 1280px) {
+    font-size: 22px;
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 26px;
+    letter-spacing: -0.05em;
   }
 `;
 
 const stepSubtextCss = css`
   font-family: 'Pretendard', sans-serif;
-  font-size: 20px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 1.4;
-  color: ${theme.colors.grey18[900]};
+  color: ${colors.v19.coolGray900};
   margin: 0;
   white-space: pre-line;
 
-  @media (min-width: 768px) and (max-width: 1279px) {
+  @media (min-width: 768px) {
     font-size: 16px;
   }
 
-  @media (min-width: 360px) and (max-width: 767px) {
-    font-size: 14px;
+  @media (min-width: 1280px) {
+    font-size: 18px;
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 20px;
   }
 `;
 
@@ -323,40 +333,51 @@ const arrowCss = css`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${colors.white};
-  border: 1px solid ${colors.grey18[200]};
+  background-color: ${colors.v19.white100};
+  border: 1px solid ${colors.v19.coolGray200};
   border-radius: 50%;
-  color: ${colors.grey18[900]};
-  box-shadow: 0px 8px 32px 0px rgba(47, 51, 55, 0.06);
-  width: 56px;
-  height: 56px;
+  color: ${colors.v19.coolGray900};
+  box-shadow: 0px 8px 16px 0px rgba(47, 51, 55, 0.1);
+  width: 32px;
+  height: 32px;
   flex-shrink: 0;
   z-index: 10;
-  margin-inline: -22px;
 
-  @media (min-width: 768px) and (max-width: 1279px) {
+  svg {
+    width: 10px;
+    height: 18px;
+  }
+
+  /*
+   * 시안에서 화살표는 상자 사이 틈(12px) 위에 겹쳐 놓인다 — 틈을 자기 지름만큼
+   * 벌리지 않는다. 음수 margin으로 실제 차지하는 폭을 12px로 만든다.
+   */
+  @media (min-width: 768px) {
     width: 44px;
     height: 44px;
-    border-radius: 50%;
-    padding: 0;
-    margin-inline: -22px;
+    margin-inline: -16px;
 
     svg {
-      width: 24px;
-      height: 24px;
+      width: 12px;
+      height: 22px;
     }
   }
 
-  @media (min-width: 360px) and (max-width: 767px) {
-    width: auto;
-    height: auto;
-    border-radius: 34px;
-    padding: 8px 7px 8px 9px;
-    margin-inline: 0;
+  @media (min-width: 1280px) {
+    width: 52px;
+    height: 52px;
+    margin-inline: -20px;
+  }
+
+  @media (min-width: 1920px) {
+    width: 56px;
+    height: 56px;
+    margin-inline: -22px;
+    box-shadow: 0px 8px 32px 0px rgba(47, 51, 55, 0.1);
 
     svg {
-      width: 20px;
-      height: 20px;
+      width: 14px;
+      height: 24px;
     }
   }
 `;
@@ -364,44 +385,58 @@ const arrowCss = css`
 const applicationSectionCss = css`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
-  background-color: ${colors.white};
-  border: 1px solid ${colors.grey18[200]};
+  background-color: ${colors.v19.white100};
+  border: 1px solid ${colors.v19.coolGray200};
   border-radius: 12px;
-  padding: 32px;
+  padding: 24px;
   text-align: left;
-  gap: 48px;
+  gap: 0;
   width: 100%;
-  height: 340px;
-  box-shadow: 0px 8px 32px 0px rgba(47, 51, 55, 0.06);
+  height: 240px;
+  box-shadow: 0px 8px 16px 0px rgba(47, 51, 55, 0.1);
 
-  @media (min-width: 768px) and (max-width: 1279px) {
-    height: 340px;
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+    gap: 32px;
+    height: 280px;
     padding: 28px;
-    gap: 48px;
   }
 
-  @media (min-width: 360px) and (max-width: 767px) {
-    height: 240px;
-    padding: 24px;
-    gap: 0;
-    justify-content: space-between;
+  @media (min-width: 1280px) {
+    gap: 40px;
+    height: 310px;
+    padding: 30px;
+  }
+
+  @media (min-width: 1920px) {
+    gap: 48px;
+    height: 340px;
+    padding: 32px;
+    box-shadow: 0px 8px 32px 0px rgba(47, 51, 55, 0.1);
   }
 `;
 
-const applicationTitleCss = (theme: Theme) => css`
+const applicationTitleCss = css`
   font-family: 'Pretendard', sans-serif;
-  font-size: 32px;
+  font-size: 20px;
   font-weight: 700;
-  color: ${theme.colors.grey18[900]};
+  color: ${colors.v19.coolGray900};
   line-height: 1.4;
-  letter-spacing: -0.64px;
   margin: 0;
 
-  @media (min-width: 360px) and (max-width: 767px) {
-    font-size: 20px;
-    letter-spacing: -0.2px;
+  @media (min-width: 768px) {
+    font-size: 22px;
+  }
+
+  @media (min-width: 1280px) {
+    font-size: 28px;
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 32px;
+    letter-spacing: 0.01em;
   }
 `;
 
@@ -415,42 +450,60 @@ const applicationContainer = css`
 const applicationStepCss = css`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 4px;
 
-  @media (min-width: 360px) and (max-width: 767px) {
-    gap: 4px;
+  @media (min-width: 768px) {
+    gap: 8px;
+  }
+
+  @media (min-width: 1280px) {
+    gap: 10px;
+  }
+
+  @media (min-width: 1920px) {
+    gap: 12px;
   }
 `;
 
-const stepNumberCss = (theme: Theme) => css`
+const stepNumberCss = css`
   font-family: 'Pretendard', sans-serif;
-  font-size: 26px;
+  font-size: 18px;
   font-weight: 700;
-  line-height: 1.25;
-  letter-spacing: -1.3px;
-  color: ${theme.colors.grey18[900]};
+  line-height: 1.4;
+  color: ${colors.v19.coolGray900};
   margin: 0;
 
-  @media (min-width: 360px) and (max-width: 767px) {
-    font-size: 18px;
-    line-height: 1.4;
-    letter-spacing: 0;
+  @media (min-width: 768px) {
+    font-size: 20px;
+  }
+
+  @media (min-width: 1280px) {
+    font-size: 24px;
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 26px;
+    letter-spacing: -0.05em;
   }
 `;
 
 const stepDescriptionCss = css`
   font-family: 'Pretendard', sans-serif;
-  font-size: 24px;
+  font-size: 14px;
   font-weight: 500;
   line-height: 1.4;
-  color: ${colors.primary.blue};
+  color: ${colors.v19.blue500};
   margin: 0;
 
-  @media (min-width: 768px) and (max-width: 1279px) {
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1280px) {
     font-size: 20px;
   }
 
-  @media (min-width: 360px) and (max-width: 767px) {
-    font-size: 14px;
+  @media (min-width: 1920px) {
+    font-size: 24px;
   }
 `;

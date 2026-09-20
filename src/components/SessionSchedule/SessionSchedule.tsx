@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 import { css, Theme } from '@emotion/react';
 
+import { RECRUIT } from '~/constant/recruit';
 import { colors } from '~/styles/colors';
+import { theme } from '~/styles/theme';
+import { formatKoreanDate } from '~/utils/date';
 
 interface SessionItem {
   date: string;
@@ -10,24 +13,16 @@ interface SessionItem {
   isOnline?: boolean;
 }
 
-const sessionScheduleData: SessionItem[] = [
-  { date: '03.14', week: '1주차', title: 'OT' },
-  { date: '03.21', week: '2주차', title: '아이디어 공유/피드백', isOnline: true },
-  { date: '03.28', week: '3주차', title: '현직자와의 만남' },
-  { date: '04.04', week: '4주차', title: '포커스 위크', isOnline: true },
-  { date: '04.11', week: '5주차', title: '중간 발표', isOnline: true },
-  { date: '04.18', week: '6주차', title: '캐주얼 네트워킹 세션' },
-  { date: '04.25', week: '7주차', title: '딮커톤' },
-  { date: '05.02', week: '8주차', title: '방학 🏄' },
-  { date: '05.09', week: '9주차', title: '프리 런칭 데이' },
-  { date: '05.16', week: '10주차', title: '딮크샵' },
-  { date: '05.23', week: '11주차', title: '포커스 위크', isOnline: true },
-  { date: '05.30', week: '12주차', title: '커리어 성장 세션' },
-  { date: '06.06', week: '13주차', title: '동문회' },
-  { date: '06.13', week: '14주차', title: '딮케이션' },
-  { date: '06.20', week: '15주차', title: '런칭 데이' },
-  { date: '06.27', week: '16주차', title: '최종 발표' },
-];
+/** 주차 = 배열 순서 + 1. 날짜·이름은 설정에서 온다. */
+const sessionScheduleData: SessionItem[] = RECRUIT.sessions.map((session, index) => ({
+  date: formatKoreanDate(session.date, 'dot'),
+  week: `${index + 1}주차`,
+  title: session.title,
+  isOnline: session.online,
+}));
+
+/** 영문 세션명(OT·UT 등)은 Instrument Sans, 한글은 Pretendard로 표기한다. */
+const isEnglishTitle = (title: string) => /^[A-Za-z0-9\s]+$/.test(title);
 
 export const SessionSchedule = () => {
   const [isLargeDesktop, setIsLargeDesktop] = useState(false);
@@ -51,7 +46,7 @@ export const SessionSchedule = () => {
   const secondColumn = sessionScheduleData.slice(midPoint);
 
   return (
-    <div css={containerCss}>
+    <div css={containerCss} data-gnb-theme="dark">
       <div css={contentStyles}>
         <div css={headerCss}>
           <h2 css={titleCss}>온/오프라인 세션</h2>
@@ -82,7 +77,9 @@ export const SessionSchedule = () => {
                       <p css={weekTextCss}>{session.week}</p>
                     </div>
                     <div css={programContainerCss}>
-                      <p css={titleTextCss}>{session.title}</p>
+                      <p css={isEnglishTitle(session.title) ? titleTextEnCss : titleTextCss}>
+                        {session.title}
+                      </p>
                       {session.isOnline && (
                         <div css={onlineBadgeCss}>
                           <span css={badgeTextCss}>온</span>
@@ -100,7 +97,9 @@ export const SessionSchedule = () => {
                       <p css={weekTextCss}>{session.week}</p>
                     </div>
                     <div css={programContainerCss}>
-                      <p css={titleTextCss}>{session.title}</p>
+                      <p css={isEnglishTitle(session.title) ? titleTextEnCss : titleTextCss}>
+                        {session.title}
+                      </p>
                       {session.isOnline && (
                         <div css={onlineBadgeCss}>
                           <span css={badgeTextCss}>온</span>
@@ -120,7 +119,9 @@ export const SessionSchedule = () => {
                     <p css={weekTextCss}>{session.week}</p>
                   </div>
                   <div css={programContainerCss}>
-                    <p css={titleTextCss}>{session.title}</p>
+                    <p css={isEnglishTitle(session.title) ? titleTextEnCss : titleTextCss}>
+                      {session.title}
+                    </p>
                     {session.isOnline && (
                       <div css={onlineBadgeCss}>
                         <span css={badgeTextCss}>온</span>
@@ -137,6 +138,7 @@ export const SessionSchedule = () => {
   );
 };
 
+// Figma `203:2457`(1920) · `203:3124`(360)
 const containerCss = (_theme: Theme) => css`
   position: relative;
   display: flex;
@@ -144,11 +146,19 @@ const containerCss = (_theme: Theme) => css`
   align-items: center;
   width: 100%;
   margin: 0 auto;
-  padding: 120px 20px;
-  background-color: ${colors.grey18[900]};
+  background-color: ${colors.v19.blue900};
+  padding: 60px 20px;
 
-  @media (max-width: 767px) {
-    padding: 80px 20px;
+  @media (min-width: 768px) {
+    padding: 100px 20px;
+  }
+
+  @media (min-width: 1280px) {
+    padding: 130px 40px;
+  }
+
+  @media (min-width: 1920px) {
+    padding: 160px 40px;
   }
 `;
 
@@ -159,58 +169,66 @@ const contentStyles = css`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
-
-  @media (min-width: 1920px) {
-    max-width: 1200px;
-  }
-
-  @media (min-width: 1280px) and (max-width: 1919px) {
-    max-width: 600px;
-  }
-
-  @media (min-width: 768px) and (max-width: 1279px) {
-    max-width: 600px;
-  }
-
-  @media (max-width: 767px) {
-    max-width: 100%;
-  }
+  max-width: 1280px;
 `;
 
 const headerCss = css`
   text-align: center;
   margin-bottom: 40px;
 
-  @media (max-width: 767px) {
-    margin-bottom: 30px;
+  @media (min-width: 768px) {
+    margin-bottom: 60px;
+  }
+
+  @media (min-width: 1280px) {
+    margin-bottom: 70px;
+  }
+
+  @media (min-width: 1920px) {
+    margin-bottom: 80px;
   }
 `;
 
 const titleCss = css`
-  color: ${colors.white};
-  margin-bottom: 16px;
-  font-size: 36px;
+  color: ${colors.v19.white100};
+  margin: 0 0 8px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 22px;
   font-weight: 700;
   line-height: 1.4;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.01em;
 
-  @media (max-width: 767px) {
+  @media (min-width: 768px) {
     font-size: 26px;
-    line-height: 1.25;
-    letter-spacing: -0.05em;
+  }
+
+  @media (min-width: 1280px) {
+    font-size: 32px;
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 40px;
   }
 `;
 
 const descriptionCss = css`
-  color: ${colors.white};
-  font-size: 24px;
+  color: ${colors.v19.coolGray400};
+  font-family: 'Pretendard', sans-serif;
+  font-size: 14px;
   font-weight: 500;
   line-height: 1.4;
   margin: 0;
 
-  @media (max-width: 767px) {
-    font-size: 14px;
+  @media (min-width: 768px) {
+    font-size: 16px;
+  }
+
+  @media (min-width: 1280px) {
+    font-size: 20px;
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 24px;
   }
 `;
 
@@ -218,80 +236,112 @@ const legendWrapperCss = css`
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 
-  @media (max-width: 767px) {
-    margin-bottom: 12px;
+  @media (min-width: 768px) {
+    margin-bottom: 20px;
+  }
+
+  @media (min-width: 1280px) {
+    margin-bottom: 26px;
+  }
+
+  @media (min-width: 1920px) {
+    margin-bottom: 32px;
   }
 `;
 
 const onlineLegendCss = css`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
+
+  @media (min-width: 768px) {
+    gap: 6px;
+  }
+
+  @media (min-width: 1280px) {
+    gap: 10px;
+  }
+
+  @media (min-width: 1920px) {
+    gap: 13px;
+  }
 `;
 
 const legendBadgeCss = css`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background-color: ${colors.primary18.strong};
+  background-color: ${colors.v19.blue200};
   flex-shrink: 0;
 
-  @media (max-width: 767px) {
-    width: 18px;
-    height: 18px;
+  /* 시안 실측: 768·1280·1920 모두 지름 40. 24/32로 두면 "온" 글자가 뭉개진다. */
+  @media (min-width: 768px) {
+    width: 40px;
+    height: 40px;
   }
 `;
 
 const legendBadgeTextCss = css`
-  font-size: 18px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 8px;
   font-weight: 700;
   line-height: 1.4;
   letter-spacing: 0.01em;
-  color: ${colors.white};
+  color: ${colors.v19.coolGray900};
   text-align: center;
 
-  @media (max-width: 767px) {
-    font-size: 8px;
-    font-weight: 700;
-    line-height: 1.4;
-    letter-spacing: 0.01em;
+  @media (min-width: 768px) {
+    font-size: 18px;
   }
 `;
 
 const legendTextCss = css`
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.4;
-  color: ${colors.white};
-  padding-right: 20px;
+  font-family: 'Pretendard', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: ${colors.v19.white100};
 
-  @media (max-width: 767px) {
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 1.5;
-    letter-spacing: -0.01em;
+  @media (min-width: 768px) {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  @media (min-width: 1280px) {
+    font-size: 17px;
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 20px;
+    letter-spacing: 0;
   }
 `;
 
 const sessionCardCss = css`
-  background: ${colors.white};
-  border-radius: 48px;
-  padding: 56px 72px;
+  background: ${colors.v19.white004};
+  border-radius: 20px;
+  padding: 16px 20px;
   width: 100%;
 
-  @media (min-width: 768px) and (max-width: 1279px) {
-    border-radius: 40px;
-    padding: 56px 72px;
+  @media (min-width: 768px) {
+    border-radius: 28px;
+    padding: 32px 48px;
   }
 
-  @media (max-width: 767px) {
-    padding: 16px 20px;
-    border-radius: 20px;
+  @media (min-width: 1280px) {
+    border-radius: 34px;
+    padding: 36px 60px;
+  }
+
+  @media (min-width: 1920px) {
+    border-radius: 40px;
+    padding: 40px 72px;
   }
 `;
 
@@ -317,13 +367,23 @@ const singleColumnCss = css`
 const sessionItemCss = (isLast: boolean) => css`
   display: flex;
   align-items: flex-end;
-  gap: 40px;
-  padding: 24px 40px 20px 0;
-  border-bottom: ${isLast ? 'none' : `1px solid ${colors.grey18[300]}`};
+  gap: 24px;
+  padding: 12px 0;
+  border-bottom: ${isLast ? 'none' : `1px solid ${colors.v19.white010}`};
 
-  @media (min-width: 360px) and (max-width: 767px) {
-    gap: 24px;
-    padding: 12px 0;
+  @media (min-width: 768px) {
+    gap: 32px;
+    padding: 18px 32px 16px 0;
+  }
+
+  @media (min-width: 1280px) {
+    gap: 40px;
+    padding: 22px 40px 18px 0;
+  }
+
+  @media (min-width: 1920px) {
+    gap: 40px;
+    padding: 24px 40px 20px 0;
   }
 `;
 
@@ -331,71 +391,122 @@ const dateWeekContainerCss = css`
   display: flex;
   flex-direction: column;
   gap: 4px;
-  width: 105px;
+  width: 48px;
   flex-shrink: 0;
 
-  @media (max-width: 767px) {
-    width: 48px;
+  @media (min-width: 768px) {
+    width: 64px;
+  }
+
+  @media (min-width: 1280px) {
+    width: 85px;
+  }
+
+  @media (min-width: 1920px) {
+    width: 105px;
   }
 `;
 
 const dateTextCss = css`
   font-family: 'Pretendard', sans-serif;
-  font-size: 20px;
+  font-size: 12px;
   font-weight: 500;
-  line-height: 1.4;
-  color: ${colors.grey18[900]};
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  color: ${colors.v19.white100};
   text-align: left;
   margin: 0;
 
-  @media (min-width: 360px) and (max-width: 767px) {
-    font-size: 12px;
-    line-height: 1.5;
-    letter-spacing: -0.12px;
+  @media (min-width: 768px) {
+    font-size: 14px;
+  }
+
+  @media (min-width: 1280px) {
+    font-size: 17px;
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 20px;
+    letter-spacing: 0;
   }
 `;
 
 const weekTextCss = css`
   font-family: 'Pretendard', sans-serif;
-  font-size: 32px;
+  font-size: 15px;
   font-weight: 700;
   line-height: 1.4;
-  letter-spacing: -0.64px;
-  color: ${colors.grey18[700]};
+  color: ${colors.v19.coolGray400};
   margin: 0;
 
-  @media (min-width: 360px) and (max-width: 767px) {
-    font-size: 15px;
-    line-height: 1.4;
-    letter-spacing: 0;
+  @media (min-width: 768px) {
+    font-size: 20px;
+  }
+
+  @media (min-width: 1280px) {
+    font-size: 26px;
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 32px;
+    letter-spacing: 0.01em;
   }
 `;
 
 const programContainerCss = css`
   display: flex;
   align-items: flex-end;
-  gap: 16px;
+  gap: 8px;
   flex: 1;
 
-  @media (max-width: 767px) {
-    gap: 8px;
-    align-items: center;
+  @media (min-width: 768px) {
+    gap: 12px;
+  }
+
+  @media (min-width: 1920px) {
+    gap: 16px;
   }
 `;
 
 const titleTextCss = css`
   font-family: 'Pretendard', sans-serif;
-  font-size: 32px;
+  font-size: 15px;
   font-weight: 700;
   line-height: 1.4;
-  letter-spacing: -0.64px;
-  color: ${colors.grey18[900]};
+  color: ${colors.v19.white100};
   margin: 0;
 
-  @media (min-width: 360px) and (max-width: 767px) {
-    font-size: 15px;
-    line-height: 1.4;
-    letter-spacing: 0;
+  @media (min-width: 768px) {
+    font-size: 20px;
+  }
+
+  @media (min-width: 1280px) {
+    font-size: 26px;
+  }
+
+  @media (min-width: 1920px) {
+    font-size: 32px;
+    letter-spacing: 0.01em;
+  }
+`;
+
+const titleTextEnCss = css`
+  ${theme.typosV4.instrumentSans.body3};
+  color: ${colors.v19.white100};
+  margin: 0;
+
+  @media (min-width: 768px) {
+    font-size: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  @media (min-width: 1280px) {
+    font-size: 26px;
+  }
+
+  @media (min-width: 1920px) {
+    ${theme.typosV4.instrumentSans.sub1};
+    color: ${colors.v19.white100};
   }
 `;
 
@@ -403,30 +514,30 @@ const onlineBadgeCss = css`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background-color: ${colors.primary18.strong};
+  background-color: ${colors.v19.blue200};
   flex-shrink: 0;
 
-  @media (max-width: 767px) {
-    width: 18px;
-    height: 18px;
+  @media (min-width: 768px) {
+    width: 40px;
+    height: 40px;
   }
 `;
 
 const badgeTextCss = css`
-  font-size: 18.182px;
-  font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: 0.01em;
-  color: ${colors.white};
+  font-size: 8.1px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.02em;
+  color: ${colors.v19.coolGray900};
   text-align: center;
 
-  @media (max-width: 767px) {
-    font-size: 8.1px;
-    font-weight: 500;
-    line-height: 1.5;
-    letter-spacing: -0.02em;
+  @media (min-width: 768px) {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.01em;
   }
 `;
