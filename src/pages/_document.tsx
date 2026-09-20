@@ -1,6 +1,7 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 
 import { GA_ID, HOTJAR_ID, IS_PRODUCTION } from '~/constant/common';
+import { colors } from '~/styles/colors';
 
 export default function Document() {
   return (
@@ -67,7 +68,7 @@ export default function Document() {
         <style
           dangerouslySetInnerHTML={{
             __html: `
-              html, body { background-color: #5aafff; }
+              html, body { background-color: ${colors.v19.blue900}; }
               .js-loading nav { visibility: hidden; }
               .js-loading [data-section="branding"] { visibility: hidden; }
             `,
