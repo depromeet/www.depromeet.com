@@ -7,8 +7,130 @@ export type Project = {
   links?: Link[];
 };
 
-export const TAB_LIST = ['전체', '17기', '16기', '15기', '14기', '13기', '12기', '11기', '~10기'];
+export const TAB_LIST = ['전체', '18기', '17기', '16기', '15기', '14기', '13기', '12기', '~11기'];
 export const PROJECT_LIST: Project[] = [
+  {
+    title: 'Senti',
+    subTitle: '18기',
+    description: '하루를 책 문장으로 기록하고 친구에게 공유해 보세요',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/252136107',
+      },
+      {
+        type: 'Github',
+        href: 'https://github.com/depromeet/18th-team1-FE',
+      },
+      {
+        type: 'Web',
+        href: 'https://senti.today/',
+      },
+    ],
+  },
+  {
+    title: 'Hapalin',
+    subTitle: '18기',
+    description: '만나지 못해 아쉬운 내 친구를 위한<br/>온라인 생일 파티 서비스',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/252139887',
+      },
+      {
+        type: 'Github',
+        href: 'https://github.com/depromeet/18th-team2-web',
+      },
+      {
+        type: 'Web',
+        href: 'https://hapalin.com/',
+      },
+    ],
+  },
+  {
+    title: 'PiKi',
+    subTitle: '18기',
+    description:
+      '흩어진 위시리스트를 한곳에 모아,<br/>1:1 토너먼트로 갖고 싶은 것을 결정하는 서비스',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/252137649',
+      },
+      {
+        type: 'Github',
+        href: 'https://github.com/TeamPiKi/client',
+      },
+      {
+        type: 'iOS',
+        href: 'https://apps.apple.com/app/id6777101805',
+      },
+      {
+        type: 'Android',
+        href: 'https://play.google.com/store/apps/details?id=day.no30s.piki',
+      },
+    ],
+  },
+  {
+    title: 'Readum',
+    subTitle: '18기',
+    description:
+      '책을 읽다 스친 감상부터 지난 대화,<br/>독후감 시작까지 내 생각을 온전히 채워주는 독서 공간',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/252148153',
+      },
+      {
+        type: 'Github',
+        href: 'https://github.com/depromeet/18th-team4-web',
+      },
+      {
+        type: 'Web',
+        href: 'https://www.readum.kr',
+      },
+    ],
+  },
+  {
+    title: 'Peaktime',
+    subTitle: '18기',
+    description:
+      '24절기를 기반으로 계절의 흐름을 감지하고,<br/>제철 미션을 추천해 경험을 아카이빙하는 서비스',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/248088099',
+      },
+      {
+        type: 'Github',
+        href: 'https://github.com/depromeet/18th-team5-iOS',
+      },
+      {
+        type: 'iOS',
+        href: 'https://apps.apple.com/app/id6763310049',
+      },
+    ],
+  },
+  {
+    title: 'obrit',
+    subTitle: '18기',
+    description:
+      '생활 속 소모품의 교체 주기와 여분을 관리하여,<br/>잊기 쉬운 교체를 놓치지 않도록 돕는 서비스',
+    links: [
+      {
+        type: 'Behance',
+        href: 'https://www.behance.net/gallery/252146489',
+      },
+      {
+        type: 'Github',
+        href: 'https://github.com/depromeet/18th-team6-Android',
+      },
+      {
+        type: 'Android',
+        href: 'https://play.google.com/store/apps/details?id=com.obrit.obrit',
+      },
+    ],
+  },
   {
     title: 'Globber',
     subTitle: '17기',
