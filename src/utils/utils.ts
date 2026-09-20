@@ -103,6 +103,10 @@ function adjustToUTC({
  * @param {boolean} isApplyTime - 18기 지원 오픈 여부 (APPLY_START_DATE 이후)
  *
  * @returns {{ action: (() => void), label: string, isDisabled?: boolean }}
+ *
+ * @deprecated 19기부터는 `utils/recruit.ts`의 `getRecruitCta()`를 쓴다.
+ * 이 함수는 기수 라벨과 폼 URL을 하드코딩하고 있어 `constant/recruit.ts` 단일 소스 규칙을
+ * 벗어난다. 리다이렉트로 도달할 수 없는 레거시 라우트(`/about`, `/apply`)에서만 남아 있다.
  */
 function getPathToRecruit(
   router: ReturnType<typeof useRouter>,
