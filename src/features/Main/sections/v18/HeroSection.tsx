@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { css } from '@emotion/react';
 
-import useIsInProgress from '~/hooks/useIsInProgress';
+import { useRecruitPhase } from '~/hooks/useRecruitPhase';
 import { colors } from '~/styles/colors';
-import { getPathToRecruit } from '~/utils/utils';
+import { getRecruitCta } from '~/utils/recruit';
 
 const useBrowserType = () => {
   const [browserType, setBrowserType] = useState<'chrome' | 'safari' | 'other'>('other');
@@ -31,21 +31,30 @@ const useBrowserType = () => {
 };
 
 const CTAButton = () => {
-  const [isClientReady, setIsClientReady] = useState(false);
-  const router = useRouter();
-  const { progressState } = useIsInProgress();
-  const { label, action } = getPathToRecruit(router, progressState);
+  const phase = useRecruitPhase();
 
-  useEffect(() => {
-    setIsClientReady(true);
-  }, []);
+  // 마운트 전에는 라벨을 확정할 수 없다(계획 §0.6).
+  // 이 버튼은 absolute 배치라 비워 둬도 레이아웃이 밀리지 않는다.
+  if (phase === null) return null;
 
-  if (!isClientReady) return null;
+  const cta = getRecruitCta(phase);
 
-  return (
-    <button css={ctaButtonCss} onClick={action}>
-      {label}
-    </button>
+  if (cta.kind === 'disabled') {
+    return (
+      <button type="button" css={ctaButtonCss} disabled>
+        {cta.label}
+      </button>
+    );
+  }
+
+  return cta.external ? (
+    <a css={ctaButtonCss} href={cta.href} target="_blank" rel="noopener noreferrer">
+      {cta.label}
+    </a>
+  ) : (
+    <Link css={ctaButtonCss} href={cta.href}>
+      {cta.label}
+    </Link>
   );
 };
 
