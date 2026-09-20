@@ -1,6 +1,6 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 
-import { GA_ID, HOTJAR_ID, IS_PRODUCTION } from '~/constant/common';
+import { BASE_URL, GA_ID, HOTJAR_ID, IS_PRODUCTION } from '~/constant/common';
 import { colors } from '~/styles/colors';
 
 export default function Document() {
@@ -26,11 +26,12 @@ export default function Document() {
         />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="ko_KR" />
-        <meta property="og:image" content="/images/18th/sessions/og-main.png" />
-        <meta property="og:image:width" content="1536" />
-        <meta property="og:image:height" content="768" />
+        {/* SEO 컴포넌트와 같은 이미지를 가리킨다. 정식본이 오면 파일만 교체한다(R6). */}
+        <meta property="og:image" content={`${BASE_URL}/og-main.jpg`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="/images/18th/sessions/og-main.png" />
+        <meta name="twitter:image" content={`${BASE_URL}/og-main.jpg`} />
         <meta name="twitter:creator" content="디프만 - Depromeet" />
 
         {IS_PRODUCTION && (
