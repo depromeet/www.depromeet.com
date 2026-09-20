@@ -69,7 +69,11 @@ const tabContainerCss = css`
   }
 `;
 
-/* Figma: 메인 탭 - Pill shaped, 선택: 파란배경+흰글씨, 비선택: 흰배경+파란테두리+파란글씨 */
+/*
+ * Figma `203:2099` - Pill shaped, 선택: 파란배경+흰글씨, 비선택: 흰배경+파란테두리+파란글씨.
+ * 파랑은 19기 Blue500(#1659D5)이다. 18기의 `primary18.normal`(#59AEFE)은 훨씬 밝은
+ * 하늘색이라 같은 자리에 놓으면 시안과 다른 버튼이 된다.
+ */
 const mainTabWrapperCss = css`
   display: flex;
   gap: 12px;
@@ -96,9 +100,9 @@ const mainTabItemCss = css`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${colors.white};
-  color: ${colors.primary18.normal};
-  border: 1px solid ${colors.primary18.normal};
+  background-color: ${colors.v19.white100};
+  color: ${colors.v19.blue500};
+  border: 1px solid ${colors.v19.blue500};
   border-radius: 100px;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -122,9 +126,9 @@ const mainTabItemCss = css`
 `;
 
 const mainTabItemActiveCss = css`
-  background-color: ${colors.primary18.normal};
-  color: ${colors.white};
-  border-color: ${colors.primary18.normal};
+  background-color: ${colors.v19.blue500};
+  color: ${colors.v19.white100};
+  border-color: ${colors.v19.blue500};
 `;
 
 /* Figma: 서브 탭 - 텍스트만, 선택: 언더라인+진한글씨, 비선택: 회색글씨 */
