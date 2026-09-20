@@ -64,7 +64,7 @@ export function ProjectPaginationSection({ projectList }: { projectList: Project
           variants={staggerHalf}
         >
           {sliceByPage(projectList, currentPage, isTabletSize, isMobileSize).map(project => (
-            <ProjectThumbnail key={project.title} {...project} />
+            <ProjectThumbnail key={project.title} {...project} gridCard />
           ))}
         </m.div>
       </AnimatePresence>
@@ -93,10 +93,13 @@ const projectContainerCss = css`
   column-gap: 16px;
   row-gap: 60px;
   justify-items: stretch;
-  align-items: start;
+  /* start면 설명 줄 수만큼 카드가 짧아진다. 시안은 한 행의 카드 아래 끝이 모두 같다. */
+  align-items: stretch;
 
+  /* 768은 카드 334 두 장 + 20 = 본문 688 — 이 구간만 가로 간격이 20이다(203:1188). */
   @media (min-width: 768px) and (max-width: 1279px) {
     grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
   }
 
   @media (max-width: 767px) {
