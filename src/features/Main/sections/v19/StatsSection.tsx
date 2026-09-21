@@ -6,7 +6,6 @@ import { RECRUIT } from '~/constant/recruit';
 import { colors } from '~/styles/colors';
 import { theme } from '~/styles/theme';
 
-// Figma `203:1342`(1920/1280 공용 컴포넌트) · `203:1956`(360)
 interface StatItem {
   label: string;
   value: number;
@@ -136,17 +135,8 @@ const contentCss = css`
   gap: 32px;
 
   @media (min-width: 768px) {
-    padding: 120px 40px;
-    gap: 48px;
-  }
-
-  @media (min-width: 1280px) {
-    padding: 200px 40px;
-    gap: 80px;
-  }
-
-  @media (min-width: 1920px) {
     padding: 240px 40px;
+    gap: 80px;
   }
 `;
 
@@ -159,13 +149,11 @@ const descriptionCss = css`
   text-align: center;
 
   @media (min-width: 768px) {
-    font-size: 26px;
-    letter-spacing: 0.01em;
+    ${theme.typosV4.pretendard.head2};
   }
 
   @media (min-width: 1280px) {
-    font-size: 36px;
-    letter-spacing: 0.01em;
+    ${theme.typosV4.pretendard.head1};
   }
 `;
 
@@ -176,11 +164,11 @@ const gridCss = css`
   width: 100%;
 
   @media (min-width: 768px) {
-    grid-template-columns: repeat(4, 1fr);
     gap: 16px;
   }
 
   @media (min-width: 1280px) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 16px;
   }
 `;
@@ -198,11 +186,6 @@ const cardCss = css`
   text-align: center;
 
   @media (min-width: 768px) {
-    padding: 32px 20px;
-    gap: 16px;
-  }
-
-  @media (min-width: 1280px) {
     padding: 40px 24px;
     gap: 20px;
   }
@@ -216,10 +199,6 @@ const labelCss = css`
   color: ${colors.v19.coolGray800};
 
   @media (min-width: 768px) {
-    font-size: 14px;
-  }
-
-  @media (min-width: 1280px) {
     font-size: 20px;
   }
 `;
@@ -245,10 +224,6 @@ const numberBaseCss = css`
   font-variant-numeric: tabular-nums;
 
   @media (min-width: 768px) {
-    font-size: 48px;
-  }
-
-  @media (min-width: 1280px) {
     ${theme.typosV4.spaceGrotesk.display1};
   }
 `;
