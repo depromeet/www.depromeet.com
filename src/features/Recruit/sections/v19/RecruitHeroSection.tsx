@@ -6,15 +6,8 @@ import { RECRUIT } from '~/constant/recruit';
 import { colors } from '~/styles/colors';
 import { displayEnd, formatKoreanDate } from '~/utils/date';
 
-/**
- * 모집안내 Hero (`203:2377`·`203:3047`). "Recruit" 로고타입 + 모집기간(config 파생) +
- * 글래스 포지션 카드 5장. `RecruitIntroSection`·`RecruitTitleSection`을 대체한다(R1).
- */
-
 /** `2026.10.02 - 10.08` — 종료일은 exclusive라 표시용으로 1ms 당긴다. */
 function getApplyPeriod() {
-  // 시안(`203:2377`)의 표기는 `2026.10.16(월) - 2026.10.21(금)` — 양쪽에 연도와 요일을 쓴다.
-  // (시안의 날짜 자체는 오류다. 실제 기간은 설정의 applyWindow에서 온다 — 계획 C-2)
   return `${formatKoreanDate(RECRUIT.applyWindow.start, 'period')} - ${formatKoreanDate(
     displayEnd(RECRUIT.applyWindow.end),
     'period'
@@ -49,11 +42,11 @@ const sectionCss = css`
   align-items: center;
   gap: 40px;
   padding: 120px 20px 60px;
-  /* 시안 203:2377 / 203:3047은 이 프레임 자체는 별 배경 없이 단색이다(별 배경은 공용 다크 셸 담당). */
   background: ${colors.v19.blue900};
 
   @media (min-width: 768px) {
-    padding: 140px 40px 80px;
+    gap: 60px;
+    padding: 160px 40px 80px;
   }
 
   @media (min-width: 1280px) {
@@ -76,6 +69,10 @@ const logoCss = css`
   width: 210px;
   height: auto;
 
+  @media (min-width: 768px) {
+    width: 350px;
+  }
+
   @media (min-width: 1280px) {
     width: 440px;
   }
@@ -91,7 +88,7 @@ const dateCss = css`
   text-align: center;
   white-space: nowrap;
 
-  @media (min-width: 1280px) {
+  @media (min-width: 768px) {
     font-weight: 700;
     font-size: 32px;
     letter-spacing: 0.32px;
