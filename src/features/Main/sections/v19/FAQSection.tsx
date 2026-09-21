@@ -98,12 +98,12 @@ export const FAQSection = () => {
           <div css={buttonsCss}>
             <button type="button" css={kakaoButtonCss} onClick={handleKakaoClick}>
               <KakaoIcon />
-              <span>카카오톡 문의하기</span>
+              <span css={buttonLabelCss}>카카오톡 문의하기</span>
               <CircleArrowRightIcon />
             </button>
             <button type="button" css={emailButtonCss} onClick={handleEmailClick}>
               <EmailIcon />
-              <span>이메일로 문의하기</span>
+              <span css={buttonLabelCss}>이메일로 문의하기</span>
               <CircleArrowRightIcon />
             </button>
           </div>
@@ -376,7 +376,7 @@ const baseButtonCss = css`
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
   width: 100%;
   max-width: 320px;
   height: 56px;
@@ -403,6 +403,14 @@ const baseButtonCss = css`
 
   @media (min-width: 1280px) {
     padding: 0 52px;
+  }
+`;
+
+const buttonLabelCss = css`
+  width: 172px;
+
+  @media (min-width: 768px) {
+    width: auto;
   }
 `;
 
