@@ -2,7 +2,6 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 
 import { useCheckWindowSize } from '~/hooks/useCheckWindowSize';
-import { mediaQuery } from '~/styles/media';
 
 export const ProjectRulerDecoration = () => {
   const { isTargetSize: isMobileSize } = useCheckWindowSize('mobile');
@@ -26,10 +25,6 @@ const rulerImageContainerCss = css`
   width: 100%;
   height: 30px;
   z-index: 1;
-
-  ${mediaQuery('mobile')} {
-    height: 30px;
-  }
 `;
 
 const rulerImageCss = css`

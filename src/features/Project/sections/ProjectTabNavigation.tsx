@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react';
 import { css } from '@emotion/react';
 
 import { colors } from '~/styles/colors';
-import { mediaQuery } from '~/styles/media';
 
 interface ProjectTabNavigationProps {
   currentTab: string;
@@ -62,22 +61,20 @@ const tabContainerCss = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+  max-width: 320px;
 
-  @media (min-width: 1920px) {
-    width: 1280px;
+  @media (min-width: 768px) {
+    width: 688px;
+    max-width: none;
   }
 
-  @media (min-width: 1280px) and (max-width: 1919px) {
+  @media (min-width: 1280px) {
     width: 880px;
   }
 
-  @media (min-width: 768px) and (max-width: 1279px) {
-    width: 688px;
-  }
-
-  ${mediaQuery('mobile')} {
-    max-width: 320px;
-    width: 100%;
+  @media (min-width: 1920px) {
+    width: 1280px;
   }
 `;
 
@@ -86,21 +83,23 @@ const tabWrapperCss = css`
   flex-wrap: nowrap;
   padding: 0;
   height: 56px;
+  width: 100%;
+  overflow-x: auto;
 
-  ${mediaQuery('mobile')} {
-    width: 100%;
-    overflow-x: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
-    &::-webkit-scrollbar {
-      display: none;
-    }
+  @media (min-width: 768px) {
+    width: auto;
+    overflow-x: visible;
   }
 `;
 
 const tabItemCss = css`
   padding: 16px 20px;
   background: transparent;
-  color: ${colors.grey18['500']};
+  color: ${colors.v19.coolGray500};
   border: none;
   cursor: pointer;
   position: relative;
@@ -117,16 +116,12 @@ const tabItemCss = css`
   align-items: center;
 
   &:hover {
-    color: ${colors.grey18['900']};
-  }
-
-  ${mediaQuery('mobile')} {
-    padding: 16px 20px;
+    color: ${colors.v19.coolGray900};
   }
 `;
 
 const tabItemActiveCss = css`
-  color: ${colors.grey18['900']};
+  color: ${colors.v19.coolGray900};
   font-weight: 700;
 
   &::after {
@@ -137,11 +132,7 @@ const tabItemActiveCss = css`
     transform: translateX(-50%);
     width: var(--text-width, 40px);
     height: 2px;
-    background-color: ${colors.grey18['900']};
+    background-color: ${colors.v19.coolGray900};
     transition: width 0.2s ease;
-
-    ${mediaQuery('mobile')} {
-      bottom: 12px;
-    }
   }
 `;

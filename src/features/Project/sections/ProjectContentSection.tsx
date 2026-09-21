@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 
-import { CONTENT_WIDTH, SECTION_TOP_PADDING } from '~/constant/layout';
+import { CONTENT_WIDTH, SECTION_TOP_PADDING, SECTION_TOP_PADDING_PC } from '~/constant/layout';
 import { Project, PROJECT_LIST, TAB_LIST } from '~/constant/project';
 import { colors } from '~/styles/colors';
-import { mediaQuery } from '~/styles/media';
 
 import { ProjectPaginationSection } from './ProjectPaginationSection';
 import { ProjectTabNavigation } from './ProjectTabNavigation';
@@ -21,10 +20,6 @@ export const parseUnderGenerationTab = (tab: string): number | null => {
   return match ? Number(match[1]) : null;
 };
 
-// 현재 탭에 맞는 프로젝트만 필터링한다.
-// - 전체: 모든 프로젝트
-// - ~N기: N기 이하인 프로젝트
-// - 그 외: subTitle이 정확히 일치하는 프로젝트
 export const filterProjectsByTab = (projects: Project[], tab: string): Project[] => {
   if (tab === ALL_TAB) {
     return projects;
@@ -89,10 +84,6 @@ const contentWrapperCss = css`
     width: 100%;
     max-width: ${CONTENT_WIDTH.mobile}px;
   }
-
-  ${mediaQuery('tablet')} {
-    gap: 32px;
-  }
 `;
 
 const sectionCss = css`
@@ -102,14 +93,12 @@ const sectionCss = css`
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  padding: ${SECTION_TOP_PADDING}px 0 80px 0;
+  /* 위 여백은 GNB 높이 + 40 이다(constant/layout.ts 주석 참고). 아래는 64 / 1280 이상 80. */
+  padding: ${SECTION_TOP_PADDING}px 0 64px 0;
   background-color: ${colors.white};
 
-  ${mediaQuery('tablet')} {
-    padding: ${SECTION_TOP_PADDING}px 0 64px 0;
-  }
-  ${mediaQuery('mobile')} {
-    padding: ${SECTION_TOP_PADDING}px 0 64px 0;
+  @media (min-width: 1280px) {
+    padding: ${SECTION_TOP_PADDING_PC}px 0 80px 0;
   }
 
   @media (max-width: 359px) {
