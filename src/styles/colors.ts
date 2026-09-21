@@ -27,21 +27,6 @@ export const colors = {
   darkMint: '#00CEBA',
   sky: '#48A4FF',
 
-  // NOTE: 16th
-  // grey: {
-  //   '00': '#FFFFFF',
-  //   '100': '#F4F4F5',
-  //   '300': '#999999',
-  //   '500': '#323232',
-  //   '600': '#232323',
-  //   '900': '#000000',
-  // },
-
-  // primary: {
-  //   pink: '#FF90FF',
-  //   blue: '#006AFE',
-  // },
-
   sub: {
     sky: '#48A4FF',
     darkMint: '#00CEBA',
@@ -91,14 +76,6 @@ export const colors = {
     'extra-light': '#F9FBFF',
   },
 
-  /**
-   * NOTE: 19th — Figma `203:3412`(Color/Styles)에 등록된 값 그대로.
-   * v19 코드에는 hex 리터럴을 쓰지 않고 이 토큰만 참조한다.
-   *
-   * White 계열은 알파값이라 Figma 변수로는 전부 #FFFFFF로 보인다. 이름의 숫자가
-   * 불투명도(001 = 1%)다. Gradient는 solid가 아니라 fill이라 변수로 잡히지 않아
-   * 계획 §2.2의 스톱 값으로 옮겼다.
-   */
   v19: {
     black: '#111111',
 
@@ -129,25 +106,9 @@ export const colors = {
 
     gradient: {
       blackBlue: 'linear-gradient(180deg, #1247AA 0%, #0C0E15 100%)',
-      /*
-       * 히어로 별 배경(`203:1276` 상단)의 바탕. 에셋에서 행별 중앙값을 직선 근사해
-       * 뽑은 값이라 `hero-stars.png`와 정확히 맞물린다 — `blackBlue`와 끝색이 미묘하게
-       * 달라서(#1247AA vs #124AB3) 대신 쓰면 1920 경계에 띠가 생긴다.
-       * 재생성: `node scripts/build-hero-starfield.mjs`
-       */
-      heroStarfield: 'linear-gradient(180deg, #0D0F16 0%, #124AB3 100%)',
-      /*
-       * 등록된 "Gradient/White Blue" — Branding 헤드라인(203:1311)의 fill이다.
-       * 실측: 방향이 세로가 아니라 **가로에 가깝고**(오른쪽으로 가며 약 18도 내려감),
-       * 글자 상자 안에서 보이는 끝색은 #76A2FF다. #3C7AFF까지 가는 구간의 69% 지점이라
-       * 그라데이션 핸들이 상자 밖까지 뻗어 있다는 뜻 — 스톱을 145%에 두어 재현한다.
-       */
+      heroStarfield: (stopPercent: number) =>
+        `linear-gradient(180deg, #0D0F16 0%, #124AB3 ${stopPercent}%)`,
       whiteBlue: 'linear-gradient(108deg, #FFFFFF 0%, #3C7AFF 145%)',
-      /*
-       * 인재상 카드 `203:2392`의 fill. 빛이 카드 **위쪽 가장자리 가운데**에서 퍼져
-       * 아래로 갈수록 흰색이 된다(중앙 기준으로 두면 카드 한가운데가 파래진다).
-       * 반지름은 시안 카드(392x400)에서 잰 값 265px ≈ 가로 68% / 세로 66%.
-       */
       skyBlueWhite: 'radial-gradient(ellipse 68% 66% at 50% 0%, #B9CDF2 0%, #F6F9FF 100%)',
     },
   },

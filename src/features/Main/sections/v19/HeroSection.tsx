@@ -8,12 +8,6 @@ import { useRecruitPhase } from '~/hooks/useRecruitPhase';
 import { colors } from '~/styles/colors';
 import { getRecruitCta } from '~/utils/recruit';
 
-/**
- * 히어로 3D 오브젝트(이정표) 부유 애니메이션.
- * 확정값(docs/19th/designer-requests.md Q-M1 · migration-plan.md §15.4):
- * 정지 이미지 + translateY(±10px) rotate(±1.5deg), 6~8초 ease-in-out 무한 왕복.
- * `prefers-reduced-motion: reduce`면 모션을 완전히 멈춘다(useReducedMotion → 애니메이션 미적용).
- */
 const FLOAT_TRANSITION = {
   duration: 7,
   repeat: Infinity,
@@ -21,14 +15,6 @@ const FLOAT_TRANSITION = {
   ease: 'easeInOut' as const,
 };
 
-/**
- * 360 시안 `203:1895`: 로고타입 아래 흰 알약(182 x 60). 768 미만에서는 GNB가 햄버거뿐이라
- * **화면에 보이는 유일한 지원 CTA**다(768 이상 시안에는 없다 — 그쪽은 GNB가 갖고 있다).
- *
- * 라벨·동작은 GNB·모바일 메뉴와 같은 `getRecruitCta`에서 온다. 알약 폭을 고정하지 않고
- * `min-width`로 둔 것은, 시안의 "지원하기"보다 긴 "모집알림받기" 상태에서 글자가 잘리지
- * 않게 하기 위해서다(시안과 같은 "19기 지원하기"일 때는 정확히 182px이 된다).
- */
 function HeroApplyButton() {
   const phase = useRecruitPhase();
 
@@ -67,15 +53,6 @@ export const HeroSection = () => {
 
   return (
     <section css={sectionCss} data-section="hero" data-gnb-theme="dark">
-      {/*
-       * 별 배경만 **섹션 전체(뷰포트 폭)** 를 덮는다. 로고·오브젝트는 시안 좌표를 쓰므로
-       * 1920에 묶여 있지만, 배경까지 1920에서 끊으면 그보다 넓은 화면에서 양옆이 잘린 듯
-       * 보인다(`contentCss`의 max-width는 콘텐츠 전용이다).
-       *
-       * 바탕은 가로로 완전히 균일한 세로 그라데이션이라 CSS로 옮겼다 — 어떤 폭에서도
-       * 정확하고 늘어나지 않는다. 이미지에는 **별만** 남아 있어 `cover`로 확대·크롭돼도
-       * 어색할 구도가 없다. (분리 방법: `node scripts/build-hero-starfield.mjs`)
-       */}
       <div css={starLayerCss}>
         <Image
           src="/images/19th/home/hero-stars.png"
@@ -111,13 +88,6 @@ export const HeroSection = () => {
           <HeroApplyButton />
         </div>
 
-        {/*
-         * 오브젝트는 Figma에서 Hero(1000px)와 Branding(다음 1000px) 두 섹션에 걸쳐 절대 배치된다
-         * (203:1335, top: calc(50% - 400.5px) of the combined 2000px frame → Hero 기준 top 3%,
-         * height 113.9%로 하단 16.9%가 다음 섹션까지 흘러넘침). 이 섹션·`contentCss` 모두
-         * overflow를 제한하지 않고, z-index를 BrandingSection의 장식 요소보다 높게 두어
-         * 섹션 경계에서 잘리지 않고 다음 섹션 위에 그대로 그려지도록 한다.
-         */}
         <div css={objectPositionCss}>
           <motion.div
             css={objectFloatCss}
@@ -125,12 +95,6 @@ export const HeroSection = () => {
             animate={shouldReduceMotion ? undefined : { translateY: 10, rotate: 1.5 }}
             transition={shouldReduceMotion ? { duration: 0 } : FLOAT_TRANSITION}
           >
-            {/*
-             * ⚠ 이 에셋은 Figma **노드 export가 아니라 원본 소스 이미지**다.
-             * `203:1335`를 프레임으로 export하면 배경까지 함께 렌더돼 알파가 255인
-             * 불투명 사각형이 나오고, 별 배경 위에 네모난 띠가 얹힌다.
-             * 계획 §15.4가 요구하는 "투명 배경 이미지"는 원본 쪽이다.
-             */}
             <Image
               src="/images/19th/home/hero-object.png"
               alt="이정표 3D 오브젝트"
@@ -148,10 +112,23 @@ export const HeroSection = () => {
 
 // Breakpoints: 기본(모바일) → 768 → 1280 → 1920 (min-width)
 
+/* 끝색 도달 지점이 폭마다 다르다 — 50 / 70 / 87 / 100 (colors.ts 의 heroStarfield 주석 참고). */
 const sectionCss = css`
   position: relative;
   width: 100%;
-  background: ${colors.v19.gradient.heroStarfield};
+  background: ${colors.v19.gradient.heroStarfield(50)};
+
+  @media (min-width: 768px) {
+    background: ${colors.v19.gradient.heroStarfield(70)};
+  }
+
+  @media (min-width: 1280px) {
+    background: ${colors.v19.gradient.heroStarfield(87)};
+  }
+
+  @media (min-width: 1920px) {
+    background: ${colors.v19.gradient.heroStarfield(100)};
+  }
 `;
 
 const contentCss = css`
@@ -162,7 +139,9 @@ const contentCss = css`
   aspect-ratio: 360 / 595;
 
   @media (min-width: 768px) {
-    aspect-ratio: 1920 / 1000;
+    /* 자식이 전부 absolute 라 내용 높이가 0이다 — aspect-ratio 를 끄고 min-height 로 1000을 세운다 */
+    aspect-ratio: auto;
+    min-height: 1000px;
   }
 `;
 
@@ -178,14 +157,6 @@ const logoLayerCss = css`
   z-index: 1;
 `;
 
-/*
- * 모바일 값은 360 시안 `203:1895`(360 x 595)에서 잰 것이다.
- * depro  x 19..218  y 312..397  ·  Meet+19th  x 127..335  y 370..452
- *
- * 데스크탑은 두 덩어리가 좌우로 나뉘지만 360에서는 **위아래로 겹쳐 쓴다**. 앞서 쓰던
- * 68% / 80% 는 시안보다 훨씬 커서 "depro"가 "Meet" 위로 올라타고 "19th"를 덮었다.
- */
-// depro (Figma `203:1293`, 677 x 291)
 const logoDeproCss = css`
   position: absolute;
   left: 5.28%;
@@ -194,13 +165,24 @@ const logoDeproCss = css`
   height: auto;
 
   @media (min-width: 768px) {
+    left: 5.21%;
+    top: 65.4%;
+    width: 55.84%;
+  }
+
+  @media (min-width: 1280px) {
+    left: 6.02%;
+    top: 66.92%;
+    width: 37.27%;
+  }
+
+  @media (min-width: 1920px) {
     left: 8.33%;
     top: 62.9%;
     width: 35.26%;
   }
 `;
 
-// Meet + 19th (Figma `203:1279`, 679.912 x 267.457)
 const logoMeetCss = css`
   position: absolute;
   left: 35.28%;
@@ -209,13 +191,24 @@ const logoMeetCss = css`
   height: auto;
 
   @media (min-width: 768px) {
+    left: 38.2%;
+    top: 80.27%;
+    width: 52.86%;
+  }
+
+  @media (min-width: 1280px) {
+    left: 58.33%;
+    top: 65.55%;
+    width: 37.47%;
+  }
+
+  @media (min-width: 1920px) {
     left: 57.71%;
     top: 60.99%;
     width: 35.41%;
   }
 `;
 
-/* 시안에서 알약 위쪽 모서리가 히어로 높이(595)의 80.5% 지점에 온다. */
 const ctaLayerCss = css`
   position: absolute;
   left: 50%;
@@ -265,6 +258,16 @@ const objectPositionCss = css`
   z-index: 5;
 
   @media (min-width: 768px) {
+    top: 4.5%;
+    width: 100.26%;
+  }
+
+  @media (min-width: 1280px) {
+    top: 13.5%;
+    width: 75.7%;
+  }
+
+  @media (min-width: 1920px) {
     top: 3%;
     width: 59.27%;
   }
