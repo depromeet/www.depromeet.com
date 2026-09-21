@@ -272,7 +272,7 @@ const faqQuestionCss = css`
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  padding: 16px 0;
+  padding: 16px 20px;
   border: none;
   background: transparent;
   text-align: left;
@@ -316,7 +316,7 @@ const faqAnswerCss = css`
   overflow: hidden;
 
   p {
-    padding: 0 0 16px;
+    padding: 0 20px 16px;
     font-family: 'Pretendard', sans-serif;
     font-size: 13px;
     font-weight: 500;
