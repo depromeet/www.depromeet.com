@@ -268,26 +268,18 @@ const titleCss = css`
 `;
 
 const subtitleCss = css`
-  font-family: 'Pretendard', sans-serif;
-  font-weight: 700;
+  ${theme.typosV4.pretendard.sub4M};
   margin: 0;
   white-space: nowrap;
-  font-size: 16px;
-  line-height: 1.4;
-  letter-spacing: 0.01em;
   color: ${colors.v19.coolGray200};
   opacity: 0.6;
 
-  @media (min-width: 768px) {
-    font-size: 18px;
-  }
-
   @media (min-width: 1280px) {
-    font-size: 27px;
+    ${theme.typosV4.pretendard.sub1M};
   }
 
   @media (min-width: 1920px) {
-    font-size: 40px;
+    ${theme.typosV4.pretendard.head0};
   }
 `;
 
