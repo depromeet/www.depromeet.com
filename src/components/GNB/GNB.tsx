@@ -18,8 +18,6 @@ function ApplyButton({ isDark }: { isDark: boolean }) {
   const phase = useRecruitPhase();
   const buttonCss = linkButtonCss(isDark);
 
-  // 마운트 전에는 시각에 따라 달라지는 라벨을 확정할 수 없다(계획 §0.6).
-  // 가장 긴 라벨을 숨겨 렌더해 폭을 예약하면 상태가 정해질 때 레이아웃이 흔들리지 않는다.
   if (phase === null) {
     return (
       <span css={[buttonCss, placeholderCss]} aria-hidden>
@@ -83,21 +81,8 @@ const linkButtonCss = (isDark: boolean) => css`
   }
 `;
 
-/**
- * 디자이너 노트는 "화면 스크롤 시 GNB(Background = True) 노출"이다 — 특정 높이가 아니라
- * **스크롤이 시작되면** 배경이 붙는다. 18기의 800px 기준을 그대로 두면 히어로가 없는
- * `/recruit`·`/project`·`/blog`에서 첫 800px 동안 본문 위에 투명한 GNB가 떠 글자가 겹친다.
- * 작은 값을 두는 건 최상단에서의 떨림을 막기 위함이다.
- */
 const SCROLL_THRESHOLD = 8;
 
-/**
- * 각 페이지 **최상단 섹션**의 배경. 첫 페인트(SSR)와 마운트 직전에 쓰는 초기값이고,
- * 그 뒤로는 `useGnbTheme`이 스크롤에 따라 실제로 뒤에 깔린 섹션을 따라간다.
- *
- * 시안에서 네이비 히어로(모집안내 `203:2377`)의 GNB는 흰 로고·흰 메뉴·**흰 CTA 알약**이고,
- * 밝은 페이지(`203:1065` 프로젝트·블로그)에서는 어두운 로고·어두운 메뉴·**어두운 CTA 알약**이다.
- */
 const DARK_TOP_ROUTES = ['/', '/recruit', '/404'];
 
 const getInitialGnbTheme = (pathname: string): GnbTheme =>
@@ -190,7 +175,6 @@ const navCommonCss = () => css`
   overflow: hidden;
 `;
 
-/** Figma `203:673`(GNB variant set) Default 모드: 최상단은 투명, Background=True면 White 10% + blur. */
 const navCss = (isScrolled: boolean) => css`
   ${navCommonCss()};
   background: ${isScrolled ? colors.v19.white010 : 'transparent'};
@@ -205,6 +189,10 @@ const navCss = (isScrolled: boolean) => css`
 
   @media (min-width: 768px) {
     display: flex;
+  }
+
+  @media (min-width: 1280px) {
+    height: 100px;
   }
 `;
 
@@ -235,7 +223,6 @@ const spacerTwoCss = css`
   height: 1px;
 `;
 
-/** 로고 "DPM" — Figma `203:1003`: Instrument Sans SemiBold 24px (18기는 Helvetica Neue Medium). */
 const logoLinkCss = (isDark: boolean) => (theme: Theme) =>
   css`
     ${theme.typosV4.instrumentSans.sub3};

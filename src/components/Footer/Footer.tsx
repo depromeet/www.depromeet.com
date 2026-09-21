@@ -110,6 +110,10 @@ const logoSectionCss = css`
   flex-direction: column;
   align-items: flex-start;
   gap: 6px;
+
+  > img:first-of-type {
+    margin: 8px 0;
+  }
 `;
 
 const emailRowCss = (theme: Theme) => css`
