@@ -3,6 +3,7 @@ import { css, Theme } from '@emotion/react';
 
 import { RECRUIT } from '~/constant/recruit';
 import { colors } from '~/styles/colors';
+import { theme } from '~/styles/theme';
 import { displayEnd, formatKoreanDate } from '~/utils/date';
 
 interface RecruitmentStep {
@@ -95,7 +96,6 @@ export const MemberRecruitment = () => {
   );
 };
 
-// Figma `203:2424`(1920) · `203:3093`(360)
 const containerCss = (_theme: Theme) => css`
   position: relative;
   display: flex;
@@ -107,14 +107,10 @@ const containerCss = (_theme: Theme) => css`
   padding: 60px 20px;
 
   @media (min-width: 768px) {
-    padding: 100px 20px;
+    padding: 80px 40px;
   }
 
   @media (min-width: 1280px) {
-    padding: 130px 40px;
-  }
-
-  @media (min-width: 1920px) {
     padding: 160px 40px;
   }
 `;
@@ -125,7 +121,7 @@ const contentStyles = css`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1280px;
+  max-width: 1200px;
 `;
 
 const headerCss = css`
@@ -133,37 +129,17 @@ const headerCss = css`
   margin-bottom: 24px;
 
   @media (min-width: 768px) {
-    margin-bottom: 60px;
-  }
-
-  @media (min-width: 1280px) {
-    margin-bottom: 70px;
-  }
-
-  @media (min-width: 1920px) {
     margin-bottom: 80px;
   }
 `;
 
 const titleCss = css`
-  font-family: 'Pretendard', sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: 0.01em;
+  ${theme.typosV4.pretendard.head6};
   color: ${colors.v19.coolGray900};
   margin: 0;
 
   @media (min-width: 768px) {
-    font-size: 26px;
-  }
-
-  @media (min-width: 1280px) {
-    font-size: 32px;
-  }
-
-  @media (min-width: 1920px) {
-    font-size: 40px;
+    ${theme.typosV4.pretendard.head0};
   }
 `;
 
@@ -208,6 +184,7 @@ const timelineContainerCss = css`
     display: flex;
     align-items: center;
     justify-content: center;
+    column-gap: 0;
 
     & > :nth-of-type(4) {
       display: flex;
@@ -241,8 +218,8 @@ const timelineItemCss = css`
   }
 
   @media (min-width: 1280px) {
-    height: 300px;
-    padding: 28px;
+    height: 320px;
+    padding: 32px;
 
     &:first-of-type {
       flex: 0 0 290px;
@@ -250,13 +227,10 @@ const timelineItemCss = css`
   }
 
   @media (min-width: 1920px) {
-    height: 320px;
-    padding: 32px;
     box-shadow: 0px 8px 32px 0px rgba(47, 51, 55, 0.1);
   }
 `;
 
-/* 시안은 "온라인 인터뷰"가 어느 폭에서도 한 줄이다. 768에서 22px이면 상자를 넘겨 접힌다. */
 const stepTitleCss = css`
   font-family: 'Pretendard', sans-serif;
   font-size: 20px;
@@ -267,14 +241,10 @@ const stepTitleCss = css`
   white-space: nowrap;
 
   @media (min-width: 768px) {
-    font-size: 19px;
+    font-size: 22px;
   }
 
   @media (min-width: 1280px) {
-    font-size: 26px;
-  }
-
-  @media (min-width: 1920px) {
     font-size: 32px;
     letter-spacing: 0.01em;
   }
@@ -287,10 +257,6 @@ const stepDateCss = css`
   line-height: 1.4;
   color: ${colors.v19.blue500};
   margin: 0;
-  /*
-   * pre-line이면 줄바꿈은 살지만 각 줄이 또 접힌다 — 768에서 "10 . 02 (금) -"의 끝
-   * 하이픈이 혼자 다음 줄로 넘어갔다. pre는 넣어 둔 줄바꿈만 살리고 그 외에는 접지 않는다.
-   */
   white-space: pre;
 
   @media (min-width: 768px) {
@@ -298,10 +264,6 @@ const stepDateCss = css`
   }
 
   @media (min-width: 1280px) {
-    font-size: 22px;
-  }
-
-  @media (min-width: 1920px) {
     font-size: 26px;
     letter-spacing: -0.05em;
   }
@@ -321,10 +283,6 @@ const stepSubtextCss = css`
   }
 
   @media (min-width: 1280px) {
-    font-size: 18px;
-  }
-
-  @media (min-width: 1920px) {
     font-size: 20px;
   }
 `;
@@ -348,19 +306,8 @@ const arrowCss = css`
     height: 18px;
   }
 
-  /*
-   * 시안에서 화살표는 상자 사이 틈(12px) 위에 겹쳐 놓인다 — 틈을 자기 지름만큼
-   * 벌리지 않는다. 음수 margin으로 실제 차지하는 폭을 12px로 만든다.
-   */
   @media (min-width: 768px) {
-    width: 44px;
-    height: 44px;
-    margin-inline: -16px;
-
-    svg {
-      width: 12px;
-      height: 22px;
-    }
+    margin-inline: -10px;
   }
 
   @media (min-width: 1280px) {
@@ -399,21 +346,18 @@ const applicationSectionCss = css`
 
   @media (min-width: 768px) {
     justify-content: flex-start;
-    gap: 32px;
-    height: 280px;
-    padding: 28px;
-  }
-
-  @media (min-width: 1280px) {
-    gap: 40px;
-    height: 310px;
-    padding: 30px;
-  }
-
-  @media (min-width: 1920px) {
     gap: 48px;
     height: 340px;
     padding: 32px;
+  }
+
+  @media (min-width: 1280px) {
+    gap: 48px;
+    height: 340px;
+    padding: 32px;
+  }
+
+  @media (min-width: 1920px) {
     box-shadow: 0px 8px 32px 0px rgba(47, 51, 55, 0.1);
   }
 `;
@@ -431,10 +375,6 @@ const applicationTitleCss = css`
   }
 
   @media (min-width: 1280px) {
-    font-size: 28px;
-  }
-
-  @media (min-width: 1920px) {
     font-size: 32px;
     letter-spacing: 0.01em;
   }
