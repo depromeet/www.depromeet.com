@@ -1,18 +1,33 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { css } from '@emotion/react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { motion, type TargetAndTransition, useReducedMotion } from 'framer-motion';
 
 import { RECRUIT } from '~/constant/recruit';
 import { useRecruitPhase } from '~/hooks/useRecruitPhase';
 import { colors } from '~/styles/colors';
 import { getRecruitCta } from '~/utils/recruit';
 
+import { type HeroFlightPhase, useHeroObjectEasterEgg } from './useHeroObjectEasterEgg';
+
 const FLOAT_TRANSITION = {
   duration: 7,
   repeat: Infinity,
   repeatType: 'mirror' as const,
   ease: 'easeInOut' as const,
+};
+
+/** x·y 는 오브젝트 자기 크기 기준(%)이라, 폭이 360이든 1920이든 늘 화면 밖까지 나간다. */
+const FLIGHT_VARIANTS: Record<HeroFlightPhase, TargetAndTransition> = {
+  idle: { x: '0%', y: '0%', rotate: 0, transition: { duration: 0 } },
+  away: { x: '-160%', y: '-120%', rotate: -40, transition: { duration: 0.75, ease: 'easeIn' } },
+  /* 목표값이 배열이면 첫 값으로 소리 없이 건너뛴 뒤 시작한다 — 좌측 상단에서 오른쪽까지 화면을 가로지르지 않게 하는 장치. */
+  home: {
+    x: ['170%', '0%'],
+    y: ['0%', '0%'],
+    rotate: [20, 0],
+    transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] },
+  },
 };
 
 function HeroApplyButton() {
@@ -50,6 +65,9 @@ function HeroApplyButton() {
 
 export const HeroSection = () => {
   const shouldReduceMotion = useReducedMotion();
+  const { phase, handleTap, handleFlightComplete } = useHeroObjectEasterEgg({
+    disabled: Boolean(shouldReduceMotion),
+  });
 
   return (
     <section css={sectionCss} data-section="hero" data-gnb-theme="dark">
@@ -89,20 +107,35 @@ export const HeroSection = () => {
         </div>
 
         <div css={objectPositionCss}>
+          {/*
+            떠다니는 움직임(안쪽)과 날아가는 움직임(바깥쪽)이 같은 transform 을 다투지 않게 나눴다.
+            숨은 장치라 버튼으로 올리지 않는다 — 키보드·스크린 리더에는 알리지 않는다.
+          */}
           <motion.div
-            css={objectFloatCss}
-            initial={shouldReduceMotion ? undefined : { translateY: -10, rotate: -1.5 }}
-            animate={shouldReduceMotion ? undefined : { translateY: 10, rotate: 1.5 }}
-            transition={shouldReduceMotion ? { duration: 0 } : FLOAT_TRANSITION}
+            css={objectFlightCss}
+            variants={FLIGHT_VARIANTS}
+            initial="idle"
+            animate={phase}
+            onAnimationComplete={handleFlightComplete}
+            onClick={handleTap}
+            data-easter-egg={phase}
           >
-            <Image
-              src="/images/19th/home/hero-object.png"
-              alt="이정표 3D 오브젝트"
-              width={1080}
-              height={1080}
-              priority
-              css={objectImageCss}
-            />
+            <motion.div
+              css={objectFloatCss}
+              initial={shouldReduceMotion ? undefined : { translateY: -10, rotate: -1.5 }}
+              animate={shouldReduceMotion ? undefined : { translateY: 10, rotate: 1.5 }}
+              transition={shouldReduceMotion ? { duration: 0 } : FLOAT_TRANSITION}
+            >
+              <Image
+                src="/images/19th/home/hero-object.png"
+                alt="이정표 3D 오브젝트"
+                width={1080}
+                height={1080}
+                priority
+                draggable={false}
+                css={objectImageCss}
+              />
+            </motion.div>
           </motion.div>
         </div>
       </div>
@@ -116,6 +149,7 @@ export const HeroSection = () => {
 const sectionCss = css`
   position: relative;
   width: 100%;
+  /* overflow 를 걸지 않는다 — 오브젝트는 평소에도 이 섹션 밖으로 넘쳐 나온다. */
   background: ${colors.v19.gradient.heroStarfield(50)};
 
   @media (min-width: 768px) {
@@ -271,6 +305,13 @@ const objectPositionCss = css`
     top: 3%;
     width: 59.27%;
   }
+`;
+
+const objectFlightCss = css`
+  width: 100%;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-tap-highlight-color: transparent;
 `;
 
 const objectFloatCss = css`
