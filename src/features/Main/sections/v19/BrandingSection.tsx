@@ -231,15 +231,17 @@ const headlineCss = css`
   text-align: center;
 
   @media (min-width: 768px) {
-    top: 38.5%;
+    top: 34.5%;
     gap: 24px;
   }
 
   @media (min-width: 1280px) {
+    top: 37%;
     gap: 40px;
   }
 
   @media (min-width: 1920px) {
+    top: 38.5%;
     gap: 60px;
   }
 `;
