@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { css } from '@emotion/react';
 import { AnimatePresence, motion } from 'framer-motion';
 
+import { CircleArrowRightIcon } from '~/components/Icons/CircleArrowRightIcon';
 import { DEPROMEET_EMAIL, DEPROMEET_KAKAO_PLUS_FRIEND } from '~/constant/depromeet';
 import { FaqCategory, RECRUIT } from '~/constant/recruit';
 import { colors } from '~/styles/colors';
+import { theme } from '~/styles/theme';
 
-// Figma `203:1427`(1920/1280 공용 컴포넌트, FAQ+Contact) · `203:2035`(360)
 const FAQ_DATA = RECRUIT.faq;
 
 const CATEGORIES: FaqCategory[] = ['지원자격', '면접관련', '활동관련'];
@@ -98,14 +99,12 @@ export const FAQSection = () => {
             <button type="button" css={kakaoButtonCss} onClick={handleKakaoClick}>
               <KakaoIcon />
               <span>카카오톡 문의하기</span>
-              <ArrowRightIconDefault />
-              <ArrowRightIconHover />
+              <CircleArrowRightIcon />
             </button>
             <button type="button" css={emailButtonCss} onClick={handleEmailClick}>
               <EmailIcon />
               <span>이메일로 문의하기</span>
-              <ArrowRightIconDefault />
-              <ArrowRightIconHover />
+              <CircleArrowRightIcon />
             </button>
           </div>
         </div>
@@ -174,58 +173,6 @@ const EmailIcon = () => (
   </svg>
 );
 
-const ArrowRightIconDefault = () => (
-  <span css={arrowDefaultCss} data-icon="default">
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-      <circle cx="16" cy="16" r="16" fill={colors.v19.blue500} />
-      <path
-        d="M16 21.3337L21.3333 16.0003L16 10.667"
-        stroke="white"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M10.667 16H21.3337"
-        stroke="white"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </span>
-);
-
-const ArrowRightIconHover = () => (
-  <span css={arrowHoverCss} data-icon="hover">
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-      <circle cx="16" cy="16" r="16" fill={colors.v19.white100} />
-      <path
-        d="M16 21.3337L21.3333 16.0003L16 10.667"
-        stroke={colors.v19.blue500}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M10.667 16H21.3337"
-        stroke={colors.v19.blue500}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </span>
-);
-
-const arrowDefaultCss = css`
-  display: flex;
-`;
-
-const arrowHoverCss = css`
-  display: none;
-`;
-
 const sectionCss = css`
   width: 100%;
   background: ${colors.v19.coolGray100};
@@ -233,14 +180,6 @@ const sectionCss = css`
 
   @media (min-width: 768px) {
     padding: 120px 40px;
-  }
-
-  @media (min-width: 1280px) {
-    padding: 160px 40px;
-  }
-
-  @media (min-width: 1920px) {
-    padding: 200px 40px;
   }
 `;
 
@@ -251,28 +190,20 @@ const contentCss = css`
 `;
 
 const titleCss = css`
-  font-family: 'Pretendard', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: 0.01em;
+  ${theme.typosV4.pretendard.sub2B};
   color: ${colors.v19.coolGray900};
   text-align: center;
   margin: 0 0 32px 0;
 
   @media (min-width: 768px) {
-    font-size: 28px;
+    ${theme.typosV4.pretendard.head1};
     margin-bottom: 40px;
-  }
-
-  @media (min-width: 1280px) {
-    font-size: 36px;
   }
 `;
 
 const tabsCss = css`
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 0;
   margin-bottom: 20px;
   overflow-x: auto;
@@ -282,18 +213,20 @@ const tabsCss = css`
   }
 
   @media (min-width: 768px) {
+    justify-content: flex-start;
     margin-bottom: 28px;
   }
 `;
 
 const tabCss = css`
-  padding: 12px 16px;
+  padding: 16px;
   border: none;
   background: transparent;
   cursor: pointer;
-  flex-shrink: 0;
+  flex: 1;
 
-  @media (min-width: 1280px) {
+  @media (min-width: 768px) {
+    flex: 0 0 auto;
     padding: 16px 24px;
   }
 `;
@@ -301,10 +234,7 @@ const tabCss = css`
 const tabTextCss = (isActive: boolean) => css`
   display: inline-block;
   position: relative;
-  font-family: 'Pretendard', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.4;
+  ${theme.typosV4.pretendard.sub6M};
   white-space: nowrap;
   color: ${isActive ? colors.v19.coolGray900 : colors.v19.coolGray400};
 
@@ -318,8 +248,8 @@ const tabTextCss = (isActive: boolean) => css`
     background: ${isActive ? colors.v19.coolGray900 : 'transparent'};
   }
 
-  @media (min-width: 1280px) {
-    font-size: 20px;
+  @media (min-width: 768px) {
+    ${theme.typosV4.pretendard.sub2M};
   }
 `;
 
@@ -347,19 +277,12 @@ const faqQuestionCss = css`
   background: transparent;
   text-align: left;
   cursor: pointer;
-  font-family: 'Pretendard', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
+  ${theme.typosV4.pretendard.body5M};
   color: ${colors.v19.coolGray800};
 
   @media (min-width: 768px) {
-    padding: 20px 16px;
-    font-size: 18px;
-  }
-
-  @media (min-width: 1280px) {
     padding: 24px 20px;
-    font-size: 20px;
+    ${theme.typosV4.pretendard.sub2M};
   }
 `;
 
@@ -370,6 +293,18 @@ const arrowCss = css`
   flex-shrink: 0;
   color: ${colors.v19.coolGray300};
   transition: transform 0.2s ease, color 0.2s ease;
+  width: 18px;
+  height: 18px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+  }
 `;
 
 const arrowOpenCss = css`
@@ -390,11 +325,6 @@ const faqAnswerCss = css`
     margin: 0;
 
     @media (min-width: 768px) {
-      padding: 0 16px 20px;
-      font-size: 15px;
-    }
-
-    @media (min-width: 1280px) {
       padding: 0 20px 20px;
       font-size: 16px;
     }
@@ -406,7 +336,7 @@ const contactCss = css`
   text-align: center;
 
   @media (min-width: 768px) {
-    margin-top: 100px;
+    margin-top: 40px;
   }
 
   @media (min-width: 1280px) {
@@ -415,19 +345,12 @@ const contactCss = css`
 `;
 
 const contactTitleCss = css`
-  font-family: 'Pretendard', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
+  ${theme.typosV4.pretendard.sub2B};
   color: ${colors.v19.coolGray900};
   margin: 0 0 32px 0;
 
   @media (min-width: 768px) {
-    font-size: 28px;
-    margin-bottom: 48px;
-  }
-
-  @media (min-width: 1280px) {
-    font-size: 36px;
+    ${theme.typosV4.pretendard.head1};
     margin-bottom: 60px;
   }
 `;
@@ -441,7 +364,7 @@ const buttonsCss = css`
 
   @media (min-width: 768px) {
     flex-direction: row;
-    gap: 34px;
+    gap: 20px;
   }
 
   @media (min-width: 1280px) {
@@ -467,26 +390,19 @@ const baseButtonCss = css`
   transition: all 0.2s ease;
   box-sizing: border-box;
 
-  /*
-   * 768 시안 실측: 알약 280 x 76, 글자 20px, 둘 사이 간격 34 (합 594 < 본문 720).
-   * 24px + 좌우 96 패딩이면 둘이 본문을 넘겨 flex가 줄이고 글자가 두 줄로 접혔다.
-   */
   @media (min-width: 768px) {
     width: auto;
     max-width: none;
     flex-shrink: 0;
     white-space: nowrap;
-    height: 76px;
-    padding: 0 12px;
-    gap: 14px;
-    font-size: 20px;
+    height: 80px;
+    padding: 0 17px;
+    gap: 12px;
+    ${theme.typosV4.pretendard.sub1M};
   }
 
   @media (min-width: 1280px) {
-    height: 80px;
-    padding: 20px 44px 20px 52px;
-    gap: 12px;
-    font-size: 24px;
+    padding: 0 52px;
   }
 `;
 

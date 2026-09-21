@@ -1,13 +1,13 @@
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
+import { CircleArrowRightIcon } from '~/components/Icons/CircleArrowRightIcon';
 import { DEPROMEET_EMAIL } from '~/constant/depromeet';
 import { RECRUIT } from '~/constant/recruit';
 import { colors } from '~/styles/colors';
 import { theme } from '~/styles/theme';
 
-// Figma `203:1463`(1920/1280 공용 컴포넌트) · `203:2071`(360)
-// 운영진 요청으로 후원사 로고·목록은 이번 기수에서도 변경하지 않는다(RECRUIT.sponsors 그대로 사용).
+// 운영진 요청으로 후원사 로고·목록은 이번 기수에서도 바꾸지 않는다.
 const SPONSORS = RECRUIT.sponsors;
 
 export const SponsorsSection = () => {
@@ -41,8 +41,7 @@ export const SponsorsSection = () => {
           </div>
           <button type="button" css={inquiryButtonCss} onClick={handleInquiry}>
             <span>후원 문의하기</span>
-            <ArrowRightIconDefault />
-            <ArrowRightIconHover />
+            <CircleArrowRightIcon responsive />
           </button>
         </div>
       </div>
@@ -50,68 +49,12 @@ export const SponsorsSection = () => {
   );
 };
 
-const ArrowRightIconDefault = () => (
-  <span css={arrowDefaultCss} data-icon="default">
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-      <circle cx="16" cy="16" r="16" fill={colors.v19.blue500} />
-      <path
-        d="M16 21.3337L21.3333 16.0003L16 10.667"
-        stroke="white"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M10.667 16H21.3337"
-        stroke="white"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </span>
-);
-
-const ArrowRightIconHover = () => (
-  <span css={arrowHoverCss} data-icon="hover">
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-      <circle cx="16" cy="16" r="16" fill={colors.v19.white100} />
-      <path
-        d="M16 21.3337L21.3333 16.0003L16 10.667"
-        stroke={colors.v19.blue500}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M10.667 16H21.3337"
-        stroke={colors.v19.blue500}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </span>
-);
-
-const arrowDefaultCss = css`
-  display: flex;
-`;
-
-const arrowHoverCss = css`
-  display: none;
-`;
-
 const sectionCss = css`
   width: 100%;
   background: ${colors.v19.coolGray100};
   padding: 40px 20px;
 
   @media (min-width: 768px) {
-    padding: 80px 40px;
-  }
-
-  @media (min-width: 1280px) {
     padding: 120px 40px;
   }
 `;
@@ -125,10 +68,6 @@ const contentCss = css`
   gap: 40px;
 
   @media (min-width: 768px) {
-    gap: 60px;
-  }
-
-  @media (min-width: 1280px) {
     gap: 100px;
   }
 `;
@@ -146,7 +85,7 @@ const textContainerCss = css`
 `;
 
 const titleCss = css`
-  ${theme.typosV4.instrumentSans.sub4};
+  ${theme.typosV4.instrumentSans.sub5};
   color: ${colors.v19.blue900};
 
   @media (min-width: 768px) {
@@ -161,18 +100,11 @@ const titleCss = css`
 `;
 
 const subtitleCss = css`
-  font-family: 'Pretendard', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  line-height: 1.4;
+  ${theme.typosV4.pretendard.body6M};
   color: ${colors.v19.coolGray800};
 
   @media (min-width: 768px) {
-    font-size: 16px;
-  }
-
-  @media (min-width: 1280px) {
-    font-size: 20px;
+    ${theme.typosV4.pretendard.sub2M};
   }
 `;
 
@@ -192,7 +124,7 @@ const logoGridCss = css`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px;
+  gap: 12px 16px;
   width: 100%;
   max-width: 1180px;
 
@@ -203,7 +135,7 @@ const logoGridCss = css`
 
 const logoCardCss = css`
   position: relative;
-  width: calc(50% - 6px);
+  width: 140px;
   height: 60px;
   border-radius: 6px;
   overflow: hidden;
@@ -236,10 +168,7 @@ const inquiryButtonCss = css`
   background: ${colors.v19.white100};
   cursor: pointer;
   transition: all 0.2s ease;
-  font-family: 'Pretendard', sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 1.4;
+  ${theme.typosV4.pretendard.sub4M};
   color: ${colors.v19.coolGray900};
 
   &:hover {
@@ -258,6 +187,6 @@ const inquiryButtonCss = css`
     height: 80px;
     padding: 20px 44px 20px 52px;
     gap: 12px;
-    font-size: 24px;
+    ${theme.typosV4.pretendard.sub1M};
   }
 `;

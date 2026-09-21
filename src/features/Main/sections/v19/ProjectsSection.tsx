@@ -2,12 +2,13 @@ import Link from 'next/link';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
+import { CircleArrowRightIcon } from '~/components/Icons/CircleArrowRightIcon';
 import { ProjectThumbnail } from '~/components/Project';
 import { PROJECT_LIST } from '~/constant/project';
 import { RECRUIT } from '~/constant/recruit';
 import { colors } from '~/styles/colors';
+import { theme } from '~/styles/theme';
 
-// Figma `203:1413`(1920/1280 공용 컴포넌트) · `203:2020`(360)
 const MAIN_PROJECT_COUNT = 6;
 /** 소개 페이지에는 직전 기수(19기 기준 18기) 프로젝트를 노출한다. 리터럴 대신 계산해서 쓴다. */
 const FEATURED_GENERATION = `${RECRUIT.generation - 1}기`;
@@ -60,66 +61,13 @@ export const ProjectsSection = () => {
         <div css={buttonContainerCss}>
           <Link href="/project" css={viewAllButtonCss}>
             프로젝트 전체 보기
-            <ArrowRightIconDefault />
-            <ArrowRightIconHover />
+            <CircleArrowRightIcon responsive />
           </Link>
         </div>
       </div>
     </section>
   );
 };
-
-const ArrowRightIconDefault = () => (
-  <span css={arrowDefaultCss} data-icon="default">
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-      <circle cx="16" cy="16" r="16" fill={colors.v19.blue500} />
-      <path
-        d="M16 21.3337L21.3333 16.0003L16 10.667"
-        stroke="white"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M10.667 16H21.3337"
-        stroke="white"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </span>
-);
-
-const ArrowRightIconHover = () => (
-  <span css={arrowHoverCss} data-icon="hover">
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
-      <circle cx="16" cy="16" r="16" fill={colors.v19.white100} />
-      <path
-        d="M16 21.3337L21.3333 16.0003L16 10.667"
-        stroke={colors.v19.blue500}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M10.667 16H21.3337"
-        stroke={colors.v19.blue500}
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  </span>
-);
-
-const arrowDefaultCss = css`
-  display: flex;
-`;
-
-const arrowHoverCss = css`
-  display: none;
-`;
 
 const sectionCss = css`
   width: 100%;
@@ -167,12 +115,8 @@ const titleCss = css`
   margin: 0 0 8px 0;
 
   @media (min-width: 768px) {
-    font-size: 28px;
+    ${theme.typosV4.pretendard.head1};
     margin-bottom: 12px;
-  }
-
-  @media (min-width: 1280px) {
-    font-size: 36px;
   }
 `;
 
@@ -185,11 +129,7 @@ const subtitleCss = css`
   margin: 0;
 
   @media (min-width: 768px) {
-    font-size: 16px;
-  }
-
-  @media (min-width: 1280px) {
-    font-size: 20px;
+    ${theme.typosV4.pretendard.sub2M};
   }
 `;
 
@@ -198,12 +138,10 @@ const gridCss = css`
   display: grid;
   grid-template-columns: 1fr;
   column-gap: 16px;
-  /* 시안은 세 폭 모두 카드 사이 세로 간격이 60이다(203:2024 · 203:1828 · 203:1419). */
   row-gap: 60px;
   justify-items: stretch;
   align-items: stretch;
 
-  /* 768만 가로 간격이 20 — 카드 334 두 장 + 20 = 본문 688 (203:1828). */
   @media (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
     column-gap: 20px;
@@ -236,10 +174,6 @@ const viewAllButtonCss = css`
   align-items: center;
   justify-content: center;
   gap: 8px;
-  /*
-   * 360 시안 203:2020의 알약은 190 x 44에 글자 14px 한 줄이다. 16px + 199px로 두면
-   * "프로젝트 전체 보기"가 두 줄로 접혀 알약 밖으로 삐져나온다.
-   */
   width: 190px;
   height: 44px;
   padding: 10px 16px;
