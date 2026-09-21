@@ -33,7 +33,7 @@ export const SponsorsSection = () => {
                   alt={sponsor.name}
                   fill
                   // 카드 실제 폭. 없으면 Next가 100vw로 간주해 1920px에서 2048w 변환본을 받는다.
-                  sizes="(min-width: 1280px) 160px, 120px"
+                  sizes="(min-width: 768px) 280px, 140px"
                   css={logoImageCss}
                 />
               </div>
@@ -149,11 +149,6 @@ const logoCardCss = css`
 
 const logoImageCss = css`
   object-fit: contain;
-  padding: 12px;
-
-  @media (min-width: 768px) {
-    padding: 24px;
-  }
 `;
 
 const inquiryButtonCss = css`

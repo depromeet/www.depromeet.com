@@ -374,12 +374,12 @@ export const RECRUIT: RecruitConfig = {
   faq: FAQ,
   /** 운영진 요청: 로고·목록은 현행 유지. "후원사는 나중에 수정하겠다". */
   sponsors: [
-    { name: 'elice', logo: '/images/17th/support/sponsor-elice.png' },
-    { name: 'Gather', logo: '/images/17th/support/sponsor-gather.png' },
-    { name: 'F-Lab', logo: '/images/17th/support/sponsor-f-lab.png' },
-    { name: 'FastFive', logo: '/images/17th/support/sponsor-fastfive.png' },
-    { name: 'Adelab', logo: '/images/17th/support/sponsor-adelab.png' },
-    { name: '직행', logo: '/images/17th/support/sponsor-zighang.png' },
-    { name: 'NineHire', logo: '/images/17th/support/sponsor-ninehire.png' },
+    { name: 'elice', logo: '/images/19th/home/sponsor-elice.png' },
+    { name: 'Gather', logo: '/images/19th/home/sponsor-gather.png' },
+    { name: 'F-Lab', logo: '/images/19th/home/sponsor-f-lab.png' },
+    { name: 'FastFive', logo: '/images/19th/home/sponsor-fastfive.png' },
+    { name: 'Adelab', logo: '/images/19th/home/sponsor-adelab.png' },
+    { name: '직행', logo: '/images/19th/home/sponsor-zighang.png' },
+    { name: 'NineHire', logo: '/images/19th/home/sponsor-ninehire.png' },
   ],
 };
