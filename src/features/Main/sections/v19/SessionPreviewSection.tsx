@@ -7,7 +7,6 @@ import { RECRUIT } from '~/constant/recruit';
 import { colors } from '~/styles/colors';
 import { theme } from '~/styles/theme';
 
-// Figma `203:1346`(1920/1280 공용 컴포넌트) · `203:1988`(360)
 interface SessionItem {
   id: string;
   title: string;
@@ -25,16 +24,6 @@ const CHIPS: Array<{ id: ChipId; label: string }> = [
   { id: 'focus', label: 'Focus' },
 ];
 
-/**
- * 칩 3개는 클릭만 가능하고 목록 필터링은 하지 않는다(카테고리 매핑 미정,
- * migration-plan §15.2 "Session Preview 칩" 참고).
- *
- * 그래서 **탭 의미론(role="tab"/tablist)을 쓰지 않는다.** 탭은 선택하면 연결된 패널이
- * 바뀐다는 약속인데 여기서는 목록이 그대로다. 스크린 리더가 "탭, Focus, 선택됨"이라고
- * 읽어 주면 사용자는 갱신을 기다리다 고장으로 판단한다(WCAG 4.1.2 역할-동작 불일치).
- * 토글 버튼 묶음(`role="group"` + `aria-pressed`)으로 표현한다 — 누를 수 있고 눌린 상태가
- * 있다는 것만 알린다. 분류 매핑이 확정되면 그때 탭으로 승격하면 된다.
- */
 const ChipTablist = () => {
   const [activeChip, setActiveChip] = useState<ChipId>('challenge');
   const chipRefs = useRef<Array<HTMLButtonElement | null>>([]);
@@ -44,13 +33,6 @@ const ChipTablist = () => {
     target?.focus();
   };
 
-  /**
-   * 방향키는 **포커스만** 옮긴다. 누르는 것은 Space/Enter다.
-   *
-   * 탭 묶음이라면 이동과 동시에 선택되는 자동 활성화가 표준이지만, 이건 토글 버튼이다.
-   * 이동만 해도 눌린 상태가 바뀌면 키보드 사용자가 칩을 훑어볼 수 없다 — 지금은 목록이
-   * 안 바뀌어 티가 안 나지만, 분류 매핑이 확정돼 필터가 붙는 순간 실제 결함이 된다.
-   */
   const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
     if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
       event.preventDefault();
@@ -167,12 +149,15 @@ export const SessionPreviewSection = () => {
 
         {/* 1280px 미만: 스테퍼 + 단일 카드 (768 시안도 이쪽이다) */}
         <div css={mobileLayoutCss}>
-          <div css={mobileTitleContainerCss}>
-            <span css={titleEnCss}>{RECRUIT.generation}th</span>
-            <span css={titleMainCss}>Session Preview</span>
-          </div>
+          {/* 시안 203:1784 — 제목 묶음과 칩 줄은 한 프레임이고 그 안 간격만 20이다. */}
+          <div css={mobileHeaderCss}>
+            <div css={mobileTitleContainerCss}>
+              <span css={titleEnCss}>{RECRUIT.generation}th</span>
+              <span css={titleMainCss}>Session Preview</span>
+            </div>
 
-          <ChipTablist />
+            <ChipTablist />
+          </div>
 
           <div css={mobileContentCss}>
             <div css={mobileImageContainerCss}>
@@ -317,21 +302,12 @@ const ChipIcon = ({ chip }: { chip: ChipId }) => {
   );
 };
 
-/**
- * 좌우 여백은 **섹션**이 갖는다. `contentCss`의 1200px는 시안의 콘텐츠 폭 자체라서
- * (1920에서 x 360~1560), 그 안쪽에 또 여백을 주면 1280에서 리스트+카드가 들어갈 자리가
- * 80px 모자라 카드가 화면 밖으로 밀려났다.
- */
 const sectionCss = css`
   width: 100%;
   background: ${colors.v19.blue900};
   padding: 0 20px;
 
   @media (min-width: 768px) {
-    padding: 0 24px;
-  }
-
-  @media (min-width: 1280px) {
     padding: 0 40px;
   }
 `;
@@ -351,22 +327,17 @@ const chipRowCss = css`
   }
 `;
 
-/*
- * 360 시안(`203:1988`)의 칩 3개는 x 19~323, 즉 **304px 안에** 다 들어간다
- * (Challenge 100 · Fellowship 103 · Focus 81, 간격 10). 여백 16 + 아이콘 20으로는
- * 370px가 되어 Focus가 화면 밖으로 밀려났다.
- */
 const chipCss = css`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  height: 40px;
-  padding: 10px 12px;
+  gap: 8px;
+  height: 38px;
+  padding: 9px 11px;
 
   svg {
-    width: 16px;
-    height: 16px;
+    width: 20px;
+    height: 20px;
   }
   border: 1px solid ${colors.v19.white030};
   border-radius: 200px;
@@ -381,15 +352,21 @@ const chipCss = css`
     outline-offset: 2px;
   }
 
-  /* 768 시안의 칩도 1280과 같은 80px 높이다. */
   @media (min-width: 768px) {
     height: 80px;
-    padding: 20px 30px;
+    padding: 20px 31px;
     gap: 8px;
 
     svg {
-      width: 20px;
-      height: 20px;
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    svg {
+      width: 40px;
+      height: 40px;
     }
   }
 `;
@@ -400,22 +377,21 @@ const chipActiveCss = css`
 `;
 
 const chipLabelCss = css`
-  ${theme.typosV4.instrumentSans.caption1};
-  font-size: 13px;
+  ${theme.typosV4.instrumentSans.caption2};
   color: ${colors.v19.white100};
   white-space: nowrap;
 
   @media (min-width: 768px) {
+    ${theme.typosV4.instrumentSans.body3};
+    color: ${colors.v19.white100};
+  }
+
+  @media (min-width: 1280px) {
     ${theme.typosV4.instrumentSans.sub3};
     color: ${colors.v19.white100};
   }
 `;
 
-/*
- * 리스트 + 카드 레이아웃은 **1280부터**다. 768 시안(`203:1695`)은 360과 같은
- * 스테퍼 레이아웃을 쓴다 — 제목, 칩, 큰 이미지 카드 한 장, 하단 `01 / 07`.
- * 768을 데스크톱으로 잡아 두어 좁은 화면에 리스트+카드가 밀어넣어져 있었다.
- */
 const desktopLayoutCss = css`
   display: none;
 
@@ -423,10 +399,6 @@ const desktopLayoutCss = css`
     display: flex;
     flex-direction: column;
     gap: 60px;
-    padding: 160px 0;
-  }
-
-  @media (min-width: 1920px) {
     padding: 240px 0;
   }
 `;
@@ -463,7 +435,7 @@ const titleEnCss = css`
   ${theme.typosV4.instrumentSans.sub4};
   color: ${colors.v19.blue500};
 
-  @media (min-width: 1280px) {
+  @media (min-width: 768px) {
     ${theme.typosV4.instrumentSans.head3};
     color: ${colors.v19.blue500};
   }
@@ -477,7 +449,7 @@ const titleMainCss = css`
   letter-spacing: -0.01em;
   color: ${colors.v19.white100};
 
-  @media (min-width: 1280px) {
+  @media (min-width: 768px) {
     ${theme.typosV4.spaceGrotesk.head1};
     color: ${colors.v19.white100};
   }
@@ -500,10 +472,6 @@ const menuItemCss = css`
   padding-right: 20px;
   padding-bottom: 12px;
   border: none;
-  /*
-   * 밑줄은 **선택된 항목에만** 있다(시안 203:1346). 투명 테두리로 자리를 잡아 두는 것은
-   * 선택이 옮겨갈 때 1px씩 높이가 달라져 목록이 들썩이는 것을 막기 위해서다.
-   */
   border-bottom: 1px solid transparent;
   background: transparent;
   cursor: pointer;
@@ -596,25 +564,36 @@ const cardDescriptionCss = css`
 
   @media (min-width: 1280px) {
     font-size: 20px;
+    min-height: 84px;
   }
 `;
 
 // 1280 미만 레이아웃
-/* 1280 미만은 모두 스테퍼 레이아웃. 768 시안 실측: 위 여백 130, 칩 줄 높이 80. */
 const mobileLayoutCss = css`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 24px;
-  padding: 60px 0;
+  padding: 40px 0;
 
   @media (min-width: 768px) {
-    gap: 34px;
-    padding: 130px 0;
+    gap: 40px;
+    padding: 120px 0;
   }
 
   @media (min-width: 1280px) {
     display: none;
+  }
+`;
+
+const mobileHeaderCss = css`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+
+  @media (min-width: 768px) {
+    gap: 20px;
   }
 `;
 
@@ -628,6 +607,10 @@ const mobileContentCss = css`
   flex-direction: column;
   gap: 16px;
   width: 100%;
+
+  @media (min-width: 768px) {
+    gap: 40px;
+  }
 `;
 
 const mobileImageContainerCss = css`
@@ -647,6 +630,10 @@ const mobileInfoCss = css`
   display: flex;
   flex-direction: column;
   gap: 8px;
+
+  @media (min-width: 768px) {
+    gap: 16px;
+  }
 `;
 
 const mobileSessionTitleCss = css`
@@ -655,6 +642,11 @@ const mobileSessionTitleCss = css`
   font-weight: 700;
   line-height: 1.4;
   color: ${colors.v19.white100};
+
+  @media (min-width: 768px) {
+    ${theme.typosV4.pretendard.head2};
+    color: ${colors.v19.white100};
+  }
 `;
 
 const mobileSessionDescriptionCss = css`
@@ -662,8 +654,14 @@ const mobileSessionDescriptionCss = css`
   font-size: 14px;
   font-weight: 500;
   line-height: 1.4;
-  min-height: 60px;
+  min-height: 5.6em;
   color: ${colors.v19.white100};
+
+  @media (min-width: 768px) {
+    ${theme.typosV4.pretendard.sub2M};
+    min-height: 4.2em;
+    color: ${colors.v19.white100};
+  }
 `;
 
 const stepperCss = css`
@@ -677,6 +675,7 @@ const stepperCss = css`
 const stepperButtonCss = css`
   width: 40px;
   height: 40px;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -689,6 +688,11 @@ const stepperButtonCss = css`
 
   &:hover {
     opacity: 0.7;
+  }
+
+  @media (min-width: 768px) {
+    width: 44px;
+    height: 44px;
   }
 `;
 
@@ -703,6 +707,11 @@ const stepperTextCss = css`
   color: ${colors.v19.coolGray400};
   min-width: 60px;
   justify-content: center;
+
+  @media (min-width: 768px) {
+    gap: 8px;
+    min-width: 70px;
+  }
 `;
 
 const currentNumberCss = css`
