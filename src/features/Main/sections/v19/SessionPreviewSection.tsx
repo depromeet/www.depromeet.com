@@ -248,59 +248,15 @@ const ChevronLeft = () => (
 );
 
 /** 칩 아이콘 3종 — Figma 벡터를 근사 재현(장식용 아이콘, currentColor로 칩 상태를 따라간다). */
-const ChipIcon = ({ chip }: { chip: ChipId }) => {
-  if (chip === 'challenge') {
-    return (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 20 20"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M3 17V12M8 17V7M13 17V9M17 17V4"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    );
-  }
-
-  if (chip === 'fellowship') {
-    return (
-      <svg
-        width="20"
-        height="20"
-        viewBox="0 0 20 20"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M3 6L17 14M17 6L3 14"
-          stroke="currentColor"
-          strokeWidth="1.8"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    );
-  }
-
-  return (
-    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
-        d="M10 3V7M10 13V17M3 10H7M13 10H17"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
+const CHIP_ICON: Record<ChipId, string> = {
+  challenge: '/images/19th/home/session-chip-challenge.svg',
+  fellowship: '/images/19th/home/session-chip-fellowship.svg',
+  focus: '/images/19th/home/session-chip-focus.svg',
 };
+
+const ChipIcon = ({ chip }: { chip: ChipId }) => (
+  <Image src={CHIP_ICON[chip]} alt="" aria-hidden width={34} height={34} />
+);
 
 const sectionCss = css`
   width: 100%;
@@ -335,7 +291,7 @@ const chipCss = css`
   height: 38px;
   padding: 9px 11px;
 
-  svg {
+  img {
     width: 20px;
     height: 20px;
   }
@@ -357,14 +313,14 @@ const chipCss = css`
     padding: 20px 31px;
     gap: 8px;
 
-    svg {
+    img {
       width: 32px;
       height: 32px;
     }
   }
 
   @media (min-width: 1280px) {
-    svg {
+    img {
       width: 40px;
       height: 40px;
     }
