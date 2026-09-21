@@ -94,10 +94,12 @@ const blogContainerCss = css`
   column-gap: 16px;
   row-gap: 60px;
   justify-items: stretch;
-  align-items: start;
+  align-items: stretch;
 
+  /* 768은 카드 334 두 장 + 20 = 본문 688 — 이 구간만 가로 간격이 20이다. 프로젝트와 같다. */
   @media (min-width: 768px) and (max-width: 1279px) {
     grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
   }
 
   @media (max-width: 767px) {

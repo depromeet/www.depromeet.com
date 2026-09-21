@@ -65,7 +65,7 @@ export function BlogPostThumbnail({ title, date, img, link, ...props }: Thumbnai
 const articleCss = css`
   position: relative;
   width: 100%;
-  height: auto;
+  height: 395px;
   display: flex;
   flex-direction: column;
   background: ${colors.white};
@@ -75,6 +75,10 @@ const articleCss = css`
 
   &:hover .thumbnail-overlay {
     opacity: 1;
+  }
+
+  @media (min-width: 768px) {
+    height: 427px;
   }
 `;
 
@@ -117,9 +121,10 @@ const titleContainerCss = css`
 
 const titleCss = css`
   font-size: 22px;
-  font-weight: 600;
-  color: ${colors.grey18['900']};
-  line-height: 1.5;
+  font-weight: 700;
+  color: ${colors.v19.coolGray900};
+  line-height: 1.4;
+  letter-spacing: 0.01em;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -133,16 +138,17 @@ const dateContainerCss = css`
 `;
 
 const dateCss = css`
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  color: ${colors.grey18['900']};
-  line-height: 1.4;
+  color: ${colors.v19.coolGray900};
+  line-height: 1.7;
+  letter-spacing: -0.01em;
 `;
 
 const imageContainerCss = css`
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  height: 283px;
   overflow: hidden;
 `;
 

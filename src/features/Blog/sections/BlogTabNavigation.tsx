@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 
 import { colors } from '~/styles/colors';
-import { mediaQuery } from '~/styles/media';
 import { theme } from '~/styles/theme';
 
 interface TabNavigationProps {
@@ -56,47 +55,42 @@ export const BlogTabNavigation = ({
 const tabContainerCss = css`
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 12px;
   width: 100%;
   align-items: flex-start;
 
-  @media (min-width: 768px) and (max-width: 1279px) {
+  @media (min-width: 768px) {
     gap: 28px;
   }
 
-  ${mediaQuery('mobile')} {
-    gap: 12px;
+  @media (min-width: 1280px) {
+    gap: 36px;
   }
 `;
 
-/*
- * Figma `203:2099` - Pill shaped, 선택: 파란배경+흰글씨, 비선택: 흰배경+파란테두리+파란글씨.
- * 파랑은 19기 Blue500(#1659D5)이다. 18기의 `primary18.normal`(#59AEFE)은 훨씬 밝은
- * 하늘색이라 같은 자리에 놓으면 시안과 다른 버튼이 된다.
- */
 const mainTabWrapperCss = css`
   display: flex;
   gap: 12px;
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 4px;
 
-  ${mediaQuery('tablet')} {
-    width: 100%;
+  &::-webkit-scrollbar {
+    display: none;
   }
-  ${mediaQuery('mobile')} {
-    width: 100%;
-    overflow-x: auto;
-    padding-bottom: 4px;
 
-    &::-webkit-scrollbar {
-      display: none;
-    }
+  @media (min-width: 768px) {
+    width: auto;
+    overflow-x: visible;
+    padding-bottom: 0;
   }
 `;
 
 /* Figma: 1280~ 212x60, 768~1279 166x46, ~767 112x34 */
 const mainTabItemCss = css`
-  width: 212px;
-  height: 60px;
-  padding: 16px 32px;
+  width: 112px;
+  height: 34px;
+  padding: 8px 12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,22 +100,22 @@ const mainTabItemCss = css`
   border-radius: 100px;
   cursor: pointer;
   transition: all 0.2s ease;
-  font-size: 20px;
+  font-size: 12px;
   font-weight: 500;
   white-space: nowrap;
 
-  @media (min-width: 768px) and (max-width: 1279px) {
+  @media (min-width: 768px) {
     width: 166px;
     height: 46px;
     padding: 12px 24px;
     font-size: 16px;
   }
 
-  ${mediaQuery('mobile')} {
-    width: 112px;
-    height: 34px;
-    padding: 8px 12px;
-    font-size: 12px;
+  @media (min-width: 1280px) {
+    width: 212px;
+    height: 60px;
+    padding: 16px 32px;
+    font-size: 20px;
   }
 `;
 
@@ -134,31 +128,34 @@ const mainTabItemActiveCss = css`
 /* Figma: 서브 탭 - 텍스트만, 선택: 언더라인+진한글씨, 비선택: 회색글씨 */
 const subTabWrapperCss = css`
   display: flex;
+  overflow-x: auto;
+  width: 100%;
+  padding-bottom: 4px;
 
-  ${mediaQuery('mobile')} {
-    overflow-x: auto;
-    width: 100%;
-    padding-bottom: 4px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
-    &::-webkit-scrollbar {
-      display: none;
-    }
+  @media (min-width: 768px) {
+    overflow-x: visible;
+    width: auto;
+    padding-bottom: 0;
   }
 `;
 
 const subTabItemCss = css`
   padding: 16px 20px;
   background: transparent;
-  color: ${colors.grey18['500']};
+  color: ${colors.v19.coolGray500};
   border: none;
   cursor: pointer;
   position: relative;
   transition: all 0.2s ease;
-  ${theme.typosV2.pretendard.semibold16};
+  ${theme.typosV2.pretendard.semibold14};
   white-space: nowrap;
 
-  ${mediaQuery('mobile')} {
-    ${theme.typosV2.pretendard.semibold14};
+  @media (min-width: 768px) {
+    ${theme.typosV2.pretendard.semibold16};
   }
 `;
 
@@ -173,10 +170,10 @@ const subTabTextCss = css`
     left: 0;
     width: 100%;
     height: 2px;
-    background-color: ${colors.grey18['900']};
+    background-color: ${colors.v19.coolGray900};
   }
 `;
 
 const subTabItemActiveCss = css`
-  color: ${colors.grey18['900']};
+  color: ${colors.v19.coolGray900};
 `;
