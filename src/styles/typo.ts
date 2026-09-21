@@ -555,12 +555,6 @@ export const typosV3 = {
   },
 };
 
-/**
- * NOTE: 19th — Figma `203:583`(Instrument Sans) · `203:3595`(Space Grotesk / Space Mono).
- *
- * 영문과 숫자는 Instrument Sans를 쓴다(시안 규칙). 한글은 Pretendard(`typosV3.pretendard`)가
- * 맡는다. letter-spacing은 시안의 % 값을 em으로 옮겼고, Slogan만 px 지정이라 그대로 둔다.
- */
 export const typosV4 = {
   instrumentSans: {
     display1: css`
@@ -610,6 +604,7 @@ export const typosV4 = {
       font-size: ${pxToRem(32)};
       font-weight: 600;
       line-height: 1.4;
+      letter-spacing: 0;
     `,
     sub2: css`
       font-family: 'Instrument Sans', sans-serif;
@@ -637,6 +632,7 @@ export const typosV4 = {
       font-size: ${pxToRem(18)};
       font-weight: 600;
       line-height: 1.4;
+      letter-spacing: 0;
     `,
     body1: css`
       font-family: 'Instrument Sans', sans-serif;
@@ -671,6 +667,7 @@ export const typosV4 = {
       font-size: ${pxToRem(14)};
       font-weight: 500;
       line-height: 1.5;
+      letter-spacing: 0;
     `,
     caption2: css`
       font-family: 'Instrument Sans', sans-serif;
@@ -742,6 +739,218 @@ export const typosV4 = {
       font-weight: 400;
       line-height: 1.2;
       letter-spacing: ${pxToRem(-1.4)};
+    `,
+  },
+  pretendard: {
+    head0: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(40)};
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+    `,
+    head1: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(36)};
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+    `,
+    head2: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(32)};
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+    `,
+    head3: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(26)};
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.05em;
+    `,
+    head4: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(26)};
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+    `,
+    head5: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(24)};
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+    `,
+    head6: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(22)};
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+    `,
+    head7: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(20)};
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: 0.01em;
+    `,
+    sub1B: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(24)};
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: 0;
+    `,
+    sub1M: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(24)};
+      font-weight: 500;
+      line-height: 1.4;
+      letter-spacing: 0;
+    `,
+    sub2B: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(20)};
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: 0;
+    `,
+    sub2M: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(20)};
+      font-weight: 500;
+      line-height: 1.4;
+      letter-spacing: 0;
+    `,
+    sub3B: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(18)};
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: 0;
+    `,
+    sub3M: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(18)};
+      font-weight: 500;
+      line-height: 1.4;
+      letter-spacing: 0;
+    `,
+    sub4B: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(16)};
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: 0;
+    `,
+    sub4M: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(16)};
+      font-weight: 500;
+      line-height: 1.4;
+      letter-spacing: 0;
+    `,
+    sub5B: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(15)};
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: 0;
+    `,
+    sub6B: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(14)};
+      font-weight: 700;
+      line-height: 1.4;
+      letter-spacing: 0;
+    `,
+    sub6M: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(14)};
+      font-weight: 500;
+      line-height: 1.4;
+      letter-spacing: 0;
+    `,
+    body1M: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(18)};
+      font-weight: 500;
+      line-height: 1.6;
+      letter-spacing: -0.01em;
+    `,
+    body1R: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(18)};
+      font-weight: 400;
+      line-height: 1.6;
+      letter-spacing: -0.01em;
+    `,
+    body2R: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(17)};
+      font-weight: 400;
+      line-height: 1.7;
+      letter-spacing: -0.01em;
+    `,
+    body3M: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(16)};
+      font-weight: 500;
+      line-height: 1.6;
+      letter-spacing: -0.02em;
+    `,
+    body3R: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(16)};
+      font-weight: 400;
+      line-height: 1.7;
+      letter-spacing: -0.01em;
+    `,
+    body4R: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(14)};
+      font-weight: 400;
+      line-height: 1.6;
+      letter-spacing: -0.01em;
+    `,
+    body5M: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(13)};
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+    `,
+    body6M: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(12)};
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+    `,
+    body7M: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(9)};
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: -0.02em;
+    `,
+    caption1SB: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(14)};
+      font-weight: 600;
+      line-height: 1.5;
+      letter-spacing: 0;
+    `,
+    caption1M: css`
+      font-family: 'Pretendard', sans-serif;
+      font-size: ${pxToRem(14)};
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: 0;
     `,
   },
 };
