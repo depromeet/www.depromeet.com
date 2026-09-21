@@ -138,7 +138,6 @@ export const SessionSchedule = () => {
   );
 };
 
-// Figma `203:2457`(1920) · `203:3124`(360)
 const containerCss = (_theme: Theme) => css`
   position: relative;
   display: flex;
@@ -150,11 +149,11 @@ const containerCss = (_theme: Theme) => css`
   padding: 60px 20px;
 
   @media (min-width: 768px) {
-    padding: 100px 20px;
+    padding: 160px 40px 80px;
   }
 
   @media (min-width: 1280px) {
-    padding: 130px 40px;
+    padding: 120px 40px;
   }
 
   @media (min-width: 1920px) {
@@ -170,6 +169,14 @@ const contentStyles = css`
   align-items: center;
   width: 100%;
   max-width: 1280px;
+
+  @media (min-width: 1280px) {
+    max-width: 880px;
+  }
+
+  @media (min-width: 1920px) {
+    max-width: 1280px;
+  }
 `;
 
 const headerCss = css`
@@ -177,14 +184,6 @@ const headerCss = css`
   margin-bottom: 40px;
 
   @media (min-width: 768px) {
-    margin-bottom: 60px;
-  }
-
-  @media (min-width: 1280px) {
-    margin-bottom: 70px;
-  }
-
-  @media (min-width: 1920px) {
     margin-bottom: 80px;
   }
 `;
@@ -192,43 +191,20 @@ const headerCss = css`
 const titleCss = css`
   color: ${colors.v19.white100};
   margin: 0 0 8px;
-  font-family: 'Pretendard', sans-serif;
-  font-size: 22px;
-  font-weight: 700;
-  line-height: 1.4;
-  letter-spacing: 0.01em;
+  ${theme.typosV4.pretendard.head6};
 
   @media (min-width: 768px) {
-    font-size: 26px;
-  }
-
-  @media (min-width: 1280px) {
-    font-size: 32px;
-  }
-
-  @media (min-width: 1920px) {
-    font-size: 40px;
+    ${theme.typosV4.pretendard.head0};
   }
 `;
 
 const descriptionCss = css`
   color: ${colors.v19.coolGray400};
-  font-family: 'Pretendard', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.4;
+  ${theme.typosV4.pretendard.sub6M};
   margin: 0;
 
   @media (min-width: 768px) {
-    font-size: 16px;
-  }
-
-  @media (min-width: 1280px) {
-    font-size: 20px;
-  }
-
-  @media (min-width: 1920px) {
-    font-size: 24px;
+    ${theme.typosV4.pretendard.sub1M};
   }
 `;
 
@@ -239,14 +215,6 @@ const legendWrapperCss = css`
   margin-bottom: 16px;
 
   @media (min-width: 768px) {
-    margin-bottom: 20px;
-  }
-
-  @media (min-width: 1280px) {
-    margin-bottom: 26px;
-  }
-
-  @media (min-width: 1920px) {
     margin-bottom: 32px;
   }
 `;
@@ -279,7 +247,6 @@ const legendBadgeCss = css`
   background-color: ${colors.v19.blue200};
   flex-shrink: 0;
 
-  /* 시안 실측: 768·1280·1920 모두 지름 40. 24/32로 두면 "온" 글자가 뭉개진다. */
   @media (min-width: 768px) {
     width: 40px;
     height: 40px;
@@ -331,12 +298,12 @@ const sessionCardCss = css`
 
   @media (min-width: 768px) {
     border-radius: 28px;
-    padding: 32px 48px;
+    padding: 56px 48px;
   }
 
   @media (min-width: 1280px) {
     border-radius: 34px;
-    padding: 36px 60px;
+    padding: 56px 60px;
   }
 
   @media (min-width: 1920px) {
@@ -373,12 +340,12 @@ const sessionItemCss = (isLast: boolean) => css`
 
   @media (min-width: 768px) {
     gap: 32px;
-    padding: 18px 32px 16px 0;
+    padding: 22px 32px 19px 0;
   }
 
   @media (min-width: 1280px) {
     gap: 40px;
-    padding: 22px 40px 18px 0;
+    padding: 22px 40px 19px 0;
   }
 
   @media (min-width: 1920px) {
@@ -395,14 +362,6 @@ const dateWeekContainerCss = css`
   flex-shrink: 0;
 
   @media (min-width: 768px) {
-    width: 64px;
-  }
-
-  @media (min-width: 1280px) {
-    width: 85px;
-  }
-
-  @media (min-width: 1920px) {
     width: 105px;
   }
 `;
@@ -418,14 +377,6 @@ const dateTextCss = css`
   margin: 0;
 
   @media (min-width: 768px) {
-    font-size: 14px;
-  }
-
-  @media (min-width: 1280px) {
-    font-size: 17px;
-  }
-
-  @media (min-width: 1920px) {
     font-size: 20px;
     letter-spacing: 0;
   }
@@ -440,14 +391,6 @@ const weekTextCss = css`
   margin: 0;
 
   @media (min-width: 768px) {
-    font-size: 20px;
-  }
-
-  @media (min-width: 1280px) {
-    font-size: 26px;
-  }
-
-  @media (min-width: 1920px) {
     font-size: 32px;
     letter-spacing: 0.01em;
   }
@@ -477,14 +420,6 @@ const titleTextCss = css`
   margin: 0;
 
   @media (min-width: 768px) {
-    font-size: 20px;
-  }
-
-  @media (min-width: 1280px) {
-    font-size: 26px;
-  }
-
-  @media (min-width: 1920px) {
     font-size: 32px;
     letter-spacing: 0.01em;
   }
@@ -496,15 +431,6 @@ const titleTextEnCss = css`
   margin: 0;
 
   @media (min-width: 768px) {
-    font-size: 20px;
-    letter-spacing: -0.01em;
-  }
-
-  @media (min-width: 1280px) {
-    font-size: 26px;
-  }
-
-  @media (min-width: 1920px) {
     ${theme.typosV4.instrumentSans.sub1};
     color: ${colors.v19.white100};
   }
