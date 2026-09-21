@@ -193,7 +193,7 @@ const textContainerPaddingCss = css`
 
 const titleCss = css`
   font-family: 'Pretendard', sans-serif;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 22px;
   line-height: 1.4;
   color: ${colors.v19.coolGray900};
