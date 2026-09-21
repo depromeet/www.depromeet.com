@@ -302,8 +302,8 @@ const arrowCss = css`
   z-index: 10;
 
   svg {
-    width: 10px;
-    height: 18px;
+    width: 7px;
+    height: 12px;
   }
 
   @media (min-width: 768px) {
