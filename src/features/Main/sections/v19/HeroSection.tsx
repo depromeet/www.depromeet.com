@@ -190,30 +190,35 @@ const starLayerCss = css`
 const logoLayerCss = css`
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 6;
+  pointer-events: none;
+
+  @media (min-width: 1280px) {
+    z-index: 1;
+  }
 `;
 
 const logoDeproCss = css`
   position: absolute;
-  left: 5.28%;
+  left: 5.19%;
   top: 52.44%;
-  width: 55.28%;
+  width: 55.83%;
   height: auto;
 
   @media (min-width: 768px) {
     left: 5.21%;
     top: 65.4%;
-    width: 55.84%;
+    width: 55.85%;
   }
 
   @media (min-width: 1280px) {
-    left: 6.02%;
+    left: 3.67%;
     top: 66.92%;
     width: 37.27%;
   }
 
   @media (min-width: 1920px) {
-    left: 8.33%;
+    left: 5.89%;
     top: 62.9%;
     width: 35.26%;
   }
@@ -221,25 +226,25 @@ const logoDeproCss = css`
 
 const logoMeetCss = css`
   position: absolute;
-  left: 35.28%;
-  top: 62.18%;
-  width: 57.78%;
+  left: 38.19%;
+  top: 62.99%;
+  width: 56.33%;
   height: auto;
 
   @media (min-width: 768px) {
-    left: 38.2%;
-    top: 80.27%;
-    width: 52.86%;
+    left: 38.19%;
+    top: 78.81%;
+    width: 56.34%;
   }
 
   @media (min-width: 1280px) {
-    left: 58.33%;
+    left: 59.9%;
     top: 65.55%;
     width: 37.47%;
   }
 
   @media (min-width: 1920px) {
-    left: 57.71%;
+    left: 58.8%;
     top: 60.99%;
     width: 35.41%;
   }
@@ -289,23 +294,25 @@ const objectPositionCss = css`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 2.55%;
-  width: 100%;
+  top: 5.38%;
+  width: 101.11%;
   z-index: 5;
 
   @media (min-width: 768px) {
-    top: 2.5%;
-    width: 100.26%;
+    top: 6.4%;
+    width: 100.13%;
   }
 
   @media (min-width: 1280px) {
-    top: 10.5%;
-    width: 75.7%;
+    top: 8%;
+    width: 83.67%;
   }
 
   @media (min-width: 1920px) {
-    top: 1%;
-    width: 59.27%;
+    left: 17.29%;
+    transform: none;
+    top: 0%;
+    width: 64.11%;
   }
 `;
 
