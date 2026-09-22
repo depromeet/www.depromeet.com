@@ -11,11 +11,13 @@ import { getRecruitCta } from '~/utils/recruit';
 import { type HeroFlightPhase, useHeroObjectEasterEgg } from './useHeroObjectEasterEgg';
 
 const FLOAT_TRANSITION = {
-  duration: 7,
+  duration: 2.2,
   repeat: Infinity,
   repeatType: 'mirror' as const,
   ease: 'easeInOut' as const,
 };
+
+const FLOAT_DISTANCE = '6.15%';
 
 /** x·y 는 오브젝트 자기 크기 기준(%)이라, 폭이 360이든 1920이든 늘 화면 밖까지 나간다. */
 const FLIGHT_VARIANTS: Record<HeroFlightPhase, TargetAndTransition> = {
@@ -122,8 +124,8 @@ export const HeroSection = () => {
           >
             <motion.div
               css={objectFloatCss}
-              initial={shouldReduceMotion ? undefined : { translateY: -10, rotate: -1.5 }}
-              animate={shouldReduceMotion ? undefined : { translateY: 10, rotate: 1.5 }}
+              initial={shouldReduceMotion ? undefined : { translateY: '0%' }}
+              animate={shouldReduceMotion ? undefined : { translateY: FLOAT_DISTANCE }}
               transition={shouldReduceMotion ? { duration: 0 } : FLOAT_TRANSITION}
             >
               <Image
