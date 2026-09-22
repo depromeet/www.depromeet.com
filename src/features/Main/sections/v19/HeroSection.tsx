@@ -287,22 +287,22 @@ const objectPositionCss = css`
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  top: 3.55%;
+  top: 2.55%;
   width: 100%;
   z-index: 5;
 
   @media (min-width: 768px) {
-    top: 4.5%;
+    top: 2.5%;
     width: 100.26%;
   }
 
   @media (min-width: 1280px) {
-    top: 13.5%;
+    top: 10.5%;
     width: 75.7%;
   }
 
   @media (min-width: 1920px) {
-    top: 3%;
+    top: 1%;
     width: 59.27%;
   }
 `;
