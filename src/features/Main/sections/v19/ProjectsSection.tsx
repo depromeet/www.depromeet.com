@@ -61,7 +61,7 @@ export const ProjectsSection = () => {
         <div css={buttonContainerCss}>
           <Link href="/project" css={viewAllButtonCss}>
             프로젝트 전체 보기
-            <CircleArrowRightIcon responsive />
+            <CircleArrowRightIcon size={20} />
           </Link>
         </div>
       </div>
@@ -183,7 +183,7 @@ const viewAllButtonCss = css`
   background: ${colors.v19.white100};
   color: ${colors.v19.coolGray900};
   font-family: 'Pretendard', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   text-decoration: none;
   cursor: pointer;

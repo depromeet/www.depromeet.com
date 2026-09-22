@@ -3,13 +3,18 @@ import { css } from '@emotion/react';
 import { colors } from '~/styles/colors';
 
 type Props = {
-  /** 360에서 24px 로 줄인다(768 이상은 32). 프로젝트·후원 버튼이 그렇다. */
-  responsive?: boolean;
+  /**
+   * 아이콘 한 변의 길이(px). 뷰포트와 무관하게 이 크기로 그린다.
+   *
+   * 피그마에서 값을 옮길 때는 컴포넌트 박스가 아니라 svg 자체 크기를 봐야 한다.
+   * 박스 크기를 그대로 읽어 32px을 넣었던 적이 있다.
+   */
+  size: number;
 };
 
-export const CircleArrowRightIcon = ({ responsive = false }: Props) => (
+export const CircleArrowRightIcon = ({ size }: Props) => (
   <>
-    <span css={[defaultCss, responsive && responsiveSizeCss]} data-icon="default">
+    <span css={[defaultCss, sizeCss(size)]} data-icon="default">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="32"
@@ -35,7 +40,7 @@ export const CircleArrowRightIcon = ({ responsive = false }: Props) => (
       </svg>
     </span>
 
-    <span css={[hoverCss, responsive && responsiveSizeCss]} data-icon="hover">
+    <span css={[hoverCss, sizeCss(size)]} data-icon="hover">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="32"
@@ -72,17 +77,14 @@ const hoverCss = css`
 `;
 
 /* svg 가 상자를 꽉 채우게 두고 상자 크기로 조절한다 — viewBox 가 있어 모양은 그대로다. */
-const responsiveSizeCss = css`
-  width: 24px;
-  height: 24px;
+const sizeCss = (size: number) => css`
+  width: ${size}px;
+  height: ${size}px;
+  /* 버튼이 flex 라 웹폰트가 늦게 오면 글자가 넓어지며 아이콘을 눌러버린다. 크기를 고정한다. */
+  flex-shrink: 0;
 
   svg {
     width: 100%;
     height: 100%;
-  }
-
-  @media (min-width: 768px) {
-    width: 32px;
-    height: 32px;
   }
 `;

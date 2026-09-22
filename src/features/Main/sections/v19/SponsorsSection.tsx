@@ -41,7 +41,7 @@ export const SponsorsSection = () => {
           </div>
           <button type="button" css={inquiryButtonCss} onClick={handleInquiry}>
             <span>후원 문의하기</span>
-            <CircleArrowRightIcon responsive />
+            <CircleArrowRightIcon size={20} />
           </button>
         </div>
       </div>

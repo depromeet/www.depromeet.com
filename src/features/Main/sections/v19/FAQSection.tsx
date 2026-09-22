@@ -99,12 +99,12 @@ export const FAQSection = () => {
             <button type="button" css={kakaoButtonCss} onClick={handleKakaoClick}>
               <KakaoIcon />
               <span css={buttonLabelCss}>카카오톡 문의하기</span>
-              <CircleArrowRightIcon />
+              <CircleArrowRightIcon size={26.667} />
             </button>
             <button type="button" css={emailButtonCss} onClick={handleEmailClick}>
               <EmailIcon />
               <span css={buttonLabelCss}>이메일로 문의하기</span>
-              <CircleArrowRightIcon />
+              <CircleArrowRightIcon size={26.667} />
             </button>
           </div>
         </div>
@@ -384,7 +384,7 @@ const baseButtonCss = css`
   border-radius: 200px;
   cursor: pointer;
   font-family: 'Pretendard', sans-serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   line-height: 1.4;
   transition: all 0.2s ease;
