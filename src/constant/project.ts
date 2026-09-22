@@ -126,6 +126,10 @@ export const PROJECT_LIST: Project[] = [
         href: 'https://github.com/depromeet/18th-team6-Android',
       },
       {
+        type: 'iOS',
+        href: 'https://apps.apple.com/kr/app/obrit-%EB%98%91%EB%98%91%ED%95%9C-%EC%86%8C%EB%AA%A8%ED%92%88-%ED%8A%B8%EB%9E%98%EC%BB%A4/id6775186854',
+      },
+      {
         type: 'Android',
         href: 'https://play.google.com/store/apps/details?id=com.obrit.obrit',
       },
