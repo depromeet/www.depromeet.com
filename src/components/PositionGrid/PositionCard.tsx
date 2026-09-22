@@ -244,8 +244,7 @@ const applyButtonStyles = css`
   }
 
   &:disabled {
-    background-color: ${colors.v19.white030};
-    color: ${colors.v19.coolGray400};
+    opacity: 0.5;
     cursor: default;
     transform: none;
   }
@@ -260,10 +259,5 @@ const applyButtonStyles = css`
     ${theme.typosV3.pretendard.sub2Bold};
     width: auto;
     padding: 12px 24px;
-    color: ${colors.v19.blue900};
-
-    &:disabled {
-      color: ${colors.v19.coolGray400};
-    }
   }
 `;
