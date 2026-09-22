@@ -1,7 +1,11 @@
 import Image from 'next/image';
 import { css } from '@emotion/react';
 
-import { CircleArrowRightIcon } from '~/components/Icons/CircleArrowRightIcon';
+import {
+  CIRCLE_ARROW_SIZE,
+  circleArrowHoverCss,
+  CircleArrowRightIcon,
+} from '~/components/Icons/CircleArrowIcon';
 import { DEPROMEET_EMAIL } from '~/constant/depromeet';
 import { RECRUIT } from '~/constant/recruit';
 import { colors } from '~/styles/colors';
@@ -41,7 +45,7 @@ export const SponsorsSection = () => {
           </div>
           <button type="button" css={inquiryButtonCss} onClick={handleInquiry}>
             <span>후원 문의하기</span>
-            <CircleArrowRightIcon size={20} />
+            <CircleArrowRightIcon size={CIRCLE_ARROW_SIZE.button} />
           </button>
         </div>
       </div>
@@ -152,6 +156,7 @@ const logoImageCss = css`
 `;
 
 const inquiryButtonCss = css`
+  ${circleArrowHoverCss};
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -169,13 +174,6 @@ const inquiryButtonCss = css`
   &:hover {
     background: ${colors.v19.blue500};
     color: ${colors.v19.white100};
-
-    [data-icon='default'] {
-      display: none;
-    }
-    [data-icon='hover'] {
-      display: flex;
-    }
   }
 
   @media (min-width: 768px) {

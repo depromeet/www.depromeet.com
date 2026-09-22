@@ -2,7 +2,12 @@ import { useState } from 'react';
 import { css } from '@emotion/react';
 import { AnimatePresence, motion } from 'framer-motion';
 
-import { CircleArrowRightIcon } from '~/components/Icons/CircleArrowRightIcon';
+import {
+  CIRCLE_ARROW_SIZE,
+  circleArrowHoverCss,
+  CircleArrowRightIcon,
+  CircleArrowToggleIcon,
+} from '~/components/Icons/CircleArrowIcon';
 import { DEPROMEET_EMAIL, DEPROMEET_KAKAO_PLUS_FRIEND } from '~/constant/depromeet';
 import { FaqCategory, RECRUIT } from '~/constant/recruit';
 import { colors } from '~/styles/colors';
@@ -68,9 +73,7 @@ export const FAQSection = () => {
                   onClick={() => handleToggle(index)}
                 >
                   <span>{faq.question}</span>
-                  <span css={[arrowCss, isOpen && arrowOpenCss]}>
-                    <CircleArrowRight />
-                  </span>
+                  <CircleArrowToggleIcon expanded={isOpen} size={CIRCLE_ARROW_SIZE.accordion} />
                 </button>
                 <AnimatePresence>
                   {isOpen && (
@@ -99,12 +102,12 @@ export const FAQSection = () => {
             <button type="button" css={kakaoButtonCss} onClick={handleKakaoClick}>
               <KakaoIcon />
               <span css={buttonLabelCss}>카카오톡 문의하기</span>
-              <CircleArrowRightIcon size={26.667} />
+              <CircleArrowRightIcon size={CIRCLE_ARROW_SIZE.button} />
             </button>
             <button type="button" css={emailButtonCss} onClick={handleEmailClick}>
               <EmailIcon />
               <span css={buttonLabelCss}>이메일로 문의하기</span>
-              <CircleArrowRightIcon size={26.667} />
+              <CircleArrowRightIcon size={CIRCLE_ARROW_SIZE.button} />
             </button>
           </div>
         </div>
@@ -112,27 +115,6 @@ export const FAQSection = () => {
     </section>
   );
 };
-
-/** 아코디언 트리거 아이콘. 열림 상태는 CSS로 90deg 회전시켜 표현한다(별도 파일 없음). */
-const CircleArrowRight = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="12" cy="12" r="12" fill="currentColor" />
-    <path
-      d="M12 16L16 12L12 8"
-      stroke="white"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-    <path
-      d="M8 12H16"
-      stroke="white"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
-);
 
 const KakaoIcon = () => (
   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -286,32 +268,6 @@ const faqQuestionCss = css`
   }
 `;
 
-const arrowCss = css`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: ${colors.v19.coolGray300};
-  transition: transform 0.2s ease, color 0.2s ease;
-  width: 18px;
-  height: 18px;
-
-  svg {
-    width: 100%;
-    height: 100%;
-  }
-
-  @media (min-width: 768px) {
-    width: 24px;
-    height: 24px;
-  }
-`;
-
-const arrowOpenCss = css`
-  color: ${colors.v19.coolGray900};
-  transform: rotate(90deg);
-`;
-
 const faqAnswerCss = css`
   overflow: hidden;
 
@@ -416,6 +372,7 @@ const buttonLabelCss = css`
 
 const kakaoButtonCss = css`
   ${baseButtonCss};
+  ${circleArrowHoverCss};
   background: ${colors.v19.white100};
   border: 2px solid ${colors.v19.coolGray200};
   color: ${colors.v19.coolGray900};
@@ -423,18 +380,12 @@ const kakaoButtonCss = css`
   &:hover {
     background: ${colors.v19.blue500};
     color: ${colors.v19.white100};
-
-    [data-icon='default'] {
-      display: none;
-    }
-    [data-icon='hover'] {
-      display: flex;
-    }
   }
 `;
 
 const emailButtonCss = css`
   ${baseButtonCss};
+  ${circleArrowHoverCss};
   background: ${colors.v19.white100};
   border: 2px solid ${colors.v19.coolGray200};
   color: ${colors.v19.coolGray900};
@@ -442,12 +393,5 @@ const emailButtonCss = css`
   &:hover {
     background: ${colors.v19.blue500};
     color: ${colors.v19.white100};
-
-    [data-icon='default'] {
-      display: none;
-    }
-    [data-icon='hover'] {
-      display: flex;
-    }
   }
 `;

@@ -2,7 +2,11 @@ import Link from 'next/link';
 import { css } from '@emotion/react';
 import { motion } from 'framer-motion';
 
-import { CircleArrowRightIcon } from '~/components/Icons/CircleArrowRightIcon';
+import {
+  CIRCLE_ARROW_SIZE,
+  circleArrowHoverCss,
+  CircleArrowRightIcon,
+} from '~/components/Icons/CircleArrowIcon';
 import { ProjectThumbnail } from '~/components/Project';
 import { PROJECT_LIST } from '~/constant/project';
 import { RECRUIT } from '~/constant/recruit';
@@ -61,7 +65,7 @@ export const ProjectsSection = () => {
         <div css={buttonContainerCss}>
           <Link href="/project" css={viewAllButtonCss}>
             프로젝트 전체 보기
-            <CircleArrowRightIcon size={20} />
+            <CircleArrowRightIcon size={CIRCLE_ARROW_SIZE.button} />
           </Link>
         </div>
       </div>
@@ -170,6 +174,7 @@ const buttonContainerCss = css`
 `;
 
 const viewAllButtonCss = css`
+  ${circleArrowHoverCss};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -193,13 +198,6 @@ const viewAllButtonCss = css`
   &:hover {
     background: ${colors.v19.blue500};
     color: ${colors.v19.white100};
-
-    [data-icon='default'] {
-      display: none;
-    }
-    [data-icon='hover'] {
-      display: flex;
-    }
   }
 
   @media (min-width: 768px) {
