@@ -17,7 +17,7 @@ const FLOAT_TRANSITION = {
   ease: 'easeInOut' as const,
 };
 
-const FLOAT_DISTANCE = '6.15%';
+const FLOAT_DISTANCE = '3.075%';
 
 /** x·y 는 오브젝트 자기 크기 기준(%)이라, 폭이 360이든 1920이든 늘 화면 밖까지 나간다. */
 const FLIGHT_VARIANTS: Record<HeroFlightPhase, TargetAndTransition> = {
