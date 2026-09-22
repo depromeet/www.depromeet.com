@@ -316,17 +316,24 @@ export const RECRUIT: RecruitConfig = {
   ],
   /**
    * 소개 페이지 Session Preview.
-   * 사진·문구는 운영진 확정대로 18기 것을 재활용한다(추후 교체).
-   * 칩(Challenge/Fellowship/Focus)은 클릭만 되고 목록은 항상 전체가 노출되므로
-   * `category`는 아직 쓰지 않는다 — 매핑이 정해지면 채운다.
+   * 목록과 분류는 09/22 디자인파트 회의의 "가치 - 세션 매핑" 확정안을 그대로 따른다 —
+   * Challenge 6개 / Fellowship 2개 / Focus 3개이고, 칩이 이 `category`로 목록을 거른다.
+   * 순서는 위 `SESSIONS` 일정표와 같은 시간순이다. 일정표의 포커스 위크·방학·OT는
+   * 가치 매핑 대상이 아니라서 여기에는 없다(= 어느 칩에서도 보이지 않는다).
+   *
+   * ⚠ 사진·문구는 19기 것이 아직 없어 17·18기 자산을 재활용한다.
+   *   - 이미지 교체 필요: 아이디어톤 / UT / 딮크샵 / 프리 런칭 데이 / 딮크톡 /
+   *     커리어 성장 세션 / 최종 발표 (나머지 4개는 18기 사진 그대로)
+   *   - 문구 신규 작성(운영진 확정 전): 아이디어톤 / 딮크톡 / 커리어 성장 세션 / 최종 발표
    */
   sessionPreview: [
     {
-      id: 'idea',
-      title: '아이디어 공유 / 피드백',
+      id: 'ideathon',
+      title: '아이디어톤',
       description:
-        '4개월간 좋은 서비스를 만드는 방법,\n디프만이 모신 두 연사의 특별 세션에서 힌트를 얻어보세요.',
+        '팀이 4개월간 만들 서비스의 첫 아이디어를 하루 만에 구체화해요.\n문제를 정의하고 해결 방향을 잡으며 여정의 출발점을 만들어요.',
       image: '/images/18th/sessions/session-idea.jpg',
+      category: 'challenge',
     },
     {
       id: 'networking',
@@ -334,13 +341,31 @@ export const RECRUIT: RecruitConfig = {
       description:
         '취업·이직·실무·협업·커리어 방향성까지!\n현실적인 질문과 경험을 직접 나누는 자리를 가져요.',
       image: '/images/18th/sessions/session-networking.jpg',
+      category: 'focus',
     },
     {
-      id: 'focus',
-      title: '포커스 위크',
+      id: 'ut',
+      title: 'UT',
       description:
-        '팀별 작업에 집중하는 주차예요.\n오프라인 모각작, 온라인 모임 등을 통해 열심히 작업해요.',
-      image: '/images/18th/sessions/session-focus.jpg',
+        '각 팀이 선정한 페르소나를 바탕으로,\n제품의 실제 유저군을 대상으로 사용성 테스트를 진행해요.',
+      image: '/images/17th/main/session/user-test.png',
+      category: 'challenge',
+    },
+    {
+      id: 'deepworkshop',
+      title: '딮크샵',
+      description:
+        '1박 2일 워크샵을 떠나요.\n최고의 프로덕트를 만들어내기 위해 팀워크를 다지는 시간이에요.',
+      image: '/images/17th/main/session/DPM-workshop.png',
+      category: 'fellowship',
+    },
+    {
+      id: 'pre-launching',
+      title: '프리 런칭 데이',
+      description:
+        '빠르게 MVP를 출시하고 디퍼들에게 소개해요.\n받은 피드백을 바탕으로 프로덕트를 다듬어 나가요.',
+      image: '/images/17th/main/session/pre-launching.png',
+      category: 'challenge',
     },
     {
       id: 'deepkerthon',
@@ -348,20 +373,16 @@ export const RECRUIT: RecruitConfig = {
       description:
         '1박 2일 간의 밀착 작업을 통해, 프로젝트 완성도를 끌어올려요.\n물론, 작업만 하진 않아요! 중간중간 재미있는 이벤트도 함께 즐겨요.',
       image: '/images/18th/sessions/session-deepkerthon.jpg',
+      category: 'challenge',
     },
     {
-      id: 'alumni',
-      title: '동문회',
+      // TODO(19th-design): C-7 — 시안의 '딮크톡' 표기·세션 성격 확인 후 문구와 사진 교체
+      id: 'deeptalk',
+      title: '딮크톡',
       description:
-        '디프만 동문들이 한자리에 모여 커리어와 경험을 나눠요.\n가볍게 교류하면서도 새로운 기회와 영감을 얻을 수 있는, 디프만 이후를 잇는 커뮤니티 모임이에요.',
-      image: '/images/18th/sessions/session-alumni.jpg',
-    },
-    {
-      id: 'deepcation',
-      title: '딮케이션',
-      description:
-        '팀별로 하루를 함께 보내며 작업과 휴식을 함께 가져가요.\n프로젝트에 잠깐 집중하고, 중간중간 쉬면서 팀원들과 자연스럽게 교류하는 시간을 보내요.',
-      image: '/images/18th/sessions/session-deepcation.jpg',
+        '디퍼들이 각자의 관심 주제를 꺼내 이야기를 나눠요.\n파트를 넘나드는 대화에서 새로운 시야를 얻어가요.',
+      image: '/images/17th/main/session/part-networking.png',
+      category: 'focus',
     },
     {
       id: 'launching',
@@ -369,6 +390,32 @@ export const RECRUIT: RecruitConfig = {
       description:
         '4개월간 열심히 준비해온 서비스가 세상에 공개되는 날이에요.\n외부인과 디퍼들에게 멋진 서비스를 선보여요.',
       image: '/images/18th/sessions/session-launching.jpg',
+      category: 'challenge',
+    },
+    {
+      id: 'deepcation',
+      title: '딮케이션',
+      description:
+        '팀별로 하루를 함께 보내며 작업과 휴식을 함께 가져가요.\n프로젝트에 잠깐 집중하고, 중간중간 쉬면서 팀원들과 자연스럽게 교류하는 시간을 보내요.',
+      image: '/images/18th/sessions/session-deepcation.jpg',
+      category: 'fellowship',
+    },
+    {
+      id: 'career',
+      title: '커리어 성장 세션',
+      description:
+        '서로의 커리어 고민과 경험을 나누며 다음 단계를 그려봐요.\n디프만 이후를 함께 준비하는 시간이에요.',
+      image: '/images/18th/sessions/session-alumni.jpg',
+      category: 'focus',
+    },
+    {
+      /** 회의록 표기는 '최종발표'지만, 사이트의 19기 일정표(`SESSIONS`) 표기를 따른다. */
+      id: 'final',
+      title: '최종 발표',
+      description:
+        '4개월간의 여정을 마무리하며 팀별 성과와 배움을 나눠요.\n서로의 성장을 확인하고 다음을 준비하는 자리예요.',
+      image: '/images/17th/main/session/launching-day.png',
+      category: 'challenge',
     },
   ],
   faq: FAQ,

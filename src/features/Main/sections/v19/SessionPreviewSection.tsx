@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
 import { css } from '@emotion/react';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -7,16 +7,17 @@ import { RECRUIT } from '~/constant/recruit';
 import { colors } from '~/styles/colors';
 import { theme } from '~/styles/theme';
 
+type ChipId = 'challenge' | 'fellowship' | 'focus';
+
 interface SessionItem {
   id: string;
   title: string;
   description: string;
   image: string;
+  category?: ChipId;
 }
 
 const SESSIONS: SessionItem[] = RECRUIT.sessionPreview;
-
-type ChipId = 'challenge' | 'fellowship' | 'focus';
 
 const CHIPS: Array<{ id: ChipId; label: string }> = [
   { id: 'challenge', label: 'Challenge' },
@@ -24,45 +25,66 @@ const CHIPS: Array<{ id: ChipId; label: string }> = [
   { id: 'focus', label: 'Focus' },
 ];
 
-const ChipTablist = () => {
-  const [activeChip, setActiveChip] = useState<ChipId>('challenge');
+/**
+ * 칩은 이제 목록을 실제로 거른다 — 09/22 디자인파트 회의의 "가치 - 세션 매핑" 확정안이
+ * `RECRUIT.sessionPreview[].category`에 들어갔다. 고르면 아래 패널의 세션이 통째로 바뀌므로
+ * 더는 토글 버튼 묶음이 아니라 **탭**이다(예전 주석이 남긴 숙제를 여기서 갚는다).
+ *
+ * 방향키는 옮긴 자리에서 선택까지 하는 자동 활성화를 쓴다 — 패널이 정적 데이터라 교체 비용이
+ * 없을 때의 탭 표준 동작이다. 대신 Tab 키로는 묶음에 한 번만 들어가도록 로빙 tabIndex를 둔다.
+ *
+ * 데스크톱·모바일 레이아웃이 둘 다 DOM에 있으므로 id는 `idPrefix`로 갈라 쓴다.
+ */
+const ChipTabs = ({
+  idPrefix,
+  activeChip,
+  onSelect,
+}: {
+  idPrefix: string;
+  activeChip: ChipId;
+  onSelect: (chip: ChipId) => void;
+}) => {
   const chipRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
-  const focusChip = (index: number) => {
-    const target = chipRefs.current[index];
-    target?.focus();
+  const selectAt = (index: number) => {
+    onSelect(CHIPS[index].id);
+    chipRefs.current[index]?.focus();
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
     if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
       event.preventDefault();
-      focusChip((index + 1) % CHIPS.length);
+      selectAt((index + 1) % CHIPS.length);
     } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
       event.preventDefault();
-      focusChip((index - 1 + CHIPS.length) % CHIPS.length);
+      selectAt((index - 1 + CHIPS.length) % CHIPS.length);
     } else if (event.key === 'Home') {
       event.preventDefault();
-      focusChip(0);
+      selectAt(0);
     } else if (event.key === 'End') {
       event.preventDefault();
-      focusChip(CHIPS.length - 1);
+      selectAt(CHIPS.length - 1);
     }
   };
 
   return (
-    <div css={chipRowCss} role="group" aria-label="세션 카테고리">
+    <div css={chipRowCss} role="tablist" aria-label="세션 카테고리">
       {CHIPS.map((chip, index) => {
         const isActive = chip.id === activeChip;
         return (
           <button
             key={chip.id}
+            id={`${idPrefix}-tab-${chip.id}`}
             ref={el => {
               chipRefs.current[index] = el;
             }}
             type="button"
-            aria-pressed={isActive}
+            role="tab"
+            aria-selected={isActive}
+            aria-controls={`${idPrefix}-panel`}
+            tabIndex={isActive ? 0 : -1}
             css={[chipCss, isActive && chipActiveCss]}
-            onClick={() => setActiveChip(chip.id)}
+            onClick={() => onSelect(chip.id)}
             onKeyDown={event => handleKeyDown(event, index)}
           >
             <ChipIcon chip={chip.id} />
@@ -75,22 +97,37 @@ const ChipTablist = () => {
 };
 
 export const SessionPreviewSection = () => {
+  const [activeChip, setActiveChip] = useState<ChipId>('challenge');
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const sessions = useMemo(
+    () => SESSIONS.filter(session => session.category === activeChip),
+    [activeChip]
+  );
+
+  /** 칩을 바꾸면 목록이 통째로 갈리므로 카드도 새 목록의 첫 세션으로 되돌린다. */
+  const handleSelectChip = (chip: ChipId) => {
+    setActiveChip(chip);
+    setCurrentIndex(0);
+  };
+
   const handlePrev = () => {
-    setCurrentIndex(prev => (prev === 0 ? SESSIONS.length - 1 : prev - 1));
+    setCurrentIndex(prev => (prev === 0 ? sessions.length - 1 : prev - 1));
   };
 
   const handleNext = () => {
-    setCurrentIndex(prev => (prev === SESSIONS.length - 1 ? 0 : prev + 1));
+    setCurrentIndex(prev => (prev === sessions.length - 1 ? 0 : prev + 1));
   };
 
-  const currentSession = SESSIONS[currentIndex];
+  /** 세 칩 모두 세션이 있지만, 설정이 바뀌어 비더라도 빈 카드로 깨지지 않게 막아둔다. */
+  const currentSession = sessions[currentIndex] ?? sessions[0];
+
+  if (!currentSession) return null;
 
   return (
     <section css={sectionCss} data-gnb-theme="dark">
       <div css={contentCss}>
-        {/* 1280px 이상: 리스트 + 카드 패널 (칩은 클릭만 가능, 필터링 없음) */}
+        {/* 1280px 이상: 리스트 + 카드 패널 */}
         <div css={desktopLayoutCss}>
           {/* 시안 `203:1346`·`203:1485`: 제목과 칩은 본문 위 한 줄을 좌우로 나눠 쓴다. */}
           <div css={headerRowCss}>
@@ -98,11 +135,20 @@ export const SessionPreviewSection = () => {
               <span css={titleEnCss}>{RECRUIT.generation}th</span>
               <span css={titleMainCss}>Session Preview</span>
             </div>
-            <ChipTablist />
+            <ChipTabs
+              idPrefix="session-preview-desktop"
+              activeChip={activeChip}
+              onSelect={handleSelectChip}
+            />
           </div>
-          <div css={bodyRowCss}>
+          <div
+            id="session-preview-desktop-panel"
+            role="tabpanel"
+            aria-labelledby={`session-preview-desktop-tab-${activeChip}`}
+            css={bodyRowCss}
+          >
             <nav css={menuListCss}>
-              {SESSIONS.map((session, index) => (
+              {sessions.map((session, index) => (
                 <button
                   key={session.id}
                   type="button"
@@ -117,7 +163,7 @@ export const SessionPreviewSection = () => {
             <div css={rightPanelCss}>
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={currentIndex}
+                  key={currentSession.id}
                   css={cardCss}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -156,65 +202,77 @@ export const SessionPreviewSection = () => {
               <span css={titleMainCss}>Session Preview</span>
             </div>
 
-            <ChipTablist />
+            <ChipTabs
+              idPrefix="session-preview-mobile"
+              activeChip={activeChip}
+              onSelect={handleSelectChip}
+            />
           </div>
 
-          <div css={mobileContentCss}>
-            <div css={mobileImageContainerCss}>
+          {/* 패널이 한 겹 더 생겨도 바깥 레이아웃의 간격(24 → 768부터 40)은 그대로 이어받는다. */}
+          <div
+            id="session-preview-mobile-panel"
+            role="tabpanel"
+            aria-labelledby={`session-preview-mobile-tab-${activeChip}`}
+            css={mobilePanelCss}
+          >
+            <div css={mobileContentCss}>
+              <div css={mobileImageContainerCss}>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentSession.id}
+                    css={mobileImageWrapperCss}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Image
+                      src={currentSession.image}
+                      alt={currentSession.title}
+                      fill
+                      css={cardImageCss}
+                      sizes="320px"
+                    />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={currentIndex}
-                  css={mobileImageWrapperCss}
+                  key={currentSession.id}
+                  css={mobileInfoCss}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <Image
-                    src={currentSession.image}
-                    alt={currentSession.title}
-                    fill
-                    css={cardImageCss}
-                    sizes="320px"
-                  />
+                  <h3 css={mobileSessionTitleCss}>{currentSession.title}</h3>
+                  <p css={mobileSessionDescriptionCss}>
+                    {currentSession.description.split('\n').map((line, i, arr) => (
+                      <span key={i}>
+                        {line}
+                        {i < arr.length - 1 && <br />}
+                      </span>
+                    ))}
+                  </p>
                 </motion.div>
               </AnimatePresence>
             </div>
 
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                css={mobileInfoCss}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                <h3 css={mobileSessionTitleCss}>{currentSession.title}</h3>
-                <p css={mobileSessionDescriptionCss}>
-                  {currentSession.description.split('\n').map((line, i, arr) => (
-                    <span key={i}>
-                      {line}
-                      {i < arr.length - 1 && <br />}
-                    </span>
-                  ))}
-                </p>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-
-          <div css={stepperCss}>
-            <button type="button" css={stepperButtonCss} onClick={handlePrev} aria-label="이전">
-              <ChevronLeft />
-            </button>
-            <span css={stepperTextCss}>
-              <span css={currentNumberCss}>{String(currentIndex + 1).padStart(2, '0')}</span>
-              <span css={dividerCss}>/</span>
-              <span>{String(SESSIONS.length).padStart(2, '0')}</span>
-            </span>
-            <button type="button" css={stepperButtonCss} onClick={handleNext} aria-label="다음">
-              <ChevronRight />
-            </button>
+            <div css={stepperCss}>
+              <button type="button" css={stepperButtonCss} onClick={handlePrev} aria-label="이전">
+                <ChevronLeft />
+              </button>
+              <span css={stepperTextCss}>
+                <span css={currentNumberCss}>{String(currentIndex + 1).padStart(2, '0')}</span>
+                <span css={dividerCss}>/</span>
+                <span>{String(sessions.length).padStart(2, '0')}</span>
+              </span>
+              <button type="button" css={stepperButtonCss} onClick={handleNext} aria-label="다음">
+                <ChevronRight />
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -556,6 +614,18 @@ const mobileHeaderCss = css`
 const mobileTitleContainerCss = css`
   display: flex;
   flex-direction: column;
+`;
+
+/** tabpanel 래퍼. `mobileLayoutCss`가 갖고 있던 세로 간격(24 → 768부터 40)을 그대로 옮겨왔다. */
+const mobilePanelCss = css`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    gap: 40px;
+  }
 `;
 
 const mobileContentCss = css`
