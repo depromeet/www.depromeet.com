@@ -394,7 +394,7 @@ export const RECRUIT: RecruitConfig = {
       id: 'launching',
       title: '런칭데이',
       description:
-        '4개월간 열심히 준비해온 서비스가 세상에 공개되는 날이에요.\n외부인과 디퍼들에게 멋진 서비스를 선보여요.',
+        '3개월간 열심히 준비해온 서비스가 세상에 공개되는 날이에요.\n외부인과 디퍼들에게 멋진 서비스를 선보여요.',
       image: '/images/18th/sessions/session-launching.jpg',
       category: 'challenge',
     },
