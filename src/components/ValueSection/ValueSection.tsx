@@ -20,7 +20,25 @@ export const ValueSection = () => {
                 <h3 css={titleEnStyles}>{value.titleEn}</h3>
                 <p css={titleKoStyles}>{value.titleKo}</p>
               </div>
-              <p css={descriptionStyles}>{value.description}</p>
+              {/*
+                폭 구간마다 줄바꿈이 달라서, 시안이 다른 구간만 문단을 따로 두고 나머지는 숨긴다.
+                display:none 은 접근성 트리에서도 빠지므로 스크린리더는 한 번만 읽는다.
+              */}
+              <p
+                css={[
+                  descriptionStyles,
+                  value.descriptionMobile ? hiddenOnMobileStyles : undefined,
+                  value.descriptionTablet ? hiddenOnTabletStyles : undefined,
+                ]}
+              >
+                {value.description}
+              </p>
+              {value.descriptionMobile && (
+                <p css={[descriptionStyles, mobileOnlyStyles]}>{value.descriptionMobile}</p>
+              )}
+              {value.descriptionTablet && (
+                <p css={[descriptionStyles, tabletOnlyStyles]}>{value.descriptionTablet}</p>
+              )}
             </div>
           ))}
         </div>
@@ -212,5 +230,46 @@ const descriptionStyles = css`
 
   @media (min-width: 1280px) {
     font-size: 24px;
+  }
+
+  /**
+   * 768~1919px 구간에서만 확정된 줄바꿈(description의 \n)을 그대로 쓴다.
+   * 이 폭에서는 카드가 좁아 자연 줄바꿈이 시안과 어긋난다.
+   * 1920 이상·767 이하는 normal이라 \n이 공백으로 접히고 자연 줄바꿈이 유지된다.
+   */
+  @media (min-width: 768px) and (max-width: 1919px) {
+    white-space: pre-line;
+  }
+`;
+
+/** 그 구간의 시안 줄바꿈이 `description`과 다를 때만 쓰는 대체 문단. */
+const mobileOnlyStyles = css`
+  display: none;
+
+  @media (max-width: 767px) {
+    display: block;
+    white-space: pre-line;
+  }
+`;
+
+const tabletOnlyStyles = css`
+  display: none;
+
+  @media (min-width: 768px) and (max-width: 1279px) {
+    display: block;
+    white-space: pre-line;
+  }
+`;
+
+/** 대체 문단이 있는 구간에서는 기본 문단을 숨긴다. */
+const hiddenOnMobileStyles = css`
+  @media (max-width: 767px) {
+    display: none;
+  }
+`;
+
+const hiddenOnTabletStyles = css`
+  @media (min-width: 768px) and (max-width: 1279px) {
+    display: none;
   }
 `;

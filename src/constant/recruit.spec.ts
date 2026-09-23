@@ -141,3 +141,26 @@ describe('constant/recruit — FAQ 확정 문구', () => {
     });
   });
 });
+
+/**
+ * 인재상 설명은 폭 구간마다 줄바꿈이 달라 문자열을 여러 벌 들고 있다.
+ * 한쪽만 고치고 나머지를 잊는 사고를 막는 가드다.
+ */
+describe('constant/recruit — 인재상 줄바꿈 변형', () => {
+  /** 공백·줄바꿈을 모두 없앤다. 768~1279px 변형은 '통|해'처럼 음절 사이를 끊어 공백 위치가 다르다. */
+  const squash = (text: string) => text.replace(/\s+/g, '');
+
+  it('🟢 구간별 변형은 줄바꿈 위치만 다를 뿐 같은 문장이다.', () => {
+    RECRUIT.values.forEach(value => {
+      const base = squash(value.description);
+
+      [value.descriptionMobile, value.descriptionTablet].forEach(variant => {
+        if (variant) expect(squash(variant)).toBe(base);
+      });
+    });
+  });
+
+  it('🟢 768~1919px에서 쓰는 description은 모두 세 줄로 끊긴다.', () => {
+    expect(RECRUIT.values.map(value => value.description.split('\n').length)).toEqual([3, 3, 3]);
+  });
+});

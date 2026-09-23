@@ -32,12 +32,22 @@ export type RecruitConfig = {
   forms: { notify: string; nextNotify: string; applyFallback: string };
   /** 주차 = index + 1 */
   sessions: Array<{ date: string; title: string; online?: boolean }>;
+  /**
+   * 인재상 카드. `description`의 `\n`은 **768~1919px에서만** 실제 줄바꿈이 되고,
+   * 그 밖의 폭에서는 공백으로 접혀 자연 줄바꿈을 따른다(ValueSection의 `white-space`).
+   * 시안이 다른 줄바꿈을 요구하는 구간만 아래 두 필드로 덮어쓴다.
+   * 세 문자열은 공백·줄바꿈을 빼면 같은 문장이어야 한다(recruit.spec.ts가 검사한다).
+   */
   values: Array<{
     id: string;
     number: string;
     titleEn: string;
     titleKo: string;
     description: string;
+    /** 767px 이하 전용 줄바꿈. 없으면 자연 줄바꿈. */
+    descriptionMobile?: string;
+    /** 768~1279px 전용 줄바꿈. 없으면 `description`의 줄바꿈을 그대로 쓴다. */
+    descriptionTablet?: string;
   }>;
   stats: Array<{ label: string; value: number; suffix: string }>;
   sessionPreview: Array<{
@@ -285,27 +295,31 @@ export const RECRUIT: RecruitConfig = {
   positions: POSITIONS,
   forms: FORMS,
   sessions: SESSIONS,
+  /** 줄바꿈 규칙은 `RecruitConfig['values']` 주석 참고. 구간마다 시안이 다르다. */
   values: [
     {
       id: 'responsibility',
       number: '01',
       titleKo: '책임감',
       titleEn: 'Responsibility',
-      description: '맡은 일의 크기와 상관없이 끝까지 완수하려는 태도',
+      description: '맡은 일의 크기와\n상관없이 끝까지\n완수하려는 태도',
+      descriptionMobile: '맡은 일의 크기와 상관없이 끝까지\n완수하려는 태도',
     },
     {
       id: 'ownership',
       number: '02',
       titleKo: '오너쉽',
       titleEn: 'Ownership',
-      description: '문제와 결과를 내 일처럼 받아들이는 태도',
+      description: '문제와 결과를\n내 일처럼\n받아들이는 태도',
     },
     {
       id: 'flexibility',
       number: '03',
       titleKo: '유연성',
       titleEn: 'Flexibility',
-      description: '완벽한 계획보다 빠른 실행과 실험을 통해 배우는 태도',
+      description: '완벽한 계획보다\n빠른 실행과 실험을 통해\n배우는 태도',
+      // 768~1279px은 카드가 좁아 '통해'가 한 줄에 못 들어간다. 시안대로 음절 사이에서 끊는다.
+      descriptionTablet: '완벽한 계획보다\n빠른 실행과 실험을 통\n해 배우는 태도',
     },
   ],
   stats: [
