@@ -18,7 +18,7 @@ interface Props {
   /**
    * `og:image`, `twitter:image`에 사용됩니다.
    *
-   * @default 추가 필요
+   * @default {BASE_URL}/og-main.jpg
    */
   image?: string;
   /**
@@ -30,7 +30,7 @@ interface Props {
   /**
    * `og:image`, `twitter:image`의 크기를 지정하는데 사용됩니다.
    *
-   * @default 630px
+   * @default 600px
    */
   height?: string;
 }
@@ -38,10 +38,9 @@ interface Props {
 const DEFAULT_TITLE = '디프만 - Depromeet';
 const DEFAULT_DESCRIPTION = '오직 디자이너와 프로그래머의 동반성장을 위해서';
 // 카카오·슬랙은 상대 경로를 해석하지 못한다. 절대 URL로 넘긴다.
-// 현재 파일은 히어로 시안을 1200×630으로 자른 임시본이다(정식본 수령 시 파일만 교체 — R6).
 const DEFAULT_IMAGE = `${BASE_URL}/og-main.jpg`;
 const DEFAULT_WIDTH = '1200';
-const DEFAULT_HEIGHT = '630';
+const DEFAULT_HEIGHT = '600';
 
 export const SEO = ({
   title = DEFAULT_TITLE,

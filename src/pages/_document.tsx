@@ -30,10 +30,9 @@ export default function Document() {
         />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="ko_KR" />
-        {/* SEO 컴포넌트와 같은 이미지를 가리킨다. 정식본이 오면 파일만 교체한다(R6). */}
         <meta property="og:image" content={`${BASE_URL}/og-main.jpg`} />
         <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
+        <meta property="og:image:height" content="600" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={`${BASE_URL}/og-main.jpg`} />
         <meta name="twitter:creator" content="디프만 - Depromeet" />
