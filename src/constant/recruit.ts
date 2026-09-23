@@ -86,7 +86,6 @@ const SESSIONS: RecruitConfig['sessions'] = [
   { date: '2026-12-19', title: '딮커톤' },
   { date: '2026-12-26', title: '방학 🏄' },
   { date: '2027-01-02', title: '포커스 위크', online: true },
-  // TODO(19th-design): C-7 — 시안의 '딮크톡' 표기 확인
   { date: '2027-01-09', title: '딮크톡' },
   { date: '2027-01-16', title: '런칭데이' },
   { date: '2027-01-23', title: '포커스 위크', online: true },
@@ -333,35 +332,30 @@ export const RECRUIT: RecruitConfig = {
    * Challenge 6개 / Fellowship 2개 / Focus 3개이고, 칩이 이 `category`로 목록을 거른다.
    * 순서는 위 `SESSIONS` 일정표와 같은 시간순이다. 일정표의 포커스 위크·방학·OT는
    * 가치 매핑 대상이 아니라서 여기에는 없다(= 어느 칩에서도 보이지 않는다).
-   *
-   * ⚠ 사진·문구는 19기 것이 아직 없어 17·18기 자산을 재활용한다.
-   *   - 이미지 교체 필요: 아이디어톤 / UT / 딮크샵 / 프리 런칭 데이 / 딮크톡 /
-   *     커리어 성장 세션 / 최종 발표 (나머지 4개는 18기 사진 그대로)
-   *   - 문구 신규 작성(운영진 확정 전): 아이디어톤 / 딮크톡 / 커리어 성장 세션 / 최종 발표
    */
   sessionPreview: [
     {
       id: 'ideathon',
       title: '아이디어톤',
       description:
-        '팀이 4개월간 만들 서비스의 첫 아이디어를 하루 만에 구체화해요.\n문제를 정의하고 해결 방향을 잡으며 여정의 출발점을 만들어요.',
-      image: '/images/18th/sessions/session-idea.jpg',
+        '4개월간 만들 서비스의 첫 아이디어를 팀별로 구체화해요.\n문제를 정의하고 해결 방향을 잡으며 프로덕트의 출발점을 만들어요.',
+      image: '/images/19th/home/session-ideathon.jpg',
       category: 'challenge',
     },
     {
       id: 'networking',
       title: '현직자와의 만남',
       description:
-        '취업·이직·실무·협업·커리어 방향성까지!\n현실적인 질문과 경험을 직접 나누는 자리를 가져요.',
-      image: '/images/18th/sessions/session-networking.jpg',
+        '각자의 자리에서 전문성을 쌓아가고 있는 현직자 분들을 직접 만나요.\n강연을 듣는 자리가 아닌, 대화를 통해 직접 고민을 나누는 네트워킹 자리를 가져요.',
+      image: '/images/19th/home/session-networking.jpg',
       category: 'focus',
     },
     {
       id: 'ut',
       title: 'UT',
       description:
-        '각 팀이 선정한 페르소나를 바탕으로,\n제품의 실제 유저군을 대상으로 사용성 테스트를 진행해요.',
-      image: '/images/17th/main/session/user-test.png',
+        '각 팀의 타겟 유저를 대상으로 사용성 테스트를 진행해요.\n프로덕트의 방향성을 검증할 수 있어요.',
+      image: '/images/19th/home/session-ut.jpg',
       category: 'challenge',
     },
     {
@@ -369,7 +363,7 @@ export const RECRUIT: RecruitConfig = {
       title: '딮크샵',
       description:
         '1박 2일 워크샵을 떠나요.\n최고의 프로덕트를 만들어내기 위해 팀워크를 다지는 시간이에요.',
-      image: '/images/17th/main/session/DPM-workshop.png',
+      image: '/images/19th/home/session-deepworkshop.jpg',
       category: 'fellowship',
     },
     {
@@ -377,24 +371,23 @@ export const RECRUIT: RecruitConfig = {
       title: '프리 런칭 데이',
       description:
         '빠르게 MVP를 출시하고 디퍼들에게 소개해요.\n받은 피드백을 바탕으로 프로덕트를 다듬어 나가요.',
-      image: '/images/17th/main/session/pre-launching.png',
+      image: '/images/19th/home/session-pre-launching.jpg',
       category: 'challenge',
     },
     {
       id: 'deepkerthon',
       title: '딮커톤',
       description:
-        '1박 2일 간의 밀착 작업을 통해, 프로젝트 완성도를 끌어올려요.\n물론, 작업만 하진 않아요! 중간중간 재미있는 이벤트도 함께 즐겨요.',
-      image: '/images/18th/sessions/session-deepkerthon.jpg',
+        '1박 2일 간의 밀착 작업을 통해, 프로젝트 완성도를 끌어올려요.\n작업 뿐 아니라, 중간중간 이벤트도 함께 즐길 수 있어요.',
+      image: '/images/19th/home/session-deepkerthon.jpg',
       category: 'challenge',
     },
     {
-      // TODO(19th-design): C-7 — 시안의 '딮크톡' 표기·세션 성격 확인 후 문구와 사진 교체
       id: 'deeptalk',
       title: '딮크톡',
       description:
         '디퍼들이 각자의 관심 주제를 꺼내 이야기를 나눠요.\n파트를 넘나드는 대화에서 새로운 시야를 얻어가요.',
-      image: '/images/17th/main/session/part-networking.png',
+      image: '/images/19th/home/session-deeptalk.jpg',
       category: 'focus',
     },
     {
@@ -410,15 +403,15 @@ export const RECRUIT: RecruitConfig = {
       title: '딮케이션',
       description:
         '팀별로 하루를 함께 보내며 작업과 휴식을 함께 가져가요.\n프로젝트에 잠깐 집중하고, 중간중간 쉬면서 팀원들과 자연스럽게 교류하는 시간을 보내요.',
-      image: '/images/18th/sessions/session-deepcation.jpg',
+      image: '/images/19th/home/session-deepcation.jpg',
       category: 'fellowship',
     },
     {
       id: 'career',
       title: '커리어 성장 세션',
       description:
-        '서로의 커리어 고민과 경험을 나누며 다음 단계를 그려봐요.\n디프만 이후를 함께 준비하는 시간이에요.',
-      image: '/images/18th/sessions/session-alumni.jpg',
+        '서로의 커리어 고민과 경험을 나누며 다음 단계를 준비해요.\n디프만 이후 커리어 설정에 도움이 될 수 있어요.',
+      image: '/images/19th/home/session-career.jpg',
       category: 'focus',
     },
     {
@@ -427,7 +420,7 @@ export const RECRUIT: RecruitConfig = {
       title: '최종 발표',
       description:
         '4개월간의 여정을 마무리하며 팀별 성과와 배움을 나눠요.\n서로의 성장을 확인하고 다음을 준비하는 자리예요.',
-      image: '/images/17th/main/session/launching-day.png',
+      image: '/images/19th/home/session-final.jpg',
       category: 'challenge',
     },
   ],
