@@ -110,6 +110,13 @@ export const colors = {
         `linear-gradient(180deg, #0D0F16 0%, #124AB3 ${stopPercent}%)`,
       whiteBlue: 'linear-gradient(108deg, #FFFFFF 0%, #3C7AFF 145%)',
       skyBlueWhite: 'radial-gradient(ellipse 68% 66% at 50% 0%, #B9CDF2 0%, #F6F9FF 100%)',
+      /**
+       * 스크롤한 GNB 뒤에 깔리는 띠. 위(`white010`)에서 아래 투명으로 빠져 GNB와
+       * 본문의 경계를 지운다. Figma GNB 컴포넌트 `Background=True`와 같은 값이며
+       * 밝은/어두운 모드가 같은 그라데이션을 쓴다.
+       */
+      whiteFade:
+        'linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%)',
     },
   },
 } as const;

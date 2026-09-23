@@ -175,13 +175,33 @@ const navCommonCss = () => css`
   overflow: hidden;
 `;
 
+/**
+ * 스크롤하면 깔리는 띠. 그라데이션은 `background-image`라 색처럼 전이되지 않으므로,
+ * 가상 요소에 미리 깔아 두고 `opacity`만 전이시켜야 경계가 튀지 않는다.
+ * 흐림도 같이 태워 두면 띠가 나타나는 동안 함께 짙어진다.
+ *
+ * `z-index: -1`은 GNB 자신이 만든 쌓임 맥락 안이라, 본문 뒤로는 내려가지 않고
+ * 로고·메뉴·CTA 뒤에만 깔린다.
+ */
+const scrollScrimCss = (isVisible: boolean) => css`
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: ${colors.v19.gradient.whiteFade};
+    backdrop-filter: blur(10px);
+    opacity: ${isVisible ? 1 : 0};
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+`;
+
 const navCss = (isScrolled: boolean) => css`
   ${navCommonCss()};
-  background: ${isScrolled ? colors.v19.white010 : 'transparent'};
-  backdrop-filter: ${isScrolled ? 'blur(10px)' : 'none'};
+  ${scrollScrimCss(isScrolled)};
   height: 80px;
   padding: 0 40px;
-  transition: background 0.3s ease, backdrop-filter 0.3s ease;
 
   display: none;
   justify-content: center;
@@ -289,22 +309,15 @@ const linkCss = (theme: Theme) => css`
 
 const mobileMenuGNBCss = (isDropdownOpen: boolean, isScrolled: boolean) => css`
   ${navCommonCss()};
+  /* 메뉴를 펼치면 아래가 통째로 덮이므로 띠를 걷는다. */
+  ${scrollScrimCss(!isDropdownOpen && isScrolled)};
 
-  ${isDropdownOpen
-    ? `
-      background-color: ${colors.v19.coolGray800};
-      background-image: none;
-      backdrop-filter: none;
-    `
-    : `
-      background: ${isScrolled ? colors.v19.white010 : 'transparent'};
-      backdrop-filter: ${isScrolled ? 'blur(10px)' : 'none'};
-  `}
+  background-color: ${isDropdownOpen ? colors.v19.coolGray800 : 'transparent'};
 
   height: 80px;
   padding: 0 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: background 0.3s ease, backdrop-filter 0.3s ease;
+  transition: background-color 0.3s ease;
 `;
