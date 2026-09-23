@@ -11,7 +11,6 @@ import { RECRUIT } from '~/constant/recruit';
 import { colors } from '~/styles/colors';
 import { theme } from '~/styles/theme';
 
-// 운영진 요청으로 후원사 로고·목록은 이번 기수에서도 바꾸지 않는다.
 const SPONSORS = RECRUIT.sponsors;
 
 export const SponsorsSection = () => {
