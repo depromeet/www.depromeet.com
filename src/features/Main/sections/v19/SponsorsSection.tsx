@@ -25,7 +25,8 @@ export const SponsorsSection = () => {
         <div css={textContainerCss}>
           <h2 css={titleCss}>후원사</h2>
           <p css={subtitleCss}>
-            디프만은 IT비영리단체로 후원을 통해 더 많은 교육 기회에 도움을 받고 있습니다
+            디프만은 IT비영리단체로 후원을 통해 <br css={mobileOnlyBrCss} />더 많은 교육 기회에
+            도움을 받고 있습니다
           </p>
         </div>
         <div css={contentsContainerCss}>
@@ -109,6 +110,16 @@ const subtitleCss = css`
 
   @media (min-width: 768px) {
     ${theme.typosV4.pretendard.sub2M};
+  }
+`;
+
+/**
+ * 모바일(~767)에서만 '후원을 통해' 뒤에서 끊는다.
+ * 768 이상은 한 줄로 떨어져서 <br>을 숨긴다. 숨긴 자리의 공백은 앞 텍스트의 끝 공백이 대신한다.
+ */
+const mobileOnlyBrCss = css`
+  @media (min-width: 768px) {
+    display: none;
   }
 `;
 

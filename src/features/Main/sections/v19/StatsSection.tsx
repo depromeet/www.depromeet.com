@@ -106,9 +106,10 @@ export const StatsSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          디프만은 디자이너와 개발자가 서비스 기획부터
-          <br />
-          런칭까지 함께 경험하는 성장추구형 커뮤니티입니다.
+          디프만은 디자이너와 개발자가 <br css={mobileOnlyBrCss} />
+          서비스 기획부터 <br css={tabletUpBrCss} />
+          런칭까지 <br css={mobileOnlyBrCss} />
+          함께 경험하는 성장추구형 커뮤니티입니다.
         </motion.p>
         <div css={gridCss}>
           {STATS.map((stat, index) => (
@@ -154,6 +155,26 @@ const descriptionCss = css`
 
   @media (min-width: 1280px) {
     ${theme.typosV4.pretendard.head1};
+  }
+`;
+
+/**
+ * 줄바꿈 위치가 폭마다 달라서 <br>을 구간별로 켜고 끈다.
+ * - 모바일(~767): 디프만은 디자이너와 개발자가 / 서비스 기획부터 런칭까지 / 함께 경험하는 ~
+ * - 768 이상: 디프만은 디자이너와 개발자가 서비스 기획부터 / 런칭까지 함께 경험하는 ~
+ * 숨긴 <br> 자리의 공백은 바로 앞 텍스트의 끝 공백이 대신한다.
+ */
+const mobileOnlyBrCss = css`
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+const tabletUpBrCss = css`
+  display: none;
+
+  @media (min-width: 768px) {
+    display: inline;
   }
 `;
 
