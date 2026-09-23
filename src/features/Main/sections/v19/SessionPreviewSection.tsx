@@ -412,7 +412,8 @@ const desktopLayoutCss = css`
   @media (min-width: 1280px) {
     display: flex;
     flex-direction: column;
-    gap: 60px;
+    gap: 80px;
+    height: 1215px;
     padding: 240px 0;
   }
 `;
@@ -443,6 +444,10 @@ const bodyRowCss = css`
 const titleContainerCss = css`
   display: flex;
   flex-direction: column;
+
+  & > :last-child {
+    margin-top: -4px;
+  }
 `;
 
 const titleEnCss = css`
