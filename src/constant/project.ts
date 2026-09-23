@@ -16,7 +16,7 @@ export const PROJECT_LIST: Project[] = [
     links: [
       {
         type: 'Behance',
-        href: 'https://www.behance.net/gallery/252136107',
+        href: 'https://www.behance.net/gallery/252136107/Senti-Record-your-day-with-book-sentences',
       },
       {
         type: 'Github',
@@ -35,7 +35,7 @@ export const PROJECT_LIST: Project[] = [
     links: [
       {
         type: 'Behance',
-        href: 'https://www.behance.net/gallery/252139887',
+        href: 'https://www.behance.net/gallery/252139887/Hapalin-',
       },
       {
         type: 'Github',
@@ -55,7 +55,7 @@ export const PROJECT_LIST: Project[] = [
     links: [
       {
         type: 'Behance',
-        href: 'https://www.behance.net/gallery/252137649',
+        href: 'https://www.behance.net/gallery/252137649/PiKi-From-Wish-to-Pick',
       },
       {
         type: 'Github',
@@ -79,7 +79,7 @@ export const PROJECT_LIST: Project[] = [
     links: [
       {
         type: 'Behance',
-        href: 'https://www.behance.net/gallery/252148153',
+        href: 'https://www.behance.net/gallery/252148153/Readum-AI-AI-Book-Summary-Service',
       },
       {
         type: 'Github',
@@ -99,7 +99,7 @@ export const PROJECT_LIST: Project[] = [
     links: [
       {
         type: 'Behance',
-        href: 'https://www.behance.net/gallery/248088099',
+        href: 'https://www.behance.net/gallery/248088099/Peaktime-Archive-your-seasonal-peak',
       },
       {
         type: 'Github',
@@ -119,7 +119,7 @@ export const PROJECT_LIST: Project[] = [
     links: [
       {
         type: 'Behance',
-        href: 'https://www.behance.net/gallery/252146489',
+        href: 'https://www.behance.net/gallery/252146489/obrit-',
       },
       {
         type: 'Github',
