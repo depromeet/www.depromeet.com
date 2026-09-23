@@ -1,5 +1,6 @@
 import { css, Global } from '@emotion/react';
 
+import { colors } from '~/styles/colors';
 import { fontFace } from '~/styles/font';
 
 import { resetCss } from './resetCss';
@@ -14,7 +15,7 @@ const globalCss = css`
 
   html,
   body {
-    background-color: #5aafff;
+    background-color: ${colors.v19.blue900};
     max-width: 100vw;
     overflow-x: hidden;
   }

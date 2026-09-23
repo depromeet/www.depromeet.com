@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { css } from '@emotion/react';
 import { AnimatePresence, motion } from 'framer-motion';
 
+import { RECRUIT } from '~/constant/recruit';
 import { colors } from '~/styles/colors';
 
 interface SessionItem {
@@ -84,7 +85,7 @@ export const SessionsSection = () => {
         <div css={desktopLayoutCss}>
           <div css={leftPanelCss}>
             <div css={titleContainerCss}>
-              <span css={titleBlueCss}>18th</span>
+              <span css={titleBlueCss}>{RECRUIT.generation}th</span>
               <span css={titleBlackCss}>Session Preview</span>
             </div>
             <nav css={menuListCss}>
@@ -135,7 +136,7 @@ export const SessionsSection = () => {
         {/* Tablet/Mobile Layout */}
         <div css={mobileLayoutCss}>
           <div css={mobileTitleContainerCss}>
-            <span css={mobileTitleBlueCss}>18th</span>
+            <span css={mobileTitleBlueCss}>{RECRUIT.generation}th</span>
             <span css={mobileTitleBlackCss}>Session Preview</span>
           </div>
 

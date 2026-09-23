@@ -1,50 +1,44 @@
 import { css } from '@emotion/react';
 
-import { mediaQuery } from '~/styles/media';
+import { RECRUIT } from '~/constant/recruit';
+import { colors } from '~/styles/colors';
 import { theme } from '~/styles/theme';
 
-const CARD_GRADIENT_START = '#DFEEFE';
-const CARD_GRADIENT_END = '#F9FBFF';
-
 export const ValueSection = () => {
-  const values = [
-    {
-      id: 'responsibility',
-      number: '01',
-      title: '책임감',
-      subtitle: 'Responsibility',
-      description: '맡은 일의 크기와 상관없이\n끝까지 완수하려는 태도',
-    },
-    {
-      id: 'ownership',
-      number: '02',
-      title: '오너쉽',
-      subtitle: 'Ownership',
-      description: '문제와 결과를 내 일처럼\n받아들이는 태도',
-    },
-    {
-      id: 'flexibility',
-      number: '03',
-      title: '유연성',
-      subtitle: 'Flexibility',
-      description: '완벽한 계획보다 빠른 실행과\n실험을 통해 배우는 태도',
-    },
-  ];
-
   return (
-    <div css={containerStyles}>
+    <div css={containerStyles} data-gnb-theme="light">
       <div css={contentStyles}>
         <div css={headerContainerStyles}>
-          <div css={titleStyles}>18기의 인재상</div>
-          <div css={subtitleStyles}>디프만은 이런 디퍼를 원해요</div>
+          <div css={titleStyles}>{RECRUIT.generation}기의 인재상</div>
+          <div css={subtitleStyles}>디프만에서는 이런 디퍼를 찾고있어요</div>
         </div>
         <div css={cardsContainerStyles}>
-          {values.map(value => (
+          {RECRUIT.values.map(value => (
             <div key={value.id} css={valueCardStyles}>
               <div css={numberStyles}>{value.number}</div>
-              <h3 css={semititleStyles}>{value.title}</h3>
-              <p css={cardSubtitleStyles}>{value.subtitle}</p>
-              <p css={descriptionStyles}>{value.description}</p>
+              <div css={titleGroupStyles}>
+                <h3 css={titleEnStyles}>{value.titleEn}</h3>
+                <p css={titleKoStyles}>{value.titleKo}</p>
+              </div>
+              {/*
+                폭 구간마다 줄바꿈이 달라서, 시안이 다른 구간만 문단을 따로 두고 나머지는 숨긴다.
+                display:none 은 접근성 트리에서도 빠지므로 스크린리더는 한 번만 읽는다.
+              */}
+              <p
+                css={[
+                  descriptionStyles,
+                  value.descriptionMobile ? hiddenOnMobileStyles : undefined,
+                  value.descriptionTablet ? hiddenOnTabletStyles : undefined,
+                ]}
+              >
+                {value.description}
+              </p>
+              {value.descriptionMobile && (
+                <p css={[descriptionStyles, mobileOnlyStyles]}>{value.descriptionMobile}</p>
+              )}
+              {value.descriptionTablet && (
+                <p css={[descriptionStyles, tabletOnlyStyles]}>{value.descriptionTablet}</p>
+              )}
             </div>
           ))}
         </div>
@@ -55,83 +49,44 @@ export const ValueSection = () => {
 
 const containerStyles = css`
   width: 100%;
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
-  margin: 0 auto;
-  padding: 120px 20px;
-  background-color: #ffffff;
+  background-color: ${colors.v19.white100};
+  padding: 60px 20px;
+  gap: 40px;
 
-  ${mediaQuery('tablet')} {
-    overflow-x: hidden;
-    overflow-y: hidden;
-    padding: 120px 20px 200px 20px;
-  }
-  ${mediaQuery('mobile')} {
-    padding: 120px 20px;
+  @media (min-width: 768px) {
+    padding: 80px 20px;
+    gap: 80px;
   }
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 50px;
-    width: 282px;
-    height: 282px;
-    z-index: 0;
-    opacity: 1;
-
-    ${mediaQuery('mobile')} {
-      display: none;
-    }
-    ${mediaQuery('tablet')} {
-      top: 0;
-      right: -50px;
-      width: 280px;
-      height: 280px;
-    }
+  @media (min-width: 1280px) {
+    padding: 120px 40px;
   }
 
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -120px;
-    left: -50px;
-    width: 312px;
-    height: 312px;
-    z-index: 3;
-    opacity: 1;
-
-    ${mediaQuery('tablet')} {
-      bottom: 0px;
-      left: -60px;
-      width: 260px;
-      height: 260px;
-    }
-
-    ${mediaQuery('mobile')} {
-      width: 200px;
-      height: 200px;
-      bottom: -20px;
-      left: -50px;
-    }
+  @media (min-width: 1920px) {
+    padding: 160px 40px;
   }
 `;
 
 const contentStyles = css`
-  position: relative;
-  z-index: 1;
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  width: 100%;
-  max-width: 1100px;
   align-items: center;
+  width: 100%;
+  gap: inherit;
 
-  ${mediaQuery('mobile')} {
-    gap: 30px;
+  @media (min-width: 768px) {
+    max-width: 696px;
+  }
+
+  @media (min-width: 1280px) {
+    max-width: 880px;
+  }
+
+  @media (min-width: 1920px) {
+    max-width: 1200px;
   }
 `;
 
@@ -141,147 +96,180 @@ const headerContainerStyles = css`
   align-items: center;
   gap: 8px;
   text-align: center;
+
+  @media (min-width: 768px) {
+    gap: 12px;
+  }
 `;
 
 const titleStyles = css`
-  ${theme.typosV3.pretendard.head1};
-  font-size: 36px;
-  font-weight: 600;
+  ${theme.typosV4.pretendard.head6};
+  color: ${colors.v19.coolGray900};
   margin: 0;
-  color: ${theme.colors.primary.darknavy};
 
-  ${mediaQuery('mobile')} {
-    font-size: 28px;
+  @media (min-width: 768px) {
+    ${theme.typosV4.pretendard.head0};
   }
 `;
 
 const subtitleStyles = css`
-  ${theme.typosV3.pretendard.sub1Semibold};
-  font-size: 24px;
-  font-weight: 500;
+  ${theme.typosV4.pretendard.sub6M};
+  color: ${colors.v19.coolGray600};
   margin: 0;
-  color: ${theme.colors.grey18[600]};
 
-  ${mediaQuery('mobile')} {
-    font-size: 18px;
+  @media (min-width: 768px) {
+    ${theme.typosV4.pretendard.sub1M};
   }
 `;
 
 const cardsContainerStyles = css`
   display: grid;
-  grid-template-columns: repeat(3, 392px);
+  grid-template-columns: 1fr;
   gap: 12px;
   width: 100%;
-  justify-content: center;
 
-  @media (min-width: 1280px) and (max-width: 1919px) {
-    grid-template-columns: repeat(3, 285px);
-  }
-
-  @media (min-width: 768px) and (max-width: 1279px) {
-    grid-template-columns: repeat(3, 224px);
-  }
-
-  @media (min-width: 360px) and (max-width: 767px) {
-    grid-template-columns: 320px;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 `;
 
 const valueCardStyles = css`
-  background: linear-gradient(to bottom right, ${CARD_GRADIENT_START}, ${CARD_GRADIENT_END});
-  clip-path: polygon(70px 0%, 100% 0%, 100% 100%, 0% 100%, 0% 70px);
-  border-radius: 16px;
-  padding: 40px;
+  background: ${colors.v19.gradient.skyBlueWhite};
+  padding: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  gap: 8px;
-  position: relative;
-  width: 392px;
-  height: 400px;
+  min-height: 240px;
 
-  @media (min-width: 1280px) and (max-width: 1919px) {
-    width: 285px;
-    height: 380px;
-    padding: 32px;
+  @media (min-width: 768px) {
+    min-height: 320px;
   }
 
-  @media (min-width: 768px) and (max-width: 1279px) {
-    width: 224px;
-    height: 320px;
-    padding: 28px;
-    border-radius: 12px;
-  }
-
-  @media (min-width: 360px) and (max-width: 767px) {
-    width: 320px;
-    height: 320px;
-    padding: 28px;
-    border-radius: 12px;
+  @media (min-width: 1280px) {
+    min-height: 400px;
   }
 `;
 
 const numberStyles = css`
-  font-family: 'Helvetica Neue', sans-serif;
-  font-size: 40px;
-  font-weight: 700;
-  color: ${theme.colors.grey18[400]};
-  line-height: 1.4;
-  letter-spacing: -0.4px;
-  position: absolute;
-  top: 20px;
-  right: 42.5px;
-  transform: translateX(50%);
-  text-align: center;
+  ${theme.typosV4.instrumentSans.sub4};
+  color: ${colors.v19.coolGray400};
+  margin: 0 0 12px;
 
-  @media (min-width: 768px) and (max-width: 1279px) {
-    font-size: 32px;
-    line-height: 1.2;
-    right: 38px;
+  @media (min-width: 768px) {
+    ${theme.typosV4.instrumentSans.sub2};
+    margin-bottom: 18px;
+  }
+
+  @media (min-width: 1280px) {
+    ${theme.typosV4.instrumentSans.sub1};
+    color: ${colors.v19.coolGray400};
+    margin-bottom: 20px;
   }
 `;
 
-const semititleStyles = css`
-  font-family: 'Pretendard', sans-serif;
-  font-size: 36px;
-  font-weight: 700;
-  color: ${theme.colors.primary18.strong};
-  margin: 0;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
+const titleGroupStyles = css`
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
 
-  @media (max-width: 1279px) {
-    font-size: 32px;
-    letter-spacing: -0.02em;
+  @media (min-width: 768px) {
+    gap: 8px;
+  }
+
+  @media (min-width: 1280px) {
+    gap: 10px;
+  }
+
+  @media (min-width: 1920px) {
+    gap: 12px;
   }
 `;
 
-const cardSubtitleStyles = css`
-  font-family: 'Helvetica Neue', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  color: ${theme.colors.grey18[900]};
+const titleEnStyles = css`
+  ${theme.typosV4.instrumentSans.sub4};
+  color: ${colors.v19.coolGray900};
   margin: 0;
-  line-height: 1.4;
 
-  @media (min-width: 768px) and (max-width: 1279px) {
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.6;
+  @media (min-width: 768px) {
+    font-size: 24px;
     letter-spacing: -0.01em;
+  }
+
+  @media (min-width: 1280px) {
+    ${theme.typosV4.instrumentSans.head5};
+    color: ${colors.v19.coolGray900};
+  }
+`;
+
+const titleKoStyles = css`
+  font-family: 'Pretendard', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  color: ${colors.v19.blue500};
+  margin: 0;
+
+  @media (min-width: 768px) {
+    font-size: 26px;
   }
 `;
 
 const descriptionStyles = css`
+  /* 위쪽 auto 여백이 설명을 카드 바닥으로 민다. */
+  margin: auto 0 0;
   font-family: 'Pretendard', sans-serif;
-  font-size: 24px;
+  font-size: 14px;
   font-weight: 500;
-  color: ${theme.colors.grey18[900]};
-  margin: 0;
   line-height: 1.4;
-  white-space: pre-line;
+  color: ${colors.v19.coolGray900};
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
+
+  @media (min-width: 1280px) {
+    font-size: 24px;
+  }
+
+  /**
+   * 768~1919px 구간에서만 확정된 줄바꿈(description의 \n)을 그대로 쓴다.
+   * 이 폭에서는 카드가 좁아 자연 줄바꿈이 시안과 어긋난다.
+   * 1920 이상·767 이하는 normal이라 \n이 공백으로 접히고 자연 줄바꿈이 유지된다.
+   */
+  @media (min-width: 768px) and (max-width: 1919px) {
+    white-space: pre-line;
+  }
+`;
+
+/** 그 구간의 시안 줄바꿈이 `description`과 다를 때만 쓰는 대체 문단. */
+const mobileOnlyStyles = css`
+  display: none;
+
+  @media (max-width: 767px) {
+    display: block;
+    white-space: pre-line;
+  }
+`;
+
+const tabletOnlyStyles = css`
+  display: none;
 
   @media (min-width: 768px) and (max-width: 1279px) {
-    font-size: 18px;
+    display: block;
+    white-space: pre-line;
+  }
+`;
+
+/** 대체 문단이 있는 구간에서는 기본 문단을 숨긴다. */
+const hiddenOnMobileStyles = css`
+  @media (max-width: 767px) {
+    display: none;
+  }
+`;
+
+const hiddenOnTabletStyles = css`
+  @media (min-width: 768px) and (max-width: 1279px) {
+    display: none;
   }
 `;

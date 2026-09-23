@@ -1,5 +1,7 @@
 import Head from 'next/head';
 
+import { BASE_URL } from '~/constant/common';
+
 interface Props {
   /**
    * `title`, `og:title`, `twitter:title`에 사용됩니다.
@@ -16,28 +18,29 @@ interface Props {
   /**
    * `og:image`, `twitter:image`에 사용됩니다.
    *
-   * @default 추가 필요
+   * @default {BASE_URL}/og-main.jpg
    */
   image?: string;
   /**
    * `og:image`, `twitter:image`의 크기를 지정하는데 사용됩니다.
    *
-   * @default 1300px
+   * @default 1200px
    */
   width?: string;
   /**
    * `og:image`, `twitter:image`의 크기를 지정하는데 사용됩니다.
    *
-   * @default 650px
+   * @default 600px
    */
   height?: string;
 }
 
 const DEFAULT_TITLE = '디프만 - Depromeet';
 const DEFAULT_DESCRIPTION = '오직 디자이너와 프로그래머의 동반성장을 위해서';
-const DEFAULT_IMAGE = '/18th-og-main.png';
-const DEFAULT_WIDTH = '1300';
-const DEFAULT_HEIGHT = '650';
+// 카카오·슬랙은 상대 경로를 해석하지 못한다. 절대 URL로 넘긴다.
+const DEFAULT_IMAGE = `${BASE_URL}/og-main.jpg`;
+const DEFAULT_WIDTH = '1200';
+const DEFAULT_HEIGHT = '600';
 
 export const SEO = ({
   title = DEFAULT_TITLE,

@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 
 import { colors } from '~/styles/colors';
-import { mediaQuery } from '~/styles/media';
+import { theme } from '~/styles/theme';
 
 export const BlogTitleSection = () => {
   return (
@@ -16,13 +16,11 @@ const titleContainerCss = css`
 `;
 
 const titleCss = css`
-  font-size: 60px;
-  font-weight: 700;
-  line-height: 1.2;
-  color: ${colors.grey18['900']};
+  ${theme.typosV4.instrumentSans.head3};
+  color: ${colors.v19.coolGray900};
   margin: 0;
 
-  ${mediaQuery('mobile')} {
-    font-size: 40px;
+  @media (min-width: 768px) {
+    ${theme.typosV4.instrumentSans.head1};
   }
 `;

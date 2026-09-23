@@ -68,4 +68,57 @@ export const fontFace = css`
     font-weight: 500;
     src: local(''), url('/fonts/DMMono-Medium.ttf') format('truetype');
   }
+
+  /* NOTE: 19th — Instrument Sans · Space Grotesk · Space Mono.
+     Google Fonts의 latin subset woff2를 self-host한다(합계 약 110KB).
+     한글은 Pretendard가 맡으므로 latin-ext는 받지 않았다. */
+  @font-face {
+    font-family: 'Instrument Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/InstrumentSans-Regular.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Instrument Sans';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('/fonts/InstrumentSans-Medium.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Instrument Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('/fonts/InstrumentSans-SemiBold.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Instrument Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/InstrumentSans-Bold.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url('/fonts/SpaceGrotesk-Medium.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/SpaceGrotesk-Bold.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'Space Mono';
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/SpaceMono-Italic.woff2') format('woff2');
+  }
 `;

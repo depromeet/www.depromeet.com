@@ -1,29 +1,36 @@
 import { useEffect, useState } from 'react';
 import { css } from '@emotion/react';
 
-import { CONTENT_WIDTH, SECTION_TOP_PADDING } from '~/constant/layout';
-import { PROJECT_LIST, TAB_LIST } from '~/constant/project';
+import { CONTENT_WIDTH, SECTION_TOP_PADDING, SECTION_TOP_PADDING_PC } from '~/constant/layout';
+import { Project, PROJECT_LIST, TAB_LIST } from '~/constant/project';
 import { colors } from '~/styles/colors';
-import { mediaQuery } from '~/styles/media';
 
 import { ProjectPaginationSection } from './ProjectPaginationSection';
 import { ProjectTabNavigation } from './ProjectTabNavigation';
 import { ProjectTitleSection } from './ProjectTitleSection';
 
-const ALL_TAB = '전체';
-const TEN_UNDER_TAB = '~10기';
+export const ALL_TAB = '전체';
 
-// 10기 이하 프로젝트 필터링
-const getTenUnderProjects = (projects: any[]) => {
-  return projects.filter(project => {
-    const generation = parseInt(project.subTitle.replace('기', ''));
-    return generation <= 10;
-  });
+// project.subTitle(예: '12기')에서 기수 숫자를 파싱한다.
+const parseProjectGeneration = (subTitle: string) => parseInt(subTitle.replace('기', ''), 10);
+
+// '~N기' 형태의 탭 라벨에서 N을 파싱한다. 형식이 다르면 null.
+export const parseUnderGenerationTab = (tab: string): number | null => {
+  const match = tab.match(/^~(\d+)기$/);
+  return match ? Number(match[1]) : null;
 };
 
-// 현재 탭에 맞는 프로젝트 필터링
-const getCurrentProjects = (projects: any[], currentTab: string) => {
-  return projects.filter(project => project.subTitle === currentTab);
+export const filterProjectsByTab = (projects: Project[], tab: string): Project[] => {
+  if (tab === ALL_TAB) {
+    return projects;
+  }
+
+  const underGeneration = parseUnderGenerationTab(tab);
+  if (underGeneration !== null) {
+    return projects.filter(project => parseProjectGeneration(project.subTitle) <= underGeneration);
+  }
+
+  return projects.filter(project => project.subTitle === tab);
 };
 
 export const ProjectContentSection = () => {
@@ -35,20 +42,11 @@ export const ProjectContentSection = () => {
   };
 
   useEffect(() => {
-    if (currentTab === ALL_TAB) {
-      return setSelectedProjectList(PROJECT_LIST);
-    }
-
-    if (currentTab === TEN_UNDER_TAB) {
-      return setSelectedProjectList(getTenUnderProjects(PROJECT_LIST));
-    }
-
-    const selectedProjects = getCurrentProjects(PROJECT_LIST, currentTab);
-    setSelectedProjectList(selectedProjects);
+    setSelectedProjectList(filterProjectsByTab(PROJECT_LIST, currentTab));
   }, [currentTab]);
 
   return (
-    <section css={sectionCss}>
+    <section css={sectionCss} data-gnb-theme="light">
       <div css={contentWrapperCss}>
         <ProjectTitleSection />
 
@@ -86,10 +84,6 @@ const contentWrapperCss = css`
     width: 100%;
     max-width: ${CONTENT_WIDTH.mobile}px;
   }
-
-  ${mediaQuery('tablet')} {
-    gap: 32px;
-  }
 `;
 
 const sectionCss = css`
@@ -99,14 +93,12 @@ const sectionCss = css`
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  padding: ${SECTION_TOP_PADDING}px 0 80px 0;
+  /* 위 여백은 GNB 높이 + 40 이다(constant/layout.ts 주석 참고). 아래는 64 / 1280 이상 80. */
+  padding: ${SECTION_TOP_PADDING}px 0 64px 0;
   background-color: ${colors.white};
 
-  ${mediaQuery('tablet')} {
-    padding: ${SECTION_TOP_PADDING}px 0 64px 0;
-  }
-  ${mediaQuery('mobile')} {
-    padding: ${SECTION_TOP_PADDING}px 0 64px 0;
+  @media (min-width: 1280px) {
+    padding: ${SECTION_TOP_PADDING_PC}px 0 80px 0;
   }
 
   @media (max-width: 359px) {

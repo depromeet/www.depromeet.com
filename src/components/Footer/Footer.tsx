@@ -1,27 +1,26 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { css } from '@emotion/react';
+import { css, Theme } from '@emotion/react';
 
 import { colors } from '~/styles/colors';
-import { mediaQuery } from '~/styles/media';
 
 const FOOTER_LINKS = [
   {
     name: 'Instagram',
     href: 'https://www.instagram.com/depromeet/',
-    icon: '/images/18th/footer/instagram.svg',
+    icon: '/images/19th/footer/instagram.svg',
   },
   {
     name: 'Behance',
     href: 'https://www.behance.net/Depromeet',
-    icon: '/images/18th/footer/behance.png',
+    icon: '/images/19th/footer/behance.svg',
   },
-  { name: 'Github', href: 'https://github.com/depromeet/', icon: '/images/18th/footer/github.svg' },
-  { name: 'Medium', href: 'https://depromeet.medium.com/', icon: '/images/18th/footer/medium.svg' },
+  { name: 'Github', href: 'https://github.com/depromeet/', icon: '/images/19th/footer/github.svg' },
+  { name: 'Medium', href: 'https://depromeet.medium.com/', icon: '/images/19th/footer/medium.svg' },
   {
     name: 'LinkedIn',
     href: 'https://www.linkedin.com/company/depromeet/',
-    icon: '/images/18th/footer/linkedin.png',
+    icon: '/images/19th/footer/linkedin.svg',
   },
 ];
 
@@ -29,15 +28,15 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer css={footerCss}>
+    <footer css={footerCss} data-gnb-theme="dark">
       <div css={wrapperCss}>
         <div css={contentCss}>
           <div css={logoSectionCss}>
             <Image
-              src={'/images/18th/home/depromeet-white.png'}
+              src={'/images/19th/footer/depromeet-logo.svg'}
               alt={'DEPROMEET'}
               width={200}
-              height={42}
+              height={26}
             />
             <div css={emailRowCss}>
               <span css={emailLabelCss}>Email</span>
@@ -50,7 +49,7 @@ export function Footer() {
               const isLast = idx === FOOTER_LINKS.length - 1;
               const isGithub = link.name === 'Github';
               return (
-                <li key={link.name} css={linkItemCss(idx)}>
+                <li key={link.name} css={linkItemCss}>
                   <Link css={linkCss} href={link.href} target="_blank">
                     <Image src={link.icon} alt={link.name} width={16} height={16} />
                     <span>{link.name}</span>
@@ -69,69 +68,70 @@ export function Footer() {
 }
 
 const footerCss = css`
-  background-color: ${colors.primary18.strong};
-  padding: 20px 40px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: ${colors.v19.coolGray700};
+  padding: 28px 20px;
 
-  ${mediaQuery('mobile')} {
-    padding: 20px;
+  @media (min-width: 768px) {
+    padding: 20px 40px;
   }
 `;
 
 const wrapperCss = css`
   display: flex;
   flex-direction: column;
-  gap: 48px;
   align-items: flex-start;
-  max-width: 1100px;
-  width: 100%;
+  gap: 60px;
 
-  ${mediaQuery('mobile')} {
-    gap: 40px;
+  @media (min-width: 768px) {
+    gap: 48px;
   }
 `;
 
 const contentCss = css`
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
 
-  ${mediaQuery('mobile')} {
-    gap: 40px;
-    width: 100%;
+  @media (min-width: 768px) {
+    gap: 32px;
+    width: auto;
   }
 `;
 
 const logoSectionCss = css`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 6px;
+
+  > img:first-of-type {
+    margin: 8px 0;
+  }
 `;
 
-const emailRowCss = css`
+const emailRowCss = (theme: Theme) => css`
+  ${theme.typosV4.instrumentSans.body7};
   display: flex;
-  gap: 4px;
   align-items: center;
-  font-family: 'Helvetica Neue', sans-serif;
-  font-size: 9px;
-  line-height: 1.5;
-  letter-spacing: -0.18px;
+  gap: 4px;
 `;
 
 const emailLabelCss = css`
-  font-weight: 700;
-  color: ${colors.primary18.normal};
+  color: ${colors.v19.blue300};
 `;
 
 const emailTextCss = css`
-  font-weight: 500;
-  color: ${colors.primary18.light};
+  color: ${colors.v19.white100};
 
-  ${mediaQuery('mobile')} {
-    color: ${colors.white};
+  @media (min-width: 768px) {
+    color: ${colors.v19.blue100};
   }
 `;
 
@@ -139,42 +139,31 @@ const linksRowCss = css`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 16px;
+  gap: 20px 16px;
   list-style: none;
   margin: 0;
   padding: 0;
+  width: 100%;
 
-  ${mediaQuery('mobile')} {
-    display: grid;
-    grid-template-columns: repeat(3, auto);
-    justify-content: start;
+  @media (min-width: 768px) {
+    flex-wrap: nowrap;
     gap: 16px;
-    row-gap: 20px;
-    width: 100%;
+    width: auto;
   }
 `;
 
-const linkItemCss = (index: number) => css`
+const linkItemCss = css`
   display: flex;
   align-items: center;
   gap: 16px;
-
-  ${mediaQuery('mobile')} {
-    /* Grid positions: 0,1,2 on first row, 3,4 on second row */
-    grid-column: ${index < 3 ? index + 1 : index - 2};
-    grid-row: ${index < 3 ? 1 : 2};
-  }
 `;
 
-const linkCss = css`
+const linkCss = (theme: Theme) => css`
+  ${theme.typosV4.instrumentSans.caption1};
   display: flex;
   align-items: center;
   gap: 4px;
-  font-family: 'Helvetica Neue', sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  color: ${colors.white};
-  letter-spacing: -0.84px;
+  color: ${colors.v19.white100};
   text-decoration: none;
 
   &:hover {
@@ -186,19 +175,20 @@ const dividerCss = (hiddenOnMobile: boolean) => css`
   display: inline-block;
   width: 2px;
   height: 2px;
-  background: ${colors.grey18['100']};
+  background: ${colors.v19.coolGray100};
   border-radius: 100px;
 
-  ${mediaQuery('mobile')} {
-    ${hiddenOnMobile && 'display: none;'}
-  }
+  ${hiddenOnMobile &&
+  css`
+    display: none;
+
+    @media (min-width: 768px) {
+      display: inline-block;
+    }
+  `}
 `;
 
-const copyrightCss = css`
-  font-family: 'Helvetica Neue', sans-serif;
-  font-size: 9px;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: -0.18px;
-  color: ${colors.primary18.normal};
+const copyrightCss = (theme: Theme) => css`
+  ${theme.typosV4.instrumentSans.body7};
+  color: ${colors.v19.blue300};
 `;

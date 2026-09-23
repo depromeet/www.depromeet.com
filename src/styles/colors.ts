@@ -27,21 +27,6 @@ export const colors = {
   darkMint: '#00CEBA',
   sky: '#48A4FF',
 
-  // NOTE: 16th
-  // grey: {
-  //   '00': '#FFFFFF',
-  //   '100': '#F4F4F5',
-  //   '300': '#999999',
-  //   '500': '#323232',
-  //   '600': '#232323',
-  //   '900': '#000000',
-  // },
-
-  // primary: {
-  //   pink: '#FF90FF',
-  //   blue: '#006AFE',
-  // },
-
   sub: {
     sky: '#48A4FF',
     darkMint: '#00CEBA',
@@ -89,5 +74,49 @@ export const colors = {
     normal: '#59AEFE',
     light: '#DFEEFE',
     'extra-light': '#F9FBFF',
+  },
+
+  v19: {
+    black: '#111111',
+
+    blue100: '#B9CDF2',
+    blue200: '#8BACEA',
+    blue300: '#5C8BE2',
+    blue400: '#2D6AD9',
+    /** 디프만 정체성 강조 텍스트·요소 */
+    blue500: '#1659D5',
+    blue800: '#092455',
+    blue900: '#04122B',
+
+    coolGray100: '#F7F7F8',
+    coolGray200: '#D2D4D7',
+    coolGray300: '#BCBEC4',
+    coolGray400: '#90939C',
+    coolGray500: '#636874',
+    coolGray600: '#363D4D',
+    coolGray700: '#202739',
+    coolGray800: '#191D29',
+    coolGray900: '#121418',
+
+    white001: 'rgba(255, 255, 255, 0.01)',
+    white004: 'rgba(255, 255, 255, 0.04)',
+    white010: 'rgba(255, 255, 255, 0.1)',
+    white030: 'rgba(255, 255, 255, 0.3)',
+    white100: '#FFFFFF',
+
+    gradient: {
+      blackBlue: 'linear-gradient(180deg, #1247AA 0%, #0C0E15 100%)',
+      heroStarfield: (stopPercent: number) =>
+        `linear-gradient(180deg, #0D0F16 0%, #124AB3 ${stopPercent}%)`,
+      whiteBlue: 'linear-gradient(108deg, #FFFFFF 0%, #3C7AFF 145%)',
+      skyBlueWhite: 'radial-gradient(ellipse 68% 66% at 50% 0%, #B9CDF2 0%, #F6F9FF 100%)',
+      /**
+       * 스크롤한 GNB 뒤에 깔리는 띠. 위(`white010`)에서 아래 투명으로 빠져 GNB와
+       * 본문의 경계를 지운다. Figma GNB 컴포넌트 `Background=True`와 같은 값이며
+       * 밝은/어두운 모드가 같은 그라데이션을 쓴다.
+       */
+      whiteFade:
+        'linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%)',
+    },
   },
 } as const;

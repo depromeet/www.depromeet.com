@@ -4,6 +4,12 @@ export type RecruitState = 'PREVIOUS' | 'IN_PROGRESS' | 'FINISH';
 
 const 하루 = 1000 * 60 * 60 * 24;
 
+/**
+ * @deprecated 19기부터는 `hooks/useRecruitPhase.ts`의 `useRecruitPhase()`를 쓴다.
+ * 이 훅은 2025년 날짜를 보고 있어 항상 `FINISH`를 반환하며, 서버·클라이언트 시각이 달라
+ * hydration 불일치가 날 수 있다. 리다이렉트로 도달할 수 없는 레거시 라우트(`/about`,
+ * `/apply`)와 Storybook에서만 남아 있다.
+ */
 export default function useIsInProgress() {
   const startDate = new Date(START_DATE);
   const endDate = new Date(END_DATE);

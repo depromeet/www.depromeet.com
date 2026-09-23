@@ -1,6 +1,7 @@
 import { Head, Html, Main, NextScript } from 'next/document';
 
-import { GA_ID, HOTJAR_ID, IS_PRODUCTION } from '~/constant/common';
+import { BASE_URL, GA_ID, HOTJAR_ID, IS_PRODUCTION } from '~/constant/common';
+import { colors } from '~/styles/colors';
 
 export default function Document() {
   return (
@@ -15,9 +16,13 @@ export default function Document() {
         <meta httpEquiv="Content-type" content="text/html; charset=utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
 
-        <link rel="icon" href="/favicon.ico?v=18" />
-        {/* Safari iOS: 홈화면·탭 아이콘 (apple-touch-icon 없으면 옛날 아이콘 캐시 유지). ?v=18으로 캐시 갱신 */}
-        <link rel="apple-touch-icon" href="/favicon.ico?v=18" />
+        {/* 탭·북마크·방문기록에 뜨는 아이콘. SVG를 지원하는 브라우저는 favicon.svg를 고르고,
+            나머지는 favicon.ico(16·32·48 멀티 사이즈)로 떨어진다.
+            아이콘을 교체할 때는 ?v= 값을 올려야 옛 아이콘 캐시가 갱신된다. */}
+        <link rel="icon" href="/favicon.ico?v=19" sizes="32x32" />
+        <link rel="icon" href="/favicon.svg?v=19" type="image/svg+xml" />
+        {/* Safari iOS: 홈화면·탭 아이콘. iOS가 자체 라운드 마스크를 씌우므로 정사각 PNG여야 한다. */}
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=19" />
 
         <meta
           name="keywords"
@@ -25,11 +30,11 @@ export default function Document() {
         />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="ko_KR" />
-        <meta property="og:image" content="/images/18th/sessions/og-main.png" />
-        <meta property="og:image:width" content="1536" />
-        <meta property="og:image:height" content="768" />
+        <meta property="og:image" content={`${BASE_URL}/og-main.jpg`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="600" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="/images/18th/sessions/og-main.png" />
+        <meta name="twitter:image" content={`${BASE_URL}/og-main.jpg`} />
         <meta name="twitter:creator" content="디프만 - Depromeet" />
 
         {IS_PRODUCTION && (
@@ -67,7 +72,7 @@ export default function Document() {
         <style
           dangerouslySetInnerHTML={{
             __html: `
-              html, body { background-color: #5aafff; }
+              html, body { background-color: ${colors.v19.blue900}; }
               .js-loading nav { visibility: hidden; }
               .js-loading [data-section="branding"] { visibility: hidden; }
             `,

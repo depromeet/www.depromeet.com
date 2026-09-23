@@ -49,7 +49,7 @@ export const ProjectsSection = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               css={cardWrapperCss}
             >
-              <ProjectThumbnail {...project} textWrapperPadding mainPageCard />
+              <ProjectThumbnail {...project} gridCard />
             </motion.div>
           ))}
         </div>

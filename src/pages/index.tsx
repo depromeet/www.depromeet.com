@@ -2,13 +2,12 @@ import { SEO } from '~/components/SEO';
 import {
   BrandingSection,
   FAQSection,
-  FeaturesSection,
   HeroSection,
   ProjectsSection,
-  SessionsSection,
+  SessionPreviewSection,
   SponsorsSection,
   StatsSection,
-} from '~/features/Main/sections/v18';
+} from '~/features/Main/sections/v19';
 
 export default function Root() {
   return (
@@ -18,8 +17,7 @@ export default function Root() {
         <HeroSection />
         <BrandingSection />
         <StatsSection />
-        <FeaturesSection />
-        <SessionsSection />
+        <SessionPreviewSection />
         <ProjectsSection />
         <FAQSection />
         <SponsorsSection />
