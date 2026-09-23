@@ -126,7 +126,7 @@ const titleCss = css`
 
 const subtitleCss = css`
   font-family: 'Pretendard', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 1.4;
   color: ${colors.v19.coolGray600};
