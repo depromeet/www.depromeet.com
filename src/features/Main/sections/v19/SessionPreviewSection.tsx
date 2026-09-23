@@ -305,15 +305,15 @@ const ChevronLeft = () => (
   </svg>
 );
 
-/** 칩 아이콘 3종 — Figma 벡터를 근사 재현(장식용 아이콘, currentColor로 칩 상태를 따라간다). */
-const CHIP_ICON: Record<ChipId, string> = {
-  challenge: '/images/19th/home/session-chip-challenge.svg',
-  fellowship: '/images/19th/home/session-chip-fellowship.svg',
-  focus: '/images/19th/home/session-chip-focus.svg',
-};
+const chipIconSrc = (chip: ChipId, size: 20 | 30 | 40) =>
+  `/images/19th/home/session-chip-${chip}-${size}.svg`;
 
 const ChipIcon = ({ chip }: { chip: ChipId }) => (
-  <Image src={CHIP_ICON[chip]} alt="" aria-hidden width={34} height={34} />
+  <picture>
+    <source media="(min-width: 1280px)" srcSet={chipIconSrc(chip, 40)} />
+    <source media="(min-width: 768px)" srcSet={chipIconSrc(chip, 30)} />
+    <img src={chipIconSrc(chip, 20)} alt="" aria-hidden width={20} height={20} />
+  </picture>
 );
 
 const sectionCss = css`
@@ -333,10 +333,10 @@ const contentCss = css`
 
 const chipRowCss = css`
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1280px) {
     gap: 12px;
   }
 `;
@@ -345,11 +345,12 @@ const chipCss = css`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 4px;
   height: 38px;
-  padding: 9px 11px;
+  padding: 8px 10px;
 
   img {
+    display: block;
     width: 20px;
     height: 20px;
   }
@@ -367,17 +368,20 @@ const chipCss = css`
   }
 
   @media (min-width: 768px) {
-    height: 80px;
-    padding: 20px 31px;
+    height: 64px;
+    padding: 16px 24px;
     gap: 8px;
 
     img {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
     }
   }
 
   @media (min-width: 1280px) {
+    height: 80px;
+    padding: 20px 30px;
+
     img {
       width: 40px;
       height: 40px;
