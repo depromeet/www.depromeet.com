@@ -218,7 +218,7 @@ const logoDeproCss = css`
   }
 
   @media (min-width: 1920px) {
-    left: 5.89%;
+    left: 6.56%;
     top: 62.9%;
     width: 35.26%;
   }
@@ -244,7 +244,7 @@ const logoMeetCss = css`
   }
 
   @media (min-width: 1920px) {
-    left: 58.8%;
+    left: 58.18%;
     top: 60.99%;
     width: 35.41%;
   }
@@ -304,15 +304,9 @@ const objectPositionCss = css`
   }
 
   @media (min-width: 1280px) {
-    top: 8%;
-    width: 83.67%;
-  }
-
-  @media (min-width: 1920px) {
-    left: 17.29%;
-    transform: none;
-    top: 0%;
-    width: 64.11%;
+    top: 0;
+    margin-top: calc(70px - (100% - 1280px) * 0.15);
+    width: calc(1070px + (100% - 1280px) * 0.203125);
   }
 `;
 

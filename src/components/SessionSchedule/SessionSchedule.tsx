@@ -398,7 +398,7 @@ const weekTextCss = css`
 
 const programContainerCss = css`
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   gap: 8px;
   flex: 1;
 
@@ -445,6 +445,7 @@ const onlineBadgeCss = css`
   border-radius: 50%;
   background-color: ${colors.v19.blue200};
   flex-shrink: 0;
+  transform: translateY(-1px);
 
   @media (min-width: 768px) {
     width: 40px;
