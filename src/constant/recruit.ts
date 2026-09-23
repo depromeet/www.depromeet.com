@@ -97,8 +97,7 @@ const SESSIONS: RecruitConfig['sessions'] = [
 ];
 
 /**
- * ⚠ 현재 URL은 **18기 공고 주소를 잠정 사용**한다(운영진 결정).
- * 19기 공고가 열리면 반드시 교체 — 계획 §5의 10/1 12:00 게이트.
+ * 19기 나인하이어 공고 주소. 모집 오픈(10/02) 전에는 공고가 비공개라 열리지 않는 게 정상이다.
  * 카드 순서는 시안 기준(Design·Android·iOS·Web·Server), URL은 **id로** 매칭되어 있다.
  */
 const POSITIONS: RecruitConfig['positions'] = [
@@ -109,7 +108,7 @@ const POSITIONS: RecruitConfig['positions'] = [
     image: '/images/18th/recruit/img_design.png',
     description:
       '프로덕트 디자이너로서 Figma를 이용해 화면을 디자인하고 개발자와 소통하며 프로덕트를 만듭니다. UX 리서치부터 UI 설계까지 사용자 중심의 사고로 제품 전반의 디자인을 주도하며, 논리적인 사고를 바탕으로 팀과 원활하게 협업합니다.',
-    applyUrl: 'https://01owexg4.ninehire.site/job_posting/TfqjWoxO',
+    applyUrl: 'https://01owexg4.ninehire.site/job_posting/AdsfME0c',
   },
   {
     id: 'android',
@@ -118,7 +117,7 @@ const POSITIONS: RecruitConfig['positions'] = [
     image: '/images/18th/recruit/img_android.png',
     description:
       '안드로이드 개발자로서 Kotlin 언어에 대한 이해를 바탕으로, Jetpack Compose 또는 XML을 활용한 UI를 개발합니다. Retrofit 등의 서버 통신 경험과 안드로이드 생태계에 대한 이해를 바탕으로 서비스 흐름을 파악하고, 안정적인 앱 출시를 이끌어냅니다.',
-    applyUrl: 'https://01owexg4.ninehire.site/job_posting/gCbRwvgi',
+    applyUrl: 'https://01owexg4.ninehire.site/job_posting/r8aL1GyW',
   },
   {
     id: 'ios',
@@ -127,7 +126,7 @@ const POSITIONS: RecruitConfig['positions'] = [
     image: '/images/18th/recruit/img_ios.png',
     description:
       'iOS 개발자로서 Swift에 대한 이해를 바탕으로, UIKit 또는 SwiftUI를 활용한 UI를 개발합니다. URLSession, Alamofire, Moya 등을 이용한 API 통신 경험을 갖추고 있으며, 팀과 협업하여 앱스토어에 서비스를 성공적으로 배포합니다.',
-    applyUrl: 'https://01owexg4.ninehire.site/job_posting/TvN63rIi',
+    applyUrl: 'https://01owexg4.ninehire.site/job_posting/OXxgIuDL',
   },
   {
     id: 'web',
@@ -136,7 +135,7 @@ const POSITIONS: RecruitConfig['positions'] = [
     image: '/images/18th/recruit/img_web.png',
     description:
       '웹 개발자로서 Git과 협업 도구에 익숙하며, HTTP 통신에 대한 기본적인 이해를 갖추고 있습니다. REST API 기반의 프론트엔드 개발 경험을 바탕으로 React, Vue, Angular 등 모던 자바스크립트 프레임워크를 활용해 사용자와 맞닿는 서비스를 구현합니다.',
-    applyUrl: 'https://01owexg4.ninehire.site/job_posting/gmTwerXt',
+    applyUrl: 'https://01owexg4.ninehire.site/job_posting/8vupsulF',
   },
   {
     id: 'server',
@@ -145,7 +144,7 @@ const POSITIONS: RecruitConfig['positions'] = [
     image: '/images/18th/recruit/img_server.png',
     description:
       '서버 개발자로서 프로젝트 초기 설계부터 인프라 구축까지 주도적으로 참여하며, 웹 서버 프레임워크를 활용해 프로덕트를 만듭니다. 프로덕트의 문제를 정의하고, 팀과의 협업을 통해 요구사항을 정리한 뒤, 이를 바탕으로 데이터 구조를 설계하고 구현합니다.',
-    applyUrl: 'https://01owexg4.ninehire.site/job_posting/f3zG7SvK',
+    applyUrl: 'https://01owexg4.ninehire.site/job_posting/vmGg8dwE',
   },
 ];
 

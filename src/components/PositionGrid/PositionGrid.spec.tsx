@@ -55,8 +55,8 @@ describe('PositionGrid — 모집 중', () => {
       return card?.querySelector('a')?.getAttribute('href');
     };
 
-    expect(hrefOf('web')).toBe('https://01owexg4.ninehire.site/job_posting/gmTwerXt');
-    expect(hrefOf('server')).toBe('https://01owexg4.ninehire.site/job_posting/f3zG7SvK');
+    expect(hrefOf('web')).toBe('https://01owexg4.ninehire.site/job_posting/8vupsulF');
+    expect(hrefOf('server')).toBe('https://01owexg4.ninehire.site/job_posting/vmGg8dwE');
   });
 
   it('🟢 공고 링크는 새 탭에서 열리고 opener를 넘기지 않는다.', () => {
