@@ -128,11 +128,10 @@ const iconWrapperStyles = (id: PositionId) => css`
   width: 140px;
   height: 140px;
   pointer-events: none;
-  ${id === 'server' ? 'left: 40px;' : 'right: -30px;'}
+  right: ${id === 'server' ? -24 : -30}px;
 
   @media (min-width: 768px) and (max-width: 1279px) {
     top: 0;
-    left: auto;
     right: -50px;
     width: 200px;
     height: 200px;
@@ -140,7 +139,6 @@ const iconWrapperStyles = (id: PositionId) => css`
 
   @media (min-width: 1280px) {
     top: 0;
-    left: auto;
     right: -80px;
     width: 260px;
     height: 260px;
