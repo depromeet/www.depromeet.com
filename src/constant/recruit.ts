@@ -430,5 +430,7 @@ export const RECRUIT: RecruitConfig = {
     { name: 'elice', logo: '/images/19th/home/sponsor-elice.png' },
     { name: 'NineHire', logo: '/images/19th/home/sponsor-ninehire.png' },
     { name: 'surfit', logo: '/images/19th/home/sponsor-surfit.png' },
+    { name: 'Arch Calendar', logo: '/images/19th/home/sponsor-archcalendar.svg' },
+    { name: 'imweb', logo: '/images/19th/home/sponsor-imweb.png' },
   ],
 };
