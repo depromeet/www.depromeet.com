@@ -134,16 +134,18 @@ const contentsContainerCss = css`
   }
 `;
 
+/** 한 줄에 로고를 최대 3개까지만 둔다. 그리드 폭을 카드 3장 + 간격 2개로 묶는다. */
 const logoGridCss = css`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px 16px;
   width: 100%;
-  max-width: 1180px;
+  max-width: calc(140px * 3 + 16px * 2);
 
   @media (min-width: 768px) {
     gap: 20px;
+    max-width: calc(280px * 3 + 20px * 2);
   }
 `;
 
